@@ -6,7 +6,7 @@
 // Poniżej ilustracja motywacji stojącej za utworzeniem
 // mechanizmu this:
 
-console.log('Jestem w pliku pierwszym');
+console.log('Funkcje obsługujące kontekst za pomocą this');
 
 function identify() {
   return this.name.toUpperCase();
@@ -25,8 +25,8 @@ const you = {
   name: 'Czytelnik',
 };
 
-console.log(identify.call(me));
-console.log(identify.call(you));
+console.log(identify.call(me)); // KYLE
+console.log(identify.call(you)); // CZYTELNIK
 
-console.log(speak.call(me));
-console.log(speak.call(you));
+console.log(speak.call(me)); // Witaj, jestem KYLE
+console.log(speak.call(you)); // Witaj, jestem CZYTELNIK
