@@ -1,3 +1,5 @@
+console.log('Funkcje obsługujące jawnie kontekst');
+
 function identify(context) {
   return context.name.toUpperCase();
 }
