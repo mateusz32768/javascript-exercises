@@ -1,7 +1,7 @@
 const btn = document.getElementById('reset');
 const script = document.getElementById('script');
 
-const arrSource = ['thisone.js', '', 'thistwo.js', 'thisthree.js'];
+const arrSource = ['thisone.js', '', 'thistwo.js', 'numberOfCalls.js'];
 
 let counter = 0;
 
