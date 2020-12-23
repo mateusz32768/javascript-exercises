@@ -5,3 +5,7 @@ canvas {
 video {
   display: none;
 }
+
+body {
+  background-color: chartreuse;
+}
