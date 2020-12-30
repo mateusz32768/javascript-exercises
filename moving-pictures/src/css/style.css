@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+}
+
+.btn {
+  font-size: 2.5rem;
+  border: none;
+  /* display: none; */
+}
+
+.minature {
+  width: 200px;
+  height: 200px;
+}
+
+.minature img {
+  margin-right: 10px;
+  height: 75%;
+}
