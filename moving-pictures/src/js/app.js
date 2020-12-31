@@ -1,4 +1,7 @@
+'use strict';
+
 const btn = document.getElementById('btn_gtr');
+
 const pictures = [
   'picture_one',
   'picture_two',
@@ -21,7 +24,7 @@ for (let i = 0; i < pictures.length; i++) {
   pictureID.push(document.getElementById(pictures[i]));
 }
 
-console.log(pictureID);
+changePictures_4();
 
 let counter = 0;
 
@@ -45,14 +48,53 @@ btn.addEventListener('click', () => {
   }
 
   counter++;
+
+  if (counter == 5) {
+    counter = 0;
+  }
 });
 
+function changePictures_4() {
+  // pictureID[0].setAttribute('src', source[0]);
+  // pictureID[1].setAttribute('src', source[1]);
+  // pictureID[2].setAttribute('src', source[2]);
+  // pictureID[3].setAttribute('src', source[3]);
+  // pictureID[4].setAttribute('src', source[4]);
+
+  for (let picture of pictures) {
+    picture.setAttribute('src', source.shift());
+  }
+}
+
+console.log(source);
+
+let template = source.shift();
+source[4] = template;
+
+console.log(source);
+
 function changePictures_0() {
-  pictureID[0].setAttribute('src', source[1]);
-  pictureID[1].setAttribute('src', source[2]);
-  pictureID[2].setAttribute('src', source[3]);
-  pictureID[3].setAttribute('src', source[4]);
-  pictureID[4].setAttribute('src', source[0]);
+  console.log(source);
+  // pictureID[0].setAttribute('src', source[1]);
+  // pictureID[1].setAttribute('src', source[2]);
+  // pictureID[2].setAttribute('src', source[3]);
+  // pictureID[3].setAttribute('src', source[4]);
+  // pictureID[4].setAttribute('src', source[0]);
+
+  for (let picture of pictures) {
+    picture.setAttribute('src', source.shift());
+  }
+
+  // let k = 0;
+  // for (let i = 0, k = 1; i < pictureID.length; i++, k++) {
+  //   if (k != 5) {
+  //     pictureID[i].setAttribute('src', source[k]);
+  //   }
+
+  //   if (k == 5) {
+  //     pictureID[i].setAttribute('src', source[0]);
+  //   }
+  // }
 }
 
 function changePictures_1() {
@@ -86,3 +128,14 @@ function changePictures_4() {
   pictureID[3].setAttribute('src', source[3]);
   pictureID[4].setAttribute('src', source[4]);
 }
+
+// let k = 0;
+// for (let i = 0, k = 2; i < pictureID.length; i++, k++) {
+//   if (k != 5) {
+//     pictureID[i].setAttribute('src', source[k]);
+//   }
+
+//   if (k == 5) {
+//     pictureID[i].setAttribute('src', source[0]);
+//   }
+// }
