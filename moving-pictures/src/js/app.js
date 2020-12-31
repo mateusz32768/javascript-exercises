@@ -5,51 +5,84 @@ const pictures = [
   'picture_three',
   'picture_four',
   'picture_five',
-  // 'picture_six',
-  // 'picture_seven',
-  // 'picture_eight',
-  // 'picture_nine',
-  // 'picture_ten',
 ];
 
 const source = [
-  'picture_one.jpg',
-  'picture_two.jpg',
-  'picture_three.jpg',
-  'picture_four.jpg',
-  'picture_five.jpg',
+  '../images/picture_one.jpg',
+  '../images/picture_two.jpg',
+  '../images/picture_three.jpg',
+  '../images/picture_four.jpg',
+  '../images/picture_five.jpg',
 ];
 
-const PARTIAL_PATH = '../images/';
-const JPG = '.jpg';
-let counter = 1;
+const pictureID = [];
+
+for (let i = 0; i < pictures.length; i++) {
+  pictureID.push(document.getElementById(pictures[i]));
+}
+
+console.log(pictureID);
+
+let counter = 0;
 
 btn.addEventListener('click', () => {
-  for (let i = 0; i < pictures.length; i++) {
-    const pictureID = document.getElementById(pictures[i]);
-    if (i < pictures.length - 1) {
-      pictureID.setAttribute('src', `${PARTIAL_PATH}${pictures[i + 1]}${JPG}`);
-    } else {
-      pictureID.setAttribute('src', `${PARTIAL_PATH}${pictures[0]}${JPG}`);
-    }
+  switch (counter) {
+    case 0:
+      changePictures_0();
+      break;
+    case 1:
+      changePictures_1();
+      break;
+    case 2:
+      changePictures_2();
+      break;
+    case 3:
+      changePictures_3();
+      break;
+    case 4:
+      changePictures_4();
+      break;
   }
-  // changePictures(counter);
-  // counter++;
+
+  counter++;
 });
 
-function changePictures(counter) {
-  for (let i = 0; i < pictures.length; i++) {
-    const pictureID = document.getElementById(pictures[i]);
-    if (i < pictures.length - counter) {
-      pictureID.setAttribute(
-        'src',
-        `${PARTIAL_PATH}${pictures[i + counter]}${JPG}`
-      );
-    } else {
-      pictureID.setAttribute(
-        'src',
-        `${PARTIAL_PATH}${pictures[counter - 1]}${JPG}`
-      );
-    }
-  }
+function changePictures_0() {
+  pictureID[0].setAttribute('src', source[1]);
+  pictureID[1].setAttribute('src', source[2]);
+  pictureID[2].setAttribute('src', source[3]);
+  pictureID[3].setAttribute('src', source[4]);
+  pictureID[4].setAttribute('src', source[0]);
+}
+
+function changePictures_1() {
+  pictureID[0].setAttribute('src', source[2]);
+  pictureID[1].setAttribute('src', source[3]);
+  pictureID[2].setAttribute('src', source[4]);
+  pictureID[3].setAttribute('src', source[0]);
+  pictureID[4].setAttribute('src', source[1]);
+}
+
+function changePictures_2() {
+  pictureID[0].setAttribute('src', source[3]);
+  pictureID[1].setAttribute('src', source[4]);
+  pictureID[2].setAttribute('src', source[0]);
+  pictureID[3].setAttribute('src', source[1]);
+  pictureID[4].setAttribute('src', source[2]);
+}
+
+function changePictures_3() {
+  pictureID[0].setAttribute('src', source[4]);
+  pictureID[1].setAttribute('src', source[0]);
+  pictureID[2].setAttribute('src', source[1]);
+  pictureID[3].setAttribute('src', source[2]);
+  pictureID[4].setAttribute('src', source[3]);
+}
+
+function changePictures_4() {
+  pictureID[0].setAttribute('src', source[0]);
+  pictureID[1].setAttribute('src', source[1]);
+  pictureID[2].setAttribute('src', source[2]);
+  pictureID[3].setAttribute('src', source[3]);
+  pictureID[4].setAttribute('src', source[4]);
 }

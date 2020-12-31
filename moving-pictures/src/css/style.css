@@ -13,6 +13,10 @@
   height: 200px;
 }
 
+.picture {
+  text-align: center;
+}
+
 .minature img {
   margin-right: 10px;
   height: 75%;
