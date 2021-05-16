@@ -1,0 +1,28 @@
+fieldset {
+	width: 35%;
+}
+
+.field{
+	width: 90;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+.field input {
+	margin: 10px;
+}
+
+.field #sum {
+	margin-left: 20px;
+}
+
+.field #map {
+	margin-left: 20px;
+}
+
+.calculator {
+	width: 30%;
+	margin:0 auto;
+	padding: 10px;
+}
+
