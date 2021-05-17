@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Przykład pierwszy</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"
+    integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw=="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>Przykład pierwszy</h1>
+
+  <div class="container"></div>
+
+  <script id="entry-template" type="text/x-handlebars-template">
+    <div class="entry">
+      <h2>{{title}}</h2>
+      <div class="body">
+        {{body}}
+       <p>{{loud firstName}} {{loud lastName}}</p> 
+      </div>
+    </div>
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

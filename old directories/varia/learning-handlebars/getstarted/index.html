@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get started</title>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+</head>
+
+<body>
+  <h1>Get started</h1>
+
+  <div class="container"></div>
+  <script>
+    // compile the template
+    var template = Handlebars.compile("<p>Handlebars <b>{{doesWhat}}</b><p>");
+    // execute the compiled template and print the output to the console
+    console.log(template({ doesWhat: "rocks!" }));
+
+    const container = document.querySelector('.container');
+    container.insertAdjacentHTML('beforeend', template({ doesWhat: "rocks!" }));
+  </script>
+</body>
+
+</html>

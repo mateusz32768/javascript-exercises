@@ -1,0 +1,6 @@
+console.log(Math.round(20.49))
+console.log(Math.round(20.50))
+console.log(Math.round(20.51))
+console.log(Math.round(-20.49))
+console.log(Math.round(-20.50))
+console.log(Math.round(-20.51))

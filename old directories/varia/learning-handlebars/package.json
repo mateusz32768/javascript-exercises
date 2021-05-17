@@ -1,0 +1,16 @@
+{
+  "name": "learning-handlebars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "handlebars": "^4.7.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Zenon Marek Raubuć <m.raubuc@wp.pl> (https://raubuc.net)",
+  "license": "ISC"
+}

@@ -2,7 +2,7 @@ function Shape() {
   this.name = 'Shape';
   this.toString = function () {
     return this.name;
-  };
+  }
 }
 
 function TwoDShape() {
@@ -14,22 +14,20 @@ function Triangle(side, height) {
   this.side = side;
   this.height = height;
   this.getArea = function () {
-    return (this.side * this.height) / 2;
-  };
+    return this.side * this.height / 2;
+  }
 }
 
-// Dziedziczenie po instancji Shape
 TwoDShape.prototype = new Shape();
 Triangle.prototype = new TwoDShape();
-// Całkowite nadpisanie prototypu wymaga
-// na nowo ustawienia właściwości constructor
+
 TwoDShape.prototype.constructor = TwoDShape;
 Triangle.prototype.constructor = Triangle;
 
 const triangle = new Triangle(5, 10);
 
 console.log(triangle.getArea());
-console.log(`triangle.toString(): ${triangle.toString()}`);
+console.log(triangle.toString());
 
 console.log(triangle.constructor === Triangle); // true
 console.log(triangle instanceof Shape); // true
@@ -46,5 +44,3 @@ console.log(td.toString());
 const shape = new Shape();
 console.log(shape.constructor === Shape);
 console.log(shape.toString());
-
-console.log(td.gerArea());

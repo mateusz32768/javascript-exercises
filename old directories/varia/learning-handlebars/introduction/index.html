@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szablony</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+
+</head>
+
+<body>
+  <h1>Handlebars</h1>
+
+  <div class="persons"></div>
+
+  <div class="container"></div>
+
+
+
+
+  <script id="template" type="text/x-handlebars-template">
+    <p>Hello {{ firstName }} {{ lastName }}!</p>
+  </script>
+
+  <script id="template-product-list" type="text/x-handlebars-template">
+    <h3>{{ title }}</h3>
+
+      <ul>
+        {{#each products}}
+          <li id="{{ @key }}">Buy {{ name }} for {{ price }}!</li>
+        {{/each }}
+      </ul>
+
+  </script>
+  <script>
+    function Person(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+
+    const student = new Person('Jerzy', 'Ficowski');
+    const saleswoman = new Person('Maria', 'Kowalska');
+
+
+    const productListData = {
+      title: 'Great offers!',
+
+      products: {
+        'product-football': {
+          name: 'Football',
+          price: '$10'
+        },
+
+        'product-volleyball': {
+          name: 'Volleyball',
+          price: '$8'
+        },
+
+        'product-basketball': {
+          name: 'Basketball',
+          price: '$12'
+        }
+      }
+
+    };
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

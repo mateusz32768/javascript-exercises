@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Przykład 59 - Wartości pól formularza</title>
+
+    <style>
+        form div {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Przykład 59 - Wartości pól formularza</h1>
+
+    <form action="#" id="myForm">
+        <div>
+            <input type="text" name="firstName" value="Jan">
+        </div>
+
+        <div>
+            <input type="text" name="lastName">
+        </div>
+
+        <div>
+            <select name="subject">
+                <option value="pytanie">Pytanie</option>
+                <option value="prosba">Prośba</option>
+                <option value="zgloszenie">Zgłoszenie</option>
+            </select>
+        </div>
+
+        <div>
+            <textarea name="message"></textarea>
+        </div>
+
+        <div>
+            <label>Zapamiętaj mnie</label>
+            <input type="checkbox" name="remember" value="1">
+        </div>
+
+        <div>
+            <input type="submit" value="Wyślij">
+        </div>
+    </form>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>
