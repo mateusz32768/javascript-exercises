@@ -1,6 +1,4 @@
-/* Przypisania destrukuryzujące
-
-*/
+/* Przypisania destrukuryzujące*/
 
 // Konwersja współrzędnych kartezjańskich [x, y] na biegunowe [r, theta]
 
