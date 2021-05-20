@@ -30,10 +30,11 @@ Poprzez przeglądarkę kod odbiera dane od użytkownika przekazywane za pomocą 
 zapytań HTTP. Zwracanie danych polega na wyświetlaniu informacji zakodowanych w językach HTML i CSS.
 
 **JavaScript — nazwy, wersje i tryby**
+
 > Język JavaScript powstał w firmie Netscape. Nazwa „JavaScript” jest zastrzeżonym przez Sun Microsystems
 > (dzisiaj Oracle) znakiem handlowym, reprezentującym implementację stosowaną w przeglądarce Netscape (dzisiaj Mozilla).
 >
-> Autorzy przekazali specyfikację języka stowarzyszeniu ECMA (ang. *European Computer Manufacturers Association*,
+> Autorzy przekazali specyfikację języka stowarzyszeniu ECMA (ang. _European Computer Manufacturers Association_,
 > Europejskie Stowarzyszenie Producentów Komputerów) w celu jej standaryzacji, ale z powodu problemów ze znakiem
 > handlowym otrzymał nazwę ECMAScript (nieoficjalnie JavaScript).
 >
@@ -69,6 +70,7 @@ Z technicznego punktu widzenia JavaScript jest obiektowym językiem skryptowym o
 
 JavaScript jest językiem **obiektowym**, a nie proceduralnym. Większość zmiennych, z którymi mamy do czynienia, to tak
 naprawdę obiekty.
+
 > Obiekt to specjalna zmienna mająca w swym wnętrzu inne zmienne nazywane **właściwościami**, a także
 > funkcje nazywane **metodami**. Właściwości i metody nazywa się ogólnie **elementami składowymi**.
 
@@ -113,7 +115,6 @@ obiektach, w szczególności tych bardziej zaawansowanych.
 
 > **UWAGA:** W wielu językach obiektowych, w tym również w języku JavaScript przyjęto, że każdy wyraz w nazwach zmiennych i funkcji jest pisany od wielkiej litery (poza pierwszym), czyli: `pewienObiekt` i `pewnaMetoda()`, a nie
 > `pewien_obiekt` i` `pewna_metoda()`.
-
 
 **Luźna kontrola typów** oznacza, że zmienne i dane mogą być łatwo konwertowane z jednego formatu na drugi. Na przykład
 można zdefiniować liczbę, a następnie skonwertować ją na ciąg znaków.
@@ -206,7 +207,7 @@ karetki/przejście do następnego wiersza (ang. line feed).
 Stosowane są dwa rodzaje komentarzy:
 
 1. Tekst znajdujący się od znaków `//` do końca wiersza jest traktowany jako komentarz i pomijany.
-2. Komentarzem jest tekst umieszczony pomiędzy parami znaków /* i */.
+2. Komentarzem jest tekst umieszczony pomiędzy parami znaków /_ i _/.
 
 Komentarzy nie można zagnieżdżać.
 
@@ -214,9 +215,9 @@ Komentarzy nie można zagnieżdżać.
 // Jednowierszowy komentarz.
 /* To również jest komentarz. */ // A to jest inny komentarz.
 /*
-* To jest komentarz wielowierszowy. Dodatkowy znak * na początku
-* nie jest wymagany, ale dzięki niemu komentarz ładnie wygląda.
-*/
+ * To jest komentarz wielowierszowy. Dodatkowy znak * na początku
+ * nie jest wymagany, ale dzięki niemu komentarz ładnie wygląda.
+ */
 ```
 
 ## Literały
@@ -224,13 +225,13 @@ Komentarzy nie można zagnieżdżać.
 Literał to dane umieszczone bezpośrednio w programie.
 
 ```javascript
-12 // Liczba dwanaście.
-1.2 // Liczba jeden i dwie dziesiąte.
-"Witaj, świecie!" // Ciąg znaków.
-'Cześć' // Inny ciąg znaków.
-true // Wartość logiczna.
-false // Druga wartość logiczna.
-null // Brak obiektu.
+12; // Liczba dwanaście.
+1.2; // Liczba jeden i dwie dziesiąte.
+('Witaj, świecie!'); // Ciąg znaków.
+('Cześć'); // Inny ciąg znaków.
+true; // Wartość logiczna.
+false; // Druga wartość logiczna.
+null; // Brak obiektu.
 ```
 
 ## Identyfikatory i zarezerwowane słowa
@@ -239,27 +240,27 @@ null // Brak obiektu.
 
 W języku JavaScript identyfikatorami są:
 
-* nazwy stałych,
-* zmiennych,
-* właściwości,
-* funkcji,
-* klas
-* etykiet w pewnego rodzaju pętlach.
+- nazwy stałych,
+- zmiennych,
+- właściwości,
+- funkcji,
+- klas
+- etykiet w pewnego rodzaju pętlach.
 
 Zasady nadawania nazw:
 
-1. Pierwszym znakiem identyfikatora musi być litera, symbol podkreślenia (_) lub dolara ($).
+1. Pierwszym znakiem identyfikatora musi być litera, symbol podkreślenia (\_) lub dolara ($).
 2. Po nim mogą następować litery, cyfry, symbole podkreślenia i dolara.
 3. Pierwszym znakiem nie może być cyfra. Dzięki temu ograniczeniu można łatwo odróżniać identyfikatory od liczb.
 
 Poniższe przykłady są poprawnymi identyfikatorami:
 
 ```javascript
-i
-nazwa_mojej_zmiennej
-v13
-_dummy
-$str
+i;
+nazwa_mojej_zmiennej;
+v13;
+_dummy;
+$str;
 ```
 
 ### Zarezerwowane słowa
@@ -295,31 +296,31 @@ identyfikatorach nazw angielski lub stosowania tylko i wyłącznie znaków ASCII
 
 ### Sekwencje ucieczki Unicode
 
-**Sekwencje ucieczki** (ang. *escape sequence*) umożliwiające kodowanie znaków Unicode wyłącznie za pomocą znaków ASCII.
+**Sekwencje ucieczki** (ang. _escape sequence_) umożliwiające kodowanie znaków Unicode wyłącznie za pomocą znaków ASCII.
 Sekwencja ucieczki składa się ze znaków `\u`:
 
-* oraz następujących po nich dokładnie czterech cyfr szesnastkowych (dopuszczalne są małe i wielkie litery A – F).
-* lub od jednej do sześciu cyfr szesnastkowych zamkniętych w nawiasach klamrowych.
+- oraz następujących po nich dokładnie czterech cyfr szesnastkowych (dopuszczalne są małe i wielkie litery A – F).
+- lub od jednej do sześciu cyfr szesnastkowych zamkniętych w nawiasach klamrowych.
 
 Sekwencje ucieczki można stosować:
 
-* w literałach znakowych,
-* literałach wyrażeń regularnych
-* identyfikatorach
+- w literałach znakowych,
+- literałach wyrażeń regularnych
+- identyfikatorach
 
 Znakowi é opowiada sekwencja ucieczki `\u00E`. Sposoby użycia nazwy zmiennej zawierającej ten znak:
 
 ```javascript
-let café = 12 // nazwa zmiennej ze znakiem Unicode
-caf\u00e9 // odwołanie do zmiennej
-caf\u{E9} // inna postać tej samej sekwencji ucieczki
+let café = 12; // nazwa zmiennej ze znakiem Unicode
+café; // odwołanie do zmiennej
+café; // inna postać tej samej sekwencji ucieczki
 ```
 
 Zapis z nawiasami klamrowymi został wprowadzony w wersji ES6, aby można było stosować znaki Unicode zakodowane za pomocą
 więcej niż 16 bitów, na przykład emoji:
 
 ```javascript
-console.log('\u{1f600}')
+console.log('\u{1f600}');
 ```
 
 Sekwencje ucieczki można również stosować w komentarzach. Ponieważ komentarze są pomijane, są one interpretowane jak
@@ -335,7 +336,6 @@ W JS można nie stosować średników, jednakże zalecam dla poprawy czytelnośc
 koniec instrukcji. Poza tym nie stosując średników, należy uwzględnić kilka niausów z tym związanych.
 
 <!-- TODO -->
-
 
 W JavaScripcie nie trzeba stosować średnika, jeżeli poszczególne instrukcje są umieszczone w osobnych wierszach. Nie
 trzeba go również umieszczać na końcu programu ani w miejscu, w którym następnym tokenem jest zamykający nawias
@@ -362,17 +362,17 @@ W JS istnieją dwie kategorie typów danych:
 
 1. Prymitywne, które obejmują:
 
-* liczby
-* teksty (inaczej ciągi znaków)
-* wartości logiczne
-* wartości specjalne:
-  * null
-  * undefined
+- liczby
+- teksty (inaczej ciągi znaków)
+- wartości logiczne
+- wartości specjalne:
+  - null
+  - undefined
 
 2. Obiektowe
 3. Typ specjalny:
 
-* Symbol — umożliwiający definiowanie rozszerzeń języka bez naruszania wstecznej kompatybilności ze starszymi wersjami.
+- Symbol — umożliwiający definiowanie rozszerzeń języka bez naruszania wstecznej kompatybilności ze starszymi wersjami.
 
 W języku JS każda wartość inna niż liczba, ciąg znaków, wartość logiczna, symbol, null i undefined jest **obiektem**
 Obiekt jest nieuporządkowaną kolekcją **właściwości** posiadających nazwy i wartości (prymitywne lub obiektowe).
@@ -394,33 +394,33 @@ Liczba umieszczona bezpośrednio w kodzie JavaScript nosi nazwę **literału lic
 Typ liczbowy służy do reprezentacji liczb, przy czym nie ma występującego w klasycznych językach programowania
 rozróżnienia na typy całkowitoliczbowe i rzeczywiste (zmiennopozycyjne).
 
-Liczby zapisywane są za pomocą literałów (stałych napisowych, z ang. *string constant* , *literal constant*) liczbowych,
+Liczby zapisywane są za pomocą literałów (stałych napisowych, z ang. _string constant_ , _literal constant_) liczbowych,
 czyli ciągów znaków składających się na liczbę, np. 24 (umieszczony w kodzie skryptu tekst 24 to dwa znaki, dwójka i
 czwórka, które razem stanowią literał — stałą napisową — interpretowany jako liczba 24).
 
 Obowiązują przy tym następujące zasady.
 
-* Jeżeli ciąg cyfr nie jest poprzedzony żadnym znakiem lub jest poprzedzony znakiem +, reprezentuje wartość dodatnią,
+- Jeżeli ciąg cyfr nie jest poprzedzony żadnym znakiem lub jest poprzedzony znakiem +, reprezentuje wartość dodatnią,
   jeżeli natomiast jest poprzedzony znakiem –, reprezentuje wartość ujemną.
-* Jeżeli literał rozpoczyna się od cyfry 0, jest traktowany jako wartość ósemkowa.
-* Jeżeli literał rozpoczyna się od ciągu znaków 0x, jest traktowany jako wartość szesnastkowa (heksadecymalna). W
+- Jeżeli literał rozpoczyna się od cyfry 0, jest traktowany jako wartość ósemkowa.
+- Jeżeli literał rozpoczyna się od ciągu znaków 0x, jest traktowany jako wartość szesnastkowa (heksadecymalna). W
   zapisie wartości szesnastkowych mogą być wykorzystywane zarówno małe, jak i wielkie litery alfabetu, od A do F.
-* Literały mogą być zapisywane w notacji wykładniczej, w postaci X.YeZ, gdzie X to część całkowita, Y — część
-  dziesiętna, natomiast Z to wykładnik potęgi liczby 10. Zapis taki oznacza to samo, co X.Y * 10<sup>Z</sup>.
+- Literały mogą być zapisywane w notacji wykładniczej, w postaci X.YeZ, gdzie X to część całkowita, Y — część
+  dziesiętna, natomiast Z to wykładnik potęgi liczby 10. Zapis taki oznacza to samo, co X.Y \* 10<sup>Z</sup>.
 
 Przykłady literałów:
 
 ```javascript
-123 // dodatnia całkowita wartość dziesiętna 123 
-- 123 // ujemna całkowita wartość dziesiętna -123
-012 // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym 
-- 024 // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym 
-0xFF // dodatnia całkowita wartość szesnastkowa = 255 
-- 0x0f//ujemna całk. wartość szes. = -15 
-2.12 //  dodatnia wartość rzeczywista = 2.12 
-- 3.14 // ujemna wartość rzeczywista = -3.14 
-4.3e3 // dodatnia wartość rzeczywista = 4300 
-2.3e-3 // dodatnia wartość rzeczywista = 0.0023
+123 - // dodatnia całkowita wartość dziesiętna 123
+  123; // ujemna całkowita wartość dziesiętna -123
+012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
+  024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
+0xff - // dodatnia całkowita wartość szesnastkowa = 255
+  0x0f; //ujemna całk. wartość szes. = -15
+2.12 - //  dodatnia wartość rzeczywista = 2.12
+  3.14; // ujemna wartość rzeczywista = -3.14
+4.3e3; // dodatnia wartość rzeczywista = 4300
+2.3e-3; // dodatnia wartość rzeczywista = 0.0023
 ```
 
 Liczby całkowite i zmiennoprzecinkowe w JS są typu "number".
@@ -444,9 +444,9 @@ Obliczenia na liczbach całkowitych są dokładne, a na liczbach zmiennoprzecink
 W języku JavaScript liczby dziesiętne zapisuje się w postaci sekwencji cyfr, na przykład:
 
 ```javascript
-0
-3
-100000
+0;
+3;
+100000;
 ```
 
 ### Liczby ósemkowe i szesnastkowe
@@ -455,7 +455,7 @@ Jeśli liczba zaczyna się cyfrą 0o, jest uznawana za ósemkową, jeśli od 0x 
 lub 0O) do reprezentowania liczb ósemkowych.
 
 ```javascript
-console.log(0o776) // 510
+console.log(0o776); // 510
 ```
 
 Literał w postaci liczby szesnastkowej składa się ze znaków 0x lub 0X i następujących po nich cyfr szesnastkowych. Cyfra
@@ -463,7 +463,7 @@ szesnastkowa jest zwykłą cyfrą z zakresu od 0 do 9 lub literą z zakresu od a
 zakresu od 10 do 15. Poniżej są przedstawione przykładowe literały szesnastkowe:
 
 ```javascript
-0xff // => 255 = 15*6 + 15
+0xff; // => 255 = 15*6 + 15
 ```
 
 ### Literały binarne
@@ -471,8 +471,8 @@ zakresu od 10 do 15. Poniżej są przedstawione przykładowe literały szesnastk
 Z binarną reprezentacji liczby całkowitej możemy skorzystać na dwa sposoby:
 
 ```javascript
-parseInt('111', 2) // 7
-0b111 // 7 (es6) dostępny jest też prefiks OB
+parseInt('111', 2); // 7
+0b111; // 7 (es6) dostępny jest też prefiks OB
 ```
 
 ### Literały wykładnicze
@@ -481,7 +481,7 @@ Zapis 2e+3 oznacza, że należy przesunąć kropkę dziesiętną (w tradycyjnym 
 przy liczbie 2 w prawo o 3 pozycje. Zapis 2e - 3 oznaczałby, że należy przesunąć kropkę w lewo.
 
 ```javascript
-typeof 2.7e-5 // 'number'
+typeof 2.7e-5; // 'number'
 ```
 
 ### Literały zmiennoprzecinkowe
@@ -496,9 +496,9 @@ całkowitą, następujący po niej symbol dziesiętny i część ułamkową.
 
 ```javascript
 let bilion = 1_000_000_000; // separator tysięcy
-let bytes = 0x89_AB_CD_EF; // separator bajtów
+let bytes = 0x89_ab_cd_ef; // separator bajtów
 let bits = 0b0001_1101_0111; // półbajtów
-let fraction = 0.123_456_789 // zastosowanie  separatora w części ułamkowej
+let fraction = 0.123_456_789; // zastosowanie  separatora w części ułamkowej
 ```
 
 ### Działania arytmetyczne
@@ -507,42 +507,42 @@ Oprócz podstawowych operatorów arytmetycznych dostępne są bardziej zaawansow
 stałe zdefiniowane jako właściwości obiektu Math:
 
 ```javascript
-Math.pow(2, 53) // => 9007199254740992: liczba 2 podniesiona do potęgi 53.
-Math.round(.6) // => 1.0: zaokrąglenie do najbliższej liczby całkowitej.
-Math.ceil(.6) // => 1.0: zaokrąglenie w górę do najbliższej liczby całkowitej.
-Math.floor(.6) // => 0.0: zaokrąglenie w dół do najbliższej liczby całkowitej.
-Math.abs(-5) // => 5: wartość bezwzględna.
-Math.max(x, y, z) // Wybranie największej wartości.
+Math.pow(2, 53); // => 9007199254740992: liczba 2 podniesiona do potęgi 53.
+Math.round(0.6); // => 1.0: zaokrąglenie do najbliższej liczby całkowitej.
+Math.ceil(0.6); // => 1.0: zaokrąglenie w górę do najbliższej liczby całkowitej.
+Math.floor(0.6); // => 0.0: zaokrąglenie w dół do najbliższej liczby całkowitej.
+Math.abs(-5); // => 5: wartość bezwzględna.
+Math.max(x, y, z); // Wybranie największej wartości.
 
-Math.min(x, y, z) // Wybranie najmniejszej wartości.
-Math.random() // Liczba pseudolosowa z zakresu 0 <= x < 1.0.
-Math.PI // π: stosunek obwodu do średnicy koła.
-Math.E // e: podstawa logarytmu naturalnego.
-Math.sqrt(3) // => 3**0.5: pierwiastek kwadratowy liczby 3.
-Math.pow(3, 1 / 3) // => 3**(1/3): pierwiastek sześcienny liczby 3.
-Math.sin(0) // Funkcja trygonometryczna (są również Math.cos, Math.atan i inne funkcje).
-Math.log(10) // Logarytm naturalny z 10.
-Math.log(100) / Math.LN10 // Logarytm liczby 100 przy podstawie 10.
-Math.log(512) / Math.LN2 // Logarytm liczby 512 przy podstawie 2.
-Math.exp(3) // Sześcian stałej e.
+Math.min(x, y, z); // Wybranie najmniejszej wartości.
+Math.random(); // Liczba pseudolosowa z zakresu 0 <= x < 1.0.
+Math.PI; // π: stosunek obwodu do średnicy koła.
+Math.E; // e: podstawa logarytmu naturalnego.
+Math.sqrt(3); // => 3**0.5: pierwiastek kwadratowy liczby 3.
+Math.pow(3, 1 / 3); // => 3**(1/3): pierwiastek sześcienny liczby 3.
+Math.sin(0); // Funkcja trygonometryczna (są również Math.cos, Math.atan i inne funkcje).
+Math.log(10); // Logarytm naturalny z 10.
+Math.log(100) / Math.LN10; // Logarytm liczby 100 przy podstawie 10.
+Math.log(512) / Math.LN2; // Logarytm liczby 512 przy podstawie 2.
+Math.exp(3); // Sześcian stałej e.
 ```
 
 Począwszy od wersji ES6 obiekt Math, zawiera jeszcze więcej funkcji:
 
 ```javascript
-Math.cbrt(27) // => 3: pierwiastek sześcienny.
-Math.hypot(3, 4) // => 5: pierwiastek kwadratowy sumy kwadratów argumentów.
-Math.log10(100) // => 2: logarytm przy podstawie 10.
-Math.log2(1024) // => 10: logarytm przy podstawie 2.
-Math.log1p(x) // Logarytm naturalny (1+x); dokładny w przypadku bardzo małych wartości x.
-Math.expm1(x) // Math.exp(x)–1; odwrotność Math.log1p().
-Math.sign(x) // –1, 0 lub 1, jeżeli argument jest, odpowiednio, mniejszy, równy lub większy od zera.
-Math.imul(2, 3) // => 6: zoptymalizowane mnożenie 32-bitowych liczb całkowitych.
-Math.clz32(0xf) // => 28: liczba wiodących zerowych bitów liczby całkowitej 32-bitowej.
-Math.trunc(3.9) // => 3: zamiana na liczbę całkowitą poprzez usunięcie części ułamkowej.
-Math.fround(x) // Zaokrąglenie do najbliższej 32-bitowej liczby zmiennoprzecinkowej.
-Math.sinh(x) // Sinus hiperboliczny (są również Math.cosh(), Math.tanh() i inne funkcje).
-Math.asinh(x) // Arcus sinus hiperboliczny (są również Math.acosh(), Math.atanh() i inne funkcje).
+Math.cbrt(27); // => 3: pierwiastek sześcienny.
+Math.hypot(3, 4); // => 5: pierwiastek kwadratowy sumy kwadratów argumentów.
+Math.log10(100); // => 2: logarytm przy podstawie 10.
+Math.log2(1024); // => 10: logarytm przy podstawie 2.
+Math.log1p(x); // Logarytm naturalny (1+x); dokładny w przypadku bardzo małych wartości x.
+Math.expm1(x); // Math.exp(x)–1; odwrotność Math.log1p().
+Math.sign(x); // –1, 0 lub 1, jeżeli argument jest, odpowiednio, mniejszy, równy lub większy od zera.
+Math.imul(2, 3); // => 6: zoptymalizowane mnożenie 32-bitowych liczb całkowitych.
+Math.clz32(0xf); // => 28: liczba wiodących zerowych bitów liczby całkowitej 32-bitowej.
+Math.trunc(3.9); // => 3: zamiana na liczbę całkowitą poprzez usunięcie części ułamkowej.
+Math.fround(x); // Zaokrąglenie do najbliższej 32-bitowej liczby zmiennoprzecinkowej.
+Math.sinh(x); // Sinus hiperboliczny (są również Math.cosh(), Math.tanh() i inne funkcje).
+Math.asinh(x); // Arcus sinus hiperboliczny (są również Math.acosh(), Math.atanh() i inne funkcje).
 ```
 
 W języku JavaScript przepełnienie, niedomiar i dzielenie przez zero nie powodują zgłoszenia błędu. Jeżeli wynik operacji
@@ -553,15 +553,15 @@ Wartości nieskończone funkcjonują zgodnie z oczekiwaniami, tj. wynikiem dodaw
 użyciem jakiejkolwiek innej wartości jest również nieskończoność (z ewentualnie zmienionym znakiem).
 
 Dzielenie przez zero nie skutkuje zgłoszeniem błędu. Wynikiem jest po prostu wartość Infinity lub -Infinity. Wynikiem
-dzielenia zera przez zero jest specjalna wartość `NaN` (ang. *not-a-number* — nieliczba). Reprezentuje ona również wynik
+dzielenia zera przez zero jest specjalna wartość `NaN` (ang. _not-a-number_ — nieliczba). Reprezentuje ona również wynik
 dzielenia wartości `Infinity` przez `Infinity`, pierwiastek kwadratowy z liczby ujemnej oraz wynik operacji
 arytmetycznej z użyciem operandów, których nie można przekształcić na liczby.
 
 Warto pamiętać, wykonując operacje arytmetyczne, że język JavaScript w przypadku niedozwolonej operacji zwróci jedną z
 dwóch wartości specjalnych:
 
-* `NaN` (skrót od *Not a Number*, czyli to nie liczba)
-* `Infinity`.
+- `NaN` (skrót od _Not a Number_, czyli to nie liczba)
+- `Infinity`.
 
 Przykładami sytuacji, w których wystąpią tego rodzaju wartości, są między innymi próba pomnożenia liczby przez tekst lub
 próba dzielenia przez zero, która, co zadziwiające, nie informuje o błędzie.
@@ -570,41 +570,41 @@ W języku JavaScript są zdefiniowane globalne stałe `Infinity` i `NaN`, oznacz
 wartość nieliczbową. Analogiczne wartości są również właściwościami obiektu `Number`:
 
 ```javascript
-Infinity // Liczba dodatnia, zbyt duża, aby można ją było wyrazić.
-Number.POSITIVE_INFINITY // Jak wyżej.
-1 / 0 // => Infinity
+Infinity; // Liczba dodatnia, zbyt duża, aby można ją było wyrazić.
+Number.POSITIVE_INFINITY; // Jak wyżej.
+1 / 0; // => Infinity
 
-Number.MAX_VALUE * 2 // => Infinity; przepełnienie
-- Infinity // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
-Number.NEGATIVE_INFINITY // Jak wyżej.
-- 1 / 0 // => –Infinity
-- Number.MAX_VALUE * 2 // => –Infinity
-NaN // Wartość nieliczbowa.
-Number.NaN // Wartość nieliczbowa zapisana w inny sposób.
-0 / 0 // => NaN
-Infinity / Infinity // => NaN
-Number.MIN_VALUE / 2 // => 0: niedomiar.
-- Number.MIN_VALUE / 2 // => –0: "ujemne zero".
-- 1 / Infinity // -> –0: również "ujemne zero".
-- 0
+Number.MAX_VALUE * 2 - // => Infinity; przepełnienie
+  Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
+Number.NEGATIVE_INFINITY - // Jak wyżej.
+  1 / 0 - // => –Infinity
+  Number.MAX_VALUE * 2; // => –Infinity
+NaN; // Wartość nieliczbowa.
+Number.NaN; // Wartość nieliczbowa zapisana w inny sposób.
+0 / 0; // => NaN
+Infinity / Infinity; // => NaN
+Number.MIN_VALUE / 2 - // => 0: niedomiar.
+  Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
+  1 / Infinity - // -> –0: również "ujemne zero".
+  0;
 
 // Właściwości i metody obiektu Number zdefiniowane w wersji ES6:
-Number.parseInt() // Odpowiednik globalnej funkcji parseInt().
-Number.parseFloat() // Odpowiednik globalnej funkcji parseFloat().
-Number.isNaN(x) // Czy x ma wartość NaN?
-Number.isFinite(x) // Czy x jest liczbą skończoną?
-Number.isInteger(x) // Czy x jest liczbą całkowitą?
-Number.isSafeInteger(x) // Czy x jest liczbą całkowitą z zakresu –(2**53) < x < 2**53?
-Number.MIN_SAFE_INTEGER // => –(2**53–1)
-Number.MAX_SAFE_INTEGER // => 2**53–1
-Number.EPSILON // => 2**–52: najmniejsza różnica między liczbami.
+Number.parseInt(); // Odpowiednik globalnej funkcji parseInt().
+Number.parseFloat(); // Odpowiednik globalnej funkcji parseFloat().
+Number.isNaN(x); // Czy x ma wartość NaN?
+Number.isFinite(x); // Czy x jest liczbą skończoną?
+Number.isInteger(x); // Czy x jest liczbą całkowitą?
+Number.isSafeInteger(x); // Czy x jest liczbą całkowitą z zakresu –(2**53) < x < 2**53?
+Number.MIN_SAFE_INTEGER; // => –(2**53–1)
+Number.MAX_SAFE_INTEGER; // => 2**53–1
+Number.EPSILON; // => 2**–52: najmniejsza różnica między liczbami.
 ```
 
 Wartość nieliczbowa `NaN` ma pewną nietypową cechę, mianowicie nie można jej porównywać z żadną inną wartością, nawet z
 nią samą. Porównanie jej z samą sobą daje wynik negatywny:
 
 ```javascript
-NaN === NaN // => false
+NaN === NaN; // => false
 ```
 
 Niezależnie od wartości, jaką przyjmie zmienna, przyrównanie jej do `NaN` daje wartość `false`.
@@ -617,7 +617,7 @@ myVariable = NaN;
 console.log(myVariable === NaN); // => false
 
 myVariable = 'To jest moja zmienna';
-console.log(myVariable === NaN);  // => false
+console.log(myVariable === NaN); // => false
 ```
 
 Oznacza to, że stosując zapis `x === NaN`, nie można sprawdzić, czy zmienna x ma wartość `NaN`. Zamiast tego należy użyć
@@ -627,7 +627,7 @@ globalna stała `NaN`.
 Globalna funkcja `isNaN()` zwraca true, jeśli jej argument ma wartość `NaN` lub nie można go przekształcić w liczbę.
 
 ```javascript
-console.log("Różne wyniki");
+console.log('Różne wyniki');
 let message = 'JavaScript is the best';
 
 console.log(isNaN('123')); // => false
@@ -647,7 +647,7 @@ Globalna funkcja `isFinite()` zwraca `true`, jeżeli jej argument jest lub może
 Wbrew swojej nazwie „nie-liczba” `NaN` jest specjalną wartością, która także jest liczbą.
 
 ```javascript
-typeof NaN // "number"
+typeof NaN; // "number"
 ```
 
 `NaN` otrzymasz, jeśli spróbujesz wykonać działanie, które powinno dawać liczbę, i to działanie nie powiedzie się. Jeśli
@@ -657,8 +657,8 @@ prawidłowym argumentem dla mnożenia.
 kosza.
 
 ```javascript
-0 / 0 // NaN
-Infinity / Infinity // NaN
+0 / 0; // NaN
+Infinity / Infinity; // NaN
 ```
 
 Globalna właściwość `NaN` jest wartością reprezentującą Not-A-Number.
@@ -681,27 +681,27 @@ wartością `NaN`. Użyj `Number.isNaN()` lub `isNaN()`, aby najdokładniej okre
 samo-porównanie: NaN, i tylko NaN, porówna się nierówno.
 
 ```javascript
-NaN === NaN;        // false
+NaN === NaN; // false
 Number.NaN === NaN; // false
-isNaN(NaN);         // true
-isNaN(Number.NaN);  // true
-Number.isNaN(NaN);  // true
+isNaN(NaN); // true
+isNaN(Number.NaN); // true
+Number.isNaN(NaN); // true
 
 function valueIsNaN(v) {
   return v !== v;
 }
 
-valueIsNaN(1);          // false
-valueIsNaN(NaN);        // true
+valueIsNaN(1); // false
+valueIsNaN(NaN); // true
 valueIsNaN(Number.NaN); // true
 ```
 
 Jednak zwróć uwagę na różnicę między `isNaN()` i `Number.isNaN()`: pierwsza zwróci true, jeśli wartość jest
-obecnie `NaN   lub jeśli będzie to `NaN` po przekształceniu w liczbę, podczas gdy druga zwróci prawda tylko wtedy, gdy
+obecnie `NaN lub jeśli będzie to `NaN` po przekształceniu w liczbę, podczas gdy druga zwróci prawda tylko wtedy, gdy
 wartość jest obecnie NaN:
 
 ```javascript
-isNaN('hello world');        // true
+isNaN('hello world'); // true
 Number.isNaN('hello world'); // false
 ```
 
@@ -709,9 +709,9 @@ Ponadto niektóre metody tablicowe nie mogą znaleźć `NaN`, podczas gdy inne m
 
 ```javascript
 let arr = [2, 4, NaN, 12];
-arr.indexOf(NaN);                      // -1 (false)
-arr.includes(NaN);                     // true
-arr.findIndex(n => Number.isNaN(n));   // 2
+arr.indexOf(NaN); // -1 (false)
+arr.includes(NaN); // true
+arr.findIndex(n => Number.isNaN(n)); // 2
 ```
 
 ### Number.isNaN()
@@ -733,11 +733,11 @@ Powszechnie, szczególnie w operacjach finansowych, stosowane są ułamki dziesi
 nie można dokładnie wyrazić za pomocą zmiennoprzecinkowego formatu binarnego.
 
 ```javascript
-let x = .3 - .2; // Trzydzieści groszy minus dwadzieścia groszy.
-let y = .2 - .1; // Dwadzieścia groszy minus dziesięć groszy.
-x === y // => false: obie wartości są różne!
-x === .1 // => false: .3–.2 nie jest równe .1
-y === .1 // => true: .2–.1 jest równe .1
+let x = 0.3 - 0.2; // Trzydzieści groszy minus dwadzieścia groszy.
+let y = 0.2 - 0.1; // Dwadzieścia groszy minus dziesięć groszy.
+x === y; // => false: obie wartości są różne!
+x === 0.1; // => false: .3–.2 nie jest równe .1
+y === 0.1; // => true: .2–.1 jest równe .1
 ```
 
 Z powodu błędów zaokrąglenia różnica między przybliżeniami liczb 0,3 i 0,2 nie jest dokładnie taka sama jak między
@@ -748,9 +748,87 @@ przykład wartości monetarne należy wyrażać w groszach, a nie w ułamkach z�
 
 ### Typ BigInt — dowolnie duże liczby całkowite
 
+Typ liczbowy `BigInt` wprowadzono w wersji ES2020. Jest typem liczb całkowitych. Został wprowadzony do języka JavaScript głównie po to, aby można było wyrażać całkowite liczby 64-bitowe, niezbędne do uzyskania kompatybilności z innymi
+językami i interfejsami API.
+
+BigInt nie nadaje się do zastosowań kryptograficznych, ponieważ nie można za jego pomocą zapobiegać atakom czasowym.
+
+Literał typu `BigInt` jest ciągiem cyfr zakończonym małą literą `n`. Domyślnie stosowany jest system dziesiętny, ale można używać prefiksów 0b, 0o i 0x oznaczających, odpowiednio, systemy binarny, ósemkowy i szesnastkowy:
+
+```javascript
+1234n; // Nie taki znów ogromny literał BigInt.
+0b111111n; // Binarny literał BigInt.
+0o7777n; // Ósemkowy literał BigInt.
+0x8000000000000000n; // => 2n**63n: 64-bitowy literał BigInt.
+```
+
+Zapis `BigInt()` można traktować jako funkcję przekształcającą zwykłe liczby lub ciągi znakówna wartości typu `BigInt`:
+
+```javascript
+BigInt(Number.MAX_SAFE_INTEGER); // => 9007199254740991n
+let string = '1' + '0'.repeat(100); // Jedynka i 100 zer.
+BigInt(string); // => 10n**100n: jeden googol.
+```
+
+Działania arytmetyczna na liczbach `BigInt` wykonywane są tak samo jak na zwykłych, z wyjątkiem dzielenia, w którym część ułamkowa jest odrzucana, tj. wynik jest zaokrąglany w dół.
+
+```javascript
+1000n + 2000n; // => 3000n
+3000n - 2000n; // => 1000n
+2000n * 3000n; // => 6000000n
+3000n / 997n; // => 3n: iloraz jest równy 3.
+// prettier-ignore
+3000n % 997n // => 9n: reszta jest równa 9.
+
+(2n ** 131071n) - 1n // Liczba Mersenne'a składająca się z 39457 cyfr.
+```
+
+Standardowe operatory +, -, \*, /, % i \*\* można stosować z liczbami `BigInt`, jednak nie można mieszać operandów typu `BigInt` i zwykłych typów liczbowych
+
+Natomiast operatory porównania można stosować z różnymi typami liczbowymi.
+
+```javascript
+1 < 2n; // => true
+2 > 1n; // => true
+0 == 0n; // => true
+0 === 0n; // => false: operator == sprawdza również zgodność typów.
+```
+
+Operatory bitowe zazwyczaj poprawnie działają z operandami typu `BigInt`. Jednak żadnej funkcji obiektu `Math` nie można stosować z liczbami typu `BigInt`.
+
 ## Tekst
 
 <!--TODO-->
+
+Typem reprezentującym tekst jest ciąg znaków. Jest to niemutowalna sekwencja 16-bitowych wartości wyrażających zazwyczaj znaki Unicode. Długość ciągu jest liczbą składających się na niego 16-bitowych wartości. Ciągi, podobnie jak tablice, są indeksowane od zera. Pusty ciąg ma długość
+równą 0. W języku JavaScript nie ma specjalnej wartości reprezentującej pojedynczy element ciągu. Jest nim po prostu ciąg o długości 1.
+
+> **Znaki, kody i ciągi w JavaScripcie**
+>
+> Stosowany jest zestaw znaków Unicode kodowanych w standardzie UTF-16, a ciągi znaków są >sekwencjami 16-bitowych liczb bez znaku.
+>
+> Kody najczęściej stosowanych znaków Unicode (tworzących tzw. podstawową płaszczyznę >wielojęzykową) zapisuje się za pomocą 16 bitów i można je reprezentować w postaci pojedynczych >elementów ciągu. Inne znaki Unicode koduje się w postaci sekwencji par 16-bitowych (tzw. par zastępczych — ang. surrogate pair).
+> Oznacza to, że pojedynczy znak Unicode może być reprezentowany przez ciąg znaków od długości
+> 2 (dwie wartości 16-bitowe):
+
+```javascript
+let euro = '€';
+let love = '';
+euro.length; // => 1: ten znak składa się z jednego 16-bitowego elementu.
+love.length; // => 2: kod UTF-16 znaku  to "\ud83d\udc99”.
+```
+
+Począwszy od wersji ES6 ciągi znaków są iterowalne. Za pomocą pętli for/of lub operatora
+... można iterować poszczególne znaki ciągu, ale nie 16-bitowe wartości.
+
+### Literały znakowe
+
+Aby umieścić ciąg znaków w kodzie JavaScript, należy ująć go w apostrofy, cudzysłowy lub
+grawisy.
+
+```javascript
+
+```
 
 ## Wartości logiczne
 
@@ -763,7 +841,7 @@ przykład wartości monetarne należy wyrażać w groszach, a nie w ułamkach z�
 Słowo kluczowe `null` jest zazwyczaj wykorzystywane do sygnalizowania braku wartości.
 
 ```javascript
-typeof null // => 'object' czyli specjalny obiekt oznaczający brak obiektu
+typeof null; // => 'object' czyli specjalny obiekt oznaczający brak obiektu
 ```
 
 W praktyce null jest traktowana jako <u>jedyna wartość osobnego typu</u>, oznaczająca brak liczby, ciągu znaków i  
@@ -863,7 +941,8 @@ Słowa `let` można wykorzystać do jednoczesnej deklaracji wielu zmiennych:
 
 ```javascript
 let firstName, lastName;
-let name = 'Larry', surname = 'Ullman';
+let name = 'Larry',
+  surname = 'Ullman';
 ```
 
 > **ZMIENNE GLOBALNE**
@@ -880,7 +959,6 @@ let name = 'Larry', surname = 'Ullman';
 > zmiennymi globalnymi. Doskonałym przykładem jest użycie zmiennej globalnej, a następnie dołączenie marnie napisanej
 > biblioteki zewnętrznej, która również tworzy zmienną globalną o takiej samej nazwie.
 
-
 Kiedy w JavaScripcie do deklarowania zmiennych używało się tylko słowa kluczowego `var`, ze względu na hoisting
 stosowano zasady, które — mimo iż mamy teraz do dyspozycji słowa `let` i `const` niepodlegające hoistingowi — są nadal
 aktualne:
@@ -894,11 +972,11 @@ aktualne:
 Aby utworzyć zmienną, trzeba jej nadać nazwę, czyli tak zwany **identyfikator**. Zasady dotyczące nazw zmiennych w
 języku JavaScript są następujące:
 
-* nazwa musi zaczynać się od litery, znaku podkreślenia lub znaku dolara.
-* pozostała część nazwy może zawierać dowolną kombinację liter, podkreśleń i cyfr (a także kilku innych, mniej typowych
+- nazwa musi zaczynać się od litery, znaku podkreślenia lub znaku dolara.
+- pozostała część nazwy może zawierać dowolną kombinację liter, podkreśleń i cyfr (a także kilku innych, mniej typowych
   znaków).
-* słowa zarezerwowane języka JavaScript nie mogą być nazwami zmiennych.
-* w nazwach zmiennych jest uwzględniana wielkość liter.
+- słowa zarezerwowane języka JavaScript nie mogą być nazwami zmiennych.
+- w nazwach zmiennych jest uwzględniana wielkość liter.
 
 W kodzie warto unikać stosowania nazw istniejących już zmiennych. Kod JavaScript uruchamiany w przeglądarce internetowej
 ma automatycznie zdefiniowane niektóre zmienne, na przykład `window` lub `document`. Obie są ważne, więc nie należy ich
@@ -943,8 +1021,8 @@ let balance = 5234.78;
 Przykłady deklaracji stałych:
 
 ```javascript
-const MILES_TO_KM = 0.625
-const KM_TO_MILES = 1.6 
+const MILES_TO_KM = 0.625;
+const KM_TO_MILES = 1.6;
 ```
 
 Stałą trzeba zainicjować w miejscu jej zadeklarowania. Przy próbie modyfikacji stałej jest zgłaszany błąd TypeError.
@@ -954,11 +1032,12 @@ Powszechnie stosowaną (ale nie uniwersalną) konwencją jest używanie w nazwac
 > **Kiedy stosować słowo kluczowe const?**
 >
 > Są dwie szkoły:
+>
 > 1. Tylko z wartościami, które nie mogą się zmieniać np. stałe fizyczne itp.
 > 2. Ze wszystkimi wartościami, które nie będą się zmieniać (wiele tzw. zmiennych nie jest modyfikowanych przez
-     > cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
-     > deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
-     > zmiennych.
+>    cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
+>    deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
+>    zmiennych.
 
 W pętli `for/in` i `for/of` dozwolone jest stosowanie instrukcji `const`, jeżeli tylko w ciele pętli takiej „zmiennej”
 nie jest przypisywana nowa wartość. W takim przypadku deklaracja stałej oznacza jedynie, że wartość pozostaje niezmienna
@@ -971,10 +1050,10 @@ zadeklarowane za pomocą słów `let` i `const` mają zasięg blokowy, czyli poz
 
 W JS blokami są mn.in.:
 
-* klasy
-* funkcje
-* ciała instrukcji if/else
-* ciała pętli while i for
+- klasy
+- funkcje
+- ciała instrukcji if/else
+- ciała pętli while i for
 
 Jeżeli deklaracja zostanie użyta ponad wszystkimi blokami, to zmienna lub stała jest **globalna**.
 
@@ -1016,7 +1095,8 @@ nie można było deklarować w ogóle. Składnia słowa `var` jest taka sama jak
 
 ```javascript
 var x;
-var data = [], count = data.length;
+var data = [],
+  count = data.length;
 
 for (var i = 0; i < count; i++) {
   console.log(data[i]);
@@ -1044,7 +1124,7 @@ Zasady deklarowania zmiennej za pomocą słowa kluczowego `var`:
    instrukcja `let`. Odwołanie się do zadeklarowanej w ten sposób zmiennej przed jej zainicjowaniem skutkuje zgłoszeniem
    błędu, a nie uzyskaniem wartości `undefined`.
 
-4. Deklaracja zmiennej jest przenoszona automatycznie przez interpreter na początek jej zakresu. Może być użyta przed
+5. Deklaracja zmiennej jest przenoszona automatycznie przez interpreter na początek jej zakresu. Może być użyta przed
    miejscem deklaracji, ale otrzyma wtedy wartość `undefined`.
 
 Poniżej próbki kodu to testowania trybu ścisłego i deklarowania zmiennej za pomocą `var`:
@@ -1052,7 +1132,8 @@ Poniżej próbki kodu to testowania trybu ścisłego i deklarowania zmiennej za 
 ```javascript
 // 'use strict';
 var x;
-var data = [], count = data.length;
+var data = [],
+  count = data.length;
 
 var message = 'Js is the best';
 
@@ -1066,7 +1147,7 @@ var message = 'JavaScript to bardzo dziwny język';
 
 console.log(message);
 balance = 5329.99;
-balance += ' zł'
+balance += ' zł';
 
 //var balance;
 
@@ -1085,6 +1166,7 @@ console.log(`Saldo konta wynosi ${balance}`);
 ### Przypisania destukturyzujące
 
 <!-- TODO -->
+
 Składnia **przypisania destrukturyzującego** umożliwia deklarowanie wielu zmiennych i przypisywanie im wartości. Po
 prawej stronie znaku równości umieszcza się tablicę obiektów (wartość „strukturalną”), a po lewej jedną lub kilka nazw
 zmiennych.
@@ -1092,13 +1174,13 @@ zmiennych.
 ```javascript
 let [x, y] = [2, 4]; // <=> let x = 2, y = 4;
 
-[x, y] = [x + 1, y + 1] // <=> x = x + 1 ; y = y + 1;
+[x, y] = [x + 1, y + 1]; // <=> x = x + 1 ; y = y + 1;
 x; // => 3
 
-[x, y] = [x++, y++] // <=> x = x++; y = y++; 
+[x, y] = [x++, y++]; // <=> x = x++; y = y++;
 x; // => 3
 
-[x, y] = [++x, ++y] // <=> x = ++x; y = ++y;
+[x, y] = [++x, ++y]; // <=> x = ++x; y = ++y;
 x; // => 4
 ```
 
@@ -1117,17 +1199,17 @@ wynikiem jest ciąg znaków opisujący typ operandu.
 
 Poniższa tabela przedstawia wyniki operatora `typeof` użytego ze wszystkimi wartościami dostępnymi w języku JavaScript.
 
-| x | typeof x |
-| --- | ---|
-| `undefined` | "undefined" |
-| `null` | "object" |
-| `true` lub `false` | "boolean" |
-| dowolna liczba lub NaN | "number" |
-| dowolna liczba BigInt | "bigint" |
-| dowolny ciąg znaków | "string" |
-| dowolny symbol | "symbol" |
-| dowolna funkcja | "function" |
-| dowolny obiekt inny niż funkcja | "object" | 
+| x                               | typeof x    |
+| ------------------------------- | ----------- |
+| `undefined`                     | "undefined" |
+| `null`                          | "object"    |
+| `true` lub `false`              | "boolean"   |
+| dowolna liczba lub NaN          | "number"    |
+| dowolna liczba BigInt           | "bigint"    |
+| dowolny ciąg znaków             | "string"    |
+| dowolny symbol                  | "symbol"    |
+| dowolna funkcja                 | "function"  |
+| dowolny obiekt inny niż funkcja | "object"    |
 
 Funkcje, w języku JavaScript, są specjalnego rodzaju obiektami, ale operator typeof odróżnia je od obiektów do tego
 stopnia, że rezerwuje dla nich osobną zwracaną wartość.
@@ -1154,8 +1236,8 @@ Najczęściej wykorzystywane są do iterowania tablic.
 Instrukcja `while` jest podstawową pętlą.
 
 **Składnia**:
-> while (wyrażenie)<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;instrukcja
+
+> while (wyrażenie)<br> > &nbsp;&nbsp;&nbsp;&nbsp;instrukcja
 
 ### Pętla for
 
@@ -1163,9 +1245,9 @@ W większości przypadków pętla zawiera zmienną licznikową, inicjowaną prze
 wykonaniem kolejnej iteracji wartość tej zmiennej jest sprawdzana, a na końcu ciała pętli, tuż przed kolejnym
 sprawdzeniem, inkrementowana lub modyfikowana w inny sposób.
 
-**Składnia instrukcji** *for*:
-> for (inicjalizacja; sprawdzenie; inkrementacja)<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;instrukcja
+**Składnia instrukcji** _for_:
+
+> for (inicjalizacja; sprawdzenie; inkrementacja)<br> > &nbsp;&nbsp;&nbsp;&nbsp;instrukcja
 
 # Obiekty
 
@@ -1175,14 +1257,8 @@ sprawdzeniem, inkrementowana lub modyfikowana w inny sposób.
 
 Obiekt można utworzyć za pomocą:
 
-* literału obiektowego
-* słowa kluczowego `new`
-* funkcji `Object.create()`
+- literału obiektowego
+- słowa kluczowego `new`
+- funkcji `Object.create()`
 
 ### Literały obiektowe
-
-
-
-
-
-
