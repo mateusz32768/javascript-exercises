@@ -412,13 +412,13 @@ Przykłady literałów:
 
 ```javascript
 123 - // dodatnia całkowita wartość dziesiętna 123
-  123; // ujemna całkowita wartość dziesiętna -123
+123; // ujemna całkowita wartość dziesiętna -123
 012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
-  024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
+024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
 0xff - // dodatnia całkowita wartość szesnastkowa = 255
-  0x0f; //ujemna całk. wartość szes. = -15
+0x0f; //ujemna całk. wartość szes. = -15
 2.12 - //  dodatnia wartość rzeczywista = 2.12
-  3.14; // ujemna wartość rzeczywista = -3.14
+3.14; // ujemna wartość rzeczywista = -3.14
 4.3e3; // dodatnia wartość rzeczywista = 4300
 2.3e-3; // dodatnia wartość rzeczywista = 0.0023
 ```
@@ -575,18 +575,18 @@ Number.POSITIVE_INFINITY; // Jak wyżej.
 1 / 0; // => Infinity
 
 Number.MAX_VALUE * 2 - // => Infinity; przepełnienie
-  Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
+Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
 Number.NEGATIVE_INFINITY - // Jak wyżej.
-  1 / 0 - // => –Infinity
-  Number.MAX_VALUE * 2; // => –Infinity
+1 / 0 - // => –Infinity
+Number.MAX_VALUE * 2; // => –Infinity
 NaN; // Wartość nieliczbowa.
 Number.NaN; // Wartość nieliczbowa zapisana w inny sposób.
 0 / 0; // => NaN
 Infinity / Infinity; // => NaN
 Number.MIN_VALUE / 2 - // => 0: niedomiar.
-  Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
-  1 / Infinity - // -> –0: również "ujemne zero".
-  0;
+Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
+1 / Infinity - // -> –0: również "ujemne zero".
+0;
 
 // Właściwości i metody obiektu Number zdefiniowane w wersji ES6:
 Number.parseInt(); // Odpowiednik globalnej funkcji parseInt().
@@ -748,12 +748,14 @@ przykład wartości monetarne należy wyrażać w groszach, a nie w ułamkach z�
 
 ### Typ BigInt — dowolnie duże liczby całkowite
 
-Typ liczbowy `BigInt` wprowadzono w wersji ES2020. Jest typem liczb całkowitych. Został wprowadzony do języka JavaScript głównie po to, aby można było wyrażać całkowite liczby 64-bitowe, niezbędne do uzyskania kompatybilności z innymi
+Typ liczbowy `BigInt` wprowadzono w wersji ES2020. Jest typem liczb całkowitych. Został wprowadzony do języka JavaScript
+głównie po to, aby można było wyrażać całkowite liczby 64-bitowe, niezbędne do uzyskania kompatybilności z innymi
 językami i interfejsami API.
 
 BigInt nie nadaje się do zastosowań kryptograficznych, ponieważ nie można za jego pomocą zapobiegać atakom czasowym.
 
-Literał typu `BigInt` jest ciągiem cyfr zakończonym małą literą `n`. Domyślnie stosowany jest system dziesiętny, ale można używać prefiksów 0b, 0o i 0x oznaczających, odpowiednio, systemy binarny, ósemkowy i szesnastkowy:
+Literał typu `BigInt` jest ciągiem cyfr zakończonym małą literą `n`. Domyślnie stosowany jest system dziesiętny, ale
+można używać prefiksów 0b, 0o i 0x oznaczających, odpowiednio, systemy binarny, ósemkowy i szesnastkowy:
 
 ```javascript
 1234n; // Nie taki znów ogromny literał BigInt.
@@ -770,7 +772,8 @@ let string = '1' + '0'.repeat(100); // Jedynka i 100 zer.
 BigInt(string); // => 10n**100n: jeden googol.
 ```
 
-Działania arytmetyczna na liczbach `BigInt` wykonywane są tak samo jak na zwykłych, z wyjątkiem dzielenia, w którym część ułamkowa jest odrzucana, tj. wynik jest zaokrąglany w dół.
+Działania arytmetyczna na liczbach `BigInt` wykonywane są tak samo jak na zwykłych, z wyjątkiem dzielenia, w którym
+część ułamkowa jest odrzucana, tj. wynik jest zaokrąglany w dół.
 
 ```javascript
 1000n + 2000n; // => 3000n
@@ -780,10 +783,11 @@ Działania arytmetyczna na liczbach `BigInt` wykonywane są tak samo jak na zwyk
 // prettier-ignore
 3000n % 997n // => 9n: reszta jest równa 9.
 
-(2n ** 131071n) - 1n // Liczba Mersenne'a składająca się z 39457 cyfr.
+  (2n ** 131071n) - 1n // Liczba Mersenne'a składająca się z 39457 cyfr.
 ```
 
-Standardowe operatory +, -, \*, /, % i \*\* można stosować z liczbami `BigInt`, jednak nie można mieszać operandów typu `BigInt` i zwykłych typów liczbowych
+Standardowe operatory +, -, \*, /, % i \*\* można stosować z liczbami `BigInt`, jednak nie można mieszać operandów
+typu `BigInt` i zwykłych typów liczbowych
 
 Natomiast operatory porównania można stosować z różnymi typami liczbowymi.
 
@@ -794,14 +798,17 @@ Natomiast operatory porównania można stosować z różnymi typami liczbowymi.
 0 === 0n; // => false: operator == sprawdza również zgodność typów.
 ```
 
-Operatory bitowe zazwyczaj poprawnie działają z operandami typu `BigInt`. Jednak żadnej funkcji obiektu `Math` nie można stosować z liczbami typu `BigInt`.
+Operatory bitowe zazwyczaj poprawnie działają z operandami typu `BigInt`. Jednak żadnej funkcji obiektu `Math` nie można
+stosować z liczbami typu `BigInt`.
 
 ## Tekst
 
 <!--TODO-->
 
-Typem reprezentującym tekst jest ciąg znaków. Jest to niemutowalna sekwencja 16-bitowych wartości wyrażających zazwyczaj znaki Unicode. Długość ciągu jest liczbą składających się na niego 16-bitowych wartości. Ciągi, podobnie jak tablice, są indeksowane od zera. Pusty ciąg ma długość
-równą 0. W języku JavaScript nie ma specjalnej wartości reprezentującej pojedynczy element ciągu. Jest nim po prostu ciąg o długości 1.
+Typem reprezentującym tekst jest ciąg znaków. Jest to niemutowalna sekwencja 16-bitowych wartości wyrażających zazwyczaj
+znaki Unicode. Długość ciągu jest liczbą składających się na niego 16-bitowych wartości. Ciągi, podobnie jak tablice, są
+indeksowane od zera. Pusty ciąg ma długość równą 0. W języku JavaScript nie ma specjalnej wartości reprezentującej
+pojedynczy element ciągu. Jest nim po prostu ciąg o długości 1.
 
 > **Znaki, kody i ciągi w JavaScripcie**
 >
@@ -818,17 +825,89 @@ euro.length; // => 1: ten znak składa się z jednego 16-bitowego elementu.
 love.length; // => 2: kod UTF-16 znaku  to "\ud83d\udc99”.
 ```
 
-Począwszy od wersji ES6 ciągi znaków są iterowalne. Za pomocą pętli for/of lub operatora
-... można iterować poszczególne znaki ciągu, ale nie 16-bitowe wartości.
+Począwszy od wersji ES6, ciągi znaków są iterowalne. Za pomocą pętli for/of lub operatora ... można iterować
+poszczególne znaki ciągu, ale nie 16-bitowe wartości.
 
 ### Literały znakowe
 
-Aby umieścić ciąg znaków w kodzie JavaScript, należy ująć go w apostrofy, cudzysłowy lub
-grawisy.
+Aby umieścić ciąg znaków w kodzie JavaScript, należy ująć go w apostrofy, cudzysłowy lub grawisy.
 
 ```javascript
-
+"" // Pusty ciąg (o zerowej liczbie znaków).
+'test'
+"3.14"
+'name="myform"'
+"Lubisz książki wydawnictwa Helion?"
+" \u03a0 oznacza stosunek obwodu koła do jego średnicy"
+"&Pi; oznacza stosunek obwodu koła do jego średnicy"
+  `Powiedział: "powiedziała mi 'cześć'".`
 ```
+
+W starszych wersjach języka JavaScript literał znakowy musiał być umieszczany w jednym wierszu. Stosowano konkatenację
+ciągów, aby uzyskać jeden długi.
+
+Literał znakowy może zajmować kilka wierszy — na końcu wiersza należy umieścić lewy ukośnik (\). Znaki umieszczone po
+ukośnikach, jak również podziały wierszy nie stanowią literału znakowego. Aby w literale ujętym w apostrofy lub
+cudzysłowy umieścić podział wiersza, należy użyć sekwencji `\n`.
+
+W przypadku użycia grawisów podziały wierszy wchodzą w skład literału:
+
+```javascript
+// Ciąg reprezentujący dwa wiersze zapisane w jednym wierszu:
+'Dwa\nwiersze.'
+// Jednowierszowy ciąg zapisany w trzech wierszach:
+"Jeden\
+długi\
+wiersz."
+// Dwuwierszowy ciąg zapisany w dwóch wierszach:
+  `Znak podziału umieszczony na końcu tego wiersza
+jest częścią tego ciągu znaków.`
+```
+
+Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScripcie jednego stylu, a w HTML innego.
+
+```html
+
+<button onclick="alert('Dziękuję')">Kliknij tutaj</button>
+```
+
+### Sekwencje ucieczki w literałach znakowych
+
+Lewy ukośnik `(\)` w połączeniu z następującym po nim znakiem reprezentuje znak, którego nie można wyrazić w inny
+sposób. Na przykład `\n` jest sekwencją ucieczki reprezentującą podział wiersza.
+
+Innym przykładem jest sekwencja `\'` reprezentująca apostrof. Stosuje się ją wtedy, gdy w literale ujętym w apostrofy
+trzeba umieścić inny apostrof.
+
+*Tabela. Sekwencje ucieczki w JavaScripcie*
+
+| Sekwencja | Reprezentowany znak |
+| --- | ---|
+| \0 | Znak null (\u0000)|
+| \b | Usunięcie znaku (\u0008) |
+| \t | Tabulator poziomy (\u0009) |
+| \n | Nowy wiersz (\u000A) |
+| \v | Tabulator pionowy (\u000B) |
+| \f | Wysunięcie arkusza papieru (\u000C) |
+| \r | Powrót karetki (\u000D) |
+| \" | Cudzysłów (\u0022) |
+| \' | Apostrof (\u0027) |
+| \\ | Lewy ukośnik (\u005C) |
+| \xnn | Znak Unicode zapisany za pomocą dwóch cyfr szesnastkowych nn |
+| \unnnn | Znak Unicode zapisany za pomocą czterech cyfr szesnastkowych nn |  
+| \u{n}  | Znak Unicode zapisany za pomocą od jednej do sześciu cyfr szesnastkowych nn <br>(z zakresu od `0` do `10FFFF` w wersji ES6 lub nowszej) |
+
+Trzy ostatnie to sekwencje generyczne, które w połączeniu z liczbą szesnastkową umożliwiają kodowanie dowolnych
+znaków Unicode. 
+
+Na przykład:
+1. sekwencja \xA9 reprezentuje symbol praw autorskich, oznaczony w standardzie Unicode liczbą
+szesnastkową A9. 
+2. sekwencja \u wraz z czterema cyframi szesnastkowymi lub z jedną do sześciu cyfr szesnastkowych
+ujętych w nawiasy klamrowe służy do wyrażania dowolnego znaku Unicode. Na przykład zapis \u03c0 reprezentuje znak π, a
+\u{1f600} znak emoji uśmiechniętej buźki.
+
+Lewy ukośnik, użyty przed znakiem innym niż jeden z wymienionych w tabeli, jest po prostu pomijany.
 
 ## Wartości logiczne
 
@@ -1035,9 +1114,9 @@ Powszechnie stosowaną (ale nie uniwersalną) konwencją jest używanie w nazwac
 >
 > 1. Tylko z wartościami, które nie mogą się zmieniać np. stałe fizyczne itp.
 > 2. Ze wszystkimi wartościami, które nie będą się zmieniać (wiele tzw. zmiennych nie jest modyfikowanych przez
->    cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
->    deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
->    zmiennych.
+     > cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
+     > deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
+     > zmiennych.
 
 W pętli `for/in` i `for/of` dozwolone jest stosowanie instrukcji `const`, jeżeli tylko w ciele pętli takiej „zmiennej”
 nie jest przypisywana nowa wartość. W takim przypadku deklaracja stałej oznacza jedynie, że wartość pozostaje niezmienna
