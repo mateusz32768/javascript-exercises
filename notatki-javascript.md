@@ -412,13 +412,13 @@ Przykłady literałów:
 
 ```javascript
 123 - // dodatnia całkowita wartość dziesiętna 123
-123; // ujemna całkowita wartość dziesiętna -123
+  123; // ujemna całkowita wartość dziesiętna -123
 012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
-024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
+  024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
 0xff - // dodatnia całkowita wartość szesnastkowa = 255
-0x0f; //ujemna całk. wartość szes. = -15
+  0x0f; //ujemna całk. wartość szes. = -15
 2.12 - //  dodatnia wartość rzeczywista = 2.12
-3.14; // ujemna wartość rzeczywista = -3.14
+  3.14; // ujemna wartość rzeczywista = -3.14
 4.3e3; // dodatnia wartość rzeczywista = 4300
 2.3e-3; // dodatnia wartość rzeczywista = 0.0023
 ```
@@ -575,18 +575,18 @@ Number.POSITIVE_INFINITY; // Jak wyżej.
 1 / 0; // => Infinity
 
 Number.MAX_VALUE * 2 - // => Infinity; przepełnienie
-Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
+  Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
 Number.NEGATIVE_INFINITY - // Jak wyżej.
-1 / 0 - // => –Infinity
-Number.MAX_VALUE * 2; // => –Infinity
+  1 / 0 - // => –Infinity
+  Number.MAX_VALUE * 2; // => –Infinity
 NaN; // Wartość nieliczbowa.
 Number.NaN; // Wartość nieliczbowa zapisana w inny sposób.
 0 / 0; // => NaN
 Infinity / Infinity; // => NaN
 Number.MIN_VALUE / 2 - // => 0: niedomiar.
-Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
-1 / Infinity - // -> –0: również "ujemne zero".
-0;
+  Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
+  1 / Infinity - // -> –0: również "ujemne zero".
+  0;
 
 // Właściwości i metody obiektu Number zdefiniowane w wersji ES6:
 Number.parseInt(); // Odpowiednik globalnej funkcji parseInt().
@@ -833,14 +833,13 @@ poszczególne znaki ciągu, ale nie 16-bitowe wartości.
 Aby umieścić ciąg znaków w kodzie JavaScript, należy ująć go w apostrofy, cudzysłowy lub grawisy.
 
 ```javascript
-"" // Pusty ciąg (o zerowej liczbie znaków).
-'test'
-"3.14"
-'name="myform"'
-"Lubisz książki wydawnictwa Helion?"
-" \u03a0 oznacza stosunek obwodu koła do jego średnicy"
-"&Pi; oznacza stosunek obwodu koła do jego średnicy"
-  `Powiedział: "powiedziała mi 'cześć'".`
+''; // Pusty ciąg (o zerowej liczbie znaków).
+'test';
+'3.14';
+'name="myform"';
+'Lubisz książki wydawnictwa Helion?';
+' \u03a0 oznacza stosunek obwodu koła do jego średnicy';
+'&Pi; oznacza stosunek obwodu koła do jego średnicy'`Powiedział: "powiedziała mi 'cześć'".`;
 ```
 
 W starszych wersjach języka JavaScript literał znakowy musiał być umieszczany w jednym wierszu. Stosowano konkatenację
@@ -854,20 +853,18 @@ W przypadku użycia grawisów podziały wierszy wchodzą w skład literału:
 
 ```javascript
 // Ciąg reprezentujący dwa wiersze zapisane w jednym wierszu:
-'Dwa\nwiersze.'
+'Dwa\nwiersze.';
 // Jednowierszowy ciąg zapisany w trzech wierszach:
-"Jeden\
+'Jeden\
 długi\
-wiersz."
-// Dwuwierszowy ciąg zapisany w dwóch wierszach:
-  `Znak podziału umieszczony na końcu tego wiersza
-jest częścią tego ciągu znaków.`
+wiersz.' // Dwuwierszowy ciąg zapisany w dwóch wierszach:
+`Znak podziału umieszczony na końcu tego wiersza
+jest częścią tego ciągu znaków.`;
 ```
 
 Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScripcie jednego stylu, a w HTML innego.
 
 ```html
-
 <button onclick="alert('Dziękuję')">Kliknij tutaj</button>
 ```
 
@@ -879,39 +876,151 @@ sposób. Na przykład `\n` jest sekwencją ucieczki reprezentującą podział wi
 Innym przykładem jest sekwencja `\'` reprezentująca apostrof. Stosuje się ją wtedy, gdy w literale ujętym w apostrofy
 trzeba umieścić inny apostrof.
 
-*Tabela. Sekwencje ucieczki w JavaScripcie*
+_Tabela. Sekwencje ucieczki w JavaScripcie_
 
-| Sekwencja | Reprezentowany znak |
-| --- | ---|
-| \0 | Znak null (\u0000)|
-| \b | Usunięcie znaku (\u0008) |
-| \t | Tabulator poziomy (\u0009) |
-| \n | Nowy wiersz (\u000A) |
-| \v | Tabulator pionowy (\u000B) |
-| \f | Wysunięcie arkusza papieru (\u000C) |
-| \r | Powrót karetki (\u000D) |
-| \" | Cudzysłów (\u0022) |
-| \' | Apostrof (\u0027) |
-| \\ | Lewy ukośnik (\u005C) |
-| \xnn | Znak Unicode zapisany za pomocą dwóch cyfr szesnastkowych nn |
-| \unnnn | Znak Unicode zapisany za pomocą czterech cyfr szesnastkowych nn |  
-| \u{n}  | Znak Unicode zapisany za pomocą od jednej do sześciu cyfr szesnastkowych nn <br>(z zakresu od `0` do `10FFFF` w wersji ES6 lub nowszej) |
+| Sekwencja | Reprezentowany znak                                                                                                                     |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| \0        | Znak null (\u0000)                                                                                                                      |
+| \b        | Usunięcie znaku (\u0008)                                                                                                                |
+| \t        | Tabulator poziomy (\u0009)                                                                                                              |
+| \n        | Nowy wiersz (\u000A)                                                                                                                    |
+| \v        | Tabulator pionowy (\u000B)                                                                                                              |
+| \f        | Wysunięcie arkusza papieru (\u000C)                                                                                                     |
+| \r        | Powrót karetki (\u000D)                                                                                                                 |
+| \"        | Cudzysłów (\u0022)                                                                                                                      |
+| \'        | Apostrof (\u0027)                                                                                                                       |
+| \\        | Lewy ukośnik (\u005C)                                                                                                                   |
+| \xnn      | Znak Unicode zapisany za pomocą dwóch cyfr szesnastkowych nn                                                                            |
+| \unnnn    | Znak Unicode zapisany za pomocą czterech cyfr szesnastkowych nn                                                                         |
+| \u{n}     | Znak Unicode zapisany za pomocą od jednej do sześciu cyfr szesnastkowych nn <br>(z zakresu od `0` do `10FFFF` w wersji ES6 lub nowszej) |
 
-Trzy ostatnie to sekwencje generyczne, które w połączeniu z liczbą szesnastkową umożliwiają kodowanie dowolnych
-znaków Unicode. 
+Trzy ostatnie sekwencje to sekwencje generyczne, które w połączeniu z liczbą szesnastkową umożliwiają kodowanie dowolnych znaków Unicode.
 
 Na przykład:
-1. sekwencja \xA9 reprezentuje symbol praw autorskich, oznaczony w standardzie Unicode liczbą
-szesnastkową A9. 
-2. sekwencja \u wraz z czterema cyframi szesnastkowymi lub z jedną do sześciu cyfr szesnastkowych
-ujętych w nawiasy klamrowe służy do wyrażania dowolnego znaku Unicode. Na przykład zapis \u03c0 reprezentuje znak π, a
-\u{1f600} znak emoji uśmiechniętej buźki.
+
+1. sekwencja `\xA9` reprezentuje symbol praw autorskich, oznaczony w standardzie Unicode liczbą szesnastkową A9.
+2. sekwencja `\u` wraz z czterema cyframi szesnastkowymi lub z jedną do sześciu cyfr szesnastkowych ujętych w nawiasy klamrowe służy do wyrażania dowolnego znaku Unicode. Na przykład zapis `\u03c0` reprezentuje znak `π`, a `\u{1f600}` znak emoji uśmiechniętej buźki.
 
 Lewy ukośnik, użyty przed znakiem innym niż jeden z wymienionych w tabeli, jest po prostu pomijany.
 
+### Operacje na ciągach znaków
+
+1. Łączenie ciągów za pomocą operatora `+`.
+2. Porównywanie ciągów za pomocą operatorów `===` i `!==`. Dwa ciągi są sobie równe, jeżeli tworzą dokładnie takie same sekwencje 16-bitowych wartości.
+3. Porównywanie ciągów za pomocą operatorów: `<`, `<=`, `>` i `>=`.
+
+Aby określić długość ciągu, tj. liczbę 16-bitowych wartości, z których się składa, należy użyć właściwości
+length:
+
+```javascript
+let message = 'JavaScript is the best';
+message.length; // => 22
+```
+
+Język JavaScript oferuje bogaty interfejs API do wykonywania różnych operacji na ciągach znaków:
+
+```javascript
+let s = 'Witaj, świecie!'; // Początkowy tekst.
+
+// Wyodrębnianie fragmentów ciągu.
+s.substring(1, 4); // => "ita": znaki 2., 3. i 4.
+s.slice(1, 4); // => "ita": ten sam wynik.
+s.slice(-3); // => "ie!": trzy ostatnie znaki
+s.split(', '); // => [ 'Witaj', 'świecie!' ]: podział ciągu według zadanego ciągu.
+
+// Przeszukiwanie ciągu.
+s.indexOf('i'); // => 1: pozycja pierwszej litery "i".
+s.indexOf('i', 3); // => 9: pozycja pierwszej litery "i", większa niż 3.
+s.indexOf('zz'); // => –1: ciąg s nie zawiera ciągu "zz".
+s.lastIndexOf('i'); // => 12: pozycja ostatniej litery "i".
+// Logiczne metody przeszukujące, dostępne w wersjach ES6 i nowszych.
+s.startsWith('Wit'); // => true: ciąg s zaczyna się od zadanego ciągu.
+s.endsWith('.'); // => false: ciąg s nie kończy się zadanym ciągiem.
+s.includes('aj'); // => true: ciąg s zawiera ciąg "aj".
+// Tworzenie zmienionej wersji zadanego ciągu.
+s.replace('j', 'my'); // => "Witamy, świecie!"
+s.toLowerCase(); // => "Witamy, świecie!"
+s.toUpperCase(); // => "WITAMY, ŚWIECIE!"
+s.normalize(); // Normalizacja Unicode NFC: dostępna w wersji ES6.
+s.normalize('NFD'); // Normalizacja NFD. Inne rodzaje: "NFKC" i "NFKD".
+
+// Odczytywanie pojedynczych (16-bitowych) znaków ciągu.
+s.charAt(0); // => "W": pierwszy znak ciągu.
+s.charAt(s.length - 1); // => "!": ostatni znak ciągu.
+s.charCodeAt(0); // => 87: 16-bitowy kod znaku na zadanej pozycji.
+s.codePointAt(0); // => 87: metoda dostępna w wersji ES6, działa z kodami większymi niż 16 bitów.
+
+// Dopełnianie ciągu w wersjach ES2017 i nowszych.
+'x'.padStart(3); // => " x": dodanie spacji z lewej strony w celu uzyskania ciągu o długości
+// 3 znaków.
+'x'.padEnd(3); // => "x ": dodanie spacji z prawej strony w celu uzyskania ciągu o długości
+// 3 znaków.
+'x'.padStart(3, '*'); // => "**x": dodanie gwiazdek z lewej strony w celu uzyskania ciągu
+// o długości 3 znaków.
+'x'.padEnd(3, '-'); // => "x--": dodanie myślników z prawej strony w celu uzyskania ciągu
+// o długości 3 znaków.
+
+// Usuwanie spacji w wersjach ES5 i nowszych (nazwy metod zmienione w wersjach ES2019 i nowszych).
+' test '.trim(); // => "test": usunięcie spacji z początku i końca ciągu.
+' test '.trimStart(); // => "test ": usunięcie spacji z początku ciągu (również trimLeft()).
+' test '.trimEnd(); // => " test": usunięcie spacji z końca ciągu (również trimRight ()).
+
+// Różne metody tekstowe.
+s.concat('!!'); // => "Witaj, świecie!!!": zamiast tego można użyć operatora +.
+'<>'.repeat(5); // => "<><><><><>": powielenie ciągu (od wersji ES5).
+```
+
+Ciągi znaków są niemutowalne. Metody takie jak replace() i toUpperCase() nie modyfikują oryginalnych ciągów, tylko zwracają ich nowe wersje.
+
+Ciągi można również traktować jako tablice przeznaczone wyłącznie do odczytu. Do poszczególnych
+znaków (16-bitowych wartości ) można się odwoływać za pomocą nawiasów kwadratowych
+zamiast za pomocą metody charAt():
+
+```javascript
+let s = "Witaj, świecie!";
+s[0] // => "W"
+s[s.length-1] // => "!"
+```
+
+### Literały szablonowe
+
+<!-- TODO -->
+
+### Porównywanie ciągu znaków ze wzorcem
+<!-- TODO -->
+
+
 ## Wartości logiczne
 
-<!--TODO-->
+Typ logiczny reprezentuje prawdę lub fałsz, włączenie lub wyłączenie, potwierdzenie lub zaprzeczenie.
+Są tylko dwie wartości tego typu, reprezentowane za pomocą zarezerwowanych słów true i false.
+
+Wartość logiczna jest zazwyczaj wynikiem operacji porównania, na przykład:
+
+```JavaScript
+a === 4;
+```
+
+Powyższy kod sprawdza, czy wartość zmiennej `a` jest równa liczbie `4`. Jeżeli jest, wynikiem porównania
+jest logiczna wartość `true`. Jeżeli wartość jest inna niż `4`, wynikiem porównania jest wartość `false`.
+
+Każdą wartość w JavaScripcie można przekształcić w wartość logiczną. Poniższe wartości są przekształcane i traktowane jak wartość logiczna false:
+
+```javascript
+undefined
+null
+0
+-0
+NaN
+"" // Pusty ciąg znaków.
+```
+Wszystkie inne wartości, włącznie z obiektami i tablicami, można przekształcić i traktować jak wartość logiczną `true`. 
+
+Wartość `false` i sześć powyższych jest nazywanych wartościami fałszywymi, a wszystkie pozostałe prawdziwymi. Wszędzie w kodzie, gdzie spodziewana jest wartość logiczna, wartość fałszywa jest traktowana jako `false`, a prawdziwa jako `true`.
+
+
+
+
 
 ## Wartości null i undefined
 
@@ -1114,9 +1223,9 @@ Powszechnie stosowaną (ale nie uniwersalną) konwencją jest używanie w nazwac
 >
 > 1. Tylko z wartościami, które nie mogą się zmieniać np. stałe fizyczne itp.
 > 2. Ze wszystkimi wartościami, które nie będą się zmieniać (wiele tzw. zmiennych nie jest modyfikowanych przez
-     > cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
-     > deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
-     > zmiennych.
+>    cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
+>    deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
+>    zmiennych.
 
 W pętli `for/in` i `for/of` dozwolone jest stosowanie instrukcji `const`, jeżeli tylko w ciele pętli takiej „zmiennej”
 nie jest przypisywana nowa wartość. W takim przypadku deklaracja stałej oznacza jedynie, że wartość pozostaje niezmienna
