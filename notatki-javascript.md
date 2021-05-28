@@ -1482,6 +1482,18 @@ obiektu lub elementu tablicy.
 Inicjator tablicy jest listą wyrażeń oddzielonych przecinkami, umieszczoną wewnątrz nawiasów kwadratowych. Wynikiem 
 inicjatora jest nowa tablica elementów zainicjowanych wynikami oddzielonych przecinkami wyrażeń.
 
+```javascript
+[] // Pusta tablica. Brak wyrażeń wewnątrz nawiasów oznacza, że tablica nie ma elementów.
+[1+2,3+4] // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
+```
+
+Poszczególne wyrażenia inicjatora tablicy mogą być inicjatorami innych tablic:
+
+```javascript
+let matrix = [[1,2,3], [4,5,6], [7,8,9]];
+```
+
+
 
 
 ## Inne operatory
