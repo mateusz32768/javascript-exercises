@@ -981,9 +981,15 @@ Ciągi można również traktować jako tablice przeznaczone wyłącznie do odcz
 wartości ) można się odwoływać za pomocą nawiasów kwadratowych zamiast za pomocą metody charAt():
 
 ```javascript
+<<<<<<< HEAD
 let s = "Witaj, świecie!";
 s[0] // => "W"
 s[s.length - 1] // => "!"
+=======
+let s = 'Witaj, świecie!';
+s[0]; // => "W"
+s[s.length - 1]; // => "!"
+>>>>>>> db615b67db9e40aaa1fcd8ecf65f32a4a17e86aa
 ```
 
 ### Literały szablonowe
@@ -1012,18 +1018,30 @@ Każdą wartość w JavaScripcie można przekształcić w wartość logiczną. P
 jak wartość logiczna false:
 
 ```javascript
+<<<<<<< HEAD
 undefined
 null
 0
 - 0
 NaN
 "" // Pusty ciąg znaków.
+=======
+undefined;
+null;
+0 - 0;
+NaN;
+(''); // Pusty ciąg znaków.
+>>>>>>> db615b67db9e40aaa1fcd8ecf65f32a4a17e86aa
 ```
 
 Wszystkie inne wartości, włącznie z obiektami i tablicami, można przekształcić i traktować jak wartość logiczną `true`.
 
+<<<<<<< HEAD
 Wartość `false` i sześć powyższych jest nazywanych wartościami fałszywymi, a wszystkie pozostałe prawdziwymi. Wszędzie w
 kodzie, gdzie spodziewana jest wartość logiczna, wartość fałszywa jest traktowana jako `false`, a prawdziwa jako `true`.
+=======
+Wartość `false` i sześć powyższych jest nazywanych wartościami fałszywymi, a wszystkie pozostałe prawdziwymi. Wszędzie w kodzie, gdzie spodziewana jest wartość logiczna, wartość fałszywa jest traktowana jako `false`, a prawdziwa jako `true`.
+>>>>>>> db615b67db9e40aaa1fcd8ecf65f32a4a17e86aa
 
 ## Wartości null i undefined
 
@@ -1079,6 +1097,59 @@ Programiści raczej unikają stosowania tych wartości.
 ## Konwersje typów
 
 <!--TODO-->
+
+1.  W miejscu, gdzie spodziewana jest wartość typu logicznego, można umieścić wartość dowolnego innego typu, która zostanie
+    odpowiednio przekształcona. Niektóre wartości („prawdziwe”) są przekształcane na `true`, a inne („fałszywe”) na `false`.
+2.  Jeżeli oczekiwany jest ciąg znaków, dowolna zadana wartość zostanie przekształcona w ciąg.
+3.  Jeżeli oczekiwana jest liczba,
+    wartość zostanie przekształconaw liczbę lub — jeżeli nie będzie to możliwe — w NaN.
+
+| Wartość | Konwersja na ciąg | Konwersja na liczbę | Konwersja na wartość logiczną |
+| ------- | ----------------- | ------------------- | ----------------------------- |
+| undefined  | "undefined" | NaN | false|
+| null | "null" | 0 | false |
+| true | "true" | 1 |  |
+|false | "false" | 0 |  |
+| "" (pusty ciąg znaków) |  | 0 | false 
+| "1.2" (ciąg znaków zawierający liczbę) |  | 1.2 | true |
+| "jeden" (ciąg znaków niezawierający liczby) |  | NaN | true |
+| 0 | "0" |  | false |
+|-0 | "0" |  | false |
+| 1 (wartość skończona, różna od zera) | "1" |  | true |
+| Infinity | "Infinity" |  | true |
+| -Infinity | "-Infinity" |  | true |
+| NaN | "NaN" |  | false |
+| {} (dowolny obiekt) | Patrz punkt ... | Patrz punkt ... | true
+| [] (pusta tablica) | "" | 0 | true |
+| [9] (jeden element zawierający liczbę) | "9" | 9 | true |
+| ['a'] (element zawierający inną wartość) | Należy użyć metody join().| NaN | true |
+|funkcja() {} (dowolna funkcja) | Patrz punkt ... | NaN | true |
+
+Ciągi znaków, które można interpretować jako liczby, są przekształcane w liczby. Dopuszczalne jest stosowanie wiodących
+i końcowych spacji, ale w przypadku użycia innych znaków niż cyfry wynikiem konwersji jest wartość NaN.
+
+### Konwersje i równość wartości
+
+W JS są dwa operatory sprawdzające równość wartości. 
+1. Operator „ścisłej równości” `===`. Operandy nie są równe, jeżeli są różnych typów. W większości przypadków jest
+to właściwy operator, który należy stosować. 
+2. Operator równości `==`. 
+
+Poniższe porównania zwracają wartość true:
+
+```javascript
+null == undefined // => true: te dwie wartości są traktowane jako równe.
+"0" == 0 // => true: ciąg znaków przed porównaniem jest przekształcany w liczbę.
+0 == false // => true: wartość logiczna przed porównaniem jest przekształcana w liczbę.
+"0" == false // => true: oba operandy przed porównaniem są przekształcane w liczby
+```
+
+Możliwość przekształcenia jednej wartości w inną nie oznacza ich równości. Na przykład wartość `undefined` użyta w miejscu, 
+w którym oczekiwana jest wartość logiczna, jest przekształcana w `false`, co nie oznacza, że `undefined == false`. 
+Z operatorami i instrukcjami można stosować wartości różnych typów, które są odpowiednio przekształcane. Instrukcja `if`
+przekształca wartość `undefined` w `false`, ale operator `==` nigdy nie przekształca operandów w wartości logiczne.
+
+
 
 ## Deklarowanie zmiennych i przypisywanie wartości.
 
@@ -1396,6 +1467,77 @@ x; // => 4
 # Wyrażenia i operatory
 
 <!--TODO -->
+Wyrażenie to fraza, którą można wyliczyć i uzyskać wartość. Stała to wyrażenie, zmienna też, którego wynikiem jest 
+wartość przypisana tej zmiennej.
+
+
+Bardzo prostym przykładem wyrażenia jest stała. Zmienna też jest wyrażeniem, przypisana tej zmiennej. Złożone wyrażenia
+składają się z prostszych wyrażeń. 
+
+Wyrażenie wywołujące funkcję składa się z wyrażenia, którego wynikiem jest obiekt reprezentujący daną funkcję, oraz
+kilku ewentualnych dodatkowych wyrażeń będących jej argumentami.
+
+Złożone wyrażenia najczęściej tworzy się za pomocą prostszych wyrażeń i operatorów. Operator łączy w określony sposób
+wartości operandów i tworzy nową wartość. Czasami mówi się, upraszczając, że operator zwraca wartość.
+
+## Wyrażenia podstawowe
+
+**Wyrażenia podstawowe**, to takie, które nie składają się z jeszcze prostszych wyrażeń. Wyrażeniami podstawowymi 
+w JS są stałe, **literały** wartości, niektóre słowa kluczowe i odwołania do zmiennych.
+
+Literały to stałe wartości wpisane bezpośrednio w kodzie programu, na przykład:
+
+```javascript
+1.23 // Literał liczbowy.
+"cześć" // Literał tekstowy.
+/szablon/ // Literał wyrażenia regularnego.
+```
+
+Wyrażeniami podstawowymi są również niektóre zarezerwowane słowa:
+
+```javascript
+true // Logiczna wartość "prawda".
+false // Logiczna wartość "fałsz".
+null // "Pusta" wartość.
+this // Wartość oznaczająca "bieżący" obiekt.
+```
+
+Trzecim rodzajem wyrażenia podstawowego jest odwołanie do zmiennej, stałej lub do właściwości
+obiektu globalnego:
+
+```javascript
+i // Wynikiem jest wartość zmiennej i.
+sum // Wynikiem jest wartość zmiennej sum.
+undefined // Wynikiem jest wartość właściwości "undefined" obiektu globalnego.
+```
+
+Interpreter JavaScript traktuje każdy użyty w kodzie identyfikator jako zmienną, stałą lub właściwość
+obiektu globalnego i stara się uzyskać jego wartość. Jeżeli z identyfikatorem nie jest skojarzona
+żadna wartość, próba jej uzyskania powoduje zgłoszenie wyjątku `ReferenceError`.
+
+## Inicjatory obiektów i tablic
+
+**Inicjator obiektu** lub **tablicy** jest wyrażeniem, którego wartością jest nowo utworzony obiekt lub
+tablica i które jest nazywane **literałem obiektowym** lub **tablicowym**.
+Nie jest to jednak wyrażenie podstawowe, jako że zawiera w sobie podwyrażenie określające wartość właściwości 
+obiektu lub elementu tablicy.
+
+Inicjator tablicy jest listą wyrażeń oddzielonych przecinkami, umieszczoną wewnątrz nawiasów kwadratowych. Wynikiem 
+inicjatora jest nowa tablica elementów zainicjowanych wynikami oddzielonych przecinkami wyrażeń.
+
+```javascript
+[] // Pusta tablica. Brak wyrażeń wewnątrz nawiasów oznacza, że tablica nie ma elementów.
+[1+2,3+4] // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
+```
+
+Poszczególne wyrażenia inicjatora tablicy mogą być inicjatorami innych tablic:
+
+```javascript
+let matrix = [[1,2,3], [4,5,6], [7,8,9]];
+```
+
+
+
 
 ## Inne operatory
 
