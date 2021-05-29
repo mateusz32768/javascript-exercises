@@ -412,13 +412,13 @@ Przykłady literałów:
 
 ```javascript
 123 - // dodatnia całkowita wartość dziesiętna 123
-  123; // ujemna całkowita wartość dziesiętna -123
+123; // ujemna całkowita wartość dziesiętna -123
 012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
-  024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
+024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
 0xff - // dodatnia całkowita wartość szesnastkowa = 255
-  0x0f; //ujemna całk. wartość szes. = -15
+0x0f; //ujemna całk. wartość szes. = -15
 2.12 - //  dodatnia wartość rzeczywista = 2.12
-  3.14; // ujemna wartość rzeczywista = -3.14
+3.14; // ujemna wartość rzeczywista = -3.14
 4.3e3; // dodatnia wartość rzeczywista = 4300
 2.3e-3; // dodatnia wartość rzeczywista = 0.0023
 ```
@@ -575,18 +575,18 @@ Number.POSITIVE_INFINITY; // Jak wyżej.
 1 / 0; // => Infinity
 
 Number.MAX_VALUE * 2 - // => Infinity; przepełnienie
-  Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
+Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
 Number.NEGATIVE_INFINITY - // Jak wyżej.
-  1 / 0 - // => –Infinity
-  Number.MAX_VALUE * 2; // => –Infinity
+1 / 0 - // => –Infinity
+Number.MAX_VALUE * 2; // => –Infinity
 NaN; // Wartość nieliczbowa.
 Number.NaN; // Wartość nieliczbowa zapisana w inny sposób.
 0 / 0; // => NaN
 Infinity / Infinity; // => NaN
 Number.MIN_VALUE / 2 - // => 0: niedomiar.
-  Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
-  1 / Infinity - // -> –0: również "ujemne zero".
-  0;
+Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
+1 / Infinity - // -> –0: również "ujemne zero".
+0;
 
 // Właściwości i metody obiektu Number zdefiniowane w wersji ES6:
 Number.parseInt(); // Odpowiednik globalnej funkcji parseInt().
@@ -858,13 +858,14 @@ W przypadku użycia grawisów podziały wierszy wchodzą w skład literału:
 'Jeden\
 długi\
 wiersz.' // Dwuwierszowy ciąg zapisany w dwóch wierszach:
-`Znak podziału umieszczony na końcu tego wiersza
+  `Znak podziału umieszczony na końcu tego wiersza
 jest częścią tego ciągu znaków.`;
 ```
 
 Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScripcie jednego stylu, a w HTML innego.
 
 ```html
+
 <button onclick="alert('Dziękuję')">Kliknij tutaj</button>
 ```
 
@@ -894,23 +895,26 @@ _Tabela. Sekwencje ucieczki w JavaScripcie_
 | \unnnn    | Znak Unicode zapisany za pomocą czterech cyfr szesnastkowych nn                                                                         |
 | \u{n}     | Znak Unicode zapisany za pomocą od jednej do sześciu cyfr szesnastkowych nn <br>(z zakresu od `0` do `10FFFF` w wersji ES6 lub nowszej) |
 
-Trzy ostatnie sekwencje to sekwencje generyczne, które w połączeniu z liczbą szesnastkową umożliwiają kodowanie dowolnych znaków Unicode.
+Trzy ostatnie sekwencje to sekwencje generyczne, które w połączeniu z liczbą szesnastkową umożliwiają kodowanie
+dowolnych znaków Unicode.
 
 Na przykład:
 
 1. sekwencja `\xA9` reprezentuje symbol praw autorskich, oznaczony w standardzie Unicode liczbą szesnastkową A9.
-2. sekwencja `\u` wraz z czterema cyframi szesnastkowymi lub z jedną do sześciu cyfr szesnastkowych ujętych w nawiasy klamrowe służy do wyrażania dowolnego znaku Unicode. Na przykład zapis `\u03c0` reprezentuje znak `π`, a `\u{1f600}` znak emoji uśmiechniętej buźki.
+2. sekwencja `\u` wraz z czterema cyframi szesnastkowymi lub z jedną do sześciu cyfr szesnastkowych ujętych w nawiasy
+   klamrowe służy do wyrażania dowolnego znaku Unicode. Na przykład zapis `\u03c0` reprezentuje znak `π`, a `\u{1f600}`
+   znak emoji uśmiechniętej buźki.
 
 Lewy ukośnik, użyty przed znakiem innym niż jeden z wymienionych w tabeli, jest po prostu pomijany.
 
 ### Operacje na ciągach znaków
 
 1. Łączenie ciągów za pomocą operatora `+`.
-2. Porównywanie ciągów za pomocą operatorów `===` i `!==`. Dwa ciągi są sobie równe, jeżeli tworzą dokładnie takie same sekwencje 16-bitowych wartości.
+2. Porównywanie ciągów za pomocą operatorów `===` i `!==`. Dwa ciągi są sobie równe, jeżeli tworzą dokładnie takie same
+   sekwencje 16-bitowych wartości.
 3. Porównywanie ciągów za pomocą operatorów: `<`, `<=`, `>` i `>=`.
 
-Aby określić długość ciągu, tj. liczbę 16-bitowych wartości, z których się składa, należy użyć właściwości
-length:
+Aby określić długość ciągu, tj. liczbę 16-bitowych wartości, z których się składa, należy użyć właściwości length:
 
 ```javascript
 let message = 'JavaScript is the best';
@@ -970,16 +974,16 @@ s.concat('!!'); // => "Witaj, świecie!!!": zamiast tego można użyć operatora
 '<>'.repeat(5); // => "<><><><><>": powielenie ciągu (od wersji ES5).
 ```
 
-Ciągi znaków są niemutowalne. Metody takie jak replace() i toUpperCase() nie modyfikują oryginalnych ciągów, tylko zwracają ich nowe wersje.
+Ciągi znaków są niemutowalne. Metody takie jak replace() i toUpperCase() nie modyfikują oryginalnych ciągów, tylko
+zwracają ich nowe wersje.
 
-Ciągi można również traktować jako tablice przeznaczone wyłącznie do odczytu. Do poszczególnych
-znaków (16-bitowych wartości ) można się odwoływać za pomocą nawiasów kwadratowych
-zamiast za pomocą metody charAt():
+Ciągi można również traktować jako tablice przeznaczone wyłącznie do odczytu. Do poszczególnych znaków (16-bitowych
+wartości ) można się odwoływać za pomocą nawiasów kwadratowych zamiast za pomocą metody charAt():
 
 ```javascript
 let s = "Witaj, świecie!";
 s[0] // => "W"
-s[s.length-1] // => "!"
+s[s.length - 1] // => "!"
 ```
 
 ### Literały szablonowe
@@ -987,13 +991,13 @@ s[s.length-1] // => "!"
 <!-- TODO -->
 
 ### Porównywanie ciągu znaków ze wzorcem
-<!-- TODO -->
 
+<!-- TODO -->
 
 ## Wartości logiczne
 
-Typ logiczny reprezentuje prawdę lub fałsz, włączenie lub wyłączenie, potwierdzenie lub zaprzeczenie.
-Są tylko dwie wartości tego typu, reprezentowane za pomocą zarezerwowanych słów true i false.
+Typ logiczny reprezentuje prawdę lub fałsz, włączenie lub wyłączenie, potwierdzenie lub zaprzeczenie. Są tylko dwie
+wartości tego typu, reprezentowane za pomocą zarezerwowanych słów true i false.
 
 Wartość logiczna jest zazwyczaj wynikiem operacji porównania, na przykład:
 
@@ -1001,26 +1005,25 @@ Wartość logiczna jest zazwyczaj wynikiem operacji porównania, na przykład:
 a === 4;
 ```
 
-Powyższy kod sprawdza, czy wartość zmiennej `a` jest równa liczbie `4`. Jeżeli jest, wynikiem porównania
-jest logiczna wartość `true`. Jeżeli wartość jest inna niż `4`, wynikiem porównania jest wartość `false`.
+Powyższy kod sprawdza, czy wartość zmiennej `a` jest równa liczbie `4`. Jeżeli jest, wynikiem porównania jest logiczna
+wartość `true`. Jeżeli wartość jest inna niż `4`, wynikiem porównania jest wartość `false`.
 
-Każdą wartość w JavaScripcie można przekształcić w wartość logiczną. Poniższe wartości są przekształcane i traktowane jak wartość logiczna false:
+Każdą wartość w JavaScripcie można przekształcić w wartość logiczną. Poniższe wartości są przekształcane i traktowane
+jak wartość logiczna false:
 
 ```javascript
 undefined
 null
 0
--0
+- 0
 NaN
 "" // Pusty ciąg znaków.
 ```
-Wszystkie inne wartości, włącznie z obiektami i tablicami, można przekształcić i traktować jak wartość logiczną `true`. 
 
-Wartość `false` i sześć powyższych jest nazywanych wartościami fałszywymi, a wszystkie pozostałe prawdziwymi. Wszędzie w kodzie, gdzie spodziewana jest wartość logiczna, wartość fałszywa jest traktowana jako `false`, a prawdziwa jako `true`.
+Wszystkie inne wartości, włącznie z obiektami i tablicami, można przekształcić i traktować jak wartość logiczną `true`.
 
-
-
-
+Wartość `false` i sześć powyższych jest nazywanych wartościami fałszywymi, a wszystkie pozostałe prawdziwymi. Wszędzie w
+kodzie, gdzie spodziewana jest wartość logiczna, wartość fałszywa jest traktowana jako `false`, a prawdziwa jako `true`.
 
 ## Wartości null i undefined
 
@@ -1032,14 +1035,32 @@ Słowo kluczowe `null` jest zazwyczaj wykorzystywane do sygnalizowania braku war
 typeof null; // => 'object' czyli specjalny obiekt oznaczający brak obiektu
 ```
 
-W praktyce null jest traktowana jako <u>jedyna wartość osobnego typu</u>, oznaczająca brak liczby, ciągu znaków i  
+W praktyce null jest traktowana jako <u>jedyna wartość osobnego typu</u>, oznaczająca brak liczby, ciągu znaków i
 obiektu.
 
 ### undefined
 
 Słowo `undefined` też oznacza brak wartości:
 
-1. Przyjmuje
+1. Tę wartość przyjmuje zmienna, która nie została zainicjowana.
+2. Zwraca ją zapytanie o nieistniejącą właściwość obiektu lub nieistniejący element tablicy.
+3. Jest wynik funkcji, która nie zwraca żadnej określonej wartości.
+4. Wartość nieokreślonego parametru funkcji.
+
+Wartość `undefined` jest globalną stałą (a nie słowem kluczowym, jak `null`, choć w praktyce różnica ta nie jest
+istotna), przypisywaną niezainicjowanej zmiennej. Operator `typeof` użyty z wartością `undefined` zwraca ciąg "
+undefined" oznaczający, że jest to wartość osobnego typu.
+
+Wartości `null` i `undefined` oznaczają brak wartości i są często stosowane wymiennie. Operator `==` traktuje je jako
+równe wartości, operator `===` już nie. Obie wartości są fałszywe i są traktowane jako wartość false. Żadna z nich nie
+ma właściwości ani metod.
+
+Wartość `undefined` można rozumieć jako systemowy, nieoczekiwany lub świadczący o błędzie brak wartości, natomiast 
+null — programowy, normalny lub oczekiwany brak wartości. 
+
+Programiści raczej unikają stosowania tych wartości.
+
+
 
 <!--TODO-->
 
@@ -1223,9 +1244,9 @@ Powszechnie stosowaną (ale nie uniwersalną) konwencją jest używanie w nazwac
 >
 > 1. Tylko z wartościami, które nie mogą się zmieniać np. stałe fizyczne itp.
 > 2. Ze wszystkimi wartościami, które nie będą się zmieniać (wiele tzw. zmiennych nie jest modyfikowanych przez
->    cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
->    deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
->    zmiennych.
+     > cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
+     > deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
+     > zmiennych.
 
 W pętli `for/in` i `for/of` dozwolone jest stosowanie instrukcji `const`, jeżeli tylko w ciele pętli takiej „zmiennej”
 nie jest przypisywana nowa wartość. W takim przypadku deklaracja stałej oznacza jedynie, że wartość pozostaje niezmienna
