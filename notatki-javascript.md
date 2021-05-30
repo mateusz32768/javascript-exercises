@@ -981,8 +981,14 @@ Ciągi można również traktować jako tablice przeznaczone wyłącznie do odcz
 wartości ) można się odwoływać za pomocą nawiasów kwadratowych zamiast za pomocą metody charAt():
 
 ```javascript
-<<<<<<< HEAD
-let s = "Witaj, świecie!";
+<
+<
+<
+<
+<
+<
+< HEAD
+  let s="Witaj, świecie!";
 s[0] // => "W"
 s[s.length - 1] // => "!"
 =======
@@ -1003,7 +1009,7 @@ s[s.length - 1]; // => "!"
 ## Wartości logiczne
 
 Typ logiczny reprezentuje prawdę lub fałsz, włączenie lub wyłączenie, potwierdzenie lub zaprzeczenie. Są tylko dwie
-wartości tego typu, reprezentowane za pomocą zarezerwowanych słów true i false.
+wartości tego typu, reprezentowane za pomocą zarezerwowanych słów `true` i `false`.
 
 Wartość logiczna jest zazwyczaj wynikiem operacji porównania, na przykład:
 
@@ -1014,36 +1020,82 @@ a === 4;
 Powyższy kod sprawdza, czy wartość zmiennej `a` jest równa liczbie `4`. Jeżeli jest, wynikiem porównania jest logiczna
 wartość `true`. Jeżeli wartość jest inna niż `4`, wynikiem porównania jest wartość `false`.
 
+Drugi przykład:
+
+```javascript
+console.log(3 > 2) // => true
+console.log(3 < 2) // => false
+```
+
+Znaki `>` i `<` to odpowiednio symbole większości i mniejszości. Są to operatory binarne. Zwracają wartość logiczną
+oznaczającą, czy dane wyrażenie jest prawdziwe. Podobnie można porównywać łańcuchy:
+
+```javascript
+console.log("Aardvark" < "Zoroaster") // => true
+```
+
+Interpreter przegląda po kolei znaki od lewej i porównuje ich kody Unicode.
+
+W języku JavaScript istnieje też jedna wartość, która nie jest równa nawet samej sobie — to `NaN` (nieliczba).
+
+```javascript
+console.log(NaN == NaN) // => false
+```
+
+Wartość `NaN` służy do oznaczania wyników bezsensownych działań, więc wynik jednego bezsensownego działania nie jest
+równy wynikowi żadnego innego bezsensownego działania.
+
 Każdą wartość w JavaScripcie można przekształcić w wartość logiczną. Poniższe wartości są przekształcane i traktowane
 jak wartość logiczna false:
 
 ```javascript
-<<<<<<< HEAD
 undefined
 null
 0
 - 0
 NaN
 "" // Pusty ciąg znaków.
-=======
 undefined;
 null;
 0 - 0;
 NaN;
 (''); // Pusty ciąg znaków.
->>>>>>> db615b67db9e40aaa1fcd8ecf65f32a4a17e86aa
 ```
 
 Wszystkie inne wartości, włącznie z obiektami i tablicami, można przekształcić i traktować jak wartość logiczną `true`.
+Wartość `false` i sześć powyższych jest nazywanych wartościami **fałszywymi**, a wszystkie pozostałe
+**prawdziwymi**. Wszędzie w kodzie, gdzie spodziewana jest wartość logiczna, wartość fałszywa jest traktowana jako
+`false`, a prawdziwa jako `true`.
 
-<<<<<<< HEAD
-Wartość `false` i sześć powyższych jest nazywanych wartościami fałszywymi, a wszystkie pozostałe prawdziwymi. Wszędzie w
-kodzie, gdzie spodziewana jest wartość logiczna, wartość fałszywa jest traktowana jako `false`, a prawdziwa jako `true`.
-=======
-Wartość `false` i sześć powyższych jest nazywanych wartościami fałszywymi, a wszystkie pozostałe prawdziwymi. Wszędzie w kodzie, gdzie spodziewana jest wartość logiczna, wartość fałszywa jest traktowana jako `false`, a prawdziwa jako `true`.
->>>>>>> db615b67db9e40aaa1fcd8ecf65f32a4a17e86aa
+Załóżmy, że zmienna `o` może zawierać obiekt lub wartość null. Tak jednoznacznie sprawdzimy, czy zmienna ta zawiera
+wartość inną niż null:
 
-## Wartości null i undefined
+```javascript
+if (o !== null) {
+
+}
+```
+
+Operator można pominąć i wykorzystać fakt, że null jest wartością fałszywą, a obiekt prawdziwą:
+
+```javascript
+if (o) {
+
+}
+```
+
+W pierwszym przypadku ciało instrukcji `if` zostanie wykonane tylko wtedy, gdy zmienna `o` będzie miała wartość inną niż
+null. Drugi przypadek jest mniej ścisły: ciało instrukcji zostanie wykonane wtedy, gdy wartość zmiennej `o` nie będzie
+fałszywa, tj. będzie różna od `null` i `undefined`.
+
+## Wartości null i undefined - wartości puste
+
+Dwie specjalne wartości `null` i `undefined` służą do oznaczania braku sensownej wartości. Same też są wartościami, ale
+nie przekazują żadnej informacji. Wiele operacji, które nie wytwarzają żadnej przydatnej wartości, zwraca właśnie
+wartość `undefined` tylko dlatego, że muszą coś zwracać.
+
+Różnica między wartościami `undefined` i `null` wynika tylko z przypadku podczas projektowania języka JavaScript i
+zazwyczaj nie ma znaczenia. Dlatego, jeśli musisz gdzieś ich użyć, możesz traktować je jako zasadniczo zamienne.
 
 ### null
 
@@ -1073,8 +1125,8 @@ Wartości `null` i `undefined` oznaczają brak wartości i są często stosowane
 równe wartości, operator `===` już nie. Obie wartości są fałszywe i są traktowane jako wartość false. Żadna z nich nie
 ma właściwości ani metod.
 
-Wartość `undefined` można rozumieć jako systemowy, nieoczekiwany lub świadczący o błędzie brak wartości, natomiast 
-null — programowy, normalny lub oczekiwany brak wartości. 
+Wartość `undefined` można rozumieć jako systemowy, nieoczekiwany lub świadczący o błędzie brak wartości, natomiast null
+— programowy, normalny lub oczekiwany brak wartości.
 
 Programiści raczej unikają stosowania tych wartości.
 
@@ -1094,15 +1146,61 @@ Programiści raczej unikają stosowania tych wartości.
 
 <!--TODO-->
 
-## Konwersje typów
+## Konwersje typów <!--TODO-->
 
-<!--TODO-->
+### Automatyczna konwersja
 
-1.  W miejscu, gdzie spodziewana jest wartość typu logicznego, można umieścić wartość dowolnego innego typu, która zostanie
-    odpowiednio przekształcona. Niektóre wartości („prawdziwe”) są przekształcane na `true`, a inne („fałszywe”) na `false`.
-2.  Jeżeli oczekiwany jest ciąg znaków, dowolna zadana wartość zostanie przekształcona w ciąg.
-3.  Jeżeli oczekiwana jest liczba,
-    wartość zostanie przekształconaw liczbę lub — jeżeli nie będzie to możliwe — w NaN.
+Interpreter JavaScript stara się wykonać prawie każdy podany mu program, nawet taki, który robi dziwne rzeczy. Np.:
+
+```javascript
+console.log(8 * null) // => 0
+console.log("5" - 1) // => 4
+console.log("5" + 1) // => 51
+console.log("five" * 2) // => NaN
+console.log(false == 0) // => true
+```
+
+Gdy operator zostanie zastosowany do wartości „niewłaściwego” typu, JavaScript przekonwertuje tę wartość na odpowiedni
+typ na podstawie reguł, które często nie są zgodne z zamiarem programisty. Nazywa się to **konwersją typów**. Dlatego
+wartość `null` w pierwszym wyrażeniu zostanie zamieniona na `0`, a `"5"` w drugim wyrażeniu na `5` (zamiana łańcucha na
+liczbę). Natomiast w trzecim wyrażeniu operator `+` da pierwszeństwo konkatenacji przed dodawaniem liczb, więc
+liczba `1` zostanie zamieniona na łańcuch `"1"`.
+
+Jeśli przekonwertuje się na liczbę coś nieoczywistego (np. `"pięć"` albo `undefined`), zostanie zwrócona wartość `NaN`.
+Dalsze operacje arytmetyczne na tej wartości też będą zwracały `NaN`.
+
+Przy porównywaniu wartości tego samego typu za pomocą operatora `==` otrzyma się wartość `true`, gdy wartości są takie
+same, (nie dla `NaN`). Gdy typy są różne, JavaScript w większości przypadków próbuje zamienić jeden typ wartości na
+drugi. Jeśli jednakże po jednej ze stron operatora znajduje się wartość `null` lub `undefined`, wartość
+`true` można uzyskać tylko wtedy, gdy po drugiej również znajduje się jedna z tych dwóch wartości.
+
+```javascript
+console.log(null == undefined); // = true
+console.log(null == 0); // => false
+```
+
+Jeśli trzeba sprawdzić, czy coś jest prawdziwą wartością, a nie `null` lub `undefined`, można napisać prosty test przy
+użyciu operatora `==` (albo `!=`).
+
+A co zrobić, gdy trzeba sprawdzić, czy coś jest dokładnie wartością false? Takie wyrażenia jak `0 == false`
+i `"" == false` mają wartość `true`.
+
+Aby nie była stosowana konwersja automatyczna, można użyć jednego z dwóch operatorów:
+
+1. `===` sprawdza, czy jedna wartość jest identyczna z drugą.
+
+2. `!==` sprawdza, czy jedna wartość jest dokładnie różna od drugiej.
+
+Zatem wartością wyrażenia `"" === false` jest zgodnie z oczekiwaniami `false`. Zaleca się posługiwanie trójznakowymi
+operatorami porównywania, aby zapobiec automatycznym konwersjom, które mogą spowodować awarię programu. Jeśli,
+natomiast, jest oczywiste, że po obu stronach operatora znajdą się wartości tego samego typu, można używać krótszych
+operatorów dwuznakowych.
+
+1. W miejscu, gdzie spodziewana jest wartość typu logicznego, można umieścić wartość dowolnego innego typu, która
+   zostanie odpowiednio przekształcona. Niektóre wartości („prawdziwe”) są przekształcane na `true`, a inne („fałszywe”)
+   na `false`.
+2. Jeżeli oczekiwany jest ciąg znaków, dowolna zadana wartość zostanie przekształcona w ciąg.
+3. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w liczbę lub — jeżeli nie będzie to możliwe — w NaN.
 
 | Wartość | Konwersja na ciąg | Konwersja na liczbę | Konwersja na wartość logiczną |
 | ------- | ----------------- | ------------------- | ----------------------------- |
@@ -1110,7 +1208,7 @@ Programiści raczej unikają stosowania tych wartości.
 | null | "null" | 0 | false |
 | true | "true" | 1 |  |
 |false | "false" | 0 |  |
-| "" (pusty ciąg znaków) |  | 0 | false 
+| "" (pusty ciąg znaków) |  | 0 | false
 | "1.2" (ciąg znaków zawierający liczbę) |  | 1.2 | true |
 | "jeden" (ciąg znaków niezawierający liczby) |  | NaN | true |
 | 0 | "0" |  | false |
@@ -1125,15 +1223,16 @@ Programiści raczej unikają stosowania tych wartości.
 | ['a'] (element zawierający inną wartość) | Należy użyć metody join().| NaN | true |
 |funkcja() {} (dowolna funkcja) | Patrz punkt ... | NaN | true |
 
-Ciągi znaków, które można interpretować jako liczby, są przekształcane w liczby. Dopuszczalne jest stosowanie wiodących
-i końcowych spacji, ale w przypadku użycia innych znaków niż cyfry wynikiem konwersji jest wartość NaN.
+Ciągi znaków, które można interpretować jako liczby, są przekształcane w liczby. Dopuszczalne jest stosowanie
+przodujących i końcowych spacji, ale w przypadku użycia innych znaków niż cyfry wynikiem konwersji jest wartość NaN.
 
 ### Konwersje i równość wartości
 
-W JS są dwa operatory sprawdzające równość wartości. 
-1. Operator „ścisłej równości” `===`. Operandy nie są równe, jeżeli są różnych typów. W większości przypadków jest
-to właściwy operator, który należy stosować. 
-2. Operator równości `==`. 
+W JS są dwa operatory sprawdzające równość wartości.
+
+1. Operator „ścisłej równości” `===`. Operandy nie są równe, jeżeli są różnych typów. W większości przypadków jest to
+   właściwy operator, który należy stosować.
+2. Operator równości `==`.
 
 Poniższe porównania zwracają wartość true:
 
@@ -1144,12 +1243,11 @@ null == undefined // => true: te dwie wartości są traktowane jako równe.
 "0" == false // => true: oba operandy przed porównaniem są przekształcane w liczby
 ```
 
-Możliwość przekształcenia jednej wartości w inną nie oznacza ich równości. Na przykład wartość `undefined` użyta w miejscu, 
-w którym oczekiwana jest wartość logiczna, jest przekształcana w `false`, co nie oznacza, że `undefined == false`. 
-Z operatorami i instrukcjami można stosować wartości różnych typów, które są odpowiednio przekształcane. Instrukcja `if`
+Możliwość przekształcenia jednej wartości w inną nie oznacza ich równości. Na przykład wartość `undefined` użyta w
+miejscu, w którym oczekiwana jest wartość logiczna, jest przekształcana w `false`, co nie oznacza,
+że `undefined == false`. Z operatorami i instrukcjami można stosować wartości różnych typów, które są odpowiednio
+przekształcane. Instrukcja `if`
 przekształca wartość `undefined` w `false`, ale operator `==` nigdy nie przekształca operandów w wartości logiczne.
-
-
 
 ## Deklarowanie zmiennych i przypisywanie wartości.
 
@@ -1467,12 +1565,11 @@ x; // => 4
 # Wyrażenia i operatory
 
 <!--TODO -->
-Wyrażenie to fraza, którą można wyliczyć i uzyskać wartość. Stała to wyrażenie, zmienna też, którego wynikiem jest 
+Wyrażenie to fraza, którą można wyliczyć i uzyskać wartość. Stała to wyrażenie, zmienna też, którego wynikiem jest
 wartość przypisana tej zmiennej.
 
-
 Bardzo prostym przykładem wyrażenia jest stała. Zmienna też jest wyrażeniem, przypisana tej zmiennej. Złożone wyrażenia
-składają się z prostszych wyrażeń. 
+składają się z prostszych wyrażeń.
 
 Wyrażenie wywołujące funkcję składa się z wyrażenia, którego wynikiem jest obiekt reprezentujący daną funkcję, oraz
 kilku ewentualnych dodatkowych wyrażeń będących jej argumentami.
@@ -1482,15 +1579,15 @@ wartości operandów i tworzy nową wartość. Czasami mówi się, upraszczając
 
 ## Wyrażenia podstawowe
 
-**Wyrażenia podstawowe**, to takie, które nie składają się z jeszcze prostszych wyrażeń. Wyrażeniami podstawowymi 
-w JS są stałe, **literały** wartości, niektóre słowa kluczowe i odwołania do zmiennych.
+**Wyrażenia podstawowe**, to takie, które nie składają się z jeszcze prostszych wyrażeń. Wyrażeniami podstawowymi w JS
+są stałe, **literały** wartości, niektóre słowa kluczowe i odwołania do zmiennych.
 
 Literały to stałe wartości wpisane bezpośrednio w kodzie programu, na przykład:
 
 ```javascript
 1.23 // Literał liczbowy.
 "cześć" // Literał tekstowy.
-/szablon/ // Literał wyrażenia regularnego.
+/ szablon / // Literał wyrażenia regularnego.
 ```
 
 Wyrażeniami podstawowymi są również niektóre zarezerwowane słowa:
@@ -1502,8 +1599,7 @@ null // "Pusta" wartość.
 this // Wartość oznaczająca "bieżący" obiekt.
 ```
 
-Trzecim rodzajem wyrażenia podstawowego jest odwołanie do zmiennej, stałej lub do właściwości
-obiektu globalnego:
+Trzecim rodzajem wyrażenia podstawowego jest odwołanie do zmiennej, stałej lub do właściwości obiektu globalnego:
 
 ```javascript
 i // Wynikiem jest wartość zmiennej i.
@@ -1511,32 +1607,225 @@ sum // Wynikiem jest wartość zmiennej sum.
 undefined // Wynikiem jest wartość właściwości "undefined" obiektu globalnego.
 ```
 
-Interpreter JavaScript traktuje każdy użyty w kodzie identyfikator jako zmienną, stałą lub właściwość
-obiektu globalnego i stara się uzyskać jego wartość. Jeżeli z identyfikatorem nie jest skojarzona
-żadna wartość, próba jej uzyskania powoduje zgłoszenie wyjątku `ReferenceError`.
+Interpreter JavaScript traktuje każdy użyty w kodzie identyfikator jako zmienną, stałą lub właściwość obiektu globalnego
+i stara się uzyskać jego wartość. Jeżeli z identyfikatorem nie jest skojarzona żadna wartość, próba jej uzyskania
+powoduje zgłoszenie wyjątku `ReferenceError`.
 
 ## Inicjatory obiektów i tablic
 
-**Inicjator obiektu** lub **tablicy** jest wyrażeniem, którego wartością jest nowo utworzony obiekt lub
-tablica i które jest nazywane **literałem obiektowym** lub **tablicowym**.
-Nie jest to jednak wyrażenie podstawowe, jako że zawiera w sobie podwyrażenie określające wartość właściwości 
-obiektu lub elementu tablicy.
+**Inicjator obiektu** lub **tablicy** jest wyrażeniem, którego wartością jest nowo utworzony obiekt lub tablica i które
+jest nazywane **literałem obiektowym** lub **tablicowym**. Nie jest to jednak wyrażenie podstawowe, jako że zawiera w
+sobie podwyrażenie określające wartość właściwości obiektu lub elementu tablicy.
 
-Inicjator tablicy jest listą wyrażeń oddzielonych przecinkami, umieszczoną wewnątrz nawiasów kwadratowych. Wynikiem 
+Inicjator tablicy jest listą wyrażeń oddzielonych przecinkami, umieszczoną wewnątrz nawiasów kwadratowych. Wynikiem
 inicjatora jest nowa tablica elementów zainicjowanych wynikami oddzielonych przecinkami wyrażeń.
 
 ```javascript
 [] // Pusta tablica. Brak wyrażeń wewnątrz nawiasów oznacza, że tablica nie ma elementów.
-[1+2,3+4] // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
+  [1 + 2, 3 + 4] // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
 ```
 
 Poszczególne wyrażenia inicjatora tablicy mogą być inicjatorami innych tablic:
 
 ```javascript
-let matrix = [[1,2,3], [4,5,6], [7,8,9]];
+let matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 ```
 
+Jeżeli w literale tablicowym pominie się wartości rozdzielone przecinkami, wówczas elementy te nie zostaną zdefiniowane:
 
+```javascript
+let sparseArray = [1, , , , 5];
+```
+
+Inicjator obiektu stosuje nawiasy klamrowe, a każde podwyrażenie jest poprzedzone nazwą właściwości i dwukropkiem:
+
+````javascript
+let p = {x: 2.3, y: -1.2}; // Obiekt posiadający dwie właściwości.
+let q = {}; // Obiekt bez właściwości.
+q.x = 2.3;
+q.y = -1.2; // Obiekt q ma teraz te same właściwości co obiekt p.
+````
+
+## Wyrażenia definiujące funkcje
+
+Wynikiem **wyrażenia definiującego funkcję** jest nowa funkcja. Wyrażenie takie jest literałem funkcyjnym, podobnie jak
+inicjator obiektu jest literałem obiektowym:
+
+```javascript
+// Funkcja zwracająca kwadrat argumentu.
+let square = function (x) {
+  return x * x;
+};
+```
+
+Wyrażenie definiujące funkcję może również zawierać jej nazwę.
+
+## Wyrażenia dostępu do właściwości
+
+<!-- TODO -->
+
+## Wyrażenia wywołujące
+
+<!-- TODO -->
+
+## Wyrażenia tworzące obiekty
+
+<!-- TODO -->
+
+## Przegląd operatorów
+
+Operatory są stosowane w wyrażeniach arytmetycznych, porównujących, logicznych, przypisujących i innych.
+
+**Tabela** zawiera podsumowanie operatorów.
+
+| Operator | Operacja | W | L | Typy |
+| -------- | -------- | --- | --- | ----|
+| ++ | Pre- i postinkrementacja | P | 1 | l-wartość → liczba |
+| -- | Pre- i postdekrementacja | P | 1 | l-wartość → liczba |
+| - | Zmiana znaku liczby | P | 1 | liczba → liczba |
+| + | Konwersja na liczbę | P | 1 | dowolny → liczba |
+| ~ | Odwrócenie bitów | P | 1 | liczba całkowita → liczba całkowita |
+| ! | Negacja wartości logicznej | P | 1 | wart. logiczna → wart. logiczna |
+| delete | Usunięcie właściwości | P | 1 | l-wartość → wart. logiczna |
+| typeof | Określenie typu operandu | P | 1 | dowolny → ciąg znaków |
+| void | Zwrócenie pustej wartości | P | 1 | dowolny → undefined |
+| ** | Potęgowanie | P | 2 | liczba, liczba → liczba |
+| *, /, % | Mnożenie, dzielenie, reszta | L | 2 | liczba, liczba → liczba |
+| +, - | Dodawanie, odejmowanie | L | 2 | liczba, liczba → liczba |
+| + | Łączenie ciągów znaków | L | 2 | ciąg znaków, ciąg znaków → ciąg znaków |
+| << | Przesunięcie bitów w lewo | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| > > | Przesunięcie bitów w prawo z zachowaniem znaku | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| > > > | Przesunięcie bitów w prawo z uzupełnieniem zerami | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| <, <=, >, >= | Porównanie liczbowe | L | 2 | liczba, liczba → wart. logiczna |
+| <, <=, >, >= | Porównanie alfabetyczne | L | 2 | ciąg znaków, ciąg znaków → wart. logiczna |
+| instanceof | Określenie klasy obiektu | L | 2 | obiekt, funkcja → wart. logiczna |
+| in | Sprawdzenie istnienia właściwości | L | 2 | dowolny, obiekt → wart. logiczna |
+| == | Nieścisła równość | L | 2 | dowolny, dowolny → wart. logiczna |
+| != | Nieścisła nierówność | L | 2 | dowolny, dowolny → wart. logiczna |
+| === | Ścisła równość | L | 2 | dowolny, dowolny → wart. logiczna |
+| !== | Ścisła nierówność | L | 2 | dowolny, dowolny → wart. logiczna |
+| & | Bitowa operacja ORAZ | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| ^ | Bitowa różnica symetryczna | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| \| | Bitowa operacja LUB | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| && | Logiczna operacja ORAZ| L | 2 | dowolny, dowolny → dowolny |
+| \|\| | Logiczna operacja LUB | L | 2 | dowolny, dowolny → dowolny |
+| ?? | Wybranie pierwszego zdefiniowanego operandu | L | 2 | dowolny, dowolny → dowolny |
+| ?: | Wybranie drugiego lub trzeciego operandu | P | 3 | wart. logiczna, dowolny, dowolny → dowolny |
+| = | Przypisanie wartości zmiennej lub właściwości | P | 2 | l-wartość, dowolny → dowolny |
+| **=, *=, /=, %=, +=, -=, &=,<br>  ^=, \|=, <<=, >>=, >>>= |Wykonanie operacji  z przypisaniem wartości | P | 2 | l-wartość, dowolny → dowolny|
+| , | Pominięcie pierwszego operandu i zwrócenie drugiego | L | 2 | dowolny, dowolny → dowolny |
+
+## Wyrażenia logiczne
+
+Operatory `&&`, `||` i `!` wykonują operacje logiczne i są często stosowane łącznie z operatorami relacyjnymi. Dwa
+wyrażenia relacyjne można połączyć w jedno złożone wyrażenie. Aby dobrze je rozumieć, należy znać różnicę między
+pojęciami wartości „prawdziwych” i „fałszywych”.
+
+### Operator logiczny ORAZ (&&)
+
+Operator && można rozpatrywać w trzech różnych kontekstach:
+
+1. Operandy są wartościami logicznymi. Wtedy zwraca wartości logiczne `true` lub `false`zgodzie z działaniem iloczynu
+   (koniunkcji) logicznego. Często jest stosowany do łączenia dwóch wyrażeń relacyjnych, na przykład:
+
+```javascript
+x === 0 && y === 0 // true tylko wtedy, gdy zarówno x, jak i y są równe 0.
+```
+
+Wynikiem wyrażenia relacyjnego jest zawsze wartość `true` lub `false`.
+
+2. Operandy są wartościami prawdziwymi lub fałszywymi. Wtedy zwraca wartość prawdziwą lub fałszywą.
+
+3. Operator najpierw wylicza wartość lewego operandu. Jeżeli jest fałszywa, oznacza to, że wartość całego wyrażenia jest
+   również fałszywa, więc operator zwraca po prostu wartość lewego operandu bez wyliczania wartości prawego operandu.
+   Gdy wartość po lewej stronie jest prawdziwa, operator `&&` wylicza i zwraca wartość znajdującą się po jego prawej
+   stronie:
+
+```javascript
+let o = {x: 1};
+let p = null;
+o && o.x // => 1: o ma wartość prawdziwą, więc operator zwraca wartość o.x.
+p && p.x // => null: p ma wartość fałszywą, więc operator nie wylicza wartości p.x.
+```
+
+Należy zachowywać ostrożność, tworząc wyrażenia z operatorem `&&` i operandem po prawej stronie wywołującym skutki
+uboczne (przypisanie, inkrementację, dekrementację lub wywołanie funkcji), ponieważ od operandu po lewej stronie będzie
+zależało, czy te skutki będą miały miejsce.
+
+### Operator logiczny LUB (||)
+
+Operator `||` działa podobnie jak operator `&&` tylko według sumy (alternatywy) logicznej.
+
+Operator najpierw wylicza wartość lewego operandu. Jeżeli jest prawdziwa, robi „krótkie zwarcie”, tj. zwraca wartość
+prawdziwą bez wyliczania wartości prawego operandu. Jeżeli natomiast wartość lewego operandu jest fałszywa, operator
+wylicza i zwraca wartość prawego operandu.
+
+Należy unikać stosowania po prawej stronie operandu wywołującego efekty uboczne, chyba że celowo wykorzystywany jest
+fakt, że nie zawsze wartość takiego operandu jest wyliczana.
+
+W wersjach języka starszych niż ES6 poniższy zapis był często stosowany w funkcjach do nadawania parametrom domyślnych
+wartości:
+
+````javascript
+// Kopiowanie właściwości obiektu o do p i zwrócenie p.
+
+function copy(o, p) {
+  p = p || {}; // Jeżeli parametr p jest pusty, użyj nowo utworzonego obiektu.
+  // Ciało funkcji.
+}
+````
+
+Od wersji ES6, domyślnie wartości parametrów można wprost określić w definicji funkcji, na przykład:
+
+```javascript
+function copy(o, p = {}) {
+  // ...
+}
+```
+
+### Operator logiczny NIE (!)
+
+Operator `!` jest operatorem jednoargumentowym umieszczanym przed operandem. Neguje on wartość logiczną operandu.
+
+Ściślej mówiąc, przekształca operand w wartość logiczną, a następnie ją neguje.
+
+```javascript
+// Prawa  de'Morgana
+!(p && q) === (!p || !q) // => true: dla wszystkich wartości p i q.
+!(p || q) === (!p && !q) // => true: dla wszystkich wartości p i q.
+```
+
+### Skrócona metoda wyznaczania wartości wyrażeń logicznych
+
+Operatory logiczne `&&` i `||` <u>w szczególny sposób działają na wartościach różnego typu</u>. Wartość znajdującą się
+po lewej stronie konwertują na typ logiczny, aby zdecydować, co robić dalej, ale w zależności od wyniku tej konwersji
+mogą <u>zwrócić pierwotną wartość z lewej strony lub wartość z prawej strony</u>.
+
+Na przykład operator `||` zwróci wartość znajdującą się po jego lewej stronie, jeśli wartość tę można przekonwertować
+na `true`, oraz wartość z prawej strony w przeciwnym przypadku.
+
+```javascript
+console.log(null || "użytkownik") // => użytkownik
+console.log("Karol" || "użytkownik") // => Karol
+```
+
+```javascript
+0 || -1 // => -1
+'' || '!?' // => '!?'
+```
+
+Operator `&&` działa podobnie, tylko odwrotnie. Gdy po lewej stronie znajduje się coś o wartości `false`, to zostaje
+zwrócona ta wartość. W przeciwnym razie następuje zwrot wartości znajdującej się po prawej stronie.
+
+Cechą tych dwóch operatorów jest to, że wyrażenie znajdujące się po prawej stronie jest obliczane tylko wtedy, gdy jest
+to konieczne. W wyrażeniu `true || X` nie ma znaczenia, jaka jest wartość `X`, ponieważ wartością całego tego wyrażenia
+i tak będzie `true`, a wartość `X` nie zostanie w ogóle obliczona.
+
+To samo dotyczy wyrażenia `false && X`. Jego wartością zawsze będzie `false`, a `X` zostanie zignorowany. Nazywa się to
+skróconym obliczaniem warunków logicznych (ang. `short-circuit evaluation`).
+
+Podobnie działa też operator warunkowy. Pierwsze wyrażenie jest zawsze obliczane, natomiast spośród drugiego i trzeciego
+obliczane jest tylko to, które zostanie wybrane.
 
 
 ## Inne operatory
