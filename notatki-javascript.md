@@ -412,13 +412,13 @@ Przykłady literałów:
 
 ```javascript
 123 - // dodatnia całkowita wartość dziesiętna 123
-123; // ujemna całkowita wartość dziesiętna -123
+  123; // ujemna całkowita wartość dziesiętna -123
 012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
-024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
+  024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
 0xff - // dodatnia całkowita wartość szesnastkowa = 255
-0x0f; //ujemna całk. wartość szes. = -15
+  0x0f; //ujemna całk. wartość szes. = -15
 2.12 - //  dodatnia wartość rzeczywista = 2.12
-3.14; // ujemna wartość rzeczywista = -3.14
+  3.14; // ujemna wartość rzeczywista = -3.14
 4.3e3; // dodatnia wartość rzeczywista = 4300
 2.3e-3; // dodatnia wartość rzeczywista = 0.0023
 ```
@@ -575,18 +575,18 @@ Number.POSITIVE_INFINITY; // Jak wyżej.
 1 / 0; // => Infinity
 
 Number.MAX_VALUE * 2 - // => Infinity; przepełnienie
-Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
+  Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
 Number.NEGATIVE_INFINITY - // Jak wyżej.
-1 / 0 - // => –Infinity
-Number.MAX_VALUE * 2; // => –Infinity
+  1 / 0 - // => –Infinity
+  Number.MAX_VALUE * 2; // => –Infinity
 NaN; // Wartość nieliczbowa.
 Number.NaN; // Wartość nieliczbowa zapisana w inny sposób.
 0 / 0; // => NaN
 Infinity / Infinity; // => NaN
 Number.MIN_VALUE / 2 - // => 0: niedomiar.
-Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
-1 / Infinity - // -> –0: również "ujemne zero".
-0;
+  Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
+  1 / Infinity - // -> –0: również "ujemne zero".
+  0;
 
 // Właściwości i metody obiektu Number zdefiniowane w wersji ES6:
 Number.parseInt(); // Odpowiednik globalnej funkcji parseInt().
@@ -858,14 +858,13 @@ W przypadku użycia grawisów podziały wierszy wchodzą w skład literału:
 'Jeden\
 długi\
 wiersz.' // Dwuwierszowy ciąg zapisany w dwóch wierszach:
-  `Znak podziału umieszczony na końcu tego wiersza
+`Znak podziału umieszczony na końcu tego wiersza
 jest częścią tego ciągu znaków.`;
 ```
 
 Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScripcie jednego stylu, a w HTML innego.
 
 ```html
-
 <button onclick="alert('Dziękuję')">Kliknij tutaj</button>
 ```
 
@@ -1023,15 +1022,15 @@ wartość `true`. Jeżeli wartość jest inna niż `4`, wynikiem porównania jes
 Drugi przykład:
 
 ```javascript
-console.log(3 > 2) // => true
-console.log(3 < 2) // => false
+console.log(3 > 2); // => true
+console.log(3 < 2); // => false
 ```
 
 Znaki `>` i `<` to odpowiednio symbole większości i mniejszości. Są to operatory binarne. Zwracają wartość logiczną
 oznaczającą, czy dane wyrażenie jest prawdziwe. Podobnie można porównywać łańcuchy:
 
 ```javascript
-console.log("Aardvark" < "Zoroaster") // => true
+console.log('Aardvark' < 'Zoroaster'); // => true
 ```
 
 Interpreter przegląda po kolei znaki od lewej i porównuje ich kody Unicode.
@@ -1039,7 +1038,7 @@ Interpreter przegląda po kolei znaki od lewej i porównuje ich kody Unicode.
 W języku JavaScript istnieje też jedna wartość, która nie jest równa nawet samej sobie — to `NaN` (nieliczba).
 
 ```javascript
-console.log(NaN == NaN) // => false
+console.log(NaN == NaN); // => false
 ```
 
 Wartość `NaN` służy do oznaczania wyników bezsensownych działań, więc wynik jednego bezsensownego działania nie jest
@@ -1049,12 +1048,11 @@ Każdą wartość w JavaScripcie można przekształcić w wartość logiczną. P
 jak wartość logiczna false:
 
 ```javascript
-undefined
-null
-0
-- 0
-NaN
-"" // Pusty ciąg znaków.
+undefined;
+null;
+0 - 0;
+NaN;
+(''); // Pusty ciąg znaków.
 undefined;
 null;
 0 - 0;
@@ -1072,7 +1070,6 @@ wartość inną niż null:
 
 ```javascript
 if (o !== null) {
-
 }
 ```
 
@@ -1080,7 +1077,6 @@ Operator można pominąć i wykorzystać fakt, że null jest wartością fałszy
 
 ```javascript
 if (o) {
-
 }
 ```
 
@@ -1130,8 +1126,6 @@ Wartość `undefined` można rozumieć jako systemowy, nieoczekiwany lub świadc
 
 Programiści raczej unikają stosowania tych wartości.
 
-
-
 <!--TODO-->
 
 ## Symbole
@@ -1153,11 +1147,11 @@ Programiści raczej unikają stosowania tych wartości.
 Interpreter JavaScript stara się wykonać prawie każdy podany mu program, nawet taki, który robi dziwne rzeczy. Np.:
 
 ```javascript
-console.log(8 * null) // => 0
-console.log("5" - 1) // => 4
-console.log("5" + 1) // => 51
-console.log("five" * 2) // => NaN
-console.log(false == 0) // => true
+console.log(8 * null); // => 0
+console.log('5' - 1); // => 4
+console.log('5' + 1); // => 51
+console.log('five' * 2); // => NaN
+console.log(false == 0); // => true
 ```
 
 Gdy operator zostanie zastosowany do wartości „niewłaściwego” typu, JavaScript przekonwertuje tę wartość na odpowiedni
@@ -1202,26 +1196,26 @@ operatorów dwuznakowych.
 2. Jeżeli oczekiwany jest ciąg znaków, dowolna zadana wartość zostanie przekształcona w ciąg.
 3. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w liczbę lub — jeżeli nie będzie to możliwe — w NaN.
 
-| Wartość | Konwersja na ciąg | Konwersja na liczbę | Konwersja na wartość logiczną |
-| ------- | ----------------- | ------------------- | ----------------------------- |
-| undefined  | "undefined" | NaN | false|
-| null | "null" | 0 | false |
-| true | "true" | 1 |  |
-|false | "false" | 0 |  |
-| "" (pusty ciąg znaków) |  | 0 | false
-| "1.2" (ciąg znaków zawierający liczbę) |  | 1.2 | true |
-| "jeden" (ciąg znaków niezawierający liczby) |  | NaN | true |
-| 0 | "0" |  | false |
-|-0 | "0" |  | false |
-| 1 (wartość skończona, różna od zera) | "1" |  | true |
-| Infinity | "Infinity" |  | true |
-| -Infinity | "-Infinity" |  | true |
-| NaN | "NaN" |  | false |
-| {} (dowolny obiekt) | Patrz punkt ... | Patrz punkt ... | true
-| [] (pusta tablica) | "" | 0 | true |
-| [9] (jeden element zawierający liczbę) | "9" | 9 | true |
-| ['a'] (element zawierający inną wartość) | Należy użyć metody join().| NaN | true |
-|funkcja() {} (dowolna funkcja) | Patrz punkt ... | NaN | true |
+| Wartość                                     | Konwersja na ciąg          | Konwersja na liczbę | Konwersja na wartość logiczną |
+| ------------------------------------------- | -------------------------- | ------------------- | ----------------------------- |
+| undefined                                   | "undefined"                | NaN                 | false                         |
+| null                                        | "null"                     | 0                   | false                         |
+| true                                        | "true"                     | 1                   |                               |
+| false                                       | "false"                    | 0                   |                               |
+| "" (pusty ciąg znaków)                      |                            | 0                   | false                         |
+| "1.2" (ciąg znaków zawierający liczbę)      |                            | 1.2                 | true                          |
+| "jeden" (ciąg znaków niezawierający liczby) |                            | NaN                 | true                          |
+| 0                                           | "0"                        |                     | false                         |
+| -0                                          | "0"                        |                     | false                         |
+| 1 (wartość skończona, różna od zera)        | "1"                        |                     | true                          |
+| Infinity                                    | "Infinity"                 |                     | true                          |
+| -Infinity                                   | "-Infinity"                |                     | true                          |
+| NaN                                         | "NaN"                      |                     | false                         |
+| {} (dowolny obiekt)                         | Patrz punkt ...            | Patrz punkt ...     | true                          |
+| [] (pusta tablica)                          | ""                         | 0                   | true                          |
+| [9] (jeden element zawierający liczbę)      | "9"                        | 9                   | true                          |
+| ['a'] (element zawierający inną wartość)    | Należy użyć metody join(). | NaN                 | true                          |
+| funkcja() {} (dowolna funkcja)              | Patrz punkt ...            | NaN                 | true                          |
 
 Ciągi znaków, które można interpretować jako liczby, są przekształcane w liczby. Dopuszczalne jest stosowanie
 przodujących i końcowych spacji, ale w przypadku użycia innych znaków niż cyfry wynikiem konwersji jest wartość NaN.
@@ -1237,10 +1231,10 @@ W JS są dwa operatory sprawdzające równość wartości.
 Poniższe porównania zwracają wartość true:
 
 ```javascript
-null == undefined // => true: te dwie wartości są traktowane jako równe.
-"0" == 0 // => true: ciąg znaków przed porównaniem jest przekształcany w liczbę.
-0 == false // => true: wartość logiczna przed porównaniem jest przekształcana w liczbę.
-"0" == false // => true: oba operandy przed porównaniem są przekształcane w liczby
+null == undefined; // => true: te dwie wartości są traktowane jako równe.
+'0' == 0; // => true: ciąg znaków przed porównaniem jest przekształcany w liczbę.
+0 == false; // => true: wartość logiczna przed porównaniem jest przekształcana w liczbę.
+'0' == false; // => true: oba operandy przed porównaniem są przekształcane w liczby
 ```
 
 Możliwość przekształcenia jednej wartości w inną nie oznacza ich równości. Na przykład wartość `undefined` użyta w
@@ -1413,9 +1407,9 @@ Powszechnie stosowaną (ale nie uniwersalną) konwencją jest używanie w nazwac
 >
 > 1. Tylko z wartościami, które nie mogą się zmieniać np. stałe fizyczne itp.
 > 2. Ze wszystkimi wartościami, które nie będą się zmieniać (wiele tzw. zmiennych nie jest modyfikowanych przez
-     > cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
-     > deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
-     > zmiennych.
+>    cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
+>    deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
+>    zmiennych.
 
 W pętli `for/in` i `for/of` dozwolone jest stosowanie instrukcji `const`, jeżeli tylko w ciele pętli takiej „zmiennej”
 nie jest przypisywana nowa wartość. W takim przypadku deklaracja stałej oznacza jedynie, że wartość pozostaje niezmienna
@@ -1565,6 +1559,7 @@ x; // => 4
 # Wyrażenia i operatory
 
 <!--TODO -->
+
 Wyrażenie to fraza, którą można wyliczyć i uzyskać wartość. Stała to wyrażenie, zmienna też, którego wynikiem jest
 wartość przypisana tej zmiennej.
 
@@ -1593,18 +1588,18 @@ Literały to stałe wartości wpisane bezpośrednio w kodzie programu, na przyk�
 Wyrażeniami podstawowymi są również niektóre zarezerwowane słowa:
 
 ```javascript
-true // Logiczna wartość "prawda".
-false // Logiczna wartość "fałsz".
-null // "Pusta" wartość.
-this // Wartość oznaczająca "bieżący" obiekt.
+true; // Logiczna wartość "prawda".
+false; // Logiczna wartość "fałsz".
+null; // "Pusta" wartość.
+this; // Wartość oznaczająca "bieżący" obiekt.
 ```
 
 Trzecim rodzajem wyrażenia podstawowego jest odwołanie do zmiennej, stałej lub do właściwości obiektu globalnego:
 
 ```javascript
-i // Wynikiem jest wartość zmiennej i.
-sum // Wynikiem jest wartość zmiennej sum.
-undefined // Wynikiem jest wartość właściwości "undefined" obiektu globalnego.
+i; // Wynikiem jest wartość zmiennej i.
+sum; // Wynikiem jest wartość zmiennej sum.
+undefined; // Wynikiem jest wartość właściwości "undefined" obiektu globalnego.
 ```
 
 Interpreter JavaScript traktuje każdy użyty w kodzie identyfikator jako zmienną, stałą lub właściwość obiektu globalnego
@@ -1621,14 +1616,17 @@ Inicjator tablicy jest listą wyrażeń oddzielonych przecinkami, umieszczoną w
 inicjatora jest nowa tablica elementów zainicjowanych wynikami oddzielonych przecinkami wyrażeń.
 
 ```javascript
-[] // Pusta tablica. Brak wyrażeń wewnątrz nawiasów oznacza, że tablica nie ma elementów.
-  [1 + 2, 3 + 4] // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
+[][(1 + 2, 3 + 4)]; // Pusta tablica. Brak wyrażeń wewnątrz nawiasów oznacza, że tablica nie ma elementów. // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
 ```
 
 Poszczególne wyrażenia inicjatora tablicy mogą być inicjatorami innych tablic:
 
 ```javascript
-let matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
 ```
 
 Jeżeli w literale tablicowym pominie się wartości rozdzielone przecinkami, wówczas elementy te nie zostaną zdefiniowane:
@@ -1639,12 +1637,12 @@ let sparseArray = [1, , , , 5];
 
 Inicjator obiektu stosuje nawiasy klamrowe, a każde podwyrażenie jest poprzedzone nazwą właściwości i dwukropkiem:
 
-````javascript
-let p = {x: 2.3, y: -1.2}; // Obiekt posiadający dwie właściwości.
+```javascript
+let p = { x: 2.3, y: -1.2 }; // Obiekt posiadający dwie właściwości.
 let q = {}; // Obiekt bez właściwości.
 q.x = 2.3;
 q.y = -1.2; // Obiekt q ma teraz te same właściwości co obiekt p.
-````
+```
 
 ## Wyrażenia definiujące funkcje
 
@@ -1678,42 +1676,42 @@ Operatory są stosowane w wyrażeniach arytmetycznych, porównujących, logiczny
 
 **Tabela** zawiera podsumowanie operatorów.
 
-| Operator | Operacja | W | L | Typy |
-| -------- | -------- | --- | --- | ----|
-| ++ | Pre- i postinkrementacja | P | 1 | l-wartość → liczba |
-| -- | Pre- i postdekrementacja | P | 1 | l-wartość → liczba |
-| - | Zmiana znaku liczby | P | 1 | liczba → liczba |
-| + | Konwersja na liczbę | P | 1 | dowolny → liczba |
-| ~ | Odwrócenie bitów | P | 1 | liczba całkowita → liczba całkowita |
-| ! | Negacja wartości logicznej | P | 1 | wart. logiczna → wart. logiczna |
-| delete | Usunięcie właściwości | P | 1 | l-wartość → wart. logiczna |
-| typeof | Określenie typu operandu | P | 1 | dowolny → ciąg znaków |
-| void | Zwrócenie pustej wartości | P | 1 | dowolny → undefined |
-| ** | Potęgowanie | P | 2 | liczba, liczba → liczba |
-| *, /, % | Mnożenie, dzielenie, reszta | L | 2 | liczba, liczba → liczba |
-| +, - | Dodawanie, odejmowanie | L | 2 | liczba, liczba → liczba |
-| + | Łączenie ciągów znaków | L | 2 | ciąg znaków, ciąg znaków → ciąg znaków |
-| << | Przesunięcie bitów w lewo | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| > > | Przesunięcie bitów w prawo z zachowaniem znaku | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| > > > | Przesunięcie bitów w prawo z uzupełnieniem zerami | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| <, <=, >, >= | Porównanie liczbowe | L | 2 | liczba, liczba → wart. logiczna |
-| <, <=, >, >= | Porównanie alfabetyczne | L | 2 | ciąg znaków, ciąg znaków → wart. logiczna |
-| instanceof | Określenie klasy obiektu | L | 2 | obiekt, funkcja → wart. logiczna |
-| in | Sprawdzenie istnienia właściwości | L | 2 | dowolny, obiekt → wart. logiczna |
-| == | Nieścisła równość | L | 2 | dowolny, dowolny → wart. logiczna |
-| != | Nieścisła nierówność | L | 2 | dowolny, dowolny → wart. logiczna |
-| === | Ścisła równość | L | 2 | dowolny, dowolny → wart. logiczna |
-| !== | Ścisła nierówność | L | 2 | dowolny, dowolny → wart. logiczna |
-| & | Bitowa operacja ORAZ | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| ^ | Bitowa różnica symetryczna | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| \| | Bitowa operacja LUB | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| && | Logiczna operacja ORAZ| L | 2 | dowolny, dowolny → dowolny |
-| \|\| | Logiczna operacja LUB | L | 2 | dowolny, dowolny → dowolny |
-| ?? | Wybranie pierwszego zdefiniowanego operandu | L | 2 | dowolny, dowolny → dowolny |
-| ?: | Wybranie drugiego lub trzeciego operandu | P | 3 | wart. logiczna, dowolny, dowolny → dowolny |
-| = | Przypisanie wartości zmiennej lub właściwości | P | 2 | l-wartość, dowolny → dowolny |
-| **=, *=, /=, %=, +=, -=, &=,<br>  ^=, \|=, <<=, >>=, >>>= |Wykonanie operacji  z przypisaniem wartości | P | 2 | l-wartość, dowolny → dowolny|
-| , | Pominięcie pierwszego operandu i zwrócenie drugiego | L | 2 | dowolny, dowolny → dowolny |
+| Operator                                                  | Operacja                                            | W   | L   | Typy                                                  |
+| --------------------------------------------------------- | --------------------------------------------------- | --- | --- | ----------------------------------------------------- |
+| ++                                                        | Pre- i postinkrementacja                            | P   | 1   | l-wartość → liczba                                    |
+| --                                                        | Pre- i postdekrementacja                            | P   | 1   | l-wartość → liczba                                    |
+| -                                                         | Zmiana znaku liczby                                 | P   | 1   | liczba → liczba                                       |
+| +                                                         | Konwersja na liczbę                                 | P   | 1   | dowolny → liczba                                      |
+| ~                                                         | Odwrócenie bitów                                    | P   | 1   | liczba całkowita → liczba całkowita                   |
+| !                                                         | Negacja wartości logicznej                          | P   | 1   | wart. logiczna → wart. logiczna                       |
+| delete                                                    | Usunięcie właściwości                               | P   | 1   | l-wartość → wart. logiczna                            |
+| typeof                                                    | Określenie typu operandu                            | P   | 1   | dowolny → ciąg znaków                                 |
+| void                                                      | Zwrócenie pustej wartości                           | P   | 1   | dowolny → undefined                                   |
+| \*\*                                                      | Potęgowanie                                         | P   | 2   | liczba, liczba → liczba                               |
+| \*, /, %                                                  | Mnożenie, dzielenie, reszta                         | L   | 2   | liczba, liczba → liczba                               |
+| +, -                                                      | Dodawanie, odejmowanie                              | L   | 2   | liczba, liczba → liczba                               |
+| +                                                         | Łączenie ciągów znaków                              | L   | 2   | ciąg znaków, ciąg znaków → ciąg znaków                |
+| <<                                                        | Przesunięcie bitów w lewo                           | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| > >                                                       | Przesunięcie bitów w prawo z zachowaniem znaku      | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| > > >                                                     | Przesunięcie bitów w prawo z uzupełnieniem zerami   | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| <, <=, >, >=                                              | Porównanie liczbowe                                 | L   | 2   | liczba, liczba → wart. logiczna                       |
+| <, <=, >, >=                                              | Porównanie alfabetyczne                             | L   | 2   | ciąg znaków, ciąg znaków → wart. logiczna             |
+| instanceof                                                | Określenie klasy obiektu                            | L   | 2   | obiekt, funkcja → wart. logiczna                      |
+| in                                                        | Sprawdzenie istnienia właściwości                   | L   | 2   | dowolny, obiekt → wart. logiczna                      |
+| ==                                                        | Nieścisła równość                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
+| !=                                                        | Nieścisła nierówność                                | L   | 2   | dowolny, dowolny → wart. logiczna                     |
+| ===                                                       | Ścisła równość                                      | L   | 2   | dowolny, dowolny → wart. logiczna                     |
+| !==                                                       | Ścisła nierówność                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
+| &                                                         | Bitowa operacja ORAZ                                | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| ^                                                         | Bitowa różnica symetryczna                          | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| \|                                                        | Bitowa operacja LUB                                 | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| &&                                                        | Logiczna operacja ORAZ                              | L   | 2   | dowolny, dowolny → dowolny                            |
+| \|\|                                                      | Logiczna operacja LUB                               | L   | 2   | dowolny, dowolny → dowolny                            |
+| ??                                                        | Wybranie pierwszego zdefiniowanego operandu         | L   | 2   | dowolny, dowolny → dowolny                            |
+| ?:                                                        | Wybranie drugiego lub trzeciego operandu            | P   | 3   | wart. logiczna, dowolny, dowolny → dowolny            |
+| =                                                         | Przypisanie wartości zmiennej lub właściwości       | P   | 2   | l-wartość, dowolny → dowolny                          |
+| \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P   | 2   | l-wartość, dowolny → dowolny                          |
+| ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L   | 2   | dowolny, dowolny → dowolny                            |
 
 ## Wyrażenia logiczne
 
@@ -1729,7 +1727,7 @@ Operator && można rozpatrywać w trzech różnych kontekstach:
    (koniunkcji) logicznego. Często jest stosowany do łączenia dwóch wyrażeń relacyjnych, na przykład:
 
 ```javascript
-x === 0 && y === 0 // true tylko wtedy, gdy zarówno x, jak i y są równe 0.
+x === 0 && y === 0; // true tylko wtedy, gdy zarówno x, jak i y są równe 0.
 ```
 
 Wynikiem wyrażenia relacyjnego jest zawsze wartość `true` lub `false`.
@@ -1742,10 +1740,10 @@ Wynikiem wyrażenia relacyjnego jest zawsze wartość `true` lub `false`.
    stronie:
 
 ```javascript
-let o = {x: 1};
+let o = { x: 1 };
 let p = null;
-o && o.x // => 1: o ma wartość prawdziwą, więc operator zwraca wartość o.x.
-p && p.x // => null: p ma wartość fałszywą, więc operator nie wylicza wartości p.x.
+o && o.x; // => 1: o ma wartość prawdziwą, więc operator zwraca wartość o.x.
+p && p.x; // => null: p ma wartość fałszywą, więc operator nie wylicza wartości p.x.
 ```
 
 Należy zachowywać ostrożność, tworząc wyrażenia z operatorem `&&` i operandem po prawej stronie wywołującym skutki
@@ -1766,14 +1764,14 @@ fakt, że nie zawsze wartość takiego operandu jest wyliczana.
 W wersjach języka starszych niż ES6 poniższy zapis był często stosowany w funkcjach do nadawania parametrom domyślnych
 wartości:
 
-````javascript
+```javascript
 // Kopiowanie właściwości obiektu o do p i zwrócenie p.
 
 function copy(o, p) {
   p = p || {}; // Jeżeli parametr p jest pusty, użyj nowo utworzonego obiektu.
   // Ciało funkcji.
 }
-````
+```
 
 Od wersji ES6, domyślnie wartości parametrów można wprost określić w definicji funkcji, na przykład:
 
@@ -1791,8 +1789,8 @@ Operator `!` jest operatorem jednoargumentowym umieszczanym przed operandem. Neg
 
 ```javascript
 // Prawa  de'Morgana
-!(p && q) === (!p || !q) // => true: dla wszystkich wartości p i q.
-!(p || q) === (!p && !q) // => true: dla wszystkich wartości p i q.
+!(p && q) === (!p || !q); // => true: dla wszystkich wartości p i q.
+!(p || q) === (!p && !q); // => true: dla wszystkich wartości p i q.
 ```
 
 ### Skrócona metoda wyznaczania wartości wyrażeń logicznych
@@ -1805,13 +1803,13 @@ Na przykład operator `||` zwróci wartość znajdującą się po jego lewej str
 na `true`, oraz wartość z prawej strony w przeciwnym przypadku.
 
 ```javascript
-console.log(null || "użytkownik") // => użytkownik
-console.log("Karol" || "użytkownik") // => Karol
+console.log(null || 'użytkownik'); // => użytkownik
+console.log('Karol' || 'użytkownik'); // => Karol
 ```
 
 ```javascript
-0 || -1 // => -1
-'' || '!?' // => '!?'
+0 || -1; // => -1
+'' || '!?'; // => '!?'
 ```
 
 Operator `&&` działa podobnie, tylko odwrotnie. Gdy po lewej stronie znajduje się coś o wartości `false`, to zostaje
@@ -1826,7 +1824,6 @@ skróconym obliczaniem warunków logicznych (ang. `short-circuit evaluation`).
 
 Podobnie działa też operator warunkowy. Pierwsze wyrażenie jest zawsze obliczane, natomiast spośród drugiego i trzeciego
 obliczane jest tylko to, które zostanie wybrane.
-
 
 ## Inne operatory
 
@@ -1893,6 +1890,37 @@ sprawdzeniem, inkrementowana lub modyfikowana w inny sposób.
 
 ## Wprowadzenie do obiektów
 
+Obiekt jest to kolekcją właściwości ułożonych bez określonego porządku, z których każda ma nazwę i wartość. Nazwy
+właściwości są zazwyczaj ciągami znaków, aczkolwiek, mogą być również symbolami. Obiekt przypomina prostą mapę
+„ciąg znaków-wartość” może także dziedziczyć właściwości po innym obiekcie, tzw. prototypie. Metody obiektu są
+zazwyczaj odziedziczonymi właściwościami.
+
+Obiekty w języku JavaScript są dynamiczne, tzn. ich właściwości można dodawać i usuwać. Mogą też
+funkcjonować tak jak obiekty statyczne lub struktury w językach statycznie typowanych, a także
+reprezentować zbiory ciągów znaków.
+
+W JS obiektem jest każda wartość, która nie jest ciągiem znaków, liczbą, symbolem,
+wartością logiczną, null i undefined. Natomiast ciągi znaków, liczby i listingi logiczne mogą
+funkcjonować jak niemutowalne obiekty.
+
+Obiekty są mutowalne i operuje się na ich referencjach, a nie wartościach.
+Załóżmy, że zmienna x odwołuje się do obiektu. Instrukcja let y = x; powoduje, że
+zmiennej y jest przypisywana referencja do tego obiektu, a nie sam obiekt. W efekcie wszystkie
+modyfikacje wprowadzone w zmiennej y są odzwierciedlane w zmiennej x.
+
+**Właściwość** ma nazwę i wartość. Nazwą może być dowolny ciąg znaków (również pusty) lub symbol.
+Wartość właściwości może być dowolna, jak również dowolne mogą być funkcje getter lub setter (lub obie).
+
+Czasami trzeba rozróżniać właściwości zdefiniowane bezpośrednio w obiekcie od odziedziczonych
+po prototypie. W języku JavaScript właściwości nieodziedziczone określa się mianem **własnych
+właściwości**.
+
+Każda właściwość, oprócz nazwy i wartości, posiada trzy atrybuty:
+
+1. Atrybut „zapisywalna” określający, czy właściwości można przypisywać wartość.
+2. Atrybut „wyliczalna” określający, czy nazwa właściwości może być odczytywana za pomocą pętli for/in.
+3. Atrybut „konfigurowalna” określający, czy właściwość można usunąć oraz czy można zmieniać jej atrybuty.
+
 ## Tworzenie obiektów
 
 Obiekt można utworzyć za pomocą:
@@ -1902,3 +1930,30 @@ Obiekt można utworzyć za pomocą:
 - funkcji `Object.create()`
 
 ### Literały obiektowe
+
+Literał w najbardziej podstawowej postaci jest listą oddzielonych przecinkami par _nazwa:wartość_ umieszczoną w
+nawiasach klamrowych. Nazwa właściwości jest identyfikatorem lub literałem tekstowym (dopuszczalny jest też pusty ciąg
+znaków). Wartością właściwości jest dowolne wyrażenie, wartość prymitywna lub obiekt.
+
+```javascript
+let empty = {}; // Obiekt bez właściwości.
+
+let point = { x: 0, y: 0 }; // Dwie właściwości liczbowe.
+
+let p2 = { x: point.x, y: point.y + 1 }; // Bardziej złożone wartości.
+
+let book = {
+  'main title': 'JavaScript', // Nazwy właściwości zawierają spację
+  'sub-title': 'Komletny przewodnik dla każdego', // i myślnik, więc muszą być literałami tekstowymi.
+
+  author: {
+    // Wartość tej właściwości jest obiektem.
+    firstname: 'David',
+    surname: 'Flanagan',
+  },
+};
+```
+
+### Tworzenie obiektów za pomocą operatora new
+
+### Prototypy
