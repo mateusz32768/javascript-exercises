@@ -412,13 +412,13 @@ Przykłady literałów:
 
 ```javascript
 123 - // dodatnia całkowita wartość dziesiętna 123
-123; // ujemna całkowita wartość dziesiętna -123
+  123; // ujemna całkowita wartość dziesiętna -123
 012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
-024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
+  024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
 0xff - // dodatnia całkowita wartość szesnastkowa = 255
-0x0f; //ujemna całk. wartość szes. = -15
+  0x0f; //ujemna całk. wartość szes. = -15
 2.12 - //  dodatnia wartość rzeczywista = 2.12
-3.14; // ujemna wartość rzeczywista = -3.14
+  3.14; // ujemna wartość rzeczywista = -3.14
 4.3e3; // dodatnia wartość rzeczywista = 4300
 2.3e-3; // dodatnia wartość rzeczywista = 0.0023
 ```
@@ -575,18 +575,18 @@ Number.POSITIVE_INFINITY; // Jak wyżej.
 1 / 0; // => Infinity
 
 Number.MAX_VALUE * 2 - // => Infinity; przepełnienie
-Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
+  Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
 Number.NEGATIVE_INFINITY - // Jak wyżej.
-1 / 0 - // => –Infinity
-Number.MAX_VALUE * 2; // => –Infinity
+  1 / 0 - // => –Infinity
+  Number.MAX_VALUE * 2; // => –Infinity
 NaN; // Wartość nieliczbowa.
 Number.NaN; // Wartość nieliczbowa zapisana w inny sposób.
 0 / 0; // => NaN
 Infinity / Infinity; // => NaN
 Number.MIN_VALUE / 2 - // => 0: niedomiar.
-Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
-1 / Infinity - // -> –0: również "ujemne zero".
-0;
+  Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
+  1 / Infinity - // -> –0: również "ujemne zero".
+  0;
 
 // Właściwości i metody obiektu Number zdefiniowane w wersji ES6:
 Number.parseInt(); // Odpowiednik globalnej funkcji parseInt().
@@ -858,14 +858,13 @@ W przypadku użycia grawisów podziały wierszy wchodzą w skład literału:
 'Jeden\
 długi\
 wiersz.' // Dwuwierszowy ciąg zapisany w dwóch wierszach:
-  `Znak podziału umieszczony na końcu tego wiersza
+`Znak podziału umieszczony na końcu tego wiersza
 jest częścią tego ciągu znaków.`;
 ```
 
 Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScripcie jednego stylu, a w HTML innego.
 
 ```html
-
 <button onclick="alert('Dziękuję')">Kliknij tutaj</button>
 ```
 
@@ -1408,9 +1407,9 @@ Powszechnie stosowaną (ale nie uniwersalną) konwencją jest używanie w nazwac
 >
 > 1. Tylko z wartościami, które nie mogą się zmieniać np. stałe fizyczne itp.
 > 2. Ze wszystkimi wartościami, które nie będą się zmieniać (wiele tzw. zmiennych nie jest modyfikowanych przez
-     > cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
-     > deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
-     > zmiennych.
+>    cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
+>    deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
+>    zmiennych.
 
 W pętli `for/in` i `for/of` dozwolone jest stosowanie instrukcji `const`, jeżeli tylko w ciele pętli takiej „zmiennej”
 nie jest przypisywana nowa wartość. W takim przypadku deklaracja stałej oznacza jedynie, że wartość pozostaje niezmienna
@@ -1639,7 +1638,7 @@ let sparseArray = [1, , , , 5];
 Inicjator obiektu stosuje nawiasy klamrowe, a każde podwyrażenie jest poprzedzone nazwą właściwości i dwukropkiem:
 
 ```javascript
-let p = {x: 2.3, y: -1.2}; // Obiekt posiadający dwie właściwości.
+let p = { x: 2.3, y: -1.2 }; // Obiekt posiadający dwie właściwości.
 let q = {}; // Obiekt bez właściwości.
 q.x = 2.3;
 q.y = -1.2; // Obiekt q ma teraz te same właściwości co obiekt p.
@@ -1652,7 +1651,7 @@ inicjator obiektu jest literałem obiektowym:
 
 ```javascript
 // Funkcja zwracająca kwadrat argumentu.
-let square = function (x) {
+const square = function (x) {
   return x * x;
 };
 ```
@@ -1661,13 +1660,56 @@ Wyrażenie definiujące funkcję może również zawierać jej nazwę.
 
 ## Wyrażenia dostępu do właściwości <!-- TODO -->
 
+Wynikiem **wyrażenia dostępu do właściwości** jest wartość właściwości obiektu lub elementu tablicy.
+Język JavaScript definiuje dwie składnie dostępu do właściwości:
+
+```javascript
+wyrażenie.identyfikator;
+wyrażenie[wyrażenie];
+```
+
+Wyrażenie określa obiekt, a identyfikator nazwę żądanej właściwości. Druga składnia to wyrażenie (obiekt
+lub tablica) z następującym po nim drugim wyrażeniem umieszczonym wewnątrz nawiasów kwadratowych. Wyrażenie to określa 
+nazwę żądanej właściwości lub indeks żądanego elementu tablicy.
+
+```javascript
+let object = {x: 1, y: {z: 3}}; // Przykładowy obiekt.
+let a = [object, 4, [5, 6]]; // Przykładowa tablica zawierająca obiekt.
+object.x // => 1: właściwość x wyrażenia object.
+object.y.z // => 3: właściwość z wyrażenia object.y.
+object["x"] // => 1: właściwość x obiektu object.
+a[1] // => 4: element o indeksie 1 wyrażenia a.
+a[2]["1"] // => 6: element o indeksie 1 wyrażenia a[2].
+a[0].x // => 1: właściwość x wyrażenia a[0].
+```
+
+W obu składniach najpierw wyliczany jest wynik wyrażenia umieszczonego przed kropką lub
+otwierającym nawiasem kwadratowym. Jeżeli wynikiem jest wartość null lub undefined, zgłaszany
+jest wyjątek TypeError, ponieważ żadna z tych wartości nie ma właściwości. 
+
+1. Jeżeli po wyrażeniu obiektu znajduje się kropka i identyfikator, odczytywana jest wartość właściwości o nazwie takiej
+jak identyfikator, która staje się wynikiem całego wyrażenia. 
+2. Jeżeli po wyrażeniu obiektu znajduje się inne wyrażenie umieszczone wewnątrz nawiasów kwadratowych, wyliczany jest jego
+wynik, przekształcany następnie w ciąg znaków. Ostatecznym wynikiem wyrażenia jest wartość właściwości
+o nazwie takiej jak uzyskany ciąg. 
+
+W obu składniach, w przypadku braku właściwości o zadanej nazwie, wynikiem wyrażenia dostępu do właściwości jest undefined.
+
+
+
+### Warunkowy dostęp do właściwości
+
 W wersji ES2020 zostały wprowadzone dwa nowe rodzaje wyrażeń dostępu do właściwości:
 
 ```javascript
-wyrażenie ?. identyfikator
-wyrażenie ?.[ wyrażenie ]
+wyrażenie?.identyfikator;
+wyrażenie?.[wyrażenie];
 ```
 
+Wartości null i undefined są jedynymi wartościami w języku JavaScript, które nie mają właściwości.
+W ich przypadku próba odwołania się do właściwości za pomocą kropki lub nawiasów [] skutkuje
+zgłoszeniem wyjątku TypeError. Aby uchronić się przed takimi sytuacjami, można użyć
+notacji ?. lub ?.[].
 
 
 
@@ -1749,7 +1791,7 @@ Wynikiem wyrażenia relacyjnego jest zawsze wartość `true` lub `false`.
    stronie:
 
 ```javascript
-let o = {x: 1};
+let o = { x: 1 };
 let p = null;
 o && o.x; // => 1: o ma wartość prawdziwą, więc operator zwraca wartość o.x.
 p && p.x; // => null: p ma wartość fałszywą, więc operator nie wylicza wartości p.x.
@@ -1936,16 +1978,16 @@ Obiekt można utworzyć za pomocą:
 
 ### Literały obiektowe
 
-Literał w najbardziej podstawowej postaci jest listą oddzielonych przecinkami par *nazwa:wartość* umieszczoną w
+Literał w najbardziej podstawowej postaci jest listą oddzielonych przecinkami par _nazwa:wartość_ umieszczoną w
 nawiasach klamrowych. Nazwa właściwości jest identyfikatorem lub literałem tekstowym (dopuszczalny jest też pusty ciąg
 znaków). Wartością właściwości jest dowolne wyrażenie, wartość prymitywna lub obiekt.
 
 ```javascript
 let empty = {}; // Obiekt bez właściwości.
 
-let point = {x: 0, y: 0}; // Dwie właściwości liczbowe.
+let point = { x: 0, y: 0 }; // Dwie właściwości liczbowe.
 
-let p2 = {x: point.x, y: point.y + 1}; // Bardziej złożone wartości.
+let p2 = { x: point.x, y: point.y + 1 }; // Bardziej złożone wartości.
 
 let book = {
   'main title': 'JavaScript', // Nazwy właściwości zawierają spację
@@ -1974,7 +2016,7 @@ po prototypie `Date.prototype`.
 Właściwość `Object.prototype` jest obiektem, który nie ma prototypu, tzn. nie dziedziczy właściwości po żadnym innym
 obiekcie. Większość wbudowanych i zdefiniowanych konstruktorów ma prototyp odziedziczony po obiekcie `Object.prototype`.
 (np. obiekt `Date.prototype`). Zatem obiekt utworzony za pomocą instrukcji `new Date()` dziedziczy właściwości zarówno
-po obiekcie `Date.prototype``, jak i `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha prototypów**
+po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha prototypów**
 .
 
 ### Funkcja Object.create()
@@ -1982,8 +2024,8 @@ po obiekcie `Date.prototype``, jak i `Object.prototype`. Seria połączonych pro
 Funkcja `Object.create()` tworzy nowy obiekt. Jej pierwszym argumentem jest prototyp obiektu:
 
 ```javascript
-let object = Object.create({x: 1, y: 2}); // Obiekt object dziedziczy właściwości x i y.
-object.x + object.y
+let object = Object.create({ x: 1, y: 2 }); // Obiekt object dziedziczy właściwości x i y.
+object.x + object.y;
 ```
 
 ```javascript
@@ -1994,7 +2036,7 @@ Funkcji `Object.create()` używa się wtedy, gdy trzeba zabezpieczyć obiekt prz
 funkcje biblioteczne.
 
 ```javascript
-let o = {x: "Nie zmieniaj tej właściwości."};
+let o = { x: 'Nie zmieniaj tej właściwości.' };
 library.function(Object.create(o)); // Zabezpieczenie przed przypadkowymi modyfikacjami
 ```
 
@@ -2011,14 +2053,14 @@ Po lewej stronie operatora musi znajdować się wyrażenie, którego wartością
 ```javascript
 let author = book.author; // Odczytanie wartości właściwości "author" obiektu book.
 let name = author.surname; // Odczytanie wartości właściwości "surname" obiektu author.
-let title = book["main title"]; // Odczytanie wartości właściwości "main title" obiektu book.
+let title = book['main title']; // Odczytanie wartości właściwości "main title" obiektu book.
 ```
 
 Tych samych operatorów używamy do utworzenia lub ustawienia właściwości.
 
 ```javascript
 book.edition = 7; // Utworzenie właściwości "edition" obiektu book.
-book["main title"] = "ECMAScript"; // Zmiana wartości właściwości "main title".
+book['main title'] = 'ECMAScript'; // Zmiana wartości właściwości "main title".
 ```
 
 ### Obiekty jako tablice asocjacyjne
@@ -2026,8 +2068,8 @@ book["main title"] = "ECMAScript"; // Zmiana wartości właściwości "main titl
 Dwa poniższe wyrażenia mają tę samą wartość:
 
 ```javascript
-obiekt.właściwość
-obiekt["właściwość"]
+obiekt.właściwość;
+obiekt['właściwość'];
 ```
 
 Pierwsza składnia, z kropką i identyfikatorem, jest podobna do stosowanej w językach C i Java do odwoływania się do
@@ -2056,7 +2098,8 @@ Poniżej pokazany jest przykład wykorzystania pętli `for/in` do wyliczenia ca�
 ```javascript
 function computeValue(portfolio) {
   let total = 0.0;
-  for (let stock in portfolio) { // Dla każdej akcji w portfelu:
+  for (let stock in portfolio) {
+    // Dla każdej akcji w portfelu:
     let shares = portfolio[stock]; // odczytaj ich liczbę,
     let price = getQuote(stock); // pobierz cenę,
     total += shares * price; // dodaj wartość do sumy.
@@ -2085,7 +2128,7 @@ p.y = 2; // Od teraz ma również własną właściwość y.
 let q = Object.create(p); // Obiekt q dziedziczy właściwości po obiektach p, object …
 q.z = 3; // … i Object.prototype, jak również ma własną właściwość z.
 let f = q.toString(); // Metoda toString() jest dziedziczona po obiekcie Object.prototype.
-q.x + q.y // => 3; właściwości x i y są dziedziczone po obiektach object i p.
+q.x + q.y; // => 3; właściwości x i y są dziedziczone po obiektach object i p.
 ```
 
 Teraz załóżmy, że właściwości `x` w obiekcie o została przypisana jakaś wartość. Jeżeli obiekt ten miał wcześniej
@@ -2097,14 +2140,14 @@ przesłonięta przez nową właściwość o takiej samej nazwie.
 jest kluczową funkcjonalnością języka JavaScript, umożliwiającą selektywne nadpisywanie dziedziczonych właściwości:
 
 ```javascript
-const unitcircle = {r: 1}; // Obiekt, po którym są dziedziczone właściwości.
+const unitcircle = { r: 1 }; // Obiekt, po którym są dziedziczone właściwości.
 
 const c = Object.create(unitcircle); // Obiekt c dziedziczy właściwość r.
 c.x = 1;
 c.y = 1; // W obiekcie c są definiowane dwie własne właściwości.
 c.r = 2; // W obiekcie c jest nadpisywana odziedziczona właściwość.
 
-unitcircle.r // => 1: prototyp nie jest modyfikowany.
+unitcircle.r; // => 1: prototyp nie jest modyfikowany.
 ```
 
 > Niemal wszystkie obiekty mają swoje prototypy, ale większość z nich nie ma właściwości o nazwie prototype.
@@ -2118,7 +2161,7 @@ właściwości `x`, to odwołujące się do niej wyrażenie ma wartość `undefi
 nazwie `sub-title`, ale nie o nazwie `subtitle`:
 
 ```javascript
-book.subtitle // => undefined: właściwość nie istnieje.
+book.subtitle; // => undefined: właściwość nie istnieje.
 ```
 
 Błędem jest natomiast próba odpytania właściwości nieistniejącego obiektu. Wartości null i undefined nie mają
