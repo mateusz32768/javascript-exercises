@@ -2,10 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="234fb0c1-af76-41fe-ac1e-d3d064509d21" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/bigInt.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/bigInt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/data-types.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/data-types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/declaration.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/declaration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/destructuring-assignments.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/destructuring-assignments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/keywordVar.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/keywordVar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/nan.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/nan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/null.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/null.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/numberOne.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/numberOne.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/numbers.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/numbers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/strings/strings.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/strings/strings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/type-conversions/conversions.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/type-conversions/conversions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-types-variables/types/undefined.js" beforeDir="false" afterPath="$PROJECT_DIR$/3. data-types-variables/types/undefined.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/introduction/introduction.js" beforeDir="false" afterPath="$PROJECT_DIR$/1. introduction/introduction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lexical-structure/reserved-words/keywords.js" beforeDir="false" afterPath="$PROJECT_DIR$/2. lexical-structure/reserved-words/keywords.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old directories/eduweb/eduwebpractice/regexr/js/scripts.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/old directories/eduweb/eduwebpractice/regexr/js/scripts.min.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +36,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTCustomThemeConfigurable" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -34,7 +47,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622864868803</updated>
-      <workItem from="1622864870531" duration="82000" />
+      <workItem from="1622864870531" duration="876000" />
     </task>
     <servers />
   </component>

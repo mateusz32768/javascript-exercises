@@ -86,7 +86,7 @@ function main() {
   };
 
   // Here's where we call the routine that builds all the
-  // objects we'll be drawing.
+  // 6. objects we'll be drawing.
   const buffers = initBuffers(gl);
 
   const texture = loadTexture(gl, 'cubetexture.png');
@@ -359,7 +359,7 @@ function drawScene(gl, programInfo, buffers, texture, deltaTime) {
   // used to simulate the distortion of perspective in a camera.
   // Our field of view is 45 degrees, with a width/height
   // ratio that matches the display size of the canvas
-  // and we only want to see objects between 0.1 units
+  // and we only want to see 6. objects between 0.1 units
   // and 100 units away from the camera.
 
   const fieldOfView = 45 * Math.PI / 180;   // in radians
