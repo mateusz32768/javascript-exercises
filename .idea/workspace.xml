@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e57a56e9-94f6-41bc-a563-7b311b0f19ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/objects/prototype/prototype.js" afterDir="false" />
+    <list default="true" id="234fb0c1-af76-41fe-ac1e-d3d064509d21" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notatki-javascript.md" beforeDir="false" afterPath="$PROJECT_DIR$/notatki-javascript.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/objects/create/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/objects/create/create.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1tH360iDgO9CZ4G6UfO6csY5tV3" />
+  <component name="ProjectId" id="1tVqzfdzxCb3ncceGrmz4kZMFl4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -31,33 +24,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <property name="settings.editor.selected.configurable" value="MTCustomThemeConfigurable" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e57a56e9-94f6-41bc-a563-7b311b0f19ac" name="Default Changelist" comment="" />
-      <created>1622266701487</created>
+      <changelist id="234fb0c1-af76-41fe-ac1e-d3d064509d21" name="Default Changelist" comment="" />
+      <created>1622864868803</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1622266701487</updated>
-      <workItem from="1622266702806" duration="18629000" />
-      <workItem from="1622412011754" duration="141000" />
-      <workItem from="1622507721264" duration="10609000" />
+      <updated>1622864868803</updated>
+      <workItem from="1622864870531" duration="82000" />
     </task>
     <servers />
   </component>
