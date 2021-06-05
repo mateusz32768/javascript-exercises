@@ -1128,13 +1128,90 @@ Programiści raczej unikają stosowania tych wartości.
 
 <!--TODO-->
 
-## Symbole
+## Symbole <!--TODO-->
 
-<!--TODO-->
+Symbole zostały wprowadzone w wersji ES6, aby można było stosować nietekstowe nazwy właściwości. Fundamentalny typ
+`Object` jestnieuporządkowaną kolekcją właściwości, z których każda ma nazwę i wartość. Nazwami właściwości są
+ciągi znaków. Począwszy od wersji ES6 nazwami mogą być również symbole, jak niżej:
 
-## Obiekt globalny
+```javascript
+const strname = 'string name'; // Ciąg pełniący rolę nazwy właściwości.
+const symname = Symbol('propname'); // Symbol pełniący rolę nazwy właściwości.
+typeof strname; // => "string": jest ciągiem znaków.
+typeof symname; // => "symbol": symname jest symbolem.
 
-<!--TODO-->
+const object = {}; // Utworzenie nowego obiektu.
+
+object[strname] = 1; // Zdefiniowanie właściwości o nazwie określonej za pomocą ciągu znaków.
+object[symname] = 2; // Zdefiniowanie właściwości o nazwie określonej za pomocą symbolu.
+object[strname]; // => 1: odwołanie do właściwości o nazwie określonej za pomocą ciągu znaków.
+object[symname]; // => 2: odwołanie do właściwości o nazwie określonej za pomocą symbolu.
+```
+
+Typ `Symbol` nie ma składni literału. Aby uzyskać wartość typu Symbol, należy wywołać funkcję
+`Symbol()`. Funkcja ta nigdy nie zwraca dwa razy tej samej wartości, nawet jeżeli zostanie wywołana
+z tym samym argumentem. Oznacza to, że wartość typu `Symbol` uzyskaną za pomocą funkcji
+`Symbol()` można bezpiecznie traktować jako nazwę właściwości, bez obawy ze zostanie nadpisana.
+
+W praktyce symbole traktuje się jako mechanizm rozszerzający język. Gdy w wersji ES6 została
+wprowadzona pętla `for/of` i obiekty iterowalne , pojawiła się
+potrzeba definiowania standardowych metod, które można byłoby implementować w klasach,
+aby były iterowalne. `Symbol.iterator` jest wartością typu Symbol, której używa się jako nazwy metody,
+aby obiekt był iterowalny.
+
+Funkcja `Symbol()` ma opcjonalny argument tekstowy i zwraca unikatową wartość typu `Symbol`.
+Jeżeli argument ten zostanie określony, jego wartość zostanie umieszczona w wyniku zwracanym
+przez metodę `toString()` symbolu.
+
+```javascript
+let s = Symbol("sym_x");
+s.toString() // => "Symbol(sym_x)"
+```
+
+Czasami jednak zdefiniowana wartość typu Symbol musi być szeroko dostępna w kodzie. Tak jest na
+przykład w sytuacji, gdy w definiowanym rozszerzeniu powinien być uwzględniony inny kod niż
+w opisanym wcześniej iteratorze `Symbol.iterator`.
+
+Na wypadki takie jak powyższy zdefiniowany jest globalny rejestr symboli. Jest dostępna metoda
+`Symbol.for()`, której argumentem jest ciąg znaków, a zwracanym wynikiem skojarzona z nim
+wartość typu `Symbol`.
+
+```javascript
+let s = Symbol.for("shared");
+let t = Symbol.for("shared");
+s === t // => true
+s.toString() // => "Symbol(shared)"
+Symbol.keyFor(t) // => "shared"
+```
+
+
+## Obiekt globalny <!--TODO-->
+
+Obiekt globalny jest to zwykły obiekt, którego właściwości są globalnymi identyfikatorami.
+Interpreter JavaScriptu zaraz po uruchomieniu (lub przeglądarka po załadowaniu strony) tworzy
+nowy obiekt globalny z początkowym zestawem właściwości definiujących:
+
+* globalne stałe, m.in. undefined, Infinity i NaN;
+* globalne funkcje, m.in. isNaN(), parseInt() i eval();
+* funkcje konstruktorów klas, m.in. Date(), RegExp(), String(), Object() i Array();
+* globalne obiekty, m.in. Math i JSON.
+
+Właściwości obiektu globalnego nie są zarezerwowanymi słowami, ale zasługują na to, aby je
+jako takie traktować.
+
+W środowisku `Node` obiekt globalny posiada właściwość o nazwie `global`, którego właściwością jest
+sam obiekt globalny. Dzięki temu w środowisku można odwoływać się do obiektu globalnego
+za pomocą tej nazwy.
+
+W przeglądarkach rolę obiektu globalnego dla całego kodu zawartego w oknie pełni obiekt `Window`.
+Posiada on właściwość `window` zawierającą odwołanie do samego siebie, jak również kilka innych
+podstawowych właściwości charakterystycznych dla danej przeglądarki i klienckiego skryptu
+JavaScriptu. Z wątkami roboczymi skojarzony jest inny niż `Window`
+globalny obiekt, do którego można odwoływać się za pomocą nazwy `self`.
+
+W wersji ES2020 została zdefiniowana uniwersalna nazwa `globalThis` oznaczająca globalny
+obiekt w każdym kontekście. Na początku roku 2020 nazwa ta była już zaimplementowana we
+wszystkich nowoczesnych przeglądarkach i w środowisku `Node`.
 
 ## Niemutowalne prymitywne wartości i mutowalne odwołania do obiektów
 
@@ -1669,33 +1746,31 @@ wyrażenie[wyrażenie];
 ```
 
 Wyrażenie określa obiekt, a identyfikator nazwę żądanej właściwości. Druga składnia to wyrażenie (obiekt
-lub tablica) z następującym po nim drugim wyrażeniem umieszczonym wewnątrz nawiasów kwadratowych. Wyrażenie to określa 
+lub tablica) z następującym po nim drugim wyrażeniem umieszczonym wewnątrz nawiasów kwadratowych. Wyrażenie to określa
 nazwę żądanej właściwości lub indeks żądanego elementu tablicy.
 
 ```javascript
-let object = {x: 1, y: {z: 3}}; // Przykładowy obiekt.
+let object = { x: 1, y: { z: 3 } }; // Przykładowy obiekt.
 let a = [object, 4, [5, 6]]; // Przykładowa tablica zawierająca obiekt.
-object.x // => 1: właściwość x wyrażenia object.
-object.y.z // => 3: właściwość z wyrażenia object.y.
-object["x"] // => 1: właściwość x obiektu object.
-a[1] // => 4: element o indeksie 1 wyrażenia a.
-a[2]["1"] // => 6: element o indeksie 1 wyrażenia a[2].
-a[0].x // => 1: właściwość x wyrażenia a[0].
+object.x; // => 1: właściwość x wyrażenia object.
+object.y.z; // => 3: właściwość z wyrażenia object.y.
+object['x']; // => 1: właściwość x obiektu object.
+a[1]; // => 4: element o indeksie 1 wyrażenia a.
+a[2]['1']; // => 6: element o indeksie 1 wyrażenia a[2].
+a[0].x; // => 1: właściwość x wyrażenia a[0].
 ```
 
 W obu składniach najpierw wyliczany jest wynik wyrażenia umieszczonego przed kropką lub
 otwierającym nawiasem kwadratowym. Jeżeli wynikiem jest wartość null lub undefined, zgłaszany
-jest wyjątek TypeError, ponieważ żadna z tych wartości nie ma właściwości. 
+jest wyjątek TypeError, ponieważ żadna z tych wartości nie ma właściwości.
 
 1. Jeżeli po wyrażeniu obiektu znajduje się kropka i identyfikator, odczytywana jest wartość właściwości o nazwie takiej
-jak identyfikator, która staje się wynikiem całego wyrażenia. 
+   jak identyfikator, która staje się wynikiem całego wyrażenia.
 2. Jeżeli po wyrażeniu obiektu znajduje się inne wyrażenie umieszczone wewnątrz nawiasów kwadratowych, wyliczany jest jego
-wynik, przekształcany następnie w ciąg znaków. Ostatecznym wynikiem wyrażenia jest wartość właściwości
-o nazwie takiej jak uzyskany ciąg. 
+   wynik, przekształcany następnie w ciąg znaków. Ostatecznym wynikiem wyrażenia jest wartość właściwości
+   o nazwie takiej jak uzyskany ciąg.
 
 W obu składniach, w przypadku braku właściwości o zadanej nazwie, wynikiem wyrażenia dostępu do właściwości jest undefined.
-
-
 
 ### Warunkowy dostęp do właściwości
 
@@ -1710,8 +1785,6 @@ Wartości null i undefined są jedynymi wartościami w języku JavaScript, któr
 W ich przypadku próba odwołania się do właściwości za pomocą kropki lub nawiasów [] skutkuje
 zgłoszeniem wyjątku TypeError. Aby uchronić się przed takimi sytuacjami, można użyć
 notacji ?. lub ?.[].
-
-
 
 ## Wyrażenia wywołujące
 
@@ -2192,3 +2265,89 @@ Za pomocą wprowadzonego w wersji języka ES2020 operatora warunkowego dostępu 
 ```javascript
 
 ```
+
+### Uproszczone definiowanie metod
+
+Funkcja zdefiniowana jako właściwość obiektu nosi nazwę **metody**. W wersjach starszych niż ES6 metody definiowało się w literale
+obiektowym tak samo jak właściwości, wykorzystując wyrażenia funkcyjne:
+
+```javascript
+let square = {
+  side: 10,
+  area: function () {
+    return this.side * this.side;
+  },
+};
+
+square.area(); // => 100
+```
+
+W wersji ES6 w składni literału obiektoweg można pominąć dwukropek wraz ze słowem kluczowym
+function.
+
+```javascript
+let square = {
+  area() {
+    return this.side * this.side;
+  },
+  side: 10,
+};
+
+square.area(); // => 100
+```
+
+Obie formy kodu są równorzędne.
+
+# Funkcje
+
+Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScripcie i niemal każdym innym języku.
+Inne rwnowane pojęcia to podprogramy (ang. _subroutine_) lub procedurami (ang. _procedure_).
+
+**Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną
+liczbę razy. Funkcje są **parametryczne**, tzn. w ich definicjach można umieszczać
+listy identyfikatorów — **parametrów** — pełniących w ciałach funkcji role lokalnych zmiennych.
+Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**. Wartości te są często
+wykorzystywane do wyliczania zwracanego **wyniku**, będącego wartością wyrażenia funkcyjnego.
+W każdym wywołaniu określany jest jeszcze jego **kontekst**, którego dane są przypisywane słowu
+kluczowemu **this**.
+
+Funkcja przypisana właściwości obiektu nosi nazwę **metody**. Obiekt, którego funkcja jest wywoływana,
+jest kontekstem i stanowi wartość słowa kluczowego **this**. Funkcja inicjująca nowo utworzony
+obiekt nazywa się **konstruktorem**.
+
+W języku JavaScript funkcje są obiektami, na których można wykonywać różne operacje, na przykład
+przypisywać je zmiennym, umieszczać w argumentach innych funkcji, przypisywać wartości
+ich właściwościom, a nawet wywoływać ich metody.
+
+Definicja funkcji może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej funkcji ma
+dostęp do wszystkich zmiennych zdefiniowanych w tym samym zasięgu co funkcja nadrzędna.
+Oznacza to, że funkcje są **domknięciami** (ang. _closure_) — ważnymi i przydatnymi konstrukcjami
+programistycznymi.
+
+## Definiowanie funkcji
+
+Najprościej funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować
+zarówno jako deklarację, jak i wyrażenie. Począwszy od wersji języka ES6 jest jeszcze jeden
+ważny sposób definiowania funkcji, bez użycia słowa kluczowego function — są to tzw. **funkcje
+strzałkowe**. Składnia definicji takiej funkcji jest bardzo zwięzła i szczególnie przydatna
+wtedy, gdy w argumencie funkcji trzeba umieścić inną funkcję.
+
+W literałach obiektowych i w klasach metody definiuje się, stosując skróconą składnię,
+Są to wyrażenia funkcyjne przypisywane właściwościom obiektu za pomocą literału _nazwa:wartość_. Oprócz tego w
+szczególnych przypadkach stosuje się w literałach obiektowych słowa kluczowe get i set definiujące gettery i settery.
+
+# JavaScript w przeglądarkach
+
+Internet jest dzisiaj funkcjonalną platformą do tworzenia aplikacji. Przeglądarki wyspecjalizowały się w prezentowaniu
+sformatowanego tekstu i obrazów, a dodatkowo, podobnie jak systemy operacyjne, oferują różne usługi, m.in. grafikę,
+wideo, audio, transmisję sieciową, magazynowanie i przetwarzanie danych. JavaScript jest językiem, dzięki któremu
+aplikacje internetowe mogą korzystać z usług oferowanych przez platformy WWW.
+
+Kliencki kod JavaScript” oznacza kod przystosowany do uruchamiania w przeglądarkach, będący przeciwieństwem
+kodu serwerowego, uruchamianego na serwerach WWW.
+
+## Podstawy programowania stron WWW
+
+### Kod JavaScript w znacznikach HTML <script> <!--TODO-->
+
+### Model DOM
