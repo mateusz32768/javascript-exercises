@@ -2361,7 +2361,19 @@ copy[0] = 0; // Modyfikacja kopii tablicy nie wpływa na oryginał.
 original[0] // => 1
 ```
 
+Operator rozciągania można stosować z każdym iterowalnym obiektem, tj. takim, który można iterować za pomocą pętli for/of. Ciągi znaków są iterowalne, zatem za pomocą operatora rozciągania można je przekształcać w tablice złożone z pojedynczych znaków:
 
+```javascript
+let digits = [..."0123456789ABCDEF"];
+digits // => ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
+```
+
+Zbiory również są iterowalne a więc prostym sposobem usunięcia z tablicy powtarzających się elementów jest przekształcenie jej w zbiór i z powrotem w tablicę za pomocą operatora rozciągania:
+
+```javascript
+let letters = [..."Witaj, świecie!"];
+[...new Set(letters)]  // => [ "W", "i", "t", "a", "j", ",", " ", "ś", "w", "e", "c", "!" ]
+```
 
 # 8. Funkcje
 
