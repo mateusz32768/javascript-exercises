@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="234fb0c1-af76-41fe-ac1e-d3d064509d21" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/7. Tablice/create/create.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notatki-javascript.md" beforeDir="false" afterPath="$PROJECT_DIR$/notatki-javascript.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/old directories/promise/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/old directories/promise/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +51,8 @@
       <workItem from="1625037649857" duration="4561000" />
       <workItem from="1625117447918" duration="116000" />
       <workItem from="1627001658165" duration="4444000" />
-      <workItem from="1627006233161" duration="1337000" />
+      <workItem from="1627006233161" duration="1477000" />
+      <workItem from="1627007893414" duration="3308000" />
     </task>
     <task id="LOCAL-00001" summary="Directory name changes">
       <created>1622866007031</created>
@@ -69,7 +68,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625037835283</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Directory name changes">
+      <created>1627007618892</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1627007618892</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

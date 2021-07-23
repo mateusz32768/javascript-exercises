@@ -1617,7 +1617,7 @@ x; // => 3
 x; // => 4
 ```
 
-# Wyrażenia i operatory
+# 4. Wyrażenia i operatory
 
 <!--TODO -->
 
@@ -2074,8 +2074,7 @@ Właściwość `Object.prototype` jest obiektem, który nie ma prototypu, tzn. n
 obiekcie. Większość wbudowanych i zdefiniowanych konstruktorów ma prototyp odziedziczony po obiekcie `Object.prototype`.
 (np. obiekt `Date.prototype`). Zatem obiekt utworzony za pomocą instrukcji `new Date()` dziedziczy właściwości zarówno
 po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
-prototypów**
-.
+prototypów** .
 
 ### Funkcja Object.create()
 
@@ -2282,7 +2281,89 @@ square.area(); // => 100
 
 Obie formy kodu są równorzędne.
 
-# Funkcje
+# 7. Tablice
+
+Tablica jest uporządkowaną kolekcją wartości, czyli elementów. Każdy element ma swoje miejsce w tablicy oznaczone
+numerem, czyli indeksem. Tablice, w języku JavaScript, nie są typowane. Oznacza to, że elementy tablicy mogą być różnych
+typów, a nawet obiektami i innymi tablicami.
+
+Tablice są dynamiczne, tj. można je powiększać i pomniejszać. Dlatego nie trzeba deklarować rozmiaru tablicy ani
+realokować jej w przypadku zmiany. Tablica może być rozrzedzona, tj. jej elementy nie muszą mieć kolejnych indeksów.
+Każda tablica ma właściwość length. Właściwość ta zawiera liczbę elementów. W przypadku tablicy rozrzedzonej jest
+większa od największego indeksu.
+
+Tablica w języku JavaScript jest specjalną odmianą obiektu. Indeksy są w rzeczywistości czymś nieco więcej niż
+właściwościami, których nazwami są liczby całkowite.
+
+Tablice dziedziczą właściwości po prototypie `Array.prototype`, który definiuje bogaty zestaw metod.
+
+W wersji języka ES6 został wprowadzony zestaw nowych klas tablicowych, zwany ogólnie „tablicami typowanymi”.
+
+## Tworzenie tablic
+
+Tablice tworzymy za pomocą:
+
+* literału tablicowego,
+* operatora rozciągania `(...)` i iteratora obiektu
+* konstruktora `Array()`
+* metod fabrycznych `Array.of()` i `Array.from()`
+
+### Literały tablicowe
+
+Literał tablicowy jest umieszczoną wewnątrz nawiasów klamrowych listą elementów oddzielonych przecinkami, np.:
+
+```javascript
+const empty = []; // Tablica bez elementów
+let primes = [2, 3, 5, 7, 11]; // Tablica złożona z pięciu elementów liczbowych.
+let misc = [1.1, true, "a",]; // Trzy elementy różnych typów i końcowy przecinek.
+```
+
+Wartościami mogą być dowolne wyrażenia:
+
+```javascript
+let base = 1024;
+let table = [base, base + 1, base + 2, base + 3];
+```
+
+Mogą zawierać literały obiektowe i inne literały tablicowe:
+
+```javascript
+let b = [[1, {x: 1, y: 2}], [2, {x: 3, y: 4}]];
+```
+
+Tablica rozrzedzona:
+
+```javascript
+let count = [1, , 3]; // Istnieją elementy o indeksach 0 i 2. Nie ma elementu o indeksie 1.
+let undefs = [, ,]; // Tablica bez elementów, ale o długości 2 a nie 3, tu przecinek opcjonalny.
+```
+
+Próba odpytanie elementów nieistniejących — wartość `undefined`.
+
+### Operator rozciągania
+
+Operator rozciągania `(...)` nie jest operatorem w ścisłym znaczeniu tego słowa, gdyż można go stosować tylko w
+literałach tablicowych i wywołaniach funkcji.
+
+W literałach tablicowych służy do umieszczania w nich elementów innej tablicy:
+
+```javascript
+let a = [1, 2, 3];
+let b = [0, ...a, 4]; // b == [0, 1, 2, 3, 4]
+```
+
+Za pomocą operatora rozciągania wygodnie tworzy się płaskie kopie tablic:
+
+```javascript
+let original = [1,2,3];
+let copy = [...original];
+copy[0] = 0; // Modyfikacja kopii tablicy nie wpływa na oryginał.
+original[0] // => 1
+```
+
+
+
+# 8. Funkcje
 
 Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScripcie i niemal każdym innym języku. Inne
 rwnowane pojęcia to podprogramy (ang. _subroutine_) lub procedurami (ang. _procedure_).
@@ -2326,7 +2407,7 @@ serwerowego, uruchamianego na serwerach WWW.
 
 ## Podstawy programowania stron WWW
 
-### Kod JavaScript w znacznikach HTML <script> <!--TODO-->
+### Kod JavaScript w znacznikach HTML <!--TODO-->
 
 ### Model DOM
 
