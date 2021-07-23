@@ -24,7 +24,7 @@ Za tego rodzaju operacje (jak również realizację bardziej zaawansowanych funk
 dysków i grafiki) jest odpowiedzialne „środowisko gospodarza”, w którym stosowany jest JavaScript.
 
 Od początku takim środowiskiem była przeglądarka, która do dziś jest najczęściej stosowanym środowiskiem uruchomieniowym
-kodu napisanego w JavaScripcie.
+kodu napisanego w JavaScript.
 
 Poprzez przeglądarkę kod odbiera dane od użytkownika przekazywane za pomocą myszy i klawiatury, a od serwera — za pomocą
 zapytań HTTP. Zwracanie danych polega na wyświetlaniu informacji zakodowanych w językach HTML i CSS.
@@ -337,7 +337,7 @@ koniec instrukcji. Poza tym nie stosując średników, należy uwzględnić kilk
 
 <!-- TODO -->
 
-W JavaScripcie nie trzeba stosować średnika, jeżeli poszczególne instrukcje są umieszczone w osobnych wierszach. Nie
+W JavaScript nie trzeba stosować średnika, jeżeli poszczególne instrukcje są umieszczone w osobnych wierszach. Nie
 trzeba go również umieszczać na końcu programu ani w miejscu, w którym następnym tokenem jest zamykający nawias
 klamrowy `(})`.
 
@@ -412,13 +412,13 @@ Przykłady literałów:
 
 ```javascript
 123 - // dodatnia całkowita wartość dziesiętna 123
-  123; // ujemna całkowita wartość dziesiętna -123
+123; // ujemna całkowita wartość dziesiętna -123
 012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
-  024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
+024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
 0xff - // dodatnia całkowita wartość szesnastkowa = 255
-  0x0f; //ujemna całk. wartość szes. = -15
+0x0f; //ujemna całk. wartość szes. = -15
 2.12 - //  dodatnia wartość rzeczywista = 2.12
-  3.14; // ujemna wartość rzeczywista = -3.14
+3.14; // ujemna wartość rzeczywista = -3.14
 4.3e3; // dodatnia wartość rzeczywista = 4300
 2.3e-3; // dodatnia wartość rzeczywista = 0.0023
 ```
@@ -553,8 +553,8 @@ Wartości nieskończone funkcjonują zgodnie z oczekiwaniami, tj. wynikiem dodaw
 użyciem jakiejkolwiek innej wartości jest również nieskończoność (z ewentualnie zmienionym znakiem).
 
 Dzielenie przez zero nie skutkuje zgłoszeniem błędu. Wynikiem jest po prostu wartość Infinity lub -Infinity. Wynikiem
-dzielenia zera przez zero jest specjalna wartość `NaN` (ang. _not-a-number_ — nieliczba). Reprezentuje ona również wynik
-dzielenia wartości `Infinity` przez `Infinity`, pierwiastek kwadratowy z liczby ujemnej oraz wynik operacji
+dzielenia zera przez zero jest specjalna wartość `NaN` (ang. _not-a-number_ — nie liczba). Reprezentuje ona również
+wynik dzielenia wartości `Infinity` przez `Infinity`, pierwiastek kwadratowy z liczby ujemnej oraz wynik operacji
 arytmetycznej z użyciem operandów, których nie można przekształcić na liczby.
 
 Warto pamiętać, wykonując operacje arytmetyczne, że język JavaScript w przypadku niedozwolonej operacji zwróci jedną z
@@ -575,18 +575,18 @@ Number.POSITIVE_INFINITY; // Jak wyżej.
 1 / 0; // => Infinity
 
 Number.MAX_VALUE * 2 - // => Infinity; przepełnienie
-  Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
+Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
 Number.NEGATIVE_INFINITY - // Jak wyżej.
-  1 / 0 - // => –Infinity
-  Number.MAX_VALUE * 2; // => –Infinity
+1 / 0 - // => –Infinity
+Number.MAX_VALUE * 2; // => –Infinity
 NaN; // Wartość nieliczbowa.
 Number.NaN; // Wartość nieliczbowa zapisana w inny sposób.
 0 / 0; // => NaN
 Infinity / Infinity; // => NaN
 Number.MIN_VALUE / 2 - // => 0: niedomiar.
-  Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
-  1 / Infinity - // -> –0: również "ujemne zero".
-  0;
+Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
+1 / Infinity - // -> –0: również "ujemne zero".
+0;
 
 // Właściwości i metody obiektu Number zdefiniowane w wersji ES6:
 Number.parseInt(); // Odpowiednik globalnej funkcji parseInt().
@@ -650,8 +650,8 @@ Wbrew swojej nazwie „nie-liczba” `NaN` jest specjalną wartością, która t
 typeof NaN; // "number"
 ```
 
-`NaN` otrzymasz, jeśli spróbujesz wykonać działanie, które powinno dawać liczbę, i to działanie nie powiedzie się. Jeśli
-spróbujesz na przykład pomnożyć 10 przez znak "f" , wynikiem będzie `NaN`, ponieważ w oczywisty sposób " f " nie jest
+`NaN` Otrzymasz, jeśli spróbujesz wykonać działanie, które powinno dawać liczbę, i to działanie nie powiedzie się. Jeśli
+spróbujesz na przykład pomnożyć 10 przez znak „f”, wynikiem będzie `NaN`, ponieważ w oczywisty sposób „f” nie jest
 prawidłowym argumentem dla mnożenia.
 `NaN` jest jak wirus: nawet jeśli tylko jeden z argumentów działania ma wartość `NaN` , cały wynik można wyrzucić do
 kosza.
@@ -858,13 +858,14 @@ W przypadku użycia grawisów podziały wierszy wchodzą w skład literału:
 'Jeden\
 długi\
 wiersz.' // Dwuwierszowy ciąg zapisany w dwóch wierszach:
-`Znak podziału umieszczony na końcu tego wiersza
+  `Znak podziału umieszczony na końcu tego wiersza
 jest częścią tego ciągu znaków.`;
 ```
 
 Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScripcie jednego stylu, a w HTML innego.
 
 ```html
+
 <button onclick="alert('Dziękuję')">Kliknij tutaj</button>
 ```
 
@@ -977,24 +978,15 @@ Ciągi znaków są niemutowalne. Metody takie jak replace() i toUpperCase() nie 
 zwracają ich nowe wersje.
 
 Ciągi można również traktować jako tablice przeznaczone wyłącznie do odczytu. Do poszczególnych znaków (16-bitowych
-wartości ) można się odwoływać za pomocą nawiasów kwadratowych zamiast za pomocą metody charAt():
+wartości) można się odwoływać za pomocą nawiasów kwadratowych zamiast za pomocą metody charAt():
 
 ```javascript
-<
-<
-<
-<
-<
-<
-< HEAD
-  let s="Witaj, świecie!";
+let s = "Witaj, świecie!";
 s[0] // => "W"
 s[s.length - 1] // => "!"
-=======
 let s = 'Witaj, świecie!';
 s[0]; // => "W"
 s[s.length - 1]; // => "!"
->>>>>>> db615b67db9e40aaa1fcd8ecf65f32a4a17e86aa
 ```
 
 ### Literały szablonowe
@@ -1131,8 +1123,8 @@ Programiści raczej unikają stosowania tych wartości.
 ## Symbole <!--TODO-->
 
 Symbole zostały wprowadzone w wersji ES6, aby można było stosować nietekstowe nazwy właściwości. Fundamentalny typ
-`Object` jestnieuporządkowaną kolekcją właściwości, z których każda ma nazwę i wartość. Nazwami właściwości są
-ciągi znaków. Począwszy od wersji ES6 nazwami mogą być również symbole, jak niżej:
+`Object` jestnieuporządkowaną kolekcją właściwości, z których każda ma nazwę i wartość. Nazwami właściwości są ciągi
+znaków. Począwszy od wersji ES6 nazwami mogą być również symbole, jak niżej:
 
 ```javascript
 const strname = 'string name'; // Ciąg pełniący rolę nazwy właściwości.
@@ -1149,32 +1141,28 @@ object[symname]; // => 2: odwołanie do właściwości o nazwie określonej za p
 ```
 
 Typ `Symbol` nie ma składni literału. Aby uzyskać wartość typu Symbol, należy wywołać funkcję
-`Symbol()`. Funkcja ta nigdy nie zwraca dwa razy tej samej wartości, nawet jeżeli zostanie wywołana
-z tym samym argumentem. Oznacza to, że wartość typu `Symbol` uzyskaną za pomocą funkcji
+`Symbol()`. Funkcja ta nigdy nie zwraca dwa razy tej samej wartości, nawet jeżeli zostanie wywołana z tym samym
+argumentem. Oznacza to, że wartość typu `Symbol` uzyskaną za pomocą funkcji
 `Symbol()` można bezpiecznie traktować jako nazwę właściwości, bez obawy ze zostanie nadpisana.
 
-W praktyce symbole traktuje się jako mechanizm rozszerzający język. Gdy w wersji ES6 została
-wprowadzona pętla `for/of` i obiekty iterowalne , pojawiła się
-potrzeba definiowania standardowych metod, które można byłoby implementować w klasach,
-aby były iterowalne. `Symbol.iterator` jest wartością typu Symbol, której używa się jako nazwy metody,
-aby obiekt był iterowalny.
+W praktyce symbole traktuje się jako mechanizm rozszerzający język. Gdy w wersji ES6 została wprowadzona pętla `for/of`
+i obiekty iterowalne , pojawiła się potrzeba definiowania standardowych metod, które można byłoby implementować w
+klasach, aby były iterowalne. `Symbol.iterator` jest wartością typu Symbol, której używa się jako nazwy metody, aby
+obiekt był iterowalny.
 
-Funkcja `Symbol()` ma opcjonalny argument tekstowy i zwraca unikatową wartość typu `Symbol`.
-Jeżeli argument ten zostanie określony, jego wartość zostanie umieszczona w wyniku zwracanym
-przez metodę `toString()` symbolu.
+Funkcja `Symbol()` ma opcjonalny argument tekstowy i zwraca unikatową wartość typu `Symbol`. Jeżeli argument ten
+zostanie określony, jego wartość zostanie umieszczona w wyniku zwracanym przez metodę `toString()` symbolu.
 
 ```javascript
 let s = Symbol("sym_x");
 s.toString() // => "Symbol(sym_x)"
 ```
 
-Czasami jednak zdefiniowana wartość typu Symbol musi być szeroko dostępna w kodzie. Tak jest na
-przykład w sytuacji, gdy w definiowanym rozszerzeniu powinien być uwzględniony inny kod niż
-w opisanym wcześniej iteratorze `Symbol.iterator`.
+Czasami jednak zdefiniowana wartość typu Symbol musi być szeroko dostępna w kodzie. Tak jest na przykład w sytuacji, gdy
+w definiowanym rozszerzeniu powinien być uwzględniony inny kod niż w opisanym wcześniej iteratorze `Symbol.iterator`.
 
 Na wypadki takie jak powyższy zdefiniowany jest globalny rejestr symboli. Jest dostępna metoda
-`Symbol.for()`, której argumentem jest ciąg znaków, a zwracanym wynikiem skojarzona z nim
-wartość typu `Symbol`.
+`Symbol.for()`, której argumentem jest ciąg znaków, a zwracanym wynikiem skojarzona z nim wartość typu `Symbol`.
 
 ```javascript
 let s = Symbol.for("shared");
@@ -1184,34 +1172,30 @@ s.toString() // => "Symbol(shared)"
 Symbol.keyFor(t) // => "shared"
 ```
 
-
 ## Obiekt globalny <!--TODO-->
 
-Obiekt globalny jest to zwykły obiekt, którego właściwości są globalnymi identyfikatorami.
-Interpreter JavaScriptu zaraz po uruchomieniu (lub przeglądarka po załadowaniu strony) tworzy
-nowy obiekt globalny z początkowym zestawem właściwości definiujących:
+Obiekt globalny jest to zwykły obiekt, którego właściwości są globalnymi identyfikatorami. Interpreter JavaScriptu zaraz
+po uruchomieniu (lub przeglądarka po załadowaniu strony) tworzy nowy obiekt globalny z początkowym zestawem właściwości
+definiujących:
 
 * globalne stałe, m.in. undefined, Infinity i NaN;
 * globalne funkcje, m.in. isNaN(), parseInt() i eval();
 * funkcje konstruktorów klas, m.in. Date(), RegExp(), String(), Object() i Array();
 * globalne obiekty, m.in. Math i JSON.
 
-Właściwości obiektu globalnego nie są zarezerwowanymi słowami, ale zasługują na to, aby je
-jako takie traktować.
+Właściwości obiektu globalnego nie są zarezerwowanymi słowami, ale zasługują na to, aby je jako takie traktować.
 
-W środowisku `Node` obiekt globalny posiada właściwość o nazwie `global`, którego właściwością jest
-sam obiekt globalny. Dzięki temu w środowisku można odwoływać się do obiektu globalnego
-za pomocą tej nazwy.
+W środowisku `Node` obiekt globalny posiada właściwość o nazwie `global`, którego właściwością jest sam obiekt globalny.
+Dzięki temu w środowisku można odwoływać się do obiektu globalnego za pomocą tej nazwy.
 
-W przeglądarkach rolę obiektu globalnego dla całego kodu zawartego w oknie pełni obiekt `Window`.
-Posiada on właściwość `window` zawierającą odwołanie do samego siebie, jak również kilka innych
-podstawowych właściwości charakterystycznych dla danej przeglądarki i klienckiego skryptu
-JavaScriptu. Z wątkami roboczymi skojarzony jest inny niż `Window`
+W przeglądarkach rolę obiektu globalnego dla całego kodu zawartego w oknie pełni obiekt `Window`. Posiada on
+właściwość `window` zawierającą odwołanie do samego siebie, jak również kilka innych podstawowych właściwości
+charakterystycznych dla danej przeglądarki i klienckiego skryptu JavaScriptu. Z wątkami roboczymi skojarzony jest inny
+niż `Window`
 globalny obiekt, do którego można odwoływać się za pomocą nazwy `self`.
 
-W wersji ES2020 została zdefiniowana uniwersalna nazwa `globalThis` oznaczająca globalny
-obiekt w każdym kontekście. Na początku roku 2020 nazwa ta była już zaimplementowana we
-wszystkich nowoczesnych przeglądarkach i w środowisku `Node`.
+W wersji ES2020 została zdefiniowana uniwersalna nazwa `globalThis` oznaczająca globalny obiekt w każdym kontekście. Na
+początku roku 2020 nazwa ta była już zaimplementowana we wszystkich nowoczesnych przeglądarkach i w środowisku `Node`.
 
 ## Niemutowalne prymitywne wartości i mutowalne odwołania do obiektów
 
@@ -1484,9 +1468,9 @@ Powszechnie stosowaną (ale nie uniwersalną) konwencją jest używanie w nazwac
 >
 > 1. Tylko z wartościami, które nie mogą się zmieniać np. stałe fizyczne itp.
 > 2. Ze wszystkimi wartościami, które nie będą się zmieniać (wiele tzw. zmiennych nie jest modyfikowanych przez
->    cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
->    deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
->    zmiennych.
+     > cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
+     > deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
+     > zmiennych.
 
 W pętli `for/in` i `for/of` dozwolone jest stosowanie instrukcji `const`, jeżeli tylko w ciele pętli takiej „zmiennej”
 nie jest przypisywana nowa wartość. W takim przypadku deklaracja stałej oznacza jedynie, że wartość pozostaje niezmienna
@@ -1715,7 +1699,7 @@ let sparseArray = [1, , , , 5];
 Inicjator obiektu stosuje nawiasy klamrowe, a każde podwyrażenie jest poprzedzone nazwą właściwości i dwukropkiem:
 
 ```javascript
-let p = { x: 2.3, y: -1.2 }; // Obiekt posiadający dwie właściwości.
+let p = {x: 2.3, y: -1.2}; // Obiekt posiadający dwie właściwości.
 let q = {}; // Obiekt bez właściwości.
 q.x = 2.3;
 q.y = -1.2; // Obiekt q ma teraz te same właściwości co obiekt p.
@@ -1737,20 +1721,20 @@ Wyrażenie definiujące funkcję może również zawierać jej nazwę.
 
 ## Wyrażenia dostępu do właściwości <!-- TODO -->
 
-Wynikiem **wyrażenia dostępu do właściwości** jest wartość właściwości obiektu lub elementu tablicy.
-Język JavaScript definiuje dwie składnie dostępu do właściwości:
+Wynikiem **wyrażenia dostępu do właściwości** jest wartość właściwości obiektu lub elementu tablicy. Język JavaScript
+definiuje dwie składnie dostępu do właściwości:
 
 ```javascript
 wyrażenie.identyfikator;
 wyrażenie[wyrażenie];
 ```
 
-Wyrażenie określa obiekt, a identyfikator nazwę żądanej właściwości. Druga składnia to wyrażenie (obiekt
-lub tablica) z następującym po nim drugim wyrażeniem umieszczonym wewnątrz nawiasów kwadratowych. Wyrażenie to określa
-nazwę żądanej właściwości lub indeks żądanego elementu tablicy.
+Wyrażenie określa obiekt, a identyfikator nazwę żądanej właściwości. Druga składnia to wyrażenie (obiekt lub tablica) z
+następującym po nim drugim wyrażeniem umieszczonym wewnątrz nawiasów kwadratowych. Wyrażenie to określa nazwę żądanej
+właściwości lub indeks żądanego elementu tablicy.
 
 ```javascript
-let object = { x: 1, y: { z: 3 } }; // Przykładowy obiekt.
+let object = {x: 1, y: {z: 3}}; // Przykładowy obiekt.
 let a = [object, 4, [5, 6]]; // Przykładowa tablica zawierająca obiekt.
 object.x; // => 1: właściwość x wyrażenia object.
 object.y.z; // => 3: właściwość z wyrażenia object.y.
@@ -1760,17 +1744,18 @@ a[2]['1']; // => 6: element o indeksie 1 wyrażenia a[2].
 a[0].x; // => 1: właściwość x wyrażenia a[0].
 ```
 
-W obu składniach najpierw wyliczany jest wynik wyrażenia umieszczonego przed kropką lub
-otwierającym nawiasem kwadratowym. Jeżeli wynikiem jest wartość null lub undefined, zgłaszany
-jest wyjątek TypeError, ponieważ żadna z tych wartości nie ma właściwości.
+W obu składniach najpierw wyliczany jest wynik wyrażenia umieszczonego przed kropką lub otwierającym nawiasem
+kwadratowym. Jeżeli wynikiem jest wartość null lub undefined, zgłaszany jest wyjątek TypeError, ponieważ żadna z tych
+wartości nie ma właściwości.
 
 1. Jeżeli po wyrażeniu obiektu znajduje się kropka i identyfikator, odczytywana jest wartość właściwości o nazwie takiej
    jak identyfikator, która staje się wynikiem całego wyrażenia.
-2. Jeżeli po wyrażeniu obiektu znajduje się inne wyrażenie umieszczone wewnątrz nawiasów kwadratowych, wyliczany jest jego
-   wynik, przekształcany następnie w ciąg znaków. Ostatecznym wynikiem wyrażenia jest wartość właściwości
-   o nazwie takiej jak uzyskany ciąg.
+2. Jeżeli po wyrażeniu obiektu znajduje się inne wyrażenie umieszczone wewnątrz nawiasów kwadratowych, wyliczany jest
+   jego wynik, przekształcany następnie w ciąg znaków. Ostatecznym wynikiem wyrażenia jest wartość właściwości o nazwie
+   takiej jak uzyskany ciąg.
 
-W obu składniach, w przypadku braku właściwości o zadanej nazwie, wynikiem wyrażenia dostępu do właściwości jest undefined.
+W obu składniach, w przypadku braku właściwości o zadanej nazwie, wynikiem wyrażenia dostępu do właściwości jest
+undefined.
 
 ### Warunkowy dostęp do właściwości
 
@@ -1781,10 +1766,9 @@ wyrażenie?.identyfikator;
 wyrażenie?.[wyrażenie];
 ```
 
-Wartości null i undefined są jedynymi wartościami w języku JavaScript, które nie mają właściwości.
-W ich przypadku próba odwołania się do właściwości za pomocą kropki lub nawiasów [] skutkuje
-zgłoszeniem wyjątku TypeError. Aby uchronić się przed takimi sytuacjami, można użyć
-notacji ?. lub ?.[].
+Wartości null i undefined są jedynymi wartościami w języku JavaScript, które nie mają właściwości. W ich przypadku próba
+odwołania się do właściwości za pomocą kropki lub nawiasów [] skutkuje zgłoszeniem wyjątku TypeError. Aby uchronić się
+przed takimi sytuacjami, można użyć notacji ?. lub ?.[].
 
 ## Wyrażenia wywołujące
 
@@ -1864,7 +1848,7 @@ Wynikiem wyrażenia relacyjnego jest zawsze wartość `true` lub `false`.
    stronie:
 
 ```javascript
-let o = { x: 1 };
+let o = {x: 1};
 let p = null;
 o && o.x; // => 1: o ma wartość prawdziwą, więc operator zwraca wartość o.x.
 p && p.x; // => null: p ma wartość fałszywą, więc operator nie wylicza wartości p.x.
@@ -2058,9 +2042,9 @@ znaków). Wartością właściwości jest dowolne wyrażenie, wartość prymityw
 ```javascript
 let empty = {}; // Obiekt bez właściwości.
 
-let point = { x: 0, y: 0 }; // Dwie właściwości liczbowe.
+let point = {x: 0, y: 0}; // Dwie właściwości liczbowe.
 
-let p2 = { x: point.x, y: point.y + 1 }; // Bardziej złożone wartości.
+let p2 = {x: point.x, y: point.y + 1}; // Bardziej złożone wartości.
 
 let book = {
   'main title': 'JavaScript', // Nazwy właściwości zawierają spację
@@ -2089,7 +2073,8 @@ po prototypie `Date.prototype`.
 Właściwość `Object.prototype` jest obiektem, który nie ma prototypu, tzn. nie dziedziczy właściwości po żadnym innym
 obiekcie. Większość wbudowanych i zdefiniowanych konstruktorów ma prototyp odziedziczony po obiekcie `Object.prototype`.
 (np. obiekt `Date.prototype`). Zatem obiekt utworzony za pomocą instrukcji `new Date()` dziedziczy właściwości zarówno
-po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha prototypów**
+po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
+prototypów**
 .
 
 ### Funkcja Object.create()
@@ -2097,7 +2082,7 @@ po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych p
 Funkcja `Object.create()` tworzy nowy obiekt. Jej pierwszym argumentem jest prototyp obiektu:
 
 ```javascript
-let object = Object.create({ x: 1, y: 2 }); // Obiekt object dziedziczy właściwości x i y.
+let object = Object.create({x: 1, y: 2}); // Obiekt object dziedziczy właściwości x i y.
 object.x + object.y;
 ```
 
@@ -2109,7 +2094,7 @@ Funkcji `Object.create()` używa się wtedy, gdy trzeba zabezpieczyć obiekt prz
 funkcje biblioteczne.
 
 ```javascript
-let o = { x: 'Nie zmieniaj tej właściwości.' };
+let o = {x: 'Nie zmieniaj tej właściwości.'};
 library.function(Object.create(o)); // Zabezpieczenie przed przypadkowymi modyfikacjami
 ```
 
@@ -2213,7 +2198,7 @@ przesłonięta przez nową właściwość o takiej samej nazwie.
 jest kluczową funkcjonalnością języka JavaScript, umożliwiającą selektywne nadpisywanie dziedziczonych właściwości:
 
 ```javascript
-const unitcircle = { r: 1 }; // Obiekt, po którym są dziedziczone właściwości.
+const unitcircle = {r: 1}; // Obiekt, po którym są dziedziczone właściwości.
 
 const c = Object.create(unitcircle); // Obiekt c dziedziczy właściwość r.
 c.x = 1;
@@ -2259,8 +2244,8 @@ if (book) {
 surname = book && book.author && book.author.surname;
 ```
 
-Za pomocą wprowadzonego w wersji języka ES2020 operatora warunkowego dostępu do właściwości
-?. (patrz punkt „Warunkowy dostęp do właściwości”) można powyższe wyrażenie napisać w następujący sposób:
+Za pomocą wprowadzonego w wersji języka ES2020 operatora warunkowego dostępu do właściwości ?. (patrz punkt „Warunkowy
+dostęp do właściwości”) można powyższe wyrażenie napisać w następujący sposób:
 
 ```javascript
 
@@ -2268,8 +2253,8 @@ Za pomocą wprowadzonego w wersji języka ES2020 operatora warunkowego dostępu 
 
 ### Uproszczone definiowanie metod
 
-Funkcja zdefiniowana jako właściwość obiektu nosi nazwę **metody**. W wersjach starszych niż ES6 metody definiowało się w literale
-obiektowym tak samo jak właściwości, wykorzystując wyrażenia funkcyjne:
+Funkcja zdefiniowana jako właściwość obiektu nosi nazwę **metody**. W wersjach starszych niż ES6 metody definiowało się
+w literale obiektowym tak samo jak właściwości, wykorzystując wyrażenia funkcyjne:
 
 ```javascript
 let square = {
@@ -2282,8 +2267,7 @@ let square = {
 square.area(); // => 100
 ```
 
-W wersji ES6 w składni literału obiektoweg można pominąć dwukropek wraz ze słowem kluczowym
-function.
+W wersji ES6 w składni literału obiektoweg można pominąć dwukropek wraz ze słowem kluczowym function.
 
 ```javascript
 let square = {
@@ -2300,41 +2284,35 @@ Obie formy kodu są równorzędne.
 
 # Funkcje
 
-Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScripcie i niemal każdym innym języku.
-Inne rwnowane pojęcia to podprogramy (ang. _subroutine_) lub procedurami (ang. _procedure_).
+Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScripcie i niemal każdym innym języku. Inne
+rwnowane pojęcia to podprogramy (ang. _subroutine_) lub procedurami (ang. _procedure_).
 
-**Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną
-liczbę razy. Funkcje są **parametryczne**, tzn. w ich definicjach można umieszczać
-listy identyfikatorów — **parametrów** — pełniących w ciałach funkcji role lokalnych zmiennych.
-Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**. Wartości te są często
-wykorzystywane do wyliczania zwracanego **wyniku**, będącego wartością wyrażenia funkcyjnego.
-W każdym wywołaniu określany jest jeszcze jego **kontekst**, którego dane są przypisywane słowu
-kluczowemu **this**.
+**Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną liczbę razy. Funkcje są **
+parametryczne**, tzn. w ich definicjach można umieszczać listy identyfikatorów — **parametrów** — pełniących w ciałach
+funkcji role lokalnych zmiennych. Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**. Wartości
+te są często wykorzystywane do wyliczania zwracanego **wyniku**, będącego wartością wyrażenia funkcyjnego. W każdym
+wywołaniu określany jest jeszcze jego **kontekst**, którego dane są przypisywane słowu kluczowemu **this**.
 
-Funkcja przypisana właściwości obiektu nosi nazwę **metody**. Obiekt, którego funkcja jest wywoływana,
-jest kontekstem i stanowi wartość słowa kluczowego **this**. Funkcja inicjująca nowo utworzony
-obiekt nazywa się **konstruktorem**.
+Funkcja przypisana właściwości obiektu nosi nazwę **metody**. Obiekt, którego funkcja jest wywoływana, jest kontekstem i
+stanowi wartość słowa kluczowego **this**. Funkcja inicjująca nowo utworzony obiekt nazywa się **konstruktorem**.
 
-W języku JavaScript funkcje są obiektami, na których można wykonywać różne operacje, na przykład
-przypisywać je zmiennym, umieszczać w argumentach innych funkcji, przypisywać wartości
-ich właściwościom, a nawet wywoływać ich metody.
+W języku JavaScript funkcje są obiektami, na których można wykonywać różne operacje, na przykład przypisywać je
+zmiennym, umieszczać w argumentach innych funkcji, przypisywać wartości ich właściwościom, a nawet wywoływać ich metody.
 
-Definicja funkcji może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej funkcji ma
-dostęp do wszystkich zmiennych zdefiniowanych w tym samym zasięgu co funkcja nadrzędna.
-Oznacza to, że funkcje są **domknięciami** (ang. _closure_) — ważnymi i przydatnymi konstrukcjami
-programistycznymi.
+Definicja funkcji może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej funkcji ma dostęp do wszystkich zmiennych
+zdefiniowanych w tym samym zasięgu co funkcja nadrzędna. Oznacza to, że funkcje są **domknięciami** (ang. _closure_) —
+ważnymi i przydatnymi konstrukcjami programistycznymi.
 
 ## Definiowanie funkcji
 
-Najprościej funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować
-zarówno jako deklarację, jak i wyrażenie. Począwszy od wersji języka ES6 jest jeszcze jeden
-ważny sposób definiowania funkcji, bez użycia słowa kluczowego function — są to tzw. **funkcje
-strzałkowe**. Składnia definicji takiej funkcji jest bardzo zwięzła i szczególnie przydatna
-wtedy, gdy w argumencie funkcji trzeba umieścić inną funkcję.
+Najprościej funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować zarówno jako deklarację,
+jak i wyrażenie. Począwszy od wersji języka ES6 jest jeszcze jeden ważny sposób definiowania funkcji, bez użycia słowa
+kluczowego function — są to tzw. **funkcje strzałkowe**. Składnia definicji takiej funkcji jest bardzo zwięzła i
+szczególnie przydatna wtedy, gdy w argumencie funkcji trzeba umieścić inną funkcję.
 
-W literałach obiektowych i w klasach metody definiuje się, stosując skróconą składnię,
-Są to wyrażenia funkcyjne przypisywane właściwościom obiektu za pomocą literału _nazwa:wartość_. Oprócz tego w
-szczególnych przypadkach stosuje się w literałach obiektowych słowa kluczowe get i set definiujące gettery i settery.
+W literałach obiektowych i w klasach metody definiuje się, stosując skróconą składnię, Są to wyrażenia funkcyjne
+przypisywane właściwościom obiektu za pomocą literału _nazwa:wartość_. Oprócz tego w szczególnych przypadkach stosuje
+się w literałach obiektowych słowa kluczowe get i set definiujące gettery i settery.
 
 # JavaScript w przeglądarkach
 
@@ -2343,11 +2321,17 @@ sformatowanego tekstu i obrazów, a dodatkowo, podobnie jak systemy operacyjne, 
 wideo, audio, transmisję sieciową, magazynowanie i przetwarzanie danych. JavaScript jest językiem, dzięki któremu
 aplikacje internetowe mogą korzystać z usług oferowanych przez platformy WWW.
 
-Kliencki kod JavaScript” oznacza kod przystosowany do uruchamiania w przeglądarkach, będący przeciwieństwem
-kodu serwerowego, uruchamianego na serwerach WWW.
+Kliencki kod JavaScript” oznacza kod przystosowany do uruchamiania w przeglądarkach, będący przeciwieństwem kodu
+serwerowego, uruchamianego na serwerach WWW.
 
 ## Podstawy programowania stron WWW
 
 ### Kod JavaScript w znacznikach HTML <script> <!--TODO-->
 
 ### Model DOM
+
+# Asynchroniczność w języku JavaScript
+
+Program asynchroniczny wstrzymuje działanie w oczekiwaniu na dane lub wystąpienie jakiegoś zdarzenia. Programy
+działające w przeglądarce są sterowane zdarzeniami tj. zanim wykonają jakąś operację, czekają, aż użytkownik coś kliknie
+lub czegoś dotknie na ekranie. Z kolei programy serwerowe oczekują na zapytania użytkowników wysyłane przez sieć.
