@@ -2368,7 +2368,8 @@ let digits = [..."0123456789ABCDEF"];
 digits // => ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
 ```
 
-Zbiory również są iterowalne a więc prostym sposobem usunięcia z tablicy powtarzających się elementów jest przekształcenie jej w zbiór i z powrotem w tablicę za pomocą operatora rozciągania:
+Zbiory również są iterowalne, a więc prostym sposobem usunięcia z tablicy powtarzających się elementów jest 
+przekształcenie jej w zbiór i z powrotem w tablicę za pomocą operatora rozciągania:
 
 ```javascript
 let letters = [..."Witaj, świecie!"];
@@ -2377,8 +2378,8 @@ let letters = [..."Witaj, świecie!"];
 
 # 8. Funkcje
 
-Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScripcie i niemal każdym innym języku. Inne
-rwnowane pojęcia to podprogramy (ang. _subroutine_) lub procedurami (ang. _procedure_).
+Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScript i niemal każdym innym języku. Inne
+równoważne pojęcia to podprogramy (ang. _subroutine_) lub procedurami (ang. _procedure_).
 
 **Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną liczbę razy. Funkcje są **
 parametryczne**, tzn. w ich definicjach można umieszczać listy identyfikatorów — **parametrów** — pełniących w ciałach
