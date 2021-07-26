@@ -141,7 +141,7 @@ zapisane w języku C są najpierw kompilowane, a następnie uruchamia się sam w
 programów). Kod JavaScript może być np. uruchamiany w przeglądarce internetowej ze wbudowanym interpreterem języka
 wykonującego wszystkie wskazane instrukcje.
 
-## Poznawanie JavaScriptu
+## Poznawanie JavaScript
 
 Aby testować kod JavaScript, potrzebny jest interpreter. Kilka wierszy kodu najprościej przetestujesz:
 
@@ -194,9 +194,8 @@ składnia specyfikująca nazwy zmiennych, znaki komentarza, sposób oddzielania 
 
 JavaScript jest językiem, w którym istotna jest wielkość liter.
 
-W JavaScripcie spacje umieszczane pomiędzy tokenami kodu są pomijane. W większości przypadków pomijane są również
-podziały wierszy. Dzięki swobodzie stosowania spacji, wcięć i podziałów wierszy można formatować kod w czytelny i spójny
-sposób.
+W JavaScript spacje umieszczane pomiędzy tokenami kodu są pomijane. W większości przypadków pomijane są również podziały
+wierszy. Dzięki swobodzie stosowania spacji, wcięć i podziałów wierszy można formatować kod w czytelny i spójny sposób.
 
 Białymi znakami, oprócz zwykłej spacji (\u0020), są również tabulator oraz niektóre znaki kontrolne ASCII i Unicode.
 Podziałem wiersza może być znak nowego wiersza, powrót karetki (ang. carriage return) oraz para znaków powrót
@@ -209,7 +208,7 @@ Stosowane są dwa rodzaje komentarzy:
 1. Tekst znajdujący się od znaków `//` do końca wiersza jest traktowany jako komentarz i pomijany.
 2. Komentarzem jest tekst umieszczony pomiędzy parami znaków /_ i _/.
 
-Komentarzy nie można zagnieżdżać.
+Komentarzy nie zagnieżdżać się w kodzie.
 
 ```javascript
 // Jednowierszowy komentarz.
@@ -333,7 +332,7 @@ znaki ASCII, a nie Unicode.
 ## Opcjonalne średniki
 
 W JS można nie stosować średników, jednakże zalecam dla poprawy czytelności kodu stosowanie średników, aby oznaczać
-koniec instrukcji. Poza tym nie stosując średników, należy uwzględnić kilka niausów z tym związanych.
+koniec instrukcji. Poza tym nie stosując średników, należy uwzględnić kilka niuansów z tym związanych.
 
 <!-- TODO -->
 
@@ -341,15 +340,15 @@ W JavaScript nie trzeba stosować średnika, jeżeli poszczególne instrukcje s�
 trzeba go również umieszczać na końcu programu ani w miejscu, w którym następnym tokenem jest zamykający nawias
 klamrowy `(})`.
 
-W JavaScripcie można przyjąć dwa style odnośnie do średników:
+W JavaScript można przyjąć dwa style odnośnie do średników:
 
 1. Umieszczamy średniki, aby oznaczyć koniec instrukcji.
 2. Pomijanie średników wszędzie, gdzie jest to dopuszczalne, i stosowaniu ich tylko w sytuacjach, w których są wymagane.
 
 # Typy, wartości i zmienne
 
-Programy komputerowe wykonują operacje na wartościach, np. na liczbie 3,14 lub ciągu znakowym "Witaj świecie!". Jeśli w
-programie trzeba przechować wartość w celu jej póżniejszego wykorzystania , przypisuje się ją do zmiennej.
+Programy komputerowe wykonują operacje na wartościach, np. na liczbie 3,14 lub ciągu znakowym „Witaj świecie!". Jeśli w
+programie trzeba przechować wartość w celu jej późniejszego wykorzystania, przypisuje się ją do zmiennej.
 
 Do fundamentalnych cech każdego języka programowania należą:
 
@@ -386,7 +385,7 @@ specjalne, wbudowane funkcjonalności.
 <!--TODO-->
 
 Podstawowy typ `Number` służy do reprezentowania liczb całkowitych i przybliżania liczb rzeczywistych. Liczby w
-JavaScripcie są zapisywane w 64-bitowym formacie zdefiniowanym w normie IEEE 754. Za jego pomocą można wyrażać liczby od
+JavaScript są zapisywane w 64-bitowym formacie zdefiniowanym w normie IEEE 754. Za jego pomocą można wyrażać liczby od
 najmniejszych ±5×10<sup>−324</sup> do największych ±1,7976931348623157×10<sup>308</sup>.
 
 Liczba umieszczona bezpośrednio w kodzie JavaScript nosi nazwę **literału liczbowego**.
@@ -394,7 +393,7 @@ Liczba umieszczona bezpośrednio w kodzie JavaScript nosi nazwę **literału lic
 Typ liczbowy służy do reprezentacji liczb, przy czym nie ma występującego w klasycznych językach programowania
 rozróżnienia na typy całkowitoliczbowe i rzeczywiste (zmiennopozycyjne).
 
-Liczby zapisywane są za pomocą literałów (stałych napisowych, z ang. _string constant_ , _literal constant_) liczbowych,
+Liczby zapisywane są za pomocą literałów (stałych napisowych, z ang. _string constant_, _literal constant_) liczbowych,
 czyli ciągów znaków składających się na liczbę, np. 24 (umieszczony w kodzie skryptu tekst 24 to dwa znaki, dwójka i
 czwórka, które razem stanowią literał — stałą napisową — interpretowany jako liczba 24).
 
@@ -416,19 +415,19 @@ Przykłady literałów:
 012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
 024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
 0xff - // dodatnia całkowita wartość szesnastkowa = 255
-0x0f; //ujemna całk. wartość szes. = -15
+0x0f; //ujemna całkowita wartość szesnastkowa. = -15
 2.12 - //  dodatnia wartość rzeczywista = 2.12
 3.14; // ujemna wartość rzeczywista = -3.14
 4.3e3; // dodatnia wartość rzeczywista = 4300
 2.3e-3; // dodatnia wartość rzeczywista = 0.0023
 ```
 
-Liczby całkowite i zmiennoprzecinkowe w JS są typu "number".
+Liczby całkowite i zmiennoprzecinkowe w JS są typu „number".
 
-Z typem "number" jest skojarzona wartość NaN (Not a Number), która reprezentuje wartość, która nie ma sensu.
+Z typem „number” jest skojarzona wartość NaN (Not a Number), która reprezentuje wartość, która nie ma sensu.
 
 Jeśli zastosujemy operator `typeof` na wartości lub zmiennej przechowującej liczbę całkowitą, lub zmiennoprzecinkową to
-zwróci nam wartość "number".
+zwróci nam wartość „number".
 
 W języku JS do przechowywania pojedynczych wartości liczbowych używana jest stała liczba 64 bitów, czyli możemy
 reprezentować 2 do 64 różnych liczb, czyli 18 kwintylionów (18 z osiemnastoma zerami). Przepełnienie, czyli próba
@@ -451,8 +450,8 @@ W języku JavaScript liczby dziesiętne zapisuje się w postaci sekwencji cyfr, 
 
 ### Liczby ósemkowe i szesnastkowe
 
-Jeśli liczba zaczyna się cyfrą 0o, jest uznawana za ósemkową, jeśli od 0x za szesnastkową. ES6 zapewnia prefiks `0o` (
-lub 0O) do reprezentowania liczb ósemkowych.
+Jeśli liczba zaczyna się cyfrą 0o, jest uznawana za ósemkową, jeśli od 0x za szesnastkową. ES6 zapewnia prefiks `0o` 
+(lub 0O) do reprezentowania liczb ósemkowych.
 
 ```javascript
 console.log(0o776); // 510
@@ -546,8 +545,8 @@ Math.asinh(x); // Arcus sinus hiperboliczny (są również Math.acosh(), Math.at
 ```
 
 W języku JavaScript przepełnienie, niedomiar i dzielenie przez zero nie powodują zgłoszenia błędu. Jeżeli wynik operacji
-jest większy niż największa dopuszczalna wartość (przepełnienie), zwracana jest specjalna wartość `Infinity` (
-nieskończoność lub `-Infinity`.
+jest większy niż największa dopuszczalna wartość (przepełnienie), zwracana jest specjalna wartość `Infinity` 
+(nieskończoność) lub `-Infinity`.
 
 Wartości nieskończone funkcjonują zgodnie z oczekiwaniami, tj. wynikiem dodawania, odejmowania, mnożenia i dzielenia z
 użyciem jakiejkolwiek innej wartości jest również nieskończoność (z ewentualnie zmienionym znakiem).
@@ -653,7 +652,7 @@ typeof NaN; // "number"
 `NaN` Otrzymasz, jeśli spróbujesz wykonać działanie, które powinno dawać liczbę, i to działanie nie powiedzie się. Jeśli
 spróbujesz na przykład pomnożyć 10 przez znak „f”, wynikiem będzie `NaN`, ponieważ w oczywisty sposób „f” nie jest
 prawidłowym argumentem dla mnożenia.
-`NaN` jest jak wirus: nawet jeśli tylko jeden z argumentów działania ma wartość `NaN` , cały wynik można wyrzucić do
+`NaN` jest jak wirus: nawet jeśli tylko jeden z argumentów działania ma wartość `NaN`, cały wynik można wyrzucić do
 kosza.
 
 ```javascript
@@ -678,7 +677,7 @@ Istnieje pięć różnych typów operacji, które zwracają NaN:
 
 `NaN` porównuje nierówną wartość (za pośrednictwem `==`,`!=`, `===` i `!==`) z dowolną inną wartością — w tym z inną
 wartością `NaN`. Użyj `Number.isNaN()` lub `isNaN()`, aby najdokładniej określić, czy dana wartość to NaN. Lub wykonaj
-samo-porównanie: NaN, i tylko NaN, porówna się nierówno.
+samo-porównanie: NaN i tylko NaN, porówna się nierówno.
 
 ```javascript
 NaN === NaN; // false
@@ -764,7 +763,7 @@ można używać prefiksów 0b, 0o i 0x oznaczających, odpowiednio, systemy bina
 0x8000000000000000n; // => 2n**63n: 64-bitowy literał BigInt.
 ```
 
-Zapis `BigInt()` można traktować jako funkcję przekształcającą zwykłe liczby lub ciągi znakówna wartości typu `BigInt`:
+Zapis `BigInt()` można traktować jako funkcję przekształcającą zwykłe liczby lub ciągi znaków na wartości typu `BigInt`:
 
 ```javascript
 BigInt(Number.MAX_SAFE_INTEGER); // => 9007199254740991n
@@ -772,7 +771,7 @@ let string = '1' + '0'.repeat(100); // Jedynka i 100 zer.
 BigInt(string); // => 10n**100n: jeden googol.
 ```
 
-Działania arytmetyczna na liczbach `BigInt` wykonywane są tak samo jak na zwykłych, z wyjątkiem dzielenia, w którym
+Działania arytmetyczna na liczbach `BigInt` wykonywane są tak samo, jak na zwykłych, z wyjątkiem dzielenia, w którym
 część ułamkowa jest odrzucana, tj. wynik jest zaokrąglany w dół.
 
 ```javascript
@@ -810,11 +809,14 @@ znaki Unicode. Długość ciągu jest liczbą składających się na niego 16-bi
 indeksowane od zera. Pusty ciąg ma długość równą 0. W języku JavaScript nie ma specjalnej wartości reprezentującej
 pojedynczy element ciągu. Jest nim po prostu ciąg o długości 1.
 
-> **Znaki, kody i ciągi w JavaScripcie**
+> **Znaki, kody i ciągi w JavaScript**
 >
-> Stosowany jest zestaw znaków Unicode kodowanych w standardzie UTF-16, a ciągi znaków są >sekwencjami 16-bitowych liczb bez znaku.
+> Stosowany jest zestaw znaków Unicode kodowanych w standardzie UTF-16, a ciągi znaków są >sekwencjami 16-bitowych liczb
+> bez znaku.
 >
-> Kody najczęściej stosowanych znaków Unicode (tworzących tzw. podstawową płaszczyznę >wielojęzykową) zapisuje się za pomocą 16 bitów i można je reprezentować w postaci pojedynczych >elementów ciągu. Inne znaki Unicode koduje się w postaci sekwencji par 16-bitowych (tzw. par zastępczych — ang. surrogate pair).
+> Kody najczęściej stosowanych znaków Unicode (tworzących tzw. podstawową płaszczyznę >wielojęzykową) zapisuje się za
+> pomocą 16 bitów i można je reprezentować w postaci pojedynczych >elementów ciągu. Inne znaki Unicode koduje się w
+> postaci sekwencji par 16-bitowych (tzw. par zastępczych — ang. surrogate pair).
 > Oznacza to, że pojedynczy znak Unicode może być reprezentowany przez ciąg znaków od długości
 > 2 (dwie wartości 16-bitowe):
 
@@ -836,7 +838,7 @@ Aby umieścić ciąg znaków w kodzie JavaScript, należy ująć go w apostrofy,
 ''; // Pusty ciąg (o zerowej liczbie znaków).
 'test';
 '3.14';
-'name="myform"';
+'name="my form"';
 'Lubisz książki wydawnictwa Helion?';
 ' \u03a0 oznacza stosunek obwodu koła do jego średnicy';
 '&Pi; oznacza stosunek obwodu koła do jego średnicy'`Powiedział: "powiedziała mi 'cześć'".`;
@@ -862,7 +864,7 @@ wiersz.' // Dwuwierszowy ciąg zapisany w dwóch wierszach:
 jest częścią tego ciągu znaków.`;
 ```
 
-Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScripcie jednego stylu, a w HTML innego.
+Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScript jednego stylu, a w HTML innego.
 
 ```html
 
@@ -877,7 +879,7 @@ sposób. Na przykład `\n` jest sekwencją ucieczki reprezentującą podział wi
 Innym przykładem jest sekwencja `\'` reprezentująca apostrof. Stosuje się ją wtedy, gdy w literale ujętym w apostrofy
 trzeba umieścić inny apostrof.
 
-_Tabela. Sekwencje ucieczki w JavaScripcie_
+_Tabela. Sekwencje ucieczki w JavaScript_
 
 | Sekwencja | Reprezentowany znak                                                                                                                     |
 | --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1036,8 +1038,8 @@ console.log(NaN == NaN); // => false
 Wartość `NaN` służy do oznaczania wyników bezsensownych działań, więc wynik jednego bezsensownego działania nie jest
 równy wynikowi żadnego innego bezsensownego działania.
 
-Każdą wartość w JavaScripcie można przekształcić w wartość logiczną. Poniższe wartości są przekształcane i traktowane
-jak wartość logiczna false:
+Każdą wartość w JavaScript można przekształcić w wartość logiczną. Poniższe wartości są przekształcane i traktowane jak
+wartość logiczna false:
 
 ```javascript
 undefined;
@@ -1106,8 +1108,8 @@ Słowo `undefined` też oznacza brak wartości:
 4. Wartość nieokreślonego parametru funkcji.
 
 Wartość `undefined` jest globalną stałą (a nie słowem kluczowym, jak `null`, choć w praktyce różnica ta nie jest
-istotna), przypisywaną niezainicjowanej zmiennej. Operator `typeof` użyty z wartością `undefined` zwraca ciąg "
-undefined" oznaczający, że jest to wartość osobnego typu.
+istotna), przypisywaną niezainicjowanej zmiennej. Operator `typeof` użyty z wartością `undefined` zwraca ciąg „undefined” 
+oznaczający, że jest to wartość osobnego typu.
 
 Wartości `null` i `undefined` oznaczają brak wartości i są często stosowane wymiennie. Operator `==` traktuje je jako
 równe wartości, operator `===` już nie. Obie wartości są fałszywe i są traktowane jako wartość false. Żadna z nich nie
@@ -1123,30 +1125,30 @@ Programiści raczej unikają stosowania tych wartości.
 ## Symbole <!--TODO-->
 
 Symbole zostały wprowadzone w wersji ES6, aby można było stosować nietekstowe nazwy właściwości. Fundamentalny typ
-`Object` jestnieuporządkowaną kolekcją właściwości, z których każda ma nazwę i wartość. Nazwami właściwości są ciągi
-znaków. Począwszy od wersji ES6 nazwami mogą być również symbole, jak niżej:
+`Object` jest nieuporządkowaną kolekcją właściwości, z których każda ma nazwę i wartość. Nazwami właściwości są ciągi
+znaków. Począwszy od wersji ES6 nazwami, mogą być również symbole jak niżej:
 
 ```javascript
-const strname = 'string name'; // Ciąg pełniący rolę nazwy właściwości.
-const symname = Symbol('propname'); // Symbol pełniący rolę nazwy właściwości.
-typeof strname; // => "string": jest ciągiem znaków.
-typeof symname; // => "symbol": symname jest symbolem.
+const strName = 'string name'; // Ciąg pełniący rolę nazwy właściwości.
+const symName = Symbol('propName'); // Symbol pełniący rolę nazwy właściwości.
+typeof strName; // => "string": jest ciągiem znaków.
+typeof symName; // => "symbol": symName jest symbolem.
 
 const object = {}; // Utworzenie nowego obiektu.
 
-object[strname] = 1; // Zdefiniowanie właściwości o nazwie określonej za pomocą ciągu znaków.
-object[symname] = 2; // Zdefiniowanie właściwości o nazwie określonej za pomocą symbolu.
-object[strname]; // => 1: odwołanie do właściwości o nazwie określonej za pomocą ciągu znaków.
-object[symname]; // => 2: odwołanie do właściwości o nazwie określonej za pomocą symbolu.
+object[strName] = 1; // Zdefiniowanie właściwości o nazwie określonej za pomocą ciągu znaków.
+object[symName] = 2; // Zdefiniowanie właściwości o nazwie określonej za pomocą symbolu.
+object[strName]; // => 1: odwołanie do właściwości o nazwie określonej za pomocą ciągu znaków.
+object[symName]; // => 2: odwołanie do właściwości o nazwie określonej za pomocą symbolu.
 ```
 
 Typ `Symbol` nie ma składni literału. Aby uzyskać wartość typu Symbol, należy wywołać funkcję
 `Symbol()`. Funkcja ta nigdy nie zwraca dwa razy tej samej wartości, nawet jeżeli zostanie wywołana z tym samym
 argumentem. Oznacza to, że wartość typu `Symbol` uzyskaną za pomocą funkcji
-`Symbol()` można bezpiecznie traktować jako nazwę właściwości, bez obawy ze zostanie nadpisana.
+`Symbol()` można bezpiecznie traktować jako nazwę właściwości, bez obawy, że zostanie nadpisana.
 
 W praktyce symbole traktuje się jako mechanizm rozszerzający język. Gdy w wersji ES6 została wprowadzona pętla `for/of`
-i obiekty iterowalne , pojawiła się potrzeba definiowania standardowych metod, które można byłoby implementować w
+i obiekty iterowalne, pojawiła się potrzeba definiowania standardowych metod, które można byłoby implementować w
 klasach, aby były iterowalne. `Symbol.iterator` jest wartością typu Symbol, której używa się jako nazwy metody, aby
 obiekt był iterowalny.
 
@@ -1174,7 +1176,7 @@ Symbol.keyFor(t) // => "shared"
 
 ## Obiekt globalny <!--TODO-->
 
-Obiekt globalny jest to zwykły obiekt, którego właściwości są globalnymi identyfikatorami. Interpreter JavaScriptu zaraz
+Obiekt globalny jest to zwykły obiekt, którego właściwości są globalnymi identyfikatorami. Interpreter JavaScript zaraz
 po uruchomieniu (lub przeglądarka po załadowaniu strony) tworzy nowy obiekt globalny z początkowym zestawem właściwości
 definiujących:
 
@@ -1185,12 +1187,12 @@ definiujących:
 
 Właściwości obiektu globalnego nie są zarezerwowanymi słowami, ale zasługują na to, aby je jako takie traktować.
 
-W środowisku `Node` obiekt globalny posiada właściwość o nazwie `global`, którego właściwością jest sam obiekt globalny.
+W środowisku `Node` obiekt globalny ma właściwość o nazwie `global`, którego właściwością jest sam obiekt globalny.
 Dzięki temu w środowisku można odwoływać się do obiektu globalnego za pomocą tej nazwy.
 
 W przeglądarkach rolę obiektu globalnego dla całego kodu zawartego w oknie pełni obiekt `Window`. Posiada on
 właściwość `window` zawierającą odwołanie do samego siebie, jak również kilka innych podstawowych właściwości
-charakterystycznych dla danej przeglądarki i klienckiego skryptu JavaScriptu. Z wątkami roboczymi skojarzony jest inny
+charakterystycznych dla danej przeglądarki i klienckiego skryptu JavaScript. Z wątkami roboczymi skojarzony jest inny
 niż `Window`
 globalny obiekt, do którego można odwoływać się za pomocą nazwy `self`.
 
@@ -1202,6 +1204,8 @@ początku roku 2020 nazwa ta była już zaimplementowana we wszystkich nowoczesn
 <!--TODO-->
 
 ## Konwersje typów <!--TODO-->
+
+
 
 ### Automatyczna konwersja
 
@@ -1392,7 +1396,7 @@ let name = 'Larry',
 > zmiennymi globalnymi. Doskonałym przykładem jest użycie zmiennej globalnej, a następnie dołączenie marnie napisanej
 > biblioteki zewnętrznej, która również tworzy zmienną globalną o takiej samej nazwie.
 
-Kiedy w JavaScripcie do deklarowania zmiennych używało się tylko słowa kluczowego `var`, ze względu na hoisting
+Kiedy w JavaScript do deklarowania zmiennych używało się tylko słowa kluczowego `var`, ze względu na hoisting
 stosowano zasady, które — mimo iż mamy teraz do dyspozycji słowa `let` i `const` niepodlegające hoistingowi — są nadal
 aktualne:
 
@@ -1403,12 +1407,12 @@ aktualne:
 ### Nazwy zmiennych
 
 Aby utworzyć zmienną, trzeba jej nadać nazwę, czyli tak zwany **identyfikator**. Zasady dotyczące nazw zmiennych w
-języku JavaScript są następujące:
+są następujące:
 
 - nazwa musi zaczynać się od litery, znaku podkreślenia lub znaku dolara.
 - pozostała część nazwy może zawierać dowolną kombinację liter, podkreśleń i cyfr (a także kilku innych, mniej typowych
   znaków).
-- słowa zarezerwowane języka JavaScript nie mogą być nazwami zmiennych.
+- słowa zarezerwowane nie mogą być nazwami zmiennych.
 - w nazwach zmiennych jest uwzględniana wielkość liter.
 
 W kodzie warto unikać stosowania nazw istniejących już zmiennych. Kod JavaScript uruchamiany w przeglądarce internetowej
@@ -1551,7 +1555,7 @@ Zasady deklarowania zmiennej za pomocą słowa kluczowego `var`:
    od `for(var i = 0; ....`. Ponieważ słowo `var` nie ogranicza zasięgu zmiennej do ciała pętli, w każdej z nich można
    bezproblemowo ponownie deklarować i inicjować tę samą zmienną.  TODO do wyjaśnienia !!! -->
 
-4. Zmienna może być zainicjowana w środku funkcji, ale jej definicja jest przenoszona na początek funkcjiale zanim
+4. Zmienna może być zainicjowana w środku funkcji, ale jej definicja jest przenoszona na początek funkcji, ale zanim
    zostanie wykonany kod inicjujący, ma wartość `undefined`. Użycie takiej zmiennej przed jej zainicjowaniem nie
    powoduje zgłoszenia błędu. Jest to jednak wadliwa funkcjonalność, będąca przyczyną wielu błędów, którą koryguje
    instrukcja `let`. Odwołanie się do zadeklarowanej w ten sposób zmiennej przed jej zainicjowaniem skutkuje zgłoszeniem
@@ -1670,7 +1674,7 @@ powoduje zgłoszenie wyjątku `ReferenceError`.
 ## Inicjatory obiektów i tablic
 
 **Inicjator obiektu** lub **tablicy** jest wyrażeniem, którego wartością jest nowo utworzony obiekt lub tablica i które
-jest nazywane **literałem obiektowym** lub **tablicowym**. Nie jest to jednak wyrażenie podstawowe, jako że zawiera w
+jest nazywane **literałem obiektowym**, lub **tablicowym**. Nie jest to jednak wyrażenie podstawowe, jako że zawiera w
 sobie podwyrażenie określające wartość właściwości obiektu lub elementu tablicy.
 
 Inicjator tablicy jest listą wyrażeń oddzielonych przecinkami, umieszczoną wewnątrz nawiasów kwadratowych. Wynikiem
@@ -1719,7 +1723,7 @@ const square = function (x) {
 
 Wyrażenie definiujące funkcję może również zawierać jej nazwę.
 
-## Wyrażenia dostępu do właściwości <!-- TODO -->
+## Wyrażenia dostępu do właściwości <!--TODO-->
 
 Wynikiem **wyrażenia dostępu do właściwości** jest wartość właściwości obiektu lub elementu tablicy. Język JavaScript
 definiuje dwie składnie dostępu do właściwości:
@@ -1769,6 +1773,35 @@ wyrażenie?.[wyrażenie];
 Wartości null i undefined są jedynymi wartościami w języku JavaScript, które nie mają właściwości. W ich przypadku próba
 odwołania się do właściwości za pomocą kropki lub nawiasów [] skutkuje zgłoszeniem wyjątku TypeError. Aby uchronić się
 przed takimi sytuacjami, można użyć notacji ?. lub ?.[].
+
+Przeanalizujmy wyrażenie `a?.b`. Jeżeli zmienna `a` ma wartość `null` lub `undefined`, wynikiem całego wyrażenia jest
+`undefined`. Nie trzeba przy tym odwoływać się do właściwości b. Jeżeli zmienna `a` ma inną wartość, wynikiem całego
+wyrażenia jest wartość właściwości `a.b` (jeżeli `a`, nie ma właściwości o nazwie `b`, wynikiem wyrażenia również jest
+undefined).
+
+Tego rodzaju wyrażenie dostępu do właściwości jest niekiedy nazywane „opcjonalnym łańcuchowaniem”, ponieważ może składać
+się z większej liczby połączonych wyrażeń, na przykład:
+
+```javascript
+let a = {b: null};
+a.b?.c.d // => undefined (cecha opcjonalnego  łań. - "krótkie zwarcie"); a.b.c => TypeError
+  (a.b?.c).d // => TypeError
+```
+
+W wyrażeniu warunkowego dostępu do właściwości można również stosować zapis ?.[] zamiast [].
+
+```javascript
+let a; // Ups, zapomnieliśmy zainicjować tę zmienną!
+let index = 0;
+try {
+  a[index++]; // Zgłoszenie wyjątku TypeError.
+} catch (e) {
+  index // => 1: zmienna jest powiększana przed zgłoszeniem wyjątku TypeError.
+}
+a?.[index++] // => undefined: ponieważ zmienna a ma wartość undefined.
+index // => 1: zmienna nie jest powiększana, ponieważ zapis ?.[] powoduje krótkie zwarcie.
+a[index++] // TypeError: nie można indeksować niezdefiniowanej zmiennej.
+```
 
 ## Wyrażenia wywołujące
 
@@ -1831,7 +1864,7 @@ pojęciami wartości „prawdziwych” i „fałszywych”.
 
 Operator && można rozpatrywać w trzech różnych kontekstach:
 
-1. Operandy są wartościami logicznymi. Wtedy zwraca wartości logiczne `true` lub `false`zgodzie z działaniem iloczynu
+1. Operandy są wartościami logicznymi. Wtedy zwraca wartość logiczne `true` lub `false` zgodnie z działaniem iloczynu
    (koniunkcji) logicznego. Często jest stosowany do łączenia dwóch wyrażeń relacyjnych, na przykład:
 
 ```javascript
@@ -1843,8 +1876,7 @@ Wynikiem wyrażenia relacyjnego jest zawsze wartość `true` lub `false`.
 2. Operandy są wartościami prawdziwymi lub fałszywymi. Wtedy zwraca wartość prawdziwą lub fałszywą.
 
 3. Operator najpierw wylicza wartość lewego operandu. Jeżeli jest fałszywa, oznacza to, że wartość całego wyrażenia jest
-   również fałszywa, więc operator zwraca po prostu wartość lewego operandu bez wyliczania wartości prawego operandu.
-   Gdy wartość po lewej stronie jest prawdziwa, operator `&&` wylicza i zwraca wartość znajdującą się po jego prawej
+   również fałszywa, więc operator zwraca po prostu wartość lewego operandu bez wyliczania wartości prawego operandu. Gdy wartość po lewej stronie jest prawdziwa, operator `&&` wylicza i zwraca wartość znajdującą się po jego prawej
    stronie:
 
 ```javascript
@@ -1959,7 +1991,7 @@ Poniższa tabela przedstawia wyniki operatora `typeof` użytego ze wszystkimi wa
 Funkcje, w języku JavaScript, są specjalnego rodzaju obiektami, ale operator typeof odróżnia je od obiektów do tego
 stopnia, że rezerwuje dla nich osobną zwracaną wartość.
 
-# Instrukcje
+# 5. Instrukcje
 
 **Instrukcje** w analogi do językoznawstwa można nazwać zdaniami lub poleceniami. Podczas gdy wyrażenia są
 **wyliczane** aby uzyskać wynik, instrukcje są wykonywane, aby coś się stalo.
@@ -1994,7 +2026,7 @@ sprawdzeniem, inkrementowana lub modyfikowana w inny sposób.
 
 > for (inicjalizacja; sprawdzenie; inkrementacja)<br> > &nbsp;&nbsp;&nbsp;&nbsp;instrukcja
 
-# Obiekty
+# 6. Obiekty
 
 ## Wprowadzenie do obiektów
 
@@ -2003,7 +2035,7 @@ właściwości są zazwyczaj ciągami znaków, aczkolwiek, mogą być również 
 znaków-wartość” może także dziedziczyć właściwości po innym obiekcie, tzw. prototypie. Metody obiektu są zazwyczaj
 odziedziczonymi właściwościami.
 
-Obiekty w języku JavaScript są dynamiczne, tzn. ich właściwości można dodawać i usuwać. Mogą też funkcjonować tak jak
+Obiekty, w języku JavaScript, są dynamiczne, tzn. ich właściwości można dodawać i usuwać. Mogą też funkcjonować tak jak
 obiekty statyczne lub struktury w językach statycznie typowanych, a także reprezentować zbiory ciągów znaków.
 
 W JS obiektem jest każda wartość, która nie jest ciągiem znaków, liczbą, symbolem, wartością logiczną, null i undefined.
@@ -2011,7 +2043,7 @@ Natomiast ciągi znaków, liczby i listingi logiczne mogą funkcjonować jak nie
 
 Obiekty są mutowalne i operuje się na ich referencjach, a nie wartościach. Załóżmy, że zmienna x odwołuje się do
 obiektu. Instrukcja let y = x; powoduje, że zmiennej y jest przypisywana referencja do tego obiektu, a nie sam obiekt. W
-efekcie wszystkie modyfikacje wprowadzone w zmiennej y są odzwierciedlane w zmiennej x.
+efekcie wszystkie modyfikacje wprowadzone w zmiennej y są odzwierciedlane w x.
 
 **Właściwość** ma nazwę i wartość. Nazwą może być dowolny ciąg znaków (również pusty) lub symbol. Wartość właściwości
 może być dowolna, jak również dowolne mogą być funkcje getter lub setter (lub obie).
@@ -2023,7 +2055,7 @@ Każda właściwość, oprócz nazwy i wartości, posiada trzy atrybuty:
 
 1. Atrybut „zapisywalna” określający, czy właściwości można przypisywać wartość.
 2. Atrybut „wyliczalna” określający, czy nazwa właściwości może być odczytywana za pomocą pętli for/in.
-3. Atrybut „konfigurowalna” określający, czy właściwość można usunąć oraz czy można zmieniać jej atrybuty.
+3. Atrybut „konfigurowalna” określający, czy właściwość można usunąć oraz, czy można zmieniać jej atrybuty.
 
 ## Tworzenie obiektów
 
@@ -2060,6 +2092,16 @@ let book = {
 
 ### Tworzenie obiektów za pomocą operatora new
 
+Operator `new` tworzy obiekt i inicjuje go. Po operatorze umieszcza się nazwę funkcji zwaną **konstruktorem**, która
+inicjuje nowo utworzony obiekt. Wbudowane obiekty mają następujące konstruktory:
+
+```javascript
+const object = new Object(); // Utworzenie pustego obiektu <=> {} 
+const array = new Array();   // Utworzenie pustej tablicy <=> []
+const date = new Date();     // Utworzenie obiektu typu Date reprezentującego aktualny czas
+const map = new Map();         // Utworzenie obiektu typu Map dla par klucz-wartość
+```
+
 ### Prototypy
 
 Z każdym obiektem w języku JavaScript jest skojarzony inny obiekt, tzw. prototyp, po którym dziedziczone są właściwości.
@@ -2074,7 +2116,7 @@ Właściwość `Object.prototype` jest obiektem, który nie ma prototypu, tzn. n
 obiekcie. Większość wbudowanych i zdefiniowanych konstruktorów ma prototyp odziedziczony po obiekcie `Object.prototype`.
 (np. obiekt `Date.prototype`). Zatem obiekt utworzony za pomocą instrukcji `new Date()` dziedziczy właściwości zarówno
 po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
-prototypów** .
+prototypów**.
 
 ### Funkcja Object.create()
 
@@ -2131,7 +2173,7 @@ obiekt['właściwość'];
 
 Pierwsza składnia, z kropką i identyfikatorem, jest podobna do stosowanej w językach C i Java do odwoływania się do
 statycznych pól struktur i obiektów. Natomiast druga, z nawiasami kwadratowymi, jest podobna do wyrażenia odwołującego
-się do elementu **tablicy asocjacyjnej** (inne pojęcia to "mapa" lub "słownik"). <u>W języku JavaScript obiekty są
+się do elementu **tablicy asocjacyjnej** (inne pojęcia to „mapa” lub „słownik”). <u>W języku JavaScript obiekty są
 tablicami asocjacyjnymi.</u>
 
 JavaScript jest językiem luźno typowanym. W kodzie można tworzyć w każdym obiekcie dowolne właściwości. Aby odwołać się
@@ -2179,7 +2221,7 @@ właściwości `prototype` tworzą łańcuch, czyli połączoną listę obiektó
 let object = {}; // Obiekt object dziedziczy metody po obiekcie Object.prototype.
 object.x = 1; // Od teraz ma również własną właściwość x.
 
-let p = Object.create(o); // Obiekt p dziedziczy właściwości po obiektach object i Object.prototype.
+let p = Object.create(object); // Obiekt p dziedziczy właściwości po obiektach object i Object.prototype.
 p.y = 2; // Od teraz ma również własną właściwość y.
 
 let q = Object.create(p); // Obiekt q dziedziczy właściwości po obiektach p, object …
@@ -2247,13 +2289,13 @@ Za pomocą wprowadzonego w wersji języka ES2020 operatora warunkowego dostępu 
 dostęp do właściwości”) można powyższe wyrażenie napisać w następujący sposób:
 
 ```javascript
-
+let surname = book?.author?.surname;
 ```
 
 ### Uproszczone definiowanie metod
 
 Funkcja zdefiniowana jako właściwość obiektu nosi nazwę **metody**. W wersjach starszych niż ES6 metody definiowało się
-w literale obiektowym tak samo jak właściwości, wykorzystując wyrażenia funkcyjne:
+w literale obiektowym tak samo, jak właściwości, wykorzystując wyrażenia funkcyjne:
 
 ```javascript
 let square = {
@@ -2266,7 +2308,7 @@ let square = {
 square.area(); // => 100
 ```
 
-W wersji ES6 w składni literału obiektoweg można pominąć dwukropek wraz ze słowem kluczowym function.
+W wersji ES6 w składni literału obiektowego można pominąć dwukropek wraz ze słowem kluczowym function.
 
 ```javascript
 let square = {
@@ -2355,20 +2397,22 @@ let b = [0, ...a, 4]; // b == [0, 1, 2, 3, 4]
 Za pomocą operatora rozciągania wygodnie tworzy się płaskie kopie tablic:
 
 ```javascript
-let original = [1,2,3];
+let original = [1, 2, 3];
 let copy = [...original];
 copy[0] = 0; // Modyfikacja kopii tablicy nie wpływa na oryginał.
 original[0] // => 1
 ```
 
-Operator rozciągania można stosować z każdym iterowalnym obiektem, tj. takim, który można iterować za pomocą pętli for/of. Ciągi znaków są iterowalne, zatem za pomocą operatora rozciągania można je przekształcać w tablice złożone z pojedynczych znaków:
+Operator rozciągania można stosować z każdym iterowalnym obiektem, tj. takim, który można iterować za pomocą pętli
+for/of. Ciągi znaków są iterowalne, zatem za pomocą operatora rozciągania można je przekształcać w tablice złożone z
+pojedynczych znaków:
 
 ```javascript
 let digits = [..."0123456789ABCDEF"];
 digits // => ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
 ```
 
-Zbiory również są iterowalne, a więc prostym sposobem usunięcia z tablicy powtarzających się elementów jest 
+Zbiory również są iterowalne, a więc prostym sposobem usunięcia z tablicy powtarzających się elementów jest
 przekształcenie jej w zbiór i z powrotem w tablicę za pomocą operatora rozciągania:
 
 ```javascript
@@ -2400,7 +2444,7 @@ ważnymi i przydatnymi konstrukcjami programistycznymi.
 ## Definiowanie funkcji
 
 Najprościej funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować zarówno jako deklarację,
-jak i wyrażenie. Począwszy od wersji języka ES6 jest jeszcze jeden ważny sposób definiowania funkcji, bez użycia słowa
+jak i wyrażenie. Począwszy od wersji języka ES6, jest jeszcze jeden ważny sposób definiowania funkcji, bez użycia słowa
 kluczowego function — są to tzw. **funkcje strzałkowe**. Składnia definicji takiej funkcji jest bardzo zwięzła i
 szczególnie przydatna wtedy, gdy w argumencie funkcji trzeba umieścić inną funkcję.
 

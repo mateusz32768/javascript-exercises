@@ -2,8 +2,9 @@
 
 // Operator typeof
 
-let value = 234.78;
+// let value = parseInt(prompt('Podaj jakąś wartość'));
+//
+// typeof value === 'string' ? `value` : value.toString();
+//
+// console.log(value);
 
-typeof value === 'string' ? `value` : value.toString();
-
-console.log(value);
