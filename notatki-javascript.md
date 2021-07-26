@@ -450,7 +450,7 @@ W języku JavaScript liczby dziesiętne zapisuje się w postaci sekwencji cyfr, 
 
 ### Liczby ósemkowe i szesnastkowe
 
-Jeśli liczba zaczyna się cyfrą 0o, jest uznawana za ósemkową, jeśli od 0x za szesnastkową. ES6 zapewnia prefiks `0o` 
+Jeśli liczba zaczyna się cyfrą 0o, jest uznawana za ósemkową, jeśli od 0x za szesnastkową. ES6 zapewnia prefiks `0o`
 (lub 0O) do reprezentowania liczb ósemkowych.
 
 ```javascript
@@ -545,7 +545,7 @@ Math.asinh(x); // Arcus sinus hiperboliczny (są również Math.acosh(), Math.at
 ```
 
 W języku JavaScript przepełnienie, niedomiar i dzielenie przez zero nie powodują zgłoszenia błędu. Jeżeli wynik operacji
-jest większy niż największa dopuszczalna wartość (przepełnienie), zwracana jest specjalna wartość `Infinity` 
+jest większy niż największa dopuszczalna wartość (przepełnienie), zwracana jest specjalna wartość `Infinity`
 (nieskończoność) lub `-Infinity`.
 
 Wartości nieskończone funkcjonują zgodnie z oczekiwaniami, tj. wynikiem dodawania, odejmowania, mnożenia i dzielenia z
@@ -1108,8 +1108,8 @@ Słowo `undefined` też oznacza brak wartości:
 4. Wartość nieokreślonego parametru funkcji.
 
 Wartość `undefined` jest globalną stałą (a nie słowem kluczowym, jak `null`, choć w praktyce różnica ta nie jest
-istotna), przypisywaną niezainicjowanej zmiennej. Operator `typeof` użyty z wartością `undefined` zwraca ciąg „undefined” 
-oznaczający, że jest to wartość osobnego typu.
+istotna), przypisywaną niezainicjowanej zmiennej. Operator `typeof` użyty z wartością `undefined` zwraca ciąg
+„undefined” oznaczający, że jest to wartość osobnego typu.
 
 Wartości `null` i `undefined` oznaczają brak wartości i są często stosowane wymiennie. Operator `==` traktuje je jako
 równe wartości, operator `===` już nie. Obie wartości są fałszywe i są traktowane jako wartość false. Żadna z nich nie
@@ -1205,7 +1205,20 @@ początku roku 2020 nazwa ta była już zaimplementowana we wszystkich nowoczesn
 
 ## Konwersje typów <!--TODO-->
 
+W miejscu, gdzie spodziewana jest wartość typu logicznego, można umieścić wartość dowolnego innego typu, która zostanie
+odpowiednio przekształcona. Niektóre wartości („prawdziwe”) są przekształcane na `true`, a inne („fałszywe”) na `false`.
+Ta sama zasada dotyczy innych typów. Jeżeli oczekiwany jest ciąg znaków, dowolna zadana wartość zostanie przekształcona
+w ciąg. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w liczbę lub — jeżeli nie będzie to możliwe — w
+`NaN`.
 
+Poniżej przedstawionych jest kilka przykładów:
+
+```javascript
+10 + " obiektów" // => "10 obiektów": liczba 10 jest przekształcana w ciąg znaków.
+"7" * "4" // => 28: oba ciągi są przekształcane w liczby.
+let n = 1 - "x"; // n == NaN; ciągu "x" nie można przekształcić w liczbę.
+n + " obiektów" // => "NaN obiektów": wartość NaN jest przekształcana w ciąg "NaN".
+```
 
 ### Automatyczna konwersja
 
@@ -1261,13 +1274,13 @@ operatorów dwuznakowych.
 2. Jeżeli oczekiwany jest ciąg znaków, dowolna zadana wartość zostanie przekształcona w ciąg.
 3. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w liczbę lub — jeżeli nie będzie to możliwe — w NaN.
 
-| Wartość                                     | Konwersja na ciąg          | Konwersja na liczbę | Konwersja na wartość logiczną |
+| Wartość                                     | Konwersja na ciąg          | Konwersja na liczbę | Konwersja na <br>wartość logiczną |
 | ------------------------------------------- | -------------------------- | ------------------- | ----------------------------- |
 | undefined                                   | "undefined"                | NaN                 | false                         |
 | null                                        | "null"                     | 0                   | false                         |
 | true                                        | "true"                     | 1                   |                               |
 | false                                       | "false"                    | 0                   |                               |
-| "" (pusty ciąg znaków)                      |                            | 0                   | false                         |
+| " " (pusty ciąg znaków)                      |                            | 0                   | false                         |
 | "1.2" (ciąg znaków zawierający liczbę)      |                            | 1.2                 | true                          |
 | "jeden" (ciąg znaków niezawierający liczby) |                            | NaN                 | true                          |
 | 0                                           | "0"                        |                     | false                         |
@@ -1305,15 +1318,88 @@ null == undefined; // => true: te dwie wartości są traktowane jako równe.
 Możliwość przekształcenia jednej wartości w inną nie oznacza ich równości. Na przykład wartość `undefined` użyta w
 miejscu, w którym oczekiwana jest wartość logiczna, jest przekształcana w `false`, co nie oznacza,
 że `undefined == false`. Z operatorami i instrukcjami można stosować wartości różnych typów, które są odpowiednio
-przekształcane. Instrukcja `if`
-przekształca wartość `undefined` w `false`, ale operator `==` nigdy nie przekształca operandów w wartości logiczne.
+przekształcane. Instrukcja `if` przekształca wartość `undefined` w `false`, ale operator `==` nigdy nie przekształca
+operandów w wartości logiczne.
+
+### Jawna konwersja
+
+Choć w wielu przypadkach konwersja typu odbywa się automatycznie, czasami trzeba ją wykonywać jawnie, choćby po to, aby
+kod był bardziej czytelny.
+
+Przeważnie konwersja odbywa się automatycznie, lecz, czasem, dla jasności kodu trzeba ją wykonać jawnie.
+
+Najprościej jawną konwersję wykonuje się za pomocą funkcji:
+
+```javascript
+Number("3") // => 3
+String(false) // => "false": można również użyć false.toString().
+Boolean([]) // => true
+```
+
+Kiedyś opakowywało się wartości prymitywne w obiekt za pomocą operatora `new`.
+
+Niektóre operatory dokonujące niejawnej konwersji czasem stosuje się do jawnej:
+
+1. Jeżeli jeden z operandów operatora `+` jest ciągiem znaków, drugi operand jest przekształcany w ciąg.
+2. Jednoargumentowy operator `+` przekształca operand w liczbę.
+3. Jednoargumentowy operator ! przekształca operand w wartość logiczną i neguje ją.
+
+```javascript
+x + "" // => String(x)
++ x // => Number(x)
+x - 0 // => Number(x)
+!!x // => Boolean(x): zwróć uwagę na podwójny znak !
+```
+
+Często wykonywanymi operacjami jest formatowanie i parsowanie liczb.
+
+```javascript
+let n = 17;
+let binary = "0b" + n.toString(2); // Liczba dwójkowa == "0b10001".
+let octal = "0o" + n.toString(8); // Liczba ósemkowa == "0o21".
+Let
+hex = "0x" + n.toString(16); // Liczba szesnastkowa == "0x11".
+```
+
+```javascript
+let n = 123456.789;
+n.toFixed(0) // => "123457"
+n.toFixed(2) // => "123456.79"
+n.toFixed(5) // => "123456.78900"
+n.toExponential(1) // => "1.2e+5"
+n.toExponential(3) // => "1.235e+5"
+n.toPrecision(4) // => "1.235e+5"
+n.toPrecision(7) // => "123456.8"
+n.toPrecision(10) // => "123456.7890"
+```
+
+Bardziej elastyczne są globalne funkcje `parseInt()` i `parseFloat()` (nie są to metody żadnej klasy).
+
+```javascript
+parseInt("3 blind mice") // => 3
+parseFloat(" 3.14 meters") // => 3.14
+parseInt("-12.34") // => –12
+
+parseInt("0xFF") // => 255
+parseInt("0xff") // => 255
+parseInt("-0XFF") // => –255
+parseFloat(".1") // => 0.1
+parseInt("0.1") // => 0
+parseInt(".1") // => NaN: liczba całkowita nie może rozpoczynać się znakiem ".".
+parseFloat("$72.47") // => NaN: liczba nie może rozpoczynać się znakiem "$".
+
+parseInt("11", 2) // => 3: (1*2+1)
+parseInt("ff", 16) // => 255: (15*16+15)
+parseInt("zz", 36) // => 1295: (35*36+35)
+parseInt("077", 8) // => 63: (7*8+7)
+parseInt("077", 10) // => 77: (7*10+7)
+```
+
+### Konwersja obiektu na wartość prymitywną.
+
+<!-- TODO -->
 
 ## Deklarowanie zmiennych i przypisywanie wartości.
-
-**Identyfikatory** reprezentują wartości. Wiążąc nazwę z wartością, można wykorzystywać tę wartość w tworzonym kodzie.
-Operacja ta zazwyczaj jest nazywana przypisywaniem wartości zmiennej. Termin „zmienna” sugeruje, że można przypisywać
-różne wartości, a więc zawartość zmiennej zmienia się w trakcie działania programu. Jeżeli nazwie zostanie przypisana
-wartość na stałe, wówczas stosuje się pojęcie stałej.
 
 **Identyfikatory** reprezentują wartości. Wiążąc nazwę z wartością, co nazywamy przypisaniem wartości **zmiennej**,
 możemy ją wielokrotnie wykorzystać w kodzie. W trakcie działania programy, jak sugeruje termin „zmienna”, jej zawartość
@@ -1396,9 +1482,8 @@ let name = 'Larry',
 > zmiennymi globalnymi. Doskonałym przykładem jest użycie zmiennej globalnej, a następnie dołączenie marnie napisanej
 > biblioteki zewnętrznej, która również tworzy zmienną globalną o takiej samej nazwie.
 
-Kiedy w JavaScript do deklarowania zmiennych używało się tylko słowa kluczowego `var`, ze względu na hoisting
-stosowano zasady, które — mimo iż mamy teraz do dyspozycji słowa `let` i `const` niepodlegające hoistingowi — są nadal
-aktualne:
+Kiedy w JavaScript do deklarowania zmiennych używało się tylko słowa kluczowego `var`, ze względu na hoisting stosowano
+zasady, które — mimo iż mamy teraz do dyspozycji słowa `let` i `const` niepodlegające hoistingowi — są nadal aktualne:
 
 1. Zawsze deklaruj zmienne najszybciej, jak to możliwe, w zasięgu, w którym powinny być widoczne.
 2. Zmienne deklarowane poza funkcjami powinny pojawić się na początku kodu.
@@ -1406,8 +1491,8 @@ aktualne:
 
 ### Nazwy zmiennych
 
-Aby utworzyć zmienną, trzeba jej nadać nazwę, czyli tak zwany **identyfikator**. Zasady dotyczące nazw zmiennych w
-są następujące:
+Aby utworzyć zmienną, trzeba jej nadać nazwę, czyli tak zwany **identyfikator**. Zasady dotyczące nazw zmiennych w są
+następujące:
 
 - nazwa musi zaczynać się od litery, znaku podkreślenia lub znaku dolara.
 - pozostała część nazwy może zawierać dowolną kombinację liter, podkreśleń i cyfr (a także kilku innych, mniej typowych
@@ -1876,7 +1961,8 @@ Wynikiem wyrażenia relacyjnego jest zawsze wartość `true` lub `false`.
 2. Operandy są wartościami prawdziwymi lub fałszywymi. Wtedy zwraca wartość prawdziwą lub fałszywą.
 
 3. Operator najpierw wylicza wartość lewego operandu. Jeżeli jest fałszywa, oznacza to, że wartość całego wyrażenia jest
-   również fałszywa, więc operator zwraca po prostu wartość lewego operandu bez wyliczania wartości prawego operandu. Gdy wartość po lewej stronie jest prawdziwa, operator `&&` wylicza i zwraca wartość znajdującą się po jego prawej
+   również fałszywa, więc operator zwraca po prostu wartość lewego operandu bez wyliczania wartości prawego operandu.
+   Gdy wartość po lewej stronie jest prawdziwa, operator `&&` wylicza i zwraca wartość znajdującą się po jego prawej
    stronie:
 
 ```javascript
