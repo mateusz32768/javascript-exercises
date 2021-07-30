@@ -1,4 +1,4 @@
-# Wprowadzenie do języka JavaScript
+# 1. Wprowadzenie do języka JavaScript
 
 JavaScript jest językiem programowania sieci WWW. Jest stosowany w ogromnej większości stron internetowych, a wszystkie
 nowoczesne przeglądarki, wykorzystywane na komputerach, tabletach i smartfonach, posiadają interpreter tego języka.
@@ -141,7 +141,7 @@ zapisane w języku C są najpierw kompilowane, a następnie uruchamia się sam w
 programów). Kod JavaScript może być np. uruchamiany w przeglądarce internetowej ze wbudowanym interpreterem języka
 wykonującego wszystkie wskazane instrukcje.
 
-## Poznawanie JavaScript
+## 1.1. Poznawanie JavaScript
 
 Aby testować kod JavaScript, potrzebny jest interpreter. Kilka wierszy kodu najprościej przetestujesz:
 
@@ -152,7 +152,7 @@ Aby testować kod JavaScript, potrzebny jest interpreter. Kilka wierszy kodu naj
 
 2. W środowisku Node. W terminalu wpisujemy polecenie **node**, aby rozpocząć interaktywną sesję.
 
-## Hello, world!
+## 1.2. Hello, world!
 
 Konsola deweloperska jest stosowana do sprawdzania prostych funkcjonalności, debugowania kodu aplikacji itp.
 
@@ -185,12 +185,12 @@ node ./scripts/script.js
 
 W celu uruchomienia skryptu znajdującego się w folderze scripts, który jest podkatalogiem bieżącego folderu aplikacji.
 
-# Struktura leksykalna
+# 2. Struktura leksykalna
 
 Struktura leksykalna języka programowania to zestaw podstawowych zasad pisania kodu w tym języku. Jest to niskopoziomowa
 składnia specyfikująca nazwy zmiennych, znaki komentarza, sposób oddzielania instrukcji od tekstu itp.
 
-## Tekst programu
+## 2.1. Tekst programu
 
 JavaScript jest językiem, w którym istotna jest wielkość liter.
 
@@ -201,7 +201,7 @@ Białymi znakami, oprócz zwykłej spacji (\u0020), są również tabulator oraz
 Podziałem wiersza może być znak nowego wiersza, powrót karetki (ang. carriage return) oraz para znaków powrót
 karetki/przejście do następnego wiersza (ang. line feed).
 
-## Komentarze
+## 2.2. Komentarze
 
 Stosowane są dwa rodzaje komentarzy:
 
@@ -219,7 +219,7 @@ Komentarzy nie zagnieżdżać się w kodzie.
  */
 ```
 
-## Literały
+## 2.3. Literały
 
 Literał to dane umieszczone bezpośrednio w programie.
 
@@ -233,7 +233,7 @@ false; // Druga wartość logiczna.
 null; // Brak obiektu.
 ```
 
-## Identyfikatory i zarezerwowane słowa
+## 2.4. Identyfikatory i zarezerwowane słowa
 
 **Identyfikator** to po prostu nazwa.
 
@@ -262,7 +262,7 @@ _dummy;
 $str;
 ```
 
-### Zarezerwowane słowa
+### 2.4.1 Zarezerwowane słowa
 
 Najlepiej jest unikać stosowania wszelkich zarezerwowanych słów w charakterze identyfikatorów, z wyjątkiem `from`, `set`
 i `target`, które są bezpieczne i powszechnie używane.
@@ -286,14 +286,14 @@ enum  implements  interface  package  private  protected  public
 Ze względów historycznych nie można w pewnych przypadkach stosować jako identyfikatorów słów
 `arguments` i `eval`. Dlatego najlepiej w ogóle ich nie używać.
 
-## Unicode
+## 2.5 Unicode
 
 Kod JavaScript składa się ze znaków Unicode. W identyfikatorach można stosować litery, cyfry i ideogramy Unicode
 (ale nie symbole emoji). Nazwami stałych i zmiennych mogą być symbole matematyczne i słowa z innych języków niż
 angielski. Jednak aby kod był przenośny i łatwy w edytowaniu przyjęto programistyczną konwencję stosowania w
 identyfikatorach nazw angielski lub stosowania tylko i wyłącznie znaków ASCII.
 
-### Sekwencje ucieczki Unicode
+### 2.5.1 Sekwencje ucieczki Unicode
 
 **Sekwencje ucieczki** (ang. _escape sequence_) umożliwiające kodowanie znaków Unicode wyłącznie za pomocą znaków ASCII.
 Sekwencja ucieczki składa się ze znaków `\u`:
@@ -325,11 +325,11 @@ console.log('\u{1f600}');
 Sekwencje ucieczki można również stosować w komentarzach. Ponieważ komentarze są pomijane, są one interpretowane jak
 znaki ASCII, a nie Unicode.
 
-### Normalizacja Unicode
+### 2.5.2. Normalizacja Unicode
 
 <!--TODO -->
 
-## Opcjonalne średniki
+## 2.6. Opcjonalne średniki
 
 W JS można nie stosować średników, jednakże zalecam dla poprawy czytelności kodu stosowanie średników, aby oznaczać
 koniec instrukcji. Poza tym nie stosując średników, należy uwzględnić kilka niuansów z tym związanych.
@@ -345,7 +345,7 @@ W JavaScript można przyjąć dwa style odnośnie do średników:
 1. Umieszczamy średniki, aby oznaczyć koniec instrukcji.
 2. Pomijanie średników wszędzie, gdzie jest to dopuszczalne, i stosowaniu ich tylko w sytuacjach, w których są wymagane.
 
-# Typy, wartości i zmienne
+# 3. Typy, wartości i zmienne
 
 Programy komputerowe wykonują operacje na wartościach, np. na liczbie 3,14 lub ciągu znakowym „Witaj świecie!". Jeśli w
 programie trzeba przechować wartość w celu jej późniejszego wykorzystania, przypisuje się ją do zmiennej.
@@ -355,7 +355,7 @@ Do fundamentalnych cech każdego języka programowania należą:
 1. Zestaw dostępnych typów danych, czyli rodzaje reprezentowanych i przetwarzanych wartości.
 2. Funkcjonowanie zmiennych.
 
-## Informację ogólne i definicje
+## 3.1. Informację ogólne i definicje
 
 W JS istnieją dwie kategorie typów danych:
 
@@ -380,7 +380,7 @@ specjalne, wbudowane funkcjonalności.
 
 <!--TODO-->
 
-## Liczby
+## 3.2. Liczby
 
 <!--TODO-->
 
@@ -438,7 +438,7 @@ całkowita, jaką można zapisać, należy do przedziału 9 kwadrylionów (15 ze
 
 Obliczenia na liczbach całkowitych są dokładne, a na liczbach zmiennoprzecinkowych są obarczone błędami.
 
-### Literały całkowite
+### 3.2.1 Literały całkowite
 
 W języku JavaScript liczby dziesiętne zapisuje się w postaci sekwencji cyfr, na przykład:
 
@@ -448,7 +448,7 @@ W języku JavaScript liczby dziesiętne zapisuje się w postaci sekwencji cyfr, 
 100000;
 ```
 
-### Liczby ósemkowe i szesnastkowe
+#### Liczby ósemkowe i szesnastkowe
 
 Jeśli liczba zaczyna się cyfrą 0o, jest uznawana za ósemkową, jeśli od 0x za szesnastkową. ES6 zapewnia prefiks `0o`
 (lub 0O) do reprezentowania liczb ósemkowych.
@@ -465,7 +465,7 @@ zakresu od 10 do 15. Poniżej są przedstawione przykładowe literały szesnastk
 0xff; // => 255 = 15*6 + 15
 ```
 
-### Literały binarne
+#### Literały binarne
 
 Z binarną reprezentacji liczby całkowitej możemy skorzystać na dwa sposoby:
 
@@ -474,7 +474,7 @@ parseInt('111', 2); // 7
 0b111; // 7 (es6) dostępny jest też prefiks OB
 ```
 
-### Literały wykładnicze
+#### Literały wykładnicze
 
 Zapis 2e+3 oznacza, że należy przesunąć kropkę dziesiętną (w tradycyjnym zapisie w języku polskim jest to przecinek)
 przy liczbie 2 w prawo o 3 pozycje. Zapis 2e - 3 oznaczałby, że należy przesunąć kropkę w lewo.
@@ -483,7 +483,7 @@ przy liczbie 2 w prawo o 3 pozycje. Zapis 2e - 3 oznaczałby, że należy przesu
 typeof 2.7e-5; // 'number'
 ```
 
-### Literały zmiennoprzecinkowe
+### 3.2.2. Literały zmiennoprzecinkowe
 
 Do zapisywania literałów zmiennoprzecinkowych wykorzystuje się tradycyjną składnię liczb rzeczywistych, obejmującą część
 całkowitą, następujący po niej symbol dziesiętny i część ułamkową.
@@ -500,7 +500,7 @@ let bits = 0b0001_1101_0111; // półbajtów
 let fraction = 0.123_456_789; // zastosowanie  separatora w części ułamkowej
 ```
 
-### Działania arytmetyczne
+### 3.2.3. Działania arytmetyczne
 
 Oprócz podstawowych operatorów arytmetycznych dostępne są bardziej zaawansowane operatory matematyczne. Są to funkcje i
 stałe zdefiniowane jako właściwości obiektu Math:
@@ -800,7 +800,7 @@ Natomiast operatory porównania można stosować z różnymi typami liczbowymi.
 Operatory bitowe zazwyczaj poprawnie działają z operandami typu `BigInt`. Jednak żadnej funkcji obiektu `Math` nie można
 stosować z liczbami typu `BigInt`.
 
-## Tekst
+## 3.3. Tekst
 
 <!--TODO-->
 
@@ -830,7 +830,7 @@ love.length; // => 2: kod UTF-16 znaku  to "\ud83d\udc99”.
 Począwszy od wersji ES6, ciągi znaków są iterowalne. Za pomocą pętli for/of lub operatora ... można iterować
 poszczególne znaki ciągu, ale nie 16-bitowe wartości.
 
-### Literały znakowe
+### 3.3.1. Literały znakowe
 
 Aby umieścić ciąg znaków w kodzie JavaScript, należy ująć go w apostrofy, cudzysłowy lub grawisy.
 
@@ -871,7 +871,7 @@ Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w J
 <button onclick="alert('Dziękuję')">Kliknij tutaj</button>
 ```
 
-### Sekwencje ucieczki w literałach znakowych
+### 3.3.2. Sekwencje ucieczki w literałach znakowych
 
 Lewy ukośnik `(\)` w połączeniu z następującym po nim znakiem reprezentuje znak, którego nie można wyrazić w inny
 sposób. Na przykład `\n` jest sekwencją ucieczki reprezentującą podział wiersza.
@@ -909,7 +909,7 @@ Na przykład:
 
 Lewy ukośnik, użyty przed znakiem innym niż jeden z wymienionych w tabeli, jest po prostu pomijany.
 
-### Operacje na ciągach znaków
+### 3.3.3. Operacje na ciągach znaków
 
 1. Łączenie ciągów za pomocą operatora `+`.
 2. Porównywanie ciągów za pomocą operatorów `===` i `!==`. Dwa ciągi są sobie równe, jeżeli tworzą dokładnie takie same
@@ -991,15 +991,15 @@ s[0]; // => "W"
 s[s.length - 1]; // => "!"
 ```
 
-### Literały szablonowe
+### 3.3.4. Literały szablonowe
 
 <!-- TODO -->
 
-### Porównywanie ciągu znaków ze wzorcem
+### 3.3.5. Porównywanie ciągu znaków ze wzorcem
 
 <!-- TODO -->
 
-## Wartości logiczne
+## 3.4. Wartości logiczne
 
 Typ logiczny reprezentuje prawdę lub fałsz, włączenie lub wyłączenie, potwierdzenie lub zaprzeczenie. Są tylko dwie
 wartości tego typu, reprezentowane za pomocą zarezerwowanych słów `true` i `false`.
@@ -1078,7 +1078,7 @@ W pierwszym przypadku ciało instrukcji `if` zostanie wykonane tylko wtedy, gdy 
 null. Drugi przypadek jest mniej ścisły: ciało instrukcji zostanie wykonane wtedy, gdy wartość zmiennej `o` nie będzie
 fałszywa, tj. będzie różna od `null` i `undefined`.
 
-## Wartości null i undefined - wartości puste
+## 3.5. Wartości null i undefined - wartości puste
 
 Dwie specjalne wartości `null` i `undefined` służą do oznaczania braku sensownej wartości. Same też są wartościami, ale
 nie przekazują żadnej informacji. Wiele operacji, które nie wytwarzają żadnej przydatnej wartości, zwraca właśnie
@@ -1122,7 +1122,7 @@ Programiści raczej unikają stosowania tych wartości.
 
 <!--TODO-->
 
-## Symbole <!--TODO-->
+## 3.6. Symbole <!--TODO-->
 
 Symbole zostały wprowadzone w wersji ES6, aby można było stosować nietekstowe nazwy właściwości. Fundamentalny typ
 `Object` jest nieuporządkowaną kolekcją właściwości, z których każda ma nazwę i wartość. Nazwami właściwości są ciągi
@@ -1174,7 +1174,7 @@ s.toString() // => "Symbol(shared)"
 Symbol.keyFor(t) // => "shared"
 ```
 
-## Obiekt globalny <!--TODO-->
+## 3.7. Obiekt globalny <!--TODO-->
 
 Obiekt globalny jest to zwykły obiekt, którego właściwości są globalnymi identyfikatorami. Interpreter JavaScript zaraz
 po uruchomieniu (lub przeglądarka po załadowaniu strony) tworzy nowy obiekt globalny z początkowym zestawem właściwości
@@ -1199,11 +1199,11 @@ globalny obiekt, do którego można odwoływać się za pomocą nazwy `self`.
 W wersji ES2020 została zdefiniowana uniwersalna nazwa `globalThis` oznaczająca globalny obiekt w każdym kontekście. Na
 początku roku 2020 nazwa ta była już zaimplementowana we wszystkich nowoczesnych przeglądarkach i w środowisku `Node`.
 
-## Niemutowalne prymitywne wartości i mutowalne odwołania do obiektów
+## 3.8. Niemutowalne prymitywne wartości i mutowalne odwołania do obiektów
 
 <!--TODO-->
 
-## Konwersje typów <!--TODO-->
+## 3.9. Konwersje typów <!--TODO-->
 
 W miejscu, gdzie spodziewana jest wartość typu logicznego, można umieścić wartość dowolnego innego typu, która zostanie
 odpowiednio przekształcona. Niektóre wartości („prawdziwe”) są przekształcane na `true`, a inne („fałszywe”) na `false`.
@@ -1220,7 +1220,7 @@ let n = 1 - "x"; // n == NaN; ciągu "x" nie można przekształcić w liczbę.
 n + " obiektów" // => "NaN obiektów": wartość NaN jest przekształcana w ciąg "NaN".
 ```
 
-### Automatyczna konwersja
+### 3.9.a. Automatyczna konwersja
 
 Interpreter JavaScript stara się wykonać prawie każdy podany mu program, nawet taki, który robi dziwne rzeczy. Np.:
 
@@ -1298,7 +1298,7 @@ operatorów dwuznakowych.
 Ciągi znaków, które można interpretować jako liczby, są przekształcane w liczby. Dopuszczalne jest stosowanie
 przodujących i końcowych spacji, ale w przypadku użycia innych znaków niż cyfry wynikiem konwersji jest wartość NaN.
 
-### Konwersje i równość wartości
+### 3.9.1. Konwersje i równość wartości
 
 W JS są dwa operatory sprawdzające równość wartości.
 
@@ -1321,7 +1321,7 @@ miejscu, w którym oczekiwana jest wartość logiczna, jest przekształcana w `f
 przekształcane. Instrukcja `if` przekształca wartość `undefined` w `false`, ale operator `==` nigdy nie przekształca
 operandów w wartości logiczne.
 
-### Jawna konwersja
+### 3.9.2. Jawna konwersja
 
 Choć w wielu przypadkach konwersja typu odbywa się automatycznie, czasami trzeba ją wykonywać jawnie, choćby po to, aby
 kod był bardziej czytelny.
@@ -1395,11 +1395,11 @@ parseInt("077", 8) // => 63: (7*8+7)
 parseInt("077", 10) // => 77: (7*10+7)
 ```
 
-### Konwersja obiektu na wartość prymitywną.
+### 3.9.3. Konwersja obiektu na wartość prymitywną.
 
 <!-- TODO -->
 
-## Deklarowanie zmiennych i przypisywanie wartości.
+## 3.10. Deklarowanie zmiennych i przypisywanie wartości.
 
 **Identyfikatory** reprezentują wartości. Wiążąc nazwę z wartością, co nazywamy przypisaniem wartości **zmiennej**,
 możemy ją wielokrotnie wykorzystać w kodzie. W trakcie działania programy, jak sugeruje termin „zmienna”, jej zawartość
@@ -1408,7 +1408,7 @@ może się zmieniać. Nazwie można przypisać wartość na stałe, wtedy mówim
 Zmienne i stałe przed użyciem trzeba zadeklarować. Od wersji ES6 służą do tego celu słowa kluczowe`let` i `const`. W
 starszych wersjach zmienne deklarowało się za pomocą słowa `var`.
 
-### Podstawy działania zmiennych
+### 3.10.a. Podstawy działania zmiennych
 
 Sposób działania zmiennych najprościej przedstawić, wykorzystując proste (prymitywne) typy zmiennych. Przez prostą
 zmienną określamy zmienną, która przechowuje tylko i wyłącznie jedną wartość. Przykładowo zmienna liczbowa przechowuje
@@ -1524,7 +1524,7 @@ let bigValue = 1234567.98;
 W tym przypadku następuje nie tylko deklaracja zmiennej, ale również jej **inicjalizacja**, czyli określenie wartości
 początkowej. Nie trzeba inicjować zmiennych w momencie deklaracji, ale czasem jest to najsensowniejsze rozwiązanie.
 
-### Deklaracje za pomocą słów kluczowych let i const.
+### 3.10.1. Deklaracje z użyciem słów let i const.
 
 Przykłady deklaracji:
 
@@ -1570,7 +1570,7 @@ na czas jednej iteracji pętli.
 Zasięg zmiennej jest obszarem kodu źródłowego, w którym zmienna jest zdefiniowana (dostępna). Zmienne i stałe
 zadeklarowane za pomocą słów `let` i `const` mają zasięg blokowy, czyli poza blokiem są niedostępne.
 
-W JS blokami są mn.in.:
+W JS blokami są m.in.:
 
 - klasy
 - funkcje
@@ -1610,7 +1610,7 @@ tej zmiennej przypisać.
 W języku JavaScript nie ma związku pomiędzy deklaracją zmiennej a jej typem. Poprawne jest na przykład przypisanie
 zmiennej najpierw liczby, a później ciągu znaków (co jest jednak złą praktyką).
 
-### Deklarowanie zmiennych za pomocą instrukcji var
+### 3.10.2. Deklarowanie zmiennych za pomocą instrukcji var
 
 W starszych wersjach języka niż ES6 zmienne można było deklarować wyłącznie za pomocą słowa kluczowego `var`, a stałych
 nie można było deklarować w ogóle. Składnia słowa `var` jest taka sama jak `let`:
@@ -1685,7 +1685,7 @@ console.log(`Saldo konta wynosi ${balance}`);
 > jakby została zadeklarowana za pomocą słowa kluczowego `var`, tj. jest to właściwość globalnego obiektu. Jednak w
 > odróżnieniu od zmiennej zadeklarowanej jawnie przy użyciu `var` można ją usunąć za pomocą operatora `delete`.
 
-### Przypisania destukturyzujące
+### 3.10.3. Przypisania destukturyzujące
 
 <!-- TODO -->
 
@@ -1722,7 +1722,7 @@ kilku ewentualnych dodatkowych wyrażeń będących jej argumentami.
 Złożone wyrażenia najczęściej tworzy się za pomocą prostszych wyrażeń i operatorów. Operator łączy w określony sposób
 wartości operandów i tworzy nową wartość. Czasami mówi się, upraszczając, że operator zwraca wartość.
 
-## Wyrażenia podstawowe
+## 4.1. Wyrażenia podstawowe
 
 **Wyrażenia podstawowe**, to takie, które nie składają się z jeszcze prostszych wyrażeń. Wyrażeniami podstawowymi w JS
 są stałe, **literały** wartości, niektóre słowa kluczowe i odwołania do zmiennych.
@@ -1756,7 +1756,7 @@ Interpreter JavaScript traktuje każdy użyty w kodzie identyfikator jako zmienn
 i stara się uzyskać jego wartość. Jeżeli z identyfikatorem nie jest skojarzona żadna wartość, próba jej uzyskania
 powoduje zgłoszenie wyjątku `ReferenceError`.
 
-## Inicjatory obiektów i tablic
+## 4.2. Inicjatory obiektów i tablic
 
 **Inicjator obiektu** lub **tablicy** jest wyrażeniem, którego wartością jest nowo utworzony obiekt lub tablica i które
 jest nazywane **literałem obiektowym**, lub **tablicowym**. Nie jest to jednak wyrażenie podstawowe, jako że zawiera w
@@ -1794,7 +1794,7 @@ q.x = 2.3;
 q.y = -1.2; // Obiekt q ma teraz te same właściwości co obiekt p.
 ```
 
-## Wyrażenia definiujące funkcje
+## 4.3. Wyrażenia definiujące funkcje
 
 Wynikiem **wyrażenia definiującego funkcję** jest nowa funkcja. Wyrażenie takie jest literałem funkcyjnym, podobnie jak
 inicjator obiektu jest literałem obiektowym:
@@ -1808,7 +1808,8 @@ const square = function (x) {
 
 Wyrażenie definiujące funkcję może również zawierać jej nazwę.
 
-## Wyrażenia dostępu do właściwości <!--TODO-->
+## 4.4. Wyrażenia dostępu do właściwości 
+<!--TODO-->
 
 Wynikiem **wyrażenia dostępu do właściwości** jest wartość właściwości obiektu lub elementu tablicy. Język JavaScript
 definiuje dwie składnie dostępu do właściwości:
@@ -1846,7 +1847,7 @@ wartości nie ma właściwości.
 W obu składniach, w przypadku braku właściwości o zadanej nazwie, wynikiem wyrażenia dostępu do właściwości jest
 undefined.
 
-### Warunkowy dostęp do właściwości
+### 4.4.1. Warunkowy dostęp do właściwości
 
 W wersji ES2020 zostały wprowadzone dwa nowe rodzaje wyrażeń dostępu do właściwości:
 
@@ -1888,15 +1889,17 @@ index // => 1: zmienna nie jest powiększana, ponieważ zapis ?.[] powoduje kró
 a[index++] // TypeError: nie można indeksować niezdefiniowanej zmiennej.
 ```
 
-## Wyrażenia wywołujące
+## 4.5. Wyrażenia wywołujące
 
 <!-- TODO -->
 
-## Wyrażenia tworzące obiekty
+## 4.6. Wyrażenia tworzące obiekty
 
 <!-- TODO -->
 
-## Przegląd operatorów
+
+
+## 4.7. Przegląd operatorów
 
 Operatory są stosowane w wyrażeniach arytmetycznych, porównujących, logicznych, przypisujących i innych.
 
@@ -1939,13 +1942,23 @@ Operatory są stosowane w wyrażeniach arytmetycznych, porównujących, logiczny
 | \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P   | 2   | l-wartość, dowolny → dowolny                          |
 | ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L   | 2   | dowolny, dowolny → dowolny                            |
 
-## Wyrażenia logiczne
+## 4.9. Wyrażenia relacyjne
+
+### 4.9.1 Operatory równości i nie równości
+
+### 4.9.2. Operatory porównania
+
+### 4.9.3. Operator in
+
+### 4.9.4 Operator instanceof
+
+## 4.10. Wyrażenia logiczne
 
 Operatory `&&`, `||` i `!` wykonują operacje logiczne i są często stosowane łącznie z operatorami relacyjnymi. Dwa
 wyrażenia relacyjne można połączyć w jedno złożone wyrażenie. Aby dobrze je rozumieć, należy znać różnicę między
 pojęciami wartości „prawdziwych” i „fałszywych”.
 
-### Operator logiczny ORAZ (&&)
+### 4.10.1. Operator logiczny ORAZ (&&)
 
 Operator && można rozpatrywać w trzech różnych kontekstach:
 
@@ -1976,7 +1989,7 @@ Należy zachowywać ostrożność, tworząc wyrażenia z operatorem `&&` i opera
 uboczne (przypisanie, inkrementację, dekrementację lub wywołanie funkcji), ponieważ od operandu po lewej stronie będzie
 zależało, czy te skutki będą miały miejsce.
 
-### Operator logiczny LUB (||)
+### 4.10.2. Operator logiczny LUB (||)
 
 Operator `||` działa podobnie jak operator `&&` tylko według sumy (alternatywy) logicznej.
 
@@ -2007,7 +2020,7 @@ function copy(o, p = {}) {
 }
 ```
 
-### Operator logiczny NIE (!)
+### 4.10.3. Operator logiczny NIE (!)
 
 Operator `!` jest operatorem jednoargumentowym umieszczanym przed operandem. Neguje on wartość logiczną operandu.
 
@@ -2050,8 +2063,11 @@ skróconym obliczaniem warunków logicznych (ang. `short-circuit evaluation`).
 
 Podobnie działa też operator warunkowy. Pierwsze wyrażenie jest zawsze obliczane, natomiast spośród drugiego i trzeciego
 obliczane jest tylko to, które zostanie wybrane.
+## 4.11. Wyrażenia przypisujące
 
-## Inne operatory
+## 4.12. Wyrażenia interpretujące
+
+## 4.13. Inne operatory
 
 <!-- TODO -->
 
@@ -2082,7 +2098,13 @@ stopnia, że rezerwuje dla nich osobną zwracaną wartość.
 **Instrukcje** w analogi do językoznawstwa można nazwać zdaniami lub poleceniami. Podczas gdy wyrażenia są
 **wyliczane** aby uzyskać wynik, instrukcje są wykonywane, aby coś się stalo.
 
-## Pętle
+## 5.1. Instrukcje wyrażeniowe
+
+## 5.2. Instrukcje złożone i puste
+
+## 5.3. Instrukcje warunkowe
+
+## 5.4. Pętle
 
 W języku JavaScript jest pięć rodzajów pętli:
 
@@ -2094,7 +2116,7 @@ W języku JavaScript jest pięć rodzajów pętli:
 
 Najczęściej wykorzystywane są do iterowania tablic.
 
-### Instrukcja while
+### 5.4.1. Instrukcja while
 
 Instrukcja `while` jest podstawową pętlą.
 
@@ -2102,7 +2124,9 @@ Instrukcja `while` jest podstawową pętlą.
 
 > while (wyrażenie)<br> > &nbsp;&nbsp;&nbsp;&nbsp;instrukcja
 
-### Pętla for
+### 5.4.2. instrukcja do/while
+
+### 5.4.3. Pętla for
 
 W większości przypadków pętla zawiera zmienną licznikową, inicjowaną przed rozpoczęciem wykonywania pętli. Przed
 wykonaniem kolejnej iteracji wartość tej zmiennej jest sprawdzana, a na końcu ciała pętli, tuż przed kolejnym
@@ -2111,6 +2135,37 @@ sprawdzeniem, inkrementowana lub modyfikowana w inny sposób.
 **Składnia instrukcji** _for_:
 
 > for (inicjalizacja; sprawdzenie; inkrementacja)<br> > &nbsp;&nbsp;&nbsp;&nbsp;instrukcja
+
+### 5.4.4. Pętla for/of
+
+Wprowadzona została w ES6 i operuje na **obiektach iterowalnych** (patrz rozdział 12). Takimi obiektami są tablice, ciągi znaków, zbiory i mapy.
+
+```javascript
+const data = [2, 3, 4, 5, 6, 7, 8, 9], sum = 0;
+
+for(const el of data){
+  sum += el;
+}
+
+sum; // => 44
+
+```
+
+Za słówem `of` musi się znaleźć wyrażenie będące iterowalnym obiektem.
+
+Tablica jest iterowana na "żywo", tzn. zmiana wprowadzona w każdej iteracji może mieć wpływ na jej wynik.
+
+#### Pętal for/of z obiektami
+
+Obiekty nie są domyślnie iterowalne, to też zastosowanie tej pętli do zwykłego obiektu spowoduje zgłoszenie wyjątku `TypeError`.
+
+Metoda Object.keys() zwraca tablicę zawierającą nazwy właściwości obiektu:
+
+```javascript
+
+```
+
+
 
 # 6. Obiekty
 
@@ -2377,6 +2432,13 @@ dostęp do właściwości”) można powyższe wyrażenie napisać w następują
 ```javascript
 let surname = book?.author?.surname;
 ```
+## Usuwanie właściwości
+
+## Udoskonalona składnia literału
+
+### Uproszczone definiowanie właściwości
+
+### Operator rozciągania
 
 ### Uproszczone definiowanie metod
 
