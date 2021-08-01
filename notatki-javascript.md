@@ -2169,7 +2169,7 @@ Metoda Object.keys() zwraca tablicę zawierającą nazwy właściwości obiektu:
 
 # 6. Obiekty
 
-## Wprowadzenie do obiektów
+## 6.1. Wprowadzenie do obiektów
 
 Obiekt jest to kolekcją właściwości ułożonych bez określonego porządku, z których każda ma nazwę i wartość. Nazwy
 właściwości są zazwyczaj ciągami znaków, aczkolwiek, mogą być również symbolami. Obiekt przypomina prostą mapę „ciąg
@@ -2198,7 +2198,7 @@ Każda właściwość, oprócz nazwy i wartości, posiada trzy atrybuty:
 2. Atrybut „wyliczalna” określający, czy nazwa właściwości może być odczytywana za pomocą pętli for/in.
 3. Atrybut „konfigurowalna” określający, czy właściwość można usunąć oraz, czy można zmieniać jej atrybuty.
 
-## Tworzenie obiektów
+## 6.2. Tworzenie obiektów
 
 Obiekt można utworzyć za pomocą:
 
@@ -2206,7 +2206,7 @@ Obiekt można utworzyć za pomocą:
 - słowa kluczowego `new`
 - funkcji `Object.create()`
 
-### Literały obiektowe
+### 6.2.1. Literały obiektowe
 
 Literał w najbardziej podstawowej postaci jest listą oddzielonych przecinkami par _nazwa:wartość_ umieszczoną w
 nawiasach klamrowych. Nazwa właściwości jest identyfikatorem lub literałem tekstowym (dopuszczalny jest też pusty ciąg
@@ -2231,7 +2231,7 @@ let book = {
 };
 ```
 
-### Tworzenie obiektów za pomocą operatora new
+### 6.2.2. Tworzenie obiektów za pomocą operatora new
 
 Operator `new` tworzy obiekt i inicjuje go. Po operatorze umieszcza się nazwę funkcji zwaną **konstruktorem**, która
 inicjuje nowo utworzony obiekt. Wbudowane obiekty mają następujące konstruktory:
@@ -2243,7 +2243,7 @@ const date = new Date();     // Utworzenie obiektu typu Date reprezentującego a
 const map = new Map();         // Utworzenie obiektu typu Map dla par klucz-wartość
 ```
 
-### Prototypy
+### 6.2.3. Prototypy
 
 Z każdym obiektem w języku JavaScript jest skojarzony inny obiekt, tzw. prototyp, po którym dziedziczone są właściwości.
 
@@ -2259,7 +2259,7 @@ obiekcie. Większość wbudowanych i zdefiniowanych konstruktorów ma prototyp o
 po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
 prototypów**.
 
-### Funkcja Object.create()
+### 6.2.4. Funkcja Object.create()
 
 Funkcja `Object.create()` tworzy nowy obiekt. Jej pierwszym argumentem jest prototyp obiektu:
 
@@ -2280,7 +2280,7 @@ let o = {x: 'Nie zmieniaj tej właściwości.'};
 library.function(Object.create(o)); // Zabezpieczenie przed przypadkowymi modyfikacjami
 ```
 
-## Odpytywanie i ustawianie właściwości
+## 6.3. Odpytywanie i ustawianie właściwości
 
 Wartość właściwości odczytujemy za pomocą jednego z dwóch operatorów:
 
@@ -2303,7 +2303,7 @@ book.edition = 7; // Utworzenie właściwości "edition" obiektu book.
 book['main title'] = 'ECMAScript'; // Zmiana wartości właściwości "main title".
 ```
 
-### Obiekty jako tablice asocjacyjne
+### 6.3.1. Obiekty jako tablice asocjacyjne
 
 Dwa poniższe wyrażenia mają tę samą wartość:
 
@@ -2348,7 +2348,7 @@ function computeValue(portfolio) {
 }
 ```
 
-### Dziedziczenie
+### 6.3.2. Dziedziczenie
 
 Obiekt w języku JavaScript ma zestaw właściwości własnych, jak również odziedziczonych po prototypie.
 
@@ -2394,7 +2394,7 @@ unitcircle.r; // => 1: prototyp nie jest modyfikowany.
 > Dziedziczenie w języku JavaScript funkcjonuje nawet wtedy, gdy bezpośredni dostęp do prototypu nie jest możliwy.
 > Aby dowiedzieć się więcej na ten temat, zajrzyj do podrozdziału „Atrybut prototype”.
 
-### Błędy dostępu do właściwości
+### 6.3.3. Błędy dostępu do właściwości
 
 Próba odpytania nieistniejącej właściwości nie jest błędem. Jeżeli obiekt `object` nie ma własnej ani odziedziczonej
 właściwości `x`, to odwołujące się do niej wyrażenie ma wartość `undefined`. Na przykład obiekt `book` ma właściwość o
@@ -2432,15 +2432,25 @@ dostęp do właściwości”) można powyższe wyrażenie napisać w następują
 ```javascript
 let surname = book?.author?.surname;
 ```
-## Usuwanie właściwości
+## 6.4. Usuwanie właściwości
 
-## Udoskonalona składnia literału
+## 6.5. Sprawdzanie właściwości
 
-### Uproszczone definiowanie właściwości
+## 6.6. Wyliczanie właściwości
 
-### Operator rozciągania
+## 6.7. Rozszerzanie obiektów
 
-### Uproszczone definiowanie metod
+## 6.8. Serializacja obiektów
+
+## 6.9. Metody obiektów
+
+## 6.10. Udoskonalona składnia literału obiektowego
+
+### 6.10.1. Uproszczone definiowanie właściwości
+
+### 6.10.4. Operator rozciągania
+
+### 6.10.5. Uproszczone definiowanie metod
 
 Funkcja zdefiniowana jako właściwość obiektu nosi nazwę **metody**. W wersjach starszych niż ES6 metody definiowało się
 w literale obiektowym tak samo, jak właściwości, wykorzystując wyrażenia funkcyjne:
@@ -2471,6 +2481,8 @@ square.area(); // => 100
 
 Obie formy kodu są równorzędne.
 
+## 6.11. Podsumowanie
+
 # 7. Tablice
 
 Tablica jest uporządkowaną kolekcją wartości, czyli elementów. Każdy element ma swoje miejsce w tablicy oznaczone
@@ -2489,7 +2501,7 @@ Tablice dziedziczą właściwości po prototypie `Array.prototype`, który defin
 
 W wersji języka ES6 został wprowadzony zestaw nowych klas tablicowych, zwany ogólnie „tablicami typowanymi”.
 
-## Tworzenie tablic
+## 7.1. Tworzenie tablic
 
 Tablice tworzymy za pomocą:
 
@@ -2498,7 +2510,7 @@ Tablice tworzymy za pomocą:
 * konstruktora `Array()`
 * metod fabrycznych `Array.of()` i `Array.from()`
 
-### Literały tablicowe
+### 7.1.1. Literały tablicowe
 
 Literał tablicowy jest umieszczoną wewnątrz nawiasów klamrowych listą elementów oddzielonych przecinkami, np.:
 
@@ -2530,7 +2542,7 @@ let undefs = [, ,]; // Tablica bez elementów, ale o długości 2 a nie 3, tu pr
 
 Próba odpytanie elementów nieistniejących — wartość `undefined`.
 
-### Operator rozciągania
+### 7.1.2. Operator rozciągania
 
 Operator rozciągania `(...)` nie jest operatorem w ścisłym znaczeniu tego słowa, gdyż można go stosować tylko w
 literałach tablicowych i wywołaniach funkcji.
@@ -2589,7 +2601,7 @@ Definicja funkcji może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej
 zdefiniowanych w tym samym zasięgu co funkcja nadrzędna. Oznacza to, że funkcje są **domknięciami** (ang. _closure_) —
 ważnymi i przydatnymi konstrukcjami programistycznymi.
 
-## Definiowanie funkcji
+## 8.1. Definiowanie funkcji
 
 Najprościej funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować zarówno jako deklarację,
 jak i wyrażenie. Począwszy od wersji języka ES6, jest jeszcze jeden ważny sposób definiowania funkcji, bez użycia słowa
@@ -2600,7 +2612,19 @@ W literałach obiektowych i w klasach metody definiuje się, stosując skrócon�
 przypisywane właściwościom obiektu za pomocą literału _nazwa:wartość_. Oprócz tego w szczególnych przypadkach stosuje
 się w literałach obiektowych słowa kluczowe get i set definiujące gettery i settery.
 
-# JavaScript w przeglądarkach
+# 9. Klasy
+
+
+# 13. Asynchroniczność w języku JavaScript
+
+Program asynchroniczny wstrzymuje działanie w oczekiwaniu na dane lub wystąpienie jakiegoś zdarzenia. Programy
+działające w przeglądarce są sterowane zdarzeniami tj. zanim wykonają jakąś operację, czekają, aż użytkownik coś kliknie
+lub czegoś dotknie na ekranie. Z kolei programy serwerowe oczekują na zapytania użytkowników wysyłane przez sieć.
+
+
+
+
+# 15. JavaScript w przeglądarkach
 
 Internet jest dzisiaj funkcjonalną platformą do tworzenia aplikacji. Przeglądarki wyspecjalizowały się w prezentowaniu
 sformatowanego tekstu i obrazów, a dodatkowo, podobnie jak systemy operacyjne, oferują różne usługi, m.in. grafikę,
@@ -2610,14 +2634,9 @@ aplikacje internetowe mogą korzystać z usług oferowanych przez platformy WWW.
 Kliencki kod JavaScript” oznacza kod przystosowany do uruchamiania w przeglądarkach, będący przeciwieństwem kodu
 serwerowego, uruchamianego na serwerach WWW.
 
-## Podstawy programowania stron WWW
+## 15.1. Podstawy programowania stron WWW
 
-### Kod JavaScript w znacznikach HTML <!--TODO-->
+### 15.1.1. Kod JavaScript w znacznikach HTML
 
-### Model DOM
+### 15.1.2. Model DOM
 
-# Asynchroniczność w języku JavaScript
-
-Program asynchroniczny wstrzymuje działanie w oczekiwaniu na dane lub wystąpienie jakiegoś zdarzenia. Programy
-działające w przeglądarce są sterowane zdarzeniami tj. zanim wykonają jakąś operację, czekają, aż użytkownik coś kliknie
-lub czegoś dotknie na ekranie. Z kolei programy serwerowe oczekują na zapytania użytkowników wysyłane przez sieć.
