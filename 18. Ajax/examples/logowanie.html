@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Logowanie</title>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- # logowanie.html #2 -->
+    <form action="logowanie.php" method="post" id="loginForm">
+        <fieldset>
+            <legend>Logowanie</legend>
+            <div><label for="email">Adres e-mail</label><input type="email" name="email" id="email" required></div>
+            <div><label for="password">Hasło</label><input type="password" name="password" id="password" required></div>
+            <div><label for="submit"></label><input type="submit" value="Zaloguj &rarr;" id="submit"></div>
+        </fieldset>
+    </form>
+	<script src="js/ajax.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
