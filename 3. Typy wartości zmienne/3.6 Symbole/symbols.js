@@ -1,7 +1,7 @@
-let strname = "string name"; // Ciąg pełniący rolę nazwy właściwości.
-let symname = Symbol("propname"); // Symbol pełniący rolę nazwy właściwości.
-typeof strname; // => "string": jest ciągiem znaków.
-typeof symname; // => "symbol": symname jest symbolem.
+let strname = "string name"; // Ciąg pełniący funkcję nazwy właściwości.
+let symname = Symbol("propname"); // Symbol pełniący funkcję nazwy właściwości.
+console.log(typeof strname); // => "string": jest ciągiem znaków.
+console.log(typeof symname); // => "symbol": symname jest symbolem.
 
 let o = {}; // Utworzenie nowego obiektu.
 o[strname] = 1; // Zdefiniowanie właściwości o nazwie określonej za pomocą

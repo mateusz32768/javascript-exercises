@@ -1174,6 +1174,82 @@ s.toString() // => "Symbol(shared)"
 Symbol.keyFor(t) // => "shared"
 ```
 
+## 3.6A Symbole wg mdn
+
+Symbol to wbudowany obiekt, którego konstruktor zwraca prymityw symbolu — zwany również wartością Symbol lub po prostu
+symbolem — który na pewno jest unikalny. Symbole są często używane do dodawania unikalnych kluczy właściwości do
+obiektu, które nie będą kolidować z kluczami, które jakikolwiek inny kod może dodać do obiektu i które są ukryte przed
+jakimikolwiek mechanizmami, których zwykle używa inny kod, aby uzyskać dostęp do obiektu. Umożliwia to formę słabej
+enkapsulacji lub słabą formę ukrywania informacji.
+
+Każde wywołanie Symbol () gwarantuje zwrócenie unikalnego symbolu. Każde wywołanie Symbol.for ("key") zawsze zwróci ten
+sam Symbol dla danej wartości "key". Gdy Symbol.for ("klucz") jest wywoływany, jeśli Symbol z podanym kluczem można
+znaleźć w globalnym rejestrze Symboli, zwracany jest ten Symbol. W przeciwnym razie tworzony jest nowy Symbol, dodawany
+do globalnego rejestru Symboli pod danym kluczem i zwracany.
+
+Aby utworzyć nowy prymitywny Symbol, piszesz Symbol () z opcjonalnym ciągiem jako jego opisem:
+
+```javascript
+let sym1 = Symbol()
+let sym2 = Symbol('foo')
+let sym3 = Symbol('foo')
+```
+
+Powyższy kod tworzy trzy nowe Symbole. Zauważ, że Symbol ("foo") nie zmienia ciągu "foo" na Symbol. Za każdym razem
+tworzy nowy Symbol:
+
+```javascript
+Symbol('foo') === Symbol('foo')  // false
+```
+
+Poniższa składnia z operatorem `new` zwróci TypeError:
+
+```javascript
+let sym = new Symbol()  // TypeError
+```
+
+Uniemożliwia to autorom tworzenie jawnego obiektu opakowującego Symbol zamiast nowej wartości Symbol i może być
+zaskakujące, ponieważ ogólnie możliwe jest tworzenie jawnych obiektów opakowujących wokół pierwotnych typów danych (na
+przykład `new Boolean`, `new String` i `new Number`).
+
+Jeśli naprawdę chcesz utworzyć obiekt opakowujący symbol, możesz użyć funkcji Object ():
+
+```javascript
+let sym = Symbol('foo')
+typeof sym      // "symbol"
+let symObj = Object(sym)
+typeof symObj   // "object"
+```
+
+### 3.6.1. Symbole współdzielone w globalnym rejestrze symboli
+
+Powyższa składnia przy użyciu funkcji `Symbol()` nie utworzy globalnego symbolu, który jest dostępny w całej bazie kodu.
+Aby utworzyć symbole dostępne w plikach, a nawet w różnych dziedzinach (z których każda ma swój własny zasięg globalny),
+użyj metod `Symbol.for()` i `Symbol.keyFor()` do ustawiania i pobierania symboli z globalnego rejestru symboli
+
+### 3.6.2. Znajdowanie właściwości symbolu na obiektach
+
+Metoda `Object.getOwnPropertySymbols()` zwraca tablicę symboli i pozwala znaleźć właściwości Symbol na danym obiekcie.
+Zauważ, że każdy obiekt jest inicjowany bez własnych właściwości Symbol, więc ta tablica będzie pusta, chyba że ustawisz
+właściwości Symbol na obiekcie.
+
+### 3.6.3. Konstruktor `Symbol()`
+
+Tworzy nowy obiekt Symbol. Jest niekompletny jako konstruktor, ponieważ nie obsługuje składni `new Symbol()`.
+
+Konstruktor `Symbol()` tworzy nowy obiekt Symbol (zwraca wartość typu symbol), ale jest niekompletny jako konstruktor,
+ponieważ nie obsługuje składni
+`new Symbol()` i nie jest przeznaczony do tworzenia podklas. Może być używany jako wartość klauzuli extends definicji
+klasy, ale super wywołanie spowoduje wyjątek.
+
+### 3.6.4. Składnia
+
+```javascript
+Symbol()
+Symbol(description) // description - A string. Opis symbolu, którego można użyć do debugowania, ale 
+// nie do uzyskania dostępu do samego symbolu
+```
+
 ## 3.7. Obiekt globalny <!--TODO-->
 
 Obiekt globalny jest to zwykły obiekt, którego właściwości są globalnymi identyfikatorami. Interpreter JavaScript zaraz
@@ -1801,14 +1877,15 @@ inicjator obiektu jest literałem obiektowym:
 
 ```javascript
 // Funkcja zwracająca kwadrat argumentu.
-const square = function (x) {
+const square = function(x) {
   return x * x;
 };
 ```
 
 Wyrażenie definiujące funkcję może również zawierać jej nazwę.
 
-## 4.4. Wyrażenia dostępu do właściwości 
+## 4.4. Wyrażenia dostępu do właściwości
+
 <!--TODO-->
 
 Wynikiem **wyrażenia dostępu do właściwości** jest wartość właściwości obiektu lub elementu tablicy. Język JavaScript
@@ -1896,8 +1973,6 @@ a[index++] // TypeError: nie można indeksować niezdefiniowanej zmiennej.
 ## 4.6. Wyrażenia tworzące obiekty
 
 <!-- TODO -->
-
-
 
 ## 4.7. Przegląd operatorów
 
@@ -2063,6 +2138,7 @@ skróconym obliczaniem warunków logicznych (ang. `short-circuit evaluation`).
 
 Podobnie działa też operator warunkowy. Pierwsze wyrażenie jest zawsze obliczane, natomiast spośród drugiego i trzeciego
 obliczane jest tylko to, które zostanie wybrane.
+
 ## 4.11. Wyrażenia przypisujące
 
 ## 4.12. Wyrażenia interpretujące
@@ -2138,12 +2214,13 @@ sprawdzeniem, inkrementowana lub modyfikowana w inny sposób.
 
 ### 5.4.4. Pętla for/of
 
-Wprowadzona została w ES6 i operuje na **obiektach iterowalnych** (patrz rozdział 12). Takimi obiektami są tablice, ciągi znaków, zbiory i mapy.
+Wprowadzona została w ES6 i operuje na **obiektach iterowalnych** (patrz rozdział 12). Takimi obiektami są tablice,
+ciągi znaków, zbiory i mapy.
 
 ```javascript
 const data = [2, 3, 4, 5, 6, 7, 8, 9], sum = 0;
 
-for(const el of data){
+for (const el of data) {
   sum += el;
 }
 
@@ -2157,15 +2234,14 @@ Tablica jest iterowana na "żywo", tzn. zmiana wprowadzona w każdej iteracji mo
 
 #### Pętal for/of z obiektami
 
-Obiekty nie są domyślnie iterowalne, to też zastosowanie tej pętli do zwykłego obiektu spowoduje zgłoszenie wyjątku `TypeError`.
+Obiekty nie są domyślnie iterowalne, to też zastosowanie tej pętli do zwykłego obiektu spowoduje zgłoszenie
+wyjątku `TypeError`.
 
 Metoda Object.keys() zwraca tablicę zawierającą nazwy właściwości obiektu:
 
 ```javascript
 
 ```
-
-
 
 # 6. Obiekty
 
@@ -2432,6 +2508,7 @@ dostęp do właściwości”) można powyższe wyrażenie napisać w następują
 ```javascript
 let surname = book?.author?.surname;
 ```
+
 ## 6.4. Usuwanie właściwości
 
 ## 6.5. Sprawdzanie właściwości
@@ -2458,7 +2535,7 @@ w literale obiektowym tak samo, jak właściwości, wykorzystując wyrażenia fu
 ```javascript
 let square = {
   side: 10,
-  area: function () {
+  area: function() {
     return this.side * this.side;
   },
 };
@@ -2614,15 +2691,11 @@ się w literałach obiektowych słowa kluczowe get i set definiujące gettery i 
 
 # 9. Klasy
 
-
 # 13. Asynchroniczność w języku JavaScript
 
 Program asynchroniczny wstrzymuje działanie w oczekiwaniu na dane lub wystąpienie jakiegoś zdarzenia. Programy
 działające w przeglądarce są sterowane zdarzeniami tj. zanim wykonają jakąś operację, czekają, aż użytkownik coś kliknie
 lub czegoś dotknie na ekranie. Z kolei programy serwerowe oczekują na zapytania użytkowników wysyłane przez sieć.
-
-
-
 
 # 15. JavaScript w przeglądarkach
 
