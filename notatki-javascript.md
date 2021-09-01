@@ -1761,7 +1761,7 @@ console.log(`Saldo konta wynosi ${balance}`);
 > jakby została zadeklarowana za pomocą słowa kluczowego `var`, tj. jest to właściwość globalnego obiektu. Jednak w
 > odróżnieniu od zmiennej zadeklarowanej jawnie przy użyciu `var` można ją usunąć za pomocą operatora `delete`.
 
-### 3.10.3. Przypisania destukturyzujące
+### 3.10.3. Przypisania destrukturyzujące
 
 <!-- TODO -->
 
@@ -1781,6 +1781,8 @@ x; // => 3
 [x, y] = [++x, ++y]; // <=> x = ++x; y = ++y;
 x; // => 4
 ```
+
+
 
 # 4. Wyrażenia i operatory
 

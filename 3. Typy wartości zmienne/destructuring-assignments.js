@@ -9,7 +9,7 @@ function toPolar(x, y) {
 // Konwersja współrzędnych biegunowych na kartezjańskie
 
 function toCartesian(r, theta) {
-  return r * Math.cos(theta), r.Math.sin(theta);
+  return [r * Math.cos(theta), r.Math.sin(theta)];
 }
 
 let [r, theta] = toPolar(4, 4);
