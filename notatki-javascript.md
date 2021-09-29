@@ -226,8 +226,8 @@ Literał to dane umieszczone bezpośrednio w programie.
 ```javascript
 12; // Liczba dwanaście.
 1.2; // Liczba jeden i dwie dziesiąte.
-('Witaj, świecie!'); // Ciąg znaków.
-('Cześć'); // Inny ciąg znaków.
+'Witaj, świecie!'; // Ciąg znaków.
+'Cześć'; // Inny ciąg znaków.
 true; // Wartość logiczna.
 false; // Druga wartość logiczna.
 null; // Brak obiektu.
@@ -2247,6 +2247,8 @@ Metoda Object.keys() zwraca tablicę zawierającą nazwy właściwości obiektu:
 
 # 6. Obiekty
 
+Obiekty stanowią fundamentalny typ danych w języku JavaScript.
+
 ## 6.1. Wprowadzenie do obiektów
 
 Obiekt jest to kolekcją właściwości ułożonych bez określonego porządku, z których każda ma nazwę i wartość. Nazwy
@@ -2406,6 +2408,7 @@ go tworzyć i modyfikować w kodzie. Na przykład poprawny jest następujący ko
 let addr = "";
 for (let i = 0; i < 4; i++) {
   addr += customer[`address${i}`] + "\n";
+}
 ```
 
 Ciąg jest dynamiczny i może się zmieniać w trakcie działania kodu. Tym się różni od identyfikatora, który jest statyczny

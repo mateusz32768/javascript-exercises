@@ -14,10 +14,10 @@ for (const keyword of keywords) {
  console.log(keyword)
 }
 
-let word = 'const'
+let word = prompt('Podaj slowo kluczowe JavaScript:');
 
-if((keywords.indexOf(word) === -1)) {
-  console.log(`Słowo ${word} nie słowem kluczowym języka programowania JavaScript`);
+if(keywords.indexOf(word) === -1) {
+  console.log(`Słowo ${word} nie jest słowem kluczowym języka programowania JavaScript`);
 } else {
   console.log(`Słowo ${word} jest słowem kluczowym języka programowania JavaScript`);
 }
