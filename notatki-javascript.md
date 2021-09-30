@@ -2336,7 +2336,7 @@ po prototypie `Date.prototype`.
 Właściwość `Object.prototype` jest obiektem, który nie ma prototypu, tzn. nie dziedziczy właściwości po żadnym innym
 obiekcie. Większość wbudowanych i zdefiniowanych konstruktorów ma prototyp odziedziczony po obiekcie `Object.prototype`.
 (np. obiekt `Date.prototype`). Zatem obiekt utworzony za pomocą instrukcji `new Date()` dziedziczy właściwości zarówno
-po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
+po obiekcie ` Date.prototype`, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
 prototypów**.
 
 ### 6.2.4. Funkcja Object.create()
@@ -2513,6 +2513,8 @@ dostęp do właściwości”) można powyższe wyrażenie napisać w następują
 ```javascript
 let surname = book?.author?.surname;
 ```
+
+
 
 ## 6.4. Usuwanie właściwości
 
