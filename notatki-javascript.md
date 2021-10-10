@@ -1782,8 +1782,6 @@ x; // => 3
 x; // => 4
 ```
 
-
-
 # 4. Wyrażenia i operatory
 
 <!--TODO -->
@@ -2664,8 +2662,8 @@ let letters = [..."Witaj, świecie!"];
 Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScript i niemal każdym innym języku. Inne
 równoważne pojęcia to podprogramy (ang. _subroutine_) lub procedurami (ang. _procedure_).
 
-**Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną liczbę razy. Funkcje są **
-parametryczne**, tzn. w ich definicjach można umieszczać listy identyfikatorów — **parametrów** — pełniących w ciałach
+**Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną liczbę razy. Funkcje są
+**parametryczne**, tzn. w ich definicjach można umieszczać listy identyfikatorów — **parametrów** — pełniących w ciałach
 funkcji role lokalnych zmiennych. Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**. Wartości
 te są często wykorzystywane do wyliczania zwracanego **wyniku**, będącego wartością wyrażenia funkcyjnego. W każdym
 wywołaniu określany jest jeszcze jego **kontekst**, którego dane są przypisywane słowu kluczowemu **this**.
@@ -2682,14 +2680,52 @@ ważnymi i przydatnymi konstrukcjami programistycznymi.
 
 ## 8.1. Definiowanie funkcji
 
-Najprościej funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować zarówno jako deklarację,
-jak i wyrażenie. Począwszy od wersji języka ES6, jest jeszcze jeden ważny sposób definiowania funkcji, bez użycia słowa
-kluczowego function — są to tzw. **funkcje strzałkowe**. Składnia definicji takiej funkcji jest bardzo zwięzła i
-szczególnie przydatna wtedy, gdy w argumencie funkcji trzeba umieścić inną funkcję.
+Funkcję definiuje się za pomocą słowa kluczowego **function** lub jako to tzw. **funkcję strzałkową**, bardzo przydatną,
+gdy trzeba definicję funkcji umieścić jako argument innej funkcji.
 
 W literałach obiektowych i w klasach metody definiuje się, stosując skróconą składnię, Są to wyrażenia funkcyjne
-przypisywane właściwościom obiektu za pomocą literału _nazwa:wartość_. Oprócz tego w szczególnych przypadkach stosuje
-się w literałach obiektowych słowa kluczowe get i set definiujące gettery i settery.
+przypisywane właściwościom obiektu za pomocą literału _nazwa:wartość_. W szczególnych przypadkach stosuje się w
+literałach obiektowych słowa kluczowe `get` i `set` definiujące gettery i settery.
+
+Jako że funkcje są obiektami można je definiować za pomocą konstruktora `Function()`.
+
+Funkcje specjalnego rodzaju, takie jak **generatory** definiowane są za pomocą słowa kluczowego `function*`, 
+a funkcje asynchroniczne za pomocą `async function`.
+
+### 8.1.1. Deklaracje funkcji.
+
+Deklaracja funkcji to słowo kluczowe `function` oraz: 
+* Identyfikator (nazwa) funkcji będącą zmienną, do której przypisywany jest tworzony obiekt funkcyjny.
+* Para zwykłych nawiasów mogąca zawierać listę identyfikatorów zwanych parametrami, oddzielonych przecinkami i 
+  pełniącymi w ciele funkcji rolę lokalnych zmiennych.
+* Para nawiasów klamrowych zawierająca instrukcje tworzące ciało funkcji wykonywane po wywołaniu funkcji.
+
+Interpreter JS definiuje wszystkie funkcje na początku zakresu (ang. *hoisting*), a więc wywołanie funkcji przed jej 
+deklaracją nie jest błędem.
+
+Funkcja może zwrócić do wywołującego ją kodu, za pomocą słowa kluczowego `return`, obliczoną wartość. Jeśli w ciele 
+funkcji nie występuje słowo `return` funkcja zwraca wartość `undefined`.
+
+```javascript
+// Funkcja rekurencyjna obliczająca silnię.
+function factorial(n) {
+  if(n <= 1){
+    return 1;
+  }else {
+    return n * factorial(n - 1);
+  }
+}
+
+console.log(factorial(5)) // => 120;
+```
+
+### 8.1.2. Wyrażenia funkcyjne.
+
+Wyrażenia funkcyjne stosuje się w kontekście większych wyrażeń i funkcji, wtedy nazwa funkcji jest opcjonalna i 
+nadaje się ją, gdy istnieje potrzeba odwołania się do niej jak np. w funkcji rekurencyjnej.
+
+Dobrą praktyką jest przypisywanie funkcji w wyrażeniu funkcyjnym do stałej, aby ją zabezpieczyć przed przypadkowym 
+nadpisaniu.
 
 # 9. Klasy
 

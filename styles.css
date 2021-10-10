@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=IBM+Plex+Sans+Hebrew:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  color: #fff;
+  font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+
+h1 {
+  margin-top: 150px;
+  font-weight: normal;
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 68px;
+}
