@@ -226,8 +226,8 @@ Literał to dane umieszczone bezpośrednio w programie.
 ```javascript
 12; // Liczba dwanaście.
 1.2; // Liczba jeden i dwie dziesiąte.
-('Witaj, świecie!'); // Ciąg znaków.
-('Cześć'); // Inny ciąg znaków.
+'Witaj, świecie!'; // Ciąg znaków.
+'Cześć'; // Inny ciąg znaków.
 true; // Wartość logiczna.
 false; // Druga wartość logiczna.
 null; // Brak obiektu.
@@ -2245,6 +2245,8 @@ Metoda Object.keys() zwraca tablicę zawierającą nazwy właściwości obiektu:
 
 # 6. Obiekty
 
+Obiekty stanowią fundamentalny typ danych w języku JavaScript.
+
 ## 6.1. Wprowadzenie do obiektów
 
 Obiekt jest to kolekcją właściwości ułożonych bez określonego porządku, z których każda ma nazwę i wartość. Nazwy
@@ -2332,7 +2334,7 @@ po prototypie `Date.prototype`.
 Właściwość `Object.prototype` jest obiektem, który nie ma prototypu, tzn. nie dziedziczy właściwości po żadnym innym
 obiekcie. Większość wbudowanych i zdefiniowanych konstruktorów ma prototyp odziedziczony po obiekcie `Object.prototype`.
 (np. obiekt `Date.prototype`). Zatem obiekt utworzony za pomocą instrukcji `new Date()` dziedziczy właściwości zarówno
-po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
+po obiekcie ` Date.prototype`, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
 prototypów**.
 
 ### 6.2.4. Funkcja Object.create()
@@ -2404,6 +2406,7 @@ go tworzyć i modyfikować w kodzie. Na przykład poprawny jest następujący ko
 let addr = "";
 for (let i = 0; i < 4; i++) {
   addr += customer[`address${i}`] + "\n";
+}
 ```
 
 Ciąg jest dynamiczny i może się zmieniać w trakcie działania kodu. Tym się różni od identyfikatora, który jest statyczny
@@ -2508,6 +2511,8 @@ dostęp do właściwości”) można powyższe wyrażenie napisać w następują
 ```javascript
 let surname = book?.author?.surname;
 ```
+
+
 
 ## 6.4. Usuwanie właściwości
 
