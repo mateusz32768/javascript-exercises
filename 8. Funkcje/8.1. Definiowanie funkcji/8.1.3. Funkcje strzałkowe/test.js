@@ -8,7 +8,7 @@ function testThis() {
 }
 // Funkcje strzałkowe w swoim ciele odwołują się do this z zakresu leksykalnego
 // tzn. z zakresu w którym zawarta jest funkcja
-// testThis().testThisInternally();
+testThis().testThisInternally();
 
 function myFunction() {
   console.log(this);

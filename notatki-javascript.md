@@ -1351,25 +1351,25 @@ operatorów dwuznakowych.
 3. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w liczbę lub — jeżeli nie będzie to możliwe — w NaN.
 
 | Wartość                                     | Konwersja na ciąg          | Konwersja na liczbę | Konwersja na <br>wartość logiczną |
-| ------------------------------------------- | -------------------------- | ------------------- | ----------------------------- |
-| undefined                                   | "undefined"                | NaN                 | false                         |
-| null                                        | "null"                     | 0                   | false                         |
-| true                                        | "true"                     | 1                   |                               |
-| false                                       | "false"                    | 0                   |                               |
-| " " (pusty ciąg znaków)                      |                            | 0                   | false                         |
-| "1.2" (ciąg znaków zawierający liczbę)      |                            | 1.2                 | true                          |
-| "jeden" (ciąg znaków niezawierający liczby) |                            | NaN                 | true                          |
-| 0                                           | "0"                        |                     | false                         |
-| -0                                          | "0"                        |                     | false                         |
-| 1 (wartość skończona, różna od zera)        | "1"                        |                     | true                          |
-| Infinity                                    | "Infinity"                 |                     | true                          |
-| -Infinity                                   | "-Infinity"                |                     | true                          |
-| NaN                                         | "NaN"                      |                     | false                         |
-| {} (dowolny obiekt)                         | Patrz punkt ...            | Patrz punkt ...     | true                          |
-| [] (pusta tablica)                          | ""                         | 0                   | true                          |
-| [9] (jeden element zawierający liczbę)      | "9"                        | 9                   | true                          |
-| ['a'] (element zawierający inną wartość)    | Należy użyć metody join(). | NaN                 | true                          |
-| funkcja() {} (dowolna funkcja)              | Patrz punkt ...            | NaN                 | true                          |
+| ------------------------------------------- | -------------------------- | ------------------- | --------------------------------- |
+| undefined                                   | "undefined"                | NaN                 | false                             |
+| null                                        | "null"                     | 0                   | false                             |
+| true                                        | "true"                     | 1                   |                                   |
+| false                                       | "false"                    | 0                   |                                   |
+| " " (pusty ciąg znaków)                     |                            | 0                   | false                             |
+| "1.2" (ciąg znaków zawierający liczbę)      |                            | 1.2                 | true                              |
+| "jeden" (ciąg znaków niezawierający liczby) |                            | NaN                 | true                              |
+| 0                                           | "0"                        |                     | false                             |
+| -0                                          | "0"                        |                     | false                             |
+| 1 (wartość skończona, różna od zera)        | "1"                        |                     | true                              |
+| Infinity                                    | "Infinity"                 |                     | true                              |
+| -Infinity                                   | "-Infinity"                |                     | true                              |
+| NaN                                         | "NaN"                      |                     | false                             |
+| {} (dowolny obiekt)                         | Patrz punkt ...            | Patrz punkt ...     | true                              |
+| [] (pusta tablica)                          | ""                         | 0                   | true                              |
+| [9] (jeden element zawierający liczbę)      | "9"                        | 9                   | true                              |
+| ['a'] (element zawierający inną wartość)    | Należy użyć metody join(). | NaN                 | true                              |
+| funkcja() {} (dowolna funkcja)              | Patrz punkt ...            | NaN                 | true                              |
 
 Ciągi znaków, które można interpretować jako liczby, są przekształcane w liczby. Dopuszczalne jest stosowanie
 przodujących i końcowych spacji, ale w przypadku użycia innych znaków niż cyfry wynikiem konwersji jest wartość NaN.
@@ -2727,10 +2727,97 @@ console.log(factorial(5)) // => 120;
 ### 8.1.2. Wyrażenia funkcyjne.
 
 Wyrażenia funkcyjne stosuje się w kontekście większych wyrażeń i funkcji, wtedy nazwa funkcji jest opcjonalna i 
-nadaje się ją, gdy istnieje potrzeba odwołania się do niej jak np. w funkcji rekurencyjnej.
+nadaje się ją, gdy istnieje potrzeba odwołania się do niej jak np. w funkcji rekurencyjnej. Tak zdefiniowane wyrażenie f-kcyjne jest wiązane z obiektem f-kcyjnym w lokalnym zasięgu funkcji a więc powstaje zmienna lokalna. 
 
 Dobrą praktyką jest przypisywanie funkcji w wyrażeniu funkcyjnym do stałej, aby ją zabezpieczyć przed przypadkowym 
 nadpisaniu.
+
+Nie można się odwołać do funkcji zdefiniowanej jako wyrażenie, dopóki nie zostanie przypisane do zmiennej.
+
+```javascript
+// Wyrażenia funkcyjne
+const square = function (x) {
+  return x * x;
+}
+
+// Nadano nazwę funkcji aby się do niej odwołać w kodzie
+const factorial = function fac(n) {
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n * fac(n - 1);
+  }
+}
+
+const arr = [23, 45, 12, 3, 6, 8];
+
+arr.sort(function (a, b)  {
+  return a - b;
+});
+
+console.log(arr);
+
+// Wywołanie po zdefiniowaniu
+const cube = (function(x){
+  return x * x * x;
+})(5);
+
+console.log(cube);
+```
+
+### 8.1.3. Funkcje strzałkowe
+
+Składnia funkcji strzałkowej, która jest wyrażeniem składa się z umieszczonej w nawiasach listy parametrów odzielonej 
+symbolem => i ciała umieszczonego w nawiasach klamrowych.
+
+```javascript
+const sum = (x, y) => {return x + y;};
+```
+
+Prościej, jeśli tylko jedna instrukcja.
+
+```javascript
+const sum = (x, y) => x + y;
+const square = x => x * x;
+const myFunc = () => console.log('Hello world!');
+const ob = x => {return {value: x}}; // zwracamy obiekt
+const another = x => {value: x}; // zwraca obiekt
+```
+
+Pomiędzy parametrami a strzałką nie wstawiamy podziału wiersza, gdyż zdefiniujemy innne wyrażenie.
+
+F.s. często umieszcza się w argumentach innych funkcji, szczególnie w metodach tablicowych
+
+```javascript
+const squares = [1, 2, 3, 4].map(x => x * x); // => [1, 4, 9, 16]
+```
+
+F.s. dziedziczy `this` po środowisku, w którym jest zdefiniowana i nie ma właściwości `prototype`.
+
+### 8.1.4. Zagnieżdżone funkcje 
+
+```javascript
+
+function foo(a, b) {
+  function square(x) {
+    return x * x;
+  }
+
+  return Math.sqrt(square(a) + square(b));
+}
+
+foo(3, 4) // => 5
+
+```
+ 
+ ## 8.2 Wywonie funkcji
+
+ 
+
+
+
+
+
 
 # 9. Klasy
 
