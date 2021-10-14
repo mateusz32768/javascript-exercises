@@ -25,9 +25,7 @@ function sortElement(cb){
    let value = cb();
 
    if(value === 0){
-     
-   }
 
-  }
+   }
 }
 

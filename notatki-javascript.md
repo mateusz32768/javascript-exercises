@@ -2512,8 +2512,6 @@ dostęp do właściwości”) można powyższe wyrażenie napisać w następują
 let surname = book?.author?.surname;
 ```
 
-
-
 ## 6.4. Usuwanie właściwości
 
 ## 6.5. Sprawdzanie właściwości
@@ -2665,7 +2663,7 @@ let letters = [..."Witaj, świecie!"];
 # 8. Funkcje
 
 Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScript i niemal każdym innym języku. Inne
-równoważne pojęcia to podprogramy (ang. _subroutine_) lub procedurami (ang. _procedure_).
+równoważne pojęcia to podprogramy (ang. _subroutine_) lub procedury (ang. _procedure_).
 
 **Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną liczbę razy. Funkcje są
 **parametryczne**, tzn. w ich definicjach można umieszczać listy identyfikatorów — **parametrów** — pełniących w ciałach
@@ -2694,29 +2692,30 @@ literałach obiektowych słowa kluczowe `get` i `set` definiujące gettery i set
 
 Jako że funkcje są obiektami można je definiować za pomocą konstruktora `Function()`.
 
-Funkcje specjalnego rodzaju, takie jak **generatory** definiowane są za pomocą słowa kluczowego `function*`, 
-a funkcje asynchroniczne za pomocą `async function`.
+Funkcje specjalnego rodzaju, takie jak **generatory** definiowane są za pomocą słowa kluczowego `function*`, a funkcje
+asynchroniczne za pomocą `async function`.
 
 ### 8.1.1. Deklaracje funkcji.
 
-Deklaracja funkcji to słowo kluczowe `function` oraz: 
+Deklaracja funkcji to słowo kluczowe `function` oraz:
+
 * Identyfikator (nazwa) funkcji będącą zmienną, do której przypisywany jest tworzony obiekt funkcyjny.
-* Para zwykłych nawiasów mogąca zawierać listę identyfikatorów zwanych parametrami, oddzielonych przecinkami i 
+* Para zwykłych nawiasów mogąca zawierać listę identyfikatorów zwanych parametrami, oddzielonych przecinkami i
   pełniącymi w ciele funkcji rolę lokalnych zmiennych.
 * Para nawiasów klamrowych zawierająca instrukcje tworzące ciało funkcji wykonywane po wywołaniu funkcji.
 
-Interpreter JS definiuje wszystkie funkcje na początku zakresu (ang. *hoisting*), a więc wywołanie funkcji przed jej 
+Interpreter JS definiuje wszystkie funkcje na początku zakresu (ang. *hoisting*), a więc wywołanie funkcji przed jej
 deklaracją nie jest błędem.
 
-Funkcja może zwrócić do wywołującego ją kodu, za pomocą słowa kluczowego `return`, obliczoną wartość. Jeśli w ciele 
+Funkcja może zwrócić do wywołującego ją kodu, za pomocą słowa kluczowego `return`, obliczoną wartość. Jeśli w ciele
 funkcji nie występuje słowo `return` funkcja zwraca wartość `undefined`.
 
 ```javascript
 // Funkcja rekurencyjna obliczająca silnię.
 function factorial(n) {
-  if(n <= 1){
+  if (n <= 1) {
     return 1;
-  }else {
+  } else {
     return n * factorial(n - 1);
   }
 }
@@ -2726,17 +2725,18 @@ console.log(factorial(5)) // => 120;
 
 ### 8.1.2. Wyrażenia funkcyjne.
 
-Wyrażenia funkcyjne stosuje się w kontekście większych wyrażeń i funkcji, wtedy nazwa funkcji jest opcjonalna i 
-nadaje się ją, gdy istnieje potrzeba odwołania się do niej jak np. w funkcji rekurencyjnej. Tak zdefiniowane wyrażenie f-kcyjne jest wiązane z obiektem f-kcyjnym w lokalnym zasięgu funkcji a więc powstaje zmienna lokalna. 
+Wyrażenia funkcyjne stosuje się w kontekście większych wyrażeń i funkcji, wtedy nazwa funkcji jest opcjonalna i nadaje
+się ją, gdy istnieje potrzeba odwołania się do niej jak np. w funkcji rekurencyjnej. Tak zdefiniowane wyrażenie f-kcyjne
+jest wiązane z obiektem f-kcyjnym w lokalnym zasięgu funkcji, a więc powstaje zmienna lokalna.
 
-Dobrą praktyką jest przypisywanie funkcji w wyrażeniu funkcyjnym do stałej, aby ją zabezpieczyć przed przypadkowym 
+Dobrą praktyką jest przypisywanie funkcji w wyrażeniu funkcyjnym do stałej, aby ją zabezpieczyć przed przypadkowym
 nadpisaniu.
 
 Nie można się odwołać do funkcji zdefiniowanej jako wyrażenie, dopóki nie zostanie przypisane do zmiennej.
 
 ```javascript
 // Wyrażenia funkcyjne
-const square = function (x) {
+const square = function(x) {
   return x * x;
 }
 
@@ -2751,14 +2751,14 @@ const factorial = function fac(n) {
 
 const arr = [23, 45, 12, 3, 6, 8];
 
-arr.sort(function (a, b)  {
+arr.sort(function(a, b) {
   return a - b;
 });
 
 console.log(arr);
 
 // Wywołanie po zdefiniowaniu
-const cube = (function(x){
+const cube = (function(x) {
   return x * x * x;
 })(5);
 
@@ -2767,11 +2767,13 @@ console.log(cube);
 
 ### 8.1.3. Funkcje strzałkowe
 
-Składnia funkcji strzałkowej, która jest wyrażeniem składa się z umieszczonej w nawiasach listy parametrów odzielonej 
+Składnia funkcji strzałkowej, która jest wyrażeniem składa się z umieszczonej w nawiasach listy parametrów odzielonej
 symbolem => i ciała umieszczonego w nawiasach klamrowych.
 
 ```javascript
-const sum = (x, y) => {return x + y;};
+const sum = (x, y) => {
+  return x + y;
+};
 ```
 
 Prościej, jeśli tylko jedna instrukcja.
@@ -2780,8 +2782,12 @@ Prościej, jeśli tylko jedna instrukcja.
 const sum = (x, y) => x + y;
 const square = x => x * x;
 const myFunc = () => console.log('Hello world!');
-const ob = x => {return {value: x}}; // zwracamy obiekt
-const another = x => {value: x}; // zwraca obiekt
+const ob = x => {
+  return {value: x}
+}; // zwracamy obiekt
+const another = x => {
+  value: x
+}; // zwraca obiekt
 ```
 
 Pomiędzy parametrami a strzałką nie wstawiamy podziału wiersza, gdyż zdefiniujemy innne wyrażenie.
@@ -2794,7 +2800,7 @@ const squares = [1, 2, 3, 4].map(x => x * x); // => [1, 4, 9, 16]
 
 F.s. dziedziczy `this` po środowisku, w którym jest zdefiniowana i nie ma właściwości `prototype`.
 
-### 8.1.4. Zagnieżdżone funkcje 
+### 8.1.4. Zagnieżdżone funkcje
 
 ```javascript
 
@@ -2809,13 +2815,18 @@ function foo(a, b) {
 foo(3, 4) // => 5
 
 ```
- 
- ## 8.2 Wywonie funkcji
 
- 
+## 8.2 Wywołanie funkcji
 
+## 8.10. Tematy związane z funkcjami.
 
+### 8.10.1. Rest parameters
 
+Składnia parametru rest umożliwia funkcji przyjmowanie nieograniczonej liczby argumentów jako tablicy, zapewniając
+sposób reprezentowania funkcji wariadycznych w JavaScript.
+
+# 8.A. Funkcje
+Notatki na podstawie "Programowanie zorientowane obiektowo w języku JavaScript", Ved Antani, Stoyan Stefanov
 
 
 
