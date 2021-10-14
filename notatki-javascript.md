@@ -882,7 +882,7 @@ trzeba umieścić inny apostrof.
 _Tabela. Sekwencje ucieczki w JavaScript_
 
 | Sekwencja | Reprezentowany znak                                                                                                                     |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | \0        | Znak null (\u0000)                                                                                                                      |
 | \b        | Usunięcie znaku (\u0008)                                                                                                                |
 | \t        | Tabulator poziomy (\u0009)                                                                                                              |
@@ -1351,7 +1351,7 @@ operatorów dwuznakowych.
 3. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w liczbę lub — jeżeli nie będzie to możliwe — w NaN.
 
 | Wartość                                     | Konwersja na ciąg          | Konwersja na liczbę | Konwersja na <br>wartość logiczną |
-| ------------------------------------------- | -------------------------- | ------------------- | --------------------------------- |
+|---------------------------------------------|----------------------------|---------------------|-----------------------------------|
 | undefined                                   | "undefined"                | NaN                 | false                             |
 | null                                        | "null"                     | 0                   | false                             |
 | true                                        | "true"                     | 1                   |                                   |
@@ -1980,42 +1980,42 @@ Operatory są stosowane w wyrażeniach arytmetycznych, porównujących, logiczny
 
 **Tabela** zawiera podsumowanie operatorów.
 
-| Operator                                                  | Operacja                                            | W   | L   | Typy                                                  |
-| --------------------------------------------------------- | --------------------------------------------------- | --- | --- | ----------------------------------------------------- |
-| ++                                                        | Pre- i postinkrementacja                            | P   | 1   | l-wartość → liczba                                    |
-| --                                                        | Pre- i postdekrementacja                            | P   | 1   | l-wartość → liczba                                    |
-| -                                                         | Zmiana znaku liczby                                 | P   | 1   | liczba → liczba                                       |
-| +                                                         | Konwersja na liczbę                                 | P   | 1   | dowolny → liczba                                      |
-| ~                                                         | Odwrócenie bitów                                    | P   | 1   | liczba całkowita → liczba całkowita                   |
-| !                                                         | Negacja wartości logicznej                          | P   | 1   | wart. logiczna → wart. logiczna                       |
-| delete                                                    | Usunięcie właściwości                               | P   | 1   | l-wartość → wart. logiczna                            |
-| typeof                                                    | Określenie typu operandu                            | P   | 1   | dowolny → ciąg znaków                                 |
-| void                                                      | Zwrócenie pustej wartości                           | P   | 1   | dowolny → undefined                                   |
-| \*\*                                                      | Potęgowanie                                         | P   | 2   | liczba, liczba → liczba                               |
-| \*, /, %                                                  | Mnożenie, dzielenie, reszta                         | L   | 2   | liczba, liczba → liczba                               |
-| +, -                                                      | Dodawanie, odejmowanie                              | L   | 2   | liczba, liczba → liczba                               |
-| +                                                         | Łączenie ciągów znaków                              | L   | 2   | ciąg znaków, ciąg znaków → ciąg znaków                |
-| <<                                                        | Przesunięcie bitów w lewo                           | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| > >                                                       | Przesunięcie bitów w prawo z zachowaniem znaku      | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| > > >                                                     | Przesunięcie bitów w prawo z uzupełnieniem zerami   | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| <, <=, >, >=                                              | Porównanie liczbowe                                 | L   | 2   | liczba, liczba → wart. logiczna                       |
-| <, <=, >, >=                                              | Porównanie alfabetyczne                             | L   | 2   | ciąg znaków, ciąg znaków → wart. logiczna             |
-| instanceof                                                | Określenie klasy obiektu                            | L   | 2   | obiekt, funkcja → wart. logiczna                      |
-| in                                                        | Sprawdzenie istnienia właściwości                   | L   | 2   | dowolny, obiekt → wart. logiczna                      |
-| ==                                                        | Nieścisła równość                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| !=                                                        | Nieścisła nierówność                                | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| ===                                                       | Ścisła równość                                      | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| !==                                                       | Ścisła nierówność                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| &                                                         | Bitowa operacja ORAZ                                | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| ^                                                         | Bitowa różnica symetryczna                          | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| \|                                                        | Bitowa operacja LUB                                 | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| &&                                                        | Logiczna operacja ORAZ                              | L   | 2   | dowolny, dowolny → dowolny                            |
-| \|\|                                                      | Logiczna operacja LUB                               | L   | 2   | dowolny, dowolny → dowolny                            |
-| ??                                                        | Wybranie pierwszego zdefiniowanego operandu         | L   | 2   | dowolny, dowolny → dowolny                            |
-| ?:                                                        | Wybranie drugiego lub trzeciego operandu            | P   | 3   | wart. logiczna, dowolny, dowolny → dowolny            |
-| =                                                         | Przypisanie wartości zmiennej lub właściwości       | P   | 2   | l-wartość, dowolny → dowolny                          |
-| \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P   | 2   | l-wartość, dowolny → dowolny                          |
-| ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L   | 2   | dowolny, dowolny → dowolny                            |
+| Operator                                                  | Operacja                                            | W | L | Typy                                                  |
+|-----------------------------------------------------------|-----------------------------------------------------|---|---|-------------------------------------------------------|
+| ++                                                        | Pre- i postinkrementacja                            | P | 1 | l-wartość → liczba                                    |
+| --                                                        | Pre- i postdekrementacja                            | P | 1 | l-wartość → liczba                                    |
+| -                                                         | Zmiana znaku liczby                                 | P | 1 | liczba → liczba                                       |
+| +                                                         | Konwersja na liczbę                                 | P | 1 | dowolny → liczba                                      |
+| ~                                                         | Odwrócenie bitów                                    | P | 1 | liczba całkowita → liczba całkowita                   |
+| !                                                         | Negacja wartości logicznej                          | P | 1 | wart. logiczna → wart. logiczna                       |
+| delete                                                    | Usunięcie właściwości                               | P | 1 | l-wartość → wart. logiczna                            |
+| typeof                                                    | Określenie typu operandu                            | P | 1 | dowolny → ciąg znaków                                 |
+| void                                                      | Zwrócenie pustej wartości                           | P | 1 | dowolny → undefined                                   |
+| \*\*                                                      | Potęgowanie                                         | P | 2 | liczba, liczba → liczba                               |
+| \*, /, %                                                  | Mnożenie, dzielenie, reszta                         | L | 2 | liczba, liczba → liczba                               |
+| +, -                                                      | Dodawanie, odejmowanie                              | L | 2 | liczba, liczba → liczba                               |
+| +                                                         | Łączenie ciągów znaków                              | L | 2 | ciąg znaków, ciąg znaków → ciąg znaków                |
+| <<                                                        | Przesunięcie bitów w lewo                           | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| > >                                                       | Przesunięcie bitów w prawo z zachowaniem znaku      | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| > > >                                                     | Przesunięcie bitów w prawo z uzupełnieniem zerami   | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| <, <=, >, >=                                              | Porównanie liczbowe                                 | L | 2 | liczba, liczba → wart. logiczna                       |
+| <, <=, >, >=                                              | Porównanie alfabetyczne                             | L | 2 | ciąg znaków, ciąg znaków → wart. logiczna             |
+| instanceof                                                | Określenie klasy obiektu                            | L | 2 | obiekt, funkcja → wart. logiczna                      |
+| in                                                        | Sprawdzenie istnienia właściwości                   | L | 2 | dowolny, obiekt → wart. logiczna                      |
+| ==                                                        | Nieścisła równość                                   | L | 2 | dowolny, dowolny → wart. logiczna                     |
+| !=                                                        | Nieścisła nierówność                                | L | 2 | dowolny, dowolny → wart. logiczna                     |
+| ===                                                       | Ścisła równość                                      | L | 2 | dowolny, dowolny → wart. logiczna                     |
+| !==                                                       | Ścisła nierówność                                   | L | 2 | dowolny, dowolny → wart. logiczna                     |
+| &                                                         | Bitowa operacja ORAZ                                | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| ^                                                         | Bitowa różnica symetryczna                          | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| \|                                                        | Bitowa operacja LUB                                 | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| &&                                                        | Logiczna operacja ORAZ                              | L | 2 | dowolny, dowolny → dowolny                            |
+| \|\|                                                      | Logiczna operacja LUB                               | L | 2 | dowolny, dowolny → dowolny                            |
+| ??                                                        | Wybranie pierwszego zdefiniowanego operandu         | L | 2 | dowolny, dowolny → dowolny                            |
+| ?:                                                        | Wybranie drugiego lub trzeciego operandu            | P | 3 | wart. logiczna, dowolny, dowolny → dowolny            |
+| =                                                         | Przypisanie wartości zmiennej lub właściwości       | P | 2 | l-wartość, dowolny → dowolny                          |
+| \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P | 2 | l-wartość, dowolny → dowolny                          |
+| ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L | 2 | dowolny, dowolny → dowolny                            |
 
 ## 4.9. Wyrażenia relacyjne
 
@@ -2155,7 +2155,7 @@ wynikiem jest ciąg znaków opisujący typ operandu.
 Poniższa tabela przedstawia wyniki operatora `typeof` użytego ze wszystkimi wartościami dostępnymi w języku JavaScript.
 
 | x                               | typeof x    |
-| ------------------------------- | ----------- |
+|---------------------------------|-------------|
 | `undefined`                     | "undefined" |
 | `null`                          | "object"    |
 | `true` lub `false`              | "boolean"   |
@@ -2827,6 +2827,101 @@ sposób reprezentowania funkcji wariadycznych w JavaScript.
 
 # 8.A. Funkcje
 Notatki na podstawie "Programowanie zorientowane obiektowo w języku JavaScript", Ved Antani, Stoyan Stefanov
+
+Tam gdzie w innych językach trzeba zastosować obiektowość JS udostępnia funkcje, dzięki którym jest tak elastyczny i ekspresywny.
+
+Funkcja jest to zgrupowana pewna ilość kodu posiadająca nazwę i która może być ponownie użyta za pomocą tejże nazwy. 
+
+```javascript
+function sum(a, b) {
+  let c = a + b;
+  return c;
+}
+```
+
+Funkcja składa się z:
+*	Słowa kluczowego function
+*	Nazwy funkcji – tu sum
+*	Parametrów – tu a, b. Funkcja może mieć dowolną ilość parametrów rozdzielonych przecinkami albo wcale
+*	Bloku kodu zwanego ciałem funkcji
+*	Instrukcji return. Funkcja zawsze zwraca wartość. Jeśli nie ma instrukcji return to niejawnie zwraca undefined
+
+Można zwrócić więcej niż jedną wartość zwracając tablicę wartości.
+
+Ogólna postać deklaracji funkcji:
+
+```javascript
+  function nameFunction(param1, param2, ... , paramN){
+ 		statement1;
+    statement2;
+    ...    ;
+    statementN;
+    return value;
+  }
+```
+**Wywołanie funkcji**:
+```javascript
+  nameFunction(arg1, arg2, … , argN);
+```
+
+Jeśli wywołamy funkcję a ona zwraca jakąś wartość  to możemy ją przypisać do jakieś zmiennej aby ją póżniej móc 
+wykorzystać.
+
+```javascript
+let result = sum(1, 3); 
+console.log(result); // 3
+```
+
+## Parametry 
+
+Funkcja nie musi przyjmować parametrów, ale jeśli ich oczekuje i zapomnisz podać je podczas wywoływania, JavaScript 
+przypisze im wartość `undefined`.
+
+```javascript
+  sum(1) // NaN = 1 + undefined
+```
+Mimo iż istnieje technicznie rzecz biorąc różnica między parametrami a argumentami, te dwa terminy są używane 
+zamiennie, jak zresztą wiele innych pojęć w informatyce np. *definicja i deklaracja*. Parametry są definiowane razem 
+z funkcją, podczas gdy argumenty są przekazywane do funkcji w trakcie jej wywołania.
+
+Jeśli przekażemy więcej parametrów, niż funkcja oczekuje, to ich nadmiar zostanie zignorowany:
+
+```javascript
+sum(1, 2, 3, 4, 5); //3
+```
+
+Możliwe jest pisanie funkcji, które mogą przyjmować różną liczbę parametrów a to dzięki temu, że w każdej funkcji 
+jest tworzona specjalna wartość `arguments`, która jest obiektem tablicopodobnym. Oto funkcja, której działanie 
+polega na zwracaniu wszystkich przekazanych jej argumentów:
+
+```javascript
+function args() { 
+  return arguments; 
+}
+args(); // []
+args(1, 2, 3, true, ‘marco’); // [1, 2, 3, 4, true, "marco"]
+```
+
+Użyj `arguments` aby poprawić funkcję sum() tak, by przyjmowała dowolną liczbę parametrów i dodawała je wszystkie.
+
+```javascript
+function sumOnSteroids() { 
+  let res = 0;
+  for (let i = 0; i < arguments.length; i++) { 
+    res += arguments[i]; 
+  } 
+   return res; 
+}
+
+sumOnSteroids(1, 2, 3) // 6
+sumOnSteroids(1, 2, 3, 4, 4, 3, 2) // 19
+sumOnSteroids() // 0
+```
+
+
+
+
+
 
 
 
