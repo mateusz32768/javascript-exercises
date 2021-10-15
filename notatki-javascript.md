@@ -2918,13 +2918,6 @@ sumOnSteroids(1, 2, 3, 4, 4, 3, 2) // 19
 sumOnSteroids() // 0
 ```
 
-
-
-
-
-
-
-
 # 9. Klasy
 
 # 13. Asynchroniczność w języku JavaScript
