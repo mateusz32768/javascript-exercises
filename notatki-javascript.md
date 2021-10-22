@@ -2918,6 +2918,7 @@ sumOnSteroids(1, 2, 3, 4, 4, 3, 2) // 19
 sumOnSteroids() // 0
 ```
 
+<<<<<<< HEAD
 ## 8.A.2. Parametry domyślne
 Parametrom funkcji można przypisać wartości domyślne. W przypadku pominięcia parametru podczas wywoływania funkcji
 używana jest domyślna wartość przypisana do tego parametru:
@@ -3042,6 +3043,8 @@ Notatki z kursu ...
 
 
 
+=======
+>>>>>>> fe718bb2721a1476fea541cb6d331fce64b50f04
 # 9. Klasy
 
 # 13. Asynchroniczność w języku JavaScript

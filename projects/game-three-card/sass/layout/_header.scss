@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 90vw;
+  margin: 0 auto;
+  color: $dark-color;
+  font-size: 2.5rem;
+  border: 3px solid brown;
+  border-radius: 20px;
+  background-image: url(../img/queen-diamonds.jpg);
+  background-size: cover;
+  background-position: center;
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50vh;
+  }
+}

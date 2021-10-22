@@ -1,0 +1,270 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-transition: left 0.3s;
+  transition: left 0.3s;
+}
+
+.nav--hidden {
+  left: -100vw;
+}
+
+.nav__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.nav__list-item {
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: #f8f7f7;
+}
+
+.burger-btn {
+  position: fixed;
+  scroll-margin: 10px;
+  top: 10px;
+  right: 30px;
+  background: none;
+  border: none;
+}
+
+.burger-btn__item {
+  display: block;
+  margin: 5px;
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+}
+
+.burger-btn__item--light {
+  background-color: #f8f7f7;
+}
+
+@-webkit-keyframes turnLeft {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+@keyframes turnLeft {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+@-webkit-keyframes turnRight {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(-45deg) translateX(5px) translateY(-5px);
+            transform: rotate(-45deg) translateX(5px) translateY(-5px);
+  }
+}
+
+@keyframes turnRight {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(-45deg) translateX(5px) translateY(-5px);
+            transform: rotate(-45deg) translateX(5px) translateY(-5px);
+  }
+}
+
+.turnLeft {
+  -webkit-animation: turnLeft 0.3s forwards;
+          animation: turnLeft 0.3s forwards;
+}
+
+.turnRight {
+  -webkit-animation: turnRight 0.3s forwards;
+          animation: turnRight 0.3s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+@-webkit-keyframes left {
+  from {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes left {
+  from {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@-webkit-keyframes right {
+  from {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes right {
+  from {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+.left {
+  -webkit-animation: left 0.3s forwards;
+          animation: left 0.3s forwards;
+}
+
+.right {
+  -webkit-animation: right 0.3s forwards;
+          animation: right 0.3s forwards;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 90vh;
+  width: 90vw;
+  margin: 0 auto;
+  color: #333;
+  font-size: 2.5rem;
+  border: 3px solid brown;
+  border-radius: 20px;
+  background-image: url(../img/queen-diamonds.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.header__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50vh;
+}
+
+body {
+  background-color: #333;
+  color: #f8f7f7;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 50px;
+}
+
+.cards__item--light {
+  background: antiquewhite;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.cards__img {
+  width: 30vw;
+  border: 2px solid brown;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+.buttons__item {
+  padding: 10px 30px;
+}
+/*# sourceMappingURL=main.css.map */
