@@ -2826,7 +2826,7 @@ Składnia parametru rest umożliwia funkcji przyjmowanie nieograniczonej liczby 
 sposób reprezentowania funkcji wariadycznych w JavaScript.
 
 # 8.A. Funkcje
-Notatki na podstawie "Programowanie zorientowane obiektowo w języku JavaScript", Ved Antani, Stoyan Stefanov
+**Notatki na podstawie "Programowanie zorientowane obiektowo w języku JavaScript", Ved Antani, Stoyan Stefanov**
 
 Tam gdzie w innych językach trzeba zastosować obiektowość JS udostępnia funkcje, dzięki którym jest tak elastyczny i ekspresywny.
 
@@ -2918,7 +2918,6 @@ sumOnSteroids(1, 2, 3, 4, 4, 3, 2) // 19
 sumOnSteroids() // 0
 ```
 
-<<<<<<< HEAD
 ## 8.A.2. Parametry domyślne
 Parametrom funkcji można przypisać wartości domyślne. W przypadku pominięcia parametru podczas wywoływania funkcji
 używana jest domyślna wartość przypisana do tego parametru:
@@ -3019,6 +3018,8 @@ console.log(sumVar(1, 3, 5, 7, 9)); // 25
 Operator rozwijania (ang. *spread operator*) wygląda dokładnie tak samo jak operator reszty. Operatory rozwijania są 
 używane, gdy dostarczamy argumentów podczas wywoływania funkcji lub definiowania tablicy. Operator rozwijania przyjmuje
 tablicę i dzieli jej elementy na poszczególne zmienne.
+
+```javascript
 function sumAll(a,b,c){ 
   return a + b + c 
 } 
@@ -3027,11 +3028,112 @@ var numbers = [6,7,8]
 console.log(sumAll.apply(null,numbers)); // 21 
 // Operator rozwijania w ES6 
 console.log(sumAll(...numbers)); // 21
-Operatory rozwijania zwiększają możliwości pracy z tablicami w JavaScripcie. Jeśli chcesz utworzyć tablicę zawierającą elementy innej tablicy, istniejąca składnia tablicy tego nie obsługuje. Aby to osiągnąć, musielibyśmy użyć metod push , splice i concat . Jednak dzięki operatorom rozwijania staje się to trywialne: 
+```
+
+Operatory rozwijania zwiększają możliwości pracy z tablicami w JavaScripcie. Jeśli chcesz utworzyć tablicę zawierającą
+elementy innej tablicy, istniejąca składnia tablicy tego nie obsługuje. Aby to osiągnąć, musielibyśmy użyć metod `push`, 
+`splice` i `concat` . Jednak dzięki operatorom rozwijania staje się to trywialne: 
+
+```javascript
 var midweek = ['Śr', 'Czw']; 
 var weekend = ['Sob', 'Niedz']; 
 var week = ['Pon','Wt', ...midweek, 'Pt', ...weekend]; 
 console.log(week); // ["Pon","Wt","Śr","Czw","Pt","Sob","Niedz"]
+```
+
+```javascript
+const array = [2, 33, 3, 44, 4, 55];
+console.log(sumVar(...array)); // 141 ; operator rozwijania
+```
+
+## 8.A.5. Funkcje predefiniowane
+
+Istnieje pewna liczba funkcji, które zostały wbudowane w silnik JavaScriptu i z których można korzystać do woli: 
+*	parseInt () 
+*	parseFloat () 
+*	isNaN () 
+*	isFinite () 
+*	encodeURI () 
+*	decodeURI () 
+*	encodeURIComponent () 
+*	decodeURIComponent ()
+
+>ZASADA CZARNEJ SKRZYNKI 
+>
+>Z reguły podczas wywoływania funkcji Twój program nie musi wiedzieć, jakie czynności są wykonywane wewnątrz danej funkcji. Możesz potraktować >funkcje jak czarne skrzynki — podajesz im pewne wartości (w postaci argumentów wejściowych) i odbierasz od nich zwracane wyniki. Jest to prawdziwe >dla wszystkich funkcji — tych wbudowanych w silnik JavaScriptu, pisanych przez Ciebie czy utworzonych przez Twoich współpracowników lub nieznanych >Ci programistów
+
+parseInt()
+Funkcja parseInt () przyjmuje dane wejściowe dowolnego typu (najczęściej łańcuch znaków) i próbuje przekonwertować je na liczbę całkowitą. Jeśli operacja nie powiedzie się, zwracana jest wartość NaN.
+parseInt('123'); //123 
+parseInt('abc123'); // NaN 
+parseInt('1abc23'); //1 
+parseInt('123abc'); //123
+Funkcja przyjmuje jeszcze opcjonalny drugi argument, który określa podstawę, opisującą typ liczby: dziesiętny, szesnastkowy, binarny itd.
+parseInt(‘FF’, 10); // NaN
+parseInt('FF', 16); // 255
+parseInt('0377', 10);  // 377 
+parseInt('0377', 8); // 255
+Jeśli drugi argument nie zostanie podany, za podstawę uznawana jest liczba 10 , z następującymi wyjątkami:
+•	Jeśli jako pierwszy argument przekazany zostanie łańcuch zaczynający się od 0x , drugiemu argumentowi (jeśli nie został podany) przypisana zostanie wartość 16 (liczba zostanie uznana za szesnastkową). 
+•	Jeśli pierwszy parametr zaczyna się od 0 , drugi otrzyma wartość 8.
+parseInt('377'); // 377 
+parseInt('0377');  // 255
+parseInt('0x377');  // 887
+Najbezpieczniejszym rozwiązaniem jest określanie podstawy za każdym razem. Wyobraź sobie na przykład, że parsujesz pola formularza, który reprezentuje kalendarz, a użytkownik wpisał 08 lub 06.
+ECMAScript 5 usuwa prefiks 0 z zapisu liczb ósemkowych i pozwala uniknąć zamieszania z parseInt () i nieokreśloną podstawą.
+parseInt('0377');  // 377
+parseInt('0377', 8); // 255
+parseFloat()
+Funkcja parseFloat () działa podobnie do parseInt (), ale w danych wejściowych szuka ułamków dziesiętnych. Przyjmuje tylko jeden parametr.
+parseFloat('123'); //123 
+parseFloat('1.23'); //1.23 
+parseFloat('1.23abc.00'); // 1.23 
+Podobnie jak parseInt () , parseFloat () poddaje się po napotkaniu pierwszego znaku, z którym nie umie sobie poradzić, nawet jeśli pozostała część tekstu zawiera poprawne liczby.
+parseFloat('a.bc1.23'); // NaN
+Funkcja parseFloat () , w przeciwieństwie do parseInt () , jest w stanie poprawnie zinterpretować zapis wykładniczy. 
+parseFloat('123e-2'); //1.23 
+parseFloat('1e10'); //10000000000 
+parseInt('1e10'); //1
+isNaN()
+Za pomocą isNaN () można sprawdzić, czy wartość wejściowa jest liczbą.
+isNaN(NaN); true  
+isNaN(123); false 
+isNaN(1.23); false 
+isNaN(parseInt('abc123')); true 
+Ta funkcja stara się również przekonwertować dane wejściowe na liczbę: 
+isNaN('1.23'); false 
+isNaN('a1.23'); true 
+Funkcja isNaN () jest użyteczna także dlatego, że specjalna wartość NaN nie jest równa niczemu, nawet samej sobie. Wynikiem porównania NaN === NaN będzie false . Dlatego NaN nie może być używana do sprawdzania, czy dana wartość jest prawidłową liczbą.
+isFinite()
+Funkcja isFinite () sprawdza, czy dane wejściowe to liczba różna od Infinity i różna od NaN. 
+isFinite(Infinity); //false 
+isFinite(-Infinity); //false 
+isFinite(12); //true 
+isFinite(1e308); //true 
+isFinite(1e309); //false 
+Jeśli dziwią Cię dwa ostatnie wyniki, przypominamy, że największą dopuszczalną liczbą w języku JavaScript jest 1.7976931348623157e + 308 , więc 1e309 jest w efekcie nieskończonością.
+encodeURI() i encodeURIComponent()
+W adresach URL (ang. Uniform Resource Locator ) i URI (ang. Uniform Resource Identifier ) niektóre znaki mają specjalne znaczenie. Jeśli chcemy mieć pewność, że nie będą one interpretowane, możemy skorzystać z funkcji encodeURI () lub encodeURIComponent () . Pierwsza z nich zwraca poprawny adres URL, a druga zakłada, że przekazujemy tylko część adresu URL (np. parametry żądania), i koduje odpowiednie znaki.
+var url = 'http://www.packtpub.com/scr ipt.php?q=this and that';
+encodeURI(url); 
+//"http://www.packtpub.com/scr%20 ipt.php?q=this%20and%20that" 
+encodeURIComponent(url); 
+//"http%3A%2F%2Fwww.packtpub.com%2Fscr%20ipt.php%3Fq%3Dthis% 20and%20that"
+let url = "https://raubuc.net"
+console.log(encodeURI(url));
+
+eval() 
+Funkcja eval () przyjmuje łańcuch znaków i wykonuje go jako kod JavaScriptu: 
+ eval('var ii = 2;'); 
+ ii //2
+Są sytuacje, w których eval () się przydaje, jednak w miarę możliwości należy tej funkcji unikać.
+Weterani JavaScriptu jak mantrę powtarzają zdanie „ eval is evil” ( eval to samo zło).
+Bonus — funkcja alert()
+Nie należy ona do rdzenia języka (nie ma jej w specyfikacji ECMA), ale jest obsługiwana przez środowisko hosta, czyli przeglądarkę. Pozwala ona na wyświetlanie komunikatów w okienku dialogowym.
+Okienko dialogowe blokuje wątek przeglądarki, co oznacza, że żaden inny kod nie zostanie wykonany, zanim użytkownik nie zamknie alertu. Jeśli aplikacja jest często aktualizowaną aplikacją AJAX, używanie funkcji alert () nie jest najlepszym pomysłem.
+
+
+
 
 # 8.B. Funkcje 
 
@@ -3043,8 +3145,6 @@ Notatki z kursu ...
 
 
 
-=======
->>>>>>> fe718bb2721a1476fea541cb6d331fce64b50f04
 # 9. Klasy
 
 # 13. Asynchroniczność w języku JavaScript
