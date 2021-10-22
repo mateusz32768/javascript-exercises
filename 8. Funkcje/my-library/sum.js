@@ -1,4 +1,4 @@
-const summa = (...items) => {
+const sum = (...items) => {
   let result = 0;
   items.forEach((item) => {
     result += item;
@@ -7,4 +7,4 @@ const summa = (...items) => {
   return result;
 }
 
-console.log(summa(3, 4, 5, 6));
+console.log(sum(3, 4, 5, 6));
