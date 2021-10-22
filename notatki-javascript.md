@@ -2872,7 +2872,7 @@ let result = sum(1, 3);
 console.log(result); // 3
 ```
 
-## Parametry 
+## 8.A.1. Parametry 
 
 Funkcja nie musi przyjmować parametrów, ale jeśli ich oczekuje i zapomnisz podać je podczas wywoływania, JavaScript 
 przypisze im wartość `undefined`.
@@ -2918,10 +2918,127 @@ sumOnSteroids(1, 2, 3, 4, 4, 3, 2) // 19
 sumOnSteroids() // 0
 ```
 
+## 8.A.2. Parametry domyślne
+Parametrom funkcji można przypisać wartości domyślne. W przypadku pominięcia parametru podczas wywoływania funkcji
+używana jest domyślna wartość przypisana do tego parametru:
 
+```javascript
+function render(fog_level=20, spark_level=100){ 
+  console.log(`Poziom zamglenia: ${fog_level}, a natężenie iskier: ${spark_level}`)
+} 
+render(10); // Poziom zamglenia: 10, a natężenie iskier: 100
+```
 
+Warto zauważyć, że undefined uważa się za brak wartości parametru.
 
+```javascript
+render(undefined,10); // Poziom zamglenia: 20, a natężenie iskier: 10
+```
 
+Podczas określania domyślnych wartości parametrów można również odwoływać się do innych parametrów: 
+
+```javascript
+function render(fog_level=1, spark_level=fog_level * 10){ 
+  console.log(`Poziom zamglenia: ${fog_level}, a natężenie iskier: ${spark_level}`)  
+}
+render(10) // Poziom zamglenia: 10, a natężenie iskier: 100
+```
+
+Parametry domyślne mają własny zakres. Zakres ten jest umieszczony pomiędzy zewnętrznym i wewnętrznym zakresem funkcji.
+Jeśli parametr jest przysłaniany przez zmienną w zakresie wewnętrznym, zaskakująco zmienna wewnętrzna nie jest dostępna.
+
+```javascript
+var scope="zakres zewnętrzny"; 
+function scoper(val=scope){ 
+  var scope="zakres wewnętrzny"; 
+  console.log(val); 
+} 
+scoper(); // zakres zewnętrzny 
+```
+
+Można spodziewać się, że val zostanie przesłonięte przez wewnętrzną definicję zmiennej scope , ponieważ jednak domyśln
+parametry mają swój własny zakres, wewnętrzny zakres nie ma wpływu na wartość przypisaną do `val`.
+
+Kolejny przykład:
+
+```javascript
+function sum(a = 5, b = 6) {
+  return a + b;
+}
+
+console.log(sum(49)); // 55
+console.log(sum(undefined, 49)); 54
+
+function sumOne(a = 5, b){
+  return a + b;
+}
+
+console.log(sumOne(51)); // NaN = 51 + undefined
+console.log(sumOne(undefined, 51)); //56
+
+function sumTwo(a = 6, b = a){
+  return a + b;
+}
+
+console.log(sumTwo(44)); // 88
+console.log(sumTwo(undefined)); // 12
+
+```
+
+## 8.A.3 Parametry reszty
+Parametry reszty pozwalają wysyłać do funkcji dowolną liczbę parametrów w postaci tablicy. Parametrem reszty może być
+tylko ostatni parametr na liście parametrów i może być tylko jeden. Umieszczenie operatora reszty (...) przed ostatnim
+formalnym parametrem wskazuje, że ten parametr jest parametrem reszty.
+
+```javascript
+function sayThings(tone, ...quotes){ 
+  console.log(Array.isArray(quotes)); // true 
+  console.log(`Głosem ${tone} mówię: ${quotes}`) 
+} 
+sayThings("Morgana Freemana","Coś poważnego", " Implodujący Wszechświat"," Amen"); 
+// Głosem Morgana Freemana mówię: Coś poważnego, Implodujący Wszechświat, Amen
+```
+
+Parametry reszty są tablicą i dostępne są dla nich wszystkie metody tablicowe. 
+Zmienne argumenty (var-args) są od dawna częścią kilku innych języków i są mile widzianą zmianą w ES6.
+
+```javascript
+function sumVar(...array){
+  let result = 0;
+  for(let i = 0; i < array.length; i++){
+    result += array[i];
+  }
+    return result;
+}
+
+console.log(sumVar(1, 3, 5, 7, 9)); // 25
+```
+
+## 8.A.4. Operator rozwijania
+Operator rozwijania (ang. *spread operator*) wygląda dokładnie tak samo jak operator reszty. Operatory rozwijania są 
+używane, gdy dostarczamy argumentów podczas wywoływania funkcji lub definiowania tablicy. Operator rozwijania przyjmuje
+tablicę i dzieli jej elementy na poszczególne zmienne.
+function sumAll(a,b,c){ 
+  return a + b + c 
+} 
+var numbers = [6,7,8] 
+// Sposób przekazywania tablicy jako argumentu funkcji w ES5 
+console.log(sumAll.apply(null,numbers)); // 21 
+// Operator rozwijania w ES6 
+console.log(sumAll(...numbers)); // 21
+Operatory rozwijania zwiększają możliwości pracy z tablicami w JavaScripcie. Jeśli chcesz utworzyć tablicę zawierającą elementy innej tablicy, istniejąca składnia tablicy tego nie obsługuje. Aby to osiągnąć, musielibyśmy użyć metod push , splice i concat . Jednak dzięki operatorom rozwijania staje się to trywialne: 
+var midweek = ['Śr', 'Czw']; 
+var weekend = ['Sob', 'Niedz']; 
+var week = ['Pon','Wt', ...midweek, 'Pt', ...weekend]; 
+console.log(week); // ["Pon","Wt","Śr","Czw","Pt","Sob","Niedz"]
+
+# 8.B. Funkcje 
+
+Notatki z kursu ...
+
+# 8.C. Funkcje
+
+Notatki z kursu ...
 
 
 

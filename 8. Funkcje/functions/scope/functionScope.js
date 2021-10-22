@@ -24,3 +24,15 @@ console.log(sum(7)); // 12
 
 console.log(addTwoNumber(9)(8)); //17
 
+let a = 5;
+// const b; // Uncaught SyntaxError: Missing initializer in const declaration;
+
+
+function test() {
+  a = 7;
+}
+
+test();
+
+console.log(a);
+
