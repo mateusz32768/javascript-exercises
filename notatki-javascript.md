@@ -3049,71 +3049,128 @@ console.log(sumVar(...array)); // 141 ; operator rozwijania
 ## 8.A.5. Funkcje predefiniowane
 
 Istnieje pewna liczba funkcji, które zostały wbudowane w silnik JavaScriptu i z których można korzystać do woli: 
-*	parseInt () 
-*	parseFloat () 
-*	isNaN () 
-*	isFinite () 
-*	encodeURI () 
-*	decodeURI () 
-*	encodeURIComponent () 
-*	decodeURIComponent ()
+*	`parseInt()` 
+*	`parseFloat()` 
+*	`isNaN()` 
+*	`isFinite()` 
+*	`encodeURI()` 
+*	`decodeURI()` 
+*	`encodeURIComponent()` 
+*	`decodeURIComponent()`
 
->ZASADA CZARNEJ SKRZYNKI 
+
+>   ZASADA CZARNEJ SKRZYNKI 
 >
->Z reguły podczas wywoływania funkcji Twój program nie musi wiedzieć, jakie czynności są wykonywane wewnątrz danej funkcji. Możesz potraktować >funkcje jak czarne skrzynki — podajesz im pewne wartości (w postaci argumentów wejściowych) i odbierasz od nich zwracane wyniki. Jest to prawdziwe >dla wszystkich funkcji — tych wbudowanych w silnik JavaScriptu, pisanych przez Ciebie czy utworzonych przez Twoich współpracowników lub nieznanych >Ci programistów
+>   Z reguły podczas wywoływania funkcji Twój program nie musi wiedzieć, jakie czynności są wykonywane 
+>   wewnątrz danej funkcji. Możesz potraktować funkcje jak czarne skrzynki — podajesz im pewne wartości 
+>   (w postaci argumentów wejściowych) i odbierasz od nich zwracane wyniki.
 
-parseInt()
-Funkcja parseInt () przyjmuje dane wejściowe dowolnego typu (najczęściej łańcuch znaków) i próbuje przekonwertować je na liczbę całkowitą. Jeśli operacja nie powiedzie się, zwracana jest wartość NaN.
+### parseInt()
+Funkcja parseInt() przyjmuje dane wejściowe dowolnego typu (najczęściej łańcuch znaków) i próbuje przekonwertować
+je na liczbę całkowitą. Jeśli operacja nie powiedzie się, zwracana jest wartość `NaN`.
+
+```javascript
 parseInt('123'); //123 
 parseInt('abc123'); // NaN 
 parseInt('1abc23'); //1 
 parseInt('123abc'); //123
-Funkcja przyjmuje jeszcze opcjonalny drugi argument, który określa podstawę, opisującą typ liczby: dziesiętny, szesnastkowy, binarny itd.
-parseInt(‘FF’, 10); // NaN
+```
+Funkcja przyjmuje jeszcze opcjonalny drugi argument, który określa podstawę, opisującą typ liczby: dziesiętny,
+szesnastkowy, binarny itd.
+
+```javascript
+parseInt('FF', 10); // NaN
 parseInt('FF', 16); // 255
 parseInt('0377', 10);  // 377 
 parseInt('0377', 8); // 255
+```
+
 Jeśli drugi argument nie zostanie podany, za podstawę uznawana jest liczba 10 , z następującymi wyjątkami:
-•	Jeśli jako pierwszy argument przekazany zostanie łańcuch zaczynający się od 0x , drugiemu argumentowi (jeśli nie został podany) przypisana zostanie wartość 16 (liczba zostanie uznana za szesnastkową). 
-•	Jeśli pierwszy parametr zaczyna się od 0 , drugi otrzyma wartość 8.
+* Jeśli jako pierwszy argument przekazany zostanie łańcuch zaczynający się od 0x , drugiemu argumentowi 
+(jeśli nie został podany) przypisana zostanie wartość `16` (liczba zostanie uznana za szesnastkową). 
+* Jeśli pierwszy parametr zaczyna się od 0 , drugi otrzyma wartość 8.
+
+```javascript
 parseInt('377'); // 377 
 parseInt('0377');  // 255
 parseInt('0x377');  // 887
-Najbezpieczniejszym rozwiązaniem jest określanie podstawy za każdym razem. Wyobraź sobie na przykład, że parsujesz pola formularza, który reprezentuje kalendarz, a użytkownik wpisał 08 lub 06.
-ECMAScript 5 usuwa prefiks 0 z zapisu liczb ósemkowych i pozwala uniknąć zamieszania z parseInt () i nieokreśloną podstawą.
+```
+
+Najbezpieczniejszym rozwiązaniem jest określanie podstawy za każdym razem. Wyobraź sobie na przykład, że parsujesz
+pola formularza, który reprezentuje kalendarz, a użytkownik wpisał 08 lub 06.
+ECMAScript 5 usuwa prefiks 0 z zapisu liczb ósemkowych i pozwala uniknąć zamieszania z parseInt () i nieokreśloną 
+podstawą.
+
+```javascript
 parseInt('0377');  // 377
 parseInt('0377', 8); // 255
-parseFloat()
-Funkcja parseFloat () działa podobnie do parseInt (), ale w danych wejściowych szuka ułamków dziesiętnych. Przyjmuje tylko jeden parametr.
+```
+
+### parseFloat()
+Funkcja `parseFloat()` działa podobnie do `parseInt()`, ale w danych wejściowych szuka ułamków dziesiętnych. Przyjmuje
+tylko jeden parametr.
+
+```javascript
 parseFloat('123'); //123 
 parseFloat('1.23'); //1.23 
 parseFloat('1.23abc.00'); // 1.23 
-Podobnie jak parseInt () , parseFloat () poddaje się po napotkaniu pierwszego znaku, z którym nie umie sobie poradzić, nawet jeśli pozostała część tekstu zawiera poprawne liczby.
+```
+
+Podobnie jak `parseInt()`, `parseFloat()` poddaje się po napotkaniu pierwszego znaku, z którym nie umie sobie poradzić, 
+nawet jeśli pozostała część tekstu zawiera poprawne liczby.
+
+```javascript
 parseFloat('a.bc1.23'); // NaN
-Funkcja parseFloat () , w przeciwieństwie do parseInt () , jest w stanie poprawnie zinterpretować zapis wykładniczy. 
+```
+
+Funkcja `parseFloat()` , w przeciwieństwie do `parseInt()` , jest w stanie poprawnie zinterpretować zapis wykładniczy. 
+
+```javascript
 parseFloat('123e-2'); //1.23 
 parseFloat('1e10'); //10000000000 
 parseInt('1e10'); //1
-isNaN()
-Za pomocą isNaN () można sprawdzić, czy wartość wejściowa jest liczbą.
+```
+### isNaN()
+Za pomocą `isNaN()` można sprawdzić, czy wartość wejściowa jest liczbą.
+
+```javascript
 isNaN(NaN); true  
 isNaN(123); false 
 isNaN(1.23); false 
 isNaN(parseInt('abc123')); true 
+```
 Ta funkcja stara się również przekonwertować dane wejściowe na liczbę: 
+
+```javascript
 isNaN('1.23'); false 
 isNaN('a1.23'); true 
-Funkcja isNaN () jest użyteczna także dlatego, że specjalna wartość NaN nie jest równa niczemu, nawet samej sobie. Wynikiem porównania NaN === NaN będzie false . Dlatego NaN nie może być używana do sprawdzania, czy dana wartość jest prawidłową liczbą.
-isFinite()
-Funkcja isFinite () sprawdza, czy dane wejściowe to liczba różna od Infinity i różna od NaN. 
+```
+
+Funkcja `isNaN()` jest użyteczna także dlatego, że specjalna wartość `NaN` nie jest równa niczemu, nawet samej sobie. 
+Wynikiem porównania `NaN === NaN` będzie `false` . Dlatego `NaN` nie może być używana do sprawdzania, czy dana 
+wartość jest prawidłową liczbą.
+
+### isFinite()
+Funkcja `isFinite()` sprawdza, czy dane wejściowe to liczba różna od `Infinity` i różna od `NaN`.
+
+```javascript
 isFinite(Infinity); //false 
 isFinite(-Infinity); //false 
 isFinite(12); //true 
 isFinite(1e308); //true 
 isFinite(1e309); //false 
-Jeśli dziwią Cię dwa ostatnie wyniki, przypominamy, że największą dopuszczalną liczbą w języku JavaScript jest 1.7976931348623157e + 308 , więc 1e309 jest w efekcie nieskończonością.
-encodeURI() i encodeURIComponent()
-W adresach URL (ang. Uniform Resource Locator ) i URI (ang. Uniform Resource Identifier ) niektóre znaki mają specjalne znaczenie. Jeśli chcemy mieć pewność, że nie będą one interpretowane, możemy skorzystać z funkcji encodeURI () lub encodeURIComponent () . Pierwsza z nich zwraca poprawny adres URL, a druga zakłada, że przekazujemy tylko część adresu URL (np. parametry żądania), i koduje odpowiednie znaki.
+```
+
+Jeśli dziwią Cię dwa ostatnie wyniki, przypominamy, że największą dopuszczalną liczbą w języku JavaScript jest 
+`1.7976931348623157e+308`, więc `1e309` jest w efekcie nieskończonością.
+
+## encodeURI() i encodeURIComponent()
+W adresach URL (ang. *Uniform Resource Locator*) i URI (ang. *Uniform Resource Identifier* ) niektóre znaki mają
+specjalne znaczenie. Jeśli chcemy mieć pewność, że nie będą one interpretowane, możemy skorzystać z funkcji 
+`encodeURI()` lub `encodeURIComponent()` . Pierwsza z nich zwraca poprawny adres `URL`, a druga zakłada, że 
+przekazujemy tylko część adresu URL (np. parametry żądania), i koduje odpowiednie znaki.
+
+```javascript
 var url = 'http://www.packtpub.com/scr ipt.php?q=this and that';
 encodeURI(url); 
 //"http://www.packtpub.com/scr%20 ipt.php?q=this%20and%20that" 
@@ -3121,16 +3178,401 @@ encodeURIComponent(url);
 //"http%3A%2F%2Fwww.packtpub.com%2Fscr%20ipt.php%3Fq%3Dthis% 20and%20that"
 let url = "https://raubuc.net"
 console.log(encodeURI(url));
+```
 
-eval() 
-Funkcja eval () przyjmuje łańcuch znaków i wykonuje go jako kod JavaScriptu: 
+### eval() 
+Funkcja `eval()` przyjmuje łańcuch znaków i wykonuje go jako kod JavaScriptu:
+
+```javascript
  eval('var ii = 2;'); 
  ii //2
-Są sytuacje, w których eval () się przydaje, jednak w miarę możliwości należy tej funkcji unikać.
-Weterani JavaScriptu jak mantrę powtarzają zdanie „ eval is evil” ( eval to samo zło).
-Bonus — funkcja alert()
-Nie należy ona do rdzenia języka (nie ma jej w specyfikacji ECMA), ale jest obsługiwana przez środowisko hosta, czyli przeglądarkę. Pozwala ona na wyświetlanie komunikatów w okienku dialogowym.
-Okienko dialogowe blokuje wątek przeglądarki, co oznacza, że żaden inny kod nie zostanie wykonany, zanim użytkownik nie zamknie alertu. Jeśli aplikacja jest często aktualizowaną aplikacją AJAX, używanie funkcji alert () nie jest najlepszym pomysłem.
+ ```
+
+Są sytuacje, w których `eval()` się przydaje, jednak w miarę możliwości należy tej funkcji unikać.
+Weterani JavaScriptu jak mantrę powtarzają zdanie „eval is evil” (eval to samo zło).
+
+### Bonus — funkcja alert()
+Nie należy ona do rdzenia języka (nie ma jej w specyfikacji ECMA), ale jest obsługiwana przez środowisko hosta, 
+czyli przeglądarkę. Pozwala ona na wyświetlanie komunikatów w okienku dialogowym.
+Okienko dialogowe blokuje wątek przeglądarki, co oznacza, że żaden inny kod nie zostanie wykonany, zanim 
+użytkownik nie zamknie alertu. Jeśli aplikacja jest często aktualizowaną aplikacją AJAX, używanie funkcji `alert()`
+nie jest najlepszym pomysłem.
+
+## 8.A.6. Zakres zmiennych
+Zmienne w JS nie są definiowane w zakresie bloku, tylko w zakresie funkcji. Oznacza to, że jeśli zmienna została 
+zdefiniowana wewnątrz funkcji, nie jest widoczna poza nią. Natomiast zmienna zdefiniowana wewnątrz bloku if lub for 
+jest widoczna poza blokiem. Zmienne globalne to zmienne definiowane poza funkcjami (w globalnym kodzie programu), 
+natomiast zmienne lokalne to zmienne definiowane wewnątrz funkcji. Kod wewnątrz funkcji ma dostęp zarówno do zmiennych
+globalnych, jak i do swoich zmiennych lokalnych.
+
+```javascript
+var global = 1;
+
+function f() { 
+  var local = 2; 
+  global += local; 
+  return global; 
+}
+
+f() // 3
+global // 3
+local ; // Uncaught ReferenceError: local is not defined
+```
+
+>Najlepsze praktyki.
+Staraj się ograniczać liczbę zmiennych globalnych, aby uniknąć konfliktów nazw.
+Zawsze deklaruj zmienne za pomocą instrukcji `var`.
+Wszystkie zmienne potrzebne w funkcji definiuj na samej górze funkcji.
+Jeśli do zadeklarowania zmiennej nie zostanie użyte słowo kluczowe `var`, 
+tej zmiennej zostanie automatycznie przypisany zakres globalny.
+
+```javascript
+function f() { 
+  local = 2;
+}
+
+local; //Uncaught ReferenceError: local is not defined
+f() ;
+local; // 2
+```
+
+Funkcja `f()` zawiera zmienną `local`. Przed wywołaniem funkcji zmienna nie istnieje. Jednak podczas pierwszego
+wywołania funkcji zmienna jest tworzona i ma zasięg globalny. Dlatego jeśli wówczas spróbujemy sięgnąć do zmiennej
+local, okaże się ona dostępna.
+
+### Wynoszenie zmiennych
+
+```javascript
+var a = 123; 
+
+function f() {
+  alert(a); 
+  var a = 1; 
+  alert(a); 
+} 
+
+f();
+```
+
+Wewnątrz funkcji zakres lokalny jest ważniejszy od globalnego. Zmienna lokalna nadpisuje każdą zmienną globalną o
+tej samej nazwie. 
+Kiedy wykonywanie programu JavaScript wchodzi w nową funkcję, wszystkie zmienne zadeklarowane w różnych miejscach 
+funkcji są przesuwane, czyli wynoszone w górę funkcji (jest to tzw. z ang. *hoisting* czyli wynoszenie zmiennych). 
+Jednakże przypisania pozostają tam gdzie były. To jakby powyższa funkcja była napisana tak:
+
+```javascript
+var a = 123; 
+
+function f() { 
+  var a; // var a = undefined ; 
+  alert(a); // undefined 
+  a = 1; 
+  alert(a); // 1 
+}
+```
+Można również przyjąć wzorzec pojedynczej instrukcji `var`. W takim przypadku będziemy robić coś na kształt ręcznego
+wynoszenia zmiennych, aby zapobiec nieporozumieniom związanym z zachowaniem mechanizmu wynoszenia języka JavaScript.
+
+## 8.A.7. Zakres bloku
+ES6 wprowadza słowa kluczowe `let` i `const`, które pozwalają deklarować zmienne.
+Zmienne zadeklarowane za pomocą `let` mają zakres bloku. Istnieją tylko w bieżącym bloku kodu.
+
+```javascript
+var a = 1; 
+var b = 2;
+{ 
+  let a = 2; 
+  b = 3
+  console.log(a); // 2 
+} 
+console.log(a); // 1
+console.log(b); // 3
+```
+
+Zaleca się, aby podczas deklarowania zmiennych o zakresie blokowym ogólnie dodawać deklarację `let` na początku bloku.
+
+```javascript
+function swap(a, b){   // <-- tu zaczyna się zakres funkcji 
+    if(a > 0 && b > 0){ // <-- tu zaczyna się zakres bloku 
+      let tmp = a;
+      a = b; 
+      b = tmp;
+    } // <-- tu kończy się zakres bloku 
+    console.log(a, b); 
+    console.log(tmp); 
+ // zmienna tmp nie jest zdefiniowana , ponieważ jest dostępna  tylko  w zakresie bloku
+    return [a,b]; 
+} 
+swap(1,2);
+```
+
+Otóż przy użyciu słowa kluczowego `let` nie można ponownie zadeklarować tej samej zmiennej w tej samej funkcji
+lub zakresie bloku.
+Kolejnym słowem kluczowym wprowadzonym w ES6 jest `const` (stała). Zmienna zadeklarowana za pomocą słowa kluczowego
+`const` tworzy dla zmiennej referencję tylko do odczytu. Nie oznacza to, że wartość przechowywana przez tę referencję
+jest niemutowalna. Nie można jednak ponownie przypisać identyfikatora zmiennej. Stałe mają zakres bloku tak samo jak 
+zmienne utworzone za pomocą słowa kluczowego `let` . Ponadto podczas deklarowania trzeba przypisać wartość do zmiennej.
+Chociaż brzmi to dziwnie, `const` nie ma nic wspólnego z wartościami niemutowalnymi. Stałe tworzą niemutowalne wiązanie.
+Jest to ważne rozróżnienie i należy je prawidłowo zrozumieć. Rozważmy następujący przykład: 
+
+```javascript
+const car = {} 
+car.tyres = 4 
+```
+
+Jest to poprawny kod. Przypisujemy w nim wartość {} do stałej car . Po przypisaniu tej referencji nie można zmienić. 
+
+W ES6 należy stosować się do następujących zasad: 
+*	Używaj słowa kluczowego const w miarę możliwości. Używaj go dla wszystkich zmiennych, których wartości się nie zmieniają. 
+*	Używaj słowa kluczowego let. 
+*	Unikaj słowa kluczowego var.
+
+
+### Zakres zmiennych – moje spostrzeżenia
+Możliwe są  takie deklaracje bez rzucania błędów:
+
+```javascript
+var zmienna = 4;
+console.log(zmienna); // 4
+
+var zmienna = 'zmienna';
+console.log(zmienna); // zmienna
+
+var zmienna = false;
+console.log(zmienna); // false
+``` 
+
+Natomiast taki zestaw deklaracji:
+
+```javascript
+var zmienna = 4;
+console.log(zmienna);
+let zmienna = 'zmienna';
+console.log(zmienna); // spowoduje: 
+// Uncaught SyntaxError: Identifier 'zmienna' has already been declared
+```
+
+Taki zestaw deklaracji też nie będzie powodował błędów:
+
+```javascript
+var zmienna = 4;
+console.log(zmienna); // 4
+
+var zmienna = 'zmienna';
+console.log(zmienna); // zmienna
+
+{
+  let  zmienna = false;
+  console.log(zmienna); // false
+}
+```
+
+Taki tak:
+
+```javascript
+{
+  let  zmienna = false;
+  console.log(zmienna);
+
+  let zmienna = 'zmienna';
+  console.log(zmienna); // Uncaught SyntaxError: Identifier 'zmienna' has already been declared
+}
+
+```
+
+Stąd wniosek, że za pomocą słowa kluczowego `var` można zduplikować deklarację zmiennej w tym samym zakresie
+ale już za pomocą słowa let nie.
+
+Rozpatrzmy taki zestaw instrukcji:
+
+```javascript
+function myFunction () {
+  zmienna = 'zmienna';
+  console.log(zmienna); // zmienna
+  var zmienna = false;
+  console.log(zmienna); // false
+}
+
+myFunction();
+
+console.log(zmienna); //Uncaught ReferenceError: zmienna is not defined
+```
+
+Dlaczego zmienna nie jest dostępna poza funkcją przecież została tam zadeklarowana bez słowa `var` czyli jest zmienną 
+globalną. Jednakże druga deklaracja ze słowem `var` ją nadpisała, został zapewne zastosowany *hoisting* i deklaracja 
+`var zmienna` została wyniesiona na początek zakresu funkcji. 
+
+Natamiast dla takich instrukcji:
+
+function myFunction () {
+  zmienna = 'zmienna';
+  console.log(zmienna); // zmienna
+  zmienna = false;
+  console.log(zmienna); // false
+}
+
+myFunction();
+
+console.log(zmienna); // false
+Zmienna zmienna jest zmienną globalną.
+
+## 8.A.8. Funkcje są danymi.
+
+W JS funkcje są danymi i można je przypisać do zmiennej: 
+
+```javascript
+var f = function() { return 1; }; 
+```
+
+Ten sposób definiowania funkcji nazywamy zapisem literałowym funkcji.
+
+Fragment kodu:
+
+```javascript
+function () { return 1 ;}
+```
+ jest wyrażeniem funkcyjnym (ang. *function expression*), które może mieć nazwę i być 
+ **nazwanym wyrażeniem funkcyjnym** (ang. *named function expression* — NFE). 
+
+```javascript
+typeof f  // ”function”
+```
+
+Funkcje są danymi zawierające kod, który jest wykonywalny (funkcje mogą być wywoływane).
+
+```javascript
+var sum = function (a, b) { return a + b; }; 
+var add = sum; 
+typeof add; // “function” 
+add(1, 2);  // 3
+```
+
+### Funkcje anonimowe
+Funkcja anonimowa to funkcja, która nie ma nazwy:
+
+```javascript
+function() {
+  // instrukcje do wykonania
+}
+```
+*	Funkcję anonimową można przekazać jako parametr do innej funkcji. Funkcja odbierająca może z przekazaną
+  funkcją zrobić coś pożytecznego. 
+* Funkcje anonimowe można definiować i od razu wykonywać.
+
+### Wywołania zwrotne
+
+Jeśli `funkcja B` zostaje przekazana `funkcji A`, a następnie `A` wywołuje `B`, często mówi się, że `B` jest 
+funkcją wywołania zwrotnego (ang. *callback function* ). Jeśli `B` nie ma nazwy, to możemy powiedzieć, że jest
+anonimowym wywołaniem zwrotnym.
+
+```javascript
+function A(B) {
+    B();
+}
+
+function call(callback){
+  callback();
+}
+
+```
+
+Zalety wywołań zwrotnych: 
+* Wywołania zwrotne umożliwiają przekazywanie funkcji bez konieczności ich nazywania, co oznacza, że potrzebnych
+  jest mniej zmiennych. 
+*	Możemy przenieść obowiązek wywołania funkcji na inną funkcję, co oznacza, że musimy napisać krótszy kod. 
+* Wywołania zwrotne mogą korzystnie wpłynąć na wydajność aplikacji poprzez opóźnianie wykonywania lub odblokowywanie wywołań.
+
+Przykłady wywołań zwrotych
+
+```javascript
+function invokeAdd(a, b) {
+  return a() + b();
+}
+
+function one(){
+  return 1;
+}
+
+function two(){
+  return 2;
+}
+
+console.log(invokeAdd(one, two));
+
+console.log(invokeAdd(()=>{return 2}, ()=>{return 2}));
+
+console.log("***********************************************");
+
+function multiplyByTwo(...array){
+  const ar = [];
+  for(let i =  0; i < array.length; i++){
+    ar[i] = array[i] * 2;
+  }
+  return ar;
+}
+
+function addOne(a){
+  return a + 1;
+}
+
+console.log(multiplyByTwo(4, 6, 7, 8, 11));
+
+console.log(addOne(100));
+
+console.log("***********************************************");
+
+const myarr = multiplyByTwo(10, 20, 30);
+console.log(myarr);
+
+for (let i = 0; i < myarr.length; i++) {
+  myarr[i] = addOne(myarr[i]);
+}
+
+console.log(myarr);
+
+console.log("***********************************************");
+
+function multiplyByTwoVersionOne(callback, ...array){
+  const arr = [];
+  for (let i = 0; i < array.length; i++) {
+    array[i] = callback(array[i] * 2);
+  }
+  return array;
+}
+
+console.log(multiplyByTwoVersionOne(addOne, 2, 6, 8, 9, 33));
+
+console.log(multiplyByTwoVersionOne((a)=>{return a + 2}, 2, 6, 8, 9, 33));
+```
+
+Moje wywołanie zwrotne:
+
+```javascript
+let counter = 0
+setInterval(() => {
+  const container = document.getElementsByClassName('container');
+
+  counter++;
+  switch (counter % 5) {
+    case 0: container[0].style.flexDirection = 'row';
+      break;
+    case 1: container[0].style.flexDirection = 'row-reverse';
+      break;
+    case 2: container[0].style.justifyContent = 'flex-end';
+      break;
+    case 3: container[0].style.flexDirection = 'column';
+      break;
+    case 4: container[0].style.flexDirection = 'column-reverse';
+      break;
+  }
+
+  if (counter == 1000) {
+    counter = 0;
+  }
+}, 3000);
+
+```
+
 
 
 

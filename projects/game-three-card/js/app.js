@@ -23,7 +23,7 @@ const cards = document.querySelectorAll('.cards__item');
 const btnStart = document.querySelector('button:first-child');
 const btnReset = document.querySelector('button:last-child');
 const images = document.querySelectorAll('.cards__img');
-const pictures = ['img/quen-spades.jpg', 'img/queen-club.jpg', 'img/queen-hearts.jpg'];
+const pictures = ['img/dama-karo.png', 'img/dama-pik.png', 'img/dama-kier.png'];
 
 btnStart.addEventListener('click', () => {
   cards.forEach(item => item.classList.toggle('cards__item--light'));
