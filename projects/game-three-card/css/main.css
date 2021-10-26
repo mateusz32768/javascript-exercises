@@ -194,13 +194,13 @@
       -ms-flex-align: center;
           align-items: center;
   height: 90vh;
-  width: 90vw;
+  width: 100vw;
   margin: 0 auto;
   color: #333;
   font-size: 2.5rem;
   border: 3px solid brown;
   border-radius: 20px;
-  background-image: url(../img/queen-diamonds.jpg);
+  background-image: url(../img/dama-trefl.png);
   background-size: cover;
   background-position: center;
 }
@@ -249,7 +249,7 @@ body {
 }
 
 .cards__img {
-  width: 30vw;
+  width: 33vw;
   border: 2px solid brown;
   border-radius: 5px;
 }
