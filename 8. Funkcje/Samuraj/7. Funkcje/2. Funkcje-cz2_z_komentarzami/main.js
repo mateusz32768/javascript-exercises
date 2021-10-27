@@ -24,7 +24,7 @@ addTwoNumbers(5);
 
 
 // CALLBACK
-// Funkcja wywołania zwrotnego, czyli funkcja, przekazania jako argument do funkcji, i wywołana w niej.
+// Funkcja wywołania zwrotnego, czyli funkcja przekazana jako argument do funkcji i wywołana w niej.
 // Funkcja, do której przekazujemy inną funkcję (czyli nasz callback) nazywa się funkcją wyższego rzędu.
 
 //1. Przykład callback
@@ -40,14 +40,14 @@ function addOne(item) {
 }
 
 function subtractOne(number) {
-  number--
+  number--;
   console.log(number);
   return number;
 }
 
-// const result = count(5, addOne)
+// const result = count('4', addOne);
 // console.log(result);
-// count(6, addOne)
+count('6', addOne);
 
 
 // 2. Przykład callback
