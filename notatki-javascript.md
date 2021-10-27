@@ -3810,10 +3810,749 @@ var F = function () {
 
 ![](images/global.png)
 
+Funkcje posiadają własną przestrzeń, którą mogą wykorzystywać do przechowywania innych zmiennych, takich jak b , oraz
+funkcji wewnętrznych, takich jak N.
+
+![](images/closure.png)
+
+Jeśli jesteś w punkcie `a`, jesteś w przestrzeni globalnej. Jeśli w punkcie `b` , który należy do przestrzeni funkcji
+`F` , masz dostęp do przestrzeni globalnej oraz do przestrzeni `F` . Jeśli znalazłeś się w punkcie `c` , który należy
+do funkcji `N` , masz dostęp do przestrzeni globalnej, przestrzeni `F` oraz `N` . Nie da się sięgnąć z `a` do `b`, 
+ponieważ punkt `b` nie jest widoczny poza `F` . Można natomiast uzyskać dostęp z `c` do `b` lub z `N` do `b`. 
+Interesujące jest to, że efekt domknięcia ma miejsce, gdy jakimś sposobem `N` wydostaje się z `F` i trafia do 
+przestrzeni globalnej.
+
+![](images/closure-one.png)
+
+Co się wtedy dzieje? `N` jest w tej samej przestrzeni globalnej co `a` . Jako że funkcje pamiętają środowisko, 
+w którym zostały zdefiniowane, `N` nadal ma dostęp do przestrzeni `F` , a co za tym idzie, dostęp do `b`. 
+Jest to ciekawe dlatego, że `N` znajduje się tam gdzie `a` i nadal ma dostęp do `b` , natomiast `a` nie ma 
+dostępu do `b`. 
+Jak `N` udaje się przerwać łańcuch? Istnieją dwa sposoby: `N` może zostać zmienną globalną (pominięcie `var` ) lub
+może zostać zwrócona (`return`) przez `F` do przestrzeni globalnej. Zobaczmy, jak to wygląda w praktyce.
+
+### Domknięcie 1.
+Zmodyfikujmy funkcję `F` z powyższego przykładu, niech `F` zwraca `N` , a `N` zwraca `b` i ma do niej dostęp 
+poprzez łańcuch zakresów:
+
+```javascript
+var a = 'zmienna globalna';
+
+var F = function () {
+  var b = 'zmienna lokalna';
+
+  var N = function () {
+    var c = 'wewnętrzna lokalna';
+    return b;
+  }
+
+  return N;
+}
+
+var inner = F();
+
+console.log(inner()); // Funkcja globalna inner ma dostęp 
+// do prywatnej przestrzeni F
+```
+
+Ponieważ `F()` można wywołać z przestrzeni globalnej (jest funkcją globalną), możesz ją wywołać i przypisać
+zwracaną przez nią wartość do innej zmiennej globalnej. Wynikiem będzie nowa funkcja globalna, która ma dostęp
+do prywatnej przestrzeni `F()`
+
+```javascript
+var inner = F();
+console.log(inner()); // “zmienna lokalna”
+```
+
+### Domknięcie 2.
+Powyższy wynik można uzyskać nie co inaczej. Funkcja `F()` zamiast zwracać funkcję utworzy w swoim ciele nową 
+globalną funkcję `inner()`
+
+```javascript
+var inner; // element zastępczy
+
+var F = function () {
+  var b = 'zmienna lokalna';
+  var N = function () {
+    return b;
+  }
+
+  inner = N;
+};
+
+F();
+
+console.log(inner()); // zmienna lokalna
+
+```
+
+Wewnątrz przestrzeni `F()` definiowana jest funkcja `N()`, która ma dostęp do jej zakresu i której referencja jest
+przypisana do zmiennej globalnej `inner`, zatem funkcja `inner()` będzie miała dostęp do zakresu funkcji `F()` mimo 
+iż jest częścią przestrzeni globalnej.
+
+### Domknięcie 3. i definicja
+Każda funkcja może być uznana za domknięcie gdyż każda funkcja utrzymuje tajne powiązanie ze środowiskiem (zakresem),
+w którym została utworzona. Jednak w większości przypadków ten zakres jest niszczony, jednakże jak pokażują powyższe
+przykłady zakres ten może zostać utrzymany.
+Domknięcie jest tworzone, gdy funkcja zachowuje powiązanie z zakresem funkcji nadrzędnej nawet po tym, jak funkcja
+nadrzędna zakończyła działanie.
+Parametry funkcji zachowują się jak zmienne lokalne dla tej funkcji, ale są tworzone domyślnie. Nie trzeba używać 
+dla nich słowa kluczowego var . Można utworzyć funkcję zwracającą inną funkcję, która z kolei zwraca parametr swojej
+funkcji nadrzędnej.
+
+```javascript
+function foo(param) {
+  var noo = function () {
+    return param;
+  };
+
+  param++;
+  return noo;
+}
+
+var inner = foo(123);
+console.log(inner()); // 124
+```
+
+Zmienna `param` została zwiększona już po definicji funkcji, a pomimo to `inner()` zwróciła aktualną wartość.
+Jest to dowód na to, że funkcja utrzymuje referencję do zakresu, (a nie do zmiennych i ich wartości znalezionych
+w zakresie podczas wykonywania funkcji. ???)
+
+Zmodyfikujmy troche powyższy kod:
+
+```javascript
+function foo(param) {
+  var noo = function () {
+    return param;
+  };
+
+  param++;
+  console.log(noo());
+  return noo;
+}
+
+console.log(foo(123));
+// 124
+// [Function: noo]
+
+```
+
+### Domknięcia w pętli
+Przyjrzyjmy się teraz kanonicznemu błędowi nowicjuszy w kwestiach związanych z domknięciami. Często prowadzi
+on do bardzo trudnych do wykrycia błędów, ponieważ na pierwszy rzut oka wszystko wygląda normalnie.
+
+```JavaScript
+function foo() {
+  var arr = [], i;
+
+  for (i = 0; i < 3; i++) {
+    arr[i] = function () {
+      return i;
+    };
+    console.log(arr[i]());
+  }
+
+  return arr;
+}
+
+var arrGlobal = foo();
+
+for (var i = 0; i < arrGlobal.length; i++) {
+  console.log(arrGlobal[i]());
+}
+
+// 0
+// 1
+// 2
+// 3
+// 3
+// 3
+```
+
+Funkcje nie pamiętają wartości, tylko przechowują referencję do środowiska, w którym zostały utworzone. W tym 
+przypadku zmienna `i` rezyduje akurat w środowisku, w którym zostały zdefiniowane te trzy funkcje. Dlatego wszystkie
+funkcje sięgają do tego środowiska i znajdują najbardziej aktualną wartość `i` . Po wyjściu z pętli wartością 
+zmiennej `i` jest `3` . Wszystkie trzy funkcje wskazują więc na tę samą wartość.
+Eleganckie rozwiązanie polega na wykorzystaniu kolejnego domknięcia, tak jak pokazano poniżej:
+
+```javascript
+function foo() {
+  var arr = [], i;
+  for (i = 0; i < 3; i++) {
+    arr[i] = (function (x) {
+      return function () {
+        return x;
+      };
+    })(i);
+  }
+
+  return arr;
+}
+
+var arrGlobal = foo();
+
+for (let i = 0; i < arrGlobal.length; i++) {
+  console.log(arrGlobal[i]());
+}
+
+// 0
+// 1
+// 2
+```
+
+Bieżąca wartość i jest przekazana do innej funkcji natychmiastowej, w której staje się zmienną lokalną `x`, która
+za każdym razem ma inną wartość.
+Ten sam wynik uzyskamy wykorzystująć funkcję wewnętrzną:
+
+```javascript
+function foo() {
+  function binder(x) {
+    return function () {
+      return x;
+    };
+  }
+
+  var arr = [], i;
+  for (i = 0; i < 3; i++) {
+    arr[i] = binder(i);
+  }
+
+  return arr;
+}
+
+var arrGlobal = foo();
+
+for (i = 0; i < arrGlobal.length; i++) {
+  console.log(arrGlobal[i]());
+}
+
+// 0
+// 1
+// 2
+```
+
+Kluczem do sukcesu jest wykorzystanie funkcji pośredniej do uczynienia wartości `i` lokalną podczas każdej iteracji
+
+### Funkcje dostępowe
+Kolejnym przykładem użycia domknięcia jest utworzenie funkcji dostępowych: pobierającej (ang. *getter* ) i 
+ustawiającej (ang. *setter*). Funkcja ustawiająca wartość może zawierać pewną logikę do walidacji wartości
+przed przypisaniem jej do chronionej zmiennej.
+Obie funkcje dostępowe można umieścić wewnątrz tej samej funkcji, która zawiera zmienną `secret` , tak by
+współdzieliły ten sam zakres:
+
+```javascript
+
+var getValue, setValue;
+
+(function () {
+  var secret = 0;
+  getValue = function () {
+    return secret;
+  };
+  setValue = function (v) {
+    if (typeof v === "number") {
+      secret = v;
+    }
+  };
+}());
+
+console.log(getValue());
+setValue(321);
+console.log(getValue());
+setValue(false);
+console.log(getValue());
+```
+
+W tym przypadku funkcja zawierająca wszystkie elementy jest funkcją natychmiastową. Definiuje ona 
+`setValue()` i `getValue()` jako funkcje globalne, podczas gdy zmienna `secret` pozostaje lokalna 
+i nie jest dostępna bezpośrednio.
+
+### terator
+Poniższy przykład pokazuje wykorzystanie domknięcia w celu osiągnięcia funkcjonalności iteratora.
+Oto funkcja inicjująca, która przyjmuje tablicę wejściową, a także definiuje prywatny wskaźnik `i`, 
+zawsze wskazujący następny element w tablicy:
+
+```javascript
+// Wykorzystanie domknięcia jako iteratora
+
+function setup(x) {
+  var i = 0;
+  return function () {
+    return x[i++];
+  };
+}
+
+var next = setup(['a', 'b', 'c', 'd']);
+console.log(next());
+console.log(next());
+console.log(next());
+console.log(next());
+
+```
+
+## 8.A.10. IIFE a bloki
+Ponieważ specyfikacja `ES5` nie zapewniła zakresu bloku, popularnym wzorcem dla uzyskania zakresu bloku było użycie
+natychmiastowo **wywoływanego wyrażenia funkcyjnego** (ang. *immediately invoked function expressions — IIFE*), np.: 
+
+```javascript
+(function () { 
+  var block_scoped=0; 
+}()); 
+
+console.log(block_scoped); // ReferenceError: block_scoped is not defined 
+
+```
+Dzięki obsłudze zakresów bloków przez `ES6` można po prostu użyć deklaracji `let` lub `const`.
+
+## 8.A.11. Funkcje strzałkowe
+
+W JavaScripcie zawsze pisaliśmy wyrażenia funkcyjne. Idiomatyczne jest pisanie w JavaScripcie kodu takiego jak ten
+(przykład w jQuery):
+
+```javascript
+
+$("#submit-btn").click(function (event) { 
+  validateForm(); 
+  submitMessage(); 
+});
+
+```
+Ten styl pisania wyrażeń funkcji anonimowych jest znany jako **funkcje lambda** . Tę funkcjonalność obsługuje kilka 
+innych języków. Chociaż **funkcje lambda** są mniej lub bardziej standardowe w nowych językach, ich użycie 
+spopularyzował JavaScript. Jednak składnia lambda w JavaScripcie nie była zbyt zwięzła. Funkcje strzałkowe ES6 
+wypełniają tę lukę i zapewniają zwięzłą składnię dla pisania funkcji.
+
+```javascript
+const num = [1,2,3] 
+const squares = num.map(function(n){
+ return n*n; 
+}); 
+console.log(squares); // [1,4,9]
+```
+
+Powyższy kod można uprościć stosując składnię funkcji strzałkowej:
+
+```javascript
+const squaresTwo = num.map (n => n * n)
+```
+
+Gdy potrzebujemy wielu argumentów, musimy zawrzeć listę argumentów w nawiasach okrągłych:
+
+```javascript
+() => {...}; // 	Brak parametrów
+a => {...} ;// Jeden parametr 
+(a, b) => {...} // 	Więcej niż jeden parametr
+```
+
+Funkcje strzałkowe mogą zawierać zarówno **ciała instrukcji** (ang. *statement bodies* ), jak i 
+**ciała wyrażeń** (ang. *expression bodies*): 
+
+```javascript
+n => {return n+n;} // blok instrukcji 
+n => n+n // wyrażenie
+```
+
+Oba zapisy są równoważne, ale druga odmiana jest zwięzła i preferowana. Funkcje strzałkowe są zawsze anonimowe.
+Jednym z ważnych aspektów **funkcji strzałkowych**, jest to, że **funkcje strzałkowe** nie wiążą własnych wartości 
+słowa kluczowego `this` — wartość jest leksykalnie wywodzona z otaczającego zakresu.
+
 
 # 8.B. Funkcje 
+**Notatki na podstawie "JavaScript. Tworzenie nowoczesnych aplikacji webowych."  Tomasz Sochacki**
 
-Notatki z kursu ...
+## Czym są funkcje?
+Jakieś operacje można zawrzeć w funkcji aby je póżniej móc wielokrotnie wykorzystywać w różnych miejscach kodu.
+Jeśli zajdzie potrzeba modyfikacji tych operacji to zmianę wykonamy tylko w jednym miejscu – tam gdzie
+zdefiniowaliśmy naszą funkcję.
+Funkcje można używać również wewnątrz innych funkcji. W danej funkcji wywołujemy jakąś funkcję, która zwróci
+nam wynik, który możemy zwrócić i przy okazji wykonać jakieś dodatkowe czynności, których nie chcieliśmy z jakiegoś 
+powodu umieszczać w funkcji wewnętrznej a które w jakiś sposób ją dotyczą.
+Zamknięcie operacji w prostą funkcję może dać realne korzyści, szczególnie w przypadku rozbudowywania i 
+modyfikowania aplikacji. 
+
+Istnieje nawet paradygmat w programowaniu, określany jako **programowanie funkcyjne**, gdzie jednym z założeń 
+jest zamykanie praktycznie wszystkich operacji w małe funkcje.
+
+## Definiowanie i wywoływanie funkcji
+Jest kilka sposobów definiowania funkcji. Warto jednak pamiętać, że nie ma jednej, konkretnej metody, która byłaby
+uznawana w świecie JavaScript za tę najlepszą. Wiele zależy tutaj od charakteru danej funkcji, sposobu jej używania
+oraz od praktyk przyjętych w zespole i w danej aplikacji.
+
+### Tworzenie funkcji
+Deklarowanie funkcji poprzez słowo function w następujący sposób: 
+
+```javascript
+function name () { 
+  // polecenia wewnątrz funkcji name 
+}
+```
+Funkcję wywołujemy:
+
+```javascript
+name();
+```
+
+Innym sposobem stworzenia funkcji jest napisanie tzw. **wyrażenia funkcyjnego** w postaci: 
+
+```javascript
+const fun = function nameFunction () { 
+  // polecenia wewnątrz funkcji name 
+};
+```
+Funkcję wywołujemy:
+
+```javascript
+fun();
+nameFunction();  //Uncaught ReferenceError : nameFunction is not defined
+```
+Wywołanie funkcji po nazwie `nameFunction` powoduje zgłoszenie błędu, gdyż nasza funkcja jest dostępna pod nazwą
+zmiennej, do jakiej została przypisana, czyli w naszym przypadku fun
+Przy tworzenia funkcji można pominąć nazwę funkcji, częściej się to robi gdy stosuje się **wyrażenie funkcyjne**. 
+Używa się  wtedy tzw. funkcji anonimowych:
+
+```javascript
+const fn = function (a, b) { 
+  return a + b;
+};
+```
+lub zapisu określanego jako *arrow function* (tzw. funkcje strzałkowe), które zapisuje się jako:
+
+```javascript
+const sum = (a, b) => { 
+  return a + b; 
+};
+```
+Opisane tu trzy sposoby deklarowania funkcji nie są równoważne i czasami sposób i miejsce wywołania funkcji może 
+decydować o konkretnym sposobie deklaracji.
+
+### Wartość zwracana przez funkcję
+W języku JavaScript każda funkcja zawsze zwraca jakąś wartość albo w sposób jawny za pomocą słowa return albo 
+niejawnie `udefined`.
+Funkcja sprawdzające jakieś warunki i zwracające wartość typu boolean:
+
+```javascript
+function isUserLogged (user) { 
+  return isTokenValid(user.token) && user.role === 'ADMIN'; 
+}
+```
+
+Funkcja może posiadać kilka instrukcji return:
+
+```javascript
+function divide (a, b) { 
+ if (b !== 0) { 
+  return a / b; // instrukcja return kończy działanie funkcji
+ } 
+  return "Nie dziel przez zero!"; 
+}
+```
+Gdy instrukcja return zwraca jakiś obiekt.
+
+```javascript
+function getUserPersonalData (user) { 
+  return { 
+    name: user.name, 
+    age: user.age 
+  }; 
+} 
+// definiujemy przykładowego użytkownika : 
+const someUser = { 
+  name: 'Tomek', 
+  age: '35',
+  token: 'xyz' 
+}; 
+
+getUserPersonalData(someUser); // { name : " Tomek ", age : " 35 "}
+```
+
+Czasami jednak tworzymy funkcje, których zadaniem jest wykonanie pewnych operacji:
+
+```javascript
+function showUserAge(user.age) { 
+  console.log('Wiek użytkownika: ' + user.age + ' lat.'); 
+} 
+
+showUserAge(someUser.age); // Wiek użytkownika : 35 lat .
+```
+i wtedy nie jest ważne co ta funkcja zwraca.
+
+## Zakresy i domknięcia w JavaScript
+Zakres zmiennej to zakres kodu programu, w którym dana zmienna jest dostępna.
+Zaleca się deklarowanie zmiennych za pomocą słów `let` i `const`. Dzisiaj użycie słowa `var` może być wymagane 
+tylko w aplikacjach, które muszą być uruchamiane w satrszych środowiskach.
+Zmienna, która została zadeklarowana przez `let` lub `const` , jest dostępna w kodzie dopiero od miejsca jej 
+deklaracji. Próba użycia niezadeklarowanej zmiennej spowoduje rzucenie błędu.
+
+```javascript
+function getPriceWithDiscount(basicPrice) {
+  const totalPrice = basicPrice * (1 - discount);
+  const discount = 0.2;
+  return totalPrice;
+}
+
+console.log(getPriceWithDiscount(120)); 
+//ReferenceError: Cannot access 'discount' before initialization
+
+function getPriceWithDiscount(basicPrice) {
+  var totalPrice = basicPrice * (1 - discount);
+  var discount = 0.2;
+  return totalPrice;
+}
+
+console.log(getPriceWithDiscount(120));
+// NaN; nie ma błędu jest zwrócona wartość NaN, która jest błędna
+```
+
+W przypadku deklaracji z użyciem słowa `var` mamy do czynienia z tzw. zjawiskiem hoistingu i tak naprawdę powyższy
+kod wygląda pod spodem tak:
+
+```javascript
+function getPriceWithDiscount(basicPrice) {
+  var totalPrice; // domyślnie undefined 
+  var discount; // domyślnie undefined 
+  totalPrice = basicPrice * (1 - discount); 
+  // tutaj mamy: number * (1 – undefined) === NaN 
+  discount = 0.2; 
+  // dopiero tutaj określamy wartość , ale nie ma ona już znaczenia 
+  return totalPrice; // zwracamy wcześniej obliczone NaN 
+}
+
+console.log(getPriceWithDiscount(120)); // NaN
+```
+
+Hoisting polega na tym, że wszystkie deklaracje zmiennych z danego zakresu przechodzą na jego początek ze startową
+wartością `undefined`.
+Bezpieczniej jest używać tylko deklaracje `let` lub `const` , które uchronią nas przed takimi sytuacjami, bo od razu 
+otrzymamy w konsoli błąd a nie generowane niepoprawne wartości typu `NaN`, które nie pomagają zbytnio w zlokalizowaniu błędu.
+
+W JS mamy trzy podstawowe rodzaje zakresu:
+•	Globalny
+•	Funkcyjny
+•	Blokowy
+
+Istnieje jeszcze tzw. zakres modułu, często używany np. w pracy w środowisku Node.js
+
+### Zakres globalny
+Zakres globalny oznacza, że zmienna jest dostępna w każdym miejscu kodu. Środowisko dodaje do zakresu globalnego 
+obiekty np. window czy document. Jeśli zadeklarujemy zmienną za pomocą słowa kluczowego var poza jakąkolwiek funkcją
+i zakresem blokowym to znajdzie się w zakresie globalnym.
+
+```javascript
+var variable = 40; 
+window.variable; // 40;
+```
+
+Zmienne deklarowane za pomocą słowa kluczowego let i const nie będą w zakresie globalnym.
+
+```javascript
+const userAge = 40; 
+userAge; // 40 
+window.userAge; // undefined
+```
+
+Zmienne globalne są użyteczne gdy używamy bibliotek zewnętrznych (np. `jQuery`) lecz deklarowanie własnych
+zmiennych globalnych jest ryzykowne, gdyż wiąże się to z możliwością nadpisania zmiennej właśnie z tych bibliotek
+czy pola obiektu window. 
+
+### Zakres funkcyjny
+Oznacza on, że zmienna zadeklarowana wewnątrz funkcji jest dostępna tylko w zakresie tej funkcji.
+
+```javascript
+const user = {
+  name: 'Tomek',
+  age: 40
+};
+
+function getName() {
+  const prefix = 'Imię użytkownika';
+  return `${prefix} ${user.name}`;
+}
+
+console.log(getName());
+console.log(prefix); // ReferenceError: prefix is not defined
+```
+
+Dobrą praktyką jest deklarowanie zmiennych i stałych tam, gdzie są one faktycznie potrzebne.
+
+Argumenty funkcji są zmiennymi znajdującymi się w jej zakresie .
+
+```javascript
+function addTwoNumbers(x) { 
+  return function (y) { 
+     return x + y; 
+  } 
+} 
+addTwoNumbers(5)(2); // 7
+```
+
+**Domknięcie**, czyli  zatrzaśnięcie dostępów do zmiennych i stałych w zakresie funkcyjnym z ich propagacją w dół.
+Funkcja anonimowa ma dostęp do zmiennej `x` zlokalizowanej w zakresie funkcji nadrzędnej. Do zmiennej `y` istnieje 
+dostęp tylko z funkcji anonimowej propagacja dostępów nie działa w górę.
+Aby obliczyć sumę dwóch liczb, musimy użyć dwukrotnego wywołania funkcji z dwukrotnym użyciem nawiasów okrągłych.
+
+```javascript
+const sum = addTwoNumbers(5); 
+typeof sum; // "function"
+sum(2); // 7
+```
+
+Powyższy przykład to tzw. domknięcie, gdzie zmienna `x` jest dostępna nawet po wywołaniu funkcji `addTwoNumbers`.
+
+```javascript
+sum(6) // 11
+```
+
+Jeśli jakaś zmienna jest potrzebna tylko w jednej funkcji, to zadeklarujmy ją właśnie tam. Unikniemy przypadkowych
+błędów gdyby jakiś inny fragment kodu modyfikował zmienną globalną, z której my również korzystamy.
+
+```javascript
+const sum = addTwoNumber(5);
+
+console.log(sum(6)); // 11
+console.log(sum(7)); // 12
+
+console.log(addTwoNumber(9)(8)); //17
+```
+
+### Zakres blokowy
+
+Generalnie blokiem kodu nazywamy fragment zamknięty w nawiasy klamrowe.
+
+```javascript
+
+{
+ const discount = 0.2;
+ const getPrice = price => price * (1 – discount) ;
+ getPrice(100) // 80
+}
+getPrice(200);  Uncaught ReferenceError : getPrice is not defined
+
+```
+
+Zakres blokowy dotyczy wyłącznie deklaracji z użyciem słowa const lub let.
+
+```javascript
+{ 
+  const discount = 0.2; 
+  function getPrice(price) { 
+    return price * (1 - discount); 
+  } 
+  getPrice(100); // 80 
+}
+getPrice(200); // 160
+
+```
+
+Deklaracja funkcji podlega tzw. hoistingowi i jest przenoszona do zakresu globalnego, ale posiada ona dostęp do 
+wartości stałej `discount` poprzez domknięcie (dotyczy zakresu blokowego, a nie funkcyjnego).  Funkcję `getPrice`
+możemy wywołać poza blokiem.
+
+
+Częściej będziemy używali zakresu blokowego w instrukcjach warunkowych czy pętlach.
+
+```javascript
+function getPrice(price) { 
+  let totalPrice; 
+  if (price > 0) { 
+    const discount = price > 100 ? 0.2 : 0.1; 
+    totalPrice = price * (1 - discount); 
+  } 
+  return totalPrice; 
+} 
+getPrice(100); // 90 
+getPrice(1000); // 800
+
+let counter = 0; 
+for (let i = 0; i < 5; i++) { 
+  counter += i; 
+} 
+counter; // 10
+```
+
+### Funkcje, które od razu się wykonują
+W JS  można stworzyć funkcję wraz z jej natychmiastowym wykonaniem zwane IIFE, czyli *Immediately-Invoked Function Expression*.
+Składnia konstrukcji IIFE: 
+
+```javascript
+(function () {
+ // instrukcje do wykonania 
+})();
+
+(() => {
+ // instrukcje do wykonania 
+})();
+```
+
+Ich najczęstsze wykorzystanie, czyli tzw. wzorzec modułu:
+
+```javascript
+const CustomModule = (function () { 
+  const privateMethod = () => console.log('funkcja prywatna'); 
+  return { 
+    publicFirstMethod: function () { 
+      privateMethod(); 
+      console.log('pierwsza metoda publiczna'); 
+    }, 
+    publicSecondMethod: function () { 
+      console.log('druga metoda publiczna'); 
+    } 
+ }; 
+})();
+
+CustomModule.publicFirstMethod(); 
+// funkcja prywatna 
+// pierwsza metoda publiczna 
+CustomModule.publicSecondMethod(); 
+// druga metoda publiczna 
+CustomModule.privateMethod();
+//Uncaught TypeError : CustomModule.privateMethod is not a function
+```
+
+W momencie tworzenia obiektu CustomModule nasza funkcja IIFE od razu się wykonuje, więc od razu w CustomModule
+zostaje przypisany obiekt z dwiema metodami publicznymi. Cały czas mają one jednak dostęp do privateMethod, mimo
+że funkcja IIFE nie jest już nigdzie wywoływana ( patrz zakres widoczności i domknięcia).
+
+### Parametry domyślne funkcji
+
+```javascript
+function getPriceWithDiscount(price, rebate) { 
+  const discount = 1 - (rebate || 0.1); // domyślnie zakładamy 10% zniżki 
+  return price * discount; 
+}
+getPriceWithDiscount(100, 0.2); // 80 
+getPriceWithDiscount(100); // 90 
+getPriceWithDiscount(100, 0); // 90 źle, naliczyliśmy rabat!
+
+function getPriceWithDiscount(price, rebate) { 
+  const discount = 1 - (typeof rebate === 'undefined' ? 0.1 : rebate); 
+  return price * discount; 
+} 
+getPriceWithDiscount(100, 0); // 100 , teraz wynik jest poprawny 
+getPriceWithDiscount(100, 0.3); // 70 , tutaj również obliczenie jest poprawne
+```
+
+Rozwiązanie ze sprawdzeniem typu wartości można spotkać w wielu starszych projektach i bibliotekach, dlatego warto
+je znać i wiedzieć jakie zagrożenia niesie ze sobą stosowanie alternatywy `OR` zamiast operatora `typeof`.
+
+Określanie wartości domyślnych parametrów funkcji w nowych wersjach JavaScript:
+
+```javascript
+function sum(a, b = 1, c) { 
+  return a + b + c; 
+}
+sum(2, 2, 2); // 6 
+sum(2, 0, 2); // 4 
+sum(2, 2); //  2 + 2 + undefined = 2 + 2 + Number(undefined) = 2 + 2 + NaN = NaN
+sum(2, null, 2); //  2 + Number(null) + 2 = 2 + 0 + 2 = 4
+sum(2, undefined, 2); // 2 + 1 + 2 = 5
+```
+
+Należy uważać przy wywoływaniu takich funkcji i w miejsce parametrów, które chcemy pominąć, wstawiać wartość 
+`undefined`. Gdyby parametr z wartością domyślną był ostatnim parametrem wtedy chcąc skorzystać z wartości domyślnej,
+można po prostu pominąć parametr i wywołać funkcję z wartościami `a` i `b`.
+
+
+
 
 # 8.C. Funkcje
 
