@@ -3573,8 +3573,242 @@ setInterval(() => {
 
 ```
 
+### Funkcje natychmiastowe
+Inne zastosowanie funkcji anonimowej to wywoływanie funkcji zaraz po jej zdefiniowaniu. Wyrażenie funkcyjne 
+umieszczamy w nawiasach i dodajemy kolejną parę nawiasów oznaczająca natychmiastowe wykonanie  a w nich ewentualnie
+parametry:
+
+```javascript
+(function(name){ 
+alert('Witaj, ' + name + '!'); 
+})('stary');
+```
+
+Alternatywnie można przenieść zamknięcie pierwszej pary nawiasów na koniec.
+
+```javascript
+(function () {
+ // ... 
+}());
+```
+Kod zostanie wykonany bez tworzenia nadmiaru zmiennych globalnych. Tej samej funkcji nie da się wykonać dwukrotnie.
+Dlatego anonimowe funkcje samowywołujące najlepiej nadają się do wykonywania zadań jednorazowych lub inicjujących.
+Funkcja natychmiastowa może również zwracać wartość. 
+
+```javascript
+var result = (function () {
+   // robimy coś skomplikowanego 
+   // z tymczasowymi zmiennymi lokalnymi ... 
+   // ... 
+   // coś zwracamy ; 
+}());
+```
+
+### Funkcje wewnętrzne (prywatne)
+Możemy zdefiniować funkcję wewnątrz innej funkcji.
+
+```javascript
+function outer(param) { 
+  function inner(theinput){ 
+    return theinput * 2; 
+  } 
+  return 'Wynik wynosi ' + inner(param); 
+}
+```
+
+Za pomocą wyrażenia funkcyjnego możemy również zapisać to tak: 
+
+```javascript
+var outer = function (param) { 
+  var inner = function (theinput) { 
+    return theinput * 2; 
+  }; 
+  return 'Wynik wynosi ' + inner(param); 
+};
+```
+
+Kiedy wywołana zostanie globalna funkcja `outer()`, wewnętrznie wywoła również lokalną funkcję `inner()`. Ponieważ 
+funkcja `inner()` jest lokalna, nie jest dostępna poza `outer()` i dlatego nazywamy ją funkcją prywatną.
+
+```javascript
+outer(2); //Wynik wynosi 4
+outer(8); //Wynik wynosi 16 
+inner(2); ReferenceError: inner is not defined
+```
+
+Ze stosowania funkcji prywatnych płyną następujące korzyści: 
+*	Nie dochodzi do zaśmiecenia globalnej przestrzeni nazw, co zmniejsza ryzyko powstawania kolizji nazw. 
+*	Prywatność — na zewnątrz widoczne są tylko te funkcje, które programista chce udostępnić. Funkcjonalności 
+  nieprzeznaczone dla reszty aplikacji są ukryte.
+
+### Funkcje, które zwracają funkcje
+Funkcja zawsze zwraca wartość albo za pomocą instrukcji `return` albo domyślnie wartość `undefined` . Ponieważ 
+funkcja jest daną to można ją zwrócić przez inna funkcję.
+
+```javascript
+function date() {
+  let time = new Date();
+
+  return function(){
+   let hours = time.getHours();
+   let minutes = time.getMinutes();
+   let secondes = time.getSeconds();
+
+    if (secondes < 10) {
+      secondes = '0' + secondes;
+    }
+  
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+  
+    if (hours < 10) {
+      hours = '0' + hours;
+    }
+    const clock = document.getElementById('clock');
+    clock.innerHTML = hours + ':' + minutes + ':' + secondes;
+  }
+
+}
+
+setInterval(() => {
+ /* const time = date();
+  time();  */
+  date()();
+ 
+}, 1000);
+```
+
+### Funkcjo, przepiszże się!
+Ponieważ funkcje potrafią zwracać funkcje, możliwe jest zastąpienie oryginalnej funkcji tą zwracaną. 
+
+```javascript
+function a() { 
+  alert('A!'); 
+  return function(){ 
+     alert('B!'); 
+  }; 
+}
+```
+Wartość zwróconą przez wywołanie `a()` można przypisać zmiennej `a`, nadpisując w ten sposób istniejącą funkcję:
+
+```javascript
+a = a();
+```
+
+Powyższa linia kodu przy pierwszym wykonaniu spowoduje wyświetlenie 'A !', jednak następne wywołanie `a()` wyświetli
+'B!'. Opisany mechanizm jest przydatny, jeśli funkcja wykonuje pewne jednorazowe zadanie. Po pierwszym wywołaniu 
+funkcja nadpisuje się, aby uniknąć niepotrzebnego wykonywania określonej pracy przy każdym jej wywołaniu.
+W powyższym przykładzie funkcja została przedefiniowana z zewnątrz, a zwracana wartość została przypisana do funkcji.
+Funkcja może jednak przepisać się sama z wewnątrz, tak jak pokazano poniżej: 
+
+```javascript
+function a() { alert('A!'); a = function(){ alert('B!'); }; } 
+```
+
+Przy pierwszym wywołaniu ta funkcja wykona następujące czynności: 
+*	Wyświetli 'A!' (uznajmy to za nasze jednorazowe zadanie inicjujące). 
+*	Przedefiniuje globalną zmienną `a`, przypisując do niej nową funkcję. 
+  Każde kolejne wywołanie będzie powodowało wyświetlenie 'B!'.
+
+Oto inny przykład, który łączy kilka technik omówionych:
+
+```javascript
+var a = (function () {
+   function someSetup() { 
+     var setup = 'zrobione'; 
+   } 
+   function actualWork() { 
+     alert('Praca wre'); 
+   } 
+   someSetup(); 
+   return actualWork; 
+}());
+
+```
+W przykładzie należy zwrócić uwagę na następujące kwestie: 
+*	Mamy funkcje prywatne: `someSetup()` i `actualWork()` . 
+*	Mamy funkcję natychmiastową w postaci funkcji anonimowej, która wywołuje samą siebie za pomocą pary nawiasów
+  umieszczonych po jej definicji. 
+*	Pierwsze wykonanie polega na wywołaniu funkcji `someSetup()` i zwróceniu referencji do zmiennej `actualWork`, 
+  która jest funkcją. Zwróć uwagę na brak nawiasów w instrukcji return — nie ma ich dlatego, że zwracamy do funkcji
+  referencję, a nie wynik wywołania tej funkcji.
+*	Ponieważ kod zaczyna się od `var a = `, wartość zwracana przez samowywołującą się funkcję jest przypisywana do 
+  zmiennej `a` 
+
+Jeśli chcesz sprawdzić, czy poprawnie rozumiesz omówiony zakres materiału, spróbuj odpowiedzieć na poniższe pytania. 
+Jakie będzie zachowanie napisanego przed chwilą programu, gdy: 
+*	zostanie po raz pierwszy załadowany? 
+*	po załadowaniu zostanie wywołana funkcja `a()` ?
 
 
+## 8.A.9. Domknięcia
+
+Zanim zajmiemy się domknięciami, powtórzmy i rozszerzmy trochę pojęcia zakresu w języku JavaScript.
+
+### Łańcuch zakresów
+
+W JavaScript istnieje zakres funkcji. Zmienna zdefiniowana wewnątrz funkcji nie jest widoczna poza nią
+
+```javascript
+var global = 11;
+
+function foo() {
+  var local = 11;
+  return global;
+}
+
+console.log(foo()); // 11
+console.log(local); // ReferenceError: local is not defined
+```
+
+Zmienna `global` ma zakres globalny, natomiast zmienna `local` zakres funkcji `foo()`. Zatem:
+*	Wewnątrz `foo()` widoczne są zarówno `global` jak i `local`
+*	Na zewnątrz `foo()` widoczna jest zmienna `global`, ale nie zmienna `local`
+
+Jeśli zdefiniujemy funkcję `inner()` zagnieżdżoną w `outer()` , będzie ona miała dostęp do zmiennych ze swojego 
+zakresu, a także do zmiennych swoich funkcji nadrzędnych. W takim wypadku mówimy o łańcuchu zakresów, który może
+być dowolnie długi (głęboki).
+
+```javascript
+var global = 1;
+
+function outer() {
+  var outer_local = 2;
+
+  function inner() {
+    var inner_local = 3;
+    return outer_local + inner_local + global;
+  }
+
+  return inner();
+}
+
+console.log(outer()); // 6; funkcja inner ma dostęp do wszystkich zmiennych
+
+```
+
+### Przerwanie łańcucha za pomocą domknięcia
+
+```javascript
+
+var a = 'zmienna globalna';
+
+var F = function () {
+  var b = 'zmienna lokalna';
+
+  var N = function () {
+    var c = 'wewnętrzna lokalna';
+  };
+};
+
+// Gdy N wydostanie z zakresu F i trafi do przestrzeni globalnej 
+// będziemy mieli do czynienia z domknięciem.
+// Funkcja N zamknie swój zakres i zabierze go do przestrzeni globalnej. 
+
+```
+
+![](images/global.png)
 
 
 # 8.B. Funkcje 
