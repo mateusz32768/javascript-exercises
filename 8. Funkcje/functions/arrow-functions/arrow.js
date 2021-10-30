@@ -1,12 +1,9 @@
 const showAnyThings = (arg) => {
   console.log(`Konsola: ${arg}`);
-  return arg;  // Nie można pominąć tego return
 }
 
-let msg = showAnyThings('Notebook');
-console.log(msg);
+showAnyThings('Notebook');
 
-// const showAnny = arg => {return arg;}
 const showAnny = arg => arg;  // pomijamy słowo return
 console.log(showAnny('Welcome'));
 
@@ -19,3 +16,17 @@ const whatThis = () => {
 }
 
 whatThis();
+
+const ob = x => {
+  return { value: x }
+}; // zwracamy obiekt
+
+console.log(ob(5));
+
+const another = x => {
+  value: x
+}; // zwraca undefined
+
+console.log(another(6));
+
+

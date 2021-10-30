@@ -1767,7 +1767,12 @@ console.log(`Saldo konta wynosi ${balance}`);
 
 Składnia **przypisania destrukturyzującego** umożliwia deklarowanie wielu zmiennych i przypisywanie im wartości. Po
 prawej stronie znaku równości umieszcza się tablicę obiektów (wartość „strukturalną”), a po lewej jedną lub kilka nazw
-zmiennych.
+zmiennych. Wykorzystuje się przy tym składnię przypominającą literał tablicowy lub obiektowy. Z wartości po prawej
+stronie są wyodrębniane („destrukturyzowane”) składowe wartości, przypisywane następnie zmiennym umieszczonym 
+po lewej stronie.
+
+Przypisanie destrukturyzujące jest najczęściej wykorzystywane do inicjowania zmiennych w deklaracjach `let`, `const` i
+`var`, ale stosuje się je też w zwykłych wyrażeniach przypisujących (ze zmiennymi zadeklarowanymi wcześniej).
 
 ```javascript
 let [x, y] = [2, 4]; // <=> let x = 2, y = 4;
@@ -1782,20 +1787,100 @@ x; // => 3
 x; // => 4
 ```
 
+Zmienne złożone mozemy stosować w pętlach:
+
+```javascript
+let o = { x: 1, y: 2 }; // Iterowany obiekt.
+for (const [name, value] of Object.entries(o)) { // taka kontstrukcja, aby można było iterować obiekt 
+ // bez tego opakowania: TypeError: o is not iterable
+  console.log(name, value); // Wyświetlany wynik: "x 1" i "y 2".
+}
+```
+
+Liczba zmiennych umieszczonych po lewej stronie przypisania destrukturyzującego nie musi być zgodna z liczbą
+elementów tablicy po stronie prawej:
+
+```javascript
+let [x,y] = [1]; // x == 1; y == undefined
+[x,y] = [1,2,3]; // x == 1; y == 2
+[,x,,y] = [1,2,3,4]; // x == 2; y == 4
+
+let [x, ...y] = [1,2,3,4]; // y == [2,3,4]
+```
+
+Przypisanie destrukturyzujące można stosować z zagnieżdżonymi tablicami:
+
+```javascript
+let [a, [b, c]] = [1, [2,2.5], 3]; // a == 1; b == 2; c == 2.5
+```
+
+Po prawej stronie można umieścić dowolny iterowalny obiekt, jak również każdy obiekt, który można wykorzystać
+w pętli for/of:
+
+```javascript
+let [first, ...rest] = "Cześć!"; // first == "C"; rest == [ "z", "e", "ś", "ć", "!" ]
+```
+
+W przypisaniu destrukturyzującym po prawej stronie można również umieścić wartość obiektową. W takim przypadku
+zapis po lewej stronie powinien wyglądać jak literał obiektowy:
+
+```javascript
+let transparent = {r: 0.0, g: 0.0, b: 0.0, a: 1.0}; // Kolor zapisany w formacie RGBA.
+let {r, g, b} = transparent; // r == 0.0; g == 0.0; b == 0.0
+```
+
+Można uprościć kod, w którym wykorzystywanych jest dużo funkcji trygonometrycznych i innych:
+
+```javascript
+// To samo co const sin = Math.sin, cos = Math.cos, tan = Math.tan, sqrt = Math.sqrt, pow = Math.pow
+const {sin, cos, tan, sqrt, pow} = Math;
+```
+
+Każdy identyfikator umieszczony po lewej stronie znaku równości może być parą innych identyfikatorów oddzielonych
+dwukropkiem. Pierwszy identyfikator określa wtedy nazwę właściwości, której wartość ma być odczytana, a drugi 
+identyfikator określa zmienną, której ta wartość ma zostać przypisana:
+
+```javascript
+// To samo co const cosine = Math.cos, tangent = Math.tan;
+const { cos: cosine, tan: tangent } = Math;
+```
+
+
+Przypisanie destrukturyzujące, gdy stosowane są zagnieżdżone obiekty lub tablice obiektów:
+
+```javascript 
+let points = [{x: 1, y: 2}, {x: 3, y: 4}]; // Tablica złożona z dwóch obiektów
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points; // destrukturyzowana w cztery zmienne.
+(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4) // => true
+```
+
+Zamiast tablicy obiektów można destrukturyzować obiekt zawierający tablice:
+
+```javascript
+let points = { p1: [1,2], p2: [3,4] }; // Obiekt, którego właściwościami są tablice
+let { p1: [x1, y1], p2: [x2, y2] } = points; // destrukturyzowany w cztery zmienne.
+(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4) // => true
+```
+
+```javascript
+// Najpierw zapisz strukturę danych i złożone przypisanie destrukturyzujące.
+let points = [{x: 1, y: 2}, {x: 3, y: 4}];
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points;
+// Sprawdź poprawność zapisu, zamieniając strony miejscami.
+let points2 = [{x: x1, y: y1}, {x: x2, y: y2}]; // points2 == points
+```
+
+
+
 # 4. Wyrażenia i operatory
 
-<!--TODO -->
-
-Wyrażenie to fraza, którą można wyliczyć i uzyskać wartość. Stała to wyrażenie, zmienna też, którego wynikiem jest
-wartość przypisana tej zmiennej.
-
-Bardzo prostym przykładem wyrażenia jest stała. Zmienna też jest wyrażeniem, przypisana tej zmiennej. Złożone wyrażenia
-składają się z prostszych wyrażeń.
+**Wyrażenie** to fraza, którą można wyliczyć i uzyskać wartość. Najprostszym wyrażeniem jest **stała**.
+Innym przykładem wyrażenia jest **zmienna**, którego wynikiem jest przypisana do zmiennej wartość.
 
 Wyrażenie wywołujące funkcję składa się z wyrażenia, którego wynikiem jest obiekt reprezentujący daną funkcję, oraz
 kilku ewentualnych dodatkowych wyrażeń będących jej argumentami.
 
-Złożone wyrażenia najczęściej tworzy się za pomocą prostszych wyrażeń i operatorów. Operator łączy w określony sposób
+Złożone wyrażenia najczęściej tworzy się za pomocą prostszych wyrażeń i **operatorów**. Operator łączy w określony sposób
 wartości operandów i tworzy nową wartość. Czasami mówi się, upraszczając, że operator zwraca wartość.
 
 ## 4.1. Wyrażenia podstawowe
@@ -1808,7 +1893,7 @@ Literały to stałe wartości wpisane bezpośrednio w kodzie programu, na przyk�
 ```javascript
 1.23 // Literał liczbowy.
 "cześć" // Literał tekstowy.
-/ szablon / // Literał wyrażenia regularnego.
+/szablon/ // Literał wyrażenia regularnego.
 ```
 
 Wyrażeniami podstawowymi są również niektóre zarezerwowane słowa:
@@ -1968,7 +2053,35 @@ a[index++] // TypeError: nie można indeksować niezdefiniowanej zmiennej.
 
 ## 4.5. Wyrażenia wywołujące
 
-<!-- TODO -->
+**Wyrażenie wywołujące** jest frazą powodującą wywołanie (uruchomienie) funkcji lub metody. Obejmuje ona wyrażenie
+identyfikujące funkcję, która ma być wywołana, z następującymi po niej nawiasami zwykłymi, wewnątrz których może 
+znajdować się lista rozdzielonych przecinkami wyrażeń argumentów.
+
+```javascript
+f(0) // f jest wyrażeniem funkcyjnym, a 0 wyrażeniem argumentu.
+Math.max(x,y,z) // Math.max jest funkcją, a x, y, i z są argumentami.
+a.sort() // a.sort jest funkcją bez argumentów.
+```
+Podczas wyliczania **wyrażenia wywołującego** najpierw wyliczany jest wynik **wyrażenia funkcyjnego**. Następnie 
+wyliczane są wyniki wyrażeń argumentów i tworzona lista wartości. Jeżeli wynikiem wyrażenia funkcyjnego nie jest
+funkcja, zgłaszany jest wyjątek **TypeError**. W przeciwnym razie parametrom określonym w definicji funkcji są 
+przypisywane wartości **argumentów** i na koniec wykonywany jest kod funkcji. Jeżeli w kodzie użyta jest instrukcja
+`return`, zwracana przez nią wartość staje się wynikiem całego **wyrażenia wywołującego**.
+
+Każde **wyrażenie wywołujące** zawiera parę nawiasów i podwyrażenie umieszczone przed nawiasem otwierającym. 
+Jeżeli jest to wyrażenie dostępu do właściwości, wówczas mamy do czynienia z wywołaniem **metody**. W takim 
+przypadku obiekt lub tablica, której dotyczy odwołanie, po uruchomianiu kodu funkcji staje się wartością słowa
+kluczowego `this`.
+
+### 4.5.1. Wywołania warunkowe
+
+W wersji języka ES2020 można wywoływać funkcje, stosując notację `?.()` zamiast `()`. Jeżeli funkcja jest wywoływana
+w zwykły sposób, a wyrażenie znajdujące się przed nawiasami ma wartość `null`, `undefined` lub nie jest funkcją, jest 
+zgłaszany wyjątek `TypeError`. Jeżeli natomiast użyje się nowej notacji `?.()` i wyrażenie po lewej stronie znaku 
+zapytania będzie miało wartość `null` lub `undefined`, to wynikiem całego wyrażenia wywołującego będzie wartość 
+`undefined`, a wyjątek nie zostanie zgłoszony.
+
+<!-- TO DO -->
 
 ## 4.6. Wyrażenia tworzące obiekty
 
@@ -2627,6 +2740,7 @@ Próba odpytanie elementów nieistniejących — wartość `undefined`.
 Operator rozciągania `(...)` nie jest operatorem w ścisłym znaczeniu tego słowa, gdyż można go stosować tylko w
 literałach tablicowych i wywołaniach funkcji.
 
+
 W literałach tablicowych służy do umieszczania w nich elementów innej tablicy:
 
 ```javascript
@@ -2660,34 +2774,37 @@ let letters = [..."Witaj, świecie!"];
 [...new Set(letters)]  // => [ "W", "i", "t", "a", "j", ",", " ", "ś", "w", "e", "c", "!" ]
 ```
 
+
+
 # 8. Funkcje
 
-Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScript i niemal każdym innym języku. Inne
-równoważne pojęcia to podprogramy (ang. _subroutine_) lub procedury (ang. _procedure_).
+Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScript i niemal w każdym innym języku
+programowania. Inne równoważne pojęcia to podprogramy (ang. _subroutine_) lub procedury (ang. _procedure_).
 
 **Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną liczbę razy. Funkcje są
 **parametryczne**, tzn. w ich definicjach można umieszczać listy identyfikatorów — **parametrów** — pełniących w ciałach
-funkcji role lokalnych zmiennych. Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**. Wartości
-te są często wykorzystywane do wyliczania zwracanego **wyniku**, będącego wartością wyrażenia funkcyjnego. W każdym
-wywołaniu określany jest jeszcze jego **kontekst**, którego dane są przypisywane słowu kluczowemu **this**.
+funkcji role **lokalnych zmiennych.** Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**. 
+Wartości te są często wykorzystywane do wyliczania zwracanego **wyniku**, będącego wartością **wyrażenia funkcyjnego**.
+W każdym wywołaniu określany jest jeszcze jego **kontekst**, którego dane są przypisywane słowu kluczowemu **this**.
 
-Funkcja przypisana właściwości obiektu nosi nazwę **metody**. Obiekt, którego funkcja jest wywoływana, jest kontekstem i
-stanowi wartość słowa kluczowego **this**. Funkcja inicjująca nowo utworzony obiekt nazywa się **konstruktorem**.
+Funkcja przypisana właściwości obiektu nosi nazwę **metody**. Obiekt, którego funkcja jest wywoływana, jest kontekstem
+i stanowi wartość słowa kluczowego **this**. Funkcja inicjująca nowo utworzony obiekt nazywa się **konstruktorem**.
 
-W języku JavaScript funkcje są obiektami, na których można wykonywać różne operacje, na przykład przypisywać je
+W języku JavaScript funkcje są **obiektami**, na których można wykonywać różne operacje, na przykład przypisywać je
 zmiennym, umieszczać w argumentach innych funkcji, przypisywać wartości ich właściwościom, a nawet wywoływać ich metody.
 
-Definicja funkcji może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej funkcji ma dostęp do wszystkich zmiennych
-zdefiniowanych w tym samym zasięgu co funkcja nadrzędna. Oznacza to, że funkcje są **domknięciami** (ang. _closure_) —
-ważnymi i przydatnymi konstrukcjami programistycznymi.
+**Definicja funkcji** może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej funkcji ma dostęp do wszystkich 
+zmiennych zdefiniowanych w tym samym zasięgu co funkcja nadrzędna. Oznacza to, że funkcje są **domknięciami** 
+(ang. _closure_) — ważnymi i przydatnymi konstrukcjami programistycznymi.
 
 ## 8.1. Definiowanie funkcji
 
-Funkcję definiuje się za pomocą słowa kluczowego **function** lub jako to tzw. **funkcję strzałkową**, bardzo przydatną,
-gdy trzeba definicję funkcji umieścić jako argument innej funkcji.
+Funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować zarówno jako **deklarację**, jak i 
+**wyrażenie** lub jako to tzw. **funkcję strzałkową**, bardzo przydatną, gdy trzeba definicję funkcji umieścić jako 
+argument innej funkcji.
 
 W literałach obiektowych i w klasach metody definiuje się, stosując skróconą składnię, Są to wyrażenia funkcyjne
-przypisywane właściwościom obiektu za pomocą literału _nazwa:wartość_. W szczególnych przypadkach stosuje się w
+przypisywane właściwościom obiektu za pomocą literału `nazwa:wartość`. W szczególnych przypadkach stosuje się w
 literałach obiektowych słowa kluczowe `get` i `set` definiujące gettery i settery.
 
 Jako że funkcje są obiektami można je definiować za pomocą konstruktora `Function()`.
@@ -2697,18 +2814,18 @@ asynchroniczne za pomocą `async function`.
 
 ### 8.1.1. Deklaracje funkcji.
 
-Deklaracja funkcji to słowo kluczowe `function` oraz:
+**Deklaracja funkcji** to słowo kluczowe `function` oraz:
 
 * Identyfikator (nazwa) funkcji będącą zmienną, do której przypisywany jest tworzony obiekt funkcyjny.
-* Para zwykłych nawiasów mogąca zawierać listę identyfikatorów zwanych parametrami, oddzielonych przecinkami i
-  pełniącymi w ciele funkcji rolę lokalnych zmiennych.
-* Para nawiasów klamrowych zawierająca instrukcje tworzące ciało funkcji wykonywane po wywołaniu funkcji.
+* Para zwykłych nawiasów mogąca zawierać listę identyfikatorów zwanych **parametrami**, oddzielonych 
+  przecinkami i pełniącymi w ciele funkcji rolę zmiennych lokalnych.
+* Para nawiasów klamrowych zawierająca instrukcje tworzące **ciało funkcji** wykonywane po wywołaniu funkcji.
 
 Interpreter JS definiuje wszystkie funkcje na początku zakresu (ang. *hoisting*), a więc wywołanie funkcji przed jej
 deklaracją nie jest błędem.
 
-Funkcja może zwrócić do wywołującego ją kodu, za pomocą słowa kluczowego `return`, obliczoną wartość. Jeśli w ciele
-funkcji nie występuje słowo `return` funkcja zwraca wartość `undefined`.
+Funkcja za pomocą słowa kluczowego `return` może zwrócić obliczoną wartość do wywołującego ją kodu lub wartość 
+`undefined`, jeśli w swoim ciele nie zawiera tegoż słowa.
 
 ```javascript
 // Funkcja rekurencyjna obliczająca silnię.
@@ -2730,7 +2847,7 @@ się ją, gdy istnieje potrzeba odwołania się do niej jak np. w funkcji rekure
 jest wiązane z obiektem f-kcyjnym w lokalnym zasięgu funkcji, a więc powstaje zmienna lokalna.
 
 Dobrą praktyką jest przypisywanie funkcji w wyrażeniu funkcyjnym do stałej, aby ją zabezpieczyć przed przypadkowym
-nadpisaniu.
+nadpisaniem
 
 Nie można się odwołać do funkcji zdefiniowanej jako wyrażenie, dopóki nie zostanie przypisane do zmiennej.
 
@@ -2782,12 +2899,14 @@ Prościej, jeśli tylko jedna instrukcja.
 const sum = (x, y) => x + y;
 const square = x => x * x;
 const myFunc = () => console.log('Hello world!');
+
 const ob = x => {
   return {value: x}
 }; // zwracamy obiekt
+
 const another = x => {
   value: x
-}; // zwraca obiekt
+}; // zwraca undefined
 ```
 
 Pomiędzy parametrami a strzałką nie wstawiamy podziału wiersza, gdyż zdefiniujemy innne wyrażenie.
@@ -2802,8 +2921,9 @@ F.s. dziedziczy `this` po środowisku, w którym jest zdefiniowana i nie ma wła
 
 ### 8.1.4. Zagnieżdżone funkcje
 
-```javascript
+Można zgnieżdżać funkcje w innych funkcjach.
 
+```javascript
 function foo(a, b) {
   function square(x) {
     return x * x;
@@ -2813,10 +2933,244 @@ function foo(a, b) {
 }
 
 foo(3, 4) // => 5
-
 ```
 
-## 8.2 Wywołanie funkcji
+Funkcje zagnieżdżone mogą się odwoływać do parametrów i zmiennych zdefiniowanych w funkcjach nadrzędnych.
+
+## 8.2 Wywoływanie funkcji
+
+Kod tworzący ciało funkcji nie jest wykonywany w miejscu definicji funkcji, tylko jej wywołania.
+Funkcje można wywoływać na pięć sposobów:
+* jako funkcje,
+* jako metody,
+* jako konstruktory,
+* pośrednio, za pomocą metod call() i apply(),
+* niejawnie, wykorzystując konstrukcje języka, które nie wyglądają tak jak zwykłe funkcje.
+
+### 8.2.1. Wywołanie funkcji
+Funkcje można wywoływać jako funkcje lub metody za pomocą **wyrażeń wywołujących**. Wyrażenie wywołujące składa
+się z wyrażenia funkcyjnego (którego wartością jest obiekt funkcyjny), nawiasu otwierającego, opcjonalnej listy
+argumentów oddzielonych przecinkami i nawiasu zamykającego. Jeżeli funkcja jest właściwością obiektu lub elementu
+tablicy, to wyrażenie funkcyjne jest wywołaniem **metody**.
+
+```javascript
+printprops({x: 1});
+let total = distance(0,0,2,1) + distance(2,1,3,5);
+let probability = factorial(5)/factorial(13);
+```
+
+Wartością odwołania do parametru wewnątrz ciała funkcji jest wartość odpowiedniego argumentu. Funkcja zwraca 
+wartość wyrażenia umieszczonego po słowie `return` lub gdy go nie ma wartość `undefined`.
+
+> Wywołanie warunkowe (do opracowania)
+<!-- TODO -->
+
+
+W zwykłym trybie kontekst wywołania, czyli wartość słowa kluczowego `this`, jest globalnym obiektem. Jednak
+w trybie ścisłym słowo to ma wartość `undefined`. Funkcje strzałkowe dziedziczą wartość `this` właściwą dla
+miejsca, w którym są zdefiniowane.
+
+W funkcjach wywoływanych jako funkcje (nie jako metody) słowo `this` zazwyczaj w ogóle nie jest wykorzystywane.
+Za jego pomocą można jednak sprawdzać, czy obwiązuje tryb ścisły:
+
+```javascript
+// Definicja i wywołanie funkcji sprawdzającej, czy obwiązuje tryb ścisły:
+const strict = (function() { return !this; }());
+```
+
+```javascript
+'use strict';
+
+console.log(this);
+
+const strict = (
+  function () {
+    console.log(this); // undefined
+    return !this;
+  })();
+
+console.log(strict); // true
+```
+
+> Wywołanie rekurencyjne a stos (do opracowania)
+<!-- TODO -->
+
+### 8.2.2. Wywołanie metody (do opracowania, przy opracowywaniu obiektów)
+<!-- TODO -->
+
+## 8.3. Argumenty i parametry funkcji.
+
+W definicji funkcji nie określa się typów parametrów, jak również podczas jej wywoływania nie są sprawdzane typy
+wartości umieszczonych w argumentach. W rzeczywistości nie jest nawet sprawdzana liczba argumentów.
+
+### 8.3.1. Parametry opcjonalne i domyślne
+
+Jeżeli funkcja jest wywoływana z mniejszą liczbą argumentów niż jest zadeklarowanych parametrów, wówczas 
+dodatkowym parametrom są przypisywane wartości domyślne, zazwyczaj `undefined`.
+
+```javascript
+// Funkcja dołączająca do tablicy a nazwy wyliczalnych właściwości obiektu o
+// i zwracająca tę tablicę. Jeżeli tablica nie zostanie określona, funkcja utworzy nową.
+function getPropertyNames(o, a) {
+  if (a === undefined) a = []; // Utworzenie nowej tablicy, jeżeli została nie określona.
+  // a = a || [];
+  for (let property in o) a.push(property);
+  return a;
+}
+
+// Funkcję getPropertyNames() można wywoływać z jednym lub dwoma argumentami:
+let o = {x: 1}, p = {y: 2, z: 3}; // Dwa testowe obiekty.
+let a = getPropertyNames(o); // a == ["x"]; umieszczenie właściwości obiektu o w nowej tablicy.
+console.log(a); // ['x']
+console.log(getPropertyNames(p, a)); // a == ["x","y","z"]; dołączenie właściwości obiektu p do podanej tablicy.
+```
+
+W definicji funkcji należy argumenty opcjonalne umieścić na końcu listy, aby można je było pomijać. Nie jest 
+możliwe na przykład pominięcie pierwszego argumentu i określenie drugiego. Można natomiast w pierwszym argumencie
+jawnie umieścić wartość `undefined`.
+
+Od ES6 można definiować domyślnie wartości wszystkich parametrów bezpośrednio w ich liście. Po znaku równości
+podajemy domyślną wartość.
+
+```javascript
+function getPropertyNames(o, a = []) {
+for(let property in o) a.push(property);
+return a;
+}
+```
+Domyślnie wartości są przypisywane parametrom w chwili wywołania funkcji, a nie w jej definicji. Za każdym razem,
+gdy funkcja `getPropertyNames()` będzie wywoływana z jednym argumentem, będzie tworzona nowa pusta tablica.
+
+Można na przykład stosować zmienne lub wywołania funkcji wyliczające domyślne wartości parametrów.
+
+```javascript
+const rectangle = (width, height=width*2) => ({width, height});
+rectangle(1) // => { width: 1, height: 2 }
+```
+
+### 8.3.2. Parametry resztowe i lista argumentów o zmiennej długości
+
+**Parametry resztowe** pozwalają na definiowanie funkcji, które można wywoływać z dowolną liczbą argumentów.
+
+```javascript
+function min(first = Infinity, ...rest) {
+  let minValue = first;
+
+  for(let n of rest) {
+    if(n < minValue){
+      minValue = n;
+    }
+  }
+
+  return minValue;
+}
+
+console.log(min(1, 10, 100, 2, 3, 1000, 4, 5, 6));
+```
+
+Parametr resztowy poprzedza się trzema kropkami. Musi to być ostatni parametr w deklaracji funkcji. Wartością
+**parametru resztowego** w ciele funkcji jest zawsze tablica, która może być pusta, ale nigdy nie jest to wartość
+`undefined`.
+
+Funkcja, którą można wywoływać z dowolną liczbą argumentów, jest nazywana **funkcją wariadyczną**, funkcją o 
+zmiennej arności lub **funkcją vararg**.
+
+### 8.3.3. Obiekt Arguments
+
+W starszych wersjach **funkcję vararg** definiowało się, wykorzystując obiekt typu `Arguments`. Jest to obiekt
+podobny do tablicy, umożliwiający odwoływanie się do argumentów funkcji za pomocą indeksów, a nie nazw.
+
+```javascript
+function max(x) {
+let maxValue = -Infinity;
+
+for(let i = 0; i < arguments.length; i++) {
+  if (arguments[i] > maxValue) 
+    maxValue = arguments[i];
+}
+
+  return maxValue;
+}
+
+max(1, 10, 100, 2, 3, 1000, 4, 5, 6) // => 1000
+```
+Należy unikać stosowania obiektu typu `Arguments` w nowych programach. Identyfikator `arguments`, będący słowem
+kluczowym uniemożliwia deklarowanie parametru funkcji i lokalnej zmiennej o tej nazwie.
+
+### 8.3.4. Operator rozciągania w wywołaniach funkcji
+Operator rozciągania `...` służy do rozpakowywania elementów tablicy (lub innego iterowalnego obiektu, na przykład
+ciągu znaków) wszędzie tam, gdzie są wymagane osobne wartości. Np. w wywołaniach funkcji:
+
+```javascript
+let numbers = [5, 2, 10, -1, 9, 100, 1];
+Math.min(...numbers) // => –1
+```
+
+Nie jest to operator w ścisłym znaczeniu tego słowa, ponieważ nie zwraca wartości. Jest to specjalny element 
+składni, który można wykorzystywać w literałach tablicowych i wywołaniach funkcji.
+
+Często parametr resztowy stosuje się razem z operatorem rozciągania:
+
+```javascript
+const array = [2, 4, 7, 99, 10];
+
+const sum = (...args) => { // parametr rest
+  let result = 0;
+  for (const arg of args) {
+    result += arg;
+  }
+
+  return result;
+}
+
+console.log(sum(...array)); // operator spread
+```
+### 8.3.5. Destrukturyzacja argumentów funkcji do jej parametrów
+
+Jeżeli nazwy parametrów funkcji umieści się w nawiasach kwadratowych, będzie to oznaczać, że w wywołaniach tej 
+funkcji w tych parametrach można umieszczać tablice.
+
+```javascript
+function vectorAdd([x1,y1], [x2,y2]) { // Rozpakowanie dwóch argumentów na cztery parametry.
+  return [x1 + x2, y1 + y2];
+}
+
+vectorAdd([1,2], [3,4]) // => [4,6]
+
+// Mnożenie wektora {x,y} przez wartość skalarną.
+function vectorMultiply({x, y}, scalar) {
+  return { x: x*scalar, y: y*scalar };
+}
+
+vectorMultiply({x: 1, y: 2}, 2) // => {x: 2, y: 4}
+```
+
+Jeżeli jednak nazwy właściwości trzeba destrukturyzować do parametrów o innych nazwach, wówczas składnia jest
+bardziej rozbudowana:
+
+```javascript
+function vectorAdd(
+  {x: x1, y: y1}, // Rozpakowanie właściwości pierwszego obiektu do parametrów o nazwach x1 i y1.
+  {x: x2, y: y2} // Rozpakowanie właściwości drugiego obiektu do parametrów o nazwach x2 i y2.
+){
+  return { x: x1 + x2, y: y1 + y2 };
+}
+
+vectorAdd({x: 1, y: 2}, {x: 3, y: 4}) // => {x: 4, y: 6}
+```
+
+<!-- TODO -->
+
+### 8.3.6. Typy argumentów
+
+
+
+
+
+
+
+
+
 
 ## 8.10. Tematy związane z funkcjami.
 
