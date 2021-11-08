@@ -1,19 +1,9 @@
 # 1. Wprowadzenie do języka JavaScript
 
-JavaScript jest językiem programowania sieci WWW. Jest stosowany w ogromnej większości stron internetowych, a wszystkie
-nowoczesne przeglądarki, wykorzystywane na komputerach, tabletach i smartfonach, posiadają interpreter tego języka.
-Wszystko to sprawia, że <u>JavaScript jest najbardziej rozpowszechnionym językiem w historii programowania</u>. W
-ostatniej dekadzie, od kiedy pojawiła się platforma Node.js, JavaScript jest stosowany nie tylko w przeglądarkach,
-ponieważ niebywały sukces tej platformy sprawił, że <u>najwięcej programistów używa obecnie tego właśnie języka</u>.
+Jest stosowany w ogromnej większości stron internetowych, a wszystkie nowoczesne przeglądarki posiadają interpreter tego języka. Dzięki platformie Node.js, może być stosowany także w aplikacjach serverowych. Wszystko to sprawia, że jest to w tej chwili najpopularniejszy język programowania.
 
 JavaScript jest wysokopoziomowym, dynamicznym, interpretowanym językiem, przygotowanym do obiektowego i funkcjonalnego
-kodowania. Typy zmiennych nie są w nim określone. Jego składnia luźno nawiązuje do języka Java, ale oba języki nie są ze
-sobą powiązane. Stosowane w nim pierwszoklasowe funkcje wywodzą się z języka Scheme, a dziedziczenie prototypów z mało
-znanego języka Self.
-
-Język ten, oprócz podobnej składni, nie ma nic wspólnego z Javą. Już dawno wyrósł ze swoich skryptowych korzeni i stał
-się uniwersalnym, wydajnym językiem ogólnego przeznaczenia, wykorzystywanym w poważnych projektach informatycznych
-obejmujących obszerny kod.
+kodowania. Typy zmiennych nie są w nim określone. Stosowane w nim pierwszoklasowe funkcje wywodzą się z języka Scheme, a dziedziczenie prototypów z mało znanego języka Self. Stał się uniwersalnym, wydajnym językiem ogólnego przeznaczenia.
 
 Każdy język, aby można było go używać, musi posiadać platformę, czyli standardową bibliotekę, umożliwiającą kodowanie
 podstawowych operacji, takich jak pobieranie i zwracanie danych.
