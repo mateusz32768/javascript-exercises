@@ -1,0 +1,94 @@
+.navigation {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: -100vw;
+  height: 100vh;
+  width: 100vw;
+  font-size: 3rem;
+  background-color: rgba(0, 0, 0, .7);
+  transition: left .3s cubic-bezier(0, 0.79, 0.29, 0.76);
+
+  &__btn {
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: 1em;
+    font-size: 4rem;
+    background: none;
+    border: none;
+    color: $brightColorFont;
+    cursor: pointer;
+  }
+
+  &__elem {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 3px;
+    background-color: $brightColorFont;
+    
+    &:nth-child(2) {
+    position: absolute;
+    top: 30px;
+    width: 20px;
+    height: 3px;
+    background-color: $brightColorFont;
+  }
+
+    &:nth-child(3) {
+      position: absolute;
+      top: 40px;
+      width: 10px;
+      height: 3px;
+      background-color: $brightColorFont;
+    }
+  }
+
+  // &__btn::after {
+  //   position: absolute;
+  //   top: 40px;
+  //   left: 0;
+  //   content: "";
+  //   width: 10px;
+  //   height: 2px;
+  //   transform: translateX(20px);
+  //   background-color: $brightColorFont;
+  // }
+
+  &__item {
+    color: $brightColorFont;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 15%;
+  }
+
+  &--show {
+    left: 0;
+    z-index: 1;
+  }
+
+}
+
+i.navigation__icon {
+  display: none;
+}
+
+@keyframes forward {
+  from {
+    width: 0;
+
+  }
+
+  to {
+    width: 30px;
+  }
+}
+
+.forward {
+  animation: forward .3s linear both;
+}

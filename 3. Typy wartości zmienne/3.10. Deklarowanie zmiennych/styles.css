@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+  background-image: linear-gradient(to right top, #66686b, #515659, #3d4545, #2d3430, #21231c);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: normal;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 1px black;
+}

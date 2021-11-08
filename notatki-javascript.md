@@ -226,8 +226,8 @@ Literał to dane umieszczone bezpośrednio w programie.
 ```javascript
 12; // Liczba dwanaście.
 1.2; // Liczba jeden i dwie dziesiąte.
-('Witaj, świecie!'); // Ciąg znaków.
-('Cześć'); // Inny ciąg znaków.
+'Witaj, świecie!'; // Ciąg znaków.
+'Cześć'; // Inny ciąg znaków.
 true; // Wartość logiczna.
 false; // Druga wartość logiczna.
 null; // Brak obiektu.
@@ -882,7 +882,7 @@ trzeba umieścić inny apostrof.
 _Tabela. Sekwencje ucieczki w JavaScript_
 
 | Sekwencja | Reprezentowany znak                                                                                                                     |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | \0        | Znak null (\u0000)                                                                                                                      |
 | \b        | Usunięcie znaku (\u0008)                                                                                                                |
 | \t        | Tabulator poziomy (\u0009)                                                                                                              |
@@ -1351,25 +1351,25 @@ operatorów dwuznakowych.
 3. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w liczbę lub — jeżeli nie będzie to możliwe — w NaN.
 
 | Wartość                                     | Konwersja na ciąg          | Konwersja na liczbę | Konwersja na <br>wartość logiczną |
-| ------------------------------------------- | -------------------------- | ------------------- | ----------------------------- |
-| undefined                                   | "undefined"                | NaN                 | false                         |
-| null                                        | "null"                     | 0                   | false                         |
-| true                                        | "true"                     | 1                   |                               |
-| false                                       | "false"                    | 0                   |                               |
-| " " (pusty ciąg znaków)                      |                            | 0                   | false                         |
-| "1.2" (ciąg znaków zawierający liczbę)      |                            | 1.2                 | true                          |
-| "jeden" (ciąg znaków niezawierający liczby) |                            | NaN                 | true                          |
-| 0                                           | "0"                        |                     | false                         |
-| -0                                          | "0"                        |                     | false                         |
-| 1 (wartość skończona, różna od zera)        | "1"                        |                     | true                          |
-| Infinity                                    | "Infinity"                 |                     | true                          |
-| -Infinity                                   | "-Infinity"                |                     | true                          |
-| NaN                                         | "NaN"                      |                     | false                         |
-| {} (dowolny obiekt)                         | Patrz punkt ...            | Patrz punkt ...     | true                          |
-| [] (pusta tablica)                          | ""                         | 0                   | true                          |
-| [9] (jeden element zawierający liczbę)      | "9"                        | 9                   | true                          |
-| ['a'] (element zawierający inną wartość)    | Należy użyć metody join(). | NaN                 | true                          |
-| funkcja() {} (dowolna funkcja)              | Patrz punkt ...            | NaN                 | true                          |
+|---------------------------------------------|----------------------------|---------------------|-----------------------------------|
+| undefined                                   | "undefined"                | NaN                 | false                             |
+| null                                        | "null"                     | 0                   | false                             |
+| true                                        | "true"                     | 1                   |                                   |
+| false                                       | "false"                    | 0                   |                                   |
+| " " (pusty ciąg znaków)                     |                            | 0                   | false                             |
+| "1.2" (ciąg znaków zawierający liczbę)      |                            | 1.2                 | true                              |
+| "jeden" (ciąg znaków niezawierający liczby) |                            | NaN                 | true                              |
+| 0                                           | "0"                        |                     | false                             |
+| -0                                          | "0"                        |                     | false                             |
+| 1 (wartość skończona, różna od zera)        | "1"                        |                     | true                              |
+| Infinity                                    | "Infinity"                 |                     | true                              |
+| -Infinity                                   | "-Infinity"                |                     | true                              |
+| NaN                                         | "NaN"                      |                     | false                             |
+| {} (dowolny obiekt)                         | Patrz punkt ...            | Patrz punkt ...     | true                              |
+| [] (pusta tablica)                          | ""                         | 0                   | true                              |
+| [9] (jeden element zawierający liczbę)      | "9"                        | 9                   | true                              |
+| ['a'] (element zawierający inną wartość)    | Należy użyć metody join(). | NaN                 | true                              |
+| funkcja() {} (dowolna funkcja)              | Patrz punkt ...            | NaN                 | true                              |
 
 Ciągi znaków, które można interpretować jako liczby, są przekształcane w liczby. Dopuszczalne jest stosowanie
 przodujących i końcowych spacji, ale w przypadku użycia innych znaków niż cyfry wynikiem konwersji jest wartość NaN.
@@ -1761,13 +1761,18 @@ console.log(`Saldo konta wynosi ${balance}`);
 > jakby została zadeklarowana za pomocą słowa kluczowego `var`, tj. jest to właściwość globalnego obiektu. Jednak w
 > odróżnieniu od zmiennej zadeklarowanej jawnie przy użyciu `var` można ją usunąć za pomocą operatora `delete`.
 
-### 3.10.3. Przypisania destukturyzujące
+### 3.10.3. Przypisania destrukturyzujące
 
 <!-- TODO -->
 
 Składnia **przypisania destrukturyzującego** umożliwia deklarowanie wielu zmiennych i przypisywanie im wartości. Po
 prawej stronie znaku równości umieszcza się tablicę obiektów (wartość „strukturalną”), a po lewej jedną lub kilka nazw
-zmiennych.
+zmiennych. Wykorzystuje się przy tym składnię przypominającą literał tablicowy lub obiektowy. Z wartości po prawej
+stronie są wyodrębniane („destrukturyzowane”) składowe wartości, przypisywane następnie zmiennym umieszczonym 
+po lewej stronie.
+
+Przypisanie destrukturyzujące jest najczęściej wykorzystywane do inicjowania zmiennych w deklaracjach `let`, `const` i
+`var`, ale stosuje się je też w zwykłych wyrażeniach przypisujących (ze zmiennymi zadeklarowanymi wcześniej).
 
 ```javascript
 let [x, y] = [2, 4]; // <=> let x = 2, y = 4;
@@ -1782,20 +1787,100 @@ x; // => 3
 x; // => 4
 ```
 
+Zmienne złożone mozemy stosować w pętlach:
+
+```javascript
+let o = { x: 1, y: 2 }; // Iterowany obiekt.
+for (const [name, value] of Object.entries(o)) { // taka kontstrukcja, aby można było iterować obiekt 
+ // bez tego opakowania: TypeError: o is not iterable
+  console.log(name, value); // Wyświetlany wynik: "x 1" i "y 2".
+}
+```
+
+Liczba zmiennych umieszczonych po lewej stronie przypisania destrukturyzującego nie musi być zgodna z liczbą
+elementów tablicy po stronie prawej:
+
+```javascript
+let [x,y] = [1]; // x == 1; y == undefined
+[x,y] = [1,2,3]; // x == 1; y == 2
+[,x,,y] = [1,2,3,4]; // x == 2; y == 4
+
+let [x, ...y] = [1,2,3,4]; // y == [2,3,4]
+```
+
+Przypisanie destrukturyzujące można stosować z zagnieżdżonymi tablicami:
+
+```javascript
+let [a, [b, c]] = [1, [2,2.5], 3]; // a == 1; b == 2; c == 2.5
+```
+
+Po prawej stronie można umieścić dowolny iterowalny obiekt, jak również każdy obiekt, który można wykorzystać
+w pętli for/of:
+
+```javascript
+let [first, ...rest] = "Cześć!"; // first == "C"; rest == [ "z", "e", "ś", "ć", "!" ]
+```
+
+W przypisaniu destrukturyzującym po prawej stronie można również umieścić wartość obiektową. W takim przypadku
+zapis po lewej stronie powinien wyglądać jak literał obiektowy:
+
+```javascript
+let transparent = {r: 0.0, g: 0.0, b: 0.0, a: 1.0}; // Kolor zapisany w formacie RGBA.
+let {r, g, b} = transparent; // r == 0.0; g == 0.0; b == 0.0
+```
+
+Można uprościć kod, w którym wykorzystywanych jest dużo funkcji trygonometrycznych i innych:
+
+```javascript
+// To samo co const sin = Math.sin, cos = Math.cos, tan = Math.tan, sqrt = Math.sqrt, pow = Math.pow
+const {sin, cos, tan, sqrt, pow} = Math;
+```
+
+Każdy identyfikator umieszczony po lewej stronie znaku równości może być parą innych identyfikatorów oddzielonych
+dwukropkiem. Pierwszy identyfikator określa wtedy nazwę właściwości, której wartość ma być odczytana, a drugi 
+identyfikator określa zmienną, której ta wartość ma zostać przypisana:
+
+```javascript
+// To samo co const cosine = Math.cos, tangent = Math.tan;
+const { cos: cosine, tan: tangent } = Math;
+```
+
+
+Przypisanie destrukturyzujące, gdy stosowane są zagnieżdżone obiekty lub tablice obiektów:
+
+```javascript 
+let points = [{x: 1, y: 2}, {x: 3, y: 4}]; // Tablica złożona z dwóch obiektów
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points; // destrukturyzowana w cztery zmienne.
+(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4) // => true
+```
+
+Zamiast tablicy obiektów można destrukturyzować obiekt zawierający tablice:
+
+```javascript
+let points = { p1: [1,2], p2: [3,4] }; // Obiekt, którego właściwościami są tablice
+let { p1: [x1, y1], p2: [x2, y2] } = points; // destrukturyzowany w cztery zmienne.
+(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4) // => true
+```
+
+```javascript
+// Najpierw zapisz strukturę danych i złożone przypisanie destrukturyzujące.
+let points = [{x: 1, y: 2}, {x: 3, y: 4}];
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points;
+// Sprawdź poprawność zapisu, zamieniając strony miejscami.
+let points2 = [{x: x1, y: y1}, {x: x2, y: y2}]; // points2 == points
+```
+
+
+
 # 4. Wyrażenia i operatory
 
-<!--TODO -->
-
-Wyrażenie to fraza, którą można wyliczyć i uzyskać wartość. Stała to wyrażenie, zmienna też, którego wynikiem jest
-wartość przypisana tej zmiennej.
-
-Bardzo prostym przykładem wyrażenia jest stała. Zmienna też jest wyrażeniem, przypisana tej zmiennej. Złożone wyrażenia
-składają się z prostszych wyrażeń.
+**Wyrażenie** to fraza, którą można wyliczyć i uzyskać wartość. Najprostszym wyrażeniem jest **stała**.
+Innym przykładem wyrażenia jest **zmienna**, którego wynikiem jest przypisana do zmiennej wartość.
 
 Wyrażenie wywołujące funkcję składa się z wyrażenia, którego wynikiem jest obiekt reprezentujący daną funkcję, oraz
 kilku ewentualnych dodatkowych wyrażeń będących jej argumentami.
 
-Złożone wyrażenia najczęściej tworzy się za pomocą prostszych wyrażeń i operatorów. Operator łączy w określony sposób
+Złożone wyrażenia najczęściej tworzy się za pomocą prostszych wyrażeń i **operatorów**. Operator łączy w określony sposób
 wartości operandów i tworzy nową wartość. Czasami mówi się, upraszczając, że operator zwraca wartość.
 
 ## 4.1. Wyrażenia podstawowe
@@ -1808,7 +1893,7 @@ Literały to stałe wartości wpisane bezpośrednio w kodzie programu, na przyk�
 ```javascript
 1.23 // Literał liczbowy.
 "cześć" // Literał tekstowy.
-/ szablon / // Literał wyrażenia regularnego.
+/szablon/ // Literał wyrażenia regularnego.
 ```
 
 Wyrażeniami podstawowymi są również niektóre zarezerwowane słowa:
@@ -1968,7 +2053,35 @@ a[index++] // TypeError: nie można indeksować niezdefiniowanej zmiennej.
 
 ## 4.5. Wyrażenia wywołujące
 
-<!-- TODO -->
+**Wyrażenie wywołujące** jest frazą powodującą wywołanie (uruchomienie) funkcji lub metody. Obejmuje ona wyrażenie
+identyfikujące funkcję, która ma być wywołana, z następującymi po niej nawiasami zwykłymi, wewnątrz których może 
+znajdować się lista rozdzielonych przecinkami wyrażeń argumentów.
+
+```javascript
+f(0) // f jest wyrażeniem funkcyjnym, a 0 wyrażeniem argumentu.
+Math.max(x,y,z) // Math.max jest funkcją, a x, y, i z są argumentami.
+a.sort() // a.sort jest funkcją bez argumentów.
+```
+Podczas wyliczania **wyrażenia wywołującego** najpierw wyliczany jest wynik **wyrażenia funkcyjnego**. Następnie 
+wyliczane są wyniki wyrażeń argumentów i tworzona lista wartości. Jeżeli wynikiem wyrażenia funkcyjnego nie jest
+funkcja, zgłaszany jest wyjątek **TypeError**. W przeciwnym razie parametrom określonym w definicji funkcji są 
+przypisywane wartości **argumentów** i na koniec wykonywany jest kod funkcji. Jeżeli w kodzie użyta jest instrukcja
+`return`, zwracana przez nią wartość staje się wynikiem całego **wyrażenia wywołującego**.
+
+Każde **wyrażenie wywołujące** zawiera parę nawiasów i podwyrażenie umieszczone przed nawiasem otwierającym. 
+Jeżeli jest to wyrażenie dostępu do właściwości, wówczas mamy do czynienia z wywołaniem **metody**. W takim 
+przypadku obiekt lub tablica, której dotyczy odwołanie, po uruchomianiu kodu funkcji staje się wartością słowa
+kluczowego `this`.
+
+### 4.5.1. Wywołania warunkowe
+
+W wersji języka ES2020 można wywoływać funkcje, stosując notację `?.()` zamiast `()`. Jeżeli funkcja jest wywoływana
+w zwykły sposób, a wyrażenie znajdujące się przed nawiasami ma wartość `null`, `undefined` lub nie jest funkcją, jest 
+zgłaszany wyjątek `TypeError`. Jeżeli natomiast użyje się nowej notacji `?.()` i wyrażenie po lewej stronie znaku 
+zapytania będzie miało wartość `null` lub `undefined`, to wynikiem całego wyrażenia wywołującego będzie wartość 
+`undefined`, a wyjątek nie zostanie zgłoszony.
+
+<!-- TO DO -->
 
 ## 4.6. Wyrażenia tworzące obiekty
 
@@ -1980,42 +2093,42 @@ Operatory są stosowane w wyrażeniach arytmetycznych, porównujących, logiczny
 
 **Tabela** zawiera podsumowanie operatorów.
 
-| Operator                                                  | Operacja                                            | W   | L   | Typy                                                  |
-| --------------------------------------------------------- | --------------------------------------------------- | --- | --- | ----------------------------------------------------- |
-| ++                                                        | Pre- i postinkrementacja                            | P   | 1   | l-wartość → liczba                                    |
-| --                                                        | Pre- i postdekrementacja                            | P   | 1   | l-wartość → liczba                                    |
-| -                                                         | Zmiana znaku liczby                                 | P   | 1   | liczba → liczba                                       |
-| +                                                         | Konwersja na liczbę                                 | P   | 1   | dowolny → liczba                                      |
-| ~                                                         | Odwrócenie bitów                                    | P   | 1   | liczba całkowita → liczba całkowita                   |
-| !                                                         | Negacja wartości logicznej                          | P   | 1   | wart. logiczna → wart. logiczna                       |
-| delete                                                    | Usunięcie właściwości                               | P   | 1   | l-wartość → wart. logiczna                            |
-| typeof                                                    | Określenie typu operandu                            | P   | 1   | dowolny → ciąg znaków                                 |
-| void                                                      | Zwrócenie pustej wartości                           | P   | 1   | dowolny → undefined                                   |
-| \*\*                                                      | Potęgowanie                                         | P   | 2   | liczba, liczba → liczba                               |
-| \*, /, %                                                  | Mnożenie, dzielenie, reszta                         | L   | 2   | liczba, liczba → liczba                               |
-| +, -                                                      | Dodawanie, odejmowanie                              | L   | 2   | liczba, liczba → liczba                               |
-| +                                                         | Łączenie ciągów znaków                              | L   | 2   | ciąg znaków, ciąg znaków → ciąg znaków                |
-| <<                                                        | Przesunięcie bitów w lewo                           | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| > >                                                       | Przesunięcie bitów w prawo z zachowaniem znaku      | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| > > >                                                     | Przesunięcie bitów w prawo z uzupełnieniem zerami   | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| <, <=, >, >=                                              | Porównanie liczbowe                                 | L   | 2   | liczba, liczba → wart. logiczna                       |
-| <, <=, >, >=                                              | Porównanie alfabetyczne                             | L   | 2   | ciąg znaków, ciąg znaków → wart. logiczna             |
-| instanceof                                                | Określenie klasy obiektu                            | L   | 2   | obiekt, funkcja → wart. logiczna                      |
-| in                                                        | Sprawdzenie istnienia właściwości                   | L   | 2   | dowolny, obiekt → wart. logiczna                      |
-| ==                                                        | Nieścisła równość                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| !=                                                        | Nieścisła nierówność                                | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| ===                                                       | Ścisła równość                                      | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| !==                                                       | Ścisła nierówność                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| &                                                         | Bitowa operacja ORAZ                                | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| ^                                                         | Bitowa różnica symetryczna                          | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| \|                                                        | Bitowa operacja LUB                                 | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| &&                                                        | Logiczna operacja ORAZ                              | L   | 2   | dowolny, dowolny → dowolny                            |
-| \|\|                                                      | Logiczna operacja LUB                               | L   | 2   | dowolny, dowolny → dowolny                            |
-| ??                                                        | Wybranie pierwszego zdefiniowanego operandu         | L   | 2   | dowolny, dowolny → dowolny                            |
-| ?:                                                        | Wybranie drugiego lub trzeciego operandu            | P   | 3   | wart. logiczna, dowolny, dowolny → dowolny            |
-| =                                                         | Przypisanie wartości zmiennej lub właściwości       | P   | 2   | l-wartość, dowolny → dowolny                          |
-| \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P   | 2   | l-wartość, dowolny → dowolny                          |
-| ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L   | 2   | dowolny, dowolny → dowolny                            |
+| Operator                                                  | Operacja                                            | W | L | Typy                                                  |
+|-----------------------------------------------------------|-----------------------------------------------------|---|---|-------------------------------------------------------|
+| ++                                                        | Pre- i postinkrementacja                            | P | 1 | l-wartość → liczba                                    |
+| --                                                        | Pre- i postdekrementacja                            | P | 1 | l-wartość → liczba                                    |
+| -                                                         | Zmiana znaku liczby                                 | P | 1 | liczba → liczba                                       |
+| +                                                         | Konwersja na liczbę                                 | P | 1 | dowolny → liczba                                      |
+| ~                                                         | Odwrócenie bitów                                    | P | 1 | liczba całkowita → liczba całkowita                   |
+| !                                                         | Negacja wartości logicznej                          | P | 1 | wart. logiczna → wart. logiczna                       |
+| delete                                                    | Usunięcie właściwości                               | P | 1 | l-wartość → wart. logiczna                            |
+| typeof                                                    | Określenie typu operandu                            | P | 1 | dowolny → ciąg znaków                                 |
+| void                                                      | Zwrócenie pustej wartości                           | P | 1 | dowolny → undefined                                   |
+| \*\*                                                      | Potęgowanie                                         | P | 2 | liczba, liczba → liczba                               |
+| \*, /, %                                                  | Mnożenie, dzielenie, reszta                         | L | 2 | liczba, liczba → liczba                               |
+| +, -                                                      | Dodawanie, odejmowanie                              | L | 2 | liczba, liczba → liczba                               |
+| +                                                         | Łączenie ciągów znaków                              | L | 2 | ciąg znaków, ciąg znaków → ciąg znaków                |
+| <<                                                        | Przesunięcie bitów w lewo                           | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| > >                                                       | Przesunięcie bitów w prawo z zachowaniem znaku      | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| > > >                                                     | Przesunięcie bitów w prawo z uzupełnieniem zerami   | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| <, <=, >, >=                                              | Porównanie liczbowe                                 | L | 2 | liczba, liczba → wart. logiczna                       |
+| <, <=, >, >=                                              | Porównanie alfabetyczne                             | L | 2 | ciąg znaków, ciąg znaków → wart. logiczna             |
+| instanceof                                                | Określenie klasy obiektu                            | L | 2 | obiekt, funkcja → wart. logiczna                      |
+| in                                                        | Sprawdzenie istnienia właściwości                   | L | 2 | dowolny, obiekt → wart. logiczna                      |
+| ==                                                        | Nieścisła równość                                   | L | 2 | dowolny, dowolny → wart. logiczna                     |
+| !=                                                        | Nieścisła nierówność                                | L | 2 | dowolny, dowolny → wart. logiczna                     |
+| ===                                                       | Ścisła równość                                      | L | 2 | dowolny, dowolny → wart. logiczna                     |
+| !==                                                       | Ścisła nierówność                                   | L | 2 | dowolny, dowolny → wart. logiczna                     |
+| &                                                         | Bitowa operacja ORAZ                                | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| ^                                                         | Bitowa różnica symetryczna                          | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| \|                                                        | Bitowa operacja LUB                                 | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
+| &&                                                        | Logiczna operacja ORAZ                              | L | 2 | dowolny, dowolny → dowolny                            |
+| \|\|                                                      | Logiczna operacja LUB                               | L | 2 | dowolny, dowolny → dowolny                            |
+| ??                                                        | Wybranie pierwszego zdefiniowanego operandu         | L | 2 | dowolny, dowolny → dowolny                            |
+| ?:                                                        | Wybranie drugiego lub trzeciego operandu            | P | 3 | wart. logiczna, dowolny, dowolny → dowolny            |
+| =                                                         | Przypisanie wartości zmiennej lub właściwości       | P | 2 | l-wartość, dowolny → dowolny                          |
+| \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P | 2 | l-wartość, dowolny → dowolny                          |
+| ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L | 2 | dowolny, dowolny → dowolny                            |
 
 ## 4.9. Wyrażenia relacyjne
 
@@ -2155,7 +2268,7 @@ wynikiem jest ciąg znaków opisujący typ operandu.
 Poniższa tabela przedstawia wyniki operatora `typeof` użytego ze wszystkimi wartościami dostępnymi w języku JavaScript.
 
 | x                               | typeof x    |
-| ------------------------------- | ----------- |
+|---------------------------------|-------------|
 | `undefined`                     | "undefined" |
 | `null`                          | "object"    |
 | `true` lub `false`              | "boolean"   |
@@ -2245,6 +2358,8 @@ Metoda Object.keys() zwraca tablicę zawierającą nazwy właściwości obiektu:
 
 # 6. Obiekty
 
+Obiekty stanowią fundamentalny typ danych w języku JavaScript.
+
 ## 6.1. Wprowadzenie do obiektów
 
 Obiekt jest to kolekcją właściwości ułożonych bez określonego porządku, z których każda ma nazwę i wartość. Nazwy
@@ -2332,7 +2447,7 @@ po prototypie `Date.prototype`.
 Właściwość `Object.prototype` jest obiektem, który nie ma prototypu, tzn. nie dziedziczy właściwości po żadnym innym
 obiekcie. Większość wbudowanych i zdefiniowanych konstruktorów ma prototyp odziedziczony po obiekcie `Object.prototype`.
 (np. obiekt `Date.prototype`). Zatem obiekt utworzony za pomocą instrukcji `new Date()` dziedziczy właściwości zarówno
-po obiekcie ` Date.prototype``, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
+po obiekcie ` Date.prototype`, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
 prototypów**.
 
 ### 6.2.4. Funkcja Object.create()
@@ -2404,6 +2519,7 @@ go tworzyć i modyfikować w kodzie. Na przykład poprawny jest następujący ko
 let addr = "";
 for (let i = 0; i < 4; i++) {
   addr += customer[`address${i}`] + "\n";
+}
 ```
 
 Ciąg jest dynamiczny i może się zmieniać w trakcie działania kodu. Tym się różni od identyfikatora, który jest statyczny
@@ -2624,6 +2740,7 @@ Próba odpytanie elementów nieistniejących — wartość `undefined`.
 Operator rozciągania `(...)` nie jest operatorem w ścisłym znaczeniu tego słowa, gdyż można go stosować tylko w
 literałach tablicowych i wywołaniach funkcji.
 
+
 W literałach tablicowych służy do umieszczania w nich elementów innej tablicy:
 
 ```javascript
@@ -2657,37 +2774,2145 @@ let letters = [..."Witaj, świecie!"];
 [...new Set(letters)]  // => [ "W", "i", "t", "a", "j", ",", " ", "ś", "w", "e", "c", "!" ]
 ```
 
+
+
 # 8. Funkcje
 
-Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScript i niemal każdym innym języku. Inne
-równoważne pojęcia to podprogramy (ang. _subroutine_) lub procedurami (ang. _procedure_).
+Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScript i niemal w każdym innym języku
+programowania. Inne równoważne pojęcia to podprogramy (ang. _subroutine_) lub procedury (ang. _procedure_).
 
-**Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną liczbę razy. Funkcje są **
-parametryczne**, tzn. w ich definicjach można umieszczać listy identyfikatorów — **parametrów** — pełniących w ciałach
-funkcji role lokalnych zmiennych. Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**. Wartości
-te są często wykorzystywane do wyliczania zwracanego **wyniku**, będącego wartością wyrażenia funkcyjnego. W każdym
-wywołaniu określany jest jeszcze jego **kontekst**, którego dane są przypisywane słowu kluczowemu **this**.
+**Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną liczbę razy. Funkcje są
+**parametryczne**, tzn. w ich definicjach można umieszczać listy identyfikatorów — **parametrów** — pełniących w ciałach
+funkcji role **lokalnych zmiennych.** Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**. 
+Wartości te są często wykorzystywane do wyliczania zwracanego **wyniku**, będącego wartością **wyrażenia funkcyjnego**.
+W każdym wywołaniu określany jest jeszcze jego **kontekst**, którego dane są przypisywane słowu kluczowemu **this**.
 
-Funkcja przypisana właściwości obiektu nosi nazwę **metody**. Obiekt, którego funkcja jest wywoływana, jest kontekstem i
-stanowi wartość słowa kluczowego **this**. Funkcja inicjująca nowo utworzony obiekt nazywa się **konstruktorem**.
+Funkcja przypisana właściwości obiektu nosi nazwę **metody**. Obiekt, którego funkcja jest wywoływana, jest kontekstem
+i stanowi wartość słowa kluczowego **this**. Funkcja inicjująca nowo utworzony obiekt nazywa się **konstruktorem**.
 
-W języku JavaScript funkcje są obiektami, na których można wykonywać różne operacje, na przykład przypisywać je
+W języku JavaScript funkcje są **obiektami**, na których można wykonywać różne operacje, na przykład przypisywać je
 zmiennym, umieszczać w argumentach innych funkcji, przypisywać wartości ich właściwościom, a nawet wywoływać ich metody.
 
-Definicja funkcji może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej funkcji ma dostęp do wszystkich zmiennych
-zdefiniowanych w tym samym zasięgu co funkcja nadrzędna. Oznacza to, że funkcje są **domknięciami** (ang. _closure_) —
-ważnymi i przydatnymi konstrukcjami programistycznymi.
+**Definicja funkcji** może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej funkcji ma dostęp do wszystkich 
+zmiennych zdefiniowanych w tym samym zasięgu co funkcja nadrzędna. Oznacza to, że funkcje są **domknięciami** 
+(ang. _closure_) — ważnymi i przydatnymi konstrukcjami programistycznymi.
 
 ## 8.1. Definiowanie funkcji
 
-Najprościej funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować zarówno jako deklarację,
-jak i wyrażenie. Począwszy od wersji języka ES6, jest jeszcze jeden ważny sposób definiowania funkcji, bez użycia słowa
-kluczowego function — są to tzw. **funkcje strzałkowe**. Składnia definicji takiej funkcji jest bardzo zwięzła i
-szczególnie przydatna wtedy, gdy w argumencie funkcji trzeba umieścić inną funkcję.
+Funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować zarówno jako **deklarację**, jak i 
+**wyrażenie** lub jako to tzw. **funkcję strzałkową**, bardzo przydatną, gdy trzeba definicję funkcji umieścić jako 
+argument innej funkcji.
 
 W literałach obiektowych i w klasach metody definiuje się, stosując skróconą składnię, Są to wyrażenia funkcyjne
-przypisywane właściwościom obiektu za pomocą literału _nazwa:wartość_. Oprócz tego w szczególnych przypadkach stosuje
-się w literałach obiektowych słowa kluczowe get i set definiujące gettery i settery.
+przypisywane właściwościom obiektu za pomocą literału `nazwa:wartość`. W szczególnych przypadkach stosuje się w
+literałach obiektowych słowa kluczowe `get` i `set` definiujące gettery i settery.
+
+Jako że funkcje są obiektami można je definiować za pomocą konstruktora `Function()`.
+
+Funkcje specjalnego rodzaju, takie jak **generatory** definiowane są za pomocą słowa kluczowego `function*`, a funkcje
+asynchroniczne za pomocą `async function`.
+
+### 8.1.1. Deklaracje funkcji.
+
+**Deklaracja funkcji** to słowo kluczowe `function` oraz:
+
+* Identyfikator (nazwa) funkcji będącą zmienną, do której przypisywany jest tworzony obiekt funkcyjny.
+* Para zwykłych nawiasów mogąca zawierać listę identyfikatorów zwanych **parametrami**, oddzielonych 
+  przecinkami i pełniącymi w ciele funkcji rolę zmiennych lokalnych.
+* Para nawiasów klamrowych zawierająca instrukcje tworzące **ciało funkcji** wykonywane po wywołaniu funkcji.
+
+Interpreter JS definiuje wszystkie funkcje na początku zakresu (ang. *hoisting*), a więc wywołanie funkcji przed jej
+deklaracją nie jest błędem.
+
+Funkcja za pomocą słowa kluczowego `return` może zwrócić obliczoną wartość do wywołującego ją kodu lub wartość 
+`undefined`, jeśli w swoim ciele nie zawiera tegoż słowa.
+
+```javascript
+// Funkcja rekurencyjna obliczająca silnię.
+function factorial(n) {
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+console.log(factorial(5)) // => 120;
+```
+
+### 8.1.2. Wyrażenia funkcyjne.
+
+Wyrażenia funkcyjne stosuje się w kontekście większych wyrażeń i funkcji, wtedy nazwa funkcji jest opcjonalna i nadaje
+się ją, gdy istnieje potrzeba odwołania się do niej jak np. w funkcji rekurencyjnej. Tak zdefiniowane wyrażenie f-kcyjne
+jest wiązane z obiektem f-kcyjnym w lokalnym zasięgu funkcji, a więc powstaje zmienna lokalna.
+
+Dobrą praktyką jest przypisywanie funkcji w wyrażeniu funkcyjnym do stałej, aby ją zabezpieczyć przed przypadkowym
+nadpisaniem
+
+Nie można się odwołać do funkcji zdefiniowanej jako wyrażenie, dopóki nie zostanie przypisane do zmiennej.
+
+```javascript
+// Wyrażenia funkcyjne
+const square = function(x) {
+  return x * x;
+}
+
+// Nadano nazwę funkcji aby się do niej odwołać w kodzie
+const factorial = function fac(n) {
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n * fac(n - 1);
+  }
+}
+
+const arr = [23, 45, 12, 3, 6, 8];
+
+arr.sort(function(a, b) {
+  return a - b;
+});
+
+console.log(arr);
+
+// Wywołanie po zdefiniowaniu
+const cube = (function(x) {
+  return x * x * x;
+})(5);
+
+console.log(cube);
+```
+
+### 8.1.3. Funkcje strzałkowe
+
+Składnia funkcji strzałkowej, która jest wyrażeniem składa się z umieszczonej w nawiasach listy parametrów odzielonej
+symbolem => i ciała umieszczonego w nawiasach klamrowych.
+
+```javascript
+const sum = (x, y) => {
+  return x + y;
+};
+```
+
+Prościej, jeśli tylko jedna instrukcja.
+
+```javascript
+const sum = (x, y) => x + y;
+const square = x => x * x;
+const myFunc = () => console.log('Hello world!');
+
+const ob = x => {
+  return {value: x}
+}; // zwracamy obiekt
+
+const another = x => {
+  value: x
+}; // zwraca undefined
+```
+
+Pomiędzy parametrami a strzałką nie wstawiamy podziału wiersza, gdyż zdefiniujemy innne wyrażenie.
+
+F.s. często umieszcza się w argumentach innych funkcji, szczególnie w metodach tablicowych
+
+```javascript
+const squares = [1, 2, 3, 4].map(x => x * x); // => [1, 4, 9, 16]
+```
+
+F.s. dziedziczy `this` po środowisku, w którym jest zdefiniowana i nie ma właściwości `prototype`.
+
+### 8.1.4. Zagnieżdżone funkcje
+
+Można zgnieżdżać funkcje w innych funkcjach.
+
+```javascript
+function foo(a, b) {
+  function square(x) {
+    return x * x;
+  }
+
+  return Math.sqrt(square(a) + square(b));
+}
+
+foo(3, 4) // => 5
+```
+
+Funkcje zagnieżdżone mogą się odwoływać do parametrów i zmiennych zdefiniowanych w funkcjach nadrzędnych.
+
+## 8.2 Wywoływanie funkcji
+
+Kod tworzący ciało funkcji nie jest wykonywany w miejscu definicji funkcji, tylko jej wywołania.
+Funkcje można wywoływać na pięć sposobów:
+* jako funkcje,
+* jako metody,
+* jako konstruktory,
+* pośrednio, za pomocą metod call() i apply(),
+* niejawnie, wykorzystując konstrukcje języka, które nie wyglądają tak jak zwykłe funkcje.
+
+### 8.2.1. Wywołanie funkcji
+Funkcje można wywoływać jako funkcje lub metody za pomocą **wyrażeń wywołujących**. Wyrażenie wywołujące składa
+się z wyrażenia funkcyjnego (którego wartością jest obiekt funkcyjny), nawiasu otwierającego, opcjonalnej listy
+argumentów oddzielonych przecinkami i nawiasu zamykającego. Jeżeli funkcja jest właściwością obiektu lub elementu
+tablicy, to wyrażenie funkcyjne jest wywołaniem **metody**.
+
+```javascript
+printprops({x: 1});
+let total = distance(0,0,2,1) + distance(2,1,3,5);
+let probability = factorial(5)/factorial(13);
+```
+
+Wartością odwołania do parametru wewnątrz ciała funkcji jest wartość odpowiedniego argumentu. Funkcja zwraca 
+wartość wyrażenia umieszczonego po słowie `return` lub gdy go nie ma wartość `undefined`.
+
+> Wywołanie warunkowe (do opracowania)
+<!-- TODO -->
+
+
+W zwykłym trybie kontekst wywołania, czyli wartość słowa kluczowego `this`, jest globalnym obiektem. Jednak
+w trybie ścisłym słowo to ma wartość `undefined`. Funkcje strzałkowe dziedziczą wartość `this` właściwą dla
+miejsca, w którym są zdefiniowane.
+
+W funkcjach wywoływanych jako funkcje (nie jako metody) słowo `this` zazwyczaj w ogóle nie jest wykorzystywane.
+Za jego pomocą można jednak sprawdzać, czy obwiązuje tryb ścisły:
+
+```javascript
+// Definicja i wywołanie funkcji sprawdzającej, czy obwiązuje tryb ścisły:
+const strict = (function() { return !this; }());
+```
+
+```javascript
+'use strict';
+
+console.log(this);
+
+const strict = (
+  function () {
+    console.log(this); // undefined
+    return !this;
+  })();
+
+console.log(strict); // true
+```
+
+> Wywołanie rekurencyjne a stos (do opracowania)
+<!-- TODO -->
+
+### 8.2.2. Wywołanie metody (do opracowania, przy opracowywaniu obiektów)
+<!-- TODO -->
+
+## 8.3. Argumenty i parametry funkcji.
+
+W definicji funkcji nie określa się typów parametrów, jak również podczas jej wywoływania nie są sprawdzane typy
+wartości umieszczonych w argumentach. W rzeczywistości nie jest nawet sprawdzana liczba argumentów.
+
+### 8.3.1. Parametry opcjonalne i domyślne
+
+Jeżeli funkcja jest wywoływana z mniejszą liczbą argumentów niż jest zadeklarowanych parametrów, wówczas 
+dodatkowym parametrom są przypisywane wartości domyślne, zazwyczaj `undefined`.
+
+```javascript
+// Funkcja dołączająca do tablicy a nazwy wyliczalnych właściwości obiektu o
+// i zwracająca tę tablicę. Jeżeli tablica nie zostanie określona, funkcja utworzy nową.
+function getPropertyNames(o, a) {
+  if (a === undefined) a = []; // Utworzenie nowej tablicy, jeżeli została nie określona.
+  // a = a || [];
+  for (let property in o) a.push(property);
+  return a;
+}
+
+// Funkcję getPropertyNames() można wywoływać z jednym lub dwoma argumentami:
+let o = {x: 1}, p = {y: 2, z: 3}; // Dwa testowe obiekty.
+let a = getPropertyNames(o); // a == ["x"]; umieszczenie właściwości obiektu o w nowej tablicy.
+console.log(a); // ['x']
+console.log(getPropertyNames(p, a)); // a == ["x","y","z"]; dołączenie właściwości obiektu p do podanej tablicy.
+```
+
+W definicji funkcji należy argumenty opcjonalne umieścić na końcu listy, aby można je było pomijać. Nie jest 
+możliwe na przykład pominięcie pierwszego argumentu i określenie drugiego. Można natomiast w pierwszym argumencie
+jawnie umieścić wartość `undefined`.
+
+Od ES6 można definiować domyślnie wartości wszystkich parametrów bezpośrednio w ich liście. Po znaku równości
+podajemy domyślną wartość.
+
+```javascript
+function getPropertyNames(o, a = []) {
+for(let property in o) a.push(property);
+return a;
+}
+```
+Domyślnie wartości są przypisywane parametrom w chwili wywołania funkcji, a nie w jej definicji. Za każdym razem,
+gdy funkcja `getPropertyNames()` będzie wywoływana z jednym argumentem, będzie tworzona nowa pusta tablica.
+
+Można na przykład stosować zmienne lub wywołania funkcji wyliczające domyślne wartości parametrów.
+
+```javascript
+const rectangle = (width, height=width*2) => ({width, height});
+rectangle(1) // => { width: 1, height: 2 }
+```
+
+### 8.3.2. Parametry resztowe i lista argumentów o zmiennej długości
+
+**Parametry resztowe** pozwalają na definiowanie funkcji, które można wywoływać z dowolną liczbą argumentów.
+
+```javascript
+function min(first = Infinity, ...rest) {
+  let minValue = first;
+
+  for(let n of rest) {
+    if(n < minValue){
+      minValue = n;
+    }
+  }
+
+  return minValue;
+}
+
+console.log(min(1, 10, 100, 2, 3, 1000, 4, 5, 6));
+```
+
+Parametr resztowy poprzedza się trzema kropkami. Musi to być ostatni parametr w deklaracji funkcji. Wartością
+**parametru resztowego** w ciele funkcji jest zawsze tablica, która może być pusta, ale nigdy nie jest to wartość
+`undefined`.
+
+Funkcja, którą można wywoływać z dowolną liczbą argumentów, jest nazywana **funkcją wariadyczną**, funkcją o 
+zmiennej arności lub **funkcją vararg**.
+
+### 8.3.3. Obiekt Arguments
+
+W starszych wersjach **funkcję vararg** definiowało się, wykorzystując obiekt typu `Arguments`. Jest to obiekt
+podobny do tablicy, umożliwiający odwoływanie się do argumentów funkcji za pomocą indeksów, a nie nazw.
+
+```javascript
+function max(x) {
+let maxValue = -Infinity;
+
+for(let i = 0; i < arguments.length; i++) {
+  if (arguments[i] > maxValue) 
+    maxValue = arguments[i];
+}
+
+  return maxValue;
+}
+
+max(1, 10, 100, 2, 3, 1000, 4, 5, 6) // => 1000
+```
+Należy unikać stosowania obiektu typu `Arguments` w nowych programach. Identyfikator `arguments`, będący słowem
+kluczowym uniemożliwia deklarowanie parametru funkcji i lokalnej zmiennej o tej nazwie.
+
+### 8.3.4. Operator rozciągania w wywołaniach funkcji
+Operator rozciągania `...` służy do rozpakowywania elementów tablicy (lub innego iterowalnego obiektu, na przykład
+ciągu znaków) wszędzie tam, gdzie są wymagane osobne wartości. Np. w wywołaniach funkcji:
+
+```javascript
+let numbers = [5, 2, 10, -1, 9, 100, 1];
+Math.min(...numbers) // => –1
+```
+
+Nie jest to operator w ścisłym znaczeniu tego słowa, ponieważ nie zwraca wartości. Jest to specjalny element 
+składni, który można wykorzystywać w literałach tablicowych i wywołaniach funkcji.
+
+Często parametr resztowy stosuje się razem z operatorem rozciągania:
+
+```javascript
+const array = [2, 4, 7, 99, 10];
+
+const sum = (...args) => { // parametr rest
+  let result = 0;
+  for (const arg of args) {
+    result += arg;
+  }
+
+  return result;
+}
+
+console.log(sum(...array)); // operator spread
+```
+### 8.3.5. Destrukturyzacja argumentów funkcji do jej parametrów
+
+Jeżeli nazwy parametrów funkcji umieści się w nawiasach kwadratowych, będzie to oznaczać, że w wywołaniach tej 
+funkcji w tych parametrach można umieszczać tablice.
+
+```javascript
+function vectorAdd([x1,y1], [x2,y2]) { // Rozpakowanie dwóch argumentów na cztery parametry.
+  return [x1 + x2, y1 + y2];
+}
+
+vectorAdd([1,2], [3,4]) // => [4,6]
+
+// Mnożenie wektora {x,y} przez wartość skalarną.
+function vectorMultiply({x, y}, scalar) {
+  return { x: x*scalar, y: y*scalar };
+}
+
+vectorMultiply({x: 1, y: 2}, 2) // => {x: 2, y: 4}
+```
+
+Jeżeli jednak nazwy właściwości trzeba destrukturyzować do parametrów o innych nazwach, wówczas składnia jest
+bardziej rozbudowana:
+
+```javascript
+function vectorAdd(
+  {x: x1, y: y1}, // Rozpakowanie właściwości pierwszego obiektu do parametrów o nazwach x1 i y1.
+  {x: x2, y: y2} // Rozpakowanie właściwości drugiego obiektu do parametrów o nazwach x2 i y2.
+){
+  return { x: x1 + x2, y: y1 + y2 };
+}
+
+vectorAdd({x: 1, y: 2}, {x: 3, y: 4}) // => {x: 4, y: 6}
+```
+
+<!-- TODO -->
+
+### 8.3.6. Typy argumentów
+
+
+
+
+
+
+
+
+
+
+## 8.10. Tematy związane z funkcjami.
+
+### 8.10.1. Rest parameters
+
+Składnia parametru rest umożliwia funkcji przyjmowanie nieograniczonej liczby argumentów jako tablicy, zapewniając
+sposób reprezentowania funkcji wariadycznych w JavaScript.
+
+# 8.A. Funkcje
+**Notatki na podstawie "Programowanie zorientowane obiektowo w języku JavaScript", Ved Antani, Stoyan Stefanov**
+
+Tam gdzie w innych językach trzeba zastosować obiektowość JS udostępnia funkcje, dzięki którym jest tak elastyczny i ekspresywny.
+
+Funkcja jest to zgrupowana pewna ilość kodu posiadająca nazwę i która może być ponownie użyta za pomocą tejże nazwy. 
+
+```javascript
+function sum(a, b) {
+  let c = a + b;
+  return c;
+}
+```
+
+Funkcja składa się z:
+*	Słowa kluczowego function
+*	Nazwy funkcji – tu sum
+*	Parametrów – tu a, b. Funkcja może mieć dowolną ilość parametrów rozdzielonych przecinkami albo wcale
+*	Bloku kodu zwanego ciałem funkcji
+*	Instrukcji return. Funkcja zawsze zwraca wartość. Jeśli nie ma instrukcji return to niejawnie zwraca undefined
+
+Można zwrócić więcej niż jedną wartość zwracając tablicę wartości.
+
+Ogólna postać deklaracji funkcji:
+
+```javascript
+  function nameFunction(param1, param2, ... , paramN){
+ 		statement1;
+    statement2;
+    ...    ;
+    statementN;
+    return value;
+  }
+```
+**Wywołanie funkcji**:
+```javascript
+  nameFunction(arg1, arg2, … , argN);
+```
+
+Jeśli wywołamy funkcję a ona zwraca jakąś wartość  to możemy ją przypisać do jakieś zmiennej aby ją póżniej móc 
+wykorzystać.
+
+```javascript
+let result = sum(1, 3); 
+console.log(result); // 3
+```
+
+## 8.A.1. Parametry 
+
+Funkcja nie musi przyjmować parametrów, ale jeśli ich oczekuje i zapomnisz podać je podczas wywoływania, JavaScript 
+przypisze im wartość `undefined`.
+
+```javascript
+  sum(1) // NaN = 1 + undefined
+```
+Mimo iż istnieje technicznie rzecz biorąc różnica między parametrami a argumentami, te dwa terminy są używane 
+zamiennie, jak zresztą wiele innych pojęć w informatyce np. *definicja i deklaracja*. Parametry są definiowane razem 
+z funkcją, podczas gdy argumenty są przekazywane do funkcji w trakcie jej wywołania.
+
+Jeśli przekażemy więcej parametrów, niż funkcja oczekuje, to ich nadmiar zostanie zignorowany:
+
+```javascript
+sum(1, 2, 3, 4, 5); //3
+```
+
+Możliwe jest pisanie funkcji, które mogą przyjmować różną liczbę parametrów a to dzięki temu, że w każdej funkcji 
+jest tworzona specjalna wartość `arguments`, która jest obiektem tablicopodobnym. Oto funkcja, której działanie 
+polega na zwracaniu wszystkich przekazanych jej argumentów:
+
+```javascript
+function args() { 
+  return arguments; 
+}
+args(); // []
+args(1, 2, 3, true, ‘marco’); // [1, 2, 3, 4, true, "marco"]
+```
+
+Użyj `arguments` aby poprawić funkcję sum() tak, by przyjmowała dowolną liczbę parametrów i dodawała je wszystkie.
+
+```javascript
+function sumOnSteroids() { 
+  let res = 0;
+  for (let i = 0; i < arguments.length; i++) { 
+    res += arguments[i]; 
+  } 
+   return res; 
+}
+
+sumOnSteroids(1, 2, 3) // 6
+sumOnSteroids(1, 2, 3, 4, 4, 3, 2) // 19
+sumOnSteroids() // 0
+```
+
+## 8.A.2. Parametry domyślne
+Parametrom funkcji można przypisać wartości domyślne. W przypadku pominięcia parametru podczas wywoływania funkcji
+używana jest domyślna wartość przypisana do tego parametru:
+
+```javascript
+function render(fog_level=20, spark_level=100){ 
+  console.log(`Poziom zamglenia: ${fog_level}, a natężenie iskier: ${spark_level}`)
+} 
+render(10); // Poziom zamglenia: 10, a natężenie iskier: 100
+```
+
+Warto zauważyć, że undefined uważa się za brak wartości parametru.
+
+```javascript
+render(undefined,10); // Poziom zamglenia: 20, a natężenie iskier: 10
+```
+
+Podczas określania domyślnych wartości parametrów można również odwoływać się do innych parametrów: 
+
+```javascript
+function render(fog_level=1, spark_level=fog_level * 10){ 
+  console.log(`Poziom zamglenia: ${fog_level}, a natężenie iskier: ${spark_level}`)  
+}
+render(10) // Poziom zamglenia: 10, a natężenie iskier: 100
+```
+
+Parametry domyślne mają własny zakres. Zakres ten jest umieszczony pomiędzy zewnętrznym i wewnętrznym zakresem funkcji.
+Jeśli parametr jest przysłaniany przez zmienną w zakresie wewnętrznym, zaskakująco zmienna wewnętrzna nie jest dostępna.
+
+```javascript
+var scope="zakres zewnętrzny"; 
+function scoper(val=scope){ 
+  var scope="zakres wewnętrzny"; 
+  console.log(val); 
+} 
+scoper(); // zakres zewnętrzny 
+```
+
+Można spodziewać się, że val zostanie przesłonięte przez wewnętrzną definicję zmiennej scope , ponieważ jednak domyśln
+parametry mają swój własny zakres, wewnętrzny zakres nie ma wpływu na wartość przypisaną do `val`.
+
+Kolejny przykład:
+
+```javascript
+function sum(a = 5, b = 6) {
+  return a + b;
+}
+
+console.log(sum(49)); // 55
+console.log(sum(undefined, 49)); 54
+
+function sumOne(a = 5, b){
+  return a + b;
+}
+
+console.log(sumOne(51)); // NaN = 51 + undefined
+console.log(sumOne(undefined, 51)); //56
+
+function sumTwo(a = 6, b = a){
+  return a + b;
+}
+
+console.log(sumTwo(44)); // 88
+console.log(sumTwo(undefined)); // 12
+
+```
+
+## 8.A.3 Parametry reszty
+Parametry reszty pozwalają wysyłać do funkcji dowolną liczbę parametrów w postaci tablicy. Parametrem reszty może być
+tylko ostatni parametr na liście parametrów i może być tylko jeden. Umieszczenie operatora reszty (...) przed ostatnim
+formalnym parametrem wskazuje, że ten parametr jest parametrem reszty.
+
+```javascript
+function sayThings(tone, ...quotes){ 
+  console.log(Array.isArray(quotes)); // true 
+  console.log(`Głosem ${tone} mówię: ${quotes}`) 
+} 
+sayThings("Morgana Freemana","Coś poważnego", " Implodujący Wszechświat"," Amen"); 
+// Głosem Morgana Freemana mówię: Coś poważnego, Implodujący Wszechświat, Amen
+```
+
+Parametry reszty są tablicą i dostępne są dla nich wszystkie metody tablicowe. 
+Zmienne argumenty (var-args) są od dawna częścią kilku innych języków i są mile widzianą zmianą w ES6.
+
+```javascript
+function sumVar(...array){
+  let result = 0;
+  for(let i = 0; i < array.length; i++){
+    result += array[i];
+  }
+    return result;
+}
+
+console.log(sumVar(1, 3, 5, 7, 9)); // 25
+```
+
+## 8.A.4. Operator rozwijania
+Operator rozwijania (ang. *spread operator*) wygląda dokładnie tak samo jak operator reszty. Operatory rozwijania są 
+używane, gdy dostarczamy argumentów podczas wywoływania funkcji lub definiowania tablicy. Operator rozwijania przyjmuje
+tablicę i dzieli jej elementy na poszczególne zmienne.
+
+```javascript
+function sumAll(a,b,c){ 
+  return a + b + c 
+} 
+var numbers = [6,7,8] 
+// Sposób przekazywania tablicy jako argumentu funkcji w ES5 
+console.log(sumAll.apply(null,numbers)); // 21 
+// Operator rozwijania w ES6 
+console.log(sumAll(...numbers)); // 21
+```
+
+Operatory rozwijania zwiększają możliwości pracy z tablicami w JavaScripcie. Jeśli chcesz utworzyć tablicę zawierającą
+elementy innej tablicy, istniejąca składnia tablicy tego nie obsługuje. Aby to osiągnąć, musielibyśmy użyć metod `push`, 
+`splice` i `concat` . Jednak dzięki operatorom rozwijania staje się to trywialne: 
+
+```javascript
+var midweek = ['Śr', 'Czw']; 
+var weekend = ['Sob', 'Niedz']; 
+var week = ['Pon','Wt', ...midweek, 'Pt', ...weekend]; 
+console.log(week); // ["Pon","Wt","Śr","Czw","Pt","Sob","Niedz"]
+```
+
+```javascript
+const array = [2, 33, 3, 44, 4, 55];
+console.log(sumVar(...array)); // 141 ; operator rozwijania
+```
+
+## 8.A.5. Funkcje predefiniowane
+
+Istnieje pewna liczba funkcji, które zostały wbudowane w silnik JavaScriptu i z których można korzystać do woli: 
+*	`parseInt()` 
+*	`parseFloat()` 
+*	`isNaN()` 
+*	`isFinite()` 
+*	`encodeURI()` 
+*	`decodeURI()` 
+*	`encodeURIComponent()` 
+*	`decodeURIComponent()`
+
+
+>   ZASADA CZARNEJ SKRZYNKI 
+>
+>   Z reguły podczas wywoływania funkcji Twój program nie musi wiedzieć, jakie czynności są wykonywane 
+>   wewnątrz danej funkcji. Możesz potraktować funkcje jak czarne skrzynki — podajesz im pewne wartości 
+>   (w postaci argumentów wejściowych) i odbierasz od nich zwracane wyniki.
+
+### parseInt()
+Funkcja parseInt() przyjmuje dane wejściowe dowolnego typu (najczęściej łańcuch znaków) i próbuje przekonwertować
+je na liczbę całkowitą. Jeśli operacja nie powiedzie się, zwracana jest wartość `NaN`.
+
+```javascript
+parseInt('123'); //123 
+parseInt('abc123'); // NaN 
+parseInt('1abc23'); //1 
+parseInt('123abc'); //123
+```
+Funkcja przyjmuje jeszcze opcjonalny drugi argument, który określa podstawę, opisującą typ liczby: dziesiętny,
+szesnastkowy, binarny itd.
+
+```javascript
+parseInt('FF', 10); // NaN
+parseInt('FF', 16); // 255
+parseInt('0377', 10);  // 377 
+parseInt('0377', 8); // 255
+```
+
+Jeśli drugi argument nie zostanie podany, za podstawę uznawana jest liczba 10 , z następującymi wyjątkami:
+* Jeśli jako pierwszy argument przekazany zostanie łańcuch zaczynający się od 0x , drugiemu argumentowi 
+(jeśli nie został podany) przypisana zostanie wartość `16` (liczba zostanie uznana za szesnastkową). 
+* Jeśli pierwszy parametr zaczyna się od 0 , drugi otrzyma wartość 8.
+
+```javascript
+parseInt('377'); // 377 
+parseInt('0377');  // 255
+parseInt('0x377');  // 887
+```
+
+Najbezpieczniejszym rozwiązaniem jest określanie podstawy za każdym razem. Wyobraź sobie na przykład, że parsujesz
+pola formularza, który reprezentuje kalendarz, a użytkownik wpisał 08 lub 06.
+ECMAScript 5 usuwa prefiks 0 z zapisu liczb ósemkowych i pozwala uniknąć zamieszania z parseInt () i nieokreśloną 
+podstawą.
+
+```javascript
+parseInt('0377');  // 377
+parseInt('0377', 8); // 255
+```
+
+### parseFloat()
+Funkcja `parseFloat()` działa podobnie do `parseInt()`, ale w danych wejściowych szuka ułamków dziesiętnych. Przyjmuje
+tylko jeden parametr.
+
+```javascript
+parseFloat('123'); //123 
+parseFloat('1.23'); //1.23 
+parseFloat('1.23abc.00'); // 1.23 
+```
+
+Podobnie jak `parseInt()`, `parseFloat()` poddaje się po napotkaniu pierwszego znaku, z którym nie umie sobie poradzić, 
+nawet jeśli pozostała część tekstu zawiera poprawne liczby.
+
+```javascript
+parseFloat('a.bc1.23'); // NaN
+```
+
+Funkcja `parseFloat()` , w przeciwieństwie do `parseInt()` , jest w stanie poprawnie zinterpretować zapis wykładniczy. 
+
+```javascript
+parseFloat('123e-2'); //1.23 
+parseFloat('1e10'); //10000000000 
+parseInt('1e10'); //1
+```
+### isNaN()
+Za pomocą `isNaN()` można sprawdzić, czy wartość wejściowa jest liczbą.
+
+```javascript
+isNaN(NaN); true  
+isNaN(123); false 
+isNaN(1.23); false 
+isNaN(parseInt('abc123')); true 
+```
+Ta funkcja stara się również przekonwertować dane wejściowe na liczbę: 
+
+```javascript
+isNaN('1.23'); false 
+isNaN('a1.23'); true 
+```
+
+Funkcja `isNaN()` jest użyteczna także dlatego, że specjalna wartość `NaN` nie jest równa niczemu, nawet samej sobie. 
+Wynikiem porównania `NaN === NaN` będzie `false` . Dlatego `NaN` nie może być używana do sprawdzania, czy dana 
+wartość jest prawidłową liczbą.
+
+### isFinite()
+Funkcja `isFinite()` sprawdza, czy dane wejściowe to liczba różna od `Infinity` i różna od `NaN`.
+
+```javascript
+isFinite(Infinity); //false 
+isFinite(-Infinity); //false 
+isFinite(12); //true 
+isFinite(1e308); //true 
+isFinite(1e309); //false 
+```
+
+Jeśli dziwią Cię dwa ostatnie wyniki, przypominamy, że największą dopuszczalną liczbą w języku JavaScript jest 
+`1.7976931348623157e+308`, więc `1e309` jest w efekcie nieskończonością.
+
+## encodeURI() i encodeURIComponent()
+W adresach URL (ang. *Uniform Resource Locator*) i URI (ang. *Uniform Resource Identifier* ) niektóre znaki mają
+specjalne znaczenie. Jeśli chcemy mieć pewność, że nie będą one interpretowane, możemy skorzystać z funkcji 
+`encodeURI()` lub `encodeURIComponent()` . Pierwsza z nich zwraca poprawny adres `URL`, a druga zakłada, że 
+przekazujemy tylko część adresu URL (np. parametry żądania), i koduje odpowiednie znaki.
+
+```javascript
+var url = 'http://www.packtpub.com/scr ipt.php?q=this and that';
+encodeURI(url); 
+//"http://www.packtpub.com/scr%20 ipt.php?q=this%20and%20that" 
+encodeURIComponent(url); 
+//"http%3A%2F%2Fwww.packtpub.com%2Fscr%20ipt.php%3Fq%3Dthis% 20and%20that"
+let url = "https://raubuc.net"
+console.log(encodeURI(url));
+```
+
+### eval() 
+Funkcja `eval()` przyjmuje łańcuch znaków i wykonuje go jako kod JavaScriptu:
+
+```javascript
+ eval('var ii = 2;'); 
+ ii //2
+ ```
+
+Są sytuacje, w których `eval()` się przydaje, jednak w miarę możliwości należy tej funkcji unikać.
+Weterani JavaScriptu jak mantrę powtarzają zdanie „eval is evil” (eval to samo zło).
+
+### Bonus — funkcja alert()
+Nie należy ona do rdzenia języka (nie ma jej w specyfikacji ECMA), ale jest obsługiwana przez środowisko hosta, 
+czyli przeglądarkę. Pozwala ona na wyświetlanie komunikatów w okienku dialogowym.
+Okienko dialogowe blokuje wątek przeglądarki, co oznacza, że żaden inny kod nie zostanie wykonany, zanim 
+użytkownik nie zamknie alertu. Jeśli aplikacja jest często aktualizowaną aplikacją AJAX, używanie funkcji `alert()`
+nie jest najlepszym pomysłem.
+
+## 8.A.6. Zakres zmiennych
+Zmienne w JS nie są definiowane w zakresie bloku, tylko w zakresie funkcji. Oznacza to, że jeśli zmienna została 
+zdefiniowana wewnątrz funkcji, nie jest widoczna poza nią. Natomiast zmienna zdefiniowana wewnątrz bloku if lub for 
+jest widoczna poza blokiem. Zmienne globalne to zmienne definiowane poza funkcjami (w globalnym kodzie programu), 
+natomiast zmienne lokalne to zmienne definiowane wewnątrz funkcji. Kod wewnątrz funkcji ma dostęp zarówno do zmiennych
+globalnych, jak i do swoich zmiennych lokalnych.
+
+```javascript
+var global = 1;
+
+function f() { 
+  var local = 2; 
+  global += local; 
+  return global; 
+}
+
+f() // 3
+global // 3
+local ; // Uncaught ReferenceError: local is not defined
+```
+
+>Najlepsze praktyki.
+Staraj się ograniczać liczbę zmiennych globalnych, aby uniknąć konfliktów nazw.
+Zawsze deklaruj zmienne za pomocą instrukcji `var`.
+Wszystkie zmienne potrzebne w funkcji definiuj na samej górze funkcji.
+Jeśli do zadeklarowania zmiennej nie zostanie użyte słowo kluczowe `var`, 
+tej zmiennej zostanie automatycznie przypisany zakres globalny.
+
+```javascript
+function f() { 
+  local = 2;
+}
+
+local; //Uncaught ReferenceError: local is not defined
+f() ;
+local; // 2
+```
+
+Funkcja `f()` zawiera zmienną `local`. Przed wywołaniem funkcji zmienna nie istnieje. Jednak podczas pierwszego
+wywołania funkcji zmienna jest tworzona i ma zasięg globalny. Dlatego jeśli wówczas spróbujemy sięgnąć do zmiennej
+local, okaże się ona dostępna.
+
+### Wynoszenie zmiennych
+
+```javascript
+var a = 123; 
+
+function f() {
+  alert(a); 
+  var a = 1; 
+  alert(a); 
+} 
+
+f();
+```
+
+Wewnątrz funkcji zakres lokalny jest ważniejszy od globalnego. Zmienna lokalna nadpisuje każdą zmienną globalną o
+tej samej nazwie. 
+Kiedy wykonywanie programu JavaScript wchodzi w nową funkcję, wszystkie zmienne zadeklarowane w różnych miejscach 
+funkcji są przesuwane, czyli wynoszone w górę funkcji (jest to tzw. z ang. *hoisting* czyli wynoszenie zmiennych). 
+Jednakże przypisania pozostają tam gdzie były. To jakby powyższa funkcja była napisana tak:
+
+```javascript
+var a = 123; 
+
+function f() { 
+  var a; // var a = undefined ; 
+  alert(a); // undefined 
+  a = 1; 
+  alert(a); // 1 
+}
+```
+Można również przyjąć wzorzec pojedynczej instrukcji `var`. W takim przypadku będziemy robić coś na kształt ręcznego
+wynoszenia zmiennych, aby zapobiec nieporozumieniom związanym z zachowaniem mechanizmu wynoszenia języka JavaScript.
+
+## 8.A.7. Zakres bloku
+ES6 wprowadza słowa kluczowe `let` i `const`, które pozwalają deklarować zmienne.
+Zmienne zadeklarowane za pomocą `let` mają zakres bloku. Istnieją tylko w bieżącym bloku kodu.
+
+```javascript
+var a = 1; 
+var b = 2;
+{ 
+  let a = 2; 
+  b = 3
+  console.log(a); // 2 
+} 
+console.log(a); // 1
+console.log(b); // 3
+```
+
+Zaleca się, aby podczas deklarowania zmiennych o zakresie blokowym ogólnie dodawać deklarację `let` na początku bloku.
+
+```javascript
+function swap(a, b){   // <-- tu zaczyna się zakres funkcji 
+    if(a > 0 && b > 0){ // <-- tu zaczyna się zakres bloku 
+      let tmp = a;
+      a = b; 
+      b = tmp;
+    } // <-- tu kończy się zakres bloku 
+    console.log(a, b); 
+    console.log(tmp); 
+ // zmienna tmp nie jest zdefiniowana , ponieważ jest dostępna  tylko  w zakresie bloku
+    return [a,b]; 
+} 
+swap(1,2);
+```
+
+Otóż przy użyciu słowa kluczowego `let` nie można ponownie zadeklarować tej samej zmiennej w tej samej funkcji
+lub zakresie bloku.
+Kolejnym słowem kluczowym wprowadzonym w ES6 jest `const` (stała). Zmienna zadeklarowana za pomocą słowa kluczowego
+`const` tworzy dla zmiennej referencję tylko do odczytu. Nie oznacza to, że wartość przechowywana przez tę referencję
+jest niemutowalna. Nie można jednak ponownie przypisać identyfikatora zmiennej. Stałe mają zakres bloku tak samo jak 
+zmienne utworzone za pomocą słowa kluczowego `let` . Ponadto podczas deklarowania trzeba przypisać wartość do zmiennej.
+Chociaż brzmi to dziwnie, `const` nie ma nic wspólnego z wartościami niemutowalnymi. Stałe tworzą niemutowalne wiązanie.
+Jest to ważne rozróżnienie i należy je prawidłowo zrozumieć. Rozważmy następujący przykład: 
+
+```javascript
+const car = {} 
+car.tyres = 4 
+```
+
+Jest to poprawny kod. Przypisujemy w nim wartość {} do stałej car . Po przypisaniu tej referencji nie można zmienić. 
+
+W ES6 należy stosować się do następujących zasad: 
+*	Używaj słowa kluczowego const w miarę możliwości. Używaj go dla wszystkich zmiennych, których wartości się nie zmieniają. 
+*	Używaj słowa kluczowego let. 
+*	Unikaj słowa kluczowego var.
+
+
+### Zakres zmiennych – moje spostrzeżenia
+Możliwe są  takie deklaracje bez rzucania błędów:
+
+```javascript
+var zmienna = 4;
+console.log(zmienna); // 4
+
+var zmienna = 'zmienna';
+console.log(zmienna); // zmienna
+
+var zmienna = false;
+console.log(zmienna); // false
+``` 
+
+Natomiast taki zestaw deklaracji:
+
+```javascript
+var zmienna = 4;
+console.log(zmienna);
+let zmienna = 'zmienna';
+console.log(zmienna); // spowoduje: 
+// Uncaught SyntaxError: Identifier 'zmienna' has already been declared
+```
+
+Taki zestaw deklaracji też nie będzie powodował błędów:
+
+```javascript
+var zmienna = 4;
+console.log(zmienna); // 4
+
+var zmienna = 'zmienna';
+console.log(zmienna); // zmienna
+
+{
+  let  zmienna = false;
+  console.log(zmienna); // false
+}
+```
+
+Taki tak:
+
+```javascript
+{
+  let  zmienna = false;
+  console.log(zmienna);
+
+  let zmienna = 'zmienna';
+  console.log(zmienna); // Uncaught SyntaxError: Identifier 'zmienna' has already been declared
+}
+
+```
+
+Stąd wniosek, że za pomocą słowa kluczowego `var` można zduplikować deklarację zmiennej w tym samym zakresie
+ale już za pomocą słowa let nie.
+
+Rozpatrzmy taki zestaw instrukcji:
+
+```javascript
+function myFunction () {
+  zmienna = 'zmienna';
+  console.log(zmienna); // zmienna
+  var zmienna = false;
+  console.log(zmienna); // false
+}
+
+myFunction();
+
+console.log(zmienna); //Uncaught ReferenceError: zmienna is not defined
+```
+
+Dlaczego zmienna nie jest dostępna poza funkcją przecież została tam zadeklarowana bez słowa `var` czyli jest zmienną 
+globalną. Jednakże druga deklaracja ze słowem `var` ją nadpisała, został zapewne zastosowany *hoisting* i deklaracja 
+`var zmienna` została wyniesiona na początek zakresu funkcji. 
+
+Natamiast dla takich instrukcji:
+
+function myFunction () {
+  zmienna = 'zmienna';
+  console.log(zmienna); // zmienna
+  zmienna = false;
+  console.log(zmienna); // false
+}
+
+myFunction();
+
+console.log(zmienna); // false
+Zmienna zmienna jest zmienną globalną.
+
+## 8.A.8. Funkcje są danymi.
+
+W JS funkcje są danymi i można je przypisać do zmiennej: 
+
+```javascript
+var f = function() { return 1; }; 
+```
+
+Ten sposób definiowania funkcji nazywamy zapisem literałowym funkcji.
+
+Fragment kodu:
+
+```javascript
+function () { return 1 ;}
+```
+ jest wyrażeniem funkcyjnym (ang. *function expression*), które może mieć nazwę i być 
+ **nazwanym wyrażeniem funkcyjnym** (ang. *named function expression* — NFE). 
+
+```javascript
+typeof f  // ”function”
+```
+
+Funkcje są danymi zawierające kod, który jest wykonywalny (funkcje mogą być wywoływane).
+
+```javascript
+var sum = function (a, b) { return a + b; }; 
+var add = sum; 
+typeof add; // “function” 
+add(1, 2);  // 3
+```
+
+### Funkcje anonimowe
+Funkcja anonimowa to funkcja, która nie ma nazwy:
+
+```javascript
+function() {
+  // instrukcje do wykonania
+}
+```
+*	Funkcję anonimową można przekazać jako parametr do innej funkcji. Funkcja odbierająca może z przekazaną
+  funkcją zrobić coś pożytecznego. 
+* Funkcje anonimowe można definiować i od razu wykonywać.
+
+### Wywołania zwrotne
+
+Jeśli `funkcja B` zostaje przekazana `funkcji A`, a następnie `A` wywołuje `B`, często mówi się, że `B` jest 
+funkcją wywołania zwrotnego (ang. *callback function* ). Jeśli `B` nie ma nazwy, to możemy powiedzieć, że jest
+anonimowym wywołaniem zwrotnym.
+
+```javascript
+function A(B) {
+    B();
+}
+
+function call(callback){
+  callback();
+}
+
+```
+
+Zalety wywołań zwrotnych: 
+* Wywołania zwrotne umożliwiają przekazywanie funkcji bez konieczności ich nazywania, co oznacza, że potrzebnych
+  jest mniej zmiennych. 
+*	Możemy przenieść obowiązek wywołania funkcji na inną funkcję, co oznacza, że musimy napisać krótszy kod. 
+* Wywołania zwrotne mogą korzystnie wpłynąć na wydajność aplikacji poprzez opóźnianie wykonywania lub odblokowywanie wywołań.
+
+Przykłady wywołań zwrotych
+
+```javascript
+function invokeAdd(a, b) {
+  return a() + b();
+}
+
+function one(){
+  return 1;
+}
+
+function two(){
+  return 2;
+}
+
+console.log(invokeAdd(one, two));
+
+console.log(invokeAdd(()=>{return 2}, ()=>{return 2}));
+
+console.log("***********************************************");
+
+function multiplyByTwo(...array){
+  const ar = [];
+  for(let i =  0; i < array.length; i++){
+    ar[i] = array[i] * 2;
+  }
+  return ar;
+}
+
+function addOne(a){
+  return a + 1;
+}
+
+console.log(multiplyByTwo(4, 6, 7, 8, 11));
+
+console.log(addOne(100));
+
+console.log("***********************************************");
+
+const myarr = multiplyByTwo(10, 20, 30);
+console.log(myarr);
+
+for (let i = 0; i < myarr.length; i++) {
+  myarr[i] = addOne(myarr[i]);
+}
+
+console.log(myarr);
+
+console.log("***********************************************");
+
+function multiplyByTwoVersionOne(callback, ...array){
+  const arr = [];
+  for (let i = 0; i < array.length; i++) {
+    array[i] = callback(array[i] * 2);
+  }
+  return array;
+}
+
+console.log(multiplyByTwoVersionOne(addOne, 2, 6, 8, 9, 33));
+
+console.log(multiplyByTwoVersionOne((a)=>{return a + 2}, 2, 6, 8, 9, 33));
+```
+
+Moje wywołanie zwrotne:
+
+```javascript
+let counter = 0
+setInterval(() => {
+  const container = document.getElementsByClassName('container');
+
+  counter++;
+  switch (counter % 5) {
+    case 0: container[0].style.flexDirection = 'row';
+      break;
+    case 1: container[0].style.flexDirection = 'row-reverse';
+      break;
+    case 2: container[0].style.justifyContent = 'flex-end';
+      break;
+    case 3: container[0].style.flexDirection = 'column';
+      break;
+    case 4: container[0].style.flexDirection = 'column-reverse';
+      break;
+  }
+
+  if (counter == 1000) {
+    counter = 0;
+  }
+}, 3000);
+
+```
+
+### Funkcje natychmiastowe
+Inne zastosowanie funkcji anonimowej to wywoływanie funkcji zaraz po jej zdefiniowaniu. Wyrażenie funkcyjne 
+umieszczamy w nawiasach i dodajemy kolejną parę nawiasów oznaczająca natychmiastowe wykonanie  a w nich ewentualnie
+parametry:
+
+```javascript
+(function(name){ 
+alert('Witaj, ' + name + '!'); 
+})('stary');
+```
+
+Alternatywnie można przenieść zamknięcie pierwszej pary nawiasów na koniec.
+
+```javascript
+(function () {
+ // ... 
+}());
+```
+Kod zostanie wykonany bez tworzenia nadmiaru zmiennych globalnych. Tej samej funkcji nie da się wykonać dwukrotnie.
+Dlatego anonimowe funkcje samowywołujące najlepiej nadają się do wykonywania zadań jednorazowych lub inicjujących.
+Funkcja natychmiastowa może również zwracać wartość. 
+
+```javascript
+var result = (function () {
+   // robimy coś skomplikowanego 
+   // z tymczasowymi zmiennymi lokalnymi ... 
+   // ... 
+   // coś zwracamy ; 
+}());
+```
+
+### Funkcje wewnętrzne (prywatne)
+Możemy zdefiniować funkcję wewnątrz innej funkcji.
+
+```javascript
+function outer(param) { 
+  function inner(theinput){ 
+    return theinput * 2; 
+  } 
+  return 'Wynik wynosi ' + inner(param); 
+}
+```
+
+Za pomocą wyrażenia funkcyjnego możemy również zapisać to tak: 
+
+```javascript
+var outer = function (param) { 
+  var inner = function (theinput) { 
+    return theinput * 2; 
+  }; 
+  return 'Wynik wynosi ' + inner(param); 
+};
+```
+
+Kiedy wywołana zostanie globalna funkcja `outer()`, wewnętrznie wywoła również lokalną funkcję `inner()`. Ponieważ 
+funkcja `inner()` jest lokalna, nie jest dostępna poza `outer()` i dlatego nazywamy ją funkcją prywatną.
+
+```javascript
+outer(2); //Wynik wynosi 4
+outer(8); //Wynik wynosi 16 
+inner(2); ReferenceError: inner is not defined
+```
+
+Ze stosowania funkcji prywatnych płyną następujące korzyści: 
+*	Nie dochodzi do zaśmiecenia globalnej przestrzeni nazw, co zmniejsza ryzyko powstawania kolizji nazw. 
+*	Prywatność — na zewnątrz widoczne są tylko te funkcje, które programista chce udostępnić. Funkcjonalności 
+  nieprzeznaczone dla reszty aplikacji są ukryte.
+
+### Funkcje, które zwracają funkcje
+Funkcja zawsze zwraca wartość albo za pomocą instrukcji `return` albo domyślnie wartość `undefined` . Ponieważ 
+funkcja jest daną to można ją zwrócić przez inna funkcję.
+
+```javascript
+function date() {
+  let time = new Date();
+
+  return function(){
+   let hours = time.getHours();
+   let minutes = time.getMinutes();
+   let secondes = time.getSeconds();
+
+    if (secondes < 10) {
+      secondes = '0' + secondes;
+    }
+  
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+  
+    if (hours < 10) {
+      hours = '0' + hours;
+    }
+    const clock = document.getElementById('clock');
+    clock.innerHTML = hours + ':' + minutes + ':' + secondes;
+  }
+
+}
+
+setInterval(() => {
+ /* const time = date();
+  time();  */
+  date()();
+ 
+}, 1000);
+```
+
+### Funkcjo, przepiszże się!
+Ponieważ funkcje potrafią zwracać funkcje, możliwe jest zastąpienie oryginalnej funkcji tą zwracaną. 
+
+```javascript
+function a() { 
+  alert('A!'); 
+  return function(){ 
+     alert('B!'); 
+  }; 
+}
+```
+Wartość zwróconą przez wywołanie `a()` można przypisać zmiennej `a`, nadpisując w ten sposób istniejącą funkcję:
+
+```javascript
+a = a();
+```
+
+Powyższa linia kodu przy pierwszym wykonaniu spowoduje wyświetlenie 'A !', jednak następne wywołanie `a()` wyświetli
+'B!'. Opisany mechanizm jest przydatny, jeśli funkcja wykonuje pewne jednorazowe zadanie. Po pierwszym wywołaniu 
+funkcja nadpisuje się, aby uniknąć niepotrzebnego wykonywania określonej pracy przy każdym jej wywołaniu.
+W powyższym przykładzie funkcja została przedefiniowana z zewnątrz, a zwracana wartość została przypisana do funkcji.
+Funkcja może jednak przepisać się sama z wewnątrz, tak jak pokazano poniżej: 
+
+```javascript
+function a() { alert('A!'); a = function(){ alert('B!'); }; } 
+```
+
+Przy pierwszym wywołaniu ta funkcja wykona następujące czynności: 
+*	Wyświetli 'A!' (uznajmy to za nasze jednorazowe zadanie inicjujące). 
+*	Przedefiniuje globalną zmienną `a`, przypisując do niej nową funkcję. 
+  Każde kolejne wywołanie będzie powodowało wyświetlenie 'B!'.
+
+Oto inny przykład, który łączy kilka technik omówionych:
+
+```javascript
+var a = (function () {
+   function someSetup() { 
+     var setup = 'zrobione'; 
+   } 
+   function actualWork() { 
+     alert('Praca wre'); 
+   } 
+   someSetup(); 
+   return actualWork; 
+}());
+
+```
+W przykładzie należy zwrócić uwagę na następujące kwestie: 
+*	Mamy funkcje prywatne: `someSetup()` i `actualWork()` . 
+*	Mamy funkcję natychmiastową w postaci funkcji anonimowej, która wywołuje samą siebie za pomocą pary nawiasów
+  umieszczonych po jej definicji. 
+*	Pierwsze wykonanie polega na wywołaniu funkcji `someSetup()` i zwróceniu referencji do zmiennej `actualWork`, 
+  która jest funkcją. Zwróć uwagę na brak nawiasów w instrukcji return — nie ma ich dlatego, że zwracamy do funkcji
+  referencję, a nie wynik wywołania tej funkcji.
+*	Ponieważ kod zaczyna się od `var a = `, wartość zwracana przez samowywołującą się funkcję jest przypisywana do 
+  zmiennej `a` 
+
+Jeśli chcesz sprawdzić, czy poprawnie rozumiesz omówiony zakres materiału, spróbuj odpowiedzieć na poniższe pytania. 
+Jakie będzie zachowanie napisanego przed chwilą programu, gdy: 
+*	zostanie po raz pierwszy załadowany? 
+*	po załadowaniu zostanie wywołana funkcja `a()` ?
+
+
+## 8.A.9. Domknięcia
+
+Zanim zajmiemy się domknięciami, powtórzmy i rozszerzmy trochę pojęcia zakresu w języku JavaScript.
+
+### Łańcuch zakresów
+
+W JavaScript istnieje zakres funkcji. Zmienna zdefiniowana wewnątrz funkcji nie jest widoczna poza nią
+
+```javascript
+var global = 11;
+
+function foo() {
+  var local = 11;
+  return global;
+}
+
+console.log(foo()); // 11
+console.log(local); // ReferenceError: local is not defined
+```
+
+Zmienna `global` ma zakres globalny, natomiast zmienna `local` zakres funkcji `foo()`. Zatem:
+*	Wewnątrz `foo()` widoczne są zarówno `global` jak i `local`
+*	Na zewnątrz `foo()` widoczna jest zmienna `global`, ale nie zmienna `local`
+
+Jeśli zdefiniujemy funkcję `inner()` zagnieżdżoną w `outer()` , będzie ona miała dostęp do zmiennych ze swojego 
+zakresu, a także do zmiennych swoich funkcji nadrzędnych. W takim wypadku mówimy o łańcuchu zakresów, który może
+być dowolnie długi (głęboki).
+
+```javascript
+var global = 1;
+
+function outer() {
+  var outer_local = 2;
+
+  function inner() {
+    var inner_local = 3;
+    return outer_local + inner_local + global;
+  }
+
+  return inner();
+}
+
+console.log(outer()); // 6; funkcja inner ma dostęp do wszystkich zmiennych
+
+```
+
+### Przerwanie łańcucha za pomocą domknięcia
+
+```javascript
+
+var a = 'zmienna globalna';
+
+var F = function () {
+  var b = 'zmienna lokalna';
+
+  var N = function () {
+    var c = 'wewnętrzna lokalna';
+  };
+};
+
+// Gdy N wydostanie z zakresu F i trafi do przestrzeni globalnej 
+// będziemy mieli do czynienia z domknięciem.
+// Funkcja N zamknie swój zakres i zabierze go do przestrzeni globalnej. 
+
+```
+
+![](images/global.png)
+
+Funkcje posiadają własną przestrzeń, którą mogą wykorzystywać do przechowywania innych zmiennych, takich jak b , oraz
+funkcji wewnętrznych, takich jak N.
+
+![](images/closure.png)
+
+Jeśli jesteś w punkcie `a`, jesteś w przestrzeni globalnej. Jeśli w punkcie `b` , który należy do przestrzeni funkcji
+`F` , masz dostęp do przestrzeni globalnej oraz do przestrzeni `F` . Jeśli znalazłeś się w punkcie `c` , który należy
+do funkcji `N` , masz dostęp do przestrzeni globalnej, przestrzeni `F` oraz `N` . Nie da się sięgnąć z `a` do `b`, 
+ponieważ punkt `b` nie jest widoczny poza `F` . Można natomiast uzyskać dostęp z `c` do `b` lub z `N` do `b`. 
+Interesujące jest to, że efekt domknięcia ma miejsce, gdy jakimś sposobem `N` wydostaje się z `F` i trafia do 
+przestrzeni globalnej.
+
+![](images/closure-one.png)
+
+Co się wtedy dzieje? `N` jest w tej samej przestrzeni globalnej co `a` . Jako że funkcje pamiętają środowisko, 
+w którym zostały zdefiniowane, `N` nadal ma dostęp do przestrzeni `F` , a co za tym idzie, dostęp do `b`. 
+Jest to ciekawe dlatego, że `N` znajduje się tam gdzie `a` i nadal ma dostęp do `b` , natomiast `a` nie ma 
+dostępu do `b`. 
+Jak `N` udaje się przerwać łańcuch? Istnieją dwa sposoby: `N` może zostać zmienną globalną (pominięcie `var` ) lub
+może zostać zwrócona (`return`) przez `F` do przestrzeni globalnej. Zobaczmy, jak to wygląda w praktyce.
+
+### Domknięcie 1.
+Zmodyfikujmy funkcję `F` z powyższego przykładu, niech `F` zwraca `N` , a `N` zwraca `b` i ma do niej dostęp 
+poprzez łańcuch zakresów:
+
+```javascript
+var a = 'zmienna globalna';
+
+var F = function () {
+  var b = 'zmienna lokalna';
+
+  var N = function () {
+    var c = 'wewnętrzna lokalna';
+    return b;
+  }
+
+  return N;
+}
+
+var inner = F();
+
+console.log(inner()); // Funkcja globalna inner ma dostęp 
+// do prywatnej przestrzeni F
+```
+
+Ponieważ `F()` można wywołać z przestrzeni globalnej (jest funkcją globalną), możesz ją wywołać i przypisać
+zwracaną przez nią wartość do innej zmiennej globalnej. Wynikiem będzie nowa funkcja globalna, która ma dostęp
+do prywatnej przestrzeni `F()`
+
+```javascript
+var inner = F();
+console.log(inner()); // “zmienna lokalna”
+```
+
+### Domknięcie 2.
+Powyższy wynik można uzyskać nie co inaczej. Funkcja `F()` zamiast zwracać funkcję utworzy w swoim ciele nową 
+globalną funkcję `inner()`
+
+```javascript
+var inner; // element zastępczy
+
+var F = function () {
+  var b = 'zmienna lokalna';
+  var N = function () {
+    return b;
+  }
+
+  inner = N;
+};
+
+F();
+
+console.log(inner()); // zmienna lokalna
+
+```
+
+Wewnątrz przestrzeni `F()` definiowana jest funkcja `N()`, która ma dostęp do jej zakresu i której referencja jest
+przypisana do zmiennej globalnej `inner`, zatem funkcja `inner()` będzie miała dostęp do zakresu funkcji `F()` mimo 
+iż jest częścią przestrzeni globalnej.
+
+### Domknięcie 3. i definicja
+Każda funkcja może być uznana za domknięcie gdyż każda funkcja utrzymuje tajne powiązanie ze środowiskiem (zakresem),
+w którym została utworzona. Jednak w większości przypadków ten zakres jest niszczony, jednakże jak pokażują powyższe
+przykłady zakres ten może zostać utrzymany.
+Domknięcie jest tworzone, gdy funkcja zachowuje powiązanie z zakresem funkcji nadrzędnej nawet po tym, jak funkcja
+nadrzędna zakończyła działanie.
+Parametry funkcji zachowują się jak zmienne lokalne dla tej funkcji, ale są tworzone domyślnie. Nie trzeba używać 
+dla nich słowa kluczowego var . Można utworzyć funkcję zwracającą inną funkcję, która z kolei zwraca parametr swojej
+funkcji nadrzędnej.
+
+```javascript
+function foo(param) {
+  var noo = function () {
+    return param;
+  };
+
+  param++;
+  return noo;
+}
+
+var inner = foo(123);
+console.log(inner()); // 124
+```
+
+Zmienna `param` została zwiększona już po definicji funkcji, a pomimo to `inner()` zwróciła aktualną wartość.
+Jest to dowód na to, że funkcja utrzymuje referencję do zakresu, (a nie do zmiennych i ich wartości znalezionych
+w zakresie podczas wykonywania funkcji. ???)
+
+Zmodyfikujmy troche powyższy kod:
+
+```javascript
+function foo(param) {
+  var noo = function () {
+    return param;
+  };
+
+  param++;
+  console.log(noo());
+  return noo;
+}
+
+console.log(foo(123));
+// 124
+// [Function: noo]
+
+```
+
+### Domknięcia w pętli
+Przyjrzyjmy się teraz kanonicznemu błędowi nowicjuszy w kwestiach związanych z domknięciami. Często prowadzi
+on do bardzo trudnych do wykrycia błędów, ponieważ na pierwszy rzut oka wszystko wygląda normalnie.
+
+```JavaScript
+function foo() {
+  var arr = [], i;
+
+  for (i = 0; i < 3; i++) {
+    arr[i] = function () {
+      return i;
+    };
+    console.log(arr[i]());
+  }
+
+  return arr;
+}
+
+var arrGlobal = foo();
+
+for (var i = 0; i < arrGlobal.length; i++) {
+  console.log(arrGlobal[i]());
+}
+
+// 0
+// 1
+// 2
+// 3
+// 3
+// 3
+```
+
+Funkcje nie pamiętają wartości, tylko przechowują referencję do środowiska, w którym zostały utworzone. W tym 
+przypadku zmienna `i` rezyduje akurat w środowisku, w którym zostały zdefiniowane te trzy funkcje. Dlatego wszystkie
+funkcje sięgają do tego środowiska i znajdują najbardziej aktualną wartość `i` . Po wyjściu z pętli wartością 
+zmiennej `i` jest `3` . Wszystkie trzy funkcje wskazują więc na tę samą wartość.
+Eleganckie rozwiązanie polega na wykorzystaniu kolejnego domknięcia, tak jak pokazano poniżej:
+
+```javascript
+function foo() {
+  var arr = [], i;
+  for (i = 0; i < 3; i++) {
+    arr[i] = (function (x) {
+      return function () {
+        return x;
+      };
+    })(i);
+  }
+
+  return arr;
+}
+
+var arrGlobal = foo();
+
+for (let i = 0; i < arrGlobal.length; i++) {
+  console.log(arrGlobal[i]());
+}
+
+// 0
+// 1
+// 2
+```
+
+Bieżąca wartość i jest przekazana do innej funkcji natychmiastowej, w której staje się zmienną lokalną `x`, która
+za każdym razem ma inną wartość.
+Ten sam wynik uzyskamy wykorzystująć funkcję wewnętrzną:
+
+```javascript
+function foo() {
+  function binder(x) {
+    return function () {
+      return x;
+    };
+  }
+
+  var arr = [], i;
+  for (i = 0; i < 3; i++) {
+    arr[i] = binder(i);
+  }
+
+  return arr;
+}
+
+var arrGlobal = foo();
+
+for (i = 0; i < arrGlobal.length; i++) {
+  console.log(arrGlobal[i]());
+}
+
+// 0
+// 1
+// 2
+```
+
+Kluczem do sukcesu jest wykorzystanie funkcji pośredniej do uczynienia wartości `i` lokalną podczas każdej iteracji
+
+### Funkcje dostępowe
+Kolejnym przykładem użycia domknięcia jest utworzenie funkcji dostępowych: pobierającej (ang. *getter* ) i 
+ustawiającej (ang. *setter*). Funkcja ustawiająca wartość może zawierać pewną logikę do walidacji wartości
+przed przypisaniem jej do chronionej zmiennej.
+Obie funkcje dostępowe można umieścić wewnątrz tej samej funkcji, która zawiera zmienną `secret` , tak by
+współdzieliły ten sam zakres:
+
+```javascript
+
+var getValue, setValue;
+
+(function () {
+  var secret = 0;
+  getValue = function () {
+    return secret;
+  };
+  setValue = function (v) {
+    if (typeof v === "number") {
+      secret = v;
+    }
+  };
+}());
+
+console.log(getValue());
+setValue(321);
+console.log(getValue());
+setValue(false);
+console.log(getValue());
+```
+
+W tym przypadku funkcja zawierająca wszystkie elementy jest funkcją natychmiastową. Definiuje ona 
+`setValue()` i `getValue()` jako funkcje globalne, podczas gdy zmienna `secret` pozostaje lokalna 
+i nie jest dostępna bezpośrednio.
+
+### terator
+Poniższy przykład pokazuje wykorzystanie domknięcia w celu osiągnięcia funkcjonalności iteratora.
+Oto funkcja inicjująca, która przyjmuje tablicę wejściową, a także definiuje prywatny wskaźnik `i`, 
+zawsze wskazujący następny element w tablicy:
+
+```javascript
+// Wykorzystanie domknięcia jako iteratora
+
+function setup(x) {
+  var i = 0;
+  return function () {
+    return x[i++];
+  };
+}
+
+var next = setup(['a', 'b', 'c', 'd']);
+console.log(next());
+console.log(next());
+console.log(next());
+console.log(next());
+
+```
+
+## 8.A.10. IIFE a bloki
+Ponieważ specyfikacja `ES5` nie zapewniła zakresu bloku, popularnym wzorcem dla uzyskania zakresu bloku było użycie
+natychmiastowo **wywoływanego wyrażenia funkcyjnego** (ang. *immediately invoked function expressions — IIFE*), np.: 
+
+```javascript
+(function () { 
+  var block_scoped=0; 
+}()); 
+
+console.log(block_scoped); // ReferenceError: block_scoped is not defined 
+
+```
+Dzięki obsłudze zakresów bloków przez `ES6` można po prostu użyć deklaracji `let` lub `const`.
+
+## 8.A.11. Funkcje strzałkowe
+
+W JavaScripcie zawsze pisaliśmy wyrażenia funkcyjne. Idiomatyczne jest pisanie w JavaScripcie kodu takiego jak ten
+(przykład w jQuery):
+
+```javascript
+
+$("#submit-btn").click(function (event) { 
+  validateForm(); 
+  submitMessage(); 
+});
+
+```
+Ten styl pisania wyrażeń funkcji anonimowych jest znany jako **funkcje lambda** . Tę funkcjonalność obsługuje kilka 
+innych języków. Chociaż **funkcje lambda** są mniej lub bardziej standardowe w nowych językach, ich użycie 
+spopularyzował JavaScript. Jednak składnia lambda w JavaScripcie nie była zbyt zwięzła. Funkcje strzałkowe ES6 
+wypełniają tę lukę i zapewniają zwięzłą składnię dla pisania funkcji.
+
+```javascript
+const num = [1,2,3] 
+const squares = num.map(function(n){
+ return n*n; 
+}); 
+console.log(squares); // [1,4,9]
+```
+
+Powyższy kod można uprościć stosując składnię funkcji strzałkowej:
+
+```javascript
+const squaresTwo = num.map (n => n * n)
+```
+
+Gdy potrzebujemy wielu argumentów, musimy zawrzeć listę argumentów w nawiasach okrągłych:
+
+```javascript
+() => {...}; // 	Brak parametrów
+a => {...} ;// Jeden parametr 
+(a, b) => {...} // 	Więcej niż jeden parametr
+```
+
+Funkcje strzałkowe mogą zawierać zarówno **ciała instrukcji** (ang. *statement bodies* ), jak i 
+**ciała wyrażeń** (ang. *expression bodies*): 
+
+```javascript
+n => {return n+n;} // blok instrukcji 
+n => n+n // wyrażenie
+```
+
+Oba zapisy są równoważne, ale druga odmiana jest zwięzła i preferowana. Funkcje strzałkowe są zawsze anonimowe.
+Jednym z ważnych aspektów **funkcji strzałkowych**, jest to, że **funkcje strzałkowe** nie wiążą własnych wartości 
+słowa kluczowego `this` — wartość jest leksykalnie wywodzona z otaczającego zakresu.
+
+
+# 8.B. Funkcje 
+**Notatki na podstawie "JavaScript. Tworzenie nowoczesnych aplikacji webowych."  Tomasz Sochacki**
+
+## Czym są funkcje?
+Jakieś operacje można zawrzeć w funkcji aby je póżniej móc wielokrotnie wykorzystywać w różnych miejscach kodu.
+Jeśli zajdzie potrzeba modyfikacji tych operacji to zmianę wykonamy tylko w jednym miejscu – tam gdzie
+zdefiniowaliśmy naszą funkcję.
+Funkcje można używać również wewnątrz innych funkcji. W danej funkcji wywołujemy jakąś funkcję, która zwróci
+nam wynik, który możemy zwrócić i przy okazji wykonać jakieś dodatkowe czynności, których nie chcieliśmy z jakiegoś 
+powodu umieszczać w funkcji wewnętrznej a które w jakiś sposób ją dotyczą.
+Zamknięcie operacji w prostą funkcję może dać realne korzyści, szczególnie w przypadku rozbudowywania i 
+modyfikowania aplikacji. 
+
+Istnieje nawet paradygmat w programowaniu, określany jako **programowanie funkcyjne**, gdzie jednym z założeń 
+jest zamykanie praktycznie wszystkich operacji w małe funkcje.
+
+## Definiowanie i wywoływanie funkcji
+Jest kilka sposobów definiowania funkcji. Warto jednak pamiętać, że nie ma jednej, konkretnej metody, która byłaby
+uznawana w świecie JavaScript za tę najlepszą. Wiele zależy tutaj od charakteru danej funkcji, sposobu jej używania
+oraz od praktyk przyjętych w zespole i w danej aplikacji.
+
+### Tworzenie funkcji
+Deklarowanie funkcji poprzez słowo function w następujący sposób: 
+
+```javascript
+function name () { 
+  // polecenia wewnątrz funkcji name 
+}
+```
+Funkcję wywołujemy:
+
+```javascript
+name();
+```
+
+Innym sposobem stworzenia funkcji jest napisanie tzw. **wyrażenia funkcyjnego** w postaci: 
+
+```javascript
+const fun = function nameFunction () { 
+  // polecenia wewnątrz funkcji name 
+};
+```
+Funkcję wywołujemy:
+
+```javascript
+fun();
+nameFunction();  //Uncaught ReferenceError : nameFunction is not defined
+```
+Wywołanie funkcji po nazwie `nameFunction` powoduje zgłoszenie błędu, gdyż nasza funkcja jest dostępna pod nazwą
+zmiennej, do jakiej została przypisana, czyli w naszym przypadku fun
+Przy tworzenia funkcji można pominąć nazwę funkcji, częściej się to robi gdy stosuje się **wyrażenie funkcyjne**. 
+Używa się  wtedy tzw. funkcji anonimowych:
+
+```javascript
+const fn = function (a, b) { 
+  return a + b;
+};
+```
+lub zapisu określanego jako *arrow function* (tzw. funkcje strzałkowe), które zapisuje się jako:
+
+```javascript
+const sum = (a, b) => { 
+  return a + b; 
+};
+```
+Opisane tu trzy sposoby deklarowania funkcji nie są równoważne i czasami sposób i miejsce wywołania funkcji może 
+decydować o konkretnym sposobie deklaracji.
+
+### Wartość zwracana przez funkcję
+W języku JavaScript każda funkcja zawsze zwraca jakąś wartość albo w sposób jawny za pomocą słowa return albo 
+niejawnie `udefined`.
+Funkcja sprawdzające jakieś warunki i zwracające wartość typu boolean:
+
+```javascript
+function isUserLogged (user) { 
+  return isTokenValid(user.token) && user.role === 'ADMIN'; 
+}
+```
+
+Funkcja może posiadać kilka instrukcji return:
+
+```javascript
+function divide (a, b) { 
+ if (b !== 0) { 
+  return a / b; // instrukcja return kończy działanie funkcji
+ } 
+  return "Nie dziel przez zero!"; 
+}
+```
+Gdy instrukcja return zwraca jakiś obiekt.
+
+```javascript
+function getUserPersonalData (user) { 
+  return { 
+    name: user.name, 
+    age: user.age 
+  }; 
+} 
+// definiujemy przykładowego użytkownika : 
+const someUser = { 
+  name: 'Tomek', 
+  age: '35',
+  token: 'xyz' 
+}; 
+
+getUserPersonalData(someUser); // { name : " Tomek ", age : " 35 "}
+```
+
+Czasami jednak tworzymy funkcje, których zadaniem jest wykonanie pewnych operacji:
+
+```javascript
+function showUserAge(user.age) { 
+  console.log('Wiek użytkownika: ' + user.age + ' lat.'); 
+} 
+
+showUserAge(someUser.age); // Wiek użytkownika : 35 lat .
+```
+i wtedy nie jest ważne co ta funkcja zwraca.
+
+## Zakresy i domknięcia w JavaScript
+Zakres zmiennej to zakres kodu programu, w którym dana zmienna jest dostępna.
+Zaleca się deklarowanie zmiennych za pomocą słów `let` i `const`. Dzisiaj użycie słowa `var` może być wymagane 
+tylko w aplikacjach, które muszą być uruchamiane w satrszych środowiskach.
+Zmienna, która została zadeklarowana przez `let` lub `const` , jest dostępna w kodzie dopiero od miejsca jej 
+deklaracji. Próba użycia niezadeklarowanej zmiennej spowoduje rzucenie błędu.
+
+```javascript
+function getPriceWithDiscount(basicPrice) {
+  const totalPrice = basicPrice * (1 - discount);
+  const discount = 0.2;
+  return totalPrice;
+}
+
+console.log(getPriceWithDiscount(120)); 
+//ReferenceError: Cannot access 'discount' before initialization
+
+function getPriceWithDiscount(basicPrice) {
+  var totalPrice = basicPrice * (1 - discount);
+  var discount = 0.2;
+  return totalPrice;
+}
+
+console.log(getPriceWithDiscount(120));
+// NaN; nie ma błędu jest zwrócona wartość NaN, która jest błędna
+```
+
+W przypadku deklaracji z użyciem słowa `var` mamy do czynienia z tzw. zjawiskiem hoistingu i tak naprawdę powyższy
+kod wygląda pod spodem tak:
+
+```javascript
+function getPriceWithDiscount(basicPrice) {
+  var totalPrice; // domyślnie undefined 
+  var discount; // domyślnie undefined 
+  totalPrice = basicPrice * (1 - discount); 
+  // tutaj mamy: number * (1 – undefined) === NaN 
+  discount = 0.2; 
+  // dopiero tutaj określamy wartość , ale nie ma ona już znaczenia 
+  return totalPrice; // zwracamy wcześniej obliczone NaN 
+}
+
+console.log(getPriceWithDiscount(120)); // NaN
+```
+
+Hoisting polega na tym, że wszystkie deklaracje zmiennych z danego zakresu przechodzą na jego początek ze startową
+wartością `undefined`.
+Bezpieczniej jest używać tylko deklaracje `let` lub `const` , które uchronią nas przed takimi sytuacjami, bo od razu 
+otrzymamy w konsoli błąd a nie generowane niepoprawne wartości typu `NaN`, które nie pomagają zbytnio w zlokalizowaniu błędu.
+
+W JS mamy trzy podstawowe rodzaje zakresu:
+•	Globalny
+•	Funkcyjny
+•	Blokowy
+
+Istnieje jeszcze tzw. zakres modułu, często używany np. w pracy w środowisku Node.js
+
+### Zakres globalny
+Zakres globalny oznacza, że zmienna jest dostępna w każdym miejscu kodu. Środowisko dodaje do zakresu globalnego 
+obiekty np. window czy document. Jeśli zadeklarujemy zmienną za pomocą słowa kluczowego var poza jakąkolwiek funkcją
+i zakresem blokowym to znajdzie się w zakresie globalnym.
+
+```javascript
+var variable = 40; 
+window.variable; // 40;
+```
+
+Zmienne deklarowane za pomocą słowa kluczowego let i const nie będą w zakresie globalnym.
+
+```javascript
+const userAge = 40; 
+userAge; // 40 
+window.userAge; // undefined
+```
+
+Zmienne globalne są użyteczne gdy używamy bibliotek zewnętrznych (np. `jQuery`) lecz deklarowanie własnych
+zmiennych globalnych jest ryzykowne, gdyż wiąże się to z możliwością nadpisania zmiennej właśnie z tych bibliotek
+czy pola obiektu window. 
+
+### Zakres funkcyjny
+Oznacza on, że zmienna zadeklarowana wewnątrz funkcji jest dostępna tylko w zakresie tej funkcji.
+
+```javascript
+const user = {
+  name: 'Tomek',
+  age: 40
+};
+
+function getName() {
+  const prefix = 'Imię użytkownika';
+  return `${prefix} ${user.name}`;
+}
+
+console.log(getName());
+console.log(prefix); // ReferenceError: prefix is not defined
+```
+
+Dobrą praktyką jest deklarowanie zmiennych i stałych tam, gdzie są one faktycznie potrzebne.
+
+Argumenty funkcji są zmiennymi znajdującymi się w jej zakresie .
+
+```javascript
+function addTwoNumbers(x) { 
+  return function (y) { 
+     return x + y; 
+  } 
+} 
+addTwoNumbers(5)(2); // 7
+```
+
+**Domknięcie**, czyli  zatrzaśnięcie dostępów do zmiennych i stałych w zakresie funkcyjnym z ich propagacją w dół.
+Funkcja anonimowa ma dostęp do zmiennej `x` zlokalizowanej w zakresie funkcji nadrzędnej. Do zmiennej `y` istnieje 
+dostęp tylko z funkcji anonimowej propagacja dostępów nie działa w górę.
+Aby obliczyć sumę dwóch liczb, musimy użyć dwukrotnego wywołania funkcji z dwukrotnym użyciem nawiasów okrągłych.
+
+```javascript
+const sum = addTwoNumbers(5); 
+typeof sum; // "function"
+sum(2); // 7
+```
+
+Powyższy przykład to tzw. domknięcie, gdzie zmienna `x` jest dostępna nawet po wywołaniu funkcji `addTwoNumbers`.
+
+```javascript
+sum(6) // 11
+```
+
+Jeśli jakaś zmienna jest potrzebna tylko w jednej funkcji, to zadeklarujmy ją właśnie tam. Unikniemy przypadkowych
+błędów gdyby jakiś inny fragment kodu modyfikował zmienną globalną, z której my również korzystamy.
+
+```javascript
+const sum = addTwoNumber(5);
+
+console.log(sum(6)); // 11
+console.log(sum(7)); // 12
+
+console.log(addTwoNumber(9)(8)); //17
+```
+
+### Zakres blokowy
+
+Generalnie blokiem kodu nazywamy fragment zamknięty w nawiasy klamrowe.
+
+```javascript
+
+{
+ const discount = 0.2;
+ const getPrice = price => price * (1 – discount) ;
+ getPrice(100) // 80
+}
+getPrice(200);  Uncaught ReferenceError : getPrice is not defined
+
+```
+
+Zakres blokowy dotyczy wyłącznie deklaracji z użyciem słowa const lub let.
+
+```javascript
+{ 
+  const discount = 0.2; 
+  function getPrice(price) { 
+    return price * (1 - discount); 
+  } 
+  getPrice(100); // 80 
+}
+getPrice(200); // 160
+
+```
+
+Deklaracja funkcji podlega tzw. hoistingowi i jest przenoszona do zakresu globalnego, ale posiada ona dostęp do 
+wartości stałej `discount` poprzez domknięcie (dotyczy zakresu blokowego, a nie funkcyjnego).  Funkcję `getPrice`
+możemy wywołać poza blokiem.
+
+
+Częściej będziemy używali zakresu blokowego w instrukcjach warunkowych czy pętlach.
+
+```javascript
+function getPrice(price) { 
+  let totalPrice; 
+  if (price > 0) { 
+    const discount = price > 100 ? 0.2 : 0.1; 
+    totalPrice = price * (1 - discount); 
+  } 
+  return totalPrice; 
+} 
+getPrice(100); // 90 
+getPrice(1000); // 800
+
+let counter = 0; 
+for (let i = 0; i < 5; i++) { 
+  counter += i; 
+} 
+counter; // 10
+```
+
+### Funkcje, które od razu się wykonują
+W JS  można stworzyć funkcję wraz z jej natychmiastowym wykonaniem zwane IIFE, czyli *Immediately-Invoked Function Expression*.
+Składnia konstrukcji IIFE: 
+
+```javascript
+(function () {
+ // instrukcje do wykonania 
+})();
+
+(() => {
+ // instrukcje do wykonania 
+})();
+```
+
+Ich najczęstsze wykorzystanie, czyli tzw. wzorzec modułu:
+
+```javascript
+const CustomModule = (function () { 
+  const privateMethod = () => console.log('funkcja prywatna'); 
+  return { 
+    publicFirstMethod: function () { 
+      privateMethod(); 
+      console.log('pierwsza metoda publiczna'); 
+    }, 
+    publicSecondMethod: function () { 
+      console.log('druga metoda publiczna'); 
+    } 
+ }; 
+})();
+
+CustomModule.publicFirstMethod(); 
+// funkcja prywatna 
+// pierwsza metoda publiczna 
+CustomModule.publicSecondMethod(); 
+// druga metoda publiczna 
+CustomModule.privateMethod();
+//Uncaught TypeError : CustomModule.privateMethod is not a function
+```
+
+W momencie tworzenia obiektu CustomModule nasza funkcja IIFE od razu się wykonuje, więc od razu w CustomModule
+zostaje przypisany obiekt z dwiema metodami publicznymi. Cały czas mają one jednak dostęp do privateMethod, mimo
+że funkcja IIFE nie jest już nigdzie wywoływana ( patrz zakres widoczności i domknięcia).
+
+### Parametry domyślne funkcji
+
+```javascript
+function getPriceWithDiscount(price, rebate) { 
+  const discount = 1 - (rebate || 0.1); // domyślnie zakładamy 10% zniżki 
+  return price * discount; 
+}
+getPriceWithDiscount(100, 0.2); // 80 
+getPriceWithDiscount(100); // 90 
+getPriceWithDiscount(100, 0); // 90 źle, naliczyliśmy rabat!
+
+function getPriceWithDiscount(price, rebate) { 
+  const discount = 1 - (typeof rebate === 'undefined' ? 0.1 : rebate); 
+  return price * discount; 
+} 
+getPriceWithDiscount(100, 0); // 100 , teraz wynik jest poprawny 
+getPriceWithDiscount(100, 0.3); // 70 , tutaj również obliczenie jest poprawne
+```
+
+Rozwiązanie ze sprawdzeniem typu wartości można spotkać w wielu starszych projektach i bibliotekach, dlatego warto
+je znać i wiedzieć jakie zagrożenia niesie ze sobą stosowanie alternatywy `OR` zamiast operatora `typeof`.
+
+Określanie wartości domyślnych parametrów funkcji w nowych wersjach JavaScript:
+
+```javascript
+function sum(a, b = 1, c) { 
+  return a + b + c; 
+}
+sum(2, 2, 2); // 6 
+sum(2, 0, 2); // 4 
+sum(2, 2); //  2 + 2 + undefined = 2 + 2 + Number(undefined) = 2 + 2 + NaN = NaN
+sum(2, null, 2); //  2 + Number(null) + 2 = 2 + 0 + 2 = 4
+sum(2, undefined, 2); // 2 + 1 + 2 = 5
+```
+
+Należy uważać przy wywoływaniu takich funkcji i w miejsce parametrów, które chcemy pominąć, wstawiać wartość 
+`undefined`. Gdyby parametr z wartością domyślną był ostatnim parametrem wtedy chcąc skorzystać z wartości domyślnej,
+można po prostu pominąć parametr i wywołać funkcję z wartościami `a` i `b`.
+
+
+
+
+# 8.C. Funkcje
+
+Notatki z kursu ...
+
+
 
 # 9. Klasy
 
