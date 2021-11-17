@@ -193,6 +193,8 @@ Białymi znakami, oprócz zwykłej spacji (\u0020), są również tabulator oraz
 Podziałem wiersza może być znak nowego wiersza, powrót karetki (ang. carriage return) oraz para znaków powrót
 karetki/przejście do następnego wiersza (ang. line feed).
 
+
+
 ## 2.2. Komentarze
 
 Stosowane są dwa rodzaje komentarzy:
