@@ -405,11 +405,11 @@ Przykłady literałów:
 123 - // dodatnia całkowita wartość dziesiętna 123
 123; // ujemna całkowita wartość dziesiętna -123
 012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
-024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
+-024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
 0xff - // dodatnia całkowita wartość szesnastkowa = 255
-0x0f; //ujemna całkowita wartość szesnastkowa. = -15
+-0x0f; //ujemna całkowita wartość szesnastkowa. = -15
 2.12 - //  dodatnia wartość rzeczywista = 2.12
-3.14; // ujemna wartość rzeczywista = -3.14
+-3.14; // ujemna wartość rzeczywista = -3.14
 4.3e3; // dodatnia wartość rzeczywista = 4300
 2.3e-3; // dodatnia wartość rzeczywista = 0.0023
 ```
@@ -425,7 +425,7 @@ W języku JS do przechowywania pojedynczych wartości liczbowych używana jest s
 reprezentować 2 do 64 różnych liczb, czyli 18 kwintylionów (18 z osiemnastoma zerami). Przepełnienie, czyli próba
 zapisania liczby przekraczającej rozmiarem możliwości określonej ilości bitów jest mało prawdopodobne. Za pomocą tych
 bitów musimy też reprezentować liczby ujemne oraz liczby niecałkowite. Toteż jeden bit musi wskazywać znak liczby, a
-nie, które bity muszą przechowywać informację o położeniu punktu dziesiętnego. Z tego powodu największa liczba
+niektóre bity muszą przechowywać informację o położeniu punktu dziesiętnego. Z tego powodu największa liczba
 całkowita, jaką można zapisać, należy do przedziału 9 kwadrylionów (15 zer).
 
 Obliczenia na liczbach całkowitych są dokładne, a na liczbach zmiennoprzecinkowych są obarczone błędami.
@@ -442,8 +442,7 @@ W języku JavaScript liczby dziesiętne zapisuje się w postaci sekwencji cyfr, 
 
 #### Liczby ósemkowe i szesnastkowe
 
-Jeśli liczba zaczyna się cyfrą 0o, jest uznawana za ósemkową, jeśli od 0x za szesnastkową. ES6 zapewnia prefiks `0o`
-(lub 0O) do reprezentowania liczb ósemkowych.
+Jeśli liczba zaczyna się cyfrą 0o, jest uznawana za ósemkową, jeśli od 0x za szesnastkową. ES6 zapewnia prefiks `0o` (lub 0O) do reprezentowania liczb ósemkowych.
 
 ```javascript
 console.log(0o776); // 510
@@ -454,7 +453,7 @@ szesnastkowa jest zwykłą cyfrą z zakresu od 0 do 9 lub literą z zakresu od a
 zakresu od 10 do 15. Poniżej są przedstawione przykładowe literały szesnastkowe:
 
 ```javascript
-0xff; // => 255 = 15*6 + 15
+0xff; // => 255 = 15*16 + 15
 ```
 
 #### Literały binarne
@@ -465,6 +464,10 @@ Z binarną reprezentacji liczby całkowitej możemy skorzystać na dwa sposoby:
 parseInt('111', 2); // 7
 0b111; // 7 (es6) dostępny jest też prefiks OB
 ```
+### 3.2.2. Literały zmiennoprzecinkowe
+
+Do zapisywania literałów zmiennoprzecinkowych wykorzystuje się tradycyjną składnię liczb rzeczywistych, obejmującą część
+całkowitą, następujący po niej symbol dziesiętny i część ułamkową.
 
 #### Literały wykładnicze
 
@@ -474,11 +477,6 @@ przy liczbie 2 w prawo o 3 pozycje. Zapis 2e - 3 oznaczałby, że należy przesu
 ```javascript
 typeof 2.7e-5; // 'number'
 ```
-
-### 3.2.2. Literały zmiennoprzecinkowe
-
-Do zapisywania literałów zmiennoprzecinkowych wykorzystuje się tradycyjną składnię liczb rzeczywistych, obejmującą część
-całkowitą, następujący po niej symbol dziesiętny i część ułamkową.
 
 > **Separatory w literałach liczbowych**
 >
@@ -504,7 +502,6 @@ Math.ceil(0.6); // => 1.0: zaokrąglenie w górę do najbliższej liczby całkow
 Math.floor(0.6); // => 0.0: zaokrąglenie w dół do najbliższej liczby całkowitej.
 Math.abs(-5); // => 5: wartość bezwzględna.
 Math.max(x, y, z); // Wybranie największej wartości.
-
 Math.min(x, y, z); // Wybranie najmniejszej wartości.
 Math.random(); // Liczba pseudolosowa z zakresu 0 <= x < 1.0.
 Math.PI; // π: stosunek obwodu do średnicy koła.
@@ -633,7 +630,7 @@ i `-Infinity`.
 
 Globalna funkcja `isFinite()` zwraca `true`, jeżeli jej argument jest lub może być przekształcony w skończoną liczbę.
 
-### NaN
+### 3.2.4. NaN
 
 Wbrew swojej nazwie „nie-liczba” `NaN` jest specjalną wartością, która także jest liczbą.
 
