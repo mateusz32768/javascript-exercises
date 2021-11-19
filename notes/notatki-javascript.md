@@ -632,8 +632,19 @@ i `-Infinity`.
 
 Globalna funkcja `isFinite()` zwraca `true`, jeżeli jej argument jest lub może być przekształcony w skończoną liczbę.
 
-### 3.2.4. NaN
+„Ujemne” zero jest także nietypową wartością, równą „dodatniemu” zeru (nawet jeżeli użyje się operatora
+ścisłego porównania). Wyjątkiem jest wynik dzielenia:
 
+```javascript
+let zero = 0; // "Zwykłe" zero.
+let negz = -0; // "Ujemne" zero.
+zero === negz // => true: "zwykłe" zero jest równe "ujemnemu" zeru.
+1/zero === 1/negz // => false: Infinity i –Infinity nie są sobie równe.
+```
+
+### 3.2.4. `NaN`
+
+Globalna właściwość `NaN` to wartość reprezentująca `Not-A-Number`.
 Wbrew swojej nazwie „nie-liczba” `NaN` jest specjalną wartością, która także jest liczbą.
 
 ```javascript
@@ -653,10 +664,7 @@ Infinity / Infinity; // NaN
 
 Globalna właściwość `NaN` jest wartością reprezentującą Not-A-Number.
 
-NaN jest właściwością obiektu globalnego. Innymi słowy, jest to zmienna o zasięgu globalnym. Początkowa wartość NaN to
-Not-A-Number - taka sama jak wartość Number.NaN. W nowoczesnych przeglądarkach NaN nie jest konfigurowalną właściwością,
-której nie można zapisywać. Nawet jeśli tak nie jest, unikaj jego zastępowania. Użycie NaN w programie jest raczej
-rzadkie.
+`NaN`jest właściwością obiektu globalnego. Innymi słowy, jest to zmienna o zasięgu globalnym. Początkowa wartość `NaN` to `Not-A-Number` - taka sama jak wartość `Number.NaN`. W nowoczesnych przeglądarkach `NaN` nie jest konfigurowalną właściwością, której nie można zapisywać. Nawet jeśli tak nie jest, unikaj jego zastępowania. Użycie `NaN` w programie jest raczej rzadkie.
 
 Istnieje pięć różnych typów operacji, które zwracają NaN:
 
@@ -687,7 +695,7 @@ valueIsNaN(Number.NaN); // true
 ```
 
 Jednak zwróć uwagę na różnicę między `isNaN()` i `Number.isNaN()`: pierwsza zwróci true, jeśli wartość jest
-obecnie `NaN lub jeśli będzie to `NaN` po przekształceniu w liczbę, podczas gdy druga zwróci prawda tylko wtedy, gdy
+obecnie `NaN` lub jeśli będzie to `NaN` po przekształceniu w liczbę, podczas gdy druga zwróci prawda tylko wtedy, gdy
 wartość jest obecnie NaN:
 
 ```javascript
@@ -703,18 +711,174 @@ arr.indexOf(NaN); // -1 (false)
 arr.includes(NaN); // true
 arr.findIndex(n => Number.isNaN(n)); // 2
 ```
-
-### Number.isNaN()
-
-Metoda `Number.isNaN()` określa, czy przekazana wartość to `NaN`, a jej typ to `Number`. Jest to bardziej solidna wersja
-oryginalnej, globalnej `isNaN()`.
-
-### isNaN()
+### 3.2.5. `isNaN()`
 
 Funkcja `isNaN()` określa, czy wartość jest `NaN`, czy nie. Ponieważ przymus wewnątrz funkcji `isNaN` może być
 zaskakujący, możesz alternatywnie użyć `Number.isNaN()`.
 
-### Format zmiennoprzecinkowy i błędy zaokrąglenia
+
+**Demo JavaScript: standardowe obiekty wbudowane — `isNaN()`**
+
+```javascript
+function milliseconds(x) {
+  if(isNaN(x)) {
+    return 'Nie liczba!';
+  }
+  return x * 1000;
+}
+
+console.log(milliseconds('100A')); // oczekiwany wynik: "Nie liczba!"
+console.log(milliseconds('0.0314E+2')); // oczekiwany wynik: 3140
+```
+
+#### Składnia
+
+```javascript
+isNaN(value) // value -  Wartość do przetestowania
+// return value - true, jeśli podana wartość to NaN; w przeciwnym razie false.
+```
+
+#### Opis
+W przeciwieństwie do wszystkich innych możliwych wartości w JavaScript nie można użyć operatorów równości (== i ===) do porównania wartości z `NaN` w celu określenia, czy wartość to `NaN`, czy nie, ponieważ zarówno `NaN == NaN`, jak i `NaN === NaN` daje fałsz. Funkcja `isNaN()` zapewnia wygodne sprawdzanie równości względem `NaN`.
+#### Pochodzenie wartości NaN
+
+Wartości `NaN` są generowane, gdy operacje arytmetyczne prowadzą do niezdefiniowanych lub niemożliwych do przedstawienia wartości. Takie wartości niekoniecznie reprezentują warunki przepełnienia. `NaN` wynika również z próby wymuszenia wartości liczbowych wartości nienumerycznych, dla których nie jest dostępna żadna pierwotna wartość liczbowa.
+
+Na przykład dzielenie zera przez zero daje `NaN` — ale dzielenie innych liczb przez zero nie.
+
+#### Mylące zachowanie w szczególnych przypadkach
+
+Od najwcześniejszych wersji specyfikacji funkcji `isNaN()` jej zachowanie w przypadku argumentów nieliczbowych było mylące. Gdy argument funkcji `isNaN()` nie jest typu `Number`, wartość jest najpierw przekształcana w wartość `Number`. Otrzymana wartość jest następnie testowana w celu określenia, czy jest to `NaN`. Tak więc w przypadku liczb nieliczbowych, które po wymuszonym typie liczbowym dają poprawną wartość liczbową inną niż NaN (zwłaszcza pusty ciąg i prymitywy logiczne, które po wymuszenie dają wartości liczbowe zero lub jeden), zwracana wartość `false` może być nieoczekiwana; na przykład pusty ciąg to z pewnością „nie jest liczba".
+
+Zamieszanie wynika z faktu, że termin „nie liczba” ma specyficzne znaczenie dla liczb reprezentowanych jako wartości zmiennoprzecinkowe IEEE-754. Funkcję należy interpretować jako odpowiedź na pytanie, „czy ta wartość, po skojarzeniu z wartością liczbową, jest wartością IEEE-754 „Nie jest liczba”?”
+
+ECMAScript 2015 zawiera funkcję `Number.isNaN()`. `Number.isNaN(x)` to niezawodny sposób sprawdzenia, czy `x` to `NaN`, czy nie. Jednak nawet w przypadku `Number.isNaN` znaczenie `NaN` pozostaje dokładnym znaczeniem liczbowym, a nie „nie liczbą”. 
+
+Alternatywnie, w przypadku braku `Number.isNaN`, wyrażenie `(x != x)` jest bardziej niezawodnym sposobem sprawdzenia, czy zmienna `x` jest `NaN`, czy nie, ponieważ wynik nie podlega fałszywym alarmom, które sprawiają, że `isNaN` jest niewiarygodne.
+
+Wypełnienie dla `isNaN` (polifill wykorzystuje unikalną, nierówną sobie charakterystykę `NaN`):
+
+```javascript
+const isNaN = function(value) {
+    const n = Number(value);
+    return n !== n;
+};
+```
+
+#### Przykłady
+
+```javascript
+isNaN(NaN);       // true
+isNaN(undefined); // true
+isNaN({});        // true
+
+isNaN(true);      // false
+isNaN(null);      // false
+isNaN(37);        // false
+
+// strings
+isNaN('37');      // false: "37" is converted to the number 37 which is not NaN
+isNaN('37.37');   // false: "37.37" is converted to the number 37.37 which is not NaN
+isNaN("37,5");    // true
+isNaN('123ABC');  // true:  parseInt("123ABC") is 123 but Number("123ABC") is NaN
+isNaN('');        // false: the empty string is converted to 0 which is not NaN
+isNaN(' ');       // false: a string with spaces is converted to 0 which is not NaN
+
+// dates
+isNaN(new Date());                // false
+isNaN(new Date().toString());     // true
+
+// This is a false positive and the reason why isNaN is not entirely reliable
+isNaN('blabla');   // true: "blabla" is converted to a number.
+                   // Parsing this as a number fails and returns NaN
+```
+
+#### Przydatne zachowanie w szczególnych przypadkach
+
+Istnieje bardziej zorientowany na użycie sposób myślenia o `isNaN()`: jeśli `isNaN(x)` zwraca wartość false, możesz użyć `x` w wyrażeniu arytmetycznym, nie powodując, że wyrażenie zwraca `NaN`. Jeśli zwróci `true`, `x` spowoduje, że każde wyrażenie arytmetyczne zwróci `NaN`. Oznacza to, że w JavaScript `isNaN(x) == true` jest równoważne x-0 zwracającemu NaN (chociaż w JavaScript x-0 == NaN zawsze zwraca false, więc nie możesz tego przetestować). Właściwie isNaN(x), isNaN(x - 0), isNaN(Number(x)), Number.isNaN(x - 0) i Number.isNaN(Number(x)) zawsze zwracają to samo, a w JavaScript isNaN( x) jest najkrótszą możliwą formą wyrażenia każdego z tych terminów.
+
+Możesz tego użyć, na przykład, aby sprawdzić, czy argument funkcji jest przetwarzalny arytmetycznie (można go używać „jak liczba”), czy też nie i musisz podać wartość domyślną lub coś innego. W ten sposób możesz mieć funkcję, która wykorzystuje pełną wszechstronność zapewnianą przez JavaScript przez niejawną konwersję wartości w zależności od kontekstu.
+
+### 3.2.6. `Number.isNaN()`
+
+Metoda `Number.isNaN()` określa, czy przekazana wartość to `NaN`, a jej typ to `Number`. Jest to bardziej solidna wersja oryginalnej, globalnej `isNaN()`.
+
+
+**JavaScript Demo: `Number.isNaN()`**
+
+```javascript
+function typeOfNaN(x) {
+  if (Number.isNaN(x)) {
+    return 'Number NaN';
+  }
+  if (isNaN(x)) {
+    return 'NaN';
+  }
+}
+
+console.log(typeOfNaN('100F'));
+// expected output: "NaN"
+
+console.log(typeOfNaN(NaN));
+// expected output: "Number NaN"
+
+```
+
+#### Składnia
+
+```javascript
+  Number.isNaN(value)
+```
+
+#### Parametry
+
+`value` Wartość, którą będziemy testować, czy jest wartością `NaN`.
+
+#### Zwracana wartość
+
+`true`, jeśli podana wartość jest `NaN`, a jej typem jest `Number`; w przeciwnym razie, `false`.
+#### Opis
+
+Ze względu na oba operatory równości, == i ===, które przy sprawdzaniu, czy `NaN` to `NaN`, mają wartość `false`, funkcja `Number.isNaN()` stała się konieczna. Ta sytuacja różni się od wszystkich innych możliwych porównań wartości w JavaScript.
+
+W porównaniu z globalną funkcją `isNaN()`, `Number.isNaN()` nie ma problemu z wymuszoną konwersją parametru na liczbę. Oznacza to, że można teraz bezpiecznie przekazywać wartości, które normalnie byłyby konwertowane na `NaN`, ale w rzeczywistości nie są taką samą wartością jak `NaN`. Oznacza to również, że tylko wartości typu `number`, które są również `NaN`, zwracają `true`.
+
+#### Przykłady
+
+```javascript
+Number.isNaN(NaN);        // true
+Number.isNaN(Number.NaN); // true
+Number.isNaN(0 / 0);      // true
+
+// Gdybyśmy użyli funkcji isNaN(), te przykłady zwróciłby true
+Number.isNaN('NaN');      // false
+Number.isNaN(undefined);  // false
+Number.isNaN({});         // false
+Number.isNaN('blabla');   // false
+
+// Wszystkie zwracają false
+Number.isNaN(true);
+Number.isNaN(null);
+Number.isNaN(37);
+Number.isNaN('37');
+Number.isNaN('37.37');
+Number.isNaN('');
+Number.isNaN(' ');
+
+```
+
+#### Polyfill
+
+Poniższe działanie działa, ponieważ NaN jest jedyną wartością w JavaScript, która nie jest sobie równa.
+
+```javascript
+Number.isNaN = Number.isNaN || function isNaN(input) {
+    return typeof input === 'number' && input !== input;
+}
+
+```
+
+### 3.2.7. Format zmiennoprzecinkowy i błędy zaokrąglenia
 
 Liczb rzeczywistych jest nieskończenie wiele, ale w języku JavaScript można w formacie zmiennoprzecinkowym wyrazić ich
 skończoną liczbę. Oznacza to, że w kodzie liczby rzeczywiste są często przybliżeniami faktycznych wartości.
@@ -733,10 +897,9 @@ y === 0.1; // => true: .2–.1 jest równe .1
 Z powodu błędów zaokrąglenia różnica między przybliżeniami liczb 0,3 i 0,2 nie jest dokładnie taka sama jak między
 przybliżeniami 0,2 i 0,1.
 
-Jeżeli przybliżenie zmiennoprzecinkowe jest źródłem problemów w kodzie, należy stosować skalowalne liczby całkowite. Na
-przykład wartości monetarne należy wyrażać w groszach, a nie w ułamkach złotego.
+Jeżeli przybliżenie zmiennoprzecinkowe jest źródłem problemów w kodzie, należy stosować skalowalne liczby całkowite. Na przykład wartości monetarne należy wyrażać w groszach, a nie w ułamkach złotego.
 
-### Typ BigInt — dowolnie duże liczby całkowite
+### 3.2.8. Typ BigInt — dowolnie duże liczby całkowite
 
 Typ liczbowy `BigInt` wprowadzono w wersji ES2020. Jest typem liczb całkowitych. Został wprowadzony do języka JavaScript
 głównie po to, aby można było wyrażać całkowite liczby 64-bitowe, niezbędne do uzyskania kompatybilności z innymi
@@ -791,31 +954,98 @@ Natomiast operatory porównania można stosować z różnymi typami liczbowymi.
 Operatory bitowe zazwyczaj poprawnie działają z operandami typu `BigInt`. Jednak żadnej funkcji obiektu `Math` nie można
 stosować z liczbami typu `BigInt`.
 
-## 3.3. Tekst
+### 3.2.9. Daty i czas 
 
+Klasa `Date`, służy do wyrażania i wykonywania działań na liczbach reprezentujących datę i czas. Wartość typu `Date` jest obiektem posiadającym liczbową reprezentację wyrażającą liczbę milisekund, jakie upłynęły od 1 stycznia 1970 r.:
+
+```javascript
+let timestamp = Date.now(); // Aktualny czas jako znacznik (liczba).
+let now = new Date(); // Aktualny czas jako obiekt typu Date.
+let ms = now.getTime(); // Przekształcenie daty w znacznik czasu.
+let iso = now.toISOString(); // Przekształcenie daty w ciąg znaków w standardowym formacie.
+
+
+// Wyniki z dnia 18.11.2021
+console.log(timestamp); // 1637207038048
+console.log(now); // 2021-11-18T03:43:58.048Z
+
+console.log(ms); //1637207038048
+console.log(iso); // 2021-11-18T03:43:58.048Z
+
+console.log(now.getDate()); // 4
+console.log(now.getMonth()); // 10
+console.log(now.getFullYear()); // 2021
+
+if(now.getDay() === 4){
+  console.log('Czwartek');
+}
+```
+
+## 3.3. Tekst
 <!--TODO-->
 
-Typem reprezentującym tekst jest ciąg znaków. Jest to niemutowalna sekwencja 16-bitowych wartości wyrażających zazwyczaj
+> **Unicode**
+
+>Unicode opracowano w celu pozbycia się ograniczeń tradycyjnych systemów kodowania. Przed powstaniem
+systemu Unicode istniało wiele różnych standardów: ASCII w USA, ISO 8859-1 dla języków
+krajów Europy Zachodniej, ISO-8859-2 dla języków środkowo- i wschodnioeuropejskich
+(w tym polskiego), KOI-8 dla języka rosyjskiego, GB18030 i BIG-5 dla języka chińskiego
+itd. Powoduje to dwa problemy: jeden kod może oznaczać różne znaki w różnych systemach
+kodowania, a poza tym kody znaków w językach o dużej liczbie znaków mają różne rozmiary
+— niektóre często używane znaki zajmują jeden bajt, a inne potrzebują dwóch bajtów.
+Unicode ma za zadanie rozwiązać te problemy. Kiedy w latach osiemdziesiątych XX wieku
+podjęto próby unifikacji, wydawało się, że dwubajtowy stały kod był więcej niż wystarczający
+do zakodowania znaków używanych we wszystkich językach świata. W 1991 roku światło
+dzienne ujrzał Unicode 1.0. Wykorzystywana w nim była prawie połowa wszystkich dostępnych
+65 536 kodów. Java od samego początku używała znaków 16-bitowego systemu Unicode,
+co dawało jej dużą przewagę nad innymi językami programowania, które stosowały znaki
+ośmiobitowe.
+Niestety z czasem nastąpiło to, co było nieuchronne. Unicode przekroczył liczbę 65 536
+znaków, głównie z powodu dodania bardzo dużych zbiorów ideogramów używanych w językach
+chińskim, japońskim i koreańskim. Obecnie 16-bitowy typ char nie wystarcza do opisu
+wszystkich znaków Unicode.
+Współrzędna kodowa znaku (ang. code point) to wartość związana ze znakiem w systemie kodowania. W standardzie Unicode współrzędne
+kodowe znaków są zapisywane w notacji szesnastkowej i są poprzedzane łańcuchem U+, np.
+współrzędna kodowa litery A to U+0041. Współrzędne kodowe znaków systemu Unicode są
+pogrupowane w 17 przestrzeniach numeracyjnych (ang. code planes). Pierwsza z nich, nazywana
+podstawową przestrzenią wielojęzyczną (ang. Basic Multilingual Plane — BMP),
+zawiera klasyczne znaki Unicode o współrzędnych kodowych z przedziału od U+0000 do
+U+FFFF. Pozostałe szesnaście przestrzeni o współrzędnych kodowych znaków z przedziału
+od U+10000 do U+10FFFF zawiera znaki dodatkowe (ang. supplementary characters).
+Kodowanie UTF-16 to sposób reprezentacji wszystkich współrzędnych kodowych znaków
+za pomocą kodów o różnej długości. Znaki w podstawowej przestrzeni są 16-bitowymi
+wartościami o nazwie jednostek kodowych (ang. code units). Znaki dodatkowe są kodowane
+jako kolejne pary jednostek kodowych. Każda z wartości należących do takiej pary należy do
+zakresu 2048 nieużywanych wartości BMP, zwanych obszarem surogatów (ang. surrogates
+area) — zakres pierwszej jednostki kodowej to U+D800 – U+DBFF, a drugiej U+DC00 – U+DFFF.
+Jest to bardzo sprytne rozwiązanie, ponieważ od razu wiadomo, czy jednostka kodowa reprezentuje
+jeden znak, czy jest pierwszą lub drugą częścią znaku dodatkowego. Na przykład
+matematyczny symbol oznaczający zbiór liczb całkowitych ma współrzędną kodową
+U+1D56B i jest kodowany przez dwie jednostki kodowe U+D835 oraz U+DD6B (opis algorytmu kodowania
+UTF-16 można znaleźć na stronie https://tools.ietf.org/html/rfc2781).
+
+Typem reprezentującym tekst jest **ciąg znaków**. Jest to niemutowalna sekwencja 16-bitowych wartości wyrażających zazwyczaj
 znaki Unicode. Długość ciągu jest liczbą składających się na niego 16-bitowych wartości. Ciągi, podobnie jak tablice, są
 indeksowane od zera. Pusty ciąg ma długość równą 0. W języku JavaScript nie ma specjalnej wartości reprezentującej
 pojedynczy element ciągu. Jest nim po prostu ciąg o długości 1.
 
 > **Znaki, kody i ciągi w JavaScript**
 >
-> Stosowany jest zestaw znaków Unicode kodowanych w standardzie UTF-16, a ciągi znaków są >sekwencjami 16-bitowych liczb
-> bez znaku.
+> Stosowany jest zestaw znaków Unicode kodowanych w standardzie UTF-16, a ciągi znaków są 
+> sekwencjami 16-bitowych liczb bez znaku.
 >
-> Kody najczęściej stosowanych znaków Unicode (tworzących tzw. podstawową płaszczyznę >wielojęzykową) zapisuje się za
-> pomocą 16 bitów i można je reprezentować w postaci pojedynczych >elementów ciągu. Inne znaki Unicode koduje się w
+> Kody najczęściej stosowanych znaków Unicode (tworzących tzw. podstawową płaszczyznę 
+> wielojęzykową) zapisuje się za pomocą 16 bitów i można je reprezentować w postaci pojedynczych 
+> elementów ciągu. Inne znaki Unicode koduje się w
 > postaci sekwencji par 16-bitowych (tzw. par zastępczych — ang. surrogate pair).
-> Oznacza to, że pojedynczy znak Unicode może być reprezentowany przez ciąg znaków od długości
+> Oznacza to, że pojedynczy znak Unicode może być reprezentowany przez ciąg znaków o długości
 > 2 (dwie wartości 16-bitowe):
 
 ```javascript
 let euro = '€';
-let love = '';
+let love = '💙';
 euro.length; // => 1: ten znak składa się z jednego 16-bitowego elementu.
-love.length; // => 2: kod UTF-16 znaku  to "\ud83d\udc99”.
+love.length; // => 2: kod UTF-16 znaku 💙 to "\ud83d\udc99".
 ```
 
 Począwszy od wersji ES6, ciągi znaków są iterowalne. Za pomocą pętli for/of lub operatora ... można iterować
@@ -831,16 +1061,13 @@ Aby umieścić ciąg znaków w kodzie JavaScript, należy ująć go w apostrofy,
 '3.14';
 'name="my form"';
 'Lubisz książki wydawnictwa Helion?';
-' \u03a0 oznacza stosunek obwodu koła do jego średnicy';
+'\u03a0 oznacza stosunek obwodu koła do jego średnicy';
 '&Pi; oznacza stosunek obwodu koła do jego średnicy'`Powiedział: "powiedziała mi 'cześć'".`;
 ```
 
-W starszych wersjach języka JavaScript literał znakowy musiał być umieszczany w jednym wierszu. Stosowano konkatenację
-ciągów, aby uzyskać jeden długi.
+W starszych wersjach języka JavaScript literał znakowy musiał być umieszczany w jednym wierszu. Stosowano konkatenację ciągów, aby uzyskać jeden długi.
 
-Literał znakowy może zajmować kilka wierszy — na końcu wiersza należy umieścić lewy ukośnik (\). Znaki umieszczone po
-ukośnikach, jak również podziały wierszy nie stanowią literału znakowego. Aby w literale ujętym w apostrofy lub
-cudzysłowy umieścić podział wiersza, należy użyć sekwencji `\n`.
+Literał znakowy może zajmować kilka wierszy — na końcu wiersza należy umieścić lewy ukośnik (\). Znaki umieszczone po ukośnikach, jak również podziały wierszy nie stanowią literału znakowego. Aby w literale ujętym w apostrofy lub cudzysłowy umieścić podział wiersza, należy użyć sekwencji `\n`.
 
 W przypadku użycia grawisów podziały wierszy wchodzą w skład literału:
 
@@ -850,15 +1077,15 @@ W przypadku użycia grawisów podziały wierszy wchodzą w skład literału:
 // Jednowierszowy ciąg zapisany w trzech wierszach:
 'Jeden\
 długi\
-wiersz.' // Dwuwierszowy ciąg zapisany w dwóch wierszach:
-  `Znak podziału umieszczony na końcu tego wiersza
+wiersz.'
+// Dwuwierszowy ciąg zapisany w dwóch wierszach:
+`Znak podziału umieszczony na końcu tego wiersza
 jest częścią tego ciągu znaków.`;
 ```
 
 Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScript jednego stylu, a w HTML innego.
 
 ```html
-
 <button onclick="alert('Dziękuję')">Kliknij tutaj</button>
 ```
 
@@ -867,8 +1094,7 @@ Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w J
 Lewy ukośnik `(\)` w połączeniu z następującym po nim znakiem reprezentuje znak, którego nie można wyrazić w inny
 sposób. Na przykład `\n` jest sekwencją ucieczki reprezentującą podział wiersza.
 
-Innym przykładem jest sekwencja `\'` reprezentująca apostrof. Stosuje się ją wtedy, gdy w literale ujętym w apostrofy
-trzeba umieścić inny apostrof.
+Innym przykładem jest sekwencja `\'` reprezentująca apostrof. Stosuje się ją wtedy, gdy w literale ujętym w apostrofy trzeba umieścić inny apostrof.
 
 _Tabela. Sekwencje ucieczki w JavaScript_
 
@@ -881,9 +1107,9 @@ _Tabela. Sekwencje ucieczki w JavaScript_
 | \v        | Tabulator pionowy (\u000B)                                                                                                              |
 | \f        | Wysunięcie arkusza papieru (\u000C)                                                                                                     |
 | \r        | Powrót karetki (\u000D)                                                                                                                 |
-| \"        | Cudzysłów (\u0022)                                                                                                                      |
-| \'        | Apostrof (\u0027)                                                                                                                       |
-| \\        | Lewy ukośnik (\u005C)                                                                                                                   |
+| \\"        | Cudzysłów (\u0022)                                                                                                                      |
+| \\'        | Apostrof (\u0027)                                                                                                                       |
+| \\\       | Lewy ukośnik (\u005C)                                                                                                                   |
 | \xnn      | Znak Unicode zapisany za pomocą dwóch cyfr szesnastkowych nn                                                                            |
 | \unnnn    | Znak Unicode zapisany za pomocą czterech cyfr szesnastkowych nn                                                                         |
 | \u{n}     | Znak Unicode zapisany za pomocą od jednej do sześciu cyfr szesnastkowych nn <br>(z zakresu od `0` do `10FFFF` w wersji ES6 lub nowszej) |
@@ -984,16 +1210,91 @@ s[s.length - 1]; // => "!"
 
 ### 3.3.4. Literały szablonowe
 
-<!-- TODO -->
+Począwszy od wersji ES6 literały znakowe można definiować za pomocą grawisów:
+
+```javascript
+let s = `Witaj, świecie!`;
+```
+
+W zdefiniowanym w ten sposób **literale szablonowym** można umieszczać dowolne wyrażenia.
+
+```javascript
+let name = "Andrzej";
+let greeting = `Cześć, ${ name }.`; // greeting == "Cześć, Andrzej."
+```
+
+Wszystko, co znajduje się między znakami `${ i }`, jest interpretowane jako wyrażenie JavaScript,
+a wszystko poza nawiasami klamrowymi jako zwykły tekst. Interpreter wylicza wynik wyrażenia
+zawartego w nawiasach, przekształca go w ciąg znaków i umieszcza w szablonie. Znak dolara, nawiasy
+i wszystko, co się wewnątrz nich znajduje, jest usuwane.
+
+Szablon może zawierać dowolną liczbę wyrażeń, może zawierać sekwencje ucieczki, podobnie
+jak zwykły ciąg, jak również można go zapisywać w wielu wierszach bez stosowania specjalnych
+znaków. Poniższy literał szablonowy zawiera cztery wyrażenia, sekwencję ucieczki Unicode i przynajmniej
+cztery podziały wiersza (wyrażenia również mogą zawierać tego rodzaju znaki):
+
+```javascript
+let errorMessage = `\
+\u2718 Test pliku ${filename}:${linenumber}:
+${exception.message}
+Ślad stosu:
+${exception.stack}
+`;
+```
+
+Lewy ukośnik znajdujący się na końcu pierwszego wiersza powoduje pominięcie podziału wiersza.
+
+#### Oznakowane literały szablonowe
+
+Przydatną funkcjonalnością literału szablonowego, jest możliwość
+umieszczania przed otwierającym grawisem funkcji (czyli „znacznika”), której jest przekazywany
+tekst wraz z zawartymi w nim wyrażeniami. Zawartością takiego „oznakowanego” literału szablonowego
+jest wynik zwrócony przez daną funkcję. Funkcjonalność tę wykorzystuje się na przykład
+w celu zastosowania sekwencji ucieczki HTML i SQL przed umieszczeniem wartości w tekście.
+
+Wbudowany znacznik: funkcja `String.raw()` zwraca tekst umieszczony wewnątrz grawisów, zawierający nieprzetworzone sekwencje ucieczki:
+
+```javascript
+`\n`.length // => 1: ten ciąg składa się z jednego znaku podziału wiersza.
+String.raw`\n`.length // => 2: ciąg składający się z lewego ukośnika i litery n.
+```
+
+W tym szczególnym przypadku grawisy zastępują parę nawiasów.
+
+Funkcje znacznikowe nie muszą zwracać ciągów znaków i można je stosować w charakterze konstruktorów definiujących
+nową składnię języka.
 
 ### 3.3.5. Porównywanie ciągu znaków ze wzorcem
 
-<!-- TODO -->
+Typ danych zwany **wyrażeniem regularnym** służy do definiowania wzorca i porównywania z nim ciągów znaków. Ze względu na podobieństwo jego składni do liczb i tekstów jest traktowany jako typ podstawowy mimo iż nim nie jest.
+
+Tekst umieszczony pomiędzy ukośnikami definiuje **literał wyrażenia regularnego**. Po drugim ukośniku można umieścić jeden lub więcej znaków modyfikujących znaczenie wyrażenia, na przykład:
+
+```javascript
+//Wyrażenia sprawdzające
+
+/^HTML/;    //czy pierwszym znakiem ciągu jest litera H, T, M lub L.
+
+/[1-9][0-9]*/;    //czy ciąg zawiera podciąg składający się z przynajmniej jednej cyfry.
+
+/\bjavascript\b/i;    //czy ciąg zawiera podciąg "javascript". Wielkość liter nie ma znaczenia.
+```
+
+Obiekt wyrażenia regularnego ma swoje metody. Oprócz tego obiekt ciągu zawiera metody stosujące wyrażenia regularne jako argumenty:
+
+```javascript
+let text = "test: 1, 2, 3";   //Przykładowy tekst.
+let pattern = /\d+/g;   //Sprawdzenie, czy ciąg zawiera przynajmniej jedną cyfrę.
+pattern.test(text)      //=> true: ciąg jest zgodny ze wzorcem.
+text.search(pattern)    //=> 6: pozycja pierwszego zgodnego podciągu.
+text.match(pattern)     //=> ["1", "2", "3"]: tablica zawierająca wszystkie zgodne podciągi.
+text.replace(pattern, "#")   //=> "test: #, #, #"
+text.split(/\D+/)         //=> ["","1","2","3"]: podział ciągu wg znaków innych niż cyfry.
+```
 
 ## 3.4. Wartości logiczne
 
-Typ logiczny reprezentuje prawdę lub fałsz, włączenie lub wyłączenie, potwierdzenie lub zaprzeczenie. Są tylko dwie
-wartości tego typu, reprezentowane za pomocą zarezerwowanych słów `true` i `false`.
+Typ logiczny reprezentuje prawdę lub fałsz i zawiera  dwie wartości reprezentowane za pomocą zarezerwowanych słów `true` i `false`.
 
 Wartość logiczna jest zazwyczaj wynikiem operacji porównania, na przykład:
 
@@ -1035,14 +1336,10 @@ wartość logiczna false:
 ```javascript
 undefined;
 null;
-0 - 0;
+0 
+-0;
 NaN;
-(''); // Pusty ciąg znaków.
-undefined;
-null;
-0 - 0;
-NaN;
-(''); // Pusty ciąg znaków.
+""; // Pusty ciąg znaków.
 ```
 
 Wszystkie inne wartości, włącznie z obiektami i tablicami, można przekształcić i traktować jak wartość logiczną `true`.
@@ -1167,18 +1464,18 @@ Symbol.keyFor(t) // => "shared"
 
 ## 3.6A Symbole wg mdn
 
-Symbol to wbudowany obiekt, którego konstruktor zwraca prymityw symbolu — zwany również wartością Symbol lub po prostu
+`Symbol` to wbudowany obiekt, którego konstruktor zwraca prymityw symbolu — zwany również wartością `Symbol` lub po prostu
 symbolem — który na pewno jest unikalny. Symbole są często używane do dodawania unikalnych kluczy właściwości do
 obiektu, które nie będą kolidować z kluczami, które jakikolwiek inny kod może dodać do obiektu i które są ukryte przed
 jakimikolwiek mechanizmami, których zwykle używa inny kod, aby uzyskać dostęp do obiektu. Umożliwia to formę słabej
 enkapsulacji lub słabą formę ukrywania informacji.
 
-Każde wywołanie Symbol () gwarantuje zwrócenie unikalnego symbolu. Każde wywołanie Symbol.for ("key") zawsze zwróci ten
-sam Symbol dla danej wartości "key". Gdy Symbol.for ("klucz") jest wywoływany, jeśli Symbol z podanym kluczem można
-znaleźć w globalnym rejestrze Symboli, zwracany jest ten Symbol. W przeciwnym razie tworzony jest nowy Symbol, dodawany
+Każde wywołanie `Symbol()` gwarantuje zwrócenie unikalnego symbolu. Każde wywołanie `Symbol.for ("key")` zawsze zwróci ten
+sam Symbol dla danej wartości `"key"`. Gdy `Symbol.for ("klucz"`) jest wywoływany, jeśli `Symbol` z podanym kluczem można
+znaleźć w globalnym rejestrze Symboli, zwracany jest ten `Symbol`. W przeciwnym razie tworzony jest nowy `Symbol`, dodawany
 do globalnego rejestru Symboli pod danym kluczem i zwracany.
 
-Aby utworzyć nowy prymitywny Symbol, piszesz Symbol () z opcjonalnym ciągiem jako jego opisem:
+Aby utworzyć nowy prymitywny `Symbol`, piszesz `Symbol()` z opcjonalnym ciągiem jako jego opisem:
 
 ```javascript
 let sym1 = Symbol()
@@ -1186,7 +1483,7 @@ let sym2 = Symbol('foo')
 let sym3 = Symbol('foo')
 ```
 
-Powyższy kod tworzy trzy nowe Symbole. Zauważ, że Symbol ("foo") nie zmienia ciągu "foo" na Symbol. Za każdym razem
+Powyższy kod tworzy trzy nowe Symbole. Zauważ, że `Symbol ("foo")` nie zmienia ciągu `"foo"` na Symbol. Za każdym razem
 tworzy nowy Symbol:
 
 ```javascript
@@ -1203,7 +1500,7 @@ Uniemożliwia to autorom tworzenie jawnego obiektu opakowującego Symbol zamiast
 zaskakujące, ponieważ ogólnie możliwe jest tworzenie jawnych obiektów opakowujących wokół pierwotnych typów danych (na
 przykład `new Boolean`, `new String` i `new Number`).
 
-Jeśli naprawdę chcesz utworzyć obiekt opakowujący symbol, możesz użyć funkcji Object ():
+Jeśli naprawdę chcesz utworzyć obiekt opakowujący symbol, możesz użyć funkcji `Object()`:
 
 ```javascript
 let sym = Symbol('foo')
@@ -1220,7 +1517,7 @@ użyj metod `Symbol.for()` i `Symbol.keyFor()` do ustawiania i pobierania symbol
 
 ### 3.6.2. Znajdowanie właściwości symbolu na obiektach
 
-Metoda `Object.getOwnPropertySymbols()` zwraca tablicę symboli i pozwala znaleźć właściwości Symbol na danym obiekcie.
+Metoda `Object.getOwnPropertySymbols()` zwraca tablicę symboli i pozwala znaleźć właściwości `Symbol` na danym obiekcie.
 Zauważ, że każdy obiekt jest inicjowany bez własnych właściwości Symbol, więc ta tablica będzie pusta, chyba że ustawisz
 właściwości Symbol na obiekcie.
 
@@ -1228,7 +1525,7 @@ właściwości Symbol na obiekcie.
 
 Tworzy nowy obiekt Symbol. Jest niekompletny jako konstruktor, ponieważ nie obsługuje składni `new Symbol()`.
 
-Konstruktor `Symbol()` tworzy nowy obiekt Symbol (zwraca wartość typu symbol), ale jest niekompletny jako konstruktor,
+Konstruktor `Symbol()` tworzy nowy obiekt `Symbol` (zwraca wartość typu symbol), ale jest niekompletny jako konstruktor,
 ponieważ nie obsługuje składni
 `new Symbol()` i nie jest przeznaczony do tworzenia podklas. Może być używany jako wartość klauzuli extends definicji
 klasy, ale super wywołanie spowoduje wyjątek.
@@ -1241,7 +1538,7 @@ Symbol(description) // description - A string. Opis symbolu, którego można uż
 // nie do uzyskania dostępu do samego symbolu
 ```
 
-## 3.7. Obiekt globalny <!--TODO-->
+## 3.7. Obiekt globalny
 
 Obiekt globalny jest to zwykły obiekt, którego właściwości są globalnymi identyfikatorami. Interpreter JavaScript zaraz
 po uruchomieniu (lub przeglądarka po załadowaniu strony) tworzy nowy obiekt globalny z początkowym zestawem właściwości
