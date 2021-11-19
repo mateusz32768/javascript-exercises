@@ -2215,7 +2215,8 @@ Inicjator tablicy jest listą wyrażeń oddzielonych przecinkami, umieszczoną w
 inicjatora jest nowa tablica elementów zainicjowanych wynikami oddzielonych przecinkami wyrażeń.
 
 ```javascript
-[][(1 + 2, 3 + 4)]; // Pusta tablica. Brak wyrażeń wewnątrz nawiasów oznacza, że tablica nie ma elementów. // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
+[]; // Pusta tablica. Brak wyrażeń wewnątrz nawiasów oznacza, że tablica nie ma elementów.
+[1 + 2, 3 + 4];  // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
 ```
 
 Poszczególne wyrażenia inicjatora tablicy mogą być inicjatorami innych tablic:
@@ -2417,6 +2418,33 @@ Operatory są stosowane w wyrażeniach arytmetycznych, porównujących, logiczny
 | =                                                         | Przypisanie wartości zmiennej lub właściwości       | P | 2 | l-wartość, dowolny → dowolny                          |
 | \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P | 2 | l-wartość, dowolny → dowolny                          |
 | ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L | 2 | dowolny, dowolny → dowolny                            |
+
+Większość operatorów zapisuje się zapomocą znaków specjalnych, np. + lub =. Niektóre są słowami kluczowymi jak `delete` lub `instanceof`
+
+### 4.7.1. Liczba operandów (arność)
+Większość operatorów jest **dwuargumentowych**. Łączą one dwa wyrażenia w jedno złożone. Są też operatory **jednoargumentowe** przekształcające pojedyńcze wyrażenie w inne, bardziej złożone. Jest jeszcze operator **trójargumentowy** `?:` zwany warunkowym, łączący trzy wyrażenia w jedno.
+
+### 4.7.2. Typy operatorów i wyników
+
+Niektóre operatory działają na wartościach dowolnych, jednak większość wymaga określonych typów jak i określony jest zwracany wynik.
+
+Operatory konwertują typy operandów odpowiednio do wymagań, toteż takie wyrażenie jak `"3" * "4"` jest poprawne w JS, ponieważ operandy mogą bć przekształcone w liczby, a operator mnożenia wymaga liczb.
+
+Każda wartość jest w JS jest "prawdziwa" lub "fałszywa", zatem operatory logiczne działają na wartościach wszystkich typów.
+
+Niektóre operatory działają różnie w zależności od typów operatorów. Np. operator dodawania, dodaje wartości liczbowe, a wartości znakowe łączy. Operatory porównania skolei stosują porządek liczbowy lub alfabetyczny.
+
+Operatory przypisania i kilka innych wymagają operandu typy `l-wartość` co oznacza "poprawne wyrażenie znajdujące się lewej stronie operatora przypisania". W JS *l-wartościami* są zmienne, właściwości obiektów i elementy tablic.
+
+### 4.7.3. Efekty uboczne operatorów
+Niektóre wyrażenia wywołują **efekty uboczne** tzn. wpływają na wyniki wyliczeń, które będą wykonywane w przyszłości.
+Najlepszym przykładem jest operator przypisania ale także operatory inkremantacji ++ i dekrementacji --
+
+### 4.7.4. Priorytety operatorów
+
+
+
+
 
 ## 4.9. Wyrażenia relacyjne
 
