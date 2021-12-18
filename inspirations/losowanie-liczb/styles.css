@@ -1,0 +1,42 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  font-size: 24px;
+  margin: 30px;
+  padding: 15px;
+  background-color: rgb(98, 87, 201);
+  color: white;
+  border: 2px solid white;
+  border-radius: 7%;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: rgb(91, 37, 240);
+  transform: scale(01.1);
+  cursor: pointer;
+}
+
+.numbers {
+  width: 80vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.odd,
+.even {
+  width: 35vw;
+  height: 50vh;
+  background-color: rgb(219, 214, 214);
+  padding: 10px;
+  border: 2px solid black;
+  box-shadow: 3px 3px 10px black;
+  overflow: auto;
+}
