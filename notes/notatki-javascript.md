@@ -2959,6 +2959,35 @@ let surname = book?.author?.surname;
 
 ### 6.10.4. Operator rozciągania
 
+Od wersji języka ES2018 można kopiować właściwości istniejącego obiektu do nowego, umieszczając w literale operator 
+rozciągania (...);
+
+```javascript
+const position = { x: 10, y: 20 };
+const dimension = { width: 100, height: 75 };
+const rect = { ...position, ...dimension };
+
+console.log(rect.x + rect.y + rect.width + rect.height);
+```
+
+Należy pamiętać, że nie jest to operator w ścisłym tego słowa znaczeniu, gdyż jest to składnia, którą
+można stosować tylko w literałach obiektowych.
+
+Jeśli obiekty rozciągany i docelowy mają właściowści o takich samych nazwach, przyjmowana jest wartość tej drugiej.
+
+```javascript
+const obj = { id: 100 };
+const pObj = { id: 111, ...obj };
+console.log(pObj.id); // => 100, obiekt obj nadpisuje właściwość
+
+const qObj = { ...obj, x: 200 }; //
+console.log(qObj.x); // => 200, teraz właściwość obj zostaje nadpisana
+
+const objOne = Object.create({ x: 303 });
+const pObjOne = { ...objOne };
+console.log(pObjOne.x); // => undefined, gdyż operator rozciąga tylko własne właściwości
+```
+
 ### 6.10.5. Uproszczone definiowanie metod
 
 Funkcja zdefiniowana jako właściwość obiektu nosi nazwę **metody**. W wersjach starszych niż ES6 metody definiowało się

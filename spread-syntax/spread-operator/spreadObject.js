@@ -4,6 +4,10 @@ const kowalski = {
   job: 'programmer',
 };
 
+for (const prop in kowalski) {
+  console.log(`${prop}:`, kowalski[prop]);
+}
+
 const kowalskiClone = { ...kowalski };
 
 for (const key in kowalskiClone) {
