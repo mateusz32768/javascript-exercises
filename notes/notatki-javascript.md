@@ -1,11 +1,11 @@
 # 1. Wprowadzenie do języka JavaScript
 
 JavaScript jest stosowany w ogromnej większości stron internetowych, a wszystkie nowoczesne przeglądarki posiadają
-interpreter tego języka. Dzięki platformie Node.js, może być stosowany także w aplikacjach serverowych. Wszystko 
+interpreter tego języka. Dzięki platformie Node.js, może być stosowany także w aplikacjach serverowych. Wszystko
 to sprawia, że jest to w tej chwili najpopularniejszy język programowania.
 
-JavaScript jest wysokopoziomowym, dynamicznym, interpretowanym językiem, przygotowanym do obiektowego i 
-funkcjonalnego kodowania. Typy zmiennych nie są w nim określone. 
+JavaScript jest wysokopoziomowym, dynamicznym, interpretowanym językiem, przygotowanym do obiektowego i
+funkcjonalnego kodowania. Typy zmiennych nie są w nim określone.
 
 Każdy język, aby można było go używać, musi posiadać standardową bibliotekę, umożliwiającą kodowanie
 podstawowych operacji, takich jak pobieranie i zwracanie danych.
@@ -16,10 +16,10 @@ i zwracaniem danych. Za tego rodzaju operacje (jak również realizację bardzie
 na przykład obsługę sieci, dysków i grafiki) jest odpowiedzialne „środowisko gospodarza”, w którym stosowany
 jest JavaScript.
 
-Od początku takim środowiskiem była przeglądarka, która do dziś jest najczęściej stosowanym środowiskiem 
+Od początku takim środowiskiem była przeglądarka, która do dziś jest najczęściej stosowanym środowiskiem
 uruchomieniowym kodu napisanego w JavaScript.
 
-Poprzez przeglądarkę kod odbiera dane od użytkownika przekazywane za pomocą myszy i klawiatury, a od 
+Poprzez przeglądarkę kod odbiera dane od użytkownika przekazywane za pomocą myszy i klawiatury, a od
 serwera — za pomocą zapytań HTTP. Zwracanie danych polega na wyświetlaniu informacji zakodowanych w językach HTML i CSS.
 
 **JavaScript — nazwy, wersje i tryby**
@@ -28,7 +28,7 @@ serwera — za pomocą zapytań HTTP. Zwracanie danych polega na wyświetlaniu i
 > (dzisiaj Oracle) znakiem handlowym, reprezentującym implementację stosowaną w przeglądarce Netscape (dzisiaj Mozilla).
 >
 > Autorzy przekazali specyfikację języka stowarzyszeniu ECMA (ang. _European Computer Manufacturers Association_,
-> Europejskie Stowarzyszenie Producentów Komputerów) w celu jej standaryzacji, ale z powodu problemów ze 
+> Europejskie Stowarzyszenie Producentów Komputerów) w celu jej standaryzacji, ale z powodu problemów ze
 > znakiem handlowym otrzymał nazwę ECMAScript (nieoficjalnie JavaScript).
 >
 > W tym opracowaniu nazwa ECMAScript lub skrót ES oznacza standard języka i jego wersje.
@@ -36,24 +36,24 @@ serwera — za pomocą zapytań HTTP. Zwracanie danych polega na wyświetlaniu i
 > W drugiej dekadzie XXI wieku wszystkie przeglądarki obsługiwały głównie wersję nr 5 języka ECMAScript. W tym
 > opracowaniu stanowi ona wzorzec kompatybilności. W 2015 r. pojawiła się wersja ES6 zawierająca ważne nowe
 > funkcjonalności, m.in. klasy i moduły, dzięki którym JavaScript przekształcił się ze zwykłego języka skryptowego w
-> poważny język programowania, przeznaczony do wszelkich zastosowań na szeroką skalę. Kadencja wersji ES6 
+> poważny język programowania, przeznaczony do wszelkich zastosowań na szeroką skalę. Kadencja wersji ES6
 > trwała niecały rok, a kolejne wersje są oznaczane rokiem wydania, tj. ES2016, ES2017, ES2018, ES2019 i ES2020.
 >
 > Ze względu na konieczność zachowania wstecznej kompatybilności, nie można usunąć przestarzałych
 > funkcjonalności, również tych obarczonych błędami. Począwszy od wersji ES5, kod można pisać w tzw. **ścisłym
-> trybie** JavaScript, wolnym od wielu wcześniejszych błędów. Wymagane jest w tym celu użycie dyrektywy 
->`use strict` opisanej w specyfikacji w sekcji §5.6.3.
+> trybie** JavaScript, wolnym od wielu wcześniejszych błędów. Wymagane jest w tym celu użycie dyrektywy
+> `use strict` opisanej w specyfikacji w sekcji §5.6.3.
 >
 > W wersjach ES6 i nowszych samo użycie nowych funkcjonalności powoduje niejawne zastosowanie trybu ścisłego.
 > Na przykład wpisanie słowa kluczowego `class` lub zdefiniowanie modułu sprawia, że kod jest automatycznie
-> przełączany w tryb ścisły i nie można w nim stosować starych, wadliwych funkcjonalności. W niniejszym 
+> przełączany w tryb ścisły i nie można w nim stosować starych, wadliwych funkcjonalności. W niniejszym
 > opracowaniu te funkcjonalności są opisane z wyraźnym zaznaczeniem, że nie są dostępne w trybie ścisłym.
 
 W 2010 r. pojawiło się nowe środowisko gospodarza — **platforma Node**. Od tamtego czasu JavaScript nie jest już
 ograniczony do interfejsów API oferowanych przez przeglądarkę, ponieważ nowa platforma daje mu dostęp do całeg
 systemu operacyjnego, umożliwiając zapisywanie i odczytywanie plików, wysyłanie i odbieranie danych przez sieć, jak
-również wysyłanie i obieranie zapytań HTTP. **Node** jest popularną platformą wykorzystywaną do implementowania 
-serwerów WWW, jak również wygodnego tworzenia prostych skryptów narzędziowych stanowiących alternatywę dla 
+również wysyłanie i obieranie zapytań HTTP. **Node** jest popularną platformą wykorzystywaną do implementowania
+serwerów WWW, jak również wygodnego tworzenia prostych skryptów narzędziowych stanowiących alternatywę dla
 skryptów powłoki.
 
 **Nauka nowego języka programowania nie jest procesem liniowym, więc jego opis też taki nie jest**.
@@ -71,7 +71,7 @@ naprawdę obiekty.
 Poniższy kod definiuje w języku JavaScript ciąg znaków, czyli dowolny tekst ujęty w apostrofy:
 
 ```javascript
-let name = 'Zenon Marek Raubuć';
+let name = 'Zenon Marek Raubuć'
 ```
 
 Zmienna `name` jest w istocie obiektem typu `String` i jako taka ma właściwości (np. `length`) i metody
@@ -83,17 +83,17 @@ jej wywołania.
 Ponieważ name to obiekt typu String, automatycznie ma właściwość o nazwie length, która odpowiada liczbie znaków tekstu.
 
 ```javascript
-let name = 'Zenon Marek Raubuć';
+let name = 'Zenon Marek Raubuć'
 
-const spaces = [];
+const spaces = []
 
 for (let i = 0; i < name.length; i++) {
   if (name[i] === ' ') {
-    spaces.push(true);
+    spaces.push(true)
   }
 }
 
-console.log(`Twoje nazwisko ma ${name.length - spaces.length} liter`);
+console.log(`Twoje nazwisko ma ${name.length - spaces.length} liter`)
 ```
 
 Z notacją kropkową można tworzyć **łańcuch wywołań**, zapewniając dostęp do zagnieżdżonych właściwości i metod:
@@ -114,8 +114,8 @@ To rzadko spotykany rodzaj systemu obiektowego.
 przykład można zdefiniować liczbę, a następnie skonwertować ją na ciąg znaków.
 
 ```javascript
-let balance = 5432.98;
-balance += ' zł'; // => '5432.98 zł'
+let balance = 5432.98
+balance += ' zł' // => '5432.98 zł'
 ```
 
 W językach z **silną kontrolą typów** utworzenie zmiennej typu `balance` musiałoby zostać poprzedzone określeniem jej
@@ -139,7 +139,7 @@ języka wykonującego wszystkie wskazane instrukcje.
 
 Aby testować kod JavaScript, potrzebny jest interpreter. Kilka wierszy kodu najprościej przetestujemy:
 
-1. W narzędziach programistycznych zawartych w każdej nowoczesnej przeglądarce 
+1. W narzędziach programistycznych zawartych w każdej nowoczesnej przeglądarce
    (F12, Ctrl+Shift+I, zakładka Konsola,konsolę można wydzielić jako osobne okno). To tzw. narzędzia deweloperskie
    (DevTools). Każdorazowe wciśnięcie klawisza `Enter` zatwierdza wprowadzone polecenie. Kod wielolinijkowy
    wprowadzimy, przechodząc do następnych linii, np. za pomocą kombinacji klawiszy Shift+Enter.
@@ -163,16 +163,16 @@ $ node plik.js
 ```
 
 `Node.js` jest środowiskiem umożliwiającym uruchamianie skryptów napisanych w JavaScript; może być ono
-zainstalowane np. na serwerze (pozwalając na wykonanie tzw. *back-endu*).
+zainstalowane np. na serwerze (pozwalając na wykonanie tzw. _back-endu_).
 
 Wraz ze środowiskiem `Node.js` otrzymujemy również aplikację konsolową `npm`. Jest to tzw. menadżer pakietów, czyli
-skryptów napisanych w JavaScript (choć nie tylko), które mogą być opublikowane jako oprogramowanie *open-source*
+skryptów napisanych w JavaScript (choć nie tylko), które mogą być opublikowane jako oprogramowanie _open-source_
 i jako takie są dostępne dla każdego.
 
 Możesz również wskazywać konkretne ścieżki dostępowe, np.:
 
 ```
-node ./scripts/script.js
+node ./scripts/destruct.js
 ```
 
 W celu uruchomienia skryptu znajdującego się w folderze scripts, który jest podkatalogiem bieżącego folderu aplikacji.
@@ -192,8 +192,6 @@ wierszy. Dzięki swobodzie stosowania spacji, wcięć i podziałów wierszy moż
 Białymi znakami, oprócz zwykłej spacji (\u0020), są również tabulator oraz niektóre znaki kontrolne ASCII i Unicode.
 Podziałem wiersza może być znak nowego wiersza, powrót karetki (ang. carriage return) oraz para znaków powrót
 karetki/przejście do następnego wiersza (ang. line feed).
-
-
 
 ## 2.2. Komentarze
 
@@ -218,13 +216,13 @@ Komentarzy nie zagnieżdżać się w kodzie.
 Literał to dane umieszczone bezpośrednio w programie.
 
 ```javascript
-12; // Liczba dwanaście.
-1.2; // Liczba jeden i dwie dziesiąte.
-'Witaj, świecie!'; // Ciąg znaków.
-'Cześć'; // Inny ciąg znaków.
-true; // Wartość logiczna.
-false; // Druga wartość logiczna.
-null; // Brak obiektu.
+12 // Liczba dwanaście.
+1.2 // Liczba jeden i dwie dziesiąte.
+;('Witaj, świecie!') // Ciąg znaków.
+;('Cześć') // Inny ciąg znaków.
+true // Wartość logiczna.
+false // Druga wartość logiczna.
+null // Brak obiektu.
 ```
 
 ## 2.4. Identyfikatory i zarezerwowane słowa
@@ -249,11 +247,11 @@ Zasady nadawania nazw:
 Poniższe przykłady są poprawnymi identyfikatorami:
 
 ```javascript
-i;
-nazwa_mojej_zmiennej;
-v13;
-_dummy;
-$str;
+i
+nazwa_mojej_zmiennej
+v13
+_dummy
+$str
 ```
 
 ### 2.4.1 Zarezerwowane słowa
@@ -304,16 +302,16 @@ Sekwencje ucieczki można stosować:
 Znakowi é opowiada sekwencja ucieczki `\u00E`. Sposoby użycia nazwy zmiennej zawierającej ten znak:
 
 ```javascript
-let café = 12; // nazwa zmiennej ze znakiem Unicode
-café; // odwołanie do zmiennej
-café; // inna postać tej samej sekwencji ucieczki
+let café = 12 // nazwa zmiennej ze znakiem Unicode
+café // odwołanie do zmiennej
+café // inna postać tej samej sekwencji ucieczki
 ```
 
 Zapis z nawiasami klamrowymi został wprowadzony w wersji ES6, aby można było stosować znaki Unicode zakodowane za pomocą
 więcej niż 16 bitów, na przykład emoji:
 
 ```javascript
-console.log('\u{1f600}');
+console.log('\u{1f600}')
 ```
 
 Sekwencje ucieczki można również stosować w komentarzach. Ponieważ komentarze są pomijane, są one interpretowane jak
@@ -405,15 +403,15 @@ Przykłady literałów:
 
 ```javascript
 123 - // dodatnia całkowita wartość dziesiętna 123
-123; // ujemna całkowita wartość dziesiętna -123
+  123 // ujemna całkowita wartość dziesiętna -123
 012 - // dodatnia całkowita wartość ósemkowa równa 10 w systemie dziesiętnym
--024; // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
+  -024 // ujemna całkowita wartość ósemkowa równa -20 w systemie dziesiętnym
 0xff - // dodatnia całkowita wartość szesnastkowa = 255
--0x0f; //ujemna całkowita wartość szesnastkowa. = -15
+  -0x0f //ujemna całkowita wartość szesnastkowa. = -15
 2.12 - //  dodatnia wartość rzeczywista = 2.12
--3.14; // ujemna wartość rzeczywista = -3.14
-4.3e3; // dodatnia wartość rzeczywista = 4300
-2.3e-3; // dodatnia wartość rzeczywista = 0.0023
+  -3.14 // ujemna wartość rzeczywista = -3.14
+4.3e3 // dodatnia wartość rzeczywista = 4300
+2.3e-3 // dodatnia wartość rzeczywista = 0.0023
 ```
 
 Liczby całkowite i zmiennoprzecinkowe w JS są typu „number".
@@ -437,9 +435,9 @@ Obliczenia na liczbach całkowitych są dokładne, a na liczbach zmiennoprzecink
 W języku JavaScript liczby dziesiętne zapisuje się w postaci sekwencji cyfr, na przykład:
 
 ```javascript
-0;
-3;
-100000;
+0
+3
+100000
 ```
 
 #### Liczby ósemkowe i szesnastkowe
@@ -447,7 +445,7 @@ W języku JavaScript liczby dziesiętne zapisuje się w postaci sekwencji cyfr, 
 Jeśli liczba zaczyna się cyfrą 0o, jest uznawana za ósemkową, jeśli od 0x za szesnastkową. ES6 zapewnia prefiks `0o` (lub 0O) do reprezentowania liczb ósemkowych.
 
 ```javascript
-console.log(0o776); // 510
+console.log(0o776) // 510
 ```
 
 Literał w postaci liczby szesnastkowej składa się ze znaków 0x lub 0X i następujących po nich cyfr szesnastkowych. Cyfra
@@ -455,7 +453,7 @@ szesnastkowa jest zwykłą cyfrą z zakresu od 0 do 9 lub literą z zakresu od a
 zakresu od 10 do 15. Poniżej są przedstawione przykładowe literały szesnastkowe:
 
 ```javascript
-0xff; // => 255 = 15*16 + 15
+0xff // => 255 = 15*16 + 15
 ```
 
 #### Literały binarne
@@ -463,9 +461,10 @@ zakresu od 10 do 15. Poniżej są przedstawione przykładowe literały szesnastk
 Z binarną reprezentacji liczby całkowitej możemy skorzystać na dwa sposoby:
 
 ```javascript
-parseInt('111', 2); // 7
-0b111; // 7 (es6) dostępny jest też prefiks OB
+parseInt('111', 2) // 7
+0b111 // 7 (es6) dostępny jest też prefiks OB
 ```
+
 ### 3.2.2. Literały zmiennoprzecinkowe
 
 Do zapisywania literałów zmiennoprzecinkowych wykorzystuje się tradycyjną składnię liczb rzeczywistych, obejmującą część
@@ -477,7 +476,7 @@ Zapis 2e+3 oznacza, że należy przesunąć kropkę dziesiętną (w tradycyjnym 
 przy liczbie 2 w prawo o 3 pozycje. Zapis 2e - 3 oznaczałby, że należy przesunąć kropkę w lewo.
 
 ```javascript
-typeof 2.7e-5; // 'number'
+typeof 2.7e-5 // 'number'
 ```
 
 > **Separatory w literałach liczbowych**
@@ -486,10 +485,10 @@ typeof 2.7e-5; // 'number'
 > rozdzielające grupy cyfr, na przykład:
 
 ```javascript
-let bilion = 1_000_000_000; // separator tysięcy
-let bytes = 0x89_ab_cd_ef; // separator bajtów
-let bits = 0b0001_1101_0111; // półbajtów
-let fraction = 0.123_456_789; // zastosowanie  separatora w części ułamkowej
+let bilion = 1_000_000_000 // separator tysięcy
+let bytes = 0x89_ab_cd_ef // separator bajtów
+let bits = 0b0001_1101_0111 // półbajtów
+let fraction = 0.123_456_789 // zastosowanie  separatora w części ułamkowej
 ```
 
 ### 3.2.3. Działania arytmetyczne
@@ -498,41 +497,41 @@ Oprócz podstawowych operatorów arytmetycznych dostępne są bardziej zaawansow
 stałe zdefiniowane jako właściwości obiektu Math:
 
 ```javascript
-Math.pow(2, 53); // => 9007199254740992: liczba 2 podniesiona do potęgi 53.
-Math.round(0.6); // => 1.0: zaokrąglenie do najbliższej liczby całkowitej.
-Math.ceil(0.6); // => 1.0: zaokrąglenie w górę do najbliższej liczby całkowitej.
-Math.floor(0.6); // => 0.0: zaokrąglenie w dół do najbliższej liczby całkowitej.
-Math.abs(-5); // => 5: wartość bezwzględna.
-Math.max(x, y, z); // Wybranie największej wartości.
-Math.min(x, y, z); // Wybranie najmniejszej wartości.
-Math.random(); // Liczba pseudolosowa z zakresu 0 <= x < 1.0.
-Math.PI; // π: stosunek obwodu do średnicy koła.
-Math.E; // e: podstawa logarytmu naturalnego.
-Math.sqrt(3); // => 3**0.5: pierwiastek kwadratowy liczby 3.
-Math.pow(3, 1 / 3); // => 3**(1/3): pierwiastek sześcienny liczby 3.
-Math.sin(0); // Funkcja trygonometryczna (są również Math.cos, Math.atan i inne funkcje).
-Math.log(10); // Logarytm naturalny z 10.
-Math.log(100) / Math.LN10; // Logarytm liczby 100 przy podstawie 10.
-Math.log(512) / Math.LN2; // Logarytm liczby 512 przy podstawie 2.
-Math.exp(3); // Sześcian stałej e.
+Math.pow(2, 53) // => 9007199254740992: liczba 2 podniesiona do potęgi 53.
+Math.round(0.6) // => 1.0: zaokrąglenie do najbliższej liczby całkowitej.
+Math.ceil(0.6) // => 1.0: zaokrąglenie w górę do najbliższej liczby całkowitej.
+Math.floor(0.6) // => 0.0: zaokrąglenie w dół do najbliższej liczby całkowitej.
+Math.abs(-5) // => 5: wartość bezwzględna.
+Math.max(x, y, z) // Wybranie największej wartości.
+Math.min(x, y, z) // Wybranie najmniejszej wartości.
+Math.random() // Liczba pseudolosowa z zakresu 0 <= x < 1.0.
+Math.PI // π: stosunek obwodu do średnicy koła.
+Math.E // e: podstawa logarytmu naturalnego.
+Math.sqrt(3) // => 3**0.5: pierwiastek kwadratowy liczby 3.
+Math.pow(3, 1 / 3) // => 3**(1/3): pierwiastek sześcienny liczby 3.
+Math.sin(0) // Funkcja trygonometryczna (są również Math.cos, Math.atan i inne funkcje).
+Math.log(10) // Logarytm naturalny z 10.
+Math.log(100) / Math.LN10 // Logarytm liczby 100 przy podstawie 10.
+Math.log(512) / Math.LN2 // Logarytm liczby 512 przy podstawie 2.
+Math.exp(3) // Sześcian stałej e.
 ```
 
 Począwszy od wersji ES6 obiekt Math, zawiera jeszcze więcej funkcji:
 
 ```javascript
-Math.cbrt(27); // => 3: pierwiastek sześcienny.
-Math.hypot(3, 4); // => 5: pierwiastek kwadratowy sumy kwadratów argumentów.
-Math.log10(100); // => 2: logarytm przy podstawie 10.
-Math.log2(1024); // => 10: logarytm przy podstawie 2.
-Math.log1p(x); // Logarytm naturalny (1+x); dokładny w przypadku bardzo małych wartości x.
-Math.expm1(x); // Math.exp(x)–1; odwrotność Math.log1p().
-Math.sign(x); // –1, 0 lub 1, jeżeli argument jest, odpowiednio, mniejszy, równy lub większy od zera.
-Math.imul(2, 3); // => 6: zoptymalizowane mnożenie 32-bitowych liczb całkowitych.
-Math.clz32(0xf); // => 28: liczba wiodących zerowych bitów liczby całkowitej 32-bitowej.
-Math.trunc(3.9); // => 3: zamiana na liczbę całkowitą poprzez usunięcie części ułamkowej.
-Math.fround(x); // Zaokrąglenie do najbliższej 32-bitowej liczby zmiennoprzecinkowej.
-Math.sinh(x); // Sinus hiperboliczny (są również Math.cosh(), Math.tanh() i inne funkcje).
-Math.asinh(x); // Arcus sinus hiperboliczny (są również Math.acosh(), Math.atanh() i inne funkcje).
+Math.cbrt(27) // => 3: pierwiastek sześcienny.
+Math.hypot(3, 4) // => 5: pierwiastek kwadratowy sumy kwadratów argumentów.
+Math.log10(100) // => 2: logarytm przy podstawie 10.
+Math.log2(1024) // => 10: logarytm przy podstawie 2.
+Math.log1p(x) // Logarytm naturalny (1+x); dokładny w przypadku bardzo małych wartości x.
+Math.expm1(x) // Math.exp(x)–1; odwrotność Math.log1p().
+Math.sign(x) // –1, 0 lub 1, jeżeli argument jest, odpowiednio, mniejszy, równy lub większy od zera.
+Math.imul(2, 3) // => 6: zoptymalizowane mnożenie 32-bitowych liczb całkowitych.
+Math.clz32(0xf) // => 28: liczba wiodących zerowych bitów liczby całkowitej 32-bitowej.
+Math.trunc(3.9) // => 3: zamiana na liczbę całkowitą poprzez usunięcie części ułamkowej.
+Math.fround(x) // Zaokrąglenie do najbliższej 32-bitowej liczby zmiennoprzecinkowej.
+Math.sinh(x) // Sinus hiperboliczny (są również Math.cosh(), Math.tanh() i inne funkcje).
+Math.asinh(x) // Arcus sinus hiperboliczny (są również Math.acosh(), Math.atanh() i inne funkcje).
 ```
 
 W języku JavaScript przepełnienie, niedomiar i dzielenie przez zero nie powodują zgłoszenia błędu. Jeżeli wynik operacji
@@ -560,54 +559,54 @@ W języku JavaScript są zdefiniowane globalne stałe `Infinity` i `NaN`, oznacz
 wartość nieliczbową. Analogiczne wartości są również właściwościami obiektu `Number`:
 
 ```javascript
-Infinity; // Liczba dodatnia, zbyt duża, aby można ją było wyrazić.
-Number.POSITIVE_INFINITY; // Jak wyżej.
-1 / 0; // => Infinity
+Infinity // Liczba dodatnia, zbyt duża, aby można ją było wyrazić.
+Number.POSITIVE_INFINITY // Jak wyżej.
+1 / 0 // => Infinity
 
 Number.MAX_VALUE * 2 - // => Infinity; przepełnienie
-Infinity; // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
+  Infinity // Liczba ujemna, zbyt duża, aby można ją było wyrazić.
 Number.NEGATIVE_INFINITY - // Jak wyżej.
-1 / 0 - // => –Infinity
-Number.MAX_VALUE * 2; // => –Infinity
-NaN; // Wartość nieliczbowa.
-Number.NaN; // Wartość nieliczbowa zapisana w inny sposób.
-0 / 0; // => NaN
-Infinity / Infinity; // => NaN
+  1 / 0 - // => –Infinity
+  Number.MAX_VALUE * 2 // => –Infinity
+NaN // Wartość nieliczbowa.
+Number.NaN // Wartość nieliczbowa zapisana w inny sposób.
+0 / 0 // => NaN
+Infinity / Infinity // => NaN
 Number.MIN_VALUE / 2 - // => 0: niedomiar.
-Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
-1 / Infinity - // -> –0: również "ujemne zero".
-0;
+  Number.MIN_VALUE / 2 - // => –0: "ujemne zero".
+  1 / Infinity - // -> –0: również "ujemne zero".
+  0
 
 // Właściwości i metody obiektu Number zdefiniowane w wersji ES6:
-Number.parseInt(); // Odpowiednik globalnej funkcji parseInt().
-Number.parseFloat(); // Odpowiednik globalnej funkcji parseFloat().
-Number.isNaN(x); // Czy x ma wartość NaN?
-Number.isFinite(x); // Czy x jest liczbą skończoną?
-Number.isInteger(x); // Czy x jest liczbą całkowitą?
-Number.isSafeInteger(x); // Czy x jest liczbą całkowitą z zakresu –(2**53) < x < 2**53?
-Number.MIN_SAFE_INTEGER; // => –(2**53–1)
-Number.MAX_SAFE_INTEGER; // => 2**53–1
-Number.EPSILON; // => 2**–52: najmniejsza różnica między liczbami.
+Number.parseInt() // Odpowiednik globalnej funkcji parseInt().
+Number.parseFloat() // Odpowiednik globalnej funkcji parseFloat().
+Number.isNaN(x) // Czy x ma wartość NaN?
+Number.isFinite(x) // Czy x jest liczbą skończoną?
+Number.isInteger(x) // Czy x jest liczbą całkowitą?
+Number.isSafeInteger(x) // Czy x jest liczbą całkowitą z zakresu –(2**53) < x < 2**53?
+Number.MIN_SAFE_INTEGER // => –(2**53–1)
+Number.MAX_SAFE_INTEGER // => 2**53–1
+Number.EPSILON // => 2**–52: najmniejsza różnica między liczbami.
 ```
 
 Wartość nieliczbowa `NaN` ma pewną nietypową cechę, mianowicie nie można jej porównywać z żadną inną wartością, nawet z
 nią samą. Porównanie jej z samą sobą daje wynik negatywny:
 
 ```javascript
-NaN === NaN; // => false
+NaN === NaN // => false
 ```
 
 Niezależnie od wartości, jaką przyjmie zmienna, przyrównanie jej do `NaN` daje wartość `false`.
 
 ```javascript
-let myVariable; // => undefined
-console.log(myVariable === NaN); // => false
+let myVariable // => undefined
+console.log(myVariable === NaN) // => false
 
-myVariable = NaN;
-console.log(myVariable === NaN); // => false
+myVariable = NaN
+console.log(myVariable === NaN) // => false
 
-myVariable = 'To jest moja zmienna';
-console.log(myVariable === NaN); // => false
+myVariable = 'To jest moja zmienna'
+console.log(myVariable === NaN) // => false
 ```
 
 Oznacza to, że stosując zapis `x === NaN`, nie można sprawdzić, czy zmienna x ma wartość `NaN`. Zamiast tego należy użyć
@@ -617,14 +616,14 @@ globalna stała `NaN`.
 Globalna funkcja `isNaN()` zwraca true, jeśli jej argument ma wartość `NaN` lub nie można go przekształcić w liczbę.
 
 ```javascript
-console.log('Różne wyniki');
-let message = 'JavaScript is the best';
+console.log('Różne wyniki')
+let message = 'JavaScript is the best'
 
-console.log(isNaN('123')); // => false
-console.log(isNaN(message)); // => true
+console.log(isNaN('123')) // => false
+console.log(isNaN(message)) // => true
 
-console.log(Number.isNaN(message)); // => false
-console.log(Number.isNaN('123')); // => false
+console.log(Number.isNaN(message)) // => false
+console.log(Number.isNaN('123')) // => false
 ```
 
 Funkcja `Number.isFinite()` zwraca wartość `true`, jeżeli jej argument ma wartość inną niż `NaN`, `Infinity`
@@ -636,10 +635,10 @@ Globalna funkcja `isFinite()` zwraca `true`, jeżeli jej argument jest lub może
 ścisłego porównania). Wyjątkiem jest wynik dzielenia:
 
 ```javascript
-let zero = 0; // "Zwykłe" zero.
-let negz = -0; // "Ujemne" zero.
+let zero = 0 // "Zwykłe" zero.
+let negz = -0 // "Ujemne" zero.
 zero === negz // => true: "zwykłe" zero jest równe "ujemnemu" zeru.
-1/zero === 1/negz // => false: Infinity i –Infinity nie są sobie równe.
+1 / zero === 1 / negz // => false: Infinity i –Infinity nie są sobie równe.
 ```
 
 ### 3.2.4. `NaN`
@@ -648,7 +647,7 @@ Globalna właściwość `NaN` to wartość reprezentująca `Not-A-Number`.
 Wbrew swojej nazwie „nie-liczba” `NaN` jest specjalną wartością, która także jest liczbą.
 
 ```javascript
-typeof NaN; // "number"
+typeof NaN // "number"
 ```
 
 `NaN` Otrzymasz, jeśli spróbujesz wykonać działanie, które powinno dawać liczbę, i to działanie nie powiedzie się. Jeśli
@@ -658,8 +657,8 @@ prawidłowym argumentem dla mnożenia.
 kosza.
 
 ```javascript
-0 / 0; // NaN
-Infinity / Infinity; // NaN
+0 / 0 // NaN
+Infinity / Infinity // NaN
 ```
 
 Globalna właściwość `NaN` jest wartością reprezentującą Not-A-Number.
@@ -679,19 +678,19 @@ wartością `NaN`. Użyj `Number.isNaN()` lub `isNaN()`, aby najdokładniej okre
 samo-porównanie: NaN i tylko NaN, porówna się nierówno.
 
 ```javascript
-NaN === NaN; // false
-Number.NaN === NaN; // false
-isNaN(NaN); // true
-isNaN(Number.NaN); // true
-Number.isNaN(NaN); // true
+NaN === NaN // false
+Number.NaN === NaN // false
+isNaN(NaN) // true
+isNaN(Number.NaN) // true
+Number.isNaN(NaN) // true
 
 function valueIsNaN(v) {
-  return v !== v;
+  return v !== v
 }
 
-valueIsNaN(1); // false
-valueIsNaN(NaN); // true
-valueIsNaN(Number.NaN); // true
+valueIsNaN(1) // false
+valueIsNaN(NaN) // true
+valueIsNaN(Number.NaN) // true
 ```
 
 Jednak zwróć uwagę na różnicę między `isNaN()` i `Number.isNaN()`: pierwsza zwróci true, jeśli wartość jest
@@ -699,36 +698,36 @@ obecnie `NaN` lub jeśli będzie to `NaN` po przekształceniu w liczbę, podczas
 wartość jest obecnie NaN:
 
 ```javascript
-isNaN('hello world'); // true
-Number.isNaN('hello world'); // false
+isNaN('hello world') // true
+Number.isNaN('hello world') // false
 ```
 
 Ponadto niektóre metody tablicowe nie mogą znaleźć `NaN`, podczas gdy inne mogą.
 
 ```javascript
-let arr = [2, 4, NaN, 12];
-arr.indexOf(NaN); // -1 (false)
-arr.includes(NaN); // true
-arr.findIndex(n => Number.isNaN(n)); // 2
+let arr = [2, 4, NaN, 12]
+arr.indexOf(NaN) // -1 (false)
+arr.includes(NaN) // true
+arr.findIndex(n => Number.isNaN(n)) // 2
 ```
+
 ### 3.2.5. `isNaN()`
 
 Funkcja `isNaN()` określa, czy wartość jest `NaN`, czy nie. Ponieważ przymus wewnątrz funkcji `isNaN` może być
 zaskakujący, możesz alternatywnie użyć `Number.isNaN()`.
 
-
 **Demo JavaScript: standardowe obiekty wbudowane — `isNaN()`**
 
 ```javascript
 function milliseconds(x) {
-  if(isNaN(x)) {
-    return 'Nie liczba!';
+  if (isNaN(x)) {
+    return 'Nie liczba!'
   }
-  return x * 1000;
+  return x * 1000
 }
 
-console.log(milliseconds('100A')); // oczekiwany wynik: "Nie liczba!"
-console.log(milliseconds('0.0314E+2')); // oczekiwany wynik: 3140
+console.log(milliseconds('100A')) // oczekiwany wynik: "Nie liczba!"
+console.log(milliseconds('0.0314E+2')) // oczekiwany wynik: 3140
 ```
 
 #### Składnia
@@ -739,7 +738,9 @@ isNaN(value) // value -  Wartość do przetestowania
 ```
 
 #### Opis
+
 W przeciwieństwie do wszystkich innych możliwych wartości w JavaScript nie można użyć operatorów równości (== i ===) do porównania wartości z `NaN` w celu określenia, czy wartość to `NaN`, czy nie, ponieważ zarówno `NaN == NaN`, jak i `NaN === NaN` daje fałsz. Funkcja `isNaN()` zapewnia wygodne sprawdzanie równości względem `NaN`.
+
 #### Pochodzenie wartości NaN
 
 Wartości `NaN` są generowane, gdy operacje arytmetyczne prowadzą do niezdefiniowanych lub niemożliwych do przedstawienia wartości. Takie wartości niekoniecznie reprezentują warunki przepełnienia. `NaN` wynika również z próby wymuszenia wartości liczbowych wartości nienumerycznych, dla których nie jest dostępna żadna pierwotna wartość liczbowa.
@@ -752,45 +753,45 @@ Od najwcześniejszych wersji specyfikacji funkcji `isNaN()` jej zachowanie w prz
 
 Zamieszanie wynika z faktu, że termin „nie liczba” ma specyficzne znaczenie dla liczb reprezentowanych jako wartości zmiennoprzecinkowe IEEE-754. Funkcję należy interpretować jako odpowiedź na pytanie, „czy ta wartość, po skojarzeniu z wartością liczbową, jest wartością IEEE-754 „Nie jest liczba”?”
 
-ECMAScript 2015 zawiera funkcję `Number.isNaN()`. `Number.isNaN(x)` to niezawodny sposób sprawdzenia, czy `x` to `NaN`, czy nie. Jednak nawet w przypadku `Number.isNaN` znaczenie `NaN` pozostaje dokładnym znaczeniem liczbowym, a nie „nie liczbą”. 
+ECMAScript 2015 zawiera funkcję `Number.isNaN()`. `Number.isNaN(x)` to niezawodny sposób sprawdzenia, czy `x` to `NaN`, czy nie. Jednak nawet w przypadku `Number.isNaN` znaczenie `NaN` pozostaje dokładnym znaczeniem liczbowym, a nie „nie liczbą”.
 
 Alternatywnie, w przypadku braku `Number.isNaN`, wyrażenie `(x != x)` jest bardziej niezawodnym sposobem sprawdzenia, czy zmienna `x` jest `NaN`, czy nie, ponieważ wynik nie podlega fałszywym alarmom, które sprawiają, że `isNaN` jest niewiarygodne.
 
 Wypełnienie dla `isNaN` (polifill wykorzystuje unikalną, nierówną sobie charakterystykę `NaN`):
 
 ```javascript
-const isNaN = function(value) {
-    const n = Number(value);
-    return n !== n;
-};
+const isNaN = function (value) {
+  const n = Number(value)
+  return n !== n
+}
 ```
 
 #### Przykłady
 
 ```javascript
-isNaN(NaN);       // true
-isNaN(undefined); // true
-isNaN({});        // true
+isNaN(NaN) // true
+isNaN(undefined) // true
+isNaN({}) // true
 
-isNaN(true);      // false
-isNaN(null);      // false
-isNaN(37);        // false
+isNaN(true) // false
+isNaN(null) // false
+isNaN(37) // false
 
 // strings
-isNaN('37');      // false: "37" is converted to the number 37 which is not NaN
-isNaN('37.37');   // false: "37.37" is converted to the number 37.37 which is not NaN
-isNaN("37,5");    // true
-isNaN('123ABC');  // true:  parseInt("123ABC") is 123 but Number("123ABC") is NaN
-isNaN('');        // false: the empty string is converted to 0 which is not NaN
-isNaN(' ');       // false: a string with spaces is converted to 0 which is not NaN
+isNaN('37') // false: "37" is converted to the number 37 which is not NaN
+isNaN('37.37') // false: "37.37" is converted to the number 37.37 which is not NaN
+isNaN('37,5') // true
+isNaN('123ABC') // true:  parseInt("123ABC") is 123 but Number("123ABC") is NaN
+isNaN('') // false: the empty string is converted to 0 which is not NaN
+isNaN(' ') // false: a string with spaces is converted to 0 which is not NaN
 
 // dates
-isNaN(new Date());                // false
-isNaN(new Date().toString());     // true
+isNaN(new Date()) // false
+isNaN(new Date().toString()) // true
 
 // This is a false positive and the reason why isNaN is not entirely reliable
-isNaN('blabla');   // true: "blabla" is converted to a number.
-                   // Parsing this as a number fails and returns NaN
+isNaN('blabla') // true: "blabla" is converted to a number.
+// Parsing this as a number fails and returns NaN
 ```
 
 #### Przydatne zachowanie w szczególnych przypadkach
@@ -803,31 +804,29 @@ Możesz tego użyć, na przykład, aby sprawdzić, czy argument funkcji jest prz
 
 Metoda `Number.isNaN()` określa, czy przekazana wartość to `NaN`, a jej typ to `Number`. Jest to bardziej solidna wersja oryginalnej, globalnej `isNaN()`.
 
-
 **JavaScript Demo: `Number.isNaN()`**
 
 ```javascript
 function typeOfNaN(x) {
   if (Number.isNaN(x)) {
-    return 'Number NaN';
+    return 'Number NaN'
   }
   if (isNaN(x)) {
-    return 'NaN';
+    return 'NaN'
   }
 }
 
-console.log(typeOfNaN('100F'));
+console.log(typeOfNaN('100F'))
 // expected output: "NaN"
 
-console.log(typeOfNaN(NaN));
+console.log(typeOfNaN(NaN))
 // expected output: "Number NaN"
-
 ```
 
 #### Składnia
 
 ```javascript
-  Number.isNaN(value)
+Number.isNaN(value)
 ```
 
 #### Parametry
@@ -837,6 +836,7 @@ console.log(typeOfNaN(NaN));
 #### Zwracana wartość
 
 `true`, jeśli podana wartość jest `NaN`, a jej typem jest `Number`; w przeciwnym razie, `false`.
+
 #### Opis
 
 Ze względu na oba operatory równości, == i ===, które przy sprawdzaniu, czy `NaN` to `NaN`, mają wartość `false`, funkcja `Number.isNaN()` stała się konieczna. Ta sytuacja różni się od wszystkich innych możliwych porównań wartości w JavaScript.
@@ -846,25 +846,24 @@ W porównaniu z globalną funkcją `isNaN()`, `Number.isNaN()` nie ma problemu z
 #### Przykłady
 
 ```javascript
-Number.isNaN(NaN);        // true
-Number.isNaN(Number.NaN); // true
-Number.isNaN(0 / 0);      // true
+Number.isNaN(NaN) // true
+Number.isNaN(Number.NaN) // true
+Number.isNaN(0 / 0) // true
 
 // Gdybyśmy użyli funkcji isNaN(), te przykłady zwróciłby true
-Number.isNaN('NaN');      // false
-Number.isNaN(undefined);  // false
-Number.isNaN({});         // false
-Number.isNaN('blabla');   // false
+Number.isNaN('NaN') // false
+Number.isNaN(undefined) // false
+Number.isNaN({}) // false
+Number.isNaN('blabla') // false
 
 // Wszystkie zwracają false
-Number.isNaN(true);
-Number.isNaN(null);
-Number.isNaN(37);
-Number.isNaN('37');
-Number.isNaN('37.37');
-Number.isNaN('');
-Number.isNaN(' ');
-
+Number.isNaN(true)
+Number.isNaN(null)
+Number.isNaN(37)
+Number.isNaN('37')
+Number.isNaN('37.37')
+Number.isNaN('')
+Number.isNaN(' ')
 ```
 
 #### Polyfill
@@ -872,10 +871,11 @@ Number.isNaN(' ');
 Poniższe działanie działa, ponieważ NaN jest jedyną wartością w JavaScript, która nie jest sobie równa.
 
 ```javascript
-Number.isNaN = Number.isNaN || function isNaN(input) {
-    return typeof input === 'number' && input !== input;
-}
-
+Number.isNaN =
+  Number.isNaN ||
+  function isNaN(input) {
+    return typeof input === 'number' && input !== input
+  }
 ```
 
 ### 3.2.7. Format zmiennoprzecinkowy i błędy zaokrąglenia
@@ -887,11 +887,11 @@ Powszechnie, szczególnie w operacjach finansowych, stosowane są ułamki dziesi
 nie można dokładnie wyrazić za pomocą zmiennoprzecinkowego formatu binarnego.
 
 ```javascript
-let x = 0.3 - 0.2; // Trzydzieści groszy minus dwadzieścia groszy.
-let y = 0.2 - 0.1; // Dwadzieścia groszy minus dziesięć groszy.
-x === y; // => false: obie wartości są różne!
-x === 0.1; // => false: .3–.2 nie jest równe .1
-y === 0.1; // => true: .2–.1 jest równe .1
+let x = 0.3 - 0.2 // Trzydzieści groszy minus dwadzieścia groszy.
+let y = 0.2 - 0.1 // Dwadzieścia groszy minus dziesięć groszy.
+x === y // => false: obie wartości są różne!
+x === 0.1 // => false: .3–.2 nie jest równe .1
+y === 0.1 // => true: .2–.1 jest równe .1
 ```
 
 Z powodu błędów zaokrąglenia różnica między przybliżeniami liczb 0,3 i 0,2 nie jest dokładnie taka sama jak między
@@ -911,28 +911,28 @@ Literał typu `BigInt` jest ciągiem cyfr zakończonym małą literą `n`. Domy�
 można używać prefiksów 0b, 0o i 0x oznaczających, odpowiednio, systemy binarny, ósemkowy i szesnastkowy:
 
 ```javascript
-1234n; // Nie taki znów ogromny literał BigInt.
-0b111111n; // Binarny literał BigInt.
-0o7777n; // Ósemkowy literał BigInt.
-0x8000000000000000n; // => 2n**63n: 64-bitowy literał BigInt.
+1234n // Nie taki znów ogromny literał BigInt.
+0b111111n // Binarny literał BigInt.
+0o7777n // Ósemkowy literał BigInt.
+0x8000000000000000n // => 2n**63n: 64-bitowy literał BigInt.
 ```
 
 Zapis `BigInt()` można traktować jako funkcję przekształcającą zwykłe liczby lub ciągi znaków na wartości typu `BigInt`:
 
 ```javascript
-BigInt(Number.MAX_SAFE_INTEGER); // => 9007199254740991n
-let string = '1' + '0'.repeat(100); // Jedynka i 100 zer.
-BigInt(string); // => 10n**100n: jeden googol.
+BigInt(Number.MAX_SAFE_INTEGER) // => 9007199254740991n
+let string = '1' + '0'.repeat(100) // Jedynka i 100 zer.
+BigInt(string) // => 10n**100n: jeden googol.
 ```
 
 Działania arytmetyczna na liczbach `BigInt` wykonywane są tak samo, jak na zwykłych, z wyjątkiem dzielenia, w którym
 część ułamkowa jest odrzucana, tj. wynik jest zaokrąglany w dół.
 
 ```javascript
-1000n + 2000n; // => 3000n
-3000n - 2000n; // => 1000n
-2000n * 3000n; // => 6000000n
-3000n / 997n; // => 3n: iloraz jest równy 3.
+1000n + 2000n // => 3000n
+3000n - 2000n // => 1000n
+2000n * 3000n // => 6000000n
+3000n / 997n // => 3n: iloraz jest równy 3.
 // prettier-ignore
 3000n % 997n // => 9n: reszta jest równa 9.
 
@@ -945,84 +945,84 @@ typu `BigInt` i zwykłych typów liczbowych
 Natomiast operatory porównania można stosować z różnymi typami liczbowymi.
 
 ```javascript
-1 < 2n; // => true
-2 > 1n; // => true
-0 == 0n; // => true
-0 === 0n; // => false: operator == sprawdza również zgodność typów.
+1 < 2n // => true
+2 > 1n // => true
+0 == 0n // => true
+0 === 0n // => false: operator == sprawdza również zgodność typów.
 ```
 
 Operatory bitowe zazwyczaj poprawnie działają z operandami typu `BigInt`. Jednak żadnej funkcji obiektu `Math` nie można
 stosować z liczbami typu `BigInt`.
 
-### 3.2.9. Daty i czas 
+### 3.2.9. Daty i czas
 
 Klasa `Date`, służy do wyrażania i wykonywania działań na liczbach reprezentujących datę i czas. Wartość typu `Date` jest obiektem posiadającym liczbową reprezentację wyrażającą liczbę milisekund, jakie upłynęły od 1 stycznia 1970 r.:
 
 ```javascript
-let timestamp = Date.now(); // Aktualny czas jako znacznik (liczba).
-let now = new Date(); // Aktualny czas jako obiekt typu Date.
-let ms = now.getTime(); // Przekształcenie daty w znacznik czasu.
-let iso = now.toISOString(); // Przekształcenie daty w ciąg znaków w standardowym formacie.
-
+let timestamp = Date.now() // Aktualny czas jako znacznik (liczba).
+let now = new Date() // Aktualny czas jako obiekt typu Date.
+let ms = now.getTime() // Przekształcenie daty w znacznik czasu.
+let iso = now.toISOString() // Przekształcenie daty w ciąg znaków w standardowym formacie.
 
 // Wyniki z dnia 18.11.2021
-console.log(timestamp); // 1637207038048
-console.log(now); // 2021-11-18T03:43:58.048Z
+console.log(timestamp) // 1637207038048
+console.log(now) // 2021-11-18T03:43:58.048Z
 
-console.log(ms); //1637207038048
-console.log(iso); // 2021-11-18T03:43:58.048Z
+console.log(ms) //1637207038048
+console.log(iso) // 2021-11-18T03:43:58.048Z
 
-console.log(now.getDate()); // 4
-console.log(now.getMonth()); // 10
-console.log(now.getFullYear()); // 2021
+console.log(now.getDate()) // 4
+console.log(now.getMonth()) // 10
+console.log(now.getFullYear()) // 2021
 
-if(now.getDay() === 4){
-  console.log('Czwartek');
+if (now.getDay() === 4) {
+  console.log('Czwartek')
 }
 ```
 
 ## 3.3. Tekst
+
 <!--TODO-->
 
 > **Unicode**
 
->Unicode opracowano w celu pozbycia się ograniczeń tradycyjnych systemów kodowania. Przed powstaniem
-systemu Unicode istniało wiele różnych standardów: ASCII w USA, ISO 8859-1 dla języków
-krajów Europy Zachodniej, ISO-8859-2 dla języków środkowo- i wschodnioeuropejskich
-(w tym polskiego), KOI-8 dla języka rosyjskiego, GB18030 i BIG-5 dla języka chińskiego
-itd. Powoduje to dwa problemy: jeden kod może oznaczać różne znaki w różnych systemach
-kodowania, a poza tym kody znaków w językach o dużej liczbie znaków mają różne rozmiary
-— niektóre często używane znaki zajmują jeden bajt, a inne potrzebują dwóch bajtów.
-Unicode ma za zadanie rozwiązać te problemy. Kiedy w latach osiemdziesiątych XX wieku
-podjęto próby unifikacji, wydawało się, że dwubajtowy stały kod był więcej niż wystarczający
-do zakodowania znaków używanych we wszystkich językach świata. W 1991 roku światło
-dzienne ujrzał Unicode 1.0. Wykorzystywana w nim była prawie połowa wszystkich dostępnych
-65 536 kodów. Java od samego początku używała znaków 16-bitowego systemu Unicode,
-co dawało jej dużą przewagę nad innymi językami programowania, które stosowały znaki
-ośmiobitowe.
-Niestety z czasem nastąpiło to, co było nieuchronne. Unicode przekroczył liczbę 65 536
-znaków, głównie z powodu dodania bardzo dużych zbiorów ideogramów używanych w językach
-chińskim, japońskim i koreańskim. Obecnie 16-bitowy typ char nie wystarcza do opisu
-wszystkich znaków Unicode.
-Współrzędna kodowa znaku (ang. code point) to wartość związana ze znakiem w systemie kodowania. W standardzie Unicode współrzędne
-kodowe znaków są zapisywane w notacji szesnastkowej i są poprzedzane łańcuchem U+, np.
-współrzędna kodowa litery A to U+0041. Współrzędne kodowe znaków systemu Unicode są
-pogrupowane w 17 przestrzeniach numeracyjnych (ang. code planes). Pierwsza z nich, nazywana
-podstawową przestrzenią wielojęzyczną (ang. Basic Multilingual Plane — BMP),
-zawiera klasyczne znaki Unicode o współrzędnych kodowych z przedziału od U+0000 do
-U+FFFF. Pozostałe szesnaście przestrzeni o współrzędnych kodowych znaków z przedziału
-od U+10000 do U+10FFFF zawiera znaki dodatkowe (ang. supplementary characters).
-Kodowanie UTF-16 to sposób reprezentacji wszystkich współrzędnych kodowych znaków
-za pomocą kodów o różnej długości. Znaki w podstawowej przestrzeni są 16-bitowymi
-wartościami o nazwie jednostek kodowych (ang. code units). Znaki dodatkowe są kodowane
-jako kolejne pary jednostek kodowych. Każda z wartości należących do takiej pary należy do
-zakresu 2048 nieużywanych wartości BMP, zwanych obszarem surogatów (ang. surrogates
-area) — zakres pierwszej jednostki kodowej to U+D800 – U+DBFF, a drugiej U+DC00 – U+DFFF.
-Jest to bardzo sprytne rozwiązanie, ponieważ od razu wiadomo, czy jednostka kodowa reprezentuje
-jeden znak, czy jest pierwszą lub drugą częścią znaku dodatkowego. Na przykład
-matematyczny symbol oznaczający zbiór liczb całkowitych ma współrzędną kodową
-U+1D56B i jest kodowany przez dwie jednostki kodowe U+D835 oraz U+DD6B (opis algorytmu kodowania
-UTF-16 można znaleźć na stronie https://tools.ietf.org/html/rfc2781).
+> Unicode opracowano w celu pozbycia się ograniczeń tradycyjnych systemów kodowania. Przed powstaniem
+> systemu Unicode istniało wiele różnych standardów: ASCII w USA, ISO 8859-1 dla języków
+> krajów Europy Zachodniej, ISO-8859-2 dla języków środkowo- i wschodnioeuropejskich
+> (w tym polskiego), KOI-8 dla języka rosyjskiego, GB18030 i BIG-5 dla języka chińskiego
+> itd. Powoduje to dwa problemy: jeden kod może oznaczać różne znaki w różnych systemach
+> kodowania, a poza tym kody znaków w językach o dużej liczbie znaków mają różne rozmiary
+> — niektóre często używane znaki zajmują jeden bajt, a inne potrzebują dwóch bajtów.
+> Unicode ma za zadanie rozwiązać te problemy. Kiedy w latach osiemdziesiątych XX wieku
+> podjęto próby unifikacji, wydawało się, że dwubajtowy stały kod był więcej niż wystarczający
+> do zakodowania znaków używanych we wszystkich językach świata. W 1991 roku światło
+> dzienne ujrzał Unicode 1.0. Wykorzystywana w nim była prawie połowa wszystkich dostępnych
+> 65 536 kodów. Java od samego początku używała znaków 16-bitowego systemu Unicode,
+> co dawało jej dużą przewagę nad innymi językami programowania, które stosowały znaki
+> ośmiobitowe.
+> Niestety z czasem nastąpiło to, co było nieuchronne. Unicode przekroczył liczbę 65 536
+> znaków, głównie z powodu dodania bardzo dużych zbiorów ideogramów używanych w językach
+> chińskim, japońskim i koreańskim. Obecnie 16-bitowy typ char nie wystarcza do opisu
+> wszystkich znaków Unicode.
+> Współrzędna kodowa znaku (ang. code point) to wartość związana ze znakiem w systemie kodowania. W standardzie Unicode współrzędne
+> kodowe znaków są zapisywane w notacji szesnastkowej i są poprzedzane łańcuchem U+, np.
+> współrzędna kodowa litery A to U+0041. Współrzędne kodowe znaków systemu Unicode są
+> pogrupowane w 17 przestrzeniach numeracyjnych (ang. code planes). Pierwsza z nich, nazywana
+> podstawową przestrzenią wielojęzyczną (ang. Basic Multilingual Plane — BMP),
+> zawiera klasyczne znaki Unicode o współrzędnych kodowych z przedziału od U+0000 do
+> U+FFFF. Pozostałe szesnaście przestrzeni o współrzędnych kodowych znaków z przedziału
+> od U+10000 do U+10FFFF zawiera znaki dodatkowe (ang. supplementary characters).
+> Kodowanie UTF-16 to sposób reprezentacji wszystkich współrzędnych kodowych znaków
+> za pomocą kodów o różnej długości. Znaki w podstawowej przestrzeni są 16-bitowymi
+> wartościami o nazwie jednostek kodowych (ang. code units). Znaki dodatkowe są kodowane
+> jako kolejne pary jednostek kodowych. Każda z wartości należących do takiej pary należy do
+> zakresu 2048 nieużywanych wartości BMP, zwanych obszarem surogatów (ang. surrogates
+> area) — zakres pierwszej jednostki kodowej to U+D800 – U+DBFF, a drugiej U+DC00 – U+DFFF.
+> Jest to bardzo sprytne rozwiązanie, ponieważ od razu wiadomo, czy jednostka kodowa reprezentuje
+> jeden znak, czy jest pierwszą lub drugą częścią znaku dodatkowego. Na przykład
+> matematyczny symbol oznaczający zbiór liczb całkowitych ma współrzędną kodową
+> U+1D56B i jest kodowany przez dwie jednostki kodowe U+D835 oraz U+DD6B (opis algorytmu kodowania
+> UTF-16 można znaleźć na stronie https://tools.ietf.org/html/rfc2781).
 
 Typem reprezentującym tekst jest **ciąg znaków**. Jest to niemutowalna sekwencja 16-bitowych wartości wyrażających zazwyczaj
 znaki Unicode. Długość ciągu jest liczbą składających się na niego 16-bitowych wartości. Ciągi, podobnie jak tablice, są
@@ -1031,21 +1031,21 @@ pojedynczy element ciągu. Jest nim po prostu ciąg o długości 1.
 
 > **Znaki, kody i ciągi w JavaScript**
 >
-> Stosowany jest zestaw znaków Unicode kodowanych w standardzie UTF-16, a ciągi znaków są 
+> Stosowany jest zestaw znaków Unicode kodowanych w standardzie UTF-16, a ciągi znaków są
 > sekwencjami 16-bitowych liczb bez znaku.
 >
-> Kody najczęściej stosowanych znaków Unicode (tworzących tzw. podstawową płaszczyznę 
-> wielojęzykową) zapisuje się za pomocą 16 bitów i można je reprezentować w postaci pojedynczych 
+> Kody najczęściej stosowanych znaków Unicode (tworzących tzw. podstawową płaszczyznę
+> wielojęzykową) zapisuje się za pomocą 16 bitów i można je reprezentować w postaci pojedynczych
 > elementów ciągu. Inne znaki Unicode koduje się w
 > postaci sekwencji par 16-bitowych (tzw. par zastępczych — ang. surrogate pair).
 > Oznacza to, że pojedynczy znak Unicode może być reprezentowany przez ciąg znaków o długości
 > 2 (dwie wartości 16-bitowe):
 
 ```javascript
-let euro = '€';
-let love = '💙';
-euro.length; // => 1: ten znak składa się z jednego 16-bitowego elementu.
-love.length; // => 2: kod UTF-16 znaku 💙 to "\ud83d\udc99".
+let euro = '€'
+let love = '💙'
+euro.length // => 1: ten znak składa się z jednego 16-bitowego elementu.
+love.length // => 2: kod UTF-16 znaku 💙 to "\ud83d\udc99".
 ```
 
 Począwszy od wersji ES6, ciągi znaków są iterowalne. Za pomocą pętli for/of lub operatora ... można iterować
@@ -1056,13 +1056,13 @@ poszczególne znaki ciągu, ale nie 16-bitowe wartości.
 Aby umieścić ciąg znaków w kodzie JavaScript, należy ująć go w apostrofy, cudzysłowy lub grawisy.
 
 ```javascript
-''; // Pusty ciąg (o zerowej liczbie znaków).
-'test';
-'3.14';
-'name="my form"';
-'Lubisz książki wydawnictwa Helion?';
-'\u03a0 oznacza stosunek obwodu koła do jego średnicy';
-'&Pi; oznacza stosunek obwodu koła do jego średnicy'`Powiedział: "powiedziała mi 'cześć'".`;
+'' // Pusty ciąg (o zerowej liczbie znaków).
+'test'
+'3.14'
+'name="my form"'
+'Lubisz książki wydawnictwa Helion?'
+'\u03a0 oznacza stosunek obwodu koła do jego średnicy'
+'&Pi; oznacza stosunek obwodu koła do jego średnicy'`Powiedział: "powiedziała mi 'cześć'".`
 ```
 
 W starszych wersjach języka JavaScript literał znakowy musiał być umieszczany w jednym wierszu. Stosowano konkatenację ciągów, aby uzyskać jeden długi.
@@ -1073,14 +1073,13 @@ W przypadku użycia grawisów podziały wierszy wchodzą w skład literału:
 
 ```javascript
 // Ciąg reprezentujący dwa wiersze zapisane w jednym wierszu:
-'Dwa\nwiersze.';
+'Dwa\nwiersze.'
 // Jednowierszowy ciąg zapisany w trzech wierszach:
 'Jeden\
 długi\
-wiersz.'
-// Dwuwierszowy ciąg zapisany w dwóch wierszach:
+wiersz.'// Dwuwierszowy ciąg zapisany w dwóch wierszach:
 `Znak podziału umieszczony na końcu tego wiersza
-jest częścią tego ciągu znaków.`;
+jest częścią tego ciągu znaków.`
 ```
 
 Podczas łączenia kodów HTML i JavaScript dobrą praktyką jest stosowanie w JavaScript jednego stylu, a w HTML innego.
@@ -1099,7 +1098,7 @@ Innym przykładem jest sekwencja `\'` reprezentująca apostrof. Stosuje się ją
 _Tabela. Sekwencje ucieczki w JavaScript_
 
 | Sekwencja | Reprezentowany znak                                                                                                                     |
-|-----------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | \0        | Znak null (\u0000)                                                                                                                      |
 | \b        | Usunięcie znaku (\u0008)                                                                                                                |
 | \t        | Tabulator poziomy (\u0009)                                                                                                              |
@@ -1107,8 +1106,8 @@ _Tabela. Sekwencje ucieczki w JavaScript_
 | \v        | Tabulator pionowy (\u000B)                                                                                                              |
 | \f        | Wysunięcie arkusza papieru (\u000C)                                                                                                     |
 | \r        | Powrót karetki (\u000D)                                                                                                                 |
-| \\"        | Cudzysłów (\u0022)                                                                                                                      |
-| \\'        | Apostrof (\u0027)                                                                                                                       |
+| \\"       | Cudzysłów (\u0022)                                                                                                                      |
+| \\'       | Apostrof (\u0027)                                                                                                                       |
 | \\\       | Lewy ukośnik (\u005C)                                                                                                                   |
 | \xnn      | Znak Unicode zapisany za pomocą dwóch cyfr szesnastkowych nn                                                                            |
 | \unnnn    | Znak Unicode zapisany za pomocą czterech cyfr szesnastkowych nn                                                                         |
@@ -1136,61 +1135,61 @@ Lewy ukośnik, użyty przed znakiem innym niż jeden z wymienionych w tabeli, je
 Aby określić długość ciągu, tj. liczbę 16-bitowych wartości, z których się składa, należy użyć właściwości length:
 
 ```javascript
-let message = 'JavaScript is the best';
-message.length; // => 22
+let message = 'JavaScript is the best'
+message.length // => 22
 ```
 
 Język JavaScript oferuje bogaty interfejs API do wykonywania różnych operacji na ciągach znaków:
 
 ```javascript
-let s = 'Witaj, świecie!'; // Początkowy tekst.
+let s = 'Witaj, świecie!' // Początkowy tekst.
 
 // Wyodrębnianie fragmentów ciągu.
-s.substring(1, 4); // => "ita": znaki 2., 3. i 4.
-s.slice(1, 4); // => "ita": ten sam wynik.
-s.slice(-3); // => "ie!": trzy ostatnie znaki
-s.split(', '); // => [ 'Witaj', 'świecie!' ]: podział ciągu według zadanego ciągu.
+s.substring(1, 4) // => "ita": znaki 2., 3. i 4.
+s.slice(1, 4) // => "ita": ten sam wynik.
+s.slice(-3) // => "ie!": trzy ostatnie znaki
+s.split(', ') // => [ 'Witaj', 'świecie!' ]: podział ciągu według zadanego ciągu.
 
 // Przeszukiwanie ciągu.
-s.indexOf('i'); // => 1: pozycja pierwszej litery "i".
-s.indexOf('i', 3); // => 9: pozycja pierwszej litery "i", większa niż 3.
-s.indexOf('zz'); // => –1: ciąg s nie zawiera ciągu "zz".
-s.lastIndexOf('i'); // => 12: pozycja ostatniej litery "i".
+s.indexOf('i') // => 1: pozycja pierwszej litery "i".
+s.indexOf('i', 3) // => 9: pozycja pierwszej litery "i", większa niż 3.
+s.indexOf('zz') // => –1: ciąg s nie zawiera ciągu "zz".
+s.lastIndexOf('i') // => 12: pozycja ostatniej litery "i".
 // Logiczne metody przeszukujące, dostępne w wersjach ES6 i nowszych.
-s.startsWith('Wit'); // => true: ciąg s zaczyna się od zadanego ciągu.
-s.endsWith('.'); // => false: ciąg s nie kończy się zadanym ciągiem.
-s.includes('aj'); // => true: ciąg s zawiera ciąg "aj".
+s.startsWith('Wit') // => true: ciąg s zaczyna się od zadanego ciągu.
+s.endsWith('.') // => false: ciąg s nie kończy się zadanym ciągiem.
+s.includes('aj') // => true: ciąg s zawiera ciąg "aj".
 // Tworzenie zmienionej wersji zadanego ciągu.
-s.replace('j', 'my'); // => "Witamy, świecie!"
-s.toLowerCase(); // => "Witamy, świecie!"
-s.toUpperCase(); // => "WITAMY, ŚWIECIE!"
-s.normalize(); // Normalizacja Unicode NFC: dostępna w wersji ES6.
-s.normalize('NFD'); // Normalizacja NFD. Inne rodzaje: "NFKC" i "NFKD".
+s.replace('j', 'my') // => "Witamy, świecie!"
+s.toLowerCase() // => "Witamy, świecie!"
+s.toUpperCase() // => "WITAMY, ŚWIECIE!"
+s.normalize() // Normalizacja Unicode NFC: dostępna w wersji ES6.
+s.normalize('NFD') // Normalizacja NFD. Inne rodzaje: "NFKC" i "NFKD".
 
 // Odczytywanie pojedynczych (16-bitowych) znaków ciągu.
-s.charAt(0); // => "W": pierwszy znak ciągu.
-s.charAt(s.length - 1); // => "!": ostatni znak ciągu.
-s.charCodeAt(0); // => 87: 16-bitowy kod znaku na zadanej pozycji.
-s.codePointAt(0); // => 87: metoda dostępna w wersji ES6, działa z kodami większymi niż 16 bitów.
+s.charAt(0) // => "W": pierwszy znak ciągu.
+s.charAt(s.length - 1) // => "!": ostatni znak ciągu.
+s.charCodeAt(0) // => 87: 16-bitowy kod znaku na zadanej pozycji.
+s.codePointAt(0) // => 87: metoda dostępna w wersji ES6, działa z kodami większymi niż 16 bitów.
 
 // Dopełnianie ciągu w wersjach ES2017 i nowszych.
-'x'.padStart(3); // => " x": dodanie spacji z lewej strony w celu uzyskania ciągu o długości
+'x'.padStart(3) // => " x": dodanie spacji z lewej strony w celu uzyskania ciągu o długości
 // 3 znaków.
-'x'.padEnd(3); // => "x ": dodanie spacji z prawej strony w celu uzyskania ciągu o długości
+'x'.padEnd(3) // => "x ": dodanie spacji z prawej strony w celu uzyskania ciągu o długości
 // 3 znaków.
-'x'.padStart(3, '*'); // => "**x": dodanie gwiazdek z lewej strony w celu uzyskania ciągu
+'x'.padStart(3, '*') // => "**x": dodanie gwiazdek z lewej strony w celu uzyskania ciągu
 // o długości 3 znaków.
-'x'.padEnd(3, '-'); // => "x--": dodanie myślników z prawej strony w celu uzyskania ciągu
+'x'.padEnd(3, '-') // => "x--": dodanie myślników z prawej strony w celu uzyskania ciągu
 // o długości 3 znaków.
 
 // Usuwanie spacji w wersjach ES5 i nowszych (nazwy metod zmienione w wersjach ES2019 i nowszych).
-' test '.trim(); // => "test": usunięcie spacji z początku i końca ciągu.
-' test '.trimStart(); // => "test ": usunięcie spacji z początku ciągu (również trimLeft()).
-' test '.trimEnd(); // => " test": usunięcie spacji z końca ciągu (również trimRight ()).
+' test '.trim() // => "test": usunięcie spacji z początku i końca ciągu.
+' test '.trimStart() // => "test ": usunięcie spacji z początku ciągu (również trimLeft()).
+' test '.trimEnd() // => " test": usunięcie spacji z końca ciągu (również trimRight ()).
 
 // Różne metody tekstowe.
-s.concat('!!'); // => "Witaj, świecie!!!": zamiast tego można użyć operatora +.
-'<>'.repeat(5); // => "<><><><><>": powielenie ciągu (od wersji ES5).
+s.concat('!!') // => "Witaj, świecie!!!": zamiast tego można użyć operatora +.
+'<>'.repeat(5) // => "<><><><><>": powielenie ciągu (od wersji ES5).
 ```
 
 Ciągi znaków są niemutowalne. Metody takie jak replace() i toUpperCase() nie modyfikują oryginalnych ciągów, tylko
@@ -1200,12 +1199,12 @@ Ciągi można również traktować jako tablice przeznaczone wyłącznie do odcz
 wartości) można się odwoływać za pomocą nawiasów kwadratowych zamiast za pomocą metody charAt():
 
 ```javascript
-let s = "Witaj, świecie!";
+let s = 'Witaj, świecie!'
 s[0] // => "W"
 s[s.length - 1] // => "!"
-let s = 'Witaj, świecie!';
-s[0]; // => "W"
-s[s.length - 1]; // => "!"
+let s = 'Witaj, świecie!'
+s[0] // => "W"
+s[s.length - 1] // => "!"
 ```
 
 ### 3.3.4. Literały szablonowe
@@ -1213,14 +1212,14 @@ s[s.length - 1]; // => "!"
 Począwszy od wersji ES6 literały znakowe można definiować za pomocą grawisów:
 
 ```javascript
-let s = `Witaj, świecie!`;
+let s = `Witaj, świecie!`
 ```
 
 W zdefiniowanym w ten sposób **literale szablonowym** można umieszczać dowolne wyrażenia.
 
 ```javascript
-let name = "Andrzej";
-let greeting = `Cześć, ${ name }.`; // greeting == "Cześć, Andrzej."
+let name = 'Andrzej'
+let greeting = `Cześć, ${name}.` // greeting == "Cześć, Andrzej."
 ```
 
 Wszystko, co znajduje się między znakami `${ i }`, jest interpretowane jako wyrażenie JavaScript,
@@ -1239,7 +1238,7 @@ let errorMessage = `\
 ${exception.message}
 Ślad stosu:
 ${exception.stack}
-`;
+`
 ```
 
 Lewy ukośnik znajdujący się na końcu pierwszego wiersza powoduje pominięcie podziału wiersza.
@@ -1255,7 +1254,7 @@ w celu zastosowania sekwencji ucieczki HTML i SQL przed umieszczeniem wartości 
 Wbudowany znacznik: funkcja `String.raw()` zwraca tekst umieszczony wewnątrz grawisów, zawierający nieprzetworzone sekwencje ucieczki:
 
 ```javascript
-`\n`.length // => 1: ten ciąg składa się z jednego znaku podziału wiersza.
+;`\n`.length // => 1: ten ciąg składa się z jednego znaku podziału wiersza.
 String.raw`\n`.length // => 2: ciąg składający się z lewego ukośnika i litery n.
 ```
 
@@ -1273,28 +1272,28 @@ Tekst umieszczony pomiędzy ukośnikami definiuje **literał wyrażenia regularn
 ```javascript
 //Wyrażenia sprawdzające
 
-/^HTML/;    //czy pierwszym znakiem ciągu jest litera H, T, M lub L.
+;/^HTML/ //czy pierwszym znakiem ciągu jest litera H, T, M lub L.
 
-/[1-9][0-9]*/;    //czy ciąg zawiera podciąg składający się z przynajmniej jednej cyfry.
+;/[1-9][0-9]*/ //czy ciąg zawiera podciąg składający się z przynajmniej jednej cyfry.
 
-/\bjavascript\b/i;    //czy ciąg zawiera podciąg "javascript". Wielkość liter nie ma znaczenia.
+;/\bjavascript\b/i //czy ciąg zawiera podciąg "javascript". Wielkość liter nie ma znaczenia.
 ```
 
 Obiekt wyrażenia regularnego ma swoje metody. Oprócz tego obiekt ciągu zawiera metody stosujące wyrażenia regularne jako argumenty:
 
 ```javascript
-let text = "test: 1, 2, 3";   //Przykładowy tekst.
-let pattern = /\d+/g;   //Sprawdzenie, czy ciąg zawiera przynajmniej jedną cyfrę.
-pattern.test(text)      //=> true: ciąg jest zgodny ze wzorcem.
-text.search(pattern)    //=> 6: pozycja pierwszego zgodnego podciągu.
-text.match(pattern)     //=> ["1", "2", "3"]: tablica zawierająca wszystkie zgodne podciągi.
-text.replace(pattern, "#")   //=> "test: #, #, #"
-text.split(/\D+/)         //=> ["","1","2","3"]: podział ciągu wg znaków innych niż cyfry.
+let text = 'test: 1, 2, 3' //Przykładowy tekst.
+let pattern = /\d+/g //Sprawdzenie, czy ciąg zawiera przynajmniej jedną cyfrę.
+pattern.test(text) //=> true: ciąg jest zgodny ze wzorcem.
+text.search(pattern) //=> 6: pozycja pierwszego zgodnego podciągu.
+text.match(pattern) //=> ["1", "2", "3"]: tablica zawierająca wszystkie zgodne podciągi.
+text.replace(pattern, '#') //=> "test: #, #, #"
+text.split(/\D+/) //=> ["","1","2","3"]: podział ciągu wg znaków innych niż cyfry.
 ```
 
 ## 3.4. Wartości logiczne
 
-Typ logiczny reprezentuje prawdę lub fałsz i zawiera  dwie wartości reprezentowane za pomocą zarezerwowanych słów `true` i `false`.
+Typ logiczny reprezentuje prawdę lub fałsz i zawiera dwie wartości reprezentowane za pomocą zarezerwowanych słów `true` i `false`.
 
 Wartość logiczna jest zazwyczaj wynikiem operacji porównania, na przykład:
 
@@ -1308,15 +1307,15 @@ wartość `true`. Jeżeli wartość jest inna niż `4`, wynikiem porównania jes
 Drugi przykład:
 
 ```javascript
-console.log(3 > 2); // => true
-console.log(3 < 2); // => false
+console.log(3 > 2) // => true
+console.log(3 < 2) // => false
 ```
 
 Znaki `>` i `<` to odpowiednio symbole większości i mniejszości. Są to operatory binarne. Zwracają wartość logiczną
 oznaczającą, czy dane wyrażenie jest prawdziwe. Podobnie można porównywać łańcuchy:
 
 ```javascript
-console.log('Aardvark' < 'Zoroaster'); // => true
+console.log('Aardvark' < 'Zoroaster') // => true
 ```
 
 Interpreter przegląda po kolei znaki od lewej i porównuje ich kody Unicode.
@@ -1324,7 +1323,7 @@ Interpreter przegląda po kolei znaki od lewej i porównuje ich kody Unicode.
 W języku JavaScript istnieje też jedna wartość, która nie jest równa nawet samej sobie — to `NaN` (nieliczba).
 
 ```javascript
-console.log(NaN == NaN); // => false
+console.log(NaN == NaN) // => false
 ```
 
 Wartość `NaN` służy do oznaczania wyników bezsensownych działań, więc wynik jednego bezsensownego działania nie jest
@@ -1334,12 +1333,11 @@ Każdą wartość w JavaScript można przekształcić w wartość logiczną. Pon
 wartość logiczna false:
 
 ```javascript
-undefined;
-null;
-0 
--0;
-NaN;
-""; // Pusty ciąg znaków.
+undefined
+null
+0 - 0
+NaN
+;('') // Pusty ciąg znaków.
 ```
 
 Wszystkie inne wartości, włącznie z obiektami i tablicami, można przekształcić i traktować jak wartość logiczną `true`.
@@ -1380,7 +1378,7 @@ zazwyczaj nie ma znaczenia. Dlatego, jeśli musisz gdzieś ich użyć, możesz t
 Słowo kluczowe `null` jest zazwyczaj wykorzystywane do sygnalizowania braku wartości.
 
 ```javascript
-typeof null; // => 'object' czyli specjalny obiekt oznaczający brak obiektu
+typeof null // => 'object' czyli specjalny obiekt oznaczający brak obiektu
 ```
 
 W praktyce null jest traktowana jako <u>jedyna wartość osobnego typu</u>, oznaczająca brak liczby, ciągu znaków i
@@ -1417,17 +1415,17 @@ Symbole zostały wprowadzone w wersji ES6, aby można było stosować nietekstow
 znaków. Począwszy od wersji ES6 nazwami, mogą być również symbole jak niżej:
 
 ```javascript
-const strName = 'string name'; // Ciąg pełniący rolę nazwy właściwości.
-const symName = Symbol('propName'); // Symbol pełniący rolę nazwy właściwości.
-typeof strName; // => "string": jest ciągiem znaków.
-typeof symName; // => "symbol": symName jest symbolem.
+const strName = 'string name' // Ciąg pełniący rolę nazwy właściwości.
+const symName = Symbol('propName') // Symbol pełniący rolę nazwy właściwości.
+typeof strName // => "string": jest ciągiem znaków.
+typeof symName // => "symbol": symName jest symbolem.
 
-const object = {}; // Utworzenie nowego obiektu.
+const object = {} // Utworzenie nowego obiektu.
 
-object[strName] = 1; // Zdefiniowanie właściwości o nazwie określonej za pomocą ciągu znaków.
-object[symName] = 2; // Zdefiniowanie właściwości o nazwie określonej za pomocą symbolu.
-object[strName]; // => 1: odwołanie do właściwości o nazwie określonej za pomocą ciągu znaków.
-object[symName]; // => 2: odwołanie do właściwości o nazwie określonej za pomocą symbolu.
+object[strName] = 1 // Zdefiniowanie właściwości o nazwie określonej za pomocą ciągu znaków.
+object[symName] = 2 // Zdefiniowanie właściwości o nazwie określonej za pomocą symbolu.
+object[strName] // => 1: odwołanie do właściwości o nazwie określonej za pomocą ciągu znaków.
+object[symName] // => 2: odwołanie do właściwości o nazwie określonej za pomocą symbolu.
 ```
 
 Typ `Symbol` nie ma składni literału. Aby uzyskać wartość typu Symbol, należy wywołać funkcję
@@ -1444,7 +1442,7 @@ Funkcja `Symbol()` ma opcjonalny argument tekstowy i zwraca unikatową wartość
 zostanie określony, jego wartość zostanie umieszczona w wyniku zwracanym przez metodę `toString()` symbolu.
 
 ```javascript
-let s = Symbol("sym_x");
+let s = Symbol('sym_x')
 s.toString() // => "Symbol(sym_x)"
 ```
 
@@ -1455,8 +1453,8 @@ Na wypadki takie jak powyższy zdefiniowany jest globalny rejestr symboli. Jest 
 `Symbol.for()`, której argumentem jest ciąg znaków, a zwracanym wynikiem skojarzona z nim wartość typu `Symbol`.
 
 ```javascript
-let s = Symbol.for("shared");
-let t = Symbol.for("shared");
+let s = Symbol.for('shared')
+let t = Symbol.for('shared')
 s === t // => true
 s.toString() // => "Symbol(shared)"
 Symbol.keyFor(t) // => "shared"
@@ -1487,13 +1485,13 @@ Powyższy kod tworzy trzy nowe Symbole. Zauważ, że `Symbol ("foo")` nie zmieni
 tworzy nowy Symbol:
 
 ```javascript
-Symbol('foo') === Symbol('foo')  // false
+Symbol('foo') === Symbol('foo') // false
 ```
 
 Poniższa składnia z operatorem `new` zwróci TypeError:
 
 ```javascript
-let sym = new Symbol()  // TypeError
+let sym = new Symbol() // TypeError
 ```
 
 Uniemożliwia to autorom tworzenie jawnego obiektu opakowującego Symbol zamiast nowej wartości Symbol i może być
@@ -1504,9 +1502,9 @@ Jeśli naprawdę chcesz utworzyć obiekt opakowujący symbol, możesz użyć fun
 
 ```javascript
 let sym = Symbol('foo')
-typeof sym      // "symbol"
+typeof sym // "symbol"
 let symObj = Object(sym)
-typeof symObj   // "object"
+typeof symObj // "object"
 ```
 
 ### 3.6.1. Symbole współdzielone w globalnym rejestrze symboli
@@ -1534,7 +1532,7 @@ klasy, ale super wywołanie spowoduje wyjątek.
 
 ```javascript
 Symbol()
-Symbol(description) // description - A string. Opis symbolu, którego można użyć do debugowania, ale 
+Symbol(description) // description - A string. Opis symbolu, którego można użyć do debugowania, ale
 // nie do uzyskania dostępu do samego symbolu
 ```
 
@@ -1544,10 +1542,10 @@ Obiekt globalny jest to zwykły obiekt, którego właściwości są globalnymi i
 po uruchomieniu (lub przeglądarka po załadowaniu strony) tworzy nowy obiekt globalny z początkowym zestawem właściwości
 definiujących:
 
-* globalne stałe, m.in. undefined, Infinity i NaN;
-* globalne funkcje, m.in. isNaN(), parseInt() i eval();
-* funkcje konstruktorów klas, m.in. Date(), RegExp(), String(), Object() i Array();
-* globalne obiekty, m.in. Math i JSON.
+- globalne stałe, m.in. undefined, Infinity i NaN;
+- globalne funkcje, m.in. isNaN(), parseInt() i eval();
+- funkcje konstruktorów klas, m.in. Date(), RegExp(), String(), Object() i Array();
+- globalne obiekty, m.in. Math i JSON.
 
 Właściwości obiektu globalnego nie są zarezerwowanymi słowami, ale zasługują na to, aby je jako takie traktować.
 
@@ -1578,10 +1576,10 @@ w ciąg. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w li
 Poniżej przedstawionych jest kilka przykładów:
 
 ```javascript
-10 + " obiektów" // => "10 obiektów": liczba 10 jest przekształcana w ciąg znaków.
-"7" * "4" // => 28: oba ciągi są przekształcane w liczby.
-let n = 1 - "x"; // n == NaN; ciągu "x" nie można przekształcić w liczbę.
-n + " obiektów" // => "NaN obiektów": wartość NaN jest przekształcana w ciąg "NaN".
+10 + ' obiektów' // => "10 obiektów": liczba 10 jest przekształcana w ciąg znaków.
+'7' * '4' // => 28: oba ciągi są przekształcane w liczby.
+let n = 1 - 'x' // n == NaN; ciągu "x" nie można przekształcić w liczbę.
+n + ' obiektów' // => "NaN obiektów": wartość NaN jest przekształcana w ciąg "NaN".
 ```
 
 ### 3.9.a. Automatyczna konwersja
@@ -1589,11 +1587,11 @@ n + " obiektów" // => "NaN obiektów": wartość NaN jest przekształcana w ci�
 Interpreter JavaScript stara się wykonać prawie każdy podany mu program, nawet taki, który robi dziwne rzeczy. Np.:
 
 ```javascript
-console.log(8 * null); // => 0
-console.log('5' - 1); // => 4
-console.log('5' + 1); // => 51
-console.log('five' * 2); // => NaN
-console.log(false == 0); // => true
+console.log(8 * null) // => 0
+console.log('5' - 1) // => 4
+console.log('5' + 1) // => 51
+console.log('five' * 2) // => NaN
+console.log(false == 0) // => true
 ```
 
 Gdy operator zostanie zastosowany do wartości „niewłaściwego” typu, JavaScript przekonwertuje tę wartość na odpowiedni
@@ -1611,8 +1609,8 @@ drugi. Jeśli jednakże po jednej ze stron operatora znajduje się wartość `nu
 `true` można uzyskać tylko wtedy, gdy po drugiej również znajduje się jedna z tych dwóch wartości.
 
 ```javascript
-console.log(null == undefined); // = true
-console.log(null == 0); // => false
+console.log(null == undefined) // = true
+console.log(null == 0) // => false
 ```
 
 Jeśli trzeba sprawdzić, czy coś jest prawdziwą wartością, a nie `null` lub `undefined`, można napisać prosty test przy
@@ -1639,7 +1637,7 @@ operatorów dwuznakowych.
 3. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w liczbę lub — jeżeli nie będzie to możliwe — w NaN.
 
 | Wartość                                     | Konwersja na ciąg          | Konwersja na liczbę | Konwersja na <br>wartość logiczną |
-|---------------------------------------------|----------------------------|---------------------|-----------------------------------|
+| ------------------------------------------- | -------------------------- | ------------------- | --------------------------------- |
 | undefined                                   | "undefined"                | NaN                 | false                             |
 | null                                        | "null"                     | 0                   | false                             |
 | true                                        | "true"                     | 1                   |                                   |
@@ -1673,10 +1671,10 @@ W JS są dwa operatory sprawdzające równość wartości.
 Poniższe porównania zwracają wartość true:
 
 ```javascript
-null == undefined; // => true: te dwie wartości są traktowane jako równe.
-'0' == 0; // => true: ciąg znaków przed porównaniem jest przekształcany w liczbę.
-0 == false; // => true: wartość logiczna przed porównaniem jest przekształcana w liczbę.
-'0' == false; // => true: oba operandy przed porównaniem są przekształcane w liczby
+null == undefined // => true: te dwie wartości są traktowane jako równe.
+'0' == 0 // => true: ciąg znaków przed porównaniem jest przekształcany w liczbę.
+0 == false // => true: wartość logiczna przed porównaniem jest przekształcana w liczbę.
+'0' == false // => true: oba operandy przed porównaniem są przekształcane w liczby
 ```
 
 Możliwość przekształcenia jednej wartości w inną nie oznacza ich równości. Na przykład wartość `undefined` użyta w
@@ -1695,7 +1693,7 @@ Przeważnie konwersja odbywa się automatycznie, lecz, czasem, dla jasności kod
 Najprościej jawną konwersję wykonuje się za pomocą funkcji:
 
 ```javascript
-Number("3") // => 3
+Number('3') // => 3
 String(false) // => "false": można również użyć false.toString().
 Boolean([]) // => true
 ```
@@ -1709,8 +1707,9 @@ Niektóre operatory dokonujące niejawnej konwersji czasem stosuje się do jawne
 3. Jednoargumentowy operator ! przekształca operand w wartość logiczną i neguje ją.
 
 ```javascript
-x + "" // => String(x)
-+ x // => Number(x)
+x +
+  '' + // => String(x)
+  x // => Number(x)
 x - 0 // => Number(x)
 !!x // => Boolean(x): zwróć uwagę na podwójny znak !
 ```
@@ -1718,15 +1717,15 @@ x - 0 // => Number(x)
 Często wykonywanymi operacjami jest formatowanie i parsowanie liczb.
 
 ```javascript
-let n = 17;
-let binary = "0b" + n.toString(2); // Liczba dwójkowa == "0b10001".
-let octal = "0o" + n.toString(8); // Liczba ósemkowa == "0o21".
+let n = 17
+let binary = '0b' + n.toString(2) // Liczba dwójkowa == "0b10001".
+let octal = '0o' + n.toString(8) // Liczba ósemkowa == "0o21".
 Let
-hex = "0x" + n.toString(16); // Liczba szesnastkowa == "0x11".
+hex = '0x' + n.toString(16) // Liczba szesnastkowa == "0x11".
 ```
 
 ```javascript
-let n = 123456.789;
+let n = 123456.789
 n.toFixed(0) // => "123457"
 n.toFixed(2) // => "123456.79"
 n.toFixed(5) // => "123456.78900"
@@ -1740,23 +1739,23 @@ n.toPrecision(10) // => "123456.7890"
 Bardziej elastyczne są globalne funkcje `parseInt()` i `parseFloat()` (nie są to metody żadnej klasy).
 
 ```javascript
-parseInt("3 blind mice") // => 3
-parseFloat(" 3.14 meters") // => 3.14
-parseInt("-12.34") // => –12
+parseInt('3 blind mice') // => 3
+parseFloat(' 3.14 meters') // => 3.14
+parseInt('-12.34') // => –12
 
-parseInt("0xFF") // => 255
-parseInt("0xff") // => 255
-parseInt("-0XFF") // => –255
-parseFloat(".1") // => 0.1
-parseInt("0.1") // => 0
-parseInt(".1") // => NaN: liczba całkowita nie może rozpoczynać się znakiem ".".
-parseFloat("$72.47") // => NaN: liczba nie może rozpoczynać się znakiem "$".
+parseInt('0xFF') // => 255
+parseInt('0xff') // => 255
+parseInt('-0XFF') // => –255
+parseFloat('.1') // => 0.1
+parseInt('0.1') // => 0
+parseInt('.1') // => NaN: liczba całkowita nie może rozpoczynać się znakiem ".".
+parseFloat('$72.47') // => NaN: liczba nie może rozpoczynać się znakiem "$".
 
-parseInt("11", 2) // => 3: (1*2+1)
-parseInt("ff", 16) // => 255: (15*16+15)
-parseInt("zz", 36) // => 1295: (35*36+35)
-parseInt("077", 8) // => 63: (7*8+7)
-parseInt("077", 10) // => 77: (7*10+7)
+parseInt('11', 2) // => 3: (1*2+1)
+parseInt('ff', 16) // => 255: (15*16+15)
+parseInt('zz', 36) // => 1295: (35*36+35)
+parseInt('077', 8) // => 63: (7*8+7)
+parseInt('077', 10) // => 77: (7*10+7)
 ```
 
 ### 3.9.3. Konwersja obiektu na wartość prymitywną.
@@ -1783,7 +1782,7 @@ W języku JavaScript to **wartości**, a nie zmienne mają określony typ. Co wi
 postaci **literału** lub **obiektu**.
 
 ```javascript
-let myVariable = 'JavaScript jest bardzo prosty';
+let myVariable = 'JavaScript jest bardzo prosty'
 ```
 
 Powyższy kod deklaruje zmienną o nazwie `myVariable` przypisując jej wartość 'JavaScript jest prosty'.
@@ -1795,7 +1794,7 @@ deklaracja zmiennej musi nastąpić przed próbą jej użycia. JavaScript nie wy
 zacząć korzystać z referencji:
 
 ```javascript
-value = 144;
+value = 144
 ```
 
 Średnik na końcu wiersza oznacza koniec polecenia. Nie jest wymagany, ale warto go stosować. Choć deklaracja zmiennych w
@@ -1803,9 +1802,9 @@ języku JavaScript nie jest wymagana, tak naprawdę powinno się ją wykonać w 
 kluczowe let, const i var (obecnie niezalecane):
 
 ```javascript
-let name; // deklaracja zmiennej => undefined
-name = 'Larry Ullman'; // inicjacja wcześniej zadeklarowanej zmiennej
-let myName = 'Zenon Marek Raubuć'; // definicja zmiennej = deklaracja + inicjacja
+let name // deklaracja zmiennej => undefined
+name = 'Larry Ullman' // inicjacja wcześniej zadeklarowanej zmiennej
+let myName = 'Zenon Marek Raubuć' // definicja zmiennej = deklaracja + inicjacja
 ```
 
 Niezadeklarowane zmienne, czyli takie, których pierwsza referencja nie zawiera słowa kluczowego `let`, `const` lub
@@ -1816,7 +1815,7 @@ określonego typu. Żaden z przykładów nie deklarował zmiennej `name` jako zm
 wiersza za powyższymi nie spowoduje zgłoszenia żadnego błędu:
 
 ```javascript
-name = 23;
+name = 23
 ```
 
 Wiersz ten najprawdopodobniej doprowadzi do powstania błędu logicznego lub błędu wykonania, ponieważ pozostały kod
@@ -1827,9 +1826,9 @@ wartość `23`, jest uważana za zmienną liczbową.
 Słowa `let` można wykorzystać do jednoczesnej deklaracji wielu zmiennych:
 
 ```javascript
-let firstName, lastName;
+let firstName, lastName
 let name = 'Larry',
-  surname = 'Ullman';
+  surname = 'Ullman'
 ```
 
 > **ZMIENNE GLOBALNE**
@@ -1875,14 +1874,14 @@ Pojedynczy znak równości jest operatorem przypisania, czyli służy do przypis
 wskazanej po jego lewej stronie. Oto przykład deklaracji i przypisania zmiennej liczbowej:
 
 ```javascript
-let amount;
-amount = 56.98;
+let amount
+amount = 56.98
 ```
 
 Przypisania można również dokonać w jednym wierszu:
 
 ```javascript
-let bigValue = 1234567.98;
+let bigValue = 1234567.98
 ```
 
 W tym przypadku następuje nie tylko deklaracja zmiennej, ale również jej **inicjalizacja**, czyli określenie wartości
@@ -1893,22 +1892,22 @@ początkowej. Nie trzeba inicjować zmiennych w momencie deklaracji, ale czasem 
 Przykłady deklaracji:
 
 ```javascript
-let number; // => undefined
-let message; // => undefined
+let number // => undefined
+let message // => undefined
 
 // Deklarowanie kilku zmiennych za pomocą jednej instrukcji
-let sum, product;
+let sum, product
 
 // Dobrą praktyką jest przypisywanie wartości w deklaracji zmiennej.
-let caption = 'JavaScript is the best';
-let balance = 5234.78;
+let caption = 'JavaScript is the best'
+let balance = 5234.78
 ```
 
 Przykłady deklaracji stałych:
 
 ```javascript
-const MILES_TO_KM = 0.625;
-const KM_TO_MILES = 1.6;
+const MILES_TO_KM = 0.625
+const KM_TO_MILES = 1.6
 ```
 
 Stałą trzeba zainicjować w miejscu jej zadeklarowania. Przy próbie modyfikacji stałej jest zgłaszany błąd TypeError.
@@ -1921,9 +1920,9 @@ Powszechnie stosowaną (ale nie uniwersalną) konwencją jest używanie w nazwac
 >
 > 1. Tylko z wartościami, które nie mogą się zmieniać np. stałe fizyczne itp.
 > 2. Ze wszystkimi wartościami, które nie będą się zmieniać (wiele tzw. zmiennych nie jest modyfikowanych przez
-     > cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
-     > deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
-     > zmiennych.
+>    cały czas działania programu). Jeżeli okaże się, że jakaś wartość będzie się zmieniać, należy w
+>    deklaracji zmienić słowo na let. W ten sposób zapobiega się błędom wynikającym z niezamierzonych modyfikacji
+>    zmiennych.
 
 W pętli `for/in` i `for/of` dozwolone jest stosowanie instrukcji `const`, jeżeli tylko w ciele pętli takiej „zmiennej”
 nie jest przypisywana nowa wartość. W takim przypadku deklaracja stałej oznacza jedynie, że wartość pozostaje niezmienna
@@ -1952,14 +1951,14 @@ Użycie więcej niż jednej deklaracji let lub const z tą samą nazwą jest bł
 należy tego unikać) deklarowanie zmiennych o takich samych nazwach w zagnieżdżonych blokach:
 
 ```javascript
-const variable = 22; // Deklaracja globalna zmiennej variable
+const variable = 22 // Deklaracja globalna zmiennej variable
 
 if (variable % 2 === 0) {
-  let variable = true;
-  console.log(variable);
+  let variable = true
+  console.log(variable)
 } else {
-  let variable = false;
-  console.log(variable);
+  let variable = false
+  console.log(variable)
 }
 
 // let variable = "Nie uważasz, że składnia JS jest dziwna ?";
@@ -1980,12 +1979,12 @@ W starszych wersjach języka niż ES6 zmienne można było deklarować wyłączn
 nie można było deklarować w ogóle. Składnia słowa `var` jest taka sama jak `let`:
 
 ```javascript
-var x;
+var x
 var data = [],
-  count = data.length;
+  count = data.length
 
 for (var i = 0; i < count; i++) {
-  console.log(data[i]);
+  console.log(data[i])
 }
 ```
 
@@ -2017,27 +2016,27 @@ Poniżej próbki kodu to testowania trybu ścisłego i deklarowania zmiennej za 
 
 ```javascript
 // 'use strict';
-var x;
+var x
 var data = [],
-  count = data.length;
+  count = data.length
 
-var message = 'Js is the best';
+var message = 'Js is the best'
 
 for (var i = 0; i < count; i++) {
-  console.log(data[i]);
+  console.log(data[i])
 }
 
-console.log(message);
+console.log(message)
 
-var message = 'JavaScript to bardzo dziwny język';
+var message = 'JavaScript to bardzo dziwny język'
 
-console.log(message);
-balance = 5329.99;
-balance += ' zł';
+console.log(message)
+balance = 5329.99
+balance += ' zł'
 
 //var balance;
 
-console.log(`Saldo konta wynosi ${balance}`);
+console.log(`Saldo konta wynosi ${balance}`)
 ```
 
 > **Stosowanie niezadeklarowanych zmiennych**
@@ -2056,32 +2055,33 @@ console.log(`Saldo konta wynosi ${balance}`);
 Składnia **przypisania destrukturyzującego** umożliwia deklarowanie wielu zmiennych i przypisywanie im wartości. Po
 prawej stronie znaku równości umieszcza się tablicę obiektów (wartość „strukturalną”), a po lewej jedną lub kilka nazw
 zmiennych. Wykorzystuje się przy tym składnię przypominającą literał tablicowy lub obiektowy. Z wartości po prawej
-stronie są wyodrębniane („destrukturyzowane”) składowe wartości, przypisywane następnie zmiennym umieszczonym 
+stronie są wyodrębniane („destrukturyzowane”) składowe wartości, przypisywane następnie zmiennym umieszczonym
 po lewej stronie.
 
 Przypisanie destrukturyzujące jest najczęściej wykorzystywane do inicjowania zmiennych w deklaracjach `let`, `const` i
 `var`, ale stosuje się je też w zwykłych wyrażeniach przypisujących (ze zmiennymi zadeklarowanymi wcześniej).
 
 ```javascript
-let [x, y] = [2, 4]; // <=> let x = 2, y = 4;
+let [x, y] = [2, 4] // <=> let x = 2, y = 4;
 
-[x, y] = [x + 1, y + 1]; // <=> x = x + 1 ; y = y + 1;
-x; // => 3
+;[x, y] = [x + 1, y + 1] // <=> x = x + 1 ; y = y + 1;
+x // => 3
 
-[x, y] = [x++, y++]; // <=> x = x++; y = y++;
-x; // => 3
+;[x, y] = [x++, y++] // <=> x = x++; y = y++;
+x // => 3
 
-[x, y] = [++x, ++y]; // <=> x = ++x; y = ++y;
-x; // => 4
+;[x, y] = [++x, ++y] // <=> x = ++x; y = ++y;
+x // => 4
 ```
 
 Zmienne złożone mozemy stosować w pętlach:
 
 ```javascript
-let o = { x: 1, y: 2 }; // Iterowany obiekt.
-for (const [name, value] of Object.entries(o)) { // taka kontstrukcja, aby można było iterować obiekt 
- // bez tego opakowania: TypeError: o is not iterable
-  console.log(name, value); // Wyświetlany wynik: "x 1" i "y 2".
+let o = {x: 1, y: 2} // Iterowany obiekt.
+for (const [name, value] of Object.entries(o)) {
+  // taka kontstrukcja, aby można było iterować obiekt
+  // bez tego opakowania: TypeError: o is not iterable
+  console.log(name, value) // Wyświetlany wynik: "x 1" i "y 2".
 }
 ```
 
@@ -2089,76 +2089,85 @@ Liczba zmiennych umieszczonych po lewej stronie przypisania destrukturyzującego
 elementów tablicy po stronie prawej:
 
 ```javascript
-let [x,y] = [1]; // x == 1; y == undefined
-[x,y] = [1,2,3]; // x == 1; y == 2
-[,x,,y] = [1,2,3,4]; // x == 2; y == 4
+let [x, y] = [1] // x == 1; y == undefined
+;[x, y] = [1, 2, 3] // x == 1; y == 2
+;[, x, , y] = [1, 2, 3, 4] // x == 2; y == 4
 
-let [x, ...y] = [1,2,3,4]; // y == [2,3,4]
+let [x, ...y] = [1, 2, 3, 4] // y == [2,3,4]
 ```
 
 Przypisanie destrukturyzujące można stosować z zagnieżdżonymi tablicami:
 
 ```javascript
-let [a, [b, c]] = [1, [2,2.5], 3]; // a == 1; b == 2; c == 2.5
+let [a, [b, c]] = [1, [2, 2.5], 3] // a == 1; b == 2; c == 2.5
 ```
 
 Po prawej stronie można umieścić dowolny iterowalny obiekt, jak również każdy obiekt, który można wykorzystać
 w pętli for/of:
 
 ```javascript
-let [first, ...rest] = "Cześć!"; // first == "C"; rest == [ "z", "e", "ś", "ć", "!" ]
+let [first, ...rest] = 'Cześć!' // first == "C"; rest == [ "z", "e", "ś", "ć", "!" ]
 ```
 
 W przypisaniu destrukturyzującym po prawej stronie można również umieścić wartość obiektową. W takim przypadku
 zapis po lewej stronie powinien wyglądać jak literał obiektowy:
 
 ```javascript
-let transparent = {r: 0.0, g: 0.0, b: 0.0, a: 1.0}; // Kolor zapisany w formacie RGBA.
-let {r, g, b} = transparent; // r == 0.0; g == 0.0; b == 0.0
+let transparent = {r: 0.0, g: 0.0, b: 0.0, a: 1.0} // Kolor zapisany w formacie RGBA.
+let {r, g, b} = transparent // r == 0.0; g == 0.0; b == 0.0
 ```
 
 Można uprościć kod, w którym wykorzystywanych jest dużo funkcji trygonometrycznych i innych:
 
 ```javascript
 // To samo co const sin = Math.sin, cos = Math.cos, tan = Math.tan, sqrt = Math.sqrt, pow = Math.pow
-const {sin, cos, tan, sqrt, pow} = Math;
+const {sin, cos, tan, sqrt, pow} = Math
 ```
 
 Każdy identyfikator umieszczony po lewej stronie znaku równości może być parą innych identyfikatorów oddzielonych
-dwukropkiem. Pierwszy identyfikator określa wtedy nazwę właściwości, której wartość ma być odczytana, a drugi 
+dwukropkiem. Pierwszy identyfikator określa wtedy nazwę właściwości, której wartość ma być odczytana, a drugi
 identyfikator określa zmienną, której ta wartość ma zostać przypisana:
 
 ```javascript
 // To samo co const cosine = Math.cos, tangent = Math.tan;
-const { cos: cosine, tan: tangent } = Math;
+const {cos: cosine, tan: tangent} = Math
 ```
-
 
 Przypisanie destrukturyzujące, gdy stosowane są zagnieżdżone obiekty lub tablice obiektów:
 
-```javascript 
-let points = [{x: 1, y: 2}, {x: 3, y: 4}]; // Tablica złożona z dwóch obiektów
-let [{x: x1, y: y1}, {x: x2, y: y2}] = points; // destrukturyzowana w cztery zmienne.
-(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4) // => true
+```javascript
+let points = [
+  {x: 1, y: 2},
+  {x: 3, y: 4},
+] // Tablica złożona z dwóch obiektów
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points // destrukturyzowana w cztery zmienne.
+x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4 // => true
 ```
 
 Zamiast tablicy obiektów można destrukturyzować obiekt zawierający tablice:
 
 ```javascript
-let points = { p1: [1,2], p2: [3,4] }; // Obiekt, którego właściwościami są tablice
-let { p1: [x1, y1], p2: [x2, y2] } = points; // destrukturyzowany w cztery zmienne.
-(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4) // => true
+let points = {p1: [1, 2], p2: [3, 4]} // Obiekt, którego właściwościami są tablice
+let {
+  p1: [x1, y1],
+  p2: [x2, y2],
+} = points // destrukturyzowany w cztery zmienne.
+x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4 // => true
 ```
 
 ```javascript
 // Najpierw zapisz strukturę danych i złożone przypisanie destrukturyzujące.
-let points = [{x: 1, y: 2}, {x: 3, y: 4}];
-let [{x: x1, y: y1}, {x: x2, y: y2}] = points;
+let points = [
+  {x: 1, y: 2},
+  {x: 3, y: 4},
+]
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points
 // Sprawdź poprawność zapisu, zamieniając strony miejscami.
-let points2 = [{x: x1, y: y1}, {x: x2, y: y2}]; // points2 == points
+let points2 = [
+  {x: x1, y: y1},
+  {x: x2, y: y2},
+] // points2 == points
 ```
-
-
 
 # 4. Wyrażenia i operatory
 
@@ -2187,18 +2196,18 @@ Literały to stałe wartości wpisane bezpośrednio w kodzie programu, na przyk�
 Wyrażeniami podstawowymi są również niektóre zarezerwowane słowa:
 
 ```javascript
-true; // Logiczna wartość "prawda".
-false; // Logiczna wartość "fałsz".
-null; // "Pusta" wartość.
-this; // Wartość oznaczająca "bieżący" obiekt.
+true // Logiczna wartość "prawda".
+false // Logiczna wartość "fałsz".
+null // "Pusta" wartość.
+this // Wartość oznaczająca "bieżący" obiekt.
 ```
 
 Trzecim rodzajem wyrażenia podstawowego jest odwołanie do zmiennej, stałej lub do właściwości obiektu globalnego:
 
 ```javascript
-i; // Wynikiem jest wartość zmiennej i.
-sum; // Wynikiem jest wartość zmiennej sum.
-undefined; // Wynikiem jest wartość właściwości "undefined" obiektu globalnego.
+i // Wynikiem jest wartość zmiennej i.
+sum // Wynikiem jest wartość zmiennej sum.
+undefined // Wynikiem jest wartość właściwości "undefined" obiektu globalnego.
 ```
 
 Interpreter JavaScript traktuje każdy użyty w kodzie identyfikator jako zmienną, stałą lub właściwość obiektu globalnego
@@ -2215,8 +2224,8 @@ Inicjator tablicy jest listą wyrażeń oddzielonych przecinkami, umieszczoną w
 inicjatora jest nowa tablica elementów zainicjowanych wynikami oddzielonych przecinkami wyrażeń.
 
 ```javascript
-[]; // Pusta tablica. Brak wyrażeń wewnątrz nawiasów oznacza, że tablica nie ma elementów.
-[1 + 2, 3 + 4];  // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
+;[] // Pusta tablica. Brak wyrażeń wewnątrz nawiasów oznacza, że tablica nie ma elementów.
+;[1 + 2, 3 + 4] // Tablica dwuelementowa. Pierwszy element ma wartość 3, a drugi 7.
 ```
 
 Poszczególne wyrażenia inicjatora tablicy mogą być inicjatorami innych tablic:
@@ -2226,22 +2235,22 @@ let matrix = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9],
-];
+]
 ```
 
 Jeżeli w literale tablicowym pominie się wartości rozdzielone przecinkami, wówczas elementy te nie zostaną zdefiniowane:
 
 ```javascript
-let sparseArray = [1, , , , 5];
+let sparseArray = [1, , , , 5]
 ```
 
 Inicjator obiektu stosuje nawiasy klamrowe, a każde podwyrażenie jest poprzedzone nazwą właściwości i dwukropkiem:
 
 ```javascript
-let p = {x: 2.3, y: -1.2}; // Obiekt posiadający dwie właściwości.
-let q = {}; // Obiekt bez właściwości.
-q.x = 2.3;
-q.y = -1.2; // Obiekt q ma teraz te same właściwości co obiekt p.
+let p = {x: 2.3, y: -1.2} // Obiekt posiadający dwie właściwości.
+let q = {} // Obiekt bez właściwości.
+q.x = 2.3
+q.y = -1.2 // Obiekt q ma teraz te same właściwości co obiekt p.
 ```
 
 ## 4.3. Wyrażenia definiujące funkcje
@@ -2251,9 +2260,9 @@ inicjator obiektu jest literałem obiektowym:
 
 ```javascript
 // Funkcja zwracająca kwadrat argumentu.
-const square = function(x) {
-  return x * x;
-};
+const square = function (x) {
+  return x * x
+}
 ```
 
 Wyrażenie definiujące funkcję może również zawierać jej nazwę.
@@ -2266,8 +2275,8 @@ Wynikiem **wyrażenia dostępu do właściwości** jest wartość właściwości
 definiuje dwie składnie dostępu do właściwości:
 
 ```javascript
-wyrażenie.identyfikator;
-wyrażenie[wyrażenie];
+wyrażenie.identyfikator
+wyrażenie[wyrażenie]
 ```
 
 Wyrażenie określa obiekt, a identyfikator nazwę żądanej właściwości. Druga składnia to wyrażenie (obiekt lub tablica) z
@@ -2275,14 +2284,14 @@ następującym po nim drugim wyrażeniem umieszczonym wewnątrz nawiasów kwadra
 właściwości lub indeks żądanego elementu tablicy.
 
 ```javascript
-let object = {x: 1, y: {z: 3}}; // Przykładowy obiekt.
-let a = [object, 4, [5, 6]]; // Przykładowa tablica zawierająca obiekt.
-object.x; // => 1: właściwość x wyrażenia object.
-object.y.z; // => 3: właściwość z wyrażenia object.y.
-object['x']; // => 1: właściwość x obiektu object.
-a[1]; // => 4: element o indeksie 1 wyrażenia a.
-a[2]['1']; // => 6: element o indeksie 1 wyrażenia a[2].
-a[0].x; // => 1: właściwość x wyrażenia a[0].
+let object = {x: 1, y: {z: 3}} // Przykładowy obiekt.
+let a = [object, 4, [5, 6]] // Przykładowa tablica zawierająca obiekt.
+object.x // => 1: właściwość x wyrażenia object.
+object.y.z // => 3: właściwość z wyrażenia object.y.
+object['x'] // => 1: właściwość x obiektu object.
+a[1] // => 4: element o indeksie 1 wyrażenia a.
+a[2]['1'] // => 6: element o indeksie 1 wyrażenia a[2].
+a[0].x // => 1: właściwość x wyrażenia a[0].
 ```
 
 W obu składniach najpierw wyliczany jest wynik wyrażenia umieszczonego przed kropką lub otwierającym nawiasem
@@ -2303,8 +2312,8 @@ undefined.
 W wersji ES2020 zostały wprowadzone dwa nowe rodzaje wyrażeń dostępu do właściwości:
 
 ```javascript
-wyrażenie?.identyfikator;
-wyrażenie?.[wyrażenie];
+wyrażenie?.identyfikator
+wyrażenie?.[wyrażenie]
 ```
 
 Wartości null i undefined są jedynymi wartościami w języku JavaScript, które nie mają właściwości. W ich przypadku próba
@@ -2320,18 +2329,20 @@ Tego rodzaju wyrażenie dostępu do właściwości jest niekiedy nazywane „opc
 się z większej liczby połączonych wyrażeń, na przykład:
 
 ```javascript
-let a = {b: null};
-a.b?.c.d // => undefined (cecha opcjonalnego  łań. - "krótkie zwarcie"); a.b.c => TypeError
-  (a.b?.c).d // => TypeError
+let a = {b: null}
+a.b?.c.d(
+  // => undefined (cecha opcjonalnego  łań. - "krótkie zwarcie"); a.b.c => TypeError
+  a.b?.c
+).d // => TypeError
 ```
 
 W wyrażeniu warunkowego dostępu do właściwości można również stosować zapis ?.[] zamiast [].
 
 ```javascript
-let a; // Ups, zapomnieliśmy zainicjować tę zmienną!
-let index = 0;
+let a // Ups, zapomnieliśmy zainicjować tę zmienną!
+let index = 0
 try {
-  a[index++]; // Zgłoszenie wyjątku TypeError.
+  a[index++] // Zgłoszenie wyjątku TypeError.
 } catch (e) {
   index // => 1: zmienna jest powiększana przed zgłoszeniem wyjątku TypeError.
 }
@@ -2343,31 +2354,32 @@ a[index++] // TypeError: nie można indeksować niezdefiniowanej zmiennej.
 ## 4.5. Wyrażenia wywołujące
 
 **Wyrażenie wywołujące** jest frazą powodującą wywołanie (uruchomienie) funkcji lub metody. Obejmuje ona wyrażenie
-identyfikujące funkcję, która ma być wywołana, z następującymi po niej nawiasami zwykłymi, wewnątrz których może 
+identyfikujące funkcję, która ma być wywołana, z następującymi po niej nawiasami zwykłymi, wewnątrz których może
 znajdować się lista rozdzielonych przecinkami wyrażeń argumentów.
 
 ```javascript
 f(0) // f jest wyrażeniem funkcyjnym, a 0 wyrażeniem argumentu.
-Math.max(x,y,z) // Math.max jest funkcją, a x, y, i z są argumentami.
+Math.max(x, y, z) // Math.max jest funkcją, a x, y, i z są argumentami.
 a.sort() // a.sort jest funkcją bez argumentów.
 ```
-Podczas wyliczania **wyrażenia wywołującego** najpierw wyliczany jest wynik **wyrażenia funkcyjnego**. Następnie 
+
+Podczas wyliczania **wyrażenia wywołującego** najpierw wyliczany jest wynik **wyrażenia funkcyjnego**. Następnie
 wyliczane są wyniki wyrażeń argumentów i tworzona lista wartości. Jeżeli wynikiem wyrażenia funkcyjnego nie jest
-funkcja, zgłaszany jest wyjątek **TypeError**. W przeciwnym razie parametrom określonym w definicji funkcji są 
+funkcja, zgłaszany jest wyjątek **TypeError**. W przeciwnym razie parametrom określonym w definicji funkcji są
 przypisywane wartości **argumentów** i na koniec wykonywany jest kod funkcji. Jeżeli w kodzie użyta jest instrukcja
 `return`, zwracana przez nią wartość staje się wynikiem całego **wyrażenia wywołującego**.
 
-Każde **wyrażenie wywołujące** zawiera parę nawiasów i podwyrażenie umieszczone przed nawiasem otwierającym. 
-Jeżeli jest to wyrażenie dostępu do właściwości, wówczas mamy do czynienia z wywołaniem **metody**. W takim 
+Każde **wyrażenie wywołujące** zawiera parę nawiasów i podwyrażenie umieszczone przed nawiasem otwierającym.
+Jeżeli jest to wyrażenie dostępu do właściwości, wówczas mamy do czynienia z wywołaniem **metody**. W takim
 przypadku obiekt lub tablica, której dotyczy odwołanie, po uruchomianiu kodu funkcji staje się wartością słowa
 kluczowego `this`.
 
 ### 4.5.1. Wywołania warunkowe
 
 W wersji języka ES2020 można wywoływać funkcje, stosując notację `?.()` zamiast `()`. Jeżeli funkcja jest wywoływana
-w zwykły sposób, a wyrażenie znajdujące się przed nawiasami ma wartość `null`, `undefined` lub nie jest funkcją, jest 
-zgłaszany wyjątek `TypeError`. Jeżeli natomiast użyje się nowej notacji `?.()` i wyrażenie po lewej stronie znaku 
-zapytania będzie miało wartość `null` lub `undefined`, to wynikiem całego wyrażenia wywołującego będzie wartość 
+w zwykły sposób, a wyrażenie znajdujące się przed nawiasami ma wartość `null`, `undefined` lub nie jest funkcją, jest
+zgłaszany wyjątek `TypeError`. Jeżeli natomiast użyje się nowej notacji `?.()` i wyrażenie po lewej stronie znaku
+zapytania będzie miało wartość `null` lub `undefined`, to wynikiem całego wyrażenia wywołującego będzie wartość
 `undefined`, a wyjątek nie zostanie zgłoszony.
 
 <!-- TO DO -->
@@ -2382,46 +2394,47 @@ Operatory są stosowane w wyrażeniach arytmetycznych, porównujących, logiczny
 
 **Tabela** zawiera podsumowanie operatorów.
 
-| Operator                                                  | Operacja                                            | W | L | Typy                                                  |
-|-----------------------------------------------------------|-----------------------------------------------------|---|---|-------------------------------------------------------|
-| ++                                                        | Pre- i postinkrementacja                            | P | 1 | l-wartość → liczba                                    |
-| --                                                        | Pre- i postdekrementacja                            | P | 1 | l-wartość → liczba                                    |
-| -                                                         | Zmiana znaku liczby                                 | P | 1 | liczba → liczba                                       |
-| +                                                         | Konwersja na liczbę                                 | P | 1 | dowolny → liczba                                      |
-| ~                                                         | Odwrócenie bitów                                    | P | 1 | liczba całkowita → liczba całkowita                   |
-| !                                                         | Negacja wartości logicznej                          | P | 1 | wart. logiczna → wart. logiczna                       |
-| delete                                                    | Usunięcie właściwości                               | P | 1 | l-wartość → wart. logiczna                            |
-| typeof                                                    | Określenie typu operandu                            | P | 1 | dowolny → ciąg znaków                                 |
-| void                                                      | Zwrócenie pustej wartości                           | P | 1 | dowolny → undefined                                   |
-| \*\*                                                      | Potęgowanie                                         | P | 2 | liczba, liczba → liczba                               |
-| \*, /, %                                                  | Mnożenie, dzielenie, reszta                         | L | 2 | liczba, liczba → liczba                               |
-| +, -                                                      | Dodawanie, odejmowanie                              | L | 2 | liczba, liczba → liczba                               |
-| +                                                         | Łączenie ciągów znaków                              | L | 2 | ciąg znaków, ciąg znaków → ciąg znaków                |
-| <<                                                        | Przesunięcie bitów w lewo                           | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| > >                                                       | Przesunięcie bitów w prawo z zachowaniem znaku      | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| > > >                                                     | Przesunięcie bitów w prawo z uzupełnieniem zerami   | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| <, <=, >, >=                                              | Porównanie liczbowe                                 | L | 2 | liczba, liczba → wart. logiczna                       |
-| <, <=, >, >=                                              | Porównanie alfabetyczne                             | L | 2 | ciąg znaków, ciąg znaków → wart. logiczna             |
-| instanceof                                                | Określenie klasy obiektu                            | L | 2 | obiekt, funkcja → wart. logiczna                      |
-| in                                                        | Sprawdzenie istnienia właściwości                   | L | 2 | dowolny, obiekt → wart. logiczna                      |
-| ==                                                        | Nieścisła równość                                   | L | 2 | dowolny, dowolny → wart. logiczna                     |
-| !=                                                        | Nieścisła nierówność                                | L | 2 | dowolny, dowolny → wart. logiczna                     |
-| ===                                                       | Ścisła równość                                      | L | 2 | dowolny, dowolny → wart. logiczna                     |
-| !==                                                       | Ścisła nierówność                                   | L | 2 | dowolny, dowolny → wart. logiczna                     |
-| &                                                         | Bitowa operacja ORAZ                                | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| ^                                                         | Bitowa różnica symetryczna                          | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| \|                                                        | Bitowa operacja LUB                                 | L | 2 | liczba całkowita, liczba całkowita → liczba całkowita |
-| &&                                                        | Logiczna operacja ORAZ                              | L | 2 | dowolny, dowolny → dowolny                            |
-| \|\|                                                      | Logiczna operacja LUB                               | L | 2 | dowolny, dowolny → dowolny                            |
-| ??                                                        | Wybranie pierwszego zdefiniowanego operandu         | L | 2 | dowolny, dowolny → dowolny                            |
-| ?:                                                        | Wybranie drugiego lub trzeciego operandu            | P | 3 | wart. logiczna, dowolny, dowolny → dowolny            |
-| =                                                         | Przypisanie wartości zmiennej lub właściwości       | P | 2 | l-wartość, dowolny → dowolny                          |
-| \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P | 2 | l-wartość, dowolny → dowolny                          |
-| ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L | 2 | dowolny, dowolny → dowolny                            |
+| Operator                                                  | Operacja                                            | W   | L   | Typy                                                  |
+| --------------------------------------------------------- | --------------------------------------------------- | --- | --- | ----------------------------------------------------- |
+| ++                                                        | Pre- i postinkrementacja                            | P   | 1   | l-wartość → liczba                                    |
+| --                                                        | Pre- i postdekrementacja                            | P   | 1   | l-wartość → liczba                                    |
+| -                                                         | Zmiana znaku liczby                                 | P   | 1   | liczba → liczba                                       |
+| +                                                         | Konwersja na liczbę                                 | P   | 1   | dowolny → liczba                                      |
+| ~                                                         | Odwrócenie bitów                                    | P   | 1   | liczba całkowita → liczba całkowita                   |
+| !                                                         | Negacja wartości logicznej                          | P   | 1   | wart. logiczna → wart. logiczna                       |
+| delete                                                    | Usunięcie właściwości                               | P   | 1   | l-wartość → wart. logiczna                            |
+| typeof                                                    | Określenie typu operandu                            | P   | 1   | dowolny → ciąg znaków                                 |
+| void                                                      | Zwrócenie pustej wartości                           | P   | 1   | dowolny → undefined                                   |
+| \*\*                                                      | Potęgowanie                                         | P   | 2   | liczba, liczba → liczba                               |
+| \*, /, %                                                  | Mnożenie, dzielenie, reszta                         | L   | 2   | liczba, liczba → liczba                               |
+| +, -                                                      | Dodawanie, odejmowanie                              | L   | 2   | liczba, liczba → liczba                               |
+| +                                                         | Łączenie ciągów znaków                              | L   | 2   | ciąg znaków, ciąg znaków → ciąg znaków                |
+| <<                                                        | Przesunięcie bitów w lewo                           | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| > >                                                       | Przesunięcie bitów w prawo z zachowaniem znaku      | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| > > >                                                     | Przesunięcie bitów w prawo z uzupełnieniem zerami   | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| <, <=, >, >=                                              | Porównanie liczbowe                                 | L   | 2   | liczba, liczba → wart. logiczna                       |
+| <, <=, >, >=                                              | Porównanie alfabetyczne                             | L   | 2   | ciąg znaków, ciąg znaków → wart. logiczna             |
+| instanceof                                                | Określenie klasy obiektu                            | L   | 2   | obiekt, funkcja → wart. logiczna                      |
+| in                                                        | Sprawdzenie istnienia właściwości                   | L   | 2   | dowolny, obiekt → wart. logiczna                      |
+| ==                                                        | Nieścisła równość                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
+| !=                                                        | Nieścisła nierówność                                | L   | 2   | dowolny, dowolny → wart. logiczna                     |
+| ===                                                       | Ścisła równość                                      | L   | 2   | dowolny, dowolny → wart. logiczna                     |
+| !==                                                       | Ścisła nierówność                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
+| &                                                         | Bitowa operacja ORAZ                                | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| ^                                                         | Bitowa różnica symetryczna                          | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| \|                                                        | Bitowa operacja LUB                                 | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
+| &&                                                        | Logiczna operacja ORAZ                              | L   | 2   | dowolny, dowolny → dowolny                            |
+| \|\|                                                      | Logiczna operacja LUB                               | L   | 2   | dowolny, dowolny → dowolny                            |
+| ??                                                        | Wybranie pierwszego zdefiniowanego operandu         | L   | 2   | dowolny, dowolny → dowolny                            |
+| ?:                                                        | Wybranie drugiego lub trzeciego operandu            | P   | 3   | wart. logiczna, dowolny, dowolny → dowolny            |
+| =                                                         | Przypisanie wartości zmiennej lub właściwości       | P   | 2   | l-wartość, dowolny → dowolny                          |
+| \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P   | 2   | l-wartość, dowolny → dowolny                          |
+| ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L   | 2   | dowolny, dowolny → dowolny                            |
 
 Większość operatorów zapisuje się zapomocą znaków specjalnych, np. + lub =. Niektóre są słowami kluczowymi jak `delete` lub `instanceof`
 
 ### 4.7.1. Liczba operandów (arność)
+
 Większość operatorów jest **dwuargumentowych**. Łączą one dwa wyrażenia w jedno złożone. Są też operatory **jednoargumentowe** przekształcające pojedyńcze wyrażenie w inne, bardziej złożone. Jest jeszcze operator **trójargumentowy** `?:` zwany warunkowym, łączący trzy wyrażenia w jedno.
 
 ### 4.7.2. Typy operatorów i wyników
@@ -2434,17 +2447,14 @@ Każda wartość jest w JS jest "prawdziwa" lub "fałszywa", zatem operatory log
 
 Niektóre operatory działają różnie w zależności od typów operatorów. Np. operator dodawania, dodaje wartości liczbowe, a wartości znakowe łączy. Operatory porównania skolei stosują porządek liczbowy lub alfabetyczny.
 
-Operatory przypisania i kilka innych wymagają operandu typy `l-wartość` co oznacza "poprawne wyrażenie znajdujące się lewej stronie operatora przypisania". W JS *l-wartościami* są zmienne, właściwości obiektów i elementy tablic.
+Operatory przypisania i kilka innych wymagają operandu typy `l-wartość` co oznacza "poprawne wyrażenie znajdujące się lewej stronie operatora przypisania". W JS _l-wartościami_ są zmienne, właściwości obiektów i elementy tablic.
 
 ### 4.7.3. Efekty uboczne operatorów
+
 Niektóre wyrażenia wywołują **efekty uboczne** tzn. wpływają na wyniki wyliczeń, które będą wykonywane w przyszłości.
 Najlepszym przykładem jest operator przypisania ale także operatory inkremantacji ++ i dekrementacji --
 
 ### 4.7.4. Priorytety operatorów
-
-
-
-
 
 ## 4.9. Wyrażenia relacyjne
 
@@ -2470,7 +2480,7 @@ Operator && można rozpatrywać w trzech różnych kontekstach:
    (koniunkcji) logicznego. Często jest stosowany do łączenia dwóch wyrażeń relacyjnych, na przykład:
 
 ```javascript
-x === 0 && y === 0; // true tylko wtedy, gdy zarówno x, jak i y są równe 0.
+x === 0 && y === 0 // true tylko wtedy, gdy zarówno x, jak i y są równe 0.
 ```
 
 Wynikiem wyrażenia relacyjnego jest zawsze wartość `true` lub `false`.
@@ -2483,10 +2493,10 @@ Wynikiem wyrażenia relacyjnego jest zawsze wartość `true` lub `false`.
    stronie:
 
 ```javascript
-let o = {x: 1};
-let p = null;
-o && o.x; // => 1: o ma wartość prawdziwą, więc operator zwraca wartość o.x.
-p && p.x; // => null: p ma wartość fałszywą, więc operator nie wylicza wartości p.x.
+let o = {x: 1}
+let p = null
+o && o.x // => 1: o ma wartość prawdziwą, więc operator zwraca wartość o.x.
+p && p.x // => null: p ma wartość fałszywą, więc operator nie wylicza wartości p.x.
 ```
 
 Należy zachowywać ostrożność, tworząc wyrażenia z operatorem `&&` i operandem po prawej stronie wywołującym skutki
@@ -2511,7 +2521,7 @@ wartości:
 // Kopiowanie właściwości obiektu o do p i zwrócenie p.
 
 function copy(o, p) {
-  p = p || {}; // Jeżeli parametr p jest pusty, użyj nowo utworzonego obiektu.
+  p = p || {} // Jeżeli parametr p jest pusty, użyj nowo utworzonego obiektu.
   // Ciało funkcji.
 }
 ```
@@ -2532,8 +2542,8 @@ Operator `!` jest operatorem jednoargumentowym umieszczanym przed operandem. Neg
 
 ```javascript
 // Prawa  de'Morgana
-!(p && q) === (!p || !q); // => true: dla wszystkich wartości p i q.
-!(p || q) === (!p && !q); // => true: dla wszystkich wartości p i q.
+!(p && q) === (!p || !q) // => true: dla wszystkich wartości p i q.
+!(p || q) === (!p && !q) // => true: dla wszystkich wartości p i q.
 ```
 
 ### Skrócona metoda wyznaczania wartości wyrażeń logicznych
@@ -2546,13 +2556,13 @@ Na przykład operator `||` zwróci wartość znajdującą się po jego lewej str
 na `true`, oraz wartość z prawej strony w przeciwnym przypadku.
 
 ```javascript
-console.log(null || 'użytkownik'); // => użytkownik
-console.log('Karol' || 'użytkownik'); // => Karol
+console.log(null || 'użytkownik') // => użytkownik
+console.log('Karol' || 'użytkownik') // => Karol
 ```
 
 ```javascript
-0 || -1; // => -1
-'' || '!?'; // => '!?'
+0 || -1 // => -1
+'' || '!?' // => '!?'
 ```
 
 Operator `&&` działa podobnie, tylko odwrotnie. Gdy po lewej stronie znajduje się coś o wartości `false`, to zostaje
@@ -2584,7 +2594,7 @@ wynikiem jest ciąg znaków opisujący typ operandu.
 Poniższa tabela przedstawia wyniki operatora `typeof` użytego ze wszystkimi wartościami dostępnymi w języku JavaScript.
 
 | x                               | typeof x    |
-|---------------------------------|-------------|
+| ------------------------------- | ----------- |
 | `undefined`                     | "undefined" |
 | `null`                          | "object"    |
 | `true` lub `false`              | "boolean"   |
@@ -2647,14 +2657,14 @@ Wprowadzona została w ES6 i operuje na **obiektach iterowalnych** (patrz rozdzi
 ciągi znaków, zbiory i mapy.
 
 ```javascript
-const data = [2, 3, 4, 5, 6, 7, 8, 9], sum = 0;
+const data = [2, 3, 4, 5, 6, 7, 8, 9],
+  sum = 0
 
 for (const el of data) {
-  sum += el;
+  sum += el
 }
 
-sum; // => 44
-
+sum // => 44
 ```
 
 Za słówem `of` musi się znaleźć wyrażenie będące iterowalnym obiektem.
@@ -2720,11 +2730,11 @@ nawiasach klamrowych. Nazwa właściwości jest identyfikatorem lub literałem t
 znaków). Wartością właściwości jest dowolne wyrażenie, wartość prymitywna lub obiekt.
 
 ```javascript
-let empty = {}; // Obiekt bez właściwości.
+let empty = {} // Obiekt bez właściwości.
 
-let point = {x: 0, y: 0}; // Dwie właściwości liczbowe.
+let point = {x: 0, y: 0} // Dwie właściwości liczbowe.
 
-let p2 = {x: point.x, y: point.y + 1}; // Bardziej złożone wartości.
+let p2 = {x: point.x, y: point.y + 1} // Bardziej złożone wartości.
 
 let book = {
   'main title': 'JavaScript', // Nazwy właściwości zawierają spację
@@ -2735,7 +2745,7 @@ let book = {
     firstname: 'David',
     surname: 'Flanagan',
   },
-};
+}
 ```
 
 ### 6.2.2. Tworzenie obiektów za pomocą operatora new
@@ -2744,10 +2754,10 @@ Operator `new` tworzy obiekt i inicjuje go. Po operatorze umieszcza się nazwę 
 inicjuje nowo utworzony obiekt. Wbudowane obiekty mają następujące konstruktory:
 
 ```javascript
-const object = new Object(); // Utworzenie pustego obiektu <=> {} 
-const array = new Array();   // Utworzenie pustej tablicy <=> []
-const date = new Date();     // Utworzenie obiektu typu Date reprezentującego aktualny czas
-const map = new Map();         // Utworzenie obiektu typu Map dla par klucz-wartość
+const object = new Object() // Utworzenie pustego obiektu <=> {}
+const array = new Array() // Utworzenie pustej tablicy <=> []
+const date = new Date() // Utworzenie obiektu typu Date reprezentującego aktualny czas
+const map = new Map() // Utworzenie obiektu typu Map dla par klucz-wartość
 ```
 
 ### 6.2.3. Prototypy
@@ -2763,7 +2773,7 @@ po prototypie `Date.prototype`.
 Właściwość `Object.prototype` jest obiektem, który nie ma prototypu, tzn. nie dziedziczy właściwości po żadnym innym
 obiekcie. Większość wbudowanych i zdefiniowanych konstruktorów ma prototyp odziedziczony po obiekcie `Object.prototype`.
 (np. obiekt `Date.prototype`). Zatem obiekt utworzony za pomocą instrukcji `new Date()` dziedziczy właściwości zarówno
-po obiekcie ` Date.prototype`, jak i  `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
+po obiekcie ` Date.prototype`, jak i `Object.prototype`. Seria połączonych prototypów nosi nazwę **łańcucha
 prototypów**.
 
 ### 6.2.4. Funkcja Object.create()
@@ -2771,20 +2781,20 @@ prototypów**.
 Funkcja `Object.create()` tworzy nowy obiekt. Jej pierwszym argumentem jest prototyp obiektu:
 
 ```javascript
-let object = Object.create({x: 1, y: 2}); // Obiekt object dziedziczy właściwości x i y.
-object.x + object.y;
+let object = Object.create({x: 1, y: 2}) // Obiekt object dziedziczy właściwości x i y.
+object.x + object.y
 ```
 
 ```javascript
-let object = Object.create(Object.prototype); // Obiekt object jest podobny do utworzonego za pomocą {} lub Object().
+let object = Object.create(Object.prototype) // Obiekt object jest podobny do utworzonego za pomocą {} lub Object().
 ```
 
 Funkcji `Object.create()` używa się wtedy, gdy trzeba zabezpieczyć obiekt przed niezamierzonymi modyfikacjami przez
 funkcje biblioteczne.
 
 ```javascript
-let o = {x: 'Nie zmieniaj tej właściwości.'};
-library.function(Object.create(o)); // Zabezpieczenie przed przypadkowymi modyfikacjami
+let o = {x: 'Nie zmieniaj tej właściwości.'}
+library.function(Object.create(o)) // Zabezpieczenie przed przypadkowymi modyfikacjami
 ```
 
 ## 6.3. Odpytywanie i ustawianie właściwości
@@ -2798,16 +2808,16 @@ Wartość właściwości odczytujemy za pomocą jednego z dwóch operatorów:
 Po lewej stronie operatora musi znajdować się wyrażenie, którego wartością jest obiekt.
 
 ```javascript
-let author = book.author; // Odczytanie wartości właściwości "author" obiektu book.
-let name = author.surname; // Odczytanie wartości właściwości "surname" obiektu author.
-let title = book['main title']; // Odczytanie wartości właściwości "main title" obiektu book.
+let author = book.author // Odczytanie wartości właściwości "author" obiektu book.
+let name = author.surname // Odczytanie wartości właściwości "surname" obiektu author.
+let title = book['main title'] // Odczytanie wartości właściwości "main title" obiektu book.
 ```
 
 Tych samych operatorów używamy do utworzenia lub ustawienia właściwości.
 
 ```javascript
-book.edition = 7; // Utworzenie właściwości "edition" obiektu book.
-book['main title'] = 'ECMAScript'; // Zmiana wartości właściwości "main title".
+book.edition = 7 // Utworzenie właściwości "edition" obiektu book.
+book['main title'] = 'ECMAScript' // Zmiana wartości właściwości "main title".
 ```
 
 ### 6.3.1. Obiekty jako tablice asocjacyjne
@@ -2815,8 +2825,8 @@ book['main title'] = 'ECMAScript'; // Zmiana wartości właściwości "main titl
 Dwa poniższe wyrażenia mają tę samą wartość:
 
 ```javascript
-obiekt.właściwość;
-obiekt['właściwość'];
+obiekt.właściwość
+obiekt['właściwość']
 ```
 
 Pierwsza składnia, z kropką i identyfikatorem, jest podobna do stosowanej w językach C i Java do odwoływania się do
@@ -2832,9 +2842,9 @@ Natomiast w odwołaniu z nawiasami kwadratowymi nazwa właściwości jest ciągi
 go tworzyć i modyfikować w kodzie. Na przykład poprawny jest następujący kod:
 
 ```javascript
-let addr = "";
+let addr = ''
 for (let i = 0; i < 4; i++) {
-  addr += customer[`address${i}`] + "\n";
+  addr += customer[`address${i}`] + '\n'
 }
 ```
 
@@ -2845,14 +2855,14 @@ Poniżej pokazany jest przykład wykorzystania pętli `for/in` do wyliczenia ca�
 
 ```javascript
 function computeValue(portfolio) {
-  let total = 0.0;
+  let total = 0.0
   for (let stock in portfolio) {
     // Dla każdej akcji w portfelu:
-    let shares = portfolio[stock]; // odczytaj ich liczbę,
-    let price = getQuote(stock); // pobierz cenę,
-    total += shares * price; // dodaj wartość do sumy.
+    let shares = portfolio[stock] // odczytaj ich liczbę,
+    let price = getQuote(stock) // pobierz cenę,
+    total += shares * price // dodaj wartość do sumy.
   }
-  return total; // Zwróć sumę.
+  return total // Zwróć sumę.
 }
 ```
 
@@ -2867,16 +2877,16 @@ momentu, aż zostanie znaleziona właściwość `x` lub obiekt, którego właśc
 właściwości `prototype` tworzą łańcuch, czyli połączoną listę obiektów, po których dziedziczone są właściwości:
 
 ```javascript
-let object = {}; // Obiekt object dziedziczy metody po obiekcie Object.prototype.
-object.x = 1; // Od teraz ma również własną właściwość x.
+let object = {} // Obiekt object dziedziczy metody po obiekcie Object.prototype.
+object.x = 1 // Od teraz ma również własną właściwość x.
 
-let p = Object.create(object); // Obiekt p dziedziczy właściwości po obiektach object i Object.prototype.
-p.y = 2; // Od teraz ma również własną właściwość y.
+let p = Object.create(object) // Obiekt p dziedziczy właściwości po obiektach object i Object.prototype.
+p.y = 2 // Od teraz ma również własną właściwość y.
 
-let q = Object.create(p); // Obiekt q dziedziczy właściwości po obiektach p, object …
-q.z = 3; // … i Object.prototype, jak również ma własną właściwość z.
-let f = q.toString(); // Metoda toString() jest dziedziczona po obiekcie Object.prototype.
-q.x + q.y; // => 3; właściwości x i y są dziedziczone po obiektach object i p.
+let q = Object.create(p) // Obiekt q dziedziczy właściwości po obiektach p, object …
+q.z = 3 // … i Object.prototype, jak również ma własną właściwość z.
+let f = q.toString() // Metoda toString() jest dziedziczona po obiekcie Object.prototype.
+q.x + q.y // => 3; właściwości x i y są dziedziczone po obiektach object i p.
 ```
 
 Teraz załóżmy, że właściwości `x` w obiekcie o została przypisana jakaś wartość. Jeżeli obiekt ten miał wcześniej
@@ -2888,14 +2898,14 @@ przesłonięta przez nową właściwość o takiej samej nazwie.
 jest kluczową funkcjonalnością języka JavaScript, umożliwiającą selektywne nadpisywanie dziedziczonych właściwości:
 
 ```javascript
-const unitcircle = {r: 1}; // Obiekt, po którym są dziedziczone właściwości.
+const unitcircle = {r: 1} // Obiekt, po którym są dziedziczone właściwości.
 
-const c = Object.create(unitcircle); // Obiekt c dziedziczy właściwość r.
-c.x = 1;
-c.y = 1; // W obiekcie c są definiowane dwie własne właściwości.
-c.r = 2; // W obiekcie c jest nadpisywana odziedziczona właściwość.
+const c = Object.create(unitcircle) // Obiekt c dziedziczy właściwość r.
+c.x = 1
+c.y = 1 // W obiekcie c są definiowane dwie własne właściwości.
+c.r = 2 // W obiekcie c jest nadpisywana odziedziczona właściwość.
 
-unitcircle.r; // => 1: prototyp nie jest modyfikowany.
+unitcircle.r // => 1: prototyp nie jest modyfikowany.
 ```
 
 > Niemal wszystkie obiekty mają swoje prototypy, ale większość z nich nie ma właściwości o nazwie prototype.
@@ -2909,14 +2919,14 @@ właściwości `x`, to odwołujące się do niej wyrażenie ma wartość `undefi
 nazwie `sub-title`, ale nie o nazwie `subtitle`:
 
 ```javascript
-book.subtitle; // => undefined: właściwość nie istnieje.
+book.subtitle // => undefined: właściwość nie istnieje.
 ```
 
 Błędem jest natomiast próba odpytania właściwości nieistniejącego obiektu. Wartości null i undefined nie mają
 właściwości, więc próba ich odpytania też jest błędem. Kontynuujmy poprzedni przykład:
 
 ```javascript
-const len = book.subtitle.length; // !TypeError: wartość undefined nie ma właściwości length.
+const len = book.subtitle.length // !TypeError: wartość undefined nie ma właściwości length.
 ```
 
 Wyrażenie odwołujące się do właściwości nie zostanie wyliczone, jeżeli po lewej stronie kropki będzie znajdowała się
@@ -2924,21 +2934,21 @@ wartość `null` lub `undefined`.
 
 ```javascript
 // Rozbudowana, jawna technika.
-let surname = undefined;
+let surname = undefined
 if (book) {
   if (book.author) {
-    surname = book.author.surname;
+    surname = book.author.surname
   }
 }
 // Zwięzła, idiomatyczna technika uzyskania wartości właściwości surname, null lub undefined.
-surname = book && book.author && book.author.surname;
+surname = book && book.author && book.author.surname
 ```
 
 Za pomocą wprowadzonego w wersji języka ES2020 operatora warunkowego dostępu do właściwości ?. (patrz punkt „Warunkowy
 dostęp do właściwości”) można powyższe wyrażenie napisać w następujący sposób:
 
 ```javascript
-let surname = book?.author?.surname;
+let surname = book?.author?.surname
 ```
 
 ## 6.4. Usuwanie właściwości
@@ -2955,19 +2965,21 @@ let surname = book?.author?.surname;
 
 ## 6.10. Udoskonalona składnia literału obiektowego
 
+W najwnowszych wersjach języka JS składnia literału obiektowego została wzbogacona o kilka użytecznych funkcji.
+
 ### 6.10.1. Uproszczone definiowanie właściwości
 
 ### 6.10.4. Operator rozciągania
 
-Od wersji języka ES2018 można kopiować właściwości istniejącego obiektu do nowego, umieszczając w literale operator 
+Od wersji języka ES2018 można kopiować właściwości istniejącego obiektu do nowego, umieszczając w literale operator
 rozciągania (...);
 
 ```javascript
-const position = { x: 10, y: 20 };
-const dimension = { width: 100, height: 75 };
-const rect = { ...position, ...dimension };
+const position = {x: 10, y: 20}
+const dimension = {width: 100, height: 75}
+const rect = {...position, ...dimension}
 
-console.log(rect.x + rect.y + rect.width + rect.height);
+console.log(rect.x + rect.y + rect.width + rect.height)
 ```
 
 Należy pamiętać, że nie jest to operator w ścisłym tego słowa znaczeniu, gdyż jest to składnia, którą
@@ -2976,16 +2988,16 @@ można stosować tylko w literałach obiektowych.
 Jeśli obiekty rozciągany i docelowy mają właściowści o takich samych nazwach, przyjmowana jest wartość tej drugiej.
 
 ```javascript
-const obj = { id: 100 };
-const pObj = { id: 111, ...obj };
-console.log(pObj.id); // => 100, obiekt obj nadpisuje właściwość
+const obj = {id: 100}
+const pObj = {id: 111, ...obj}
+console.log(pObj.id) // => 100, obiekt obj nadpisuje właściwość
 
-const qObj = { ...obj, x: 200 }; //
-console.log(qObj.x); // => 200, teraz właściwość obj zostaje nadpisana
+const qObj = {...obj, x: 200} //
+console.log(qObj.x) // => 200, teraz właściwość obj zostaje nadpisana
 
-const objOne = Object.create({ x: 303 });
-const pObjOne = { ...objOne };
-console.log(pObjOne.x); // => undefined, gdyż operator rozciąga tylko własne właściwości
+const objOne = Object.create({x: 303})
+const pObjOne = {...objOne}
+console.log(pObjOne.x) // => undefined, gdyż operator rozciąga tylko własne właściwości
 ```
 
 ### 6.10.5. Uproszczone definiowanie metod
@@ -2996,12 +3008,12 @@ w literale obiektowym tak samo, jak właściwości, wykorzystując wyrażenia fu
 ```javascript
 let square = {
   side: 10,
-  area: function() {
-    return this.side * this.side;
+  area: function () {
+    return this.side * this.side
   },
-};
+}
 
-square.area(); // => 100
+square.area() // => 100
 ```
 
 W wersji ES6 w składni literału obiektowego można pominąć dwukropek wraz ze słowem kluczowym function.
@@ -3009,12 +3021,12 @@ W wersji ES6 w składni literału obiektowego można pominąć dwukropek wraz ze
 ```javascript
 let square = {
   area() {
-    return this.side * this.side;
+    return this.side * this.side
   },
   side: 10,
-};
+}
 
-square.area(); // => 100
+square.area() // => 100
 ```
 
 Obie formy kodu są równorzędne.
@@ -3043,39 +3055,42 @@ W wersji języka ES6 został wprowadzony zestaw nowych klas tablicowych, zwany o
 
 Tablice tworzymy za pomocą:
 
-* literału tablicowego,
-* operatora rozciągania `(...)` i iteratora obiektu
-* konstruktora `Array()`
-* metod fabrycznych `Array.of()` i `Array.from()`
+- literału tablicowego,
+- operatora rozciągania `(...)` i iteratora obiektu
+- konstruktora `Array()`
+- metod fabrycznych `Array.of()` i `Array.from()`
 
 ### 7.1.1. Literały tablicowe
 
 Literał tablicowy jest umieszczoną wewnątrz nawiasów klamrowych listą elementów oddzielonych przecinkami, np.:
 
 ```javascript
-const empty = []; // Tablica bez elementów
-let primes = [2, 3, 5, 7, 11]; // Tablica złożona z pięciu elementów liczbowych.
-let misc = [1.1, true, "a",]; // Trzy elementy różnych typów i końcowy przecinek.
+const empty = [] // Tablica bez elementów
+let primes = [2, 3, 5, 7, 11] // Tablica złożona z pięciu elementów liczbowych.
+let misc = [1.1, true, 'a'] // Trzy elementy różnych typów i końcowy przecinek.
 ```
 
 Wartościami mogą być dowolne wyrażenia:
 
 ```javascript
-let base = 1024;
-let table = [base, base + 1, base + 2, base + 3];
+let base = 1024
+let table = [base, base + 1, base + 2, base + 3]
 ```
 
 Mogą zawierać literały obiektowe i inne literały tablicowe:
 
 ```javascript
-let b = [[1, {x: 1, y: 2}], [2, {x: 3, y: 4}]];
+let b = [
+  [1, {x: 1, y: 2}],
+  [2, {x: 3, y: 4}],
+]
 ```
 
 Tablica rozrzedzona:
 
 ```javascript
-let count = [1, , 3]; // Istnieją elementy o indeksach 0 i 2. Nie ma elementu o indeksie 1.
-let undefs = [, ,]; // Tablica bez elementów, ale o długości 2 a nie 3, tu przecinek opcjonalny.
+let count = [1, , 3] // Istnieją elementy o indeksach 0 i 2. Nie ma elementu o indeksie 1.
+let undefs = [, ,] // Tablica bez elementów, ale o długości 2 a nie 3, tu przecinek opcjonalny.
 ```
 
 Próba odpytanie elementów nieistniejących — wartość `undefined`.
@@ -3085,20 +3100,19 @@ Próba odpytanie elementów nieistniejących — wartość `undefined`.
 Operator rozciągania `(...)` nie jest operatorem w ścisłym znaczeniu tego słowa, gdyż można go stosować tylko w
 literałach tablicowych i wywołaniach funkcji.
 
-
 W literałach tablicowych służy do umieszczania w nich elementów innej tablicy:
 
 ```javascript
-let a = [1, 2, 3];
-let b = [0, ...a, 4]; // b == [0, 1, 2, 3, 4]
+let a = [1, 2, 3]
+let b = [0, ...a, 4] // b == [0, 1, 2, 3, 4]
 ```
 
 Za pomocą operatora rozciągania wygodnie tworzy się płaskie kopie tablic:
 
 ```javascript
-let original = [1, 2, 3];
-let copy = [...original];
-copy[0] = 0; // Modyfikacja kopii tablicy nie wpływa na oryginał.
+let original = [1, 2, 3]
+let copy = [...original]
+copy[0] = 0 // Modyfikacja kopii tablicy nie wpływa na oryginał.
 original[0] // => 1
 ```
 
@@ -3107,7 +3121,7 @@ for/of. Ciągi znaków są iterowalne, zatem za pomocą operatora rozciągania m
 pojedynczych znaków:
 
 ```javascript
-let digits = [..."0123456789ABCDEF"];
+let digits = [...'0123456789ABCDEF']
 digits // => ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
 ```
 
@@ -3115,11 +3129,9 @@ Zbiory również są iterowalne, a więc prostym sposobem usunięcia z tablicy p
 przekształcenie jej w zbiór i z powrotem w tablicę za pomocą operatora rozciągania:
 
 ```javascript
-let letters = [..."Witaj, świecie!"];
-[...new Set(letters)]  // => [ "W", "i", "t", "a", "j", ",", " ", "ś", "w", "e", "c", "!" ]
+let letters = [...'Witaj, świecie!']
+;[...new Set(letters)] // => [ "W", "i", "t", "a", "j", ",", " ", "ś", "w", "e", "c", "!" ]
 ```
-
-
 
 # 8. Funkcje
 
@@ -3128,7 +3140,7 @@ programowania. Inne równoważne pojęcia to podprogramy (ang. _subroutine_) lub
 
 **Funkcja** jest zdefiniowanym blokiem kodu, który można wykonywać, czyli wywoływać, dowolną liczbę razy. Funkcje są
 **parametryczne**, tzn. w ich definicjach można umieszczać listy identyfikatorów — **parametrów** — pełniących w ciałach
-funkcji role **lokalnych zmiennych.** Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**. 
+funkcji role **lokalnych zmiennych.** Parametrom w wywołaniu funkcji przypisywane są wartości, czyli **argumenty**.
 Wartości te są często wykorzystywane do wyliczania zwracanego **wyniku**, będącego wartością **wyrażenia funkcyjnego**.
 W każdym wywołaniu określany jest jeszcze jego **kontekst**, którego dane są przypisywane słowu kluczowemu **this**.
 
@@ -3138,14 +3150,14 @@ i stanowi wartość słowa kluczowego **this**. Funkcja inicjująca nowo utworzo
 W języku JavaScript funkcje są **obiektami**, na których można wykonywać różne operacje, na przykład przypisywać je
 zmiennym, umieszczać w argumentach innych funkcji, przypisywać wartości ich właściwościom, a nawet wywoływać ich metody.
 
-**Definicja funkcji** może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej funkcji ma dostęp do wszystkich 
-zmiennych zdefiniowanych w tym samym zasięgu co funkcja nadrzędna. Oznacza to, że funkcje są **domknięciami** 
+**Definicja funkcji** może być zagnieżdżona w innej funkcji. Kod zagnieżdżonej funkcji ma dostęp do wszystkich
+zmiennych zdefiniowanych w tym samym zasięgu co funkcja nadrzędna. Oznacza to, że funkcje są **domknięciami**
 (ang. _closure_) — ważnymi i przydatnymi konstrukcjami programistycznymi.
 
 ## 8.1. Definiowanie funkcji
 
-Funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować zarówno jako **deklarację**, jak i 
-**wyrażenie** lub jako to tzw. **funkcję strzałkową**, bardzo przydatną, gdy trzeba definicję funkcji umieścić jako 
+Funkcję definiuje się za pomocą słowa kluczowego **function**, które można stosować zarówno jako **deklarację**, jak i
+**wyrażenie** lub jako to tzw. **funkcję strzałkową**, bardzo przydatną, gdy trzeba definicję funkcji umieścić jako
 argument innej funkcji.
 
 W literałach obiektowych i w klasach metody definiuje się, stosując skróconą składnię, Są to wyrażenia funkcyjne
@@ -3161,24 +3173,24 @@ asynchroniczne za pomocą `async function`.
 
 **Deklaracja funkcji** to słowo kluczowe `function` oraz:
 
-* Identyfikator (nazwa) funkcji będącą zmienną, do której przypisywany jest tworzony obiekt funkcyjny.
-* Para zwykłych nawiasów mogąca zawierać listę identyfikatorów zwanych **parametrami**, oddzielonych 
+- Identyfikator (nazwa) funkcji będącą zmienną, do której przypisywany jest tworzony obiekt funkcyjny.
+- Para zwykłych nawiasów mogąca zawierać listę identyfikatorów zwanych **parametrami**, oddzielonych
   przecinkami i pełniącymi w ciele funkcji rolę zmiennych lokalnych.
-* Para nawiasów klamrowych zawierająca instrukcje tworzące **ciało funkcji** wykonywane po wywołaniu funkcji.
+- Para nawiasów klamrowych zawierająca instrukcje tworzące **ciało funkcji** wykonywane po wywołaniu funkcji.
 
-Interpreter JS definiuje wszystkie funkcje na początku zakresu (ang. *hoisting*), a więc wywołanie funkcji przed jej
+Interpreter JS definiuje wszystkie funkcje na początku zakresu (ang. _hoisting_), a więc wywołanie funkcji przed jej
 deklaracją nie jest błędem.
 
-Funkcja za pomocą słowa kluczowego `return` może zwrócić obliczoną wartość do wywołującego ją kodu lub wartość 
+Funkcja za pomocą słowa kluczowego `return` może zwrócić obliczoną wartość do wywołującego ją kodu lub wartość
 `undefined`, jeśli w swoim ciele nie zawiera tegoż słowa.
 
 ```javascript
 // Funkcja rekurencyjna obliczająca silnię.
 function factorial(n) {
   if (n <= 1) {
-    return 1;
+    return 1
   } else {
-    return n * factorial(n - 1);
+    return n * factorial(n - 1)
   }
 }
 
@@ -3198,33 +3210,33 @@ Nie można się odwołać do funkcji zdefiniowanej jako wyrażenie, dopóki nie 
 
 ```javascript
 // Wyrażenia funkcyjne
-const square = function(x) {
-  return x * x;
+const square = function (x) {
+  return x * x
 }
 
 // Nadano nazwę funkcji aby się do niej odwołać w kodzie
 const factorial = function fac(n) {
   if (n <= 1) {
-    return 1;
+    return 1
   } else {
-    return n * fac(n - 1);
+    return n * fac(n - 1)
   }
 }
 
-const arr = [23, 45, 12, 3, 6, 8];
+const arr = [23, 45, 12, 3, 6, 8]
 
-arr.sort(function(a, b) {
-  return a - b;
-});
+arr.sort(function (a, b) {
+  return a - b
+})
 
-console.log(arr);
+console.log(arr)
 
 // Wywołanie po zdefiniowaniu
-const cube = (function(x) {
-  return x * x * x;
-})(5);
+const cube = (function (x) {
+  return x * x * x
+})(5)
 
-console.log(cube);
+console.log(cube)
 ```
 
 ### 8.1.3. Funkcje strzałkowe
@@ -3234,24 +3246,24 @@ symbolem => i ciała umieszczonego w nawiasach klamrowych.
 
 ```javascript
 const sum = (x, y) => {
-  return x + y;
-};
+  return x + y
+}
 ```
 
 Prościej, jeśli tylko jedna instrukcja.
 
 ```javascript
-const sum = (x, y) => x + y;
-const square = x => x * x;
-const myFunc = () => console.log('Hello world!');
+const sum = (x, y) => x + y
+const square = x => x * x
+const myFunc = () => console.log('Hello world!')
 
 const ob = x => {
   return {value: x}
-}; // zwracamy obiekt
+} // zwracamy obiekt
 
 const another = x => {
   value: x
-}; // zwraca undefined
+} // zwraca undefined
 ```
 
 Pomiędzy parametrami a strzałką nie wstawiamy podziału wiersza, gdyż zdefiniujemy innne wyrażenie.
@@ -3259,7 +3271,7 @@ Pomiędzy parametrami a strzałką nie wstawiamy podziału wiersza, gdyż zdefin
 F.s. często umieszcza się w argumentach innych funkcji, szczególnie w metodach tablicowych
 
 ```javascript
-const squares = [1, 2, 3, 4].map(x => x * x); // => [1, 4, 9, 16]
+const squares = [1, 2, 3, 4].map(x => x * x) // => [1, 4, 9, 16]
 ```
 
 F.s. dziedziczy `this` po środowisku, w którym jest zdefiniowana i nie ma właściwości `prototype`.
@@ -3271,10 +3283,10 @@ Można zgnieżdżać funkcje w innych funkcjach.
 ```javascript
 function foo(a, b) {
   function square(x) {
-    return x * x;
+    return x * x
   }
 
-  return Math.sqrt(square(a) + square(b));
+  return Math.sqrt(square(a) + square(b))
 }
 
 foo(3, 4) // => 5
@@ -3286,30 +3298,32 @@ Funkcje zagnieżdżone mogą się odwoływać do parametrów i zmiennych zdefini
 
 Kod tworzący ciało funkcji nie jest wykonywany w miejscu definicji funkcji, tylko jej wywołania.
 Funkcje można wywoływać na pięć sposobów:
-* jako funkcje,
-* jako metody,
-* jako konstruktory,
-* pośrednio, za pomocą metod call() i apply(),
-* niejawnie, wykorzystując konstrukcje języka, które nie wyglądają tak jak zwykłe funkcje.
+
+- jako funkcje,
+- jako metody,
+- jako konstruktory,
+- pośrednio, za pomocą metod call() i apply(),
+- niejawnie, wykorzystując konstrukcje języka, które nie wyglądają tak jak zwykłe funkcje.
 
 ### 8.2.1. Wywołanie funkcji
+
 Funkcje można wywoływać jako funkcje lub metody za pomocą **wyrażeń wywołujących**. Wyrażenie wywołujące składa
 się z wyrażenia funkcyjnego (którego wartością jest obiekt funkcyjny), nawiasu otwierającego, opcjonalnej listy
 argumentów oddzielonych przecinkami i nawiasu zamykającego. Jeżeli funkcja jest właściwością obiektu lub elementu
 tablicy, to wyrażenie funkcyjne jest wywołaniem **metody**.
 
 ```javascript
-printprops({x: 1});
-let total = distance(0,0,2,1) + distance(2,1,3,5);
-let probability = factorial(5)/factorial(13);
+printprops({x: 1})
+let total = distance(0, 0, 2, 1) + distance(2, 1, 3, 5)
+let probability = factorial(5) / factorial(13)
 ```
 
-Wartością odwołania do parametru wewnątrz ciała funkcji jest wartość odpowiedniego argumentu. Funkcja zwraca 
+Wartością odwołania do parametru wewnątrz ciała funkcji jest wartość odpowiedniego argumentu. Funkcja zwraca
 wartość wyrażenia umieszczonego po słowie `return` lub gdy go nie ma wartość `undefined`.
 
 > Wywołanie warunkowe (do opracowania)
-<!-- TODO -->
 
+<!-- TODO -->
 
 W zwykłym trybie kontekst wywołania, czyli wartość słowa kluczowego `this`, jest globalnym obiektem. Jednak
 w trybie ścisłym słowo to ma wartość `undefined`. Funkcje strzałkowe dziedziczą wartość `this` właściwą dla
@@ -3320,27 +3334,30 @@ Za jego pomocą można jednak sprawdzać, czy obwiązuje tryb ścisły:
 
 ```javascript
 // Definicja i wywołanie funkcji sprawdzającej, czy obwiązuje tryb ścisły:
-const strict = (function() { return !this; }());
+const strict = (function () {
+  return !this
+})()
 ```
 
 ```javascript
-'use strict';
+'use strict'
 
-console.log(this);
+console.log(this)
 
-const strict = (
-  function () {
-    console.log(this); // undefined
-    return !this;
-  })();
+const strict = (function () {
+  console.log(this) // undefined
+  return !this
+})()
 
-console.log(strict); // true
+console.log(strict) // true
 ```
 
 > Wywołanie rekurencyjne a stos (do opracowania)
+
 <!-- TODO -->
 
 ### 8.2.2. Wywołanie metody (do opracowania, przy opracowywaniu obiektów)
+
 <!-- TODO -->
 
 ## 8.3. Argumenty i parametry funkcji.
@@ -3350,27 +3367,28 @@ wartości umieszczonych w argumentach. W rzeczywistości nie jest nawet sprawdza
 
 ### 8.3.1. Parametry opcjonalne i domyślne
 
-Jeżeli funkcja jest wywoływana z mniejszą liczbą argumentów niż jest zadeklarowanych parametrów, wówczas 
+Jeżeli funkcja jest wywoływana z mniejszą liczbą argumentów niż jest zadeklarowanych parametrów, wówczas
 dodatkowym parametrom są przypisywane wartości domyślne, zazwyczaj `undefined`.
 
 ```javascript
 // Funkcja dołączająca do tablicy a nazwy wyliczalnych właściwości obiektu o
 // i zwracająca tę tablicę. Jeżeli tablica nie zostanie określona, funkcja utworzy nową.
 function getPropertyNames(o, a) {
-  if (a === undefined) a = []; // Utworzenie nowej tablicy, jeżeli została nie określona.
+  if (a === undefined) a = [] // Utworzenie nowej tablicy, jeżeli została nie określona.
   // a = a || [];
-  for (let property in o) a.push(property);
-  return a;
+  for (let property in o) a.push(property)
+  return a
 }
 
 // Funkcję getPropertyNames() można wywoływać z jednym lub dwoma argumentami:
-let o = {x: 1}, p = {y: 2, z: 3}; // Dwa testowe obiekty.
-let a = getPropertyNames(o); // a == ["x"]; umieszczenie właściwości obiektu o w nowej tablicy.
-console.log(a); // ['x']
-console.log(getPropertyNames(p, a)); // a == ["x","y","z"]; dołączenie właściwości obiektu p do podanej tablicy.
+let o = {x: 1},
+  p = {y: 2, z: 3} // Dwa testowe obiekty.
+let a = getPropertyNames(o) // a == ["x"]; umieszczenie właściwości obiektu o w nowej tablicy.
+console.log(a) // ['x']
+console.log(getPropertyNames(p, a)) // a == ["x","y","z"]; dołączenie właściwości obiektu p do podanej tablicy.
 ```
 
-W definicji funkcji należy argumenty opcjonalne umieścić na końcu listy, aby można je było pomijać. Nie jest 
+W definicji funkcji należy argumenty opcjonalne umieścić na końcu listy, aby można je było pomijać. Nie jest
 możliwe na przykład pominięcie pierwszego argumentu i określenie drugiego. Można natomiast w pierwszym argumencie
 jawnie umieścić wartość `undefined`.
 
@@ -3379,17 +3397,18 @@ podajemy domyślną wartość.
 
 ```javascript
 function getPropertyNames(o, a = []) {
-for(let property in o) a.push(property);
-return a;
+  for (let property in o) a.push(property)
+  return a
 }
 ```
+
 Domyślnie wartości są przypisywane parametrom w chwili wywołania funkcji, a nie w jej definicji. Za każdym razem,
 gdy funkcja `getPropertyNames()` będzie wywoływana z jednym argumentem, będzie tworzona nowa pusta tablica.
 
 Można na przykład stosować zmienne lub wywołania funkcji wyliczające domyślne wartości parametrów.
 
 ```javascript
-const rectangle = (width, height=width*2) => ({width, height});
+const rectangle = (width, height = width * 2) => ({width, height})
 rectangle(1) // => { width: 1, height: 2 }
 ```
 
@@ -3399,25 +3418,25 @@ rectangle(1) // => { width: 1, height: 2 }
 
 ```javascript
 function min(first = Infinity, ...rest) {
-  let minValue = first;
+  let minValue = first
 
-  for(let n of rest) {
-    if(n < minValue){
-      minValue = n;
+  for (let n of rest) {
+    if (n < minValue) {
+      minValue = n
     }
   }
 
-  return minValue;
+  return minValue
 }
 
-console.log(min(1, 10, 100, 2, 3, 1000, 4, 5, 6));
+console.log(min(1, 10, 100, 2, 3, 1000, 4, 5, 6))
 ```
 
 Parametr resztowy poprzedza się trzema kropkami. Musi to być ostatni parametr w deklaracji funkcji. Wartością
 **parametru resztowego** w ciele funkcji jest zawsze tablica, która może być pusta, ale nigdy nie jest to wartość
 `undefined`.
 
-Funkcja, którą można wywoływać z dowolną liczbą argumentów, jest nazywana **funkcją wariadyczną**, funkcją o 
+Funkcja, którą można wywoływać z dowolną liczbą argumentów, jest nazywana **funkcją wariadyczną**, funkcją o
 zmiennej arności lub **funkcją vararg**.
 
 ### 8.3.3. Obiekt Arguments
@@ -3427,64 +3446,68 @@ podobny do tablicy, umożliwiający odwoływanie się do argumentów funkcji za 
 
 ```javascript
 function max(x) {
-let maxValue = -Infinity;
+  let maxValue = -Infinity
 
-for(let i = 0; i < arguments.length; i++) {
-  if (arguments[i] > maxValue) 
-    maxValue = arguments[i];
-}
+  for (let i = 0; i < arguments.length; i++) {
+    if (arguments[i] > maxValue) maxValue = arguments[i]
+  }
 
-  return maxValue;
+  return maxValue
 }
 
 max(1, 10, 100, 2, 3, 1000, 4, 5, 6) // => 1000
 ```
+
 Należy unikać stosowania obiektu typu `Arguments` w nowych programach. Identyfikator `arguments`, będący słowem
 kluczowym uniemożliwia deklarowanie parametru funkcji i lokalnej zmiennej o tej nazwie.
 
 ### 8.3.4. Operator rozciągania w wywołaniach funkcji
+
 Operator rozciągania `...` służy do rozpakowywania elementów tablicy (lub innego iterowalnego obiektu, na przykład
 ciągu znaków) wszędzie tam, gdzie są wymagane osobne wartości. Np. w wywołaniach funkcji:
 
 ```javascript
-let numbers = [5, 2, 10, -1, 9, 100, 1];
+let numbers = [5, 2, 10, -1, 9, 100, 1]
 Math.min(...numbers) // => –1
 ```
 
-Nie jest to operator w ścisłym znaczeniu tego słowa, ponieważ nie zwraca wartości. Jest to specjalny element 
+Nie jest to operator w ścisłym znaczeniu tego słowa, ponieważ nie zwraca wartości. Jest to specjalny element
 składni, który można wykorzystywać w literałach tablicowych i wywołaniach funkcji.
 
 Często parametr resztowy stosuje się razem z operatorem rozciągania:
 
 ```javascript
-const array = [2, 4, 7, 99, 10];
+const array = [2, 4, 7, 99, 10]
 
-const sum = (...args) => { // parametr rest
-  let result = 0;
+const sum = (...args) => {
+  // parametr rest
+  let result = 0
   for (const arg of args) {
-    result += arg;
+    result += arg
   }
 
-  return result;
+  return result
 }
 
-console.log(sum(...array)); // operator spread
+console.log(sum(...array)) // operator spread
 ```
+
 ### 8.3.5. Destrukturyzacja argumentów funkcji do jej parametrów
 
-Jeżeli nazwy parametrów funkcji umieści się w nawiasach kwadratowych, będzie to oznaczać, że w wywołaniach tej 
+Jeżeli nazwy parametrów funkcji umieści się w nawiasach kwadratowych, będzie to oznaczać, że w wywołaniach tej
 funkcji w tych parametrach można umieszczać tablice.
 
 ```javascript
-function vectorAdd([x1,y1], [x2,y2]) { // Rozpakowanie dwóch argumentów na cztery parametry.
-  return [x1 + x2, y1 + y2];
+function vectorAdd([x1, y1], [x2, y2]) {
+  // Rozpakowanie dwóch argumentów na cztery parametry.
+  return [x1 + x2, y1 + y2]
 }
 
-vectorAdd([1,2], [3,4]) // => [4,6]
+vectorAdd([1, 2], [3, 4]) // => [4,6]
 
 // Mnożenie wektora {x,y} przez wartość skalarną.
 function vectorMultiply({x, y}, scalar) {
-  return { x: x*scalar, y: y*scalar };
+  return {x: x * scalar, y: y * scalar}
 }
 
 vectorMultiply({x: 1, y: 2}, 2) // => {x: 2, y: 4}
@@ -3497,8 +3520,8 @@ bardziej rozbudowana:
 function vectorAdd(
   {x: x1, y: y1}, // Rozpakowanie właściwości pierwszego obiektu do parametrów o nazwach x1 i y1.
   {x: x2, y: y2} // Rozpakowanie właściwości drugiego obiektu do parametrów o nazwach x2 i y2.
-){
-  return { x: x1 + x2, y: y1 + y2 };
+) {
+  return {x: x1 + x2, y: y1 + y2}
 }
 
 vectorAdd({x: 1, y: 2}, {x: 3, y: 4}) // => {x: 4, y: 6}
@@ -3508,15 +3531,6 @@ vectorAdd({x: 1, y: 2}, {x: 3, y: 4}) // => {x: 4, y: 6}
 
 ### 8.3.6. Typy argumentów
 
-
-
-
-
-
-
-
-
-
 ## 8.10. Tematy związane z funkcjami.
 
 ### 8.10.1. Rest parameters
@@ -3525,25 +3539,27 @@ Składnia parametru rest umożliwia funkcji przyjmowanie nieograniczonej liczby 
 sposób reprezentowania funkcji wariadycznych w JavaScript.
 
 # 8.A. Funkcje
+
 **Notatki na podstawie "Programowanie zorientowane obiektowo w języku JavaScript", Ved Antani, Stoyan Stefanov**
 
 Tam gdzie w innych językach trzeba zastosować obiektowość JS udostępnia funkcje, dzięki którym jest tak elastyczny i ekspresywny.
 
-Funkcja jest to zgrupowana pewna ilość kodu posiadająca nazwę i która może być ponownie użyta za pomocą tejże nazwy. 
+Funkcja jest to zgrupowana pewna ilość kodu posiadająca nazwę i która może być ponownie użyta za pomocą tejże nazwy.
 
 ```javascript
 function sum(a, b) {
-  let c = a + b;
-  return c;
+  let c = a + b
+  return c
 }
 ```
 
 Funkcja składa się z:
-*	Słowa kluczowego function
-*	Nazwy funkcji – tu sum
-*	Parametrów – tu a, b. Funkcja może mieć dowolną ilość parametrów rozdzielonych przecinkami albo wcale
-*	Bloku kodu zwanego ciałem funkcji
-*	Instrukcji return. Funkcja zawsze zwraca wartość. Jeśli nie ma instrukcji return to niejawnie zwraca undefined
+
+- Słowa kluczowego function
+- Nazwy funkcji – tu sum
+- Parametrów – tu a, b. Funkcja może mieć dowolną ilość parametrów rozdzielonych przecinkami albo wcale
+- Bloku kodu zwanego ciałem funkcji
+- Instrukcji return. Funkcja zawsze zwraca wartość. Jeśli nie ma instrukcji return to niejawnie zwraca undefined
 
 Można zwrócić więcej niż jedną wartość zwracając tablicę wartości.
 
@@ -3558,44 +3574,47 @@ Ogólna postać deklaracji funkcji:
     return value;
   }
 ```
+
 **Wywołanie funkcji**:
+
 ```javascript
   nameFunction(arg1, arg2, … , argN);
 ```
 
-Jeśli wywołamy funkcję a ona zwraca jakąś wartość  to możemy ją przypisać do jakieś zmiennej aby ją póżniej móc 
+Jeśli wywołamy funkcję a ona zwraca jakąś wartość to możemy ją przypisać do jakieś zmiennej aby ją póżniej móc
 wykorzystać.
 
 ```javascript
-let result = sum(1, 3); 
-console.log(result); // 3
+let result = sum(1, 3)
+console.log(result) // 3
 ```
 
-## 8.A.1. Parametry 
+## 8.A.1. Parametry
 
-Funkcja nie musi przyjmować parametrów, ale jeśli ich oczekuje i zapomnisz podać je podczas wywoływania, JavaScript 
+Funkcja nie musi przyjmować parametrów, ale jeśli ich oczekuje i zapomnisz podać je podczas wywoływania, JavaScript
 przypisze im wartość `undefined`.
 
 ```javascript
-  sum(1) // NaN = 1 + undefined
+sum(1) // NaN = 1 + undefined
 ```
-Mimo iż istnieje technicznie rzecz biorąc różnica między parametrami a argumentami, te dwa terminy są używane 
-zamiennie, jak zresztą wiele innych pojęć w informatyce np. *definicja i deklaracja*. Parametry są definiowane razem 
+
+Mimo iż istnieje technicznie rzecz biorąc różnica między parametrami a argumentami, te dwa terminy są używane
+zamiennie, jak zresztą wiele innych pojęć w informatyce np. _definicja i deklaracja_. Parametry są definiowane razem
 z funkcją, podczas gdy argumenty są przekazywane do funkcji w trakcie jej wywołania.
 
 Jeśli przekażemy więcej parametrów, niż funkcja oczekuje, to ich nadmiar zostanie zignorowany:
 
 ```javascript
-sum(1, 2, 3, 4, 5); //3
+sum(1, 2, 3, 4, 5) //3
 ```
 
-Możliwe jest pisanie funkcji, które mogą przyjmować różną liczbę parametrów a to dzięki temu, że w każdej funkcji 
-jest tworzona specjalna wartość `arguments`, która jest obiektem tablicopodobnym. Oto funkcja, której działanie 
+Możliwe jest pisanie funkcji, które mogą przyjmować różną liczbę parametrów a to dzięki temu, że w każdej funkcji
+jest tworzona specjalna wartość `arguments`, która jest obiektem tablicopodobnym. Oto funkcja, której działanie
 polega na zwracaniu wszystkich przekazanych jej argumentów:
 
 ```javascript
-function args() { 
-  return arguments; 
+function args() {
+  return arguments;
 }
 args(); // []
 args(1, 2, 3, true, ‘marco’); // [1, 2, 3, 4, true, "marco"]
@@ -3604,12 +3623,12 @@ args(1, 2, 3, true, ‘marco’); // [1, 2, 3, 4, true, "marco"]
 Użyj `arguments` aby poprawić funkcję sum() tak, by przyjmowała dowolną liczbę parametrów i dodawała je wszystkie.
 
 ```javascript
-function sumOnSteroids() { 
-  let res = 0;
-  for (let i = 0; i < arguments.length; i++) { 
-    res += arguments[i]; 
-  } 
-   return res; 
+function sumOnSteroids() {
+  let res = 0
+  for (let i = 0; i < arguments.length; i++) {
+    res += arguments[i]
+  }
+  return res
 }
 
 sumOnSteroids(1, 2, 3) // 6
@@ -3618,27 +3637,32 @@ sumOnSteroids() // 0
 ```
 
 ## 8.A.2. Parametry domyślne
+
 Parametrom funkcji można przypisać wartości domyślne. W przypadku pominięcia parametru podczas wywoływania funkcji
 używana jest domyślna wartość przypisana do tego parametru:
 
 ```javascript
-function render(fog_level=20, spark_level=100){ 
-  console.log(`Poziom zamglenia: ${fog_level}, a natężenie iskier: ${spark_level}`)
-} 
-render(10); // Poziom zamglenia: 10, a natężenie iskier: 100
+function render(fog_level = 20, spark_level = 100) {
+  console.log(
+    `Poziom zamglenia: ${fog_level}, a natężenie iskier: ${spark_level}`
+  )
+}
+render(10) // Poziom zamglenia: 10, a natężenie iskier: 100
 ```
 
 Warto zauważyć, że undefined uważa się za brak wartości parametru.
 
 ```javascript
-render(undefined,10); // Poziom zamglenia: 20, a natężenie iskier: 10
+render(undefined, 10) // Poziom zamglenia: 20, a natężenie iskier: 10
 ```
 
-Podczas określania domyślnych wartości parametrów można również odwoływać się do innych parametrów: 
+Podczas określania domyślnych wartości parametrów można również odwoływać się do innych parametrów:
 
 ```javascript
-function render(fog_level=1, spark_level=fog_level * 10){ 
-  console.log(`Poziom zamglenia: ${fog_level}, a natężenie iskier: ${spark_level}`)  
+function render(fog_level = 1, spark_level = fog_level * 10) {
+  console.log(
+    `Poziom zamglenia: ${fog_level}, a natężenie iskier: ${spark_level}`
+  )
 }
 render(10) // Poziom zamglenia: 10, a natężenie iskier: 100
 ```
@@ -3647,12 +3671,12 @@ Parametry domyślne mają własny zakres. Zakres ten jest umieszczony pomiędzy 
 Jeśli parametr jest przysłaniany przez zmienną w zakresie wewnętrznym, zaskakująco zmienna wewnętrzna nie jest dostępna.
 
 ```javascript
-var scope="zakres zewnętrzny"; 
-function scoper(val=scope){ 
-  var scope="zakres wewnętrzny"; 
-  console.log(val); 
-} 
-scoper(); // zakres zewnętrzny 
+var scope = 'zakres zewnętrzny'
+function scoper(val = scope) {
+  var scope = 'zakres wewnętrzny'
+  console.log(val)
+}
+scoper() // zakres zewnętrzny
 ```
 
 Można spodziewać się, że val zostanie przesłonięte przez wewnętrzną definicję zmiennej scope , ponieważ jednak domyśln
@@ -3662,277 +3686,302 @@ Kolejny przykład:
 
 ```javascript
 function sum(a = 5, b = 6) {
-  return a + b;
+  return a + b
 }
 
-console.log(sum(49)); // 55
-console.log(sum(undefined, 49)); 54
+console.log(sum(49)) // 55
+console.log(sum(undefined, 49))
+54
 
-function sumOne(a = 5, b){
-  return a + b;
+function sumOne(a = 5, b) {
+  return a + b
 }
 
-console.log(sumOne(51)); // NaN = 51 + undefined
-console.log(sumOne(undefined, 51)); //56
+console.log(sumOne(51)) // NaN = 51 + undefined
+console.log(sumOne(undefined, 51)) //56
 
-function sumTwo(a = 6, b = a){
-  return a + b;
+function sumTwo(a = 6, b = a) {
+  return a + b
 }
 
-console.log(sumTwo(44)); // 88
-console.log(sumTwo(undefined)); // 12
-
+console.log(sumTwo(44)) // 88
+console.log(sumTwo(undefined)) // 12
 ```
 
 ## 8.A.3 Parametry reszty
+
 Parametry reszty pozwalają wysyłać do funkcji dowolną liczbę parametrów w postaci tablicy. Parametrem reszty może być
 tylko ostatni parametr na liście parametrów i może być tylko jeden. Umieszczenie operatora reszty (...) przed ostatnim
 formalnym parametrem wskazuje, że ten parametr jest parametrem reszty.
 
 ```javascript
-function sayThings(tone, ...quotes){ 
-  console.log(Array.isArray(quotes)); // true 
-  console.log(`Głosem ${tone} mówię: ${quotes}`) 
-} 
-sayThings("Morgana Freemana","Coś poważnego", " Implodujący Wszechświat"," Amen"); 
+function sayThings(tone, ...quotes) {
+  console.log(Array.isArray(quotes)) // true
+  console.log(`Głosem ${tone} mówię: ${quotes}`)
+}
+sayThings(
+  'Morgana Freemana',
+  'Coś poważnego',
+  ' Implodujący Wszechświat',
+  ' Amen'
+)
 // Głosem Morgana Freemana mówię: Coś poważnego, Implodujący Wszechświat, Amen
 ```
 
-Parametry reszty są tablicą i dostępne są dla nich wszystkie metody tablicowe. 
+Parametry reszty są tablicą i dostępne są dla nich wszystkie metody tablicowe.
 Zmienne argumenty (var-args) są od dawna częścią kilku innych języków i są mile widzianą zmianą w ES6.
 
 ```javascript
-function sumVar(...array){
-  let result = 0;
-  for(let i = 0; i < array.length; i++){
-    result += array[i];
+function sumVar(...array) {
+  let result = 0
+  for (let i = 0; i < array.length; i++) {
+    result += array[i]
   }
-    return result;
+  return result
 }
 
-console.log(sumVar(1, 3, 5, 7, 9)); // 25
+console.log(sumVar(1, 3, 5, 7, 9)) // 25
 ```
 
 ## 8.A.4. Operator rozwijania
-Operator rozwijania (ang. *spread operator*) wygląda dokładnie tak samo jak operator reszty. Operatory rozwijania są 
+
+Operator rozwijania (ang. _spread operator_) wygląda dokładnie tak samo jak operator reszty. Operatory rozwijania są
 używane, gdy dostarczamy argumentów podczas wywoływania funkcji lub definiowania tablicy. Operator rozwijania przyjmuje
 tablicę i dzieli jej elementy na poszczególne zmienne.
 
 ```javascript
-function sumAll(a,b,c){ 
-  return a + b + c 
-} 
-var numbers = [6,7,8] 
-// Sposób przekazywania tablicy jako argumentu funkcji w ES5 
-console.log(sumAll.apply(null,numbers)); // 21 
-// Operator rozwijania w ES6 
-console.log(sumAll(...numbers)); // 21
+function sumAll(a, b, c) {
+  return a + b + c
+}
+var numbers = [6, 7, 8]
+// Sposób przekazywania tablicy jako argumentu funkcji w ES5
+console.log(sumAll.apply(null, numbers)) // 21
+// Operator rozwijania w ES6
+console.log(sumAll(...numbers)) // 21
 ```
 
 Operatory rozwijania zwiększają możliwości pracy z tablicami w JavaScripcie. Jeśli chcesz utworzyć tablicę zawierającą
-elementy innej tablicy, istniejąca składnia tablicy tego nie obsługuje. Aby to osiągnąć, musielibyśmy użyć metod `push`, 
-`splice` i `concat` . Jednak dzięki operatorom rozwijania staje się to trywialne: 
+elementy innej tablicy, istniejąca składnia tablicy tego nie obsługuje. Aby to osiągnąć, musielibyśmy użyć metod `push`,
+`splice` i `concat` . Jednak dzięki operatorom rozwijania staje się to trywialne:
 
 ```javascript
-var midweek = ['Śr', 'Czw']; 
-var weekend = ['Sob', 'Niedz']; 
-var week = ['Pon','Wt', ...midweek, 'Pt', ...weekend]; 
-console.log(week); // ["Pon","Wt","Śr","Czw","Pt","Sob","Niedz"]
+var midweek = ['Śr', 'Czw']
+var weekend = ['Sob', 'Niedz']
+var week = ['Pon', 'Wt', ...midweek, 'Pt', ...weekend]
+console.log(week) // ["Pon","Wt","Śr","Czw","Pt","Sob","Niedz"]
 ```
 
 ```javascript
-const array = [2, 33, 3, 44, 4, 55];
-console.log(sumVar(...array)); // 141 ; operator rozwijania
+const array = [2, 33, 3, 44, 4, 55]
+console.log(sumVar(...array)) // 141 ; operator rozwijania
 ```
 
 ## 8.A.5. Funkcje predefiniowane
 
-Istnieje pewna liczba funkcji, które zostały wbudowane w silnik JavaScriptu i z których można korzystać do woli: 
-*	`parseInt()` 
-*	`parseFloat()` 
-*	`isNaN()` 
-*	`isFinite()` 
-*	`encodeURI()` 
-*	`decodeURI()` 
-*	`encodeURIComponent()` 
-*	`decodeURIComponent()`
+Istnieje pewna liczba funkcji, które zostały wbudowane w silnik JavaScriptu i z których można korzystać do woli:
 
+- `parseInt()`
+- `parseFloat()`
+- `isNaN()`
+- `isFinite()`
+- `encodeURI()`
+- `decodeURI()`
+- `encodeURIComponent()`
+- `decodeURIComponent()`
 
->   ZASADA CZARNEJ SKRZYNKI 
+> ZASADA CZARNEJ SKRZYNKI
 >
->   Z reguły podczas wywoływania funkcji Twój program nie musi wiedzieć, jakie czynności są wykonywane 
->   wewnątrz danej funkcji. Możesz potraktować funkcje jak czarne skrzynki — podajesz im pewne wartości 
->   (w postaci argumentów wejściowych) i odbierasz od nich zwracane wyniki.
+> Z reguły podczas wywoływania funkcji Twój program nie musi wiedzieć, jakie czynności są wykonywane
+> wewnątrz danej funkcji. Możesz potraktować funkcje jak czarne skrzynki — podajesz im pewne wartości
+> (w postaci argumentów wejściowych) i odbierasz od nich zwracane wyniki.
 
 ### parseInt()
+
 Funkcja parseInt() przyjmuje dane wejściowe dowolnego typu (najczęściej łańcuch znaków) i próbuje przekonwertować
 je na liczbę całkowitą. Jeśli operacja nie powiedzie się, zwracana jest wartość `NaN`.
 
 ```javascript
-parseInt('123'); //123 
-parseInt('abc123'); // NaN 
-parseInt('1abc23'); //1 
-parseInt('123abc'); //123
+parseInt('123') //123
+parseInt('abc123') // NaN
+parseInt('1abc23') //1
+parseInt('123abc') //123
 ```
+
 Funkcja przyjmuje jeszcze opcjonalny drugi argument, który określa podstawę, opisującą typ liczby: dziesiętny,
 szesnastkowy, binarny itd.
 
 ```javascript
-parseInt('FF', 10); // NaN
-parseInt('FF', 16); // 255
-parseInt('0377', 10);  // 377 
-parseInt('0377', 8); // 255
+parseInt('FF', 10) // NaN
+parseInt('FF', 16) // 255
+parseInt('0377', 10) // 377
+parseInt('0377', 8) // 255
 ```
 
 Jeśli drugi argument nie zostanie podany, za podstawę uznawana jest liczba 10 , z następującymi wyjątkami:
-* Jeśli jako pierwszy argument przekazany zostanie łańcuch zaczynający się od 0x , drugiemu argumentowi 
-(jeśli nie został podany) przypisana zostanie wartość `16` (liczba zostanie uznana za szesnastkową). 
-* Jeśli pierwszy parametr zaczyna się od 0 , drugi otrzyma wartość 8.
+
+- Jeśli jako pierwszy argument przekazany zostanie łańcuch zaczynający się od 0x , drugiemu argumentowi
+  (jeśli nie został podany) przypisana zostanie wartość `16` (liczba zostanie uznana za szesnastkową).
+- Jeśli pierwszy parametr zaczyna się od 0 , drugi otrzyma wartość 8.
 
 ```javascript
-parseInt('377'); // 377 
-parseInt('0377');  // 255
-parseInt('0x377');  // 887
+parseInt('377') // 377
+parseInt('0377') // 255
+parseInt('0x377') // 887
 ```
 
 Najbezpieczniejszym rozwiązaniem jest określanie podstawy za każdym razem. Wyobraź sobie na przykład, że parsujesz
 pola formularza, który reprezentuje kalendarz, a użytkownik wpisał 08 lub 06.
-ECMAScript 5 usuwa prefiks 0 z zapisu liczb ósemkowych i pozwala uniknąć zamieszania z parseInt () i nieokreśloną 
+ECMAScript 5 usuwa prefiks 0 z zapisu liczb ósemkowych i pozwala uniknąć zamieszania z parseInt () i nieokreśloną
 podstawą.
 
 ```javascript
-parseInt('0377');  // 377
-parseInt('0377', 8); // 255
+parseInt('0377') // 377
+parseInt('0377', 8) // 255
 ```
 
 ### parseFloat()
+
 Funkcja `parseFloat()` działa podobnie do `parseInt()`, ale w danych wejściowych szuka ułamków dziesiętnych. Przyjmuje
 tylko jeden parametr.
 
 ```javascript
-parseFloat('123'); //123 
-parseFloat('1.23'); //1.23 
-parseFloat('1.23abc.00'); // 1.23 
+parseFloat('123') //123
+parseFloat('1.23') //1.23
+parseFloat('1.23abc.00') // 1.23
 ```
 
-Podobnie jak `parseInt()`, `parseFloat()` poddaje się po napotkaniu pierwszego znaku, z którym nie umie sobie poradzić, 
+Podobnie jak `parseInt()`, `parseFloat()` poddaje się po napotkaniu pierwszego znaku, z którym nie umie sobie poradzić,
 nawet jeśli pozostała część tekstu zawiera poprawne liczby.
 
 ```javascript
-parseFloat('a.bc1.23'); // NaN
+parseFloat('a.bc1.23') // NaN
 ```
 
-Funkcja `parseFloat()` , w przeciwieństwie do `parseInt()` , jest w stanie poprawnie zinterpretować zapis wykładniczy. 
+Funkcja `parseFloat()` , w przeciwieństwie do `parseInt()` , jest w stanie poprawnie zinterpretować zapis wykładniczy.
 
 ```javascript
-parseFloat('123e-2'); //1.23 
-parseFloat('1e10'); //10000000000 
-parseInt('1e10'); //1
+parseFloat('123e-2') //1.23
+parseFloat('1e10') //10000000000
+parseInt('1e10') //1
 ```
+
 ### isNaN()
+
 Za pomocą `isNaN()` można sprawdzić, czy wartość wejściowa jest liczbą.
 
 ```javascript
-isNaN(NaN); true  
-isNaN(123); false 
-isNaN(1.23); false 
-isNaN(parseInt('abc123')); true 
+isNaN(NaN)
+true
+isNaN(123)
+false
+isNaN(1.23)
+false
+isNaN(parseInt('abc123'))
+true
 ```
-Ta funkcja stara się również przekonwertować dane wejściowe na liczbę: 
+
+Ta funkcja stara się również przekonwertować dane wejściowe na liczbę:
 
 ```javascript
-isNaN('1.23'); false 
-isNaN('a1.23'); true 
+isNaN('1.23')
+false
+isNaN('a1.23')
+true
 ```
 
-Funkcja `isNaN()` jest użyteczna także dlatego, że specjalna wartość `NaN` nie jest równa niczemu, nawet samej sobie. 
-Wynikiem porównania `NaN === NaN` będzie `false` . Dlatego `NaN` nie może być używana do sprawdzania, czy dana 
+Funkcja `isNaN()` jest użyteczna także dlatego, że specjalna wartość `NaN` nie jest równa niczemu, nawet samej sobie.
+Wynikiem porównania `NaN === NaN` będzie `false` . Dlatego `NaN` nie może być używana do sprawdzania, czy dana
 wartość jest prawidłową liczbą.
 
 ### isFinite()
+
 Funkcja `isFinite()` sprawdza, czy dane wejściowe to liczba różna od `Infinity` i różna od `NaN`.
 
 ```javascript
-isFinite(Infinity); //false 
-isFinite(-Infinity); //false 
-isFinite(12); //true 
-isFinite(1e308); //true 
-isFinite(1e309); //false 
+isFinite(Infinity) //false
+isFinite(-Infinity) //false
+isFinite(12) //true
+isFinite(1e308) //true
+isFinite(1e309) //false
 ```
 
-Jeśli dziwią Cię dwa ostatnie wyniki, przypominamy, że największą dopuszczalną liczbą w języku JavaScript jest 
+Jeśli dziwią Cię dwa ostatnie wyniki, przypominamy, że największą dopuszczalną liczbą w języku JavaScript jest
 `1.7976931348623157e+308`, więc `1e309` jest w efekcie nieskończonością.
 
 ## encodeURI() i encodeURIComponent()
-W adresach URL (ang. *Uniform Resource Locator*) i URI (ang. *Uniform Resource Identifier* ) niektóre znaki mają
-specjalne znaczenie. Jeśli chcemy mieć pewność, że nie będą one interpretowane, możemy skorzystać z funkcji 
-`encodeURI()` lub `encodeURIComponent()` . Pierwsza z nich zwraca poprawny adres `URL`, a druga zakłada, że 
+
+W adresach URL (ang. _Uniform Resource Locator_) i URI (ang. _Uniform Resource Identifier_ ) niektóre znaki mają
+specjalne znaczenie. Jeśli chcemy mieć pewność, że nie będą one interpretowane, możemy skorzystać z funkcji
+`encodeURI()` lub `encodeURIComponent()` . Pierwsza z nich zwraca poprawny adres `URL`, a druga zakłada, że
 przekazujemy tylko część adresu URL (np. parametry żądania), i koduje odpowiednie znaki.
 
 ```javascript
-var url = 'http://www.packtpub.com/scr ipt.php?q=this and that';
-encodeURI(url); 
-//"http://www.packtpub.com/scr%20 ipt.php?q=this%20and%20that" 
-encodeURIComponent(url); 
+var url = 'http://www.packtpub.com/scr ipt.php?q=this and that'
+encodeURI(url)
+//"http://www.packtpub.com/scr%20 ipt.php?q=this%20and%20that"
+encodeURIComponent(url)
 //"http%3A%2F%2Fwww.packtpub.com%2Fscr%20ipt.php%3Fq%3Dthis% 20and%20that"
-let url = "https://raubuc.net"
-console.log(encodeURI(url));
+let url = 'https://raubuc.net'
+console.log(encodeURI(url))
 ```
 
-### eval() 
+### eval()
+
 Funkcja `eval()` przyjmuje łańcuch znaków i wykonuje go jako kod JavaScriptu:
 
 ```javascript
- eval('var ii = 2;'); 
- ii //2
- ```
+eval('var ii = 2;')
+ii //2
+```
 
 Są sytuacje, w których `eval()` się przydaje, jednak w miarę możliwości należy tej funkcji unikać.
 Weterani JavaScriptu jak mantrę powtarzają zdanie „eval is evil” (eval to samo zło).
 
 ### Bonus — funkcja alert()
-Nie należy ona do rdzenia języka (nie ma jej w specyfikacji ECMA), ale jest obsługiwana przez środowisko hosta, 
+
+Nie należy ona do rdzenia języka (nie ma jej w specyfikacji ECMA), ale jest obsługiwana przez środowisko hosta,
 czyli przeglądarkę. Pozwala ona na wyświetlanie komunikatów w okienku dialogowym.
-Okienko dialogowe blokuje wątek przeglądarki, co oznacza, że żaden inny kod nie zostanie wykonany, zanim 
+Okienko dialogowe blokuje wątek przeglądarki, co oznacza, że żaden inny kod nie zostanie wykonany, zanim
 użytkownik nie zamknie alertu. Jeśli aplikacja jest często aktualizowaną aplikacją AJAX, używanie funkcji `alert()`
 nie jest najlepszym pomysłem.
 
 ## 8.A.6. Zakres zmiennych
-Zmienne w JS nie są definiowane w zakresie bloku, tylko w zakresie funkcji. Oznacza to, że jeśli zmienna została 
-zdefiniowana wewnątrz funkcji, nie jest widoczna poza nią. Natomiast zmienna zdefiniowana wewnątrz bloku if lub for 
-jest widoczna poza blokiem. Zmienne globalne to zmienne definiowane poza funkcjami (w globalnym kodzie programu), 
+
+Zmienne w JS nie są definiowane w zakresie bloku, tylko w zakresie funkcji. Oznacza to, że jeśli zmienna została
+zdefiniowana wewnątrz funkcji, nie jest widoczna poza nią. Natomiast zmienna zdefiniowana wewnątrz bloku if lub for
+jest widoczna poza blokiem. Zmienne globalne to zmienne definiowane poza funkcjami (w globalnym kodzie programu),
 natomiast zmienne lokalne to zmienne definiowane wewnątrz funkcji. Kod wewnątrz funkcji ma dostęp zarówno do zmiennych
 globalnych, jak i do swoich zmiennych lokalnych.
 
 ```javascript
-var global = 1;
+var global = 1
 
-function f() { 
-  var local = 2; 
-  global += local; 
-  return global; 
+function f() {
+  var local = 2
+  global += local
+  return global
 }
 
 f() // 3
 global // 3
-local ; // Uncaught ReferenceError: local is not defined
+local // Uncaught ReferenceError: local is not defined
 ```
 
->Najlepsze praktyki.
-Staraj się ograniczać liczbę zmiennych globalnych, aby uniknąć konfliktów nazw.
-Zawsze deklaruj zmienne za pomocą instrukcji `var`.
-Wszystkie zmienne potrzebne w funkcji definiuj na samej górze funkcji.
-Jeśli do zadeklarowania zmiennej nie zostanie użyte słowo kluczowe `var`, 
-tej zmiennej zostanie automatycznie przypisany zakres globalny.
+> Najlepsze praktyki.
+> Staraj się ograniczać liczbę zmiennych globalnych, aby uniknąć konfliktów nazw.
+> Zawsze deklaruj zmienne za pomocą instrukcji `var`.
+> Wszystkie zmienne potrzebne w funkcji definiuj na samej górze funkcji.
+> Jeśli do zadeklarowania zmiennej nie zostanie użyte słowo kluczowe `var`,
+> tej zmiennej zostanie automatycznie przypisany zakres globalny.
 
 ```javascript
-function f() { 
-  local = 2;
+function f() {
+  local = 2
 }
 
-local; //Uncaught ReferenceError: local is not defined
-f() ;
-local; // 2
+local //Uncaught ReferenceError: local is not defined
+f()
+local // 2
 ```
 
 Funkcja `f()` zawiera zmienną `local`. Przed wywołaniem funkcji zmienna nie istnieje. Jednak podczas pierwszego
@@ -3942,127 +3991,132 @@ local, okaże się ona dostępna.
 ### Wynoszenie zmiennych
 
 ```javascript
-var a = 123; 
+var a = 123
 
 function f() {
-  alert(a); 
-  var a = 1; 
-  alert(a); 
-} 
+  alert(a)
+  var a = 1
+  alert(a)
+}
 
-f();
+f()
 ```
 
 Wewnątrz funkcji zakres lokalny jest ważniejszy od globalnego. Zmienna lokalna nadpisuje każdą zmienną globalną o
-tej samej nazwie. 
-Kiedy wykonywanie programu JavaScript wchodzi w nową funkcję, wszystkie zmienne zadeklarowane w różnych miejscach 
-funkcji są przesuwane, czyli wynoszone w górę funkcji (jest to tzw. z ang. *hoisting* czyli wynoszenie zmiennych). 
+tej samej nazwie.
+Kiedy wykonywanie programu JavaScript wchodzi w nową funkcję, wszystkie zmienne zadeklarowane w różnych miejscach
+funkcji są przesuwane, czyli wynoszone w górę funkcji (jest to tzw. z ang. _hoisting_ czyli wynoszenie zmiennych).
 Jednakże przypisania pozostają tam gdzie były. To jakby powyższa funkcja była napisana tak:
 
 ```javascript
-var a = 123; 
+var a = 123
 
-function f() { 
-  var a; // var a = undefined ; 
-  alert(a); // undefined 
-  a = 1; 
-  alert(a); // 1 
+function f() {
+  var a // var a = undefined ;
+  alert(a) // undefined
+  a = 1
+  alert(a) // 1
 }
 ```
+
 Można również przyjąć wzorzec pojedynczej instrukcji `var`. W takim przypadku będziemy robić coś na kształt ręcznego
 wynoszenia zmiennych, aby zapobiec nieporozumieniom związanym z zachowaniem mechanizmu wynoszenia języka JavaScript.
 
 ## 8.A.7. Zakres bloku
+
 ES6 wprowadza słowa kluczowe `let` i `const`, które pozwalają deklarować zmienne.
 Zmienne zadeklarowane za pomocą `let` mają zakres bloku. Istnieją tylko w bieżącym bloku kodu.
 
 ```javascript
-var a = 1; 
-var b = 2;
-{ 
-  let a = 2; 
+var a = 1
+var b = 2
+{
+  let a = 2
   b = 3
-  console.log(a); // 2 
-} 
-console.log(a); // 1
-console.log(b); // 3
+  console.log(a) // 2
+}
+console.log(a) // 1
+console.log(b) // 3
 ```
 
 Zaleca się, aby podczas deklarowania zmiennych o zakresie blokowym ogólnie dodawać deklarację `let` na początku bloku.
 
 ```javascript
-function swap(a, b){   // <-- tu zaczyna się zakres funkcji 
-    if(a > 0 && b > 0){ // <-- tu zaczyna się zakres bloku 
-      let tmp = a;
-      a = b; 
-      b = tmp;
-    } // <-- tu kończy się zakres bloku 
-    console.log(a, b); 
-    console.log(tmp); 
- // zmienna tmp nie jest zdefiniowana , ponieważ jest dostępna  tylko  w zakresie bloku
-    return [a,b]; 
-} 
-swap(1,2);
+function swap(a, b) {
+  // <-- tu zaczyna się zakres funkcji
+  if (a > 0 && b > 0) {
+    // <-- tu zaczyna się zakres bloku
+    let tmp = a
+    a = b
+    b = tmp
+  } // <-- tu kończy się zakres bloku
+  console.log(a, b)
+  console.log(tmp)
+  // zmienna tmp nie jest zdefiniowana , ponieważ jest dostępna  tylko  w zakresie bloku
+  return [a, b]
+}
+swap(1, 2)
 ```
 
 Otóż przy użyciu słowa kluczowego `let` nie można ponownie zadeklarować tej samej zmiennej w tej samej funkcji
 lub zakresie bloku.
 Kolejnym słowem kluczowym wprowadzonym w ES6 jest `const` (stała). Zmienna zadeklarowana za pomocą słowa kluczowego
 `const` tworzy dla zmiennej referencję tylko do odczytu. Nie oznacza to, że wartość przechowywana przez tę referencję
-jest niemutowalna. Nie można jednak ponownie przypisać identyfikatora zmiennej. Stałe mają zakres bloku tak samo jak 
+jest niemutowalna. Nie można jednak ponownie przypisać identyfikatora zmiennej. Stałe mają zakres bloku tak samo jak
 zmienne utworzone za pomocą słowa kluczowego `let` . Ponadto podczas deklarowania trzeba przypisać wartość do zmiennej.
 Chociaż brzmi to dziwnie, `const` nie ma nic wspólnego z wartościami niemutowalnymi. Stałe tworzą niemutowalne wiązanie.
-Jest to ważne rozróżnienie i należy je prawidłowo zrozumieć. Rozważmy następujący przykład: 
+Jest to ważne rozróżnienie i należy je prawidłowo zrozumieć. Rozważmy następujący przykład:
 
 ```javascript
-const car = {} 
-car.tyres = 4 
+const car = {}
+car.tyres = 4
 ```
 
-Jest to poprawny kod. Przypisujemy w nim wartość {} do stałej car . Po przypisaniu tej referencji nie można zmienić. 
+Jest to poprawny kod. Przypisujemy w nim wartość {} do stałej car . Po przypisaniu tej referencji nie można zmienić.
 
-W ES6 należy stosować się do następujących zasad: 
-*	Używaj słowa kluczowego const w miarę możliwości. Używaj go dla wszystkich zmiennych, których wartości się nie zmieniają. 
-*	Używaj słowa kluczowego let. 
-*	Unikaj słowa kluczowego var.
+W ES6 należy stosować się do następujących zasad:
 
+- Używaj słowa kluczowego const w miarę możliwości. Używaj go dla wszystkich zmiennych, których wartości się nie zmieniają.
+- Używaj słowa kluczowego let.
+- Unikaj słowa kluczowego var.
 
 ### Zakres zmiennych – moje spostrzeżenia
-Możliwe są  takie deklaracje bez rzucania błędów:
+
+Możliwe są takie deklaracje bez rzucania błędów:
 
 ```javascript
-var zmienna = 4;
-console.log(zmienna); // 4
+var zmienna = 4
+console.log(zmienna) // 4
 
-var zmienna = 'zmienna';
-console.log(zmienna); // zmienna
+var zmienna = 'zmienna'
+console.log(zmienna) // zmienna
 
-var zmienna = false;
-console.log(zmienna); // false
-``` 
+var zmienna = false
+console.log(zmienna) // false
+```
 
 Natomiast taki zestaw deklaracji:
 
 ```javascript
-var zmienna = 4;
-console.log(zmienna);
-let zmienna = 'zmienna';
-console.log(zmienna); // spowoduje: 
+var zmienna = 4
+console.log(zmienna)
+let zmienna = 'zmienna'
+console.log(zmienna) // spowoduje:
 // Uncaught SyntaxError: Identifier 'zmienna' has already been declared
 ```
 
 Taki zestaw deklaracji też nie będzie powodował błędów:
 
 ```javascript
-var zmienna = 4;
-console.log(zmienna); // 4
+var zmienna = 4
+console.log(zmienna) // 4
 
-var zmienna = 'zmienna';
-console.log(zmienna); // zmienna
+var zmienna = 'zmienna'
+console.log(zmienna) // zmienna
 
 {
-  let  zmienna = false;
-  console.log(zmienna); // false
+  let zmienna = false
+  console.log(zmienna) // false
 }
 ```
 
@@ -4070,13 +4124,12 @@ Taki tak:
 
 ```javascript
 {
-  let  zmienna = false;
-  console.log(zmienna);
+  let zmienna = false
+  console.log(zmienna)
 
-  let zmienna = 'zmienna';
-  console.log(zmienna); // Uncaught SyntaxError: Identifier 'zmienna' has already been declared
+  let zmienna = 'zmienna'
+  console.log(zmienna) // Uncaught SyntaxError: Identifier 'zmienna' has already been declared
 }
-
 ```
 
 Stąd wniosek, że za pomocą słowa kluczowego `var` można zduplikować deklarację zmiennej w tym samym zakresie
@@ -4085,29 +4138,29 @@ ale już za pomocą słowa let nie.
 Rozpatrzmy taki zestaw instrukcji:
 
 ```javascript
-function myFunction () {
-  zmienna = 'zmienna';
-  console.log(zmienna); // zmienna
-  var zmienna = false;
-  console.log(zmienna); // false
+function myFunction() {
+  zmienna = 'zmienna'
+  console.log(zmienna) // zmienna
+  var zmienna = false
+  console.log(zmienna) // false
 }
 
-myFunction();
+myFunction()
 
-console.log(zmienna); //Uncaught ReferenceError: zmienna is not defined
+console.log(zmienna) //Uncaught ReferenceError: zmienna is not defined
 ```
 
-Dlaczego zmienna nie jest dostępna poza funkcją przecież została tam zadeklarowana bez słowa `var` czyli jest zmienną 
-globalną. Jednakże druga deklaracja ze słowem `var` ją nadpisała, został zapewne zastosowany *hoisting* i deklaracja 
-`var zmienna` została wyniesiona na początek zakresu funkcji. 
+Dlaczego zmienna nie jest dostępna poza funkcją przecież została tam zadeklarowana bez słowa `var` czyli jest zmienną
+globalną. Jednakże druga deklaracja ze słowem `var` ją nadpisała, został zapewne zastosowany _hoisting_ i deklaracja
+`var zmienna` została wyniesiona na początek zakresu funkcji.
 
 Natamiast dla takich instrukcji:
 
 function myFunction () {
-  zmienna = 'zmienna';
-  console.log(zmienna); // zmienna
-  zmienna = false;
-  console.log(zmienna); // false
+zmienna = 'zmienna';
+console.log(zmienna); // zmienna
+zmienna = false;
+console.log(zmienna); // false
 }
 
 myFunction();
@@ -4117,10 +4170,12 @@ Zmienna zmienna jest zmienną globalną.
 
 ## 8.A.8. Funkcje są danymi.
 
-W JS funkcje są danymi i można je przypisać do zmiennej: 
+W JS funkcje są danymi i można je przypisać do zmiennej:
 
 ```javascript
-var f = function() { return 1; }; 
+var f = function () {
+  return 1
+}
 ```
 
 Ten sposób definiowania funkcji nazywamy zapisem literałowym funkcji.
@@ -4130,23 +4185,27 @@ Fragment kodu:
 ```javascript
 function () { return 1 ;}
 ```
- jest wyrażeniem funkcyjnym (ang. *function expression*), które może mieć nazwę i być 
- **nazwanym wyrażeniem funkcyjnym** (ang. *named function expression* — NFE). 
+
+jest wyrażeniem funkcyjnym (ang. _function expression_), które może mieć nazwę i być
+**nazwanym wyrażeniem funkcyjnym** (ang. _named function expression_ — NFE).
 
 ```javascript
-typeof f  // ”function”
+typeof f // ”function”
 ```
 
 Funkcje są danymi zawierające kod, który jest wykonywalny (funkcje mogą być wywoływane).
 
 ```javascript
-var sum = function (a, b) { return a + b; }; 
-var add = sum; 
-typeof add; // “function” 
-add(1, 2);  // 3
+var sum = function (a, b) {
+  return a + b
+}
+var add = sum
+typeof add // “function”
+add(1, 2) // 3
 ```
 
 ### Funkcje anonimowe
+
 Funkcja anonimowa to funkcja, która nie ma nazwy:
 
 ```javascript
@@ -4154,94 +4213,115 @@ function() {
   // instrukcje do wykonania
 }
 ```
-*	Funkcję anonimową można przekazać jako parametr do innej funkcji. Funkcja odbierająca może z przekazaną
-  funkcją zrobić coś pożytecznego. 
-* Funkcje anonimowe można definiować i od razu wykonywać.
+
+- Funkcję anonimową można przekazać jako parametr do innej funkcji. Funkcja odbierająca może z przekazaną
+  funkcją zrobić coś pożytecznego.
+- Funkcje anonimowe można definiować i od razu wykonywać.
 
 ### Wywołania zwrotne
 
-Jeśli `funkcja B` zostaje przekazana `funkcji A`, a następnie `A` wywołuje `B`, często mówi się, że `B` jest 
-funkcją wywołania zwrotnego (ang. *callback function* ). Jeśli `B` nie ma nazwy, to możemy powiedzieć, że jest
+Jeśli `funkcja B` zostaje przekazana `funkcji A`, a następnie `A` wywołuje `B`, często mówi się, że `B` jest
+funkcją wywołania zwrotnego (ang. _callback function_ ). Jeśli `B` nie ma nazwy, to możemy powiedzieć, że jest
 anonimowym wywołaniem zwrotnym.
 
 ```javascript
 function A(B) {
-    B();
+  B()
 }
 
-function call(callback){
-  callback();
+function call(callback) {
+  callback()
 }
-
 ```
 
-Zalety wywołań zwrotnych: 
-* Wywołania zwrotne umożliwiają przekazywanie funkcji bez konieczności ich nazywania, co oznacza, że potrzebnych
-  jest mniej zmiennych. 
-*	Możemy przenieść obowiązek wywołania funkcji na inną funkcję, co oznacza, że musimy napisać krótszy kod. 
-* Wywołania zwrotne mogą korzystnie wpłynąć na wydajność aplikacji poprzez opóźnianie wykonywania lub odblokowywanie wywołań.
+Zalety wywołań zwrotnych:
+
+- Wywołania zwrotne umożliwiają przekazywanie funkcji bez konieczności ich nazywania, co oznacza, że potrzebnych
+  jest mniej zmiennych.
+- Możemy przenieść obowiązek wywołania funkcji na inną funkcję, co oznacza, że musimy napisać krótszy kod.
+- Wywołania zwrotne mogą korzystnie wpłynąć na wydajność aplikacji poprzez opóźnianie wykonywania lub odblokowywanie wywołań.
 
 Przykłady wywołań zwrotych
 
 ```javascript
 function invokeAdd(a, b) {
-  return a() + b();
+  return a() + b()
 }
 
-function one(){
-  return 1;
+function one() {
+  return 1
 }
 
-function two(){
-  return 2;
+function two() {
+  return 2
 }
 
-console.log(invokeAdd(one, two));
+console.log(invokeAdd(one, two))
 
-console.log(invokeAdd(()=>{return 2}, ()=>{return 2}));
+console.log(
+  invokeAdd(
+    () => {
+      return 2
+    },
+    () => {
+      return 2
+    }
+  )
+)
 
-console.log("***********************************************");
+console.log('***********************************************')
 
-function multiplyByTwo(...array){
-  const ar = [];
-  for(let i =  0; i < array.length; i++){
-    ar[i] = array[i] * 2;
+function multiplyByTwo(...array) {
+  const ar = []
+  for (let i = 0; i < array.length; i++) {
+    ar[i] = array[i] * 2
   }
-  return ar;
+  return ar
 }
 
-function addOne(a){
-  return a + 1;
+function addOne(a) {
+  return a + 1
 }
 
-console.log(multiplyByTwo(4, 6, 7, 8, 11));
+console.log(multiplyByTwo(4, 6, 7, 8, 11))
 
-console.log(addOne(100));
+console.log(addOne(100))
 
-console.log("***********************************************");
+console.log('***********************************************')
 
-const myarr = multiplyByTwo(10, 20, 30);
-console.log(myarr);
+const myarr = multiplyByTwo(10, 20, 30)
+console.log(myarr)
 
 for (let i = 0; i < myarr.length; i++) {
-  myarr[i] = addOne(myarr[i]);
+  myarr[i] = addOne(myarr[i])
 }
 
-console.log(myarr);
+console.log(myarr)
 
-console.log("***********************************************");
+console.log('***********************************************')
 
-function multiplyByTwoVersionOne(callback, ...array){
-  const arr = [];
+function multiplyByTwoVersionOne(callback, ...array) {
+  const arr = []
   for (let i = 0; i < array.length; i++) {
-    array[i] = callback(array[i] * 2);
+    array[i] = callback(array[i] * 2)
   }
-  return array;
+  return array
 }
 
-console.log(multiplyByTwoVersionOne(addOne, 2, 6, 8, 9, 33));
+console.log(multiplyByTwoVersionOne(addOne, 2, 6, 8, 9, 33))
 
-console.log(multiplyByTwoVersionOne((a)=>{return a + 2}, 2, 6, 8, 9, 33));
+console.log(
+  multiplyByTwoVersionOne(
+    a => {
+      return a + 2
+    },
+    2,
+    6,
+    8,
+    9,
+    33
+  )
+)
 ```
 
 Moje wywołanie zwrotne:
@@ -4249,197 +4329,213 @@ Moje wywołanie zwrotne:
 ```javascript
 let counter = 0
 setInterval(() => {
-  const container = document.getElementsByClassName('container');
+  const container = document.getElementsByClassName('container')
 
-  counter++;
+  counter++
   switch (counter % 5) {
-    case 0: container[0].style.flexDirection = 'row';
-      break;
-    case 1: container[0].style.flexDirection = 'row-reverse';
-      break;
-    case 2: container[0].style.justifyContent = 'flex-end';
-      break;
-    case 3: container[0].style.flexDirection = 'column';
-      break;
-    case 4: container[0].style.flexDirection = 'column-reverse';
-      break;
+    case 0:
+      container[0].style.flexDirection = 'row'
+      break
+    case 1:
+      container[0].style.flexDirection = 'row-reverse'
+      break
+    case 2:
+      container[0].style.justifyContent = 'flex-end'
+      break
+    case 3:
+      container[0].style.flexDirection = 'column'
+      break
+    case 4:
+      container[0].style.flexDirection = 'column-reverse'
+      break
   }
 
   if (counter == 1000) {
-    counter = 0;
+    counter = 0
   }
-}, 3000);
-
+}, 3000)
 ```
 
 ### Funkcje natychmiastowe
-Inne zastosowanie funkcji anonimowej to wywoływanie funkcji zaraz po jej zdefiniowaniu. Wyrażenie funkcyjne 
-umieszczamy w nawiasach i dodajemy kolejną parę nawiasów oznaczająca natychmiastowe wykonanie  a w nich ewentualnie
+
+Inne zastosowanie funkcji anonimowej to wywoływanie funkcji zaraz po jej zdefiniowaniu. Wyrażenie funkcyjne
+umieszczamy w nawiasach i dodajemy kolejną parę nawiasów oznaczająca natychmiastowe wykonanie a w nich ewentualnie
 parametry:
 
 ```javascript
-(function(name){ 
-alert('Witaj, ' + name + '!'); 
-})('stary');
+;(function (name) {
+  alert('Witaj, ' + name + '!')
+})('stary')
 ```
 
 Alternatywnie można przenieść zamknięcie pierwszej pary nawiasów na koniec.
 
 ```javascript
-(function () {
- // ... 
-}());
+;(function () {
+  // ...
+})()
 ```
+
 Kod zostanie wykonany bez tworzenia nadmiaru zmiennych globalnych. Tej samej funkcji nie da się wykonać dwukrotnie.
 Dlatego anonimowe funkcje samowywołujące najlepiej nadają się do wykonywania zadań jednorazowych lub inicjujących.
-Funkcja natychmiastowa może również zwracać wartość. 
+Funkcja natychmiastowa może również zwracać wartość.
 
 ```javascript
 var result = (function () {
-   // robimy coś skomplikowanego 
-   // z tymczasowymi zmiennymi lokalnymi ... 
-   // ... 
-   // coś zwracamy ; 
-}());
+  // robimy coś skomplikowanego
+  // z tymczasowymi zmiennymi lokalnymi ...
+  // ...
+  // coś zwracamy ;
+})()
 ```
 
 ### Funkcje wewnętrzne (prywatne)
+
 Możemy zdefiniować funkcję wewnątrz innej funkcji.
 
 ```javascript
-function outer(param) { 
-  function inner(theinput){ 
-    return theinput * 2; 
-  } 
-  return 'Wynik wynosi ' + inner(param); 
+function outer(param) {
+  function inner(theinput) {
+    return theinput * 2
+  }
+  return 'Wynik wynosi ' + inner(param)
 }
 ```
 
-Za pomocą wyrażenia funkcyjnego możemy również zapisać to tak: 
+Za pomocą wyrażenia funkcyjnego możemy również zapisać to tak:
 
 ```javascript
-var outer = function (param) { 
-  var inner = function (theinput) { 
-    return theinput * 2; 
-  }; 
-  return 'Wynik wynosi ' + inner(param); 
-};
+var outer = function (param) {
+  var inner = function (theinput) {
+    return theinput * 2
+  }
+  return 'Wynik wynosi ' + inner(param)
+}
 ```
 
-Kiedy wywołana zostanie globalna funkcja `outer()`, wewnętrznie wywoła również lokalną funkcję `inner()`. Ponieważ 
+Kiedy wywołana zostanie globalna funkcja `outer()`, wewnętrznie wywoła również lokalną funkcję `inner()`. Ponieważ
 funkcja `inner()` jest lokalna, nie jest dostępna poza `outer()` i dlatego nazywamy ją funkcją prywatną.
 
 ```javascript
 outer(2); //Wynik wynosi 4
-outer(8); //Wynik wynosi 16 
+outer(8); //Wynik wynosi 16
 inner(2); ReferenceError: inner is not defined
 ```
 
-Ze stosowania funkcji prywatnych płyną następujące korzyści: 
-*	Nie dochodzi do zaśmiecenia globalnej przestrzeni nazw, co zmniejsza ryzyko powstawania kolizji nazw. 
-*	Prywatność — na zewnątrz widoczne są tylko te funkcje, które programista chce udostępnić. Funkcjonalności 
+Ze stosowania funkcji prywatnych płyną następujące korzyści:
+
+- Nie dochodzi do zaśmiecenia globalnej przestrzeni nazw, co zmniejsza ryzyko powstawania kolizji nazw.
+- Prywatność — na zewnątrz widoczne są tylko te funkcje, które programista chce udostępnić. Funkcjonalności
   nieprzeznaczone dla reszty aplikacji są ukryte.
 
 ### Funkcje, które zwracają funkcje
-Funkcja zawsze zwraca wartość albo za pomocą instrukcji `return` albo domyślnie wartość `undefined` . Ponieważ 
+
+Funkcja zawsze zwraca wartość albo za pomocą instrukcji `return` albo domyślnie wartość `undefined` . Ponieważ
 funkcja jest daną to można ją zwrócić przez inna funkcję.
 
 ```javascript
 function date() {
-  let time = new Date();
+  let time = new Date()
 
-  return function(){
-   let hours = time.getHours();
-   let minutes = time.getMinutes();
-   let secondes = time.getSeconds();
+  return function () {
+    let hours = time.getHours()
+    let minutes = time.getMinutes()
+    let secondes = time.getSeconds()
 
     if (secondes < 10) {
-      secondes = '0' + secondes;
+      secondes = '0' + secondes
     }
-  
-    if (minutes < 10) {
-      minutes = '0' + minutes;
-    }
-  
-    if (hours < 10) {
-      hours = '0' + hours;
-    }
-    const clock = document.getElementById('clock');
-    clock.innerHTML = hours + ':' + minutes + ':' + secondes;
-  }
 
+    if (minutes < 10) {
+      minutes = '0' + minutes
+    }
+
+    if (hours < 10) {
+      hours = '0' + hours
+    }
+    const clock = document.getElementById('clock')
+    clock.innerHTML = hours + ':' + minutes + ':' + secondes
+  }
 }
 
 setInterval(() => {
- /* const time = date();
+  /* const time = date();
   time();  */
-  date()();
- 
-}, 1000);
+  date()()
+}, 1000)
 ```
 
 ### Funkcjo, przepiszże się!
-Ponieważ funkcje potrafią zwracać funkcje, możliwe jest zastąpienie oryginalnej funkcji tą zwracaną. 
+
+Ponieważ funkcje potrafią zwracać funkcje, możliwe jest zastąpienie oryginalnej funkcji tą zwracaną.
 
 ```javascript
-function a() { 
-  alert('A!'); 
-  return function(){ 
-     alert('B!'); 
-  }; 
+function a() {
+  alert('A!')
+  return function () {
+    alert('B!')
+  }
 }
 ```
+
 Wartość zwróconą przez wywołanie `a()` można przypisać zmiennej `a`, nadpisując w ten sposób istniejącą funkcję:
 
 ```javascript
-a = a();
+a = a()
 ```
 
 Powyższa linia kodu przy pierwszym wykonaniu spowoduje wyświetlenie 'A !', jednak następne wywołanie `a()` wyświetli
-'B!'. Opisany mechanizm jest przydatny, jeśli funkcja wykonuje pewne jednorazowe zadanie. Po pierwszym wywołaniu 
+'B!'. Opisany mechanizm jest przydatny, jeśli funkcja wykonuje pewne jednorazowe zadanie. Po pierwszym wywołaniu
 funkcja nadpisuje się, aby uniknąć niepotrzebnego wykonywania określonej pracy przy każdym jej wywołaniu.
 W powyższym przykładzie funkcja została przedefiniowana z zewnątrz, a zwracana wartość została przypisana do funkcji.
-Funkcja może jednak przepisać się sama z wewnątrz, tak jak pokazano poniżej: 
+Funkcja może jednak przepisać się sama z wewnątrz, tak jak pokazano poniżej:
 
 ```javascript
-function a() { alert('A!'); a = function(){ alert('B!'); }; } 
+function a() {
+  alert('A!')
+  a = function () {
+    alert('B!')
+  }
+}
 ```
 
-Przy pierwszym wywołaniu ta funkcja wykona następujące czynności: 
-*	Wyświetli 'A!' (uznajmy to za nasze jednorazowe zadanie inicjujące). 
-*	Przedefiniuje globalną zmienną `a`, przypisując do niej nową funkcję. 
+Przy pierwszym wywołaniu ta funkcja wykona następujące czynności:
+
+- Wyświetli 'A!' (uznajmy to za nasze jednorazowe zadanie inicjujące).
+- Przedefiniuje globalną zmienną `a`, przypisując do niej nową funkcję.
   Każde kolejne wywołanie będzie powodowało wyświetlenie 'B!'.
 
 Oto inny przykład, który łączy kilka technik omówionych:
 
 ```javascript
 var a = (function () {
-   function someSetup() { 
-     var setup = 'zrobione'; 
-   } 
-   function actualWork() { 
-     alert('Praca wre'); 
-   } 
-   someSetup(); 
-   return actualWork; 
-}());
-
+  function someSetup() {
+    var setup = 'zrobione'
+  }
+  function actualWork() {
+    alert('Praca wre')
+  }
+  someSetup()
+  return actualWork
+})()
 ```
-W przykładzie należy zwrócić uwagę na następujące kwestie: 
-*	Mamy funkcje prywatne: `someSetup()` i `actualWork()` . 
-*	Mamy funkcję natychmiastową w postaci funkcji anonimowej, która wywołuje samą siebie za pomocą pary nawiasów
-  umieszczonych po jej definicji. 
-*	Pierwsze wykonanie polega na wywołaniu funkcji `someSetup()` i zwróceniu referencji do zmiennej `actualWork`, 
+
+W przykładzie należy zwrócić uwagę na następujące kwestie:
+
+- Mamy funkcje prywatne: `someSetup()` i `actualWork()` .
+- Mamy funkcję natychmiastową w postaci funkcji anonimowej, która wywołuje samą siebie za pomocą pary nawiasów
+  umieszczonych po jej definicji.
+- Pierwsze wykonanie polega na wywołaniu funkcji `someSetup()` i zwróceniu referencji do zmiennej `actualWork`,
   która jest funkcją. Zwróć uwagę na brak nawiasów w instrukcji return — nie ma ich dlatego, że zwracamy do funkcji
   referencję, a nie wynik wywołania tej funkcji.
-*	Ponieważ kod zaczyna się od `var a = `, wartość zwracana przez samowywołującą się funkcję jest przypisywana do 
-  zmiennej `a` 
+- Ponieważ kod zaczyna się od `var a = `, wartość zwracana przez samowywołującą się funkcję jest przypisywana do
+  zmiennej `a`
 
-Jeśli chcesz sprawdzić, czy poprawnie rozumiesz omówiony zakres materiału, spróbuj odpowiedzieć na poniższe pytania. 
-Jakie będzie zachowanie napisanego przed chwilą programu, gdy: 
-*	zostanie po raz pierwszy załadowany? 
-*	po załadowaniu zostanie wywołana funkcja `a()` ?
+Jeśli chcesz sprawdzić, czy poprawnie rozumiesz omówiony zakres materiału, spróbuj odpowiedzieć na poniższe pytania.
+Jakie będzie zachowanie napisanego przed chwilą programu, gdy:
 
+- zostanie po raz pierwszy załadowany?
+- po załadowaniu zostanie wywołana funkcja `a()` ?
 
 ## 8.A.9. Domknięcia
 
@@ -4450,61 +4546,59 @@ Zanim zajmiemy się domknięciami, powtórzmy i rozszerzmy trochę pojęcia zakr
 W JavaScript istnieje zakres funkcji. Zmienna zdefiniowana wewnątrz funkcji nie jest widoczna poza nią
 
 ```javascript
-var global = 11;
+var global = 11
 
 function foo() {
-  var local = 11;
-  return global;
+  var local = 11
+  return global
 }
 
-console.log(foo()); // 11
-console.log(local); // ReferenceError: local is not defined
+console.log(foo()) // 11
+console.log(local) // ReferenceError: local is not defined
 ```
 
 Zmienna `global` ma zakres globalny, natomiast zmienna `local` zakres funkcji `foo()`. Zatem:
-*	Wewnątrz `foo()` widoczne są zarówno `global` jak i `local`
-*	Na zewnątrz `foo()` widoczna jest zmienna `global`, ale nie zmienna `local`
 
-Jeśli zdefiniujemy funkcję `inner()` zagnieżdżoną w `outer()` , będzie ona miała dostęp do zmiennych ze swojego 
+- Wewnątrz `foo()` widoczne są zarówno `global` jak i `local`
+- Na zewnątrz `foo()` widoczna jest zmienna `global`, ale nie zmienna `local`
+
+Jeśli zdefiniujemy funkcję `inner()` zagnieżdżoną w `outer()` , będzie ona miała dostęp do zmiennych ze swojego
 zakresu, a także do zmiennych swoich funkcji nadrzędnych. W takim wypadku mówimy o łańcuchu zakresów, który może
 być dowolnie długi (głęboki).
 
 ```javascript
-var global = 1;
+var global = 1
 
 function outer() {
-  var outer_local = 2;
+  var outer_local = 2
 
   function inner() {
-    var inner_local = 3;
-    return outer_local + inner_local + global;
+    var inner_local = 3
+    return outer_local + inner_local + global
   }
 
-  return inner();
+  return inner()
 }
 
-console.log(outer()); // 6; funkcja inner ma dostęp do wszystkich zmiennych
-
+console.log(outer()) // 6; funkcja inner ma dostęp do wszystkich zmiennych
 ```
 
 ### Przerwanie łańcucha za pomocą domknięcia
 
 ```javascript
-
-var a = 'zmienna globalna';
+var a = 'zmienna globalna'
 
 var F = function () {
-  var b = 'zmienna lokalna';
+  var b = 'zmienna lokalna'
 
   var N = function () {
-    var c = 'wewnętrzna lokalna';
-  };
-};
+    var c = 'wewnętrzna lokalna'
+  }
+}
 
-// Gdy N wydostanie z zakresu F i trafi do przestrzeni globalnej 
+// Gdy N wydostanie z zakresu F i trafi do przestrzeni globalnej
 // będziemy mieli do czynienia z domknięciem.
-// Funkcja N zamknie swój zakres i zabierze go do przestrzeni globalnej. 
-
+// Funkcja N zamknie swój zakres i zabierze go do przestrzeni globalnej.
 ```
 
 ![](images/global.png)
@@ -4516,41 +4610,42 @@ funkcji wewnętrznych, takich jak N.
 
 Jeśli jesteś w punkcie `a`, jesteś w przestrzeni globalnej. Jeśli w punkcie `b` , który należy do przestrzeni funkcji
 `F` , masz dostęp do przestrzeni globalnej oraz do przestrzeni `F` . Jeśli znalazłeś się w punkcie `c` , który należy
-do funkcji `N` , masz dostęp do przestrzeni globalnej, przestrzeni `F` oraz `N` . Nie da się sięgnąć z `a` do `b`, 
-ponieważ punkt `b` nie jest widoczny poza `F` . Można natomiast uzyskać dostęp z `c` do `b` lub z `N` do `b`. 
-Interesujące jest to, że efekt domknięcia ma miejsce, gdy jakimś sposobem `N` wydostaje się z `F` i trafia do 
+do funkcji `N` , masz dostęp do przestrzeni globalnej, przestrzeni `F` oraz `N` . Nie da się sięgnąć z `a` do `b`,
+ponieważ punkt `b` nie jest widoczny poza `F` . Można natomiast uzyskać dostęp z `c` do `b` lub z `N` do `b`.
+Interesujące jest to, że efekt domknięcia ma miejsce, gdy jakimś sposobem `N` wydostaje się z `F` i trafia do
 przestrzeni globalnej.
 
 ![](images/closure-one.png)
 
-Co się wtedy dzieje? `N` jest w tej samej przestrzeni globalnej co `a` . Jako że funkcje pamiętają środowisko, 
-w którym zostały zdefiniowane, `N` nadal ma dostęp do przestrzeni `F` , a co za tym idzie, dostęp do `b`. 
-Jest to ciekawe dlatego, że `N` znajduje się tam gdzie `a` i nadal ma dostęp do `b` , natomiast `a` nie ma 
-dostępu do `b`. 
+Co się wtedy dzieje? `N` jest w tej samej przestrzeni globalnej co `a` . Jako że funkcje pamiętają środowisko,
+w którym zostały zdefiniowane, `N` nadal ma dostęp do przestrzeni `F` , a co za tym idzie, dostęp do `b`.
+Jest to ciekawe dlatego, że `N` znajduje się tam gdzie `a` i nadal ma dostęp do `b` , natomiast `a` nie ma
+dostępu do `b`.
 Jak `N` udaje się przerwać łańcuch? Istnieją dwa sposoby: `N` może zostać zmienną globalną (pominięcie `var` ) lub
 może zostać zwrócona (`return`) przez `F` do przestrzeni globalnej. Zobaczmy, jak to wygląda w praktyce.
 
 ### Domknięcie 1.
-Zmodyfikujmy funkcję `F` z powyższego przykładu, niech `F` zwraca `N` , a `N` zwraca `b` i ma do niej dostęp 
+
+Zmodyfikujmy funkcję `F` z powyższego przykładu, niech `F` zwraca `N` , a `N` zwraca `b` i ma do niej dostęp
 poprzez łańcuch zakresów:
 
 ```javascript
-var a = 'zmienna globalna';
+var a = 'zmienna globalna'
 
 var F = function () {
-  var b = 'zmienna lokalna';
+  var b = 'zmienna lokalna'
 
   var N = function () {
-    var c = 'wewnętrzna lokalna';
-    return b;
+    var c = 'wewnętrzna lokalna'
+    return b
   }
 
-  return N;
+  return N
 }
 
-var inner = F();
+var inner = F()
 
-console.log(inner()); // Funkcja globalna inner ma dostęp 
+console.log(inner()) // Funkcja globalna inner ma dostęp
 // do prywatnej przestrzeni F
 ```
 
@@ -4559,58 +4654,59 @@ zwracaną przez nią wartość do innej zmiennej globalnej. Wynikiem będzie now
 do prywatnej przestrzeni `F()`
 
 ```javascript
-var inner = F();
-console.log(inner()); // “zmienna lokalna”
+var inner = F()
+console.log(inner()) // “zmienna lokalna”
 ```
 
 ### Domknięcie 2.
-Powyższy wynik można uzyskać nie co inaczej. Funkcja `F()` zamiast zwracać funkcję utworzy w swoim ciele nową 
+
+Powyższy wynik można uzyskać nie co inaczej. Funkcja `F()` zamiast zwracać funkcję utworzy w swoim ciele nową
 globalną funkcję `inner()`
 
 ```javascript
-var inner; // element zastępczy
+var inner // element zastępczy
 
 var F = function () {
-  var b = 'zmienna lokalna';
+  var b = 'zmienna lokalna'
   var N = function () {
-    return b;
+    return b
   }
 
-  inner = N;
-};
+  inner = N
+}
 
-F();
+F()
 
-console.log(inner()); // zmienna lokalna
-
+console.log(inner()) // zmienna lokalna
 ```
 
 Wewnątrz przestrzeni `F()` definiowana jest funkcja `N()`, która ma dostęp do jej zakresu i której referencja jest
-przypisana do zmiennej globalnej `inner`, zatem funkcja `inner()` będzie miała dostęp do zakresu funkcji `F()` mimo 
+przypisana do zmiennej globalnej `inner`, zatem funkcja `inner()` będzie miała dostęp do zakresu funkcji `F()` mimo
 iż jest częścią przestrzeni globalnej.
 
 ### Domknięcie 3. i definicja
+
 Każda funkcja może być uznana za domknięcie gdyż każda funkcja utrzymuje tajne powiązanie ze środowiskiem (zakresem),
 w którym została utworzona. Jednak w większości przypadków ten zakres jest niszczony, jednakże jak pokażują powyższe
 przykłady zakres ten może zostać utrzymany.
 Domknięcie jest tworzone, gdy funkcja zachowuje powiązanie z zakresem funkcji nadrzędnej nawet po tym, jak funkcja
 nadrzędna zakończyła działanie.
-Parametry funkcji zachowują się jak zmienne lokalne dla tej funkcji, ale są tworzone domyślnie. Nie trzeba używać 
+Parametry funkcji zachowują się jak zmienne lokalne dla tej funkcji, ale są tworzone domyślnie. Nie trzeba używać
 dla nich słowa kluczowego var . Można utworzyć funkcję zwracającą inną funkcję, która z kolei zwraca parametr swojej
 funkcji nadrzędnej.
 
 ```javascript
 function foo(param) {
   var noo = function () {
-    return param;
-  };
+    return param
+  }
 
-  param++;
-  return noo;
+  param++
+  return noo
 }
 
-var inner = foo(123);
-console.log(inner()); // 124
+var inner = foo(123)
+console.log(inner()) // 124
 ```
 
 Zmienna `param` została zwiększona już po definicji funkcji, a pomimo to `inner()` zwróciła aktualną wartość.
@@ -4622,21 +4718,21 @@ Zmodyfikujmy troche powyższy kod:
 ```javascript
 function foo(param) {
   var noo = function () {
-    return param;
-  };
+    return param
+  }
 
-  param++;
-  console.log(noo());
-  return noo;
+  param++
+  console.log(noo())
+  return noo
 }
 
-console.log(foo(123));
+console.log(foo(123))
 // 124
 // [Function: noo]
-
 ```
 
 ### Domknięcia w pętli
+
 Przyjrzyjmy się teraz kanonicznemu błędowi nowicjuszy w kwestiach związanych z domknięciami. Często prowadzi
 on do bardzo trudnych do wykrycia błędów, ponieważ na pierwszy rzut oka wszystko wygląda normalnie.
 
@@ -4668,30 +4764,31 @@ for (var i = 0; i < arrGlobal.length; i++) {
 // 3
 ```
 
-Funkcje nie pamiętają wartości, tylko przechowują referencję do środowiska, w którym zostały utworzone. W tym 
+Funkcje nie pamiętają wartości, tylko przechowują referencję do środowiska, w którym zostały utworzone. W tym
 przypadku zmienna `i` rezyduje akurat w środowisku, w którym zostały zdefiniowane te trzy funkcje. Dlatego wszystkie
-funkcje sięgają do tego środowiska i znajdują najbardziej aktualną wartość `i` . Po wyjściu z pętli wartością 
+funkcje sięgają do tego środowiska i znajdują najbardziej aktualną wartość `i` . Po wyjściu z pętli wartością
 zmiennej `i` jest `3` . Wszystkie trzy funkcje wskazują więc na tę samą wartość.
 Eleganckie rozwiązanie polega na wykorzystaniu kolejnego domknięcia, tak jak pokazano poniżej:
 
 ```javascript
 function foo() {
-  var arr = [], i;
+  var arr = [],
+    i
   for (i = 0; i < 3; i++) {
     arr[i] = (function (x) {
       return function () {
-        return x;
-      };
-    })(i);
+        return x
+      }
+    })(i)
   }
 
-  return arr;
+  return arr
 }
 
-var arrGlobal = foo();
+var arrGlobal = foo()
 
 for (let i = 0; i < arrGlobal.length; i++) {
-  console.log(arrGlobal[i]());
+  console.log(arrGlobal[i]())
 }
 
 // 0
@@ -4707,22 +4804,23 @@ Ten sam wynik uzyskamy wykorzystująć funkcję wewnętrzną:
 function foo() {
   function binder(x) {
     return function () {
-      return x;
-    };
+      return x
+    }
   }
 
-  var arr = [], i;
+  var arr = [],
+    i
   for (i = 0; i < 3; i++) {
-    arr[i] = binder(i);
+    arr[i] = binder(i)
   }
 
-  return arr;
+  return arr
 }
 
-var arrGlobal = foo();
+var arrGlobal = foo()
 
 for (i = 0; i < arrGlobal.length; i++) {
-  console.log(arrGlobal[i]());
+  console.log(arrGlobal[i]())
 }
 
 // 0
@@ -4733,74 +4831,75 @@ for (i = 0; i < arrGlobal.length; i++) {
 Kluczem do sukcesu jest wykorzystanie funkcji pośredniej do uczynienia wartości `i` lokalną podczas każdej iteracji
 
 ### Funkcje dostępowe
-Kolejnym przykładem użycia domknięcia jest utworzenie funkcji dostępowych: pobierającej (ang. *getter* ) i 
-ustawiającej (ang. *setter*). Funkcja ustawiająca wartość może zawierać pewną logikę do walidacji wartości
+
+Kolejnym przykładem użycia domknięcia jest utworzenie funkcji dostępowych: pobierającej (ang. _getter_ ) i
+ustawiającej (ang. _setter_). Funkcja ustawiająca wartość może zawierać pewną logikę do walidacji wartości
 przed przypisaniem jej do chronionej zmiennej.
 Obie funkcje dostępowe można umieścić wewnątrz tej samej funkcji, która zawiera zmienną `secret` , tak by
 współdzieliły ten sam zakres:
 
 ```javascript
+var getValue, setValue
 
-var getValue, setValue;
-
-(function () {
-  var secret = 0;
+;(function () {
+  var secret = 0
   getValue = function () {
-    return secret;
-  };
+    return secret
+  }
   setValue = function (v) {
-    if (typeof v === "number") {
-      secret = v;
+    if (typeof v === 'number') {
+      secret = v
     }
-  };
-}());
+  }
+})()
 
-console.log(getValue());
-setValue(321);
-console.log(getValue());
-setValue(false);
-console.log(getValue());
+console.log(getValue())
+setValue(321)
+console.log(getValue())
+setValue(false)
+console.log(getValue())
 ```
 
-W tym przypadku funkcja zawierająca wszystkie elementy jest funkcją natychmiastową. Definiuje ona 
-`setValue()` i `getValue()` jako funkcje globalne, podczas gdy zmienna `secret` pozostaje lokalna 
+W tym przypadku funkcja zawierająca wszystkie elementy jest funkcją natychmiastową. Definiuje ona
+`setValue()` i `getValue()` jako funkcje globalne, podczas gdy zmienna `secret` pozostaje lokalna
 i nie jest dostępna bezpośrednio.
 
 ### terator
+
 Poniższy przykład pokazuje wykorzystanie domknięcia w celu osiągnięcia funkcjonalności iteratora.
-Oto funkcja inicjująca, która przyjmuje tablicę wejściową, a także definiuje prywatny wskaźnik `i`, 
+Oto funkcja inicjująca, która przyjmuje tablicę wejściową, a także definiuje prywatny wskaźnik `i`,
 zawsze wskazujący następny element w tablicy:
 
 ```javascript
 // Wykorzystanie domknięcia jako iteratora
 
 function setup(x) {
-  var i = 0;
+  var i = 0
   return function () {
-    return x[i++];
-  };
+    return x[i++]
+  }
 }
 
-var next = setup(['a', 'b', 'c', 'd']);
-console.log(next());
-console.log(next());
-console.log(next());
-console.log(next());
-
+var next = setup(['a', 'b', 'c', 'd'])
+console.log(next())
+console.log(next())
+console.log(next())
+console.log(next())
 ```
 
 ## 8.A.10. IIFE a bloki
+
 Ponieważ specyfikacja `ES5` nie zapewniła zakresu bloku, popularnym wzorcem dla uzyskania zakresu bloku było użycie
-natychmiastowo **wywoływanego wyrażenia funkcyjnego** (ang. *immediately invoked function expressions — IIFE*), np.: 
+natychmiastowo **wywoływanego wyrażenia funkcyjnego** (ang. _immediately invoked function expressions — IIFE_), np.:
 
 ```javascript
-(function () { 
-  var block_scoped=0; 
-}()); 
+;(function () {
+  var block_scoped = 0
+})()
 
-console.log(block_scoped); // ReferenceError: block_scoped is not defined 
-
+console.log(block_scoped) // ReferenceError: block_scoped is not defined
 ```
+
 Dzięki obsłudze zakresów bloków przez `ES6` można po prostu użyć deklaracji `let` lub `const`.
 
 ## 8.A.11. Funkcje strzałkowe
@@ -4809,196 +4908,209 @@ W JavaScripcie zawsze pisaliśmy wyrażenia funkcyjne. Idiomatyczne jest pisanie
 (przykład w jQuery):
 
 ```javascript
-
-$("#submit-btn").click(function (event) { 
-  validateForm(); 
-  submitMessage(); 
-});
-
+$('#submit-btn').click(function (event) {
+  validateForm()
+  submitMessage()
+})
 ```
-Ten styl pisania wyrażeń funkcji anonimowych jest znany jako **funkcje lambda** . Tę funkcjonalność obsługuje kilka 
-innych języków. Chociaż **funkcje lambda** są mniej lub bardziej standardowe w nowych językach, ich użycie 
-spopularyzował JavaScript. Jednak składnia lambda w JavaScripcie nie była zbyt zwięzła. Funkcje strzałkowe ES6 
+
+Ten styl pisania wyrażeń funkcji anonimowych jest znany jako **funkcje lambda** . Tę funkcjonalność obsługuje kilka
+innych języków. Chociaż **funkcje lambda** są mniej lub bardziej standardowe w nowych językach, ich użycie
+spopularyzował JavaScript. Jednak składnia lambda w JavaScripcie nie była zbyt zwięzła. Funkcje strzałkowe ES6
 wypełniają tę lukę i zapewniają zwięzłą składnię dla pisania funkcji.
 
 ```javascript
-const num = [1,2,3] 
-const squares = num.map(function(n){
- return n*n; 
-}); 
-console.log(squares); // [1,4,9]
+const num = [1, 2, 3]
+const squares = num.map(function (n) {
+  return n * n
+})
+console.log(squares) // [1,4,9]
 ```
 
 Powyższy kod można uprościć stosując składnię funkcji strzałkowej:
 
 ```javascript
-const squaresTwo = num.map (n => n * n)
+const squaresTwo = num.map(n => n * n)
 ```
 
 Gdy potrzebujemy wielu argumentów, musimy zawrzeć listę argumentów w nawiasach okrągłych:
 
 ```javascript
 () => {...}; // 	Brak parametrów
-a => {...} ;// Jeden parametr 
+a => {...} ;// Jeden parametr
 (a, b) => {...} // 	Więcej niż jeden parametr
 ```
 
-Funkcje strzałkowe mogą zawierać zarówno **ciała instrukcji** (ang. *statement bodies* ), jak i 
-**ciała wyrażeń** (ang. *expression bodies*): 
+Funkcje strzałkowe mogą zawierać zarówno **ciała instrukcji** (ang. _statement bodies_ ), jak i
+**ciała wyrażeń** (ang. _expression bodies_):
 
 ```javascript
-n => {return n+n;} // blok instrukcji 
-n => n+n // wyrażenie
+n => {
+  return n + n
+} // blok instrukcji
+n => n + n // wyrażenie
 ```
 
 Oba zapisy są równoważne, ale druga odmiana jest zwięzła i preferowana. Funkcje strzałkowe są zawsze anonimowe.
-Jednym z ważnych aspektów **funkcji strzałkowych**, jest to, że **funkcje strzałkowe** nie wiążą własnych wartości 
+Jednym z ważnych aspektów **funkcji strzałkowych**, jest to, że **funkcje strzałkowe** nie wiążą własnych wartości
 słowa kluczowego `this` — wartość jest leksykalnie wywodzona z otaczającego zakresu.
 
+# 8.B. Funkcje
 
-# 8.B. Funkcje 
-**Notatki na podstawie "JavaScript. Tworzenie nowoczesnych aplikacji webowych."  Tomasz Sochacki**
+**Notatki na podstawie "JavaScript. Tworzenie nowoczesnych aplikacji webowych." Tomasz Sochacki**
 
 ## Czym są funkcje?
+
 Jakieś operacje można zawrzeć w funkcji aby je póżniej móc wielokrotnie wykorzystywać w różnych miejscach kodu.
 Jeśli zajdzie potrzeba modyfikacji tych operacji to zmianę wykonamy tylko w jednym miejscu – tam gdzie
 zdefiniowaliśmy naszą funkcję.
 Funkcje można używać również wewnątrz innych funkcji. W danej funkcji wywołujemy jakąś funkcję, która zwróci
-nam wynik, który możemy zwrócić i przy okazji wykonać jakieś dodatkowe czynności, których nie chcieliśmy z jakiegoś 
+nam wynik, który możemy zwrócić i przy okazji wykonać jakieś dodatkowe czynności, których nie chcieliśmy z jakiegoś
 powodu umieszczać w funkcji wewnętrznej a które w jakiś sposób ją dotyczą.
-Zamknięcie operacji w prostą funkcję może dać realne korzyści, szczególnie w przypadku rozbudowywania i 
-modyfikowania aplikacji. 
+Zamknięcie operacji w prostą funkcję może dać realne korzyści, szczególnie w przypadku rozbudowywania i
+modyfikowania aplikacji.
 
-Istnieje nawet paradygmat w programowaniu, określany jako **programowanie funkcyjne**, gdzie jednym z założeń 
+Istnieje nawet paradygmat w programowaniu, określany jako **programowanie funkcyjne**, gdzie jednym z założeń
 jest zamykanie praktycznie wszystkich operacji w małe funkcje.
 
 ## Definiowanie i wywoływanie funkcji
+
 Jest kilka sposobów definiowania funkcji. Warto jednak pamiętać, że nie ma jednej, konkretnej metody, która byłaby
 uznawana w świecie JavaScript za tę najlepszą. Wiele zależy tutaj od charakteru danej funkcji, sposobu jej używania
 oraz od praktyk przyjętych w zespole i w danej aplikacji.
 
 ### Tworzenie funkcji
-Deklarowanie funkcji poprzez słowo function w następujący sposób: 
+
+Deklarowanie funkcji poprzez słowo function w następujący sposób:
 
 ```javascript
-function name () { 
-  // polecenia wewnątrz funkcji name 
+function name() {
+  // polecenia wewnątrz funkcji name
 }
 ```
+
 Funkcję wywołujemy:
 
 ```javascript
-name();
+name()
 ```
 
-Innym sposobem stworzenia funkcji jest napisanie tzw. **wyrażenia funkcyjnego** w postaci: 
+Innym sposobem stworzenia funkcji jest napisanie tzw. **wyrażenia funkcyjnego** w postaci:
 
 ```javascript
-const fun = function nameFunction () { 
-  // polecenia wewnątrz funkcji name 
-};
+const fun = function nameFunction() {
+  // polecenia wewnątrz funkcji name
+}
 ```
+
 Funkcję wywołujemy:
 
 ```javascript
-fun();
-nameFunction();  //Uncaught ReferenceError : nameFunction is not defined
+fun()
+nameFunction() //Uncaught ReferenceError : nameFunction is not defined
 ```
+
 Wywołanie funkcji po nazwie `nameFunction` powoduje zgłoszenie błędu, gdyż nasza funkcja jest dostępna pod nazwą
 zmiennej, do jakiej została przypisana, czyli w naszym przypadku fun
-Przy tworzenia funkcji można pominąć nazwę funkcji, częściej się to robi gdy stosuje się **wyrażenie funkcyjne**. 
-Używa się  wtedy tzw. funkcji anonimowych:
+Przy tworzenia funkcji można pominąć nazwę funkcji, częściej się to robi gdy stosuje się **wyrażenie funkcyjne**.
+Używa się wtedy tzw. funkcji anonimowych:
 
 ```javascript
-const fn = function (a, b) { 
-  return a + b;
-};
+const fn = function (a, b) {
+  return a + b
+}
 ```
-lub zapisu określanego jako *arrow function* (tzw. funkcje strzałkowe), które zapisuje się jako:
+
+lub zapisu określanego jako _arrow function_ (tzw. funkcje strzałkowe), które zapisuje się jako:
 
 ```javascript
-const sum = (a, b) => { 
-  return a + b; 
-};
+const sum = (a, b) => {
+  return a + b
+}
 ```
-Opisane tu trzy sposoby deklarowania funkcji nie są równoważne i czasami sposób i miejsce wywołania funkcji może 
+
+Opisane tu trzy sposoby deklarowania funkcji nie są równoważne i czasami sposób i miejsce wywołania funkcji może
 decydować o konkretnym sposobie deklaracji.
 
 ### Wartość zwracana przez funkcję
-W języku JavaScript każda funkcja zawsze zwraca jakąś wartość albo w sposób jawny za pomocą słowa return albo 
+
+W języku JavaScript każda funkcja zawsze zwraca jakąś wartość albo w sposób jawny za pomocą słowa return albo
 niejawnie `udefined`.
 Funkcja sprawdzające jakieś warunki i zwracające wartość typu boolean:
 
 ```javascript
-function isUserLogged (user) { 
-  return isTokenValid(user.token) && user.role === 'ADMIN'; 
+function isUserLogged(user) {
+  return isTokenValid(user.token) && user.role === 'ADMIN'
 }
 ```
 
 Funkcja może posiadać kilka instrukcji return:
 
 ```javascript
-function divide (a, b) { 
- if (b !== 0) { 
-  return a / b; // instrukcja return kończy działanie funkcji
- } 
-  return "Nie dziel przez zero!"; 
+function divide(a, b) {
+  if (b !== 0) {
+    return a / b // instrukcja return kończy działanie funkcji
+  }
+  return 'Nie dziel przez zero!'
 }
 ```
+
 Gdy instrukcja return zwraca jakiś obiekt.
 
 ```javascript
-function getUserPersonalData (user) { 
-  return { 
-    name: user.name, 
-    age: user.age 
-  }; 
-} 
-// definiujemy przykładowego użytkownika : 
-const someUser = { 
-  name: 'Tomek', 
+function getUserPersonalData(user) {
+  return {
+    name: user.name,
+    age: user.age,
+  }
+}
+// definiujemy przykładowego użytkownika :
+const someUser = {
+  name: 'Tomek',
   age: '35',
-  token: 'xyz' 
-}; 
+  token: 'xyz',
+}
 
-getUserPersonalData(someUser); // { name : " Tomek ", age : " 35 "}
+getUserPersonalData(someUser) // { name : " Tomek ", age : " 35 "}
 ```
 
 Czasami jednak tworzymy funkcje, których zadaniem jest wykonanie pewnych operacji:
 
 ```javascript
-function showUserAge(user.age) { 
-  console.log('Wiek użytkownika: ' + user.age + ' lat.'); 
-} 
+function showUserAge(user.age) {
+  console.log('Wiek użytkownika: ' + user.age + ' lat.');
+}
 
 showUserAge(someUser.age); // Wiek użytkownika : 35 lat .
 ```
+
 i wtedy nie jest ważne co ta funkcja zwraca.
 
 ## Zakresy i domknięcia w JavaScript
+
 Zakres zmiennej to zakres kodu programu, w którym dana zmienna jest dostępna.
-Zaleca się deklarowanie zmiennych za pomocą słów `let` i `const`. Dzisiaj użycie słowa `var` może być wymagane 
+Zaleca się deklarowanie zmiennych za pomocą słów `let` i `const`. Dzisiaj użycie słowa `var` może być wymagane
 tylko w aplikacjach, które muszą być uruchamiane w satrszych środowiskach.
-Zmienna, która została zadeklarowana przez `let` lub `const` , jest dostępna w kodzie dopiero od miejsca jej 
+Zmienna, która została zadeklarowana przez `let` lub `const` , jest dostępna w kodzie dopiero od miejsca jej
 deklaracji. Próba użycia niezadeklarowanej zmiennej spowoduje rzucenie błędu.
 
 ```javascript
 function getPriceWithDiscount(basicPrice) {
-  const totalPrice = basicPrice * (1 - discount);
-  const discount = 0.2;
-  return totalPrice;
+  const totalPrice = basicPrice * (1 - discount)
+  const discount = 0.2
+  return totalPrice
 }
 
-console.log(getPriceWithDiscount(120)); 
+console.log(getPriceWithDiscount(120))
 //ReferenceError: Cannot access 'discount' before initialization
 
 function getPriceWithDiscount(basicPrice) {
-  var totalPrice = basicPrice * (1 - discount);
-  var discount = 0.2;
-  return totalPrice;
+  var totalPrice = basicPrice * (1 - discount)
+  var discount = 0.2
+  return totalPrice
 }
 
-console.log(getPriceWithDiscount(120));
+console.log(getPriceWithDiscount(120))
 // NaN; nie ma błędu jest zwrócona wartość NaN, która jest błędna
 ```
 
@@ -5007,68 +5119,70 @@ kod wygląda pod spodem tak:
 
 ```javascript
 function getPriceWithDiscount(basicPrice) {
-  var totalPrice; // domyślnie undefined 
-  var discount; // domyślnie undefined 
-  totalPrice = basicPrice * (1 - discount); 
-  // tutaj mamy: number * (1 – undefined) === NaN 
-  discount = 0.2; 
-  // dopiero tutaj określamy wartość , ale nie ma ona już znaczenia 
-  return totalPrice; // zwracamy wcześniej obliczone NaN 
+  var totalPrice // domyślnie undefined
+  var discount // domyślnie undefined
+  totalPrice = basicPrice * (1 - discount)
+  // tutaj mamy: number * (1 – undefined) === NaN
+  discount = 0.2
+  // dopiero tutaj określamy wartość , ale nie ma ona już znaczenia
+  return totalPrice // zwracamy wcześniej obliczone NaN
 }
 
-console.log(getPriceWithDiscount(120)); // NaN
+console.log(getPriceWithDiscount(120)) // NaN
 ```
 
 Hoisting polega na tym, że wszystkie deklaracje zmiennych z danego zakresu przechodzą na jego początek ze startową
 wartością `undefined`.
-Bezpieczniej jest używać tylko deklaracje `let` lub `const` , które uchronią nas przed takimi sytuacjami, bo od razu 
+Bezpieczniej jest używać tylko deklaracje `let` lub `const` , które uchronią nas przed takimi sytuacjami, bo od razu
 otrzymamy w konsoli błąd a nie generowane niepoprawne wartości typu `NaN`, które nie pomagają zbytnio w zlokalizowaniu błędu.
 
 W JS mamy trzy podstawowe rodzaje zakresu:
-•	Globalny
-•	Funkcyjny
-•	Blokowy
+• Globalny
+• Funkcyjny
+• Blokowy
 
 Istnieje jeszcze tzw. zakres modułu, często używany np. w pracy w środowisku Node.js
 
 ### Zakres globalny
-Zakres globalny oznacza, że zmienna jest dostępna w każdym miejscu kodu. Środowisko dodaje do zakresu globalnego 
+
+Zakres globalny oznacza, że zmienna jest dostępna w każdym miejscu kodu. Środowisko dodaje do zakresu globalnego
 obiekty np. window czy document. Jeśli zadeklarujemy zmienną za pomocą słowa kluczowego var poza jakąkolwiek funkcją
 i zakresem blokowym to znajdzie się w zakresie globalnym.
 
 ```javascript
-var variable = 40; 
-window.variable; // 40;
+var variable = 40
+window.variable // 40;
 ```
 
 Zmienne deklarowane za pomocą słowa kluczowego let i const nie będą w zakresie globalnym.
 
 ```javascript
-const userAge = 40; 
-userAge; // 40 
-window.userAge; // undefined
+const userAge = 40
+userAge // 40
+window.userAge // undefined
 ```
 
 Zmienne globalne są użyteczne gdy używamy bibliotek zewnętrznych (np. `jQuery`) lecz deklarowanie własnych
 zmiennych globalnych jest ryzykowne, gdyż wiąże się to z możliwością nadpisania zmiennej właśnie z tych bibliotek
-czy pola obiektu window. 
+czy pola obiektu window.
 
 ### Zakres funkcyjny
+
 Oznacza on, że zmienna zadeklarowana wewnątrz funkcji jest dostępna tylko w zakresie tej funkcji.
 
 ```javascript
 const user = {
   name: 'Tomek',
-  age: 40
-};
-
-function getName() {
-  const prefix = 'Imię użytkownika';
-  return `${prefix} ${user.name}`;
+  age: 40,
 }
 
-console.log(getName());
-console.log(prefix); // ReferenceError: prefix is not defined
+function getName() {
+  const prefix = 'Imię użytkownika'
+  return `${prefix} ${user.name}`
+}
+
+console.log(getName())
+console.log(prefix) // ReferenceError: prefix is not defined
 ```
 
 Dobrą praktyką jest deklarowanie zmiennych i stałych tam, gdzie są one faktycznie potrzebne.
@@ -5076,23 +5190,23 @@ Dobrą praktyką jest deklarowanie zmiennych i stałych tam, gdzie są one fakty
 Argumenty funkcji są zmiennymi znajdującymi się w jej zakresie .
 
 ```javascript
-function addTwoNumbers(x) { 
-  return function (y) { 
-     return x + y; 
-  } 
-} 
-addTwoNumbers(5)(2); // 7
+function addTwoNumbers(x) {
+  return function (y) {
+    return x + y
+  }
+}
+addTwoNumbers(5)(2) // 7
 ```
 
-**Domknięcie**, czyli  zatrzaśnięcie dostępów do zmiennych i stałych w zakresie funkcyjnym z ich propagacją w dół.
-Funkcja anonimowa ma dostęp do zmiennej `x` zlokalizowanej w zakresie funkcji nadrzędnej. Do zmiennej `y` istnieje 
+**Domknięcie**, czyli zatrzaśnięcie dostępów do zmiennych i stałych w zakresie funkcyjnym z ich propagacją w dół.
+Funkcja anonimowa ma dostęp do zmiennej `x` zlokalizowanej w zakresie funkcji nadrzędnej. Do zmiennej `y` istnieje
 dostęp tylko z funkcji anonimowej propagacja dostępów nie działa w górę.
 Aby obliczyć sumę dwóch liczb, musimy użyć dwukrotnego wywołania funkcji z dwukrotnym użyciem nawiasów okrągłych.
 
 ```javascript
-const sum = addTwoNumbers(5); 
-typeof sum; // "function"
-sum(2); // 7
+const sum = addTwoNumbers(5)
+typeof sum // "function"
+sum(2) // 7
 ```
 
 Powyższy przykład to tzw. domknięcie, gdzie zmienna `x` jest dostępna nawet po wywołaniu funkcji `addTwoNumbers`.
@@ -5105,12 +5219,12 @@ Jeśli jakaś zmienna jest potrzebna tylko w jednej funkcji, to zadeklarujmy ją
 błędów gdyby jakiś inny fragment kodu modyfikował zmienną globalną, z której my również korzystamy.
 
 ```javascript
-const sum = addTwoNumber(5);
+const sum = addTwoNumber(5)
 
-console.log(sum(6)); // 11
-console.log(sum(7)); // 12
+console.log(sum(6)) // 11
+console.log(sum(7)) // 12
 
-console.log(addTwoNumber(9)(8)); //17
+console.log(addTwoNumber(9)(8)) //17
 ```
 
 ### Zakres blokowy
@@ -5131,79 +5245,78 @@ getPrice(200);  Uncaught ReferenceError : getPrice is not defined
 Zakres blokowy dotyczy wyłącznie deklaracji z użyciem słowa const lub let.
 
 ```javascript
-{ 
-  const discount = 0.2; 
-  function getPrice(price) { 
-    return price * (1 - discount); 
-  } 
-  getPrice(100); // 80 
+{
+  const discount = 0.2
+  function getPrice(price) {
+    return price * (1 - discount)
+  }
+  getPrice(100) // 80
 }
-getPrice(200); // 160
-
+getPrice(200) // 160
 ```
 
-Deklaracja funkcji podlega tzw. hoistingowi i jest przenoszona do zakresu globalnego, ale posiada ona dostęp do 
-wartości stałej `discount` poprzez domknięcie (dotyczy zakresu blokowego, a nie funkcyjnego).  Funkcję `getPrice`
+Deklaracja funkcji podlega tzw. hoistingowi i jest przenoszona do zakresu globalnego, ale posiada ona dostęp do
+wartości stałej `discount` poprzez domknięcie (dotyczy zakresu blokowego, a nie funkcyjnego). Funkcję `getPrice`
 możemy wywołać poza blokiem.
-
 
 Częściej będziemy używali zakresu blokowego w instrukcjach warunkowych czy pętlach.
 
 ```javascript
-function getPrice(price) { 
-  let totalPrice; 
-  if (price > 0) { 
-    const discount = price > 100 ? 0.2 : 0.1; 
-    totalPrice = price * (1 - discount); 
-  } 
-  return totalPrice; 
-} 
-getPrice(100); // 90 
-getPrice(1000); // 800
+function getPrice(price) {
+  let totalPrice
+  if (price > 0) {
+    const discount = price > 100 ? 0.2 : 0.1
+    totalPrice = price * (1 - discount)
+  }
+  return totalPrice
+}
+getPrice(100) // 90
+getPrice(1000) // 800
 
-let counter = 0; 
-for (let i = 0; i < 5; i++) { 
-  counter += i; 
-} 
-counter; // 10
+let counter = 0
+for (let i = 0; i < 5; i++) {
+  counter += i
+}
+counter // 10
 ```
 
 ### Funkcje, które od razu się wykonują
-W JS  można stworzyć funkcję wraz z jej natychmiastowym wykonaniem zwane IIFE, czyli *Immediately-Invoked Function Expression*.
-Składnia konstrukcji IIFE: 
+
+W JS można stworzyć funkcję wraz z jej natychmiastowym wykonaniem zwane IIFE, czyli _Immediately-Invoked Function Expression_.
+Składnia konstrukcji IIFE:
 
 ```javascript
-(function () {
- // instrukcje do wykonania 
-})();
+;(function () {
+  // instrukcje do wykonania
+})()
 
-(() => {
- // instrukcje do wykonania 
-})();
+;(() => {
+  // instrukcje do wykonania
+})()
 ```
 
 Ich najczęstsze wykorzystanie, czyli tzw. wzorzec modułu:
 
 ```javascript
-const CustomModule = (function () { 
-  const privateMethod = () => console.log('funkcja prywatna'); 
-  return { 
-    publicFirstMethod: function () { 
-      privateMethod(); 
-      console.log('pierwsza metoda publiczna'); 
-    }, 
-    publicSecondMethod: function () { 
-      console.log('druga metoda publiczna'); 
-    } 
- }; 
-})();
+const CustomModule = (function () {
+  const privateMethod = () => console.log('funkcja prywatna')
+  return {
+    publicFirstMethod: function () {
+      privateMethod()
+      console.log('pierwsza metoda publiczna')
+    },
+    publicSecondMethod: function () {
+      console.log('druga metoda publiczna')
+    },
+  }
+})()
 
-CustomModule.publicFirstMethod(); 
-// funkcja prywatna 
-// pierwsza metoda publiczna 
-CustomModule.publicSecondMethod(); 
-// druga metoda publiczna 
-CustomModule.privateMethod();
+CustomModule.publicFirstMethod()
+// funkcja prywatna
+// pierwsza metoda publiczna
+CustomModule.publicSecondMethod()
+// druga metoda publiczna
+CustomModule.privateMethod()
 //Uncaught TypeError : CustomModule.privateMethod is not a function
 ```
 
@@ -5214,20 +5327,20 @@ zostaje przypisany obiekt z dwiema metodami publicznymi. Cały czas mają one je
 ### Parametry domyślne funkcji
 
 ```javascript
-function getPriceWithDiscount(price, rebate) { 
-  const discount = 1 - (rebate || 0.1); // domyślnie zakładamy 10% zniżki 
-  return price * discount; 
+function getPriceWithDiscount(price, rebate) {
+  const discount = 1 - (rebate || 0.1) // domyślnie zakładamy 10% zniżki
+  return price * discount
 }
-getPriceWithDiscount(100, 0.2); // 80 
-getPriceWithDiscount(100); // 90 
-getPriceWithDiscount(100, 0); // 90 źle, naliczyliśmy rabat!
+getPriceWithDiscount(100, 0.2) // 80
+getPriceWithDiscount(100) // 90
+getPriceWithDiscount(100, 0) // 90 źle, naliczyliśmy rabat!
 
-function getPriceWithDiscount(price, rebate) { 
-  const discount = 1 - (typeof rebate === 'undefined' ? 0.1 : rebate); 
-  return price * discount; 
-} 
-getPriceWithDiscount(100, 0); // 100 , teraz wynik jest poprawny 
-getPriceWithDiscount(100, 0.3); // 70 , tutaj również obliczenie jest poprawne
+function getPriceWithDiscount(price, rebate) {
+  const discount = 1 - (typeof rebate === 'undefined' ? 0.1 : rebate)
+  return price * discount
+}
+getPriceWithDiscount(100, 0) // 100 , teraz wynik jest poprawny
+getPriceWithDiscount(100, 0.3) // 70 , tutaj również obliczenie jest poprawne
 ```
 
 Rozwiązanie ze sprawdzeniem typu wartości można spotkać w wielu starszych projektach i bibliotekach, dlatego warto
@@ -5236,28 +5349,23 @@ je znać i wiedzieć jakie zagrożenia niesie ze sobą stosowanie alternatywy `O
 Określanie wartości domyślnych parametrów funkcji w nowych wersjach JavaScript:
 
 ```javascript
-function sum(a, b = 1, c) { 
-  return a + b + c; 
+function sum(a, b = 1, c) {
+  return a + b + c
 }
-sum(2, 2, 2); // 6 
-sum(2, 0, 2); // 4 
-sum(2, 2); //  2 + 2 + undefined = 2 + 2 + Number(undefined) = 2 + 2 + NaN = NaN
-sum(2, null, 2); //  2 + Number(null) + 2 = 2 + 0 + 2 = 4
-sum(2, undefined, 2); // 2 + 1 + 2 = 5
+sum(2, 2, 2) // 6
+sum(2, 0, 2) // 4
+sum(2, 2) //  2 + 2 + undefined = 2 + 2 + Number(undefined) = 2 + 2 + NaN = NaN
+sum(2, null, 2) //  2 + Number(null) + 2 = 2 + 0 + 2 = 4
+sum(2, undefined, 2) // 2 + 1 + 2 = 5
 ```
 
-Należy uważać przy wywoływaniu takich funkcji i w miejsce parametrów, które chcemy pominąć, wstawiać wartość 
+Należy uważać przy wywoływaniu takich funkcji i w miejsce parametrów, które chcemy pominąć, wstawiać wartość
 `undefined`. Gdyby parametr z wartością domyślną był ostatnim parametrem wtedy chcąc skorzystać z wartości domyślnej,
 można po prostu pominąć parametr i wywołać funkcję z wartościami `a` i `b`.
-
-
-
 
 # 8.C. Funkcje
 
 Notatki z kursu ...
-
-
 
 # 9. Klasy
 
@@ -5282,4 +5390,3 @@ serwerowego, uruchamianego na serwerach WWW.
 ### 15.1.1. Kod JavaScript w znacznikach HTML
 
 ### 15.1.2. Model DOM
-
