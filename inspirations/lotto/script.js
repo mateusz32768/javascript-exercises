@@ -1,27 +1,38 @@
-const selector = sel => document.querySelector(sel);
+const selector = sel => document.querySelector(sel)
+
+const range = n => {
+  const arr = []
+  for (let i = 0; i < n; i++) {
+    arr.push(i)
+  }
+  return arr
+}
 
 const addListenerToElementDom = (elem, ev, calback) => {
-  elem.addEventListener(ev, calback);
-};
+  elem.addEventListener(ev, calback)
+}
 
-const btnRandom = selector('.btnRandom');
+const btnRandom = selector('.btnRandom')
+let counter = 0
 
 const displayNumbers = () => {
-  const generateRandomNum = () => Math.floor(Math.random() * 44 + 1);
+  const generateRandomNum = () => Math.floor(Math.random() * 44 + 1)
 
   const createDOMNodes = items =>
     items
       .sort((a, b) => a - b)
-      .map(n => `<li>${n},</li>`)
-      .join('');
+      .map(n => `${n} `)
+      .join(',')
 
-  const elemDOM = selector('.numbers__list');
+  const elemDOM = selector('.numbers__list')
+  const nums = range(6).map(n => generateRandomNum())
+  counter++
+  if (counter <= 10) {
+    elemDOM.innerHTML += createDOMNodes(nums) + '<br><br>'
+  } else {
+    elemDOM.innerHTML += 'Koniec'
+    btnRandom.setAttribute('disabled', 'disabled')
+  }
+}
 
-  const nums = [0, 1, 2, 3, 4, 5].map(n => generateRandomNum());
-
-  console.log(nums);
-
-  elemDOM.innerHTML = createDOMNodes(nums);
-};
-
-addListenerToElementDom(btnRandom, 'click', displayNumbers);
+addListenerToElementDom(btnRandom, 'click', displayNumbers)
