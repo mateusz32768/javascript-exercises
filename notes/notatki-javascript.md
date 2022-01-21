@@ -5632,10 +5632,107 @@ m.forEach((value, key) => {  // Uwaga na kolejność: "wartość, klucz", a nie 
 
 Mapę można traktować jako uogólnioną tablicę, w której indeksami nie są liczby, tylko dowolne wartości. W przypadku
 tablicy pierwszym argumentem funkcji będącej argumentem metody `forEach()` jest element, a drugim indeks, dlatego przez
-analogię w przypadku mapy pierwszym argumentem funkcji będącej argumentem metody `forEach()` jest wartość, a drugim klucz.
+analogię w przypadku mapy pierwszym argumentem funkcji będącej argumentem metody `forEach()` jest wartość, a drugim
+klucz.
 
 ## 11.3. Wyszukiwanie wzorców i wyrażenia regularne
 
+Wyrażenie regularne jest obiektem opisującym wzorzec testowy. Klasa `RegExp` reprezentuje wyrażenie regularne, natomiast
+klasy `String` i `RegExp` definiują metody wykorzystujące te wyrażenia do zaawansowanego wyszukiwania i zastępowania
+wzorców tekstu.
+
+### 11.3.1. Definiowanie wyrażeń regularnych
+
+Podobnie jak literał znakowy jest ciągiem znaków umieszczonym wewnątrz apostrofów lub cudzysłowów, tak wyrażenie
+regularne jest ciągiem znaków umieszczonym pomiędzy ukośnikami (/).
+
+```javascript
+let pattern = /s$/;
+```
+
+Wyrażenie regularne składa się z serii znaków, które literalnie są porównywane z zadanym tekstem. Zatem wyrażenie
+regularne /java/ odpowiada każdemu ciągowi znaków zawierającemu podciąg „java”. Jednakże wyrażenie regularne /s$/ składa
+się z dwóch znaków. Pierwszy, „s”, jest porównywany wiernie z tekstem. Natomiast drugi, „$”, jest metaznakiem
+odpowiadającym końcowi ciągu. Zatem powyższe wyrażenie regularne odpowiada każdemu ciągowi znaków kończącemu się na
+literę „s”.
+
+Wyrażenie regularne może zawierać flagi modyfikujące jego działanie. Flagi określa się, umieszczając odpowiednie znaki
+za drugim ukośnikiem lub za pomocą drugiego argumentu konstruktora `RegExp()`. Aby na przykład wyszukiwać ciągi kończące
+się na literę „s” lub „S”, należy w wyrażeniu regularnym umieścić flagę `i` oznaczającą, że wielkość liter nie ma
+znaczenia.
+
+```javascript
+let pattern = /s$/i;
+```
+
+**Znaki literalne**
+
+Wszystkie znaki alfanumeryczne użyte w wyrażeniu regularnym są porównywane literalnie. Za pomocą odwrotnego
+ukośnika (`\`)
+można również umieszczać w wyrażeniu znaki inne niż alfanumeryczne. Na przykład sekwencja `\n `oznacza nowy wiersz w
+ciągu.
+
+Tabela. Znaki literalne stosowane w wyrażeniach regularnych
+
+| Znak | Opis |
+| --- | --- | 
+| alfanumeryczny | Porównywany literalnie|
+| \0 | Znak NULL (\u0000)|
+| \t | Tabulator (\u0009)|
+| \n | Nowy wiersz (\u000A)|
+| \v | Tabulator pionowy (\u000B)|
+| \f | Wysunięcie papieru (\u000C)|
+| \r | Powrót karetki (\u000D)|
+| \xnn | Znak Latin określony za pomocą liczby szesnastkowej nn. Na przykład sekwencja \x0A jest równoważna \n.
+| \uxxxx | Znak Unicode określony za pomocą liczby szesnastkowej nnn. Na przykład sekwencja \x0009 jest równoważna \t.
+|\u{n} | Znak Unicode określony za pomocą kodu n, składającego się z serii od jednej do sześciu cyfr szesnastkowych, tj. z zakresu od 0 do 10FFFF. Należy pamiętać, że ta składnia jest dopuszczalna tylko w wyrażeniach regularnych zawierających flagę u.
+|\cX | Znak kontrolny ^X. Na przykład sekwencja \cJ jest równoważna \n.
+
+W wyrażeniach regularnych można również stosować następujące znaki interpunkcyjne o specjalnym znaczeniu.
+
+```javascript
+^
+$. * + ? = ! :
+| \ / ( ) [ ] { }.
+```
+
+Niektóre z nich mają specjalne znaczenie tylko w określonym kontekście, a innym są traktowane literalnie. W tym drugim
+wypadku, zgodnie z ogólną zasadą, należy je poprzedzać odwróconym ukośnikiem. Inne znaki interpunkcyjne, na przykład
+cudzysłów i `@`, nie mają specjalnego znaczenia i są traktowane literalnie.
+
+Aby odwrócony ukośnik był traktowany literalnie, należy go również poprzedzić ukośnikiem. Na przykład wyrażenie `/\\/`
+odpowiada każdemu ciągowi zawierającemu odwrócony ukośnik. Taka klasa odpowiada dowolnemu zawartemu w niej znakowi.
+
+
+**KLasy znaków**
+
+Znaki literalne można łączyć w klasy znaków, umieszczając je wewnątrz nawiasów kwadratowych.
+
+```javascript
+/[abc]/; // wyrażenie, kóre zawiera znak a, b, c
+/[^abc]/; // wyrażenie odpowiada każdemu znakowi, oprócz a, b i c
+```
+W definicji klasy można stosować myślniki oznaczające zakresy znaków.
+
+```javascript
+/[a-z]/; // wyrażenie odpowiaadające małej literze alfabetu łacińskiego
+/[a-zA-Z0-9]/; // wyrażenie odpowiadające cyfrze lub dowolnej literze 
+```
+
+Tabela. Klasy znaków w wyrażeniach regularnych
+
+| Sekwencja | Opis |
+| --- | --- |
+|[...] | Dowolny znak umieszczony wewnątrz nawiasów.
+|[^...] | Dowolny znak z wyjątkiem umieszczonych wewnątrz nawiasów.
+|. | Dowolny znak z wyjątkiem nowego wiersza i innego znaku zakończenia wiersza Unicode. Kropka użyta w konstruktorze RegExp() z flagą s oznacza dowolny znak, również końca wiersza.
+|\w | Znak ASCII. Sekwencja równoważna wyrażeniu [a-zA-Z0-9_].
+|\W | Znak inny niż ASCII. Sekwencja równoważna wyrażeniu [^a-zA-Z0-9_].
+|\s | Dowolny biały znak Unicode.
+|\S | Dowolny znak inny niż biały Unicode.
+|\d | Dowolna cyfra. Sekwencja równoważna wyrażeniu [0-9].
+|\D | Dowolny znak inny niż cyfra. Sekwencja równoważna wyrażeniu [^0-9].
+|[\b] | Usunięcie znaku (przypadek szczególny).
 
 
 # 13. Asynchroniczność w języku JavaScript
