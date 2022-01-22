@@ -5647,7 +5647,7 @@ Podobnie jak literał znakowy jest ciągiem znaków umieszczonym wewnątrz apost
 regularne jest ciągiem znaków umieszczonym pomiędzy ukośnikami (/).
 
 ```javascript
-let pattern = /s$/;
+let pattern = /s$/;  // (*)
 ```
 
 Wyrażenie regularne składa się z serii znaków, które literalnie są porównywane z zadanym tekstem. Zatem wyrażenie
@@ -5690,19 +5690,16 @@ Tabela. Znaki literalne stosowane w wyrażeniach regularnych
 
 W wyrażeniach regularnych można również stosować następujące znaki interpunkcyjne o specjalnym znaczeniu.
 
-```javascript
-^
-$. * + ? = ! :
-| \ / ( ) [ ] { }.
+```
+^ $ . * + ? = ! : | \ / ( ) [ ] { } 
 ```
 
 Niektóre z nich mają specjalne znaczenie tylko w określonym kontekście, a innym są traktowane literalnie. W tym drugim
-wypadku, zgodnie z ogólną zasadą, należy je poprzedzać odwróconym ukośnikiem. Inne znaki interpunkcyjne, na przykład
+wypadku zgodnie z ogólną zasadą należy je poprzedzać odwróconym ukośnikiem. Inne znaki interpunkcyjne, na przykład
 cudzysłów i `@`, nie mają specjalnego znaczenia i są traktowane literalnie.
 
 Aby odwrócony ukośnik był traktowany literalnie, należy go również poprzedzić ukośnikiem. Na przykład wyrażenie `/\\/`
 odpowiada każdemu ciągowi zawierającemu odwrócony ukośnik. Taka klasa odpowiada dowolnemu zawartemu w niej znakowi.
-
 
 **KLasy znaków**
 
@@ -5712,6 +5709,7 @@ Znaki literalne można łączyć w klasy znaków, umieszczając je wewnątrz naw
 /[abc]/; // wyrażenie, kóre zawiera znak a, b, c
 /[^abc]/; // wyrażenie odpowiada każdemu znakowi, oprócz a, b i c
 ```
+
 W definicji klasy można stosować myślniki oznaczające zakresy znaków.
 
 ```javascript
@@ -5734,6 +5732,73 @@ Tabela. Klasy znaków w wyrażeniach regularnych
 |\D | Dowolny znak inny niż cyfra. Sekwencja równoważna wyrażeniu [^0-9].
 |[\b] | Usunięcie znaku (przypadek szczególny).
 
+Kod (*) tworzy nowy obiekt `RegExp` i przypisuje go zmiennej `pattern`. Obiekt ten odpowiada każdemu ciągowi znaków
+kończącego się literą "s". Przy pomocą konstruktora można go stworzyć tak.
+
+```javascript
+let pattern = RegExp('s$');
+```
+
+Wewnątrz nawiasów kwadratowych można umieszczać sekwencje zawierające odwrotne ukośniki.
+
+```javascript
+/[\s\d]/ // odpowiada dowolnemu białemu znakowi i dowolnej cyfrze 
+```
+
+Sekwencja `\b` ma specjalne znaczenie. Użyta wewnątrz klasy znaków reprezentuje operację usunięcia znaku. Zatem, aby
+znak ten był traktowany literalnie, należy użyć klasy zawierającej tylko jeden element: `/[\b]/`.
+
+> Klasy znaków Unicod
+> Począwszy od wersji języka ES2018 wyrażenie regularne, zawierające flagę `u` obsługuje klasę `\p{...}`
+> reprezentującą znaki Unicode i klasę `\P{...}` wykluczającą te znaki. Od początku 2020 r. klasy te są obsługiwane przez
+> środowisko Node oraz przeglądarki Chrome, Edge i Safari, ale nie Firefox. Klasy te są oparte na standardzie Unicode i
+> reprezentowane przez nie znaki mogą się zmieniać wraz z tym standardem.
+>
+> Sekwencja `\d `odpowiada tylko cyfrom `ASCII`. Wyrażenie odpowiadające jednej cyfrze dowolnego systemu liczbowego ma
+> postać `/\p{Decimal_Number}/u`, natomiast odpowiadające znakowi innemu niż cyfra ma postać `\P{Decimal_Number}`.
+> Z kolei wyrażenie `\p{Number}` odpowiada każdej liczbie, w tym ułamkowi i liczbie rzymskiej. Zwróć uwagę, że
+> oznaczenia `Decimal_Number` i `Number` nie są charakterystyczne dla języka JavaScript ani składni wyrażeń
+> regularnych. Są to nazwy kategorii znaków zdefiniowane w standardzie `Unicode`.
+>
+> Sekwencja `\w` dotyczy tylko tekstu `ASCII`, natomiast wykorzystując sekwencję `\p`, można zdefiniować klasę
+> reprezentującą międzynarodowe znaki:
+>
+> ``` javascript
+> /[\p{Alphabetic}\p{Decimal_Number}\p{Mark}]/u
+> ```
+>
+> Aby powyższe wyrażenie w pełni uwzględniało języki używane na całym
+> świecie, należy je rozbudować o kategorie Connector_Punctuation i Join_Control.
+>
+> Ponadto za pomocą sekwencji `\p` można definiować wyrażenia odpowiadające znakom z określonego alfabetu lub pisma:
+> ```javascript
+> let greekLetter = /\p{Script=Greek}/u; 
+> let cyrillicLetter = /\p{Script=Cyrillic}/u;
+> ```
+
+**Powtarzanie sekwencji**
+
+Wykorzystując opisaną wyżej składnię możemy napisać.
+
+```javascript
+/\d\d/ // liczby dwucyfrowe
+/\d\d\d\d/ // liczby czterocyfrowe
+```
+
+W bardziej skomplikowanych wzorcach stosjuje się składnię określającą liczbę powtórzeń elementu wyrażenia.
+
+Znaki określające powtórzenia umieszcza się po sekwencji, której mają dotyczyć.
+
+Tabela. Znaki powtórzeń w wyrażeniach regularnych
+
+| Sekwencja |Opis
+| --- | ---
+|{n,m} |Powtórzenie poprzedniego wzorca przynajmniej n razy, ale nie więcej niż m razy.
+|{n,} | Powtórzenie poprzedniego wzorca przynajmniej n razy.
+| {n} | Powtórzenie poprzedniego wzorca dokładnie n razy.
+|? | Brak wystąpienia lub jedno wystąpienie poprzedniego wzorca. Oznacza to, że wzorzec ten jest opcjonalny. Symbol odpowiada wyrażeniu {0,1}.
+|+ | Jedno lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {1,}.
+|* | Zero lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {0,}.
 
 # 13. Asynchroniczność w języku JavaScript
 
