@@ -5800,6 +5800,93 @@ Tabela. Znaki powtórzeń w wyrażeniach regularnych
 |+ | Jedno lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {1,}.
 |* | Zero lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {0,}.
 
+Oto kilka przykładów.
+
+```javascript
+let r = /\d{2,4}/; // Liczba złożona z dwóch, trzech lub czterech cyfr.
+r = /\w{3}\d?/;    // Dokładnie trzy litery i opcjonalna cyfra.
+r = /\s+java\s+/;  // Ciąg „java” z opcjonalnymi spacjami na początku i końcu.
+r = /[^(]*/;       // Zero lub więcej znaków innych niż nawias otwierający.
+```
+
+**Powtórzenia niezachłanne**
+
+Sekwencje opisane w poprzednim rozdziale oznaczają tyle ppowtórzeń, ile jest to możliwe, a dodatkowo można za nimi umieszczać inne sekwencje. Są to tzw. „powtórzenia zachłanne” (*ang. greedy repetitions*). Natomiast powtórzenia niezachłane utworzymy, gdy po sekwencji powtórzenia umieścimy znak zapytania, na przykład ??, +?, *?, a nawet {1,5}?. Na przykład wyrażenie /a+/ odpowiada jednemu lub kilku wystąpieniom litery a. Jest więc zgodne z ciągiem "aaa". Natomiast wyrażenie /a+?/ oznacza jak najmniej wystąpień litery a. Zatem odpowiada tylko pierwszej literze a powyższego ciągu.
+ <!-- TODO -->
+
+**Alternatywy, grupy i odwołania**
+
+<!-- TODO -->
+
+**Określanie pozycji dopasowania**
+
+<!-- TODO -->
+
+**Flagi**
+
+<!-- TODO -->
+
+### 11.3.2. Metody dopasowujące klasy String
+
+<!-- TODO -->
+
+### 11.3.3. Klasa RegExp
+
+<!-- TODO -->
+
+## 11.4. Data i czas
+
+<!-- TODO -->
+
+## 11.5 Klasy Błędów
+
+<!-- TODO -->
+
+## 11.6. Format JSON, serializacja i analiza składni
+
+<!-- TODO -->
+
+## 11.7. Internacjonalizacja aplikacji
+
+<!-- TODO -->
+
+## 11.8. Interfejs API konsoli
+
+<!-- TODO -->
+
+## 11.9. Interfejs API klasy URL
+
+<!-- TODO -->
+
+## 11.10. Czasomierze
+
+Za pomocą funkcji `setTimeout()` i `setInterval()` można wywoływać inne funkcje po upływie określonego czasu lub wywoływać je regularnie w określonych interwałach.
+
+```javascript
+setTimeout(() => { console.log("Gotowi..."); }, 1000);
+setTimeout(() => { console.log("do biegu..."); }, 2000);
+setTimeout(() => { console.log("start!"); }, 3000);
+```
+
+Funkcja `setTimeout()` nie czeka, aż upłynie zadany czas. Wszystkie powyższe wiersze są wykonywane niemal jednocześnie, ale w konsoli nic się nie dzieje, dopóki nie minie 1000 milisekund.
+
+Jeżeli drugi argument nie zostanie określony, przyjmie on domyślną wartość 0. Nie oznacza to jednak, że funkcja podana w pierwszym argumencie zostanie wywołana natychmiast, tylko najszybciej, jak to będzie możliwe. Jeżeli przeglądarka będzie na przykład zajęta pobieraniem danych od użytkownika lub obsługiwaniem innych zdarzeń, powyższa funkcja może zostać wywołana ze zwłoką 10 milisekund lub większą.
+
+Zarówno funkcja setTimeout(), jak i setInterval() zwraca wartość, którą po zapisaniu w zmiennej można wykorzystać do przerwania ciągu wywołań zadanej funkcji. W tym celu należy tę wartość umieścić w argumencie funkcji clearTimeout() lub clearInterval(). Zwracaną wartością jest zazwyczaj liczba (w przypadku przeglądarek) lub obiekt (w środowisku Node). Jej typ nie ma znaczenia i nie należy na niej wykonywać żadnych operacji
+
+
+```javascript
+// Usuwanie w jednosekundowych odstępach zawartości konsoli i wyświetlanie bieżącego czasu.
+let clock = setInterval(() => {
+  console.clear();
+  console.log(new Date().toLocaleTimeString());
+}, 1000);
+// Przerwanie wykonywania powyższego kodu po upływie 10 sekund.
+setTimeout(() => { clearInterval(clock); }, 10000);
+```
+
+
+
 # 13. Asynchroniczność w języku JavaScript
 
 Program asynchroniczny wstrzymuje działanie w oczekiwaniu na dane lub wystąpienie jakiegoś zdarzenia. Programy
