@@ -13,14 +13,14 @@
  * elementu (indeks 1 zamiast indeksu 0).
  **/
 
-const arr = [1, 2, 3, 4];
+const arr = [1, 2, 3, 4]
 
-const reducer = (prevValue, currentValue) => prevValue + currentValue;
+const reducer = (prevValue, currentValue) => prevValue + currentValue
 
-console.log(arr.reduce(reducer));
+console.log(arr.reduce(reducer))
 
-console.log(arr.reduce((prev, curr) => prev * curr));
+console.log(arr.reduce((prev, curr) => prev * curr))
 
-const reducerOne = arr.reduce((prev, curr) => prev * curr, 11);
+const reducerOne = arr.reduce((prev, curr) => prev * curr, 11)
 
-console.log(reducerOne);
+console.log(reducerOne)

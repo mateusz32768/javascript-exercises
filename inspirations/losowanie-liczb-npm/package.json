@@ -1,0 +1,15 @@
+{
+  "name": "losowanie-liczb-npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sample.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Zenon Marek Raubuć",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^2.2.1"
+  }
+}
