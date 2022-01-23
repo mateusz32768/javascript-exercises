@@ -5674,19 +5674,19 @@ ciągu.
 
 Tabela. Znaki literalne stosowane w wyrażeniach regularnych
 
-| Znak | Opis |
-| --- | --- | 
-| alfanumeryczny | Porównywany literalnie|
-| \0 | Znak NULL (\u0000)|
-| \t | Tabulator (\u0009)|
-| \n | Nowy wiersz (\u000A)|
-| \v | Tabulator pionowy (\u000B)|
-| \f | Wysunięcie papieru (\u000C)|
-| \r | Powrót karetki (\u000D)|
-| \xnn | Znak Latin określony za pomocą liczby szesnastkowej nn. Na przykład sekwencja \x0A jest równoważna \n.
-| \uxxxx | Znak Unicode określony za pomocą liczby szesnastkowej nnn. Na przykład sekwencja \x0009 jest równoważna \t.
-|\u{n} | Znak Unicode określony za pomocą kodu n, składającego się z serii od jednej do sześciu cyfr szesnastkowych, tj. z zakresu od 0 do 10FFFF. Należy pamiętać, że ta składnia jest dopuszczalna tylko w wyrażeniach regularnych zawierających flagę u.
-|\cX | Znak kontrolny ^X. Na przykład sekwencja \cJ jest równoważna \n.
+| Znak           | Opis                                                                                                                                                                                                                                               |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| alfanumeryczny | Porównywany literalnie                                                                                                                                                                                                                             |
+| \0             | Znak NULL (\u0000)                                                                                                                                                                                                                                 |
+| \t             | Tabulator (\u0009)                                                                                                                                                                                                                                 |
+| \n             | Nowy wiersz (\u000A)                                                                                                                                                                                                                               |
+| \v             | Tabulator pionowy (\u000B)                                                                                                                                                                                                                         |
+| \f             | Wysunięcie papieru (\u000C)                                                                                                                                                                                                                        |
+| \r             | Powrót karetki (\u000D)                                                                                                                                                                                                                            |
+| \xnn           | Znak Latin określony za pomocą liczby szesnastkowej nn. Na przykład sekwencja \x0A jest równoważna \n.                                                                                                                                             |
+| \uxxxx         | Znak Unicode określony za pomocą liczby szesnastkowej nnn. Na przykład sekwencja \x0009 jest równoważna \t.                                                                                                                                        |
+| \u{n}          | Znak Unicode określony za pomocą kodu n, składającego się z serii od jednej do sześciu cyfr szesnastkowych, tj. z zakresu od 0 do 10FFFF. Należy pamiętać, że ta składnia jest dopuszczalna tylko w wyrażeniach regularnych zawierających flagę u. |
+| \cX            | Znak kontrolny ^X. Na przykład sekwencja \cJ jest równoważna \n.                                                                                                                                                                                   |
 
 W wyrażeniach regularnych można również stosować następujące znaki interpunkcyjne o specjalnym znaczeniu.
 
@@ -5719,18 +5719,18 @@ W definicji klasy można stosować myślniki oznaczające zakresy znaków.
 
 Tabela. Klasy znaków w wyrażeniach regularnych
 
-| Sekwencja | Opis |
-| --- | --- |
-|[...] | Dowolny znak umieszczony wewnątrz nawiasów.
-|[^...] | Dowolny znak z wyjątkiem umieszczonych wewnątrz nawiasów.
-|. | Dowolny znak z wyjątkiem nowego wiersza i innego znaku zakończenia wiersza Unicode. Kropka użyta w konstruktorze RegExp() z flagą s oznacza dowolny znak, również końca wiersza.
-|\w | Znak ASCII. Sekwencja równoważna wyrażeniu [a-zA-Z0-9_].
-|\W | Znak inny niż ASCII. Sekwencja równoważna wyrażeniu [^a-zA-Z0-9_].
-|\s | Dowolny biały znak Unicode.
-|\S | Dowolny znak inny niż biały Unicode.
-|\d | Dowolna cyfra. Sekwencja równoważna wyrażeniu [0-9].
-|\D | Dowolny znak inny niż cyfra. Sekwencja równoważna wyrażeniu [^0-9].
-|[\b] | Usunięcie znaku (przypadek szczególny).
+| Sekwencja | Opis                                                                                                                                                                             |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [...]     | Dowolny znak umieszczony wewnątrz nawiasów.                                                                                                                                      |
+| [^...]    | Dowolny znak z wyjątkiem umieszczonych wewnątrz nawiasów.                                                                                                                        |
+| .         | Dowolny znak z wyjątkiem nowego wiersza i innego znaku zakończenia wiersza Unicode. Kropka użyta w konstruktorze RegExp() z flagą s oznacza dowolny znak, również końca wiersza. |
+| \w        | Znak ASCII. Sekwencja równoważna wyrażeniu [a-zA-Z0-9_].                                                                                                                         |
+| \W        | Znak inny niż ASCII. Sekwencja równoważna wyrażeniu [^a-zA-Z0-9_].                                                                                                               |
+| \s        | Dowolny biały znak Unicode.                                                                                                                                                      |
+| \S        | Dowolny znak inny niż biały Unicode.                                                                                                                                             |
+| \d        | Dowolna cyfra. Sekwencja równoważna wyrażeniu [0-9].                                                                                                                             |
+| \D        | Dowolny znak inny niż cyfra. Sekwencja równoważna wyrażeniu [^0-9].                                                                                                              |
+| [\b]      | Usunięcie znaku (przypadek szczególny).                                                                                                                                          |
 
 Kod (*) tworzy nowy obiekt `RegExp` i przypisuje go zmiennej `pattern`. Obiekt ten odpowiada każdemu ciągowi znaków
 kończącego się literą "s". Przy pomocą konstruktora można go stworzyć tak.
@@ -5791,14 +5791,14 @@ Znaki określające powtórzenia umieszcza się po sekwencji, której mają doty
 
 Tabela. Znaki powtórzeń w wyrażeniach regularnych
 
-| Sekwencja |Opis
-| --- | ---
-|{n,m} |Powtórzenie poprzedniego wzorca przynajmniej n razy, ale nie więcej niż m razy.
-|{n,} | Powtórzenie poprzedniego wzorca przynajmniej n razy.
-| {n} | Powtórzenie poprzedniego wzorca dokładnie n razy.
-|? | Brak wystąpienia lub jedno wystąpienie poprzedniego wzorca. Oznacza to, że wzorzec ten jest opcjonalny. Symbol odpowiada wyrażeniu {0,1}.
-|+ | Jedno lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {1,}.
-|* | Zero lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {0,}.
+| Sekwencja | Opis                                                                                                                                      |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| {n,m}     | Powtórzenie poprzedniego wzorca przynajmniej n razy, ale nie więcej niż m razy.                                                           |
+| {n,}      | Powtórzenie poprzedniego wzorca przynajmniej n razy.                                                                                      |
+| {n}       | Powtórzenie poprzedniego wzorca dokładnie n razy.                                                                                         |
+| ?         | Brak wystąpienia lub jedno wystąpienie poprzedniego wzorca. Oznacza to, że wzorzec ten jest opcjonalny. Symbol odpowiada wyrażeniu {0,1}. |
+| +         | Jedno lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {1,}.                                                          |
+| *         | Zero lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {0,}.                                                           |
 
 Oto kilka przykładów.
 
@@ -5938,6 +5938,52 @@ function stopCheckingForUpdates() {
 ```
 
 ### 13.1.2. Zdarzenia
+
+Programy klienckie napisane w języku JavaScript są 
+sterowane zdarzeniami. Przeglądarka zgłasza zdarzenie, na przykład gdy użytkownik naciśnie klawisz, przesunie kursor, kliknie przycisk lub dotknie ekranu. Funkcje zwrotne są przypisywane określonym zdarzeniom w określonych kontekstach, a przeglądarka wywołuje te funkcje w miarę pojawiania się tych zdarzeń. Tego rodzaju funkcje są nazywane procedurami obsługi zdarzeń (*ang. event handlers*). Rejestruje się je za pomocą metody addEventListener():
+
+```javascript
+const okay = document.querySelector('#confirmUpdateDialog button.okay');
+// Zarejestrowanie funkcji zwrotnej, która będzie wywoływana, gdy użytkownik kliknie przycisk.
+okay.addEventListener('click', applyUpdate);
+```
+
+Metoda `document.querySelector()` zwraca obiekt reprezentujący żądany element strony WWW. Metoda `addEventListener()` tego obiektu jest wywoływana w celu zarejestrowania funkcji zwrotnej. Pierwszym argumentem metody jest ciąg znaków określający zdarzenie — w tym przypadku jest to kliknięcie przycisku myszą lub dotknięcie go. Gdy użytkownik kliknie wskazany element strony lub dotknie go, przeglądarka wywoła funkcję zwrotną `applyUpdate()` z argumentem zawierającym szczegółowe informacje o zdarzeniu.
+
+### 13.1.3 Zdarzenia sieciowe
+
+Program JavaScript uruchomiony w przeglądarce może odbierać dane wysyłane przez serwer w następujący sposób:
+
+```javascript
+function getCurrentVersionNumber(versionCallback) { // Zwróć uwagę na argument będący 
+                                                    // funkcją zwrotną.
+  // Wysłanie do interfejsu API zapytania HTTP o numer wersji.
+  let request = new XMLHttpRequest();
+  request.open("GET", "http://www.example.com/api/version");
+  request.send();
+  // Zarejestrowanie funkcji zwrotnej, która zostanie wywołana po odebraniu odpowiedzi.
+  request.onload = function() {
+    if (request.status === 200) {
+      // Jeżeli status HTTP zapytania jest poprawny, odczytujemy nr wersji i wywołujemy funkcję zwrotną.
+      let currentVersion = parseFloat(request.responseText);
+      versionCallback(null, currentVersion);
+    } else {
+      // W przeciwnym razie zgłaszamy problem za pomocą funkcji zwrotnej.
+      versionCallback(response.statusText, null);
+    }
+  };
+  // Zarejestrowanie innej funkcji zwrotnej wywoływanej po wystąpieniu błędu sieciowego.
+  request.onerror = request.ontimeout = function(e) {
+    versionCallback(e.type, null);
+  };
+}
+```
+
+
+
+
+
+
 
 ## 13.2. Promesy
 
