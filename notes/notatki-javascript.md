@@ -5454,51 +5454,51 @@ powtarzać. Dana wartość należy albo nie należy do zbioru.
 Zbiór tworzy się przy pomocy konstruktora `Set()`:
 
 ```javascript
-let s = new Set();       // Nowy, pusty zbiór.
+let s = new Set(); // Nowy, pusty zbiór.
 let t = new Set([1, s]); // Nowy zbiór z dwoma elementami.
 ```
 
 Argumentem konstruktora nie musi być tablica. Może to być dowolny obiekt iterowalny (również inny zbiór):
 
 ```javascript
-let t = new Set(s);                  // Nowy zbiór zawierający kopie elementów obiektu s.
-let unique = new Set("Mississippi"); // Cztery elementy: "M", "i", "s" i "p".
-unique.size // => 4
+let t = new Set(s); // Nowy zbiór zawierający kopie elementów obiektu s.
+let unique = new Set('Mississippi'); // Cztery elementy: "M", "i", "s" i "p".
+unique.size; // => 4
 ```
 
 Elementy można dodawać i usuwać w dowolnym momencie za pomocą metod `add()`, `delete()` i `clear()`.
 
 ```javascript
-let s = new Set();  // Pusty początkowy zbiór.
-s.size              // => 0
-s.add(1);           // Dodanie liczby.
-s.size              // => 1; zbiór zawiera jeden element.
-s.add(1);           // Powtórne dodanie tej samej liczby.
-s.size              // => 1; wielkość zbioru nie zmieniła się.
-s.add(true);        // Dodanie innej wartości. Zwróć uwagę, że można mieszać typy.
-s.size              // => 2
-s.add([1, 2, 3]);     // Dodanie tablicy.
-s.size              // => 3; do zbioru została dodana cała tablica, a nie jej osobne elementy.
-s.delete(1)         // => true: pomyślnie usunięty element o wartości 1.
-s.size              // => 2: wielkość zbioru zmniejszyła się do 2.
-s.delete("test")    // => false: zbiór nie zawiera ciągu "test", więc próba jego usunięcia nie powiodła się.
-s.delete(true)      // => true: pomyślnie usunięty element.
-s.delete([1, 2, 3])   // => false: tablica w zbiorze jest innym obiektem.
-s.size              // => 1: zbiór wciąż zawiera tablicę.
-s.clear();          // Usunięcie ze zbioru wszystkich elementów.
-s.size              // => 0
+let s = new Set(); // Pusty początkowy zbiór.
+s.size; // => 0
+s.add(1); // Dodanie liczby.
+s.size; // => 1; zbiór zawiera jeden element.
+s.add(1); // Powtórne dodanie tej samej liczby.
+s.size; // => 1; wielkość zbioru nie zmieniła się.
+s.add(true); // Dodanie innej wartości. Zwróć uwagę, że można mieszać typy.
+s.size; // => 2
+s.add([1, 2, 3]); // Dodanie tablicy.
+s.size; // => 3; do zbioru została dodana cała tablica, a nie jej osobne elementy.
+s.delete(1); // => true: pomyślnie usunięty element o wartości 1.
+s.size; // => 2: wielkość zbioru zmniejszyła się do 2.
+s.delete('test'); // => false: zbiór nie zawiera ciągu "test", więc próba jego usunięcia nie powiodła się.
+s.delete(true); // => true: pomyślnie usunięty element.
+s.delete([1, 2, 3]); // => false: tablica w zbiorze jest innym obiektem.
+s.size; // => 1: zbiór wciąż zawiera tablicę.
+s.clear(); // Usunięcie ze zbioru wszystkich elementów.
+s.size; // => 0
 ```
 
 Kilka uwag do powyższego kodu:
 
-* Metoda `add()` ma jeden argument. Jeżeli jest nim tablica, jest ona umieszczana w zbiorze jako całość, a nie jako
+- Metoda `add()` ma jeden argument. Jeżeli jest nim tablica, jest ona umieszczana w zbiorze jako całość, a nie jako
   osobne elementy. Zwracanym wynikiem jest obiekt (zbiór), do którego metoda należy. Zatem, aby dodać do zbioru kilka
   elementów, można utworzyć łańcuch metod, na przykład `s.add('a').add('b').add('c');`.
 
-* Metoda `delete()` zwraca wartość logiczną. Jeżeli wartość podana w argumencie nie należy do zbioru, metoda `delete()`
+- Metoda `delete()` zwraca wartość logiczną. Jeżeli wartość podana w argumencie nie należy do zbioru, metoda `delete()`
   nie usuwa niczego i zwraca false.
 
-* Sprawdzanie przynależności wartości do zbioru polega na weryfikacji ścisłej równości obiektów (`===`). W powyższym
+- Sprawdzanie przynależności wartości do zbioru polega na weryfikacji ścisłej równości obiektów (`===`). W powyższym
   kodzie tablica nie została usunięta ze zbioru, ponieważ po jej dodaniu została podjęta próba usunięcia innej tablicy,
   choć z takimi samymi elementami. Aby usunąć tę tablicę, należało użyć wskazującej ją referencji.
 
@@ -5506,28 +5506,29 @@ Częstą operacją na zbiorach jest sprawdzanie przynależności wartości do zb
 
 ```javascript
 let oneDigitPrimes = new Set([2, 3, 5, 7]);
-oneDigitPrimes.has(2)    // => true: 2 jest jednocyfrową liczbą pierwszą.
-oneDigitPrimes.has(3)    // => true: 3 też jest taką liczbą.
-oneDigitPrimes.has(4)    // => false: 4 nie jest liczbą pierwszą.
-oneDigitPrimes.has("5")  // => false: "5" nie jest nawet liczbą.
+oneDigitPrimes.has(2); // => true: 2 jest jednocyfrową liczbą pierwszą.
+oneDigitPrimes.has(3); // => true: 3 też jest taką liczbą.
+oneDigitPrimes.has(4); // => false: 4 nie jest liczbą pierwszą.
+oneDigitPrimes.has('5'); // => false: "5" nie jest nawet liczbą.
 ```
 
 Klasa Set jest iterowalna, co oznacza, że elementy zbioru można wyliczać za pomocą pętli `for/of`.
 
 ```javascript
 let sum = 0;
-for (let p of oneDigitPrimes) { // Pętla iterująca jednocyfrowe liczby pierwsze.
-  sum += p;                     // Sumowanie elementów.
+for (let p of oneDigitPrimes) {
+  // Pętla iterująca jednocyfrowe liczby pierwsze.
+  sum += p; // Sumowanie elementów.
 }
-sum    // => 17: 2 + 3 + 5 + 7
+sum; // => 17: 2 + 3 + 5 + 7
 ```
 
 Ponieważ obiekt typu Set jest iterowalny, można za pomocą operatora rozciągania (`...`) zamieniać go na tablicę lub
 listę argumentów.
 
 ```javascript
-[...oneDigitPrimes]         // => [2,3,5,7]: zbiór przekształcony w tablicę.
-Math.max(...oneDigitPrimes) // => 7: elementy zbioru umieszczone w argumentach funkcji.
+[...oneDigitPrimes]; // => [2,3,5,7]: zbiór przekształcony w tablicę.
+Math.max(...oneDigitPrimes); // => 7: elementy zbioru umieszczone w argumentach funkcji.
 ```
 
 Klasa Set zapamiętuje kolejność dodawanych elementów i przestrzega jej podczas iterowania zbioru. Pierwszy dodany
@@ -5541,10 +5542,10 @@ KLasa Set implementuje motodę `forEach`.
 
 ```javascript
 let product = 1;
-oneDigitPrimes.forEach(n => {
+oneDigitPrimes.forEach((n) => {
   product *= n;
 });
-product     // => 210: 2 * 3 * 5 * 7
+product; // => 210: 2 * 3 * 5 * 7
 ```
 
 ### 11.1.2. Klasa Map
@@ -5555,10 +5556,11 @@ podobna do tablicy, ale różni się tym, że jej „indeksami” mogą być dow
 Mapę tworzy się przy pomocy konstruktora `Map()`.
 
 ```javascript
-let m = new Map();  // Utworzenie nowej, pustej mapy.
-let n = new Map([   // Nowa mapa zainicjowana za pomocą ciągów znaków powiązanych z liczbami.
-  ["jeden", 1],
-  ["dwa", 2]
+let m = new Map(); // Utworzenie nowej, pustej mapy.
+let n = new Map([
+  // Nowa mapa zainicjowana za pomocą ciągów znaków powiązanych z liczbami.
+  ['jeden', 1],
+  ['dwa', 2]
 ]);
 
 let copy = new Map(n); // Nowa mapa, zawierająca takie same klucze i wartości jak mapa n.
@@ -5571,30 +5573,29 @@ której argumentem jest istniejący w mapie klucz, można zmieniać przypisaną 
 nowa para klucz-wartość.
 
 ```javascript
-let m = new Map();   // Początkowa, pusta mapa.
-m.size               // => 0: pusta mapa nie ma kluczy.
-m.set("jeden", 1);   // Przypisanie kluczowi "jeden" wartości 1.
-m.set("dwa", 2);     // Dodanie klucza "dwa" z wartością 2.
-m.size               // => 2: teraz mapa zawiera dwa kucze.
-m.get("dwa")         // => 2: zwrócenie wartości przypisanej kluczowi  "dwa"
-m.get("trzy")        // => undefined: tego klucza nie ma w mapie.
-m.set("one", true);  // Zmiana wartości przypisanej istniejącemu kluczowi.
-m.size               // => 2: wielkość mapy nie zmieniła się.
-m.has("jeden")       // => true: mapa zawiera klucz "jeden".
-m.has(true)          // => false: mapa nie zawiera klucza true.
-m.delete("jeden")    // => true: zadany klucz był w mapie i został usunięty.
-m.size               // => 1
-m.delete("trzy")     // => false: nieudana próba usunięcia nieistniejącego klucza.
-m.clear();           // Usunięcie z mapy wszystkich kluczy i wartości.
+let m = new Map(); // Początkowa, pusta mapa.
+m.size; // => 0: pusta mapa nie ma kluczy.
+m.set('jeden', 1); // Przypisanie kluczowi "jeden" wartości 1.
+m.set('dwa', 2); // Dodanie klucza "dwa" z wartością 2.
+m.size; // => 2: teraz mapa zawiera dwa kucze.
+m.get('dwa'); // => 2: zwrócenie wartości przypisanej kluczowi  "dwa"
+m.get('trzy'); // => undefined: tego klucza nie ma w mapie.
+m.set('one', true); // Zmiana wartości przypisanej istniejącemu kluczowi.
+m.size; // => 2: wielkość mapy nie zmieniła się.
+m.has('jeden'); // => true: mapa zawiera klucz "jeden".
+m.has(true); // => false: mapa nie zawiera klucza true.
+m.delete('jeden'); // => true: zadany klucz był w mapie i został usunięty.
+m.size; // => 1
+m.delete('trzy'); // => false: nieudana próba usunięcia nieistniejącego klucza.
+m.clear(); // Usunięcie z mapy wszystkich kluczy i wartości.
 
-m.set({}, 1);        // Powiązanie pustego obiektu z liczbą 1.
-m.set({}, 2);        // Powiązanie innego pustego obiektu z liczbą 2.
-m.size               // => 2: mapa zawiera dwa klucze.
-m.get({})            // => undefined: ten pusty obiekt nie jest kluczem
+m.set({}, 1); // Powiązanie pustego obiektu z liczbą 1.
+m.set({}, 2); // Powiązanie innego pustego obiektu z liczbą 2.
+m.size; // => 2: mapa zawiera dwa klucze.
+m.get({}); // => undefined: ten pusty obiekt nie jest kluczem
 m.set(m, undefined); // Powiązanie samej metody z wartością undefined.
-m.has(m)             // => true: m jest kluczem w mapie.
-m.get(m)             // => undefined: wynik byłby taki sam, gdyby mapa nie zawierała klucza m.
-
+m.has(m); // => true: m jest kluczem w mapie.
+m.get(m); // => undefined: wynik byłby taki sam, gdyby mapa nie zawierała klucza m.
 ```
 
 Obiekty Map są iterowalne. Każdą wyliczaną wartością jest dwuelementowa tablica, której pierwszym elementem jest klucz,
@@ -5603,8 +5604,11 @@ umieszczanej w argumencie konstruktora `Map()`. Idiomatycznym przykładem inicjo
 użycie przypisania destrukturyzującego, a następnie przypisania klucza i wartości osobnym zmiennym.
 
 ```javascript
-let m = new Map([["x", 1], ["y", 2]]);
-[...m]    // => [["x", 1], ["y", 2]]
+let m = new Map([
+  ['x', 1],
+  ['y', 2]
+]);
+[...m]; // => [["x", 1], ["y", 2]]
 for (let [key, value] of m) {
   // W pierwszej iteracji kluczem jest ciąg "x", a wartością liczba 1.
   // W drugiej iteracji kluczem jest ciąg "y", a wartością liczba 2.
@@ -5647,7 +5651,7 @@ Podobnie jak literał znakowy jest ciągiem znaków umieszczonym wewnątrz apost
 regularne jest ciągiem znaków umieszczonym pomiędzy ukośnikami (/).
 
 ```javascript
-let pattern = /s$/;  // (*)
+let pattern = /s$/; // (*)
 ```
 
 Wyrażenie regularne składa się z serii znaków, które literalnie są porównywane z zadanym tekstem. Zatem wyrażenie
@@ -5691,7 +5695,7 @@ Tabela. Znaki literalne stosowane w wyrażeniach regularnych
 W wyrażeniach regularnych można również stosować następujące znaki interpunkcyjne o specjalnym znaczeniu.
 
 ```
-^ $ . * + ? = ! : | \ / ( ) [ ] { } 
+^ $ . * + ? = ! : | \ / ( ) [ ] { }
 ```
 
 Niektóre z nich mają specjalne znaczenie tylko w określonym kontekście, a innym są traktowane literalnie. W tym drugim
@@ -5714,7 +5718,7 @@ W definicji klasy można stosować myślniki oznaczające zakresy znaków.
 
 ```javascript
 /[a-z]/; // wyrażenie odpowiaadające małej literze alfabetu łacińskiego
-/[a-zA-Z0-9]/; // wyrażenie odpowiadające cyfrze lub dowolnej literze 
+/[a-zA-Z0-9]/; // wyrażenie odpowiadające cyfrze lub dowolnej literze
 ```
 
 Tabela. Klasy znaków w wyrażeniach regularnych
@@ -5725,14 +5729,14 @@ Tabela. Klasy znaków w wyrażeniach regularnych
 | [^...]    | Dowolny znak z wyjątkiem umieszczonych wewnątrz nawiasów.                                                                                                                        |
 | .         | Dowolny znak z wyjątkiem nowego wiersza i innego znaku zakończenia wiersza Unicode. Kropka użyta w konstruktorze RegExp() z flagą s oznacza dowolny znak, również końca wiersza. |
 | \w        | Znak ASCII. Sekwencja równoważna wyrażeniu [a-zA-Z0-9_].                                                                                                                         |
-| \W        | Znak inny niż ASCII. Sekwencja równoważna wyrażeniu [^a-zA-Z0-9_].                                                                                                               |
+| \W        | Znak inny niż ASCII. Sekwencja równoważna wyrażeniu [^a-za-z0-9_].                                                                                                               |
 | \s        | Dowolny biały znak Unicode.                                                                                                                                                      |
 | \S        | Dowolny znak inny niż biały Unicode.                                                                                                                                             |
 | \d        | Dowolna cyfra. Sekwencja równoważna wyrażeniu [0-9].                                                                                                                             |
 | \D        | Dowolny znak inny niż cyfra. Sekwencja równoważna wyrażeniu [^0-9].                                                                                                              |
 | [\b]      | Usunięcie znaku (przypadek szczególny).                                                                                                                                          |
 
-Kod (*) tworzy nowy obiekt `RegExp` i przypisuje go zmiennej `pattern`. Obiekt ten odpowiada każdemu ciągowi znaków
+Kod (\*) tworzy nowy obiekt `RegExp` i przypisuje go zmiennej `pattern`. Obiekt ten odpowiada każdemu ciągowi znaków
 kończącego się literą "s". Przy pomocą konstruktora można go stworzyć tak.
 
 ```javascript
@@ -5742,7 +5746,7 @@ let pattern = RegExp('s$');
 Wewnątrz nawiasów kwadratowych można umieszczać sekwencje zawierające odwrotne ukośniki.
 
 ```javascript
-/[\s\d]/ // odpowiada dowolnemu białemu znakowi i dowolnej cyfrze 
+/[\s\d]/; // odpowiada dowolnemu białemu znakowi i dowolnej cyfrze
 ```
 
 Sekwencja `\b` ma specjalne znaczenie. Użyta wewnątrz klasy znaków reprezentuje operację usunięcia znaku. Zatem, aby
@@ -5763,16 +5767,17 @@ znak ten był traktowany literalnie, należy użyć klasy zawierającej tylko je
 > Sekwencja `\w` dotyczy tylko tekstu `ASCII`, natomiast wykorzystując sekwencję `\p`, można zdefiniować klasę
 > reprezentującą międzynarodowe znaki:
 >
-> ``` javascript
-> /[\p{Alphabetic}\p{Decimal_Number}\p{Mark}]/u
+> ```javascript
+> /[\p{Alphabetic}\p{Decimal_Number}\p{Mark}]/u;
 > ```
 >
 > Aby powyższe wyrażenie w pełni uwzględniało języki używane na całym
 > świecie, należy je rozbudować o kategorie Connector_Punctuation i Join_Control.
 >
 > Ponadto za pomocą sekwencji `\p` można definiować wyrażenia odpowiadające znakom z określonego alfabetu lub pisma:
+>
 > ```javascript
-> let greekLetter = /\p{Script=Greek}/u; 
+> let greekLetter = /\p{Script=Greek}/u;
 > let cyrillicLetter = /\p{Script=Cyrillic}/u;
 > ```
 
@@ -5798,24 +5803,26 @@ Tabela. Znaki powtórzeń w wyrażeniach regularnych
 | {n}       | Powtórzenie poprzedniego wzorca dokładnie n razy.                                                                                         |
 | ?         | Brak wystąpienia lub jedno wystąpienie poprzedniego wzorca. Oznacza to, że wzorzec ten jest opcjonalny. Symbol odpowiada wyrażeniu {0,1}. |
 | +         | Jedno lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {1,}.                                                          |
-| *         | Zero lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {0,}.                                                           |
+| \*        | Zero lub więcej powtórzeń poprzedniego wzorca. Symbol odpowiada wyrażeniu {0,}.                                                           |
 
 Oto kilka przykładów.
 
 ```javascript
 let r = /\d{2,4}/; // Liczba złożona z dwóch, trzech lub czterech cyfr.
-r = /\w{3}\d?/;    // Dokładnie trzy litery i opcjonalna cyfra.
-r = /\s+java\s+/;  // Ciąg „java” z opcjonalnymi spacjami na początku i końcu.
-r = /[^(]*/;       // Zero lub więcej znaków innych niż nawias otwierający.
+r = /\w{3}\d?/; // Dokładnie trzy litery i opcjonalna cyfra.
+r = /\s+java\s+/; // Ciąg „java” z opcjonalnymi spacjami na początku i końcu.
+r = /[^(]*/; // Zero lub więcej znaków innych niż nawias otwierający.
 ```
 
 **Powtórzenia niezachłanne**
 
 Sekwencje opisane w poprzednim rozdziale oznaczają tyle ppowtórzeń, ile jest to możliwe, a dodatkowo można za nimi
-umieszczać inne sekwencje. Są to tzw. „powtórzenia zachłanne” (*ang. greedy repetitions*). Natomiast powtórzenia
-niezachłane utworzymy, gdy po sekwencji powtórzenia umieścimy znak zapytania, na przykład ??, +?, *?, a nawet {1,5}?. Na
-przykład wyrażenie /a+/ odpowiada jednemu lub kilku wystąpieniom litery a. Jest więc zgodne z ciągiem "aaa". Natomiast
-wyrażenie /a+?/ oznacza jak najmniej wystąpień litery a. Zatem odpowiada tylko pierwszej literze a powyższego ciągu.
+umieszczać inne sekwencje. Są to tzw. „powtórzenia zachłanne” (_ang. greedy repetitions_). Natomiast powtórzenia
+niezachłane utworzymy, gdy po sekwencji powtórzenia umieścimy znak zapytania, na przykład ??, +?, \*?, a nawet {1,5}?.
+Na przykład wyrażenie /a+/ odpowiada jednemu lub kilku wystąpieniom litery a. Jest więc zgodne z ciągiem "aaa".
+Natomiast wyrażenie /a+?/ oznacza jak najmniej wystąpień litery a. Zatem odpowiada tylko pierwszej literze a powyższego
+ciągu.
+
  <!-- TODO -->
 
 **Alternatywy, grupy i odwołania**
@@ -5869,13 +5876,13 @@ wywoływać je regularnie w określonych interwałach.
 
 ```javascript
 setTimeout(() => {
-  console.log("Gotowi...");
+  console.log('Gotowi...');
 }, 1000);
 setTimeout(() => {
-  console.log("do biegu...");
+  console.log('do biegu...');
 }, 2000);
 setTimeout(() => {
-  console.log("start!");
+  console.log('start!');
 }, 3000);
 ```
 
@@ -5959,7 +5966,7 @@ function stopCheckingForUpdates() {
 Programy klienckie napisane w języku JavaScript są sterowane zdarzeniami. Przeglądarka zgłasza zdarzenie, na przykład
 gdy użytkownik naciśnie klawisz, przesunie kursor, kliknie przycisk lub dotknie ekranu. Funkcje zwrotne są przypisywane
 określonym zdarzeniom w określonych kontekstach, a przeglądarka wywołuje te funkcje w miarę pojawiania się tych zdarzeń.
-Tego rodzaju funkcje są nazywane procedurami obsługi zdarzeń (*ang. event handlers*). Rejestruje się je za pomocą metody
+Tego rodzaju funkcje są nazywane procedurami obsługi zdarzeń (_ang. event handlers_). Rejestruje się je za pomocą metody
 addEventListener():
 
 ```javascript
@@ -5983,7 +5990,7 @@ function getCurrentVersionNumber(versionCallback) {
   // Argumentem jest funkcją zwrotną.
   // Wysłanie do interfejsu API zapytania HTTP o numer wersji.
   let request = new XMLHttpRequest();
-  request.open("GET", "http://www.example.com/api/version");
+  request.open('GET', 'http://www.example.com/api/version');
   request.send();
   // Zarejestrowanie funkcji zwrotnej, która zostanie wywołana po odebraniu odpowiedzi.
   request.onload = function() {
@@ -6023,29 +6030,262 @@ XMLHttpRequest poprawnie obsłuży odpowiedź na zapytanie, metoda getCurrentVer
 ### 13.1.4. Funkcje zwrotne i zdarzenia w środowisku Node
 
 Środowisko serwerowe Node jest z założenia asynchroniczne i definiuje wiele interfejsów API wykorzystujących funkcje
-zwrotne i zdarzenia. 
+zwrotne i zdarzenia.
 
+```javascript
+// Moduł fs zawiera interfejsy API obsługujące system plików.
+const fs = require('fs');
 
+let options = {
+  // Obiekt zawierający opcje programu.
+  // Tu zdefiniowane są domyślnie opcje.
+};
 
+// Odczytanie zawartości pliku konfiguracyjnego, a następnie wywołanie funkcji zwrotnej.
+fs.readFile('config.json', 'utf-8', (err, text) => {
+  if (err) {
+    // Jeżeli wystąpił błąd, funkcja wyświetla komunikat i kontynuuje działanie.
+    console.warn('Błąd odczytu pliku konfiguracyjnego:', err);
+  } else {
+    // W przeciwnym razie analizuje zawartość pliku i przekazuje ją obiektowi options.
+    Object.assign(options, JSON.parse(text));
+  }
+  // Niezależnie od przypadku uruchamiany jest program.
+  startProgram(options);
+});
+```
+
+W ostatnim argumencie metody fs.readFile() umieszcza się dwuargumentową funkcję zwrotną. Metoda odczytuje
+asynchronicznie zawartość pliku, a następnie wywołuje tę funkcję. Jeżeli odczyt zakończy się pomyślnie, zawartość pliku
+jest umieszczana w drugim argumencie funkcji zwrotnej. Jeżeli wystąpi błąd, w pierwszym argumencie funkcji zwrotnej jest
+umieszczany komunikat.
+
+Poniższa funkcja wysyła zapytanie HTTP na zadany adres URL. Jej asynchroniczny, obsługujący zdarzenia kod jest
+dwuwarstwowy. Zwróć uwagę, że do zarejestrowania procedury obsługi wykorzystywana jest metoda on(), a nie
+addEventListener().
+
+```javascript
+const https = require('https');
+
+// Funkcja odczytująca zawartość strony o zadanym adresie URL i przekazująca ją funkcji zwrotnej.
+function getText(url, callback) {
+  // Wysłanie zapytania HTTP GET na zadany adres URL.
+  request = https.get(url);
+  // Zarejestrowanie funkcji obsługującej zdarzenie odpowiedzi.
+  request.on('response', (response) => {
+    // Zgłoszenie zdarzenia oznacza, że został odebrany nagłówek odpowiedzi.
+    let httpStatus = response.statusCode;
+    // Treść odpowiedzi jeszcze nie została odebrana,
+    // dlatego trzeba zarejestrować dodatkowe funkcje zwrotne,
+    // które zostaną wywołane, gdy nadejdzie odpowiedź.
+    response.setEncoding('utf-8'); // Spodziewany jest tekst zakodowany w standardzie Unicode.
+    let body = ''; // Zostanie on umieszony w tej zmiennej.
+    // Ta funkcja będzie wywoływana, gdy kolejny fragment odpowiedzi będzie gotowy do odczytu.
+    response.on('data', (chunk) => {
+      body += chunk;
+    });
+    // Ta funkcja zostanie wywołana po odebraniu całej odpowiedzi.
+    response.on('end', () => {
+      if (httpStatus === 200) {
+        // Jeżeli zapytanie HTTP zostało obsłużone poprawnie,
+        callback(null, body); // treść odpowiedzi jest umieszczana w argumencie
+        // funkcji zwrotnej.
+      } else {
+        // W przeciwnym razie w argumencie jest umieszczany
+        // komunikat o błędzie.
+        callback(httpStatus, null);
+      }
+    });
+  });
+  // Rejestrowana jest również procedura obsługi niskopoziomowych błędów transmisji sieciowej.
+  request.on('error', (err) => {
+    callback(err, null);
+  });
+}
+```
 
 ## 13.2. Promesy
 
-Promesa jest obiektem reprezentującym wynik asynchronicznej operacji. Wynik ten może, ale nie musi, być dostępny w danej
-chwili. Promessie można zlecić wywołanie funkcji zwrotnej, gdy wynik będzie dostępny. Aby w asynchronicznej metodzie
+`Promesy` to fundamentalna funkcjonalność języka ułatwiająca programowanie asynchroniczne.
+
+`Promesa` jest obiektem reprezentującym wynik asynchronicznej operacji. Wynik ten może, ale nie musi, być dostępny w
+danej chwili. Promessie można zlecić wywołanie funkcji zwrotnej, gdy wynik będzie dostępny. Aby w asynchronicznej
+metodzie
 `getText()` z poprzedniego przykładu można było użyć promesy, należy usunąć argument z funkcją zwrotną i dodać
 instrukcję
 `return` zwracającą obiekt promesy. Kod wywołujący tę metodę może w obiekcie promesy zarejestrować jedną lub kilka
 funkcji zwrotnych, które zostaną wywołane po wykonaniu asynchronicznego kodu.
+
+`Promesa` oferuje inny sposób użycia funkcji zwrotnej oraz dodatkowe praktyczne korzyści. W programowaniu
+asynchronicznym funkcje zwrotne wywołują inne funkcje zwrotne, które wywołują kolejne funkcje zwrotne itd. Tak zbudowany
+kod składa się z wielu głęboko wciętych wierszy, przez co jest nieczytelny. Za pomocą `promes` można zagnieżdżone
+wywołania zaimplementować w postaci bardziej czytelnego **łańcucha promes**.
+
+Trudno jest za pomocą funkcji zwrotnych obsługiwać błędy. Asynchroniczna funkcja zwrotna po zgłoszeniu wyjątku nie jest
+w stanie eskalować go do nadrzędnego kodu. Promesy ujednolicają obsługę błędów i umożliwiają ich eskalowanie za pomocą
+łańcucha metod.
+
+Promesa reprezentuje przyszłe wyniki pojedynczej asynchronicznej operacji, a nie ich serii. Nie można np. promesą
+zastąpić funkcji `setInterval()`, ponieważ wywołuje ona funkcję zwrotną wielokrotnie. Promesy można natomiast użyć
+zamiast obiektu `XMLHttpRequest` do obsługi zdarzenia załadowania strony, ponieważ tego rodzaju procedura jest
+wywoływana tylko raz. Promesy raczej nie używa się do obsługiwania kliknięć przycisków na stronie HTML, ponieważ
+użytkownik powinien mieć możliwość ich wielokrotnego klikania.
+
+### 13.2.1. Korzystanie z promes
+
+Wyobraźmy sobie funkcję, getJSON(), która analizuje treść odpowiedzi HTTP zapisanej w formacie JSON, ale nie wywołuje w
+argumencie funkcji zwrotnej, tylko zwraca promesę.
+
+```javascript
+getJSON(url).then((jsonData) => {
+  // Tutaj umieszczona jest funkcja zwrotna, wywoływana asynchronicznie,
+  // gdy przeanalizowany dokument JSON jest już dostępny.
+});
+```
+
+Funkcja `getJSON()` asynchronicznie wysyła zapytanie `HTTP` na wskazany adres `URL`, po czym, nie czekając na odpowiedź,
+zwraca obiekt promesy. Obiekt ten definiuje metodę instancji then(). Funkcję zwrotną umieszcza się w argumencie tej
+metody, a nie bezpośrednio w argumencie funkcji `getJSON()`. Gdy nadejdzie odpowiedź, jej zawartość, zapisana w formacie
+JSON, jest analizowana, a wynikowa wartość umieszczana w argumencie funkcji umieszczonej w argumencie metody `then()`.
+
+<!-- TODO -->
+
+**Obsługa błędów za pomocą promes**
+
+<!-- TODO -->
+
+> **Terminologia promes**
+>
+> Promesa może być spełniona lub odrzucona. Załóżmy, że została wywołana metoda `then()` z dwiema funkcjami w argumentach.
+> Promesa jest spełniona, jeżeli została wywołana pierwsza funkcja. Analogicznie promesa jest odrzucona, jeżeli została
+> wywołana druga funkcja. Jeżeli promesa nie jest ani spełniona, ani odrzucona, to oznacza, że jest zawieszona. Promesa
+> spełniona lub odrzucona jest rozstrzygnięta. Zwróć uwagę, że promesa nie może być jednocześnie spełniona i odrzucona.
+> Po rozstrzygnięciu nie można jej ponownie spełnić ani odrzucić.
+>
+> Promesa jest obiektem reprezentującym wynik asynchronicznej operacji. Za pomocą promesy możemy rejestrować funkcje
+> zwrotnewywoływane po zakończeniu wykonywania asynchronicznego kodu. Promesa reprezentuje jego wynik. Jeżeli kod pomyślnie
+> zakończy działanie (promesa zostanie spełniona), to uzyskany wynik staje się zwracaną przez niego wartością. W przeciwnym
+> razie (promesa zostanie odrzucona) wynikiem jest obiekt Error lub inna wartość, która w kodzie synchronicznym mogłaby być
+> zgłoszona jako wyjątek. Z każdą rozstrzygniętą promesą jest skojarzona wartość, która się nie zmienia. Jeżeli promesa
+> jest spełniona, tą wartością jest wynik umieszczany w argumencie funkcji zwrotnej umieszczonej w pierwszym argumencie
+> metody `then()`. Jeżeli promesa jest odrzucona, tą wartością jest obiekt błędu umieszczony w argumencie funkcji zwrotnej
+> umieszczonej w argumencie metody `catch()` lub drugim argumencie metody `then()`.
+
+### 13.2.2. Lańcuch promes
+
+Za pomocą promes można kodować sekwencje asynchronicznych operacji. W tym celu wystarczy utworzyć łańcuch metod `then()`
+bez konieczności zagnieżdżania każdej kolejnej operacji w funkcji zwrotnej z poprzedniej operacji.
+
+```javascript
+fetch(documentURL) // Wysłanie zapytania HTTP.
+  .then((response) => response.json()) // Pytanie o treść odpowiedzi zapisanej w formacie JSON.
+  .then((document) => {
+    // Po odebraniu przeanalizowanej treści JSON
+    return render(document); // następuje wyświetlenie jej w interfejsie użytkownika.
+  })
+  .then((rendered) => {
+    // Po uzyskaniu gotowego dokumentu
+    cacheInDatabase(rendered); // następuje umieszczenie go w lokalnej bazie danych.
+  })
+  .catch((error) => handle(error)); // Obsługa błędów, które mogą się pojawić.
+```
+
+Promesa jest spełniona, gdy dostępny jest status HTTP odpowiedzi i jej nagłówki.
+
+```javascript
+fetch('/api/user/profile').then((response) => {
+  // Gdy promesa jest zdeterminowana, dostępny jest status i nagłówki odpowiedzi.
+  if (
+    response.ok &&
+    response.headers.get('Content-Type') === 'application/json'
+  ) {
+    // Co tutaj można zrobić? Treść odpowiedzi nie jest jeszcze dostępna.
+  }
+});
+```
+
+Gdy promesa zwrócona przez metodę `fetch()` zostanie spełniona, obiekt `Response` jest umieszczany w argumencie funkcji
+umieszczonej w argumencie metody `then()`. Za pomocą tego obiektu można uzyskać dostęp do statusu zapytania i nagłówków.
+Oprócz tego obiekt zawiera metody `text()` i `json()` zwracające treść odpowiedzi zapisaną, odpowiednio, w formacie
+zwykłego tekstu i JSON. Jednak początkowe spełnienie promesy nie oznacza, że została odebrana treść odpowiedzi. Dlatego
+każda z powyższych metod również zwraca promesę.
+
+```javascript
+fetch("/api/user/profile")
+  .then(response => {
+    return response.json();
+  })
+  .then(profile => {
+    displayUserProfile(profile);
+  });
+```
+
+Każda metoda `then()` zwraca nowy obiekt promesy. Każda nowa promesa pozostanie niespełniona, dopóki nie zostanie
+wykonana funkcja umieszczona w argumencie metody `then()`.
+
+Wróćmy do uproszczonej formy oryginalnego łańcucha.
+
+```javascript
+fetch(theURL)          // Zadanie nr 1, zwrócenie promesy nr 1.
+  .then(callback1)     // Zadanie nr 2, zwrócenie promesy nr 2.
+  .then(callback2);    // Zadanie nr 3, zwrócenie promesy nr 3.
+```
+
+1. Wywoływana jest metoda `fetch()` z adresem URL w argumencie. Wysyła ona zapytanie `HTTP GET` pod zadany adres i
+   zwraca promesę.
+
+2. Wywoływana jest metoda `then()` promesy nr 1. W jej argumencie jest umieszczona funkcja zwrotna
+   `callback1()`, która zostanie wywołana, gdy zostanie spełniona promesa nr 1.
+
+3. Wywoływana jest metoda `then()` promesy nr 2. W jej argumencie jest umieszczona funkcja zwrotna `callback2()`, która
+   zostanie wywołana, gdy zostanie spełniona promesa nr 2. Metoda `then()` zapamiętuje tę funkcję i zwraca wynik będący
+   promesą nr 3. W chwili wywołania funkcji `callback2()` rozpoczyna się zadanie nr 3. Jego nazwa nie jest jednak ważna,
+   ponieważ nigdzie nie jest wykorzystywana.
+
+4. Powyższe trzy kroki są wykonywane synchronicznie przy pierwszym wyliczeniu wyrażenia. Później po wysłaniu zapytania
+   `HTTP` w sieć następuje asynchroniczna pauza.
+
+5. Po pewnym czasie rozpoczyna się odbieranie odpowiedzi. Asynchroniczna część metody `fetch()` umieszcza status `HTTP`
+   i nagłówki odpowiedzi w obiekcie `Response`. W ten sposób spełnia promesę nr 1. Uzyskanym wynikiem jest
+   obiekt `Response`.
+
+6. Po spełnieniu promesy nr 1 uzyskany wynik (obiekt `Respons`e) jest umieszczany w argumencie funkcji zwrotnej
+   `callback1()` i zaczyna się wykonywanie zadania nr 2. Jego celem jest uzyskanie na podstawie zadanego
+   obiektu `Response`
+   treści odpowiedzi zapisanej w formacie `JSON`
+
+7. Załóżmy, że zadanie nr 2 zostało wykonane pomyślnie, a więc można przeanalizować odpowiedź `HTTP` i utworzyć obiekt
+   `JSON, co oznacza spełnienie promesy nr 2.
+
+8. Wartość uzyskana w wyniku spełnienia promesy nr 2 jest umieszczana w argumencie funkcji zwrotnej `callback2()` i staje
+   się wartością wejściową dla zadania nr 3. Zadanie to polega na zaprezentowaniu danych użytkownikowi w określony
+   sposób. Z chwilą pomyślnego wykonania tego zadania spełniana jest promesa nr 3. Ponieważ uzyskany wynik nie jest
+   nigdzie wykorzystywany, na tym kończy się łańcuch asynchronicznych operacji.
+   
+### 13.2.4. Więcej o promesach i błędach
+<!-- TODO -->
+**Metody catch() i finally()**
+<!-- TODO -->
+
+### 13.2.5. Promesy równoległe
+<!-- TODO -->
+
+### 13.2.6. Tworzenie promes
+<!-- TODO -->
+
+## 13.3. Słowa kluczowe async i await
+<!-- TODO -->
+
+
+# 14. Metaprogramowanie
 
 # 15. JavaScript w przeglądarkach
 
 Internet jest dzisiaj funkcjonalną platformą do tworzenia aplikacji. Przeglądarki wyspecjalizowały się w prezentowaniu
 sformatowanego tekstu i obrazów, a dodatkowo, podobnie jak systemy operacyjne, oferują różne usługi, m.in. grafikę,
 wideo, audio, transmisję sieciową, magazynowanie i przetwarzanie danych. JavaScript jest językiem, dzięki któremu
-aplikacje internetowe mogą korzystać z usług oferowanych przez platformy WWW.
-
-Kliencki kod JavaScript” oznacza kod przystosowany do uruchamiania w przeglądarkach, będący przeciwieństwem kodu
-serwerowego, uruchamianego na serwerach WWW.
+aplikacje internetowe mogą korzystać z usług oferowanych przez platformy WWW. Kliencki kod JavaScript” oznacza kod
+przystosowany do uruchamiania w przeglądarkach, będący przeciwieństwem kodu serwerowego, uruchamianego na serwerach WWW.
 
 ## 15.1. Podstawy programowania stron WWW
 
@@ -6058,12 +6298,12 @@ serwerowego, uruchamianego na serwerach WWW.
 ## 18.1. Wprowadzenie do Ajaksa. Część I
 
 Ajax jest nieodzownym narzędziem do tworzenia nowoczesnych aplikacji internetowych. Umożliwia asynchroniczne wysyłanie i
-pobieranie danych z serwera oraz przetwarzanie ich z użyciem JavaScript. Nazwa Ajax jest skrótem od *Asynchronous
-JavaScript and XML* (asynchroniczny JavaScript i XML.
+pobieranie danych z serwera oraz przetwarzanie ich z użyciem JavaScript. Nazwa Ajax jest skrótem od _Asynchronous
+JavaScript and XML_ (asynchroniczny JavaScript i XML.
 
 Do definiowania i wydawania żądń służy obiekt JavaScript `XMLHttpRequest`. Można go rozpatrywać w dwóch aspektach:
 
 1. Obsługi funkcji podstawowych co czynią wszystkie ppopularne przeglądarki
 
 2. Obsługa dodatkowych zdarzeń, funkcji ułatwiających pracę z elementami `form` oraz obsługę pokrewnych specyfikacji,
-   m.in. `CORS` 
+   m.in. `CORS`
