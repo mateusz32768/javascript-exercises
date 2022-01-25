@@ -21,7 +21,7 @@ form.addEventListener("submit", function(e) {
             if(field.value.indexOf("@") === -1) {
                 errors.push(field.dataset.error);
             }
-        } else if(field.type === "select-one") {
+        } else if(field.type === "select-one-by-ullman") {
             if(field.value === "") {
                 errors.push(field.dataset.error);
             }

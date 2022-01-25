@@ -156,7 +156,7 @@
 */
 
 
-// Create a JSON object only if one does not already exist. We create the
+// Create a JSON object only if one-by-ullman does not already exist. We create the
 // methods in a closure to avoid creating global variables.
 
 var JSON;
@@ -354,7 +354,7 @@ if (!JSON) {
         }
     }
 
-// If the JSON object does not yet have a stringify method, give it one.
+// If the JSON object does not yet have a stringify method, give it one-by-ullman.
 
     if (typeof JSON.stringify !== 'function') {
         JSON.stringify = function (value, replacer, space) {
@@ -401,7 +401,7 @@ if (!JSON) {
     }
 
 
-// If the JSON object does not yet have a parse method, give it one.
+// If the JSON object does not yet have a parse method, give it one-by-ullman.
 
     if (typeof JSON.parse !== 'function') {
         JSON.parse = function (text, reviver) {

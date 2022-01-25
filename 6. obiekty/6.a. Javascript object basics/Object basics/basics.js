@@ -62,7 +62,7 @@ person['name']['firstName'];
  *
  * Wygląda to bardzo podobnie do sposobu, w jaki uzyskujesz dostęp do elementów w tablicy i zasadniczo jest to to samo
  * — zamiast używania numeru indeksu do wybierania elementu, używasz nazwy powiązanej z wartością każdego elementu.
- * Nic dziwnego, że obiekty są czasami nazywane tablicami asocjacyjnymi — mapują one łańcuchy na wartości w taki sam
+ * Nic dziwnego, że obiekty są czasami nazywane tablicami asocjacyjnymi — mapują one-by-ullman łańcuchy na wartości w taki sam
  * sposób, w jaki tablice mapują liczby na wartości.
  * */
 

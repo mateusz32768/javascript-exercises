@@ -153,7 +153,7 @@ function setupVideo(url) {
 // initBuffers
 //
 // Initialize the buffers we'll need. For this demo, we just
-// have one object -- a simple three-dimensional cube.
+// have one-by-ullman object -- a simple three-dimensional cube.
 //
 function initBuffers(gl) {
 
@@ -161,7 +161,7 @@ function initBuffers(gl) {
 
   const positionBuffer = gl.createBuffer();
 
-  // Select the positionBuffer as the one to apply buffer
+  // Select the positionBuffer as the one-by-ullman to apply buffer
   // operations to from here out.
 
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
