@@ -6325,11 +6325,129 @@ funkcji `Array.from()`.
 Metody `querySelector()` i `querySelectorAll()` są zaimplementowane w klasach `Element` i `Document`. Wywołane jako metody
 obiektu reprezentującego element zwracają wyłącznie jego potomne elementy.
 
-<!-- TODO -->
+**Inne metody wybierające elementy**
+
+ W interfejsie modelu DOM jest dostępnych kilka starszych metod wybierających elementy, dzisiaj rzadziej stosowanych. 
+
+ ```javascript
+// Wyszukanie elementu po identyfikatorze.
+//  Metoda analogiczna do document.querySelector("#sect1").
+let sect1 = document.getElementById("sect1");
+// Wyszukanie wszystkich znaczników posiadających atrybut name="color". 
+// Metoda analogiczna do document.querySelectorAll('*[name="color"]');
+let colors = document.getElementsByName("color");
+// Wyszukanie wszystkich znaczników <h1> w dokumencie.
+// Metoda analogiczna do document.querySelectorAll("h1").
+let headings = document.getElementsByTagName("h1");
+// Obiekt elementu zawiera również metodę getElementsByTagName().
+// Wyszukanie wszystkich znaczników <h2> zawartych w elemencie sect1.
+let subheads = sect1.getElementsByTagName("h2");
+// Wyszukanie wszystkich znaczników w klasie "tooltip".
+// Metoda analogiczna do document.querySelectorAll(".tooltip").
+let tooltips = document.getElementsByClassName("tooltip");
+// Wyszukanie wszystkich znaczników w klasie "sidebar", podrzędnych dla sect1.
+// Metoda analogiczna do sect1.querySelectorAll(".sidebar").
+let sidebars = sect1.getElementsByClassName("sidebar");
+```
+
 
 ### 15.3.2. Struktura dokumentu i jej przeglądanie
 
-<!-- TODO -->
+Interfejs API, który traktuje dokument jako drzewiastą strukturę elementów, ale pomija wchodzące w jego skład węzły tekstowe, nie oferuje żadnych metod. Jest po prostu zbiórem właściwości obiektu Element, za pomocą których można odwoływać się do elementów rodzicielskich, potomnych i bliźniaczych dla danego elementu. Są to następujące: właściwości.
+
+parentNode
+
+Właściwość zawierająca obiekt Element lub Document, reprezentujący element rodzicielski dla bieżącego elementu.
+
+children
+
+Właściwość zawierająca obiekt NodeList zawierający listę obiektów Element reprezentujących elementy potomne z wyjątkiem węzłów typu Text i Comment.
+
+childElementCount
+
+Właściwość zawierająca liczbę elementów potomnych. Tę samą wartość ma właściwość children.length.
+
+firstElementChild, lastElementChild
+
+Właściwości odwołujące się, odpowiednio, do pierwszego i ostatniego elementu potomnego dla bieżącego elementu. Jeżeli tych elementów nie ma, właściwość ma wartość null.
+
+nextElementSibling, previousElementSibling
+
+Właściwości odwołujące się do elementu bliźniaczego znajdującego się, odpowiednio, przed bieżącym elementem lub za nim. Jeżeli takiego elementu nie ma, właściwość ma wartość null.
+
+**Dokument jako drzewiasta struktura węzłów**
+
+Aby przejrzeć dokument lub jego fragment bez pomijania węzłów typu Text, należy użyć właściwości obiektów Node. W ten sposób można uzyskać dostęp do obiektów Element, Text, a nawet Comment, reprezentujących komentarze umieszczone w dokumencie HTML.
+
+Obiekt Node posiada następujące właściwości:
+
+parentNode
+
+Właściwość zawierająca węzeł rodzicielski dla bieżącego węzła. Jeżeli węzeł nie ma rodzica (na przykład jest to obiekt Document), właściwość ma wartość null.
+
+childNodes
+
+Właściwość przeznaczona tylko do odczytu, zawierająca obiekt NodeList ze wszystkimi elementami potomnymi (nie tylko typu Element).
+
+firstChild, lastChild
+
+Właściwości zawierające, odpowiednio, pierwszy i ostatni węzeł potomny dla danego węzła. Jeżeli go nie ma, właściwość ma wartość null.
+
+nextSibling, previousSibling
+
+Właściwości zawierające, odpowiednio, poprzedni i następny węzeł bliźniaczy dla danego węzła. Jeżeli go nie ma, właściwość ma wartość null.
+
+nodeType
+
+Właściwość zawierająca liczbę opisującą rodzaj węzła. Dla obiektu Document jest to liczba 9, dla obiektu Element liczba 1, dla obiektu Text liczba 3, a dla obiektu Comment liczba 8.
+
+nodeValue
+
+Właściwość zawierająca tekst umieszczony w węźle Text lub Comment.
+
+nodeName
+
+Nazwa znacznika HTML złożona z wielkich liter.
+
+### 15.3.3. Atrybuty
+
+Klasa `Element` definiuje ogólne metody `getAttribute()`, `setAttribute()`, `hasAttribute()` i `removeAttribute()` służące do odczytywania atrybutów, przypisywania im wartości, testowania ich i usuwania z elementu. Natomiast wartości wszystkich standardowych atrybutów każdego standardowego elementu `HTML` są dostępne w postaci właściwości obiektu `HTMLElement` reprezentującego dany element.
+
+**Atrybuty HTML jako właściwości elementu**
+
+Obiekt Element reprezentujący znacznik HTML zazwyczaj definiuje właściwości odpowiadające jego atrybutom. Wśród nich są uniwersalne właściwości, takie jak id, title, lang, dir, oraz właściwości wykorzystywane do obsługi zdarzeń, na przykład onclick.
+
+```javascript
+let image = document.querySelector("#main_image");
+let url = image.src;       // Atrybut src zawiera adres URL obrazu.
+
+let f = document.querySelector("form");  
+// Ustawienie adresu URL, na który ma być wysłany formularz.
+f.action = "https://www.example.com/submit"; 
+f.method = "POST";                      
+
+```
+
+<!--TODO -->
+
+**Atrybut class**
+Wartośćią atrybutu `class` jest lista oddzielonych spacjami klas `CSS` określających styl znacznika i jest ona powiązana z właściwością `className` obiektu `Element`. Wartością tej właściwości jest ciąg znaków, który można zmieniać. W kodzie klienckim często trzeba dodawać lub usuwać nazwy klas z tej listy. Dlatego obiekt Element zawiera jeszcze właściwość `classList`, dzięki której atrybut `class` można traktować jak listę. Jej wartością jest iterowalny obiekt podobny do tablicy i posiadający metody `add(), remove(), contains() i toggle()` 
+
+**Atrybuty zbioru danych**
+
+Można stosować atrybuty o nazwach składających się z małych liter i rozpoczynających się prefiksem `data-`.
+
+Obiekt `Element` posiada właściwość `dataset` odwołującą się do obiektu posiadającego właściwości odpowiadające poszczególnym atrybutom danych.
+
+```html
+<h2 id="title" data-section-number="16.1">Atrybuty</h2>
+```
+
+```javascript
+let number = document.querySelector("#title").dataset.sectionNumber;
+```
+
+
 
 # 18. Ajax
 
