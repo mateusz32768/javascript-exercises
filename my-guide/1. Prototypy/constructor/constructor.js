@@ -1,10 +1,10 @@
 function Point(x, y) {
   this.x = x;
   this.y = y;
+}
 
-  this.distance = function () {
-    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2)).toFixed(2);
-  };
+Point.prototype.distance = function() {
+  return Math.sqrt(this.x ** 2 + this.y ** 2);
 }
 
 Point.prototype.print = function () {
@@ -24,7 +24,7 @@ const pointA = new Point(5, 6);
  **/
 
 pointA.print();
-console.log(pointA.distance());
+console.log(pointA.distance().toFixed(2));
 
 console.log(pointA);
 
@@ -46,7 +46,7 @@ console.log(pointA.__proto__);
 console.log(Point.prototype.__proto__);
 
 console.log(
-  '*************** ------ Teraz badamy punkt B ----  *****************'
+  '\n\n*************** ------ Teraz badamy punkt B ----  *****************'
 );
 
 const pointB = new Point(6, 9);

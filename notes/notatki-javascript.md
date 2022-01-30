@@ -6257,25 +6257,28 @@ fetch(theURL)          // Zadanie nr 1, zwrócenie promesy nr 1.
 7. Załóżmy, że zadanie nr 2 zostało wykonane pomyślnie, a więc można przeanalizować odpowiedź `HTTP` i utworzyć obiekt
    `JSON, co oznacza spełnienie promesy nr 2.
 
-8. Wartość uzyskana w wyniku spełnienia promesy nr 2 jest umieszczana w argumencie funkcji zwrotnej `callback2()` i staje
-   się wartością wejściową dla zadania nr 3. Zadanie to polega na zaprezentowaniu danych użytkownikowi w określony
+8. Wartość uzyskana w wyniku spełnienia promesy nr 2 jest umieszczana w argumencie funkcji zwrotnej `callback2()` i
+   staje się wartością wejściową dla zadania nr 3. Zadanie to polega na zaprezentowaniu danych użytkownikowi w określony
    sposób. Z chwilą pomyślnego wykonania tego zadania spełniana jest promesa nr 3. Ponieważ uzyskany wynik nie jest
    nigdzie wykorzystywany, na tym kończy się łańcuch asynchronicznych operacji.
-   
+
 ### 13.2.4. Więcej o promesach i błędach
+
 <!-- TODO -->
 **Metody catch() i finally()**
 <!-- TODO -->
 
 ### 13.2.5. Promesy równoległe
+
 <!-- TODO -->
 
 ### 13.2.6. Tworzenie promes
+
 <!-- TODO -->
 
 ## 13.3. Słowa kluczowe async i await
-<!-- TODO -->
 
+<!-- TODO -->
 
 # 14. Metaprogramowanie
 
@@ -6292,6 +6295,41 @@ przystosowany do uruchamiania w przeglądarkach, będący przeciwieństwem kodu 
 ### 15.1.1. Kod JavaScript w znacznikach HTML
 
 ### 15.1.2. Model DOM
+
+## 15.3. Przetwarzanie dokumentów
+
+Kliencki kod JavaScript służy przede wszystkim do przetwarzania stron WWW. Ze statycznego dokumentu HTML tworzy
+interaktywną aplikację internetową.
+
+Każdy obiekt `Window` posiada właściwość `document` zawierającą obiekt `Document`. Obiekt ten reprezentuje zawartość
+okna. Nie jest wprawdzie samodzielnym obiektem, ale jest najważniejszy w modelu DOM. Reprezentuje treść dokumentu HTML i
+wykorzystuje się go do przetwarzania tej treści.
+
+### 15.3.1. Wybieranie elementów dokumentu
+
+Globalna właściwość document zawiera obiekt `Document`. którego właściwości head i body zawierają obiekty Element
+reprezentujące, odpowiednio, znaczniki `<head>` i `<body>`. Jednak aby móc przetwarzać elementy umieszczone głębiej w
+strukturze dokumentu, trzeba w jakiś sposób uzyskać dostęp do reprezentujących je obiektów typu `Element`.
+
+**Wybieranie elementów za pomocą selektorów CSS**
+
+Za pomocą selektorów można wybierać elementy dokumentu według ich typów, identyfikatorów, klas i położenia. Metoda
+`querySelector()`, w której argumencie umieszcza się ciąg selektora, zwraca pierwszy odpowiadający mu element lub
+wartość `null`, jeżeli nie znajdzie żadnego.
+
+Wynikiem zwracanym przez metodę `querySelectorAll()` jest podobny do tablicy obiekt `NodeList`. Obiekt ten posiada
+właściwość length i obsługuje indeksy. Można więc go przetwarzać za pomocą pętli for. Obiekt jest również iterowalny,
+więc można go używać z pętlą for/of. Aby przekształcić go w zwykłą tablicę, wystarczy umieścić go w argumencie
+funkcji `Array.from()`.
+
+Metody `querySelector()` i `querySelectorAll()` są zaimplementowane w klasach `Element` i `Document`. Wywołane jako metody
+obiektu reprezentującego element zwracają wyłącznie jego potomne elementy.
+
+<!-- TODO -->
+
+### 15.3.2. Struktura dokumentu i jej przeglądanie
+
+<!-- TODO -->
 
 # 18. Ajax
 
