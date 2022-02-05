@@ -17,7 +17,6 @@
     "url": "https://github.com/marcocollander/javascript-exercises/issues"
   },
   "homepage": "https://github.com/marcocollander/javascript-exercises#readme",
-
   "devDependencies": {
     "prettier": "2.3.2"
   }
