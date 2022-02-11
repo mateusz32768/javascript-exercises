@@ -2089,8 +2089,6 @@ console.log(`Saldo konta wynosi ${balance}`);
 
 ### 3.10.3. Przypisania destrukturyzujące
 
-<!-- TODO -->
-
 Składnia **przypisania destrukturyzującego** umożliwia deklarowanie wielu zmiennych i przypisywanie im wartości. Po
 prawej stronie znaku równości umieszcza się tablicę obiektów (wartość „strukturalną”), a po lewej jedną lub kilka nazw
 zmiennych. Wykorzystuje się przy tym składnię przypominającą literał tablicowy lub obiektowy. Z wartości po prawej
@@ -2104,11 +2102,28 @@ Przypisanie destrukturyzujące jest najczęściej wykorzystywane do inicjowania 
 let [x, y] = [2, 4]; // <=> let x = 2, y = 4;
 
 [x, y] = [x + 1, y + 1]; // <=> x = x + 1 ; y = y + 1;
-x; // => 3
+ // x => 3, y => 5
 [x, y] = [x++, y++]; // <=> x = x++; y = y++;
-x; // => 3
+// x => 3, y => 5
 [x, y] = [++x, ++y]; // <=> x = ++x; y = ++y;
-x; // => 4
+// x => 4, y => 5
+```
+
+Przypisania destrukturyzujące ułatwiają korzystanie z funkcji zwracających tablice wartości:
+
+```javascript
+// Konwersja współrzędnych kartezjańskich [x, y] na biegunowe [r, theta].
+function toPolar(x, y) {
+  return [Math.sqrt(x*x+y*y), Math.atan2(y,x)];
+}
+
+// Konwersja współrzędnych biegunowych na kartezjańskie.
+function toCartesian(r, theta) {
+  return [r*Math.cos(theta), r*Math.sin(theta)];
+}
+
+let [r,theta] = toPolar(1.0, 1.0);  // r == Math.sqrt(2); theta == Math.PI/4
+let [x,y] = toCartesian(r,theta);   // [x, y] == [1.0, 1.0]
 ```
 
 Zmienne złożone mozemy stosować w pętlach:

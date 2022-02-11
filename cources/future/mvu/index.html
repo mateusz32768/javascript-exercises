@@ -5,14 +5,23 @@
   <title>MVU</title>
 </head>
 <body>
-<form id="editCourseForm">
+
+<form id='addCourseForm'>
   <label>
-    <input type="text" name="newCourseName" data-id="some-uuid-should-be-here" />
+    <input type='text' name='newCourseName'>
   </label>
-  <button type="submit">Update course</button>
+  <button type='submit'>Add course</button>
 </form>
 
-<ul id="courses"></ul>
-<script src='app.js'></script>
+<form id='editCourseForm'>
+  <label>
+    <input type='text' name='newCourseName'
+           data-id='some-uuid-should-be-here'>
+  </label>
+  <button type='submit'>Update course</button>
+</form>
+
+<ul id='courses'></ul>
+<script src='app.js' type='module'></script>
 </body>
 </html>

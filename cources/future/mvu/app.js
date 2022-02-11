@@ -1,3 +1,4 @@
+import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js';
 // helper function
 const qs = s => document.querySelector(s);
 
@@ -31,10 +32,27 @@ const setCourseName = (courseId, newName) => {
   courses = courses.map(course =>
     course.id === courseId ? { ...course, name: newName } : course
   );
-  renderApp();
+  renderApp(); // change View
+};
+
+const addCourse = newCourse => {
+  courses = [...courses, newCourse]; // change Model
+  renderApp(); // change View
 };
 
 // Events
+qs('#addCourseForm').addEventListener('submit', e => {
+  e.preventDefault(); // form nie przeładuje strony
+  const { newCourseName } = e.currentTarget.elements; // targetujemy html-owy
+  // element <input/>, który ma atrybut name="newCourseName"
+  const courseId = nanoid();
+  const newCourse = {
+    id: courseId,
+    name: newCourseName.value
+  };
+  addCourse(newCourse);
+});
+
 qs('#editCourseForm').addEventListener('submit', e => {
   e.preventDefault(); // form nie przeładuje strony
   const { newCourseName } = e.currentTarget.elements; // targetujemy html-owy
