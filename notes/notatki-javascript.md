@@ -2102,7 +2102,7 @@ Przypisanie destrukturyzujące jest najczęściej wykorzystywane do inicjowania 
 let [x, y] = [2, 4]; // <=> let x = 2, y = 4;
 
 [x, y] = [x + 1, y + 1]; // <=> x = x + 1 ; y = y + 1;
- // x => 3, y => 5
+// x => 3, y => 5
 [x, y] = [x++, y++]; // <=> x = x++; y = y++;
 // x => 3, y => 5
 [x, y] = [++x, ++y]; // <=> x = ++x; y = ++y;
@@ -2114,16 +2114,16 @@ Przypisania destrukturyzujące ułatwiają korzystanie z funkcji zwracających t
 ```javascript
 // Konwersja współrzędnych kartezjańskich [x, y] na biegunowe [r, theta].
 function toPolar(x, y) {
-  return [Math.sqrt(x*x+y*y), Math.atan2(y,x)];
+  return [Math.sqrt(x * x + y * y), Math.atan2(y, x)];
 }
 
 // Konwersja współrzędnych biegunowych na kartezjańskie.
 function toCartesian(r, theta) {
-  return [r*Math.cos(theta), r*Math.sin(theta)];
+  return [r * Math.cos(theta), r * Math.sin(theta)];
 }
 
-let [r,theta] = toPolar(1.0, 1.0);  // r == Math.sqrt(2); theta == Math.PI/4
-let [x,y] = toCartesian(r,theta);   // [x, y] == [1.0, 1.0]
+let [r, theta] = toPolar(1.0, 1.0);  // r == Math.sqrt(2); theta == Math.PI/4
+let [x, y] = toCartesian(r, theta);   // [x, y] == [1.0, 1.0]
 ```
 
 Zmienne złożone mozemy stosować w pętlach:
@@ -3192,6 +3192,19 @@ let letters = [...'Witaj, świecie!'];
 [...new Set(letters)]; // => [ "W", "i", "t", "a", "j", ",", " ", "ś", "w", "e", "c", "!" ]
 ```
 
+## 7.8. Metody tablicowe
+
+To metody klasy Array, które można pogrupować tak:
+
+* metody iteracyjne
+* metody obsługujące stosy i kolejki
+* metody obsługujące podtablice
+* metody wyszukujące i sortujące
+
+### 7.8.1 Metody iterujące
+
+**Metoda forEach()**
+
 # 8. Funkcje
 
 Funkcje to fundamentalne bloki, z których składa się program napisany w JavaScript i niemal w każdym innym języku
@@ -3589,6 +3602,13 @@ vectorAdd({ x: 1, y: 2 }, { x: 3, y: 4 }); // => {x: 4, y: 6}
 <!-- TODO -->
 
 ### 8.3.6. Typy argumentów
+
+## 8.8. Programowanie funkcyjne
+
+Język JS nie jest językiem funkcyjnym, jak Lisp czy Haskel. Funkcje w Js są obiektami i dlatego można w JS stosować
+techniki programowania funkcyjnego.
+
+### 8.8.1. Przetwarzanie tablic za pomocą funkcji
 
 ## 8.10. Tematy związane z funkcjami.
 
@@ -6337,12 +6357,12 @@ właściwość length i obsługuje indeksy. Można więc go przetwarzać za pomo
 więc można go używać z pętlą for/of. Aby przekształcić go w zwykłą tablicę, wystarczy umieścić go w argumencie
 funkcji `Array.from()`.
 
-Metody `querySelector()` i `querySelectorAll()` są zaimplementowane w klasach `Element` i `Document`. Wywołane jako metody
-obiektu reprezentującego element zwracają wyłącznie jego potomne elementy.
+Metody `querySelector()` i `querySelectorAll()` są zaimplementowane w klasach `Element` i `Document`. Wywołane jako
+metody obiektu reprezentującego element zwracają wyłącznie jego potomne elementy.
 
 **Inne metody wybierające elementy**
 
- W interfejsie modelu DOM jest dostępnych kilka starszych metod wybierających elementy, dzisiaj rzadziej stosowanych. 
+W interfejsie modelu DOM jest dostępnych kilka starszych metod wybierających elementy, dzisiaj rzadziej stosowanych.
 
  ```javascript
 // Wyszukanie elementu po identyfikatorze.
@@ -6365,10 +6385,11 @@ let tooltips = document.getElementsByClassName("tooltip");
 let sidebars = sect1.getElementsByClassName("sidebar");
 ```
 
-
 ### 15.3.2. Struktura dokumentu i jej przeglądanie
 
-Interfejs API, który traktuje dokument jako drzewiastą strukturę elementów, ale pomija wchodzące w jego skład węzły tekstowe, nie oferuje żadnych metod. Jest po prostu zbiórem właściwości obiektu Element, za pomocą których można odwoływać się do elementów rodzicielskich, potomnych i bliźniaczych dla danego elementu. Są to następujące: właściwości.
+Interfejs API, który traktuje dokument jako drzewiastą strukturę elementów, ale pomija wchodzące w jego skład węzły
+tekstowe, nie oferuje żadnych metod. Jest po prostu zbiórem właściwości obiektu Element, za pomocą których można
+odwoływać się do elementów rodzicielskich, potomnych i bliźniaczych dla danego elementu. Są to następujące: właściwości.
 
 parentNode
 
@@ -6376,7 +6397,8 @@ Właściwość zawierająca obiekt Element lub Document, reprezentujący element
 
 children
 
-Właściwość zawierająca obiekt NodeList zawierający listę obiektów Element reprezentujących elementy potomne z wyjątkiem węzłów typu Text i Comment.
+Właściwość zawierająca obiekt NodeList zawierający listę obiektów Element reprezentujących elementy potomne z wyjątkiem
+węzłów typu Text i Comment.
 
 childElementCount
 
@@ -6384,37 +6406,46 @@ Właściwość zawierająca liczbę elementów potomnych. Tę samą wartość ma
 
 firstElementChild, lastElementChild
 
-Właściwości odwołujące się, odpowiednio, do pierwszego i ostatniego elementu potomnego dla bieżącego elementu. Jeżeli tych elementów nie ma, właściwość ma wartość null.
+Właściwości odwołujące się, odpowiednio, do pierwszego i ostatniego elementu potomnego dla bieżącego elementu. Jeżeli
+tych elementów nie ma, właściwość ma wartość null.
 
 nextElementSibling, previousElementSibling
 
-Właściwości odwołujące się do elementu bliźniaczego znajdującego się, odpowiednio, przed bieżącym elementem lub za nim. Jeżeli takiego elementu nie ma, właściwość ma wartość null.
+Właściwości odwołujące się do elementu bliźniaczego znajdującego się, odpowiednio, przed bieżącym elementem lub za nim.
+Jeżeli takiego elementu nie ma, właściwość ma wartość null.
 
 **Dokument jako drzewiasta struktura węzłów**
 
-Aby przejrzeć dokument lub jego fragment bez pomijania węzłów typu Text, należy użyć właściwości obiektów Node. W ten sposób można uzyskać dostęp do obiektów Element, Text, a nawet Comment, reprezentujących komentarze umieszczone w dokumencie HTML.
+Aby przejrzeć dokument lub jego fragment bez pomijania węzłów typu Text, należy użyć właściwości obiektów Node. W ten
+sposób można uzyskać dostęp do obiektów Element, Text, a nawet Comment, reprezentujących komentarze umieszczone w
+dokumencie HTML.
 
 Obiekt Node posiada następujące właściwości:
 
 parentNode
 
-Właściwość zawierająca węzeł rodzicielski dla bieżącego węzła. Jeżeli węzeł nie ma rodzica (na przykład jest to obiekt Document), właściwość ma wartość null.
+Właściwość zawierająca węzeł rodzicielski dla bieżącego węzła. Jeżeli węzeł nie ma rodzica (na przykład jest to obiekt
+Document), właściwość ma wartość null.
 
 childNodes
 
-Właściwość przeznaczona tylko do odczytu, zawierająca obiekt NodeList ze wszystkimi elementami potomnymi (nie tylko typu Element).
+Właściwość przeznaczona tylko do odczytu, zawierająca obiekt NodeList ze wszystkimi elementami potomnymi (nie tylko typu
+Element).
 
 firstChild, lastChild
 
-Właściwości zawierające, odpowiednio, pierwszy i ostatni węzeł potomny dla danego węzła. Jeżeli go nie ma, właściwość ma wartość null.
+Właściwości zawierające, odpowiednio, pierwszy i ostatni węzeł potomny dla danego węzła. Jeżeli go nie ma, właściwość ma
+wartość null.
 
 nextSibling, previousSibling
 
-Właściwości zawierające, odpowiednio, poprzedni i następny węzeł bliźniaczy dla danego węzła. Jeżeli go nie ma, właściwość ma wartość null.
+Właściwości zawierające, odpowiednio, poprzedni i następny węzeł bliźniaczy dla danego węzła. Jeżeli go nie ma,
+właściwość ma wartość null.
 
 nodeType
 
-Właściwość zawierająca liczbę opisującą rodzaj węzła. Dla obiektu Document jest to liczba 9, dla obiektu Element liczba 1, dla obiektu Text liczba 3, a dla obiektu Comment liczba 8.
+Właściwość zawierająca liczbę opisującą rodzaj węzła. Dla obiektu Document jest to liczba 9, dla obiektu Element liczba
+1, dla obiektu Text liczba 3, a dla obiektu Comment liczba 8.
 
 nodeValue
 
@@ -6426,43 +6457,51 @@ Nazwa znacznika HTML złożona z wielkich liter.
 
 ### 15.3.3. Atrybuty
 
-Klasa `Element` definiuje ogólne metody `getAttribute()`, `setAttribute()`, `hasAttribute()` i `removeAttribute()` służące do odczytywania atrybutów, przypisywania im wartości, testowania ich i usuwania z elementu. Natomiast wartości wszystkich standardowych atrybutów każdego standardowego elementu `HTML` są dostępne w postaci właściwości obiektu `HTMLElement` reprezentującego dany element.
+Klasa `Element` definiuje ogólne metody `getAttribute()`, `setAttribute()`, `hasAttribute()` i `removeAttribute()`
+służące do odczytywania atrybutów, przypisywania im wartości, testowania ich i usuwania z elementu. Natomiast wartości
+wszystkich standardowych atrybutów każdego standardowego elementu `HTML` są dostępne w postaci właściwości
+obiektu `HTMLElement` reprezentującego dany element.
 
 **Atrybuty HTML jako właściwości elementu**
 
-Obiekt Element reprezentujący znacznik HTML zazwyczaj definiuje właściwości odpowiadające jego atrybutom. Wśród nich są uniwersalne właściwości, takie jak id, title, lang, dir, oraz właściwości wykorzystywane do obsługi zdarzeń, na przykład onclick.
+Obiekt Element reprezentujący znacznik HTML zazwyczaj definiuje właściwości odpowiadające jego atrybutom. Wśród nich są
+uniwersalne właściwości, takie jak id, title, lang, dir, oraz właściwości wykorzystywane do obsługi zdarzeń, na przykład
+onclick.
 
 ```javascript
 let image = document.querySelector("#main_image");
 let url = image.src;       // Atrybut src zawiera adres URL obrazu.
 
-let f = document.querySelector("form");  
+let f = document.querySelector("form");
 // Ustawienie adresu URL, na który ma być wysłany formularz.
-f.action = "https://www.example.com/submit"; 
-f.method = "POST";                      
+f.action = "https://www.example.com/submit";
+f.method = "POST";
 
 ```
 
 <!--TODO -->
 
 **Atrybut class**
-Wartośćią atrybutu `class` jest lista oddzielonych spacjami klas `CSS` określających styl znacznika i jest ona powiązana z właściwością `className` obiektu `Element`. Wartością tej właściwości jest ciąg znaków, który można zmieniać. W kodzie klienckim często trzeba dodawać lub usuwać nazwy klas z tej listy. Dlatego obiekt Element zawiera jeszcze właściwość `classList`, dzięki której atrybut `class` można traktować jak listę. Jej wartością jest iterowalny obiekt podobny do tablicy i posiadający metody `add(), remove(), contains() i toggle()` 
+Wartośćią atrybutu `class` jest lista oddzielonych spacjami klas `CSS` określających styl znacznika i jest ona powiązana
+z właściwością `className` obiektu `Element`. Wartością tej właściwości jest ciąg znaków, który można zmieniać. W kodzie
+klienckim często trzeba dodawać lub usuwać nazwy klas z tej listy. Dlatego obiekt Element zawiera jeszcze
+właściwość `classList`, dzięki której atrybut `class` można traktować jak listę. Jej wartością jest iterowalny obiekt
+podobny do tablicy i posiadający metody `add(), remove(), contains() i toggle()`
 
 **Atrybuty zbioru danych**
 
 Można stosować atrybuty o nazwach składających się z małych liter i rozpoczynających się prefiksem `data-`.
 
-Obiekt `Element` posiada właściwość `dataset` odwołującą się do obiektu posiadającego właściwości odpowiadające poszczególnym atrybutom danych.
+Obiekt `Element` posiada właściwość `dataset` odwołującą się do obiektu posiadającego właściwości odpowiadające
+poszczególnym atrybutom danych.
 
 ```html
-<h2 id="title" data-section-number="16.1">Atrybuty</h2>
+<h2 id='title' data-section-number='16.1'>Atrybuty</h2>
 ```
 
 ```javascript
 let number = document.querySelector("#title").dataset.sectionNumber;
 ```
-
-
 
 # 18. Ajax
 
