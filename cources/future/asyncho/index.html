@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Asynchroniczność w JavaScript</title>
+  <style>
+    body {
+      height: 200vh;
+    }
+  </style>
+</head>
+<body>
+<h1>Asynchroniczność w JavaScript</h1>
+
+<script>
+  let isScroll = false;
+  window.addEventListener('scroll', () => {
+    const heading = document.querySelector('h1');
+    if (isScroll) {
+      heading.innerText = '...';
+      heading.style.textAlign = 'center';
+      heading.style.position = 'fixed';
+      isScroll = false;
+    } else {
+      heading.innerText = 'Asynchroniczność w JavaScript po wykonaniu';
+      heading.style.textAlign = 'center';
+      heading.style.position = 'fixed';
+      isScroll = true;
+    }
+  });
+</script>
+</body>
+</html>
