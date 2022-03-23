@@ -2126,7 +2126,7 @@ let [r, theta] = toPolar(1.0, 1.0);  // r == Math.sqrt(2); theta == Math.PI/4
 let [x, y] = toCartesian(r, theta);   // [x, y] == [1.0, 1.0]
 ```
 
-Zmienne złożone mozemy stosować w pętlach:
+Zmienne złożone możemy stosować w pętlach:
 
 ```javascript
 let o = { x: 1, y: 2 }; // Iterowany obiekt.
@@ -2225,6 +2225,8 @@ let points2 = [
 
 **Wyrażenie** to fraza, którą można wyliczyć i uzyskać wartość. Najprostszym wyrażeniem jest **stała**. Innym przykładem
 wyrażenia jest **zmienna**, którego wynikiem jest przypisana do zmiennej wartość.
+
+Złożone wyrażenia składają się prostszych wyrażeń.
 
 Wyrażenie wywołujące funkcję składa się z wyrażenia, którego wynikiem jest obiekt reprezentujący daną funkcję, oraz
 kilku ewentualnych dodatkowych wyrażeń będących jej argumentami.
@@ -2669,10 +2671,43 @@ stopnia, że rezerwuje dla nich osobną zwracaną wartość.
 
 # 5. Instrukcje
 
-**Instrukcje** w analogi do językoznawstwa można nazwać zdaniami lub poleceniami. Podczas gdy wyrażenia są
-**wyliczane** aby uzyskać wynik, instrukcje są wykonywane, aby coś się stalo.
+Gdy wyrażenia stosowane w JS można w analogi do językoznawstwa nazwać frazami to **instrukcje** można nazwać zdaniami.
+Niekiedy nazywamy je poleceniami. Podczas gdy wyrażenia są **wyliczane** aby uzyskać wynik, instrukcje są wykonywane,
+aby coś się stalo. Ponadto na końcu każdej instrukcji umieszczamy średnik.
+
+Jednakowoż wyliczanie wyrażeń wywołujących efekty uboczne np. przypisanie wartości lub wywołania funkcji, może być
+samodzielną instrukcją. Wtedy takie wyrażenie nazywamy **instrukcją wyrażeniową**, w odróżnieniu od **instrukcji
+deklaracyjnej**, która deklaruje zmienną lub funkcję.
+
+Program napisany w JS jest sekwencją wykonywanych instrukcji. Domyślnie interpreter JS wykonuje je jedna po drugiej w
+tak jak zostały umieszczone w kodzie. Z góry do dołu. Ten domyślny porządek mogą zmienić instrukcje, które określamy
+mianem **strukur sterujące**:
+
+* *instrukcje warunkowe* czyli instrukcje takie jak *if* lub *switch* powodujące, żę interpreter w zależności od
+  wyrażenia pomija lub wykonuje dane instrukcje.
+* *pętle* czyli instrukcje takie jak *while* lub *for* powodujące wielokrotne wykonanie określonych instrukcji
+* *skoki* instrukcje takie jak *break*, *return* i *throw* powodujące, że interpreter przechodzi do innej części
+  programu.
 
 ## 5.1. Instrukcje wyrażeniowe
+
+Przykłady instrukcji wyrażeniowej:
+
+```javascript
+greeting = 'Cześć, ' + name;
+i *= 3;
+counter++;
+delete o.x;
+console.log(debugMessage);
+displaySpinner(); // Hipotetyczna funkcja wyświetlająca spinner
+```
+
+Jeżeli funkcja nie wywołuje żadnych efektów ubocznych to należy ją użyć jako część większego wyrażenia lub instrukcji
+przypisania.
+
+```javascript
+cx = Math.cos(x);
+```
 
 ## 5.2. Instrukcje złożone i puste
 
