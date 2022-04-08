@@ -2122,8 +2122,8 @@ function toCartesian(r, theta) {
   return [r * Math.cos(theta), r * Math.sin(theta)];
 }
 
-let [r, theta] = toPolar(1.0, 1.0);  // r == Math.sqrt(2); theta == Math.PI/4
-let [x, y] = toCartesian(r, theta);   // [x, y] == [1.0, 1.0]
+let [r, theta] = toPolar(1.0, 1.0); // r == Math.sqrt(2); theta == Math.PI/4
+let [x, y] = toCartesian(r, theta); // [x, y] == [1.0, 1.0]
 ```
 
 Zmienne złożone możemy stosować w pętlach:
@@ -2190,7 +2190,7 @@ Przypisanie destrukturyzujące, gdy stosowane są zagnieżdżone obiekty lub tab
 ```javascript
 let points = [
   { x: 1, y: 2 },
-  { x: 3, y: 4 }
+  { x: 3, y: 4 },
 ]; // Tablica złożona z dwóch obiektów
 let [{ x: x1, y: y1 }, { x: x2, y: y2 }] = points; // destrukturyzowana w cztery zmienne.
 x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4; // => true
@@ -2202,7 +2202,7 @@ Zamiast tablicy obiektów można destrukturyzować obiekt zawierający tablice:
 let points = { p1: [1, 2], p2: [3, 4] }; // Obiekt, którego właściwościami są tablice
 let {
   p1: [x1, y1],
-  p2: [x2, y2]
+  p2: [x2, y2],
 } = points; // destrukturyzowany w cztery zmienne.
 x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4; // => true
 ```
@@ -2211,13 +2211,13 @@ x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4; // => true
 // Najpierw zapisz strukturę danych i złożone przypisanie destrukturyzujące.
 let points = [
   { x: 1, y: 2 },
-  { x: 3, y: 4 }
+  { x: 3, y: 4 },
 ];
 let [{ x: x1, y: y1 }, { x: x2, y: y2 }] = points;
 // Sprawdź poprawność zapisu, zamieniając strony miejscami.
 let points2 = [
   { x: x1, y: y1 },
-  { x: x2, y: y2 }
+  { x: x2, y: y2 },
 ]; // points2 == points
 ```
 
@@ -2288,7 +2288,7 @@ Poszczególne wyrażenia inicjatora tablicy mogą być inicjatorami innych tabli
 let matrix = [
   [1, 2, 3],
   [4, 5, 6],
-  [7, 8, 9]
+  [7, 8, 9],
 ];
 ```
 
@@ -2683,10 +2683,10 @@ Program napisany w JS jest sekwencją wykonywanych instrukcji. Domyślnie interp
 tak jak zostały umieszczone w kodzie. Z góry do dołu. Ten domyślny porządek mogą zmienić instrukcje, które określamy
 mianem **strukur sterujące**:
 
-* *instrukcje warunkowe* czyli instrukcje takie jak *if* lub *switch* powodujące, żę interpreter w zależności od
+- _instrukcje warunkowe_ czyli instrukcje takie jak _if_ lub _switch_ powodujące, żę interpreter w zależności od
   wyrażenia pomija lub wykonuje dane instrukcje.
-* *pętle* czyli instrukcje takie jak *while* lub *for* powodujące wielokrotne wykonanie określonych instrukcji
-* *skoki* instrukcje takie jak *break*, *return* i *throw* powodujące, że interpreter przechodzi do innej części
+- _pętle_ czyli instrukcje takie jak _while_ lub _for_ powodujące wielokrotne wykonanie określonych instrukcji
+- _skoki_ instrukcje takie jak _break_, _return_ i _throw_ powodujące, że interpreter przechodzi do innej części
   programu.
 
 ## 5.1. Instrukcje wyrażeniowe
@@ -2837,8 +2837,8 @@ let book = {
   author: {
     // Wartość tej właściwości jest obiektem.
     firstname: 'David',
-    surname: 'Flanagan'
-  }
+    surname: 'Flanagan',
+  },
 };
 ```
 
@@ -3104,7 +3104,7 @@ let square = {
   side: 10,
   area: function() {
     return this.side * this.side;
-  }
+  },
 };
 
 square.area(); // => 100
@@ -3117,7 +3117,7 @@ let square = {
   area() {
     return this.side * this.side;
   },
-  side: 10
+  side: 10,
 };
 
 square.area(); // => 100
@@ -3176,7 +3176,7 @@ Mogą zawierać literały obiektowe i inne literały tablicowe:
 ```javascript
 let b = [
   [1, { x: 1, y: 2 }],
-  [2, { x: 3, y: 4 }]
+  [2, { x: 3, y: 4 }],
 ];
 ```
 
@@ -3231,10 +3231,10 @@ let letters = [...'Witaj, świecie!'];
 
 To metody klasy Array, które można pogrupować tak:
 
-* metody iteracyjne
-* metody obsługujące stosy i kolejki
-* metody obsługujące podtablice
-* metody wyszukujące i sortujące
+- metody iteracyjne
+- metody obsługujące stosy i kolejki
+- metody obsługujące podtablice
+- metody wyszukujące i sortujące
 
 ### 7.8.1 Metody iterujące
 
@@ -3348,8 +3348,8 @@ console.log(cube);
 
 ### 8.1.3. Funkcje strzałkowe
 
-Składnia funkcji strzałkowej, która jest wyrażeniem składa się z umieszczonej w nawiasach listy parametrów odzielonej
-symbolem => i ciała umieszczonego w nawiasach klamrowych.
+Funkcja strzałkowa to zwięzły sposób definiowania funkcji. Wykorzystuje się matematyczną notację, w której symbol =>
+(strzałka) oddziela parametry funkcji od jej ciała. Funkcja strzałkowa jest wyrażeniem.
 
 ```javascript
 const sum = (x, y) => {
@@ -3687,6 +3687,7 @@ Ogólna postać deklaracji funkcji:
 ...
   ;
   statementN;
+
   return value;
 }
 ```
@@ -3694,7 +3695,7 @@ Ogólna postać deklaracji funkcji:
 **Wywołanie funkcji**:
 
 ```javascript
-  nameFunction(arg1, arg2, … ,
+  nameFunction(arg1, arg2, …,
 argN
 )
 ;
@@ -3710,8 +3711,9 @@ console.log(result); // 3
 
 ## 8.A.1. Parametry
 
-Funkcja nie musi przyjmować parametrów, ale jeśli ich oczekuje i zapomnisz podać je podczas wywoływania, JavaScript
-przypisze im wartość `undefined`.
+Podczas definiowania funkcji można określić parametry oczekiwane przez funkcję przy wywołaniu. Funkcja nie musi
+przyjmować parametrów, ale jeśli ich oczekuje i zapomnisz podać je podczas wywoływania, JavaScript przypisze im
+wartość `undefined`.
 
 ```javascript
 sum(1); // NaN = 1 + undefined
@@ -3815,8 +3817,7 @@ function sum(a = 5, b = 6) {
 }
 
 console.log(sum(49)); // 55
-console.log(sum(undefined, 49));
-54;
+console.log(sum(undefined, 49)); //54
 
 function sumOne(a = 5, b) {
   return a + b;
@@ -5184,7 +5185,7 @@ Gdy instrukcja return zwraca jakiś obiekt.
 function getUserPersonalData(user) {
   return {
     name: user.name,
-    age: user.age
+    age: user.age,
   };
 }
 
@@ -5192,7 +5193,7 @@ function getUserPersonalData(user) {
 const someUser = {
   name: 'Tomek',
   age: '35',
-  token: 'xyz'
+  token: 'xyz',
 };
 
 getUserPersonalData(someUser); // { name : " Tomek ", age : " 35 "}
@@ -5211,6 +5212,7 @@ age
 }
 
 showUserAge(someUser.age); // Wiek użytkownika : 35 lat .
+
 ```
 
 i wtedy nie jest ważne co ta funkcja zwraca.
@@ -5300,7 +5302,7 @@ Oznacza on, że zmienna zadeklarowana wewnątrz funkcji jest dostępna tylko w z
 ```javascript
 const user = {
   name: 'Tomek',
-  age: 40
+  age: 40,
 };
 
 function getName() {
@@ -5444,7 +5446,7 @@ const CustomModule = (function() {
     },
     publicSecondMethod: function() {
       console.log('druga metoda publiczna');
-    }
+    },
   };
 })();
 
@@ -5630,7 +5632,7 @@ let m = new Map(); // Utworzenie nowej, pustej mapy.
 let n = new Map([
   // Nowa mapa zainicjowana za pomocą ciągów znaków powiązanych z liczbami.
   ['jeden', 1],
-  ['dwa', 2]
+  ['dwa', 2],
 ]);
 
 let copy = new Map(n); // Nowa mapa, zawierająca takie same klucze i wartości jak mapa n.
@@ -5676,7 +5678,7 @@ użycie przypisania destrukturyzującego, a następnie przypisania klucza i wart
 ```javascript
 let m = new Map([
   ['x', 1],
-  ['y', 2]
+  ['y', 2],
 ]);
 [...m]; // => [["x", 1], ["y", 2]]
 for (let [key, value] of m) {
@@ -6281,11 +6283,11 @@ zwykłego tekstu i JSON. Jednak początkowe spełnienie promesy nie oznacza, że
 każda z powyższych metod również zwraca promesę.
 
 ```javascript
-fetch("/api/user/profile")
-  .then(response => {
+fetch('/api/user/profile')
+  .then((response) => {
     return response.json();
   })
-  .then(profile => {
+  .then((profile) => {
     displayUserProfile(profile);
   });
 ```
@@ -6296,9 +6298,9 @@ wykonana funkcja umieszczona w argumencie metody `then()`.
 Wróćmy do uproszczonej formy oryginalnego łańcucha.
 
 ```javascript
-fetch(theURL)          // Zadanie nr 1, zwrócenie promesy nr 1.
-  .then(callback1)     // Zadanie nr 2, zwrócenie promesy nr 2.
-  .then(callback2);    // Zadanie nr 3, zwrócenie promesy nr 3.
+fetch(theURL) // Zadanie nr 1, zwrócenie promesy nr 1.
+  .then(callback1) // Zadanie nr 2, zwrócenie promesy nr 2.
+  .then(callback2); // Zadanie nr 3, zwrócenie promesy nr 3.
 ```
 
 1. Wywoływana jest metoda `fetch()` z adresem URL w argumencie. Wysyła ona zapytanie `HTTP GET` pod zadany adres i
@@ -6335,7 +6337,9 @@ fetch(theURL)          // Zadanie nr 1, zwrócenie promesy nr 1.
 ### 13.2.4. Więcej o promesach i błędach
 
 <!-- TODO -->
+
 **Metody catch() i finally()**
+
 <!-- TODO -->
 
 ### 13.2.5. Promesy równoległe
@@ -6399,25 +6403,25 @@ metody obiektu reprezentującego element zwracają wyłącznie jego potomne elem
 
 W interfejsie modelu DOM jest dostępnych kilka starszych metod wybierających elementy, dzisiaj rzadziej stosowanych.
 
- ```javascript
+```javascript
 // Wyszukanie elementu po identyfikatorze.
 //  Metoda analogiczna do document.querySelector("#sect1").
-let sect1 = document.getElementById("sect1");
-// Wyszukanie wszystkich znaczników posiadających atrybut name="color". 
+let sect1 = document.getElementById('sect1');
+// Wyszukanie wszystkich znaczników posiadających atrybut name="color".
 // Metoda analogiczna do document.querySelectorAll('*[name="color"]');
-let colors = document.getElementsByName("color");
+let colors = document.getElementsByName('color');
 // Wyszukanie wszystkich znaczników <h1> w dokumencie.
 // Metoda analogiczna do document.querySelectorAll("h1").
-let headings = document.getElementsByTagName("h1");
+let headings = document.getElementsByTagName('h1');
 // Obiekt elementu zawiera również metodę getElementsByTagName().
 // Wyszukanie wszystkich znaczników <h2> zawartych w elemencie sect1.
-let subheads = sect1.getElementsByTagName("h2");
+let subheads = sect1.getElementsByTagName('h2');
 // Wyszukanie wszystkich znaczników w klasie "tooltip".
 // Metoda analogiczna do document.querySelectorAll(".tooltip").
-let tooltips = document.getElementsByClassName("tooltip");
+let tooltips = document.getElementsByClassName('tooltip');
 // Wyszukanie wszystkich znaczników w klasie "sidebar", podrzędnych dla sect1.
 // Metoda analogiczna do sect1.querySelectorAll(".sidebar").
-let sidebars = sect1.getElementsByClassName("sidebar");
+let sidebars = sect1.getElementsByClassName('sidebar');
 ```
 
 ### 15.3.2. Struktura dokumentu i jej przeglądanie
@@ -6504,14 +6508,13 @@ uniwersalne właściwości, takie jak id, title, lang, dir, oraz właściwości 
 onclick.
 
 ```javascript
-let image = document.querySelector("#main_image");
-let url = image.src;       // Atrybut src zawiera adres URL obrazu.
+let image = document.querySelector('#main_image');
+let url = image.src; // Atrybut src zawiera adres URL obrazu.
 
-let f = document.querySelector("form");
+let f = document.querySelector('form');
 // Ustawienie adresu URL, na który ma być wysłany formularz.
-f.action = "https://www.example.com/submit";
-f.method = "POST";
-
+f.action = 'https://www.example.com/submit';
+f.method = 'POST';
 ```
 
 <!--TODO -->
@@ -6531,11 +6534,11 @@ Obiekt `Element` posiada właściwość `dataset` odwołującą się do obiektu 
 poszczególnym atrybutom danych.
 
 ```html
-<h2 id='title' data-section-number='16.1'>Atrybuty</h2>
+<h2 id="title" data-section-number="16.1">Atrybuty</h2>
 ```
 
 ```javascript
-let number = document.querySelector("#title").dataset.sectionNumber;
+let number = document.querySelector('#title').dataset.sectionNumber;
 ```
 
 # 18. Ajax
