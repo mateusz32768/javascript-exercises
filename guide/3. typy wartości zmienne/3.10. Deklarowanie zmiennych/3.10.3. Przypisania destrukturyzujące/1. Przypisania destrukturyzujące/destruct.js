@@ -8,3 +8,4 @@ const { sin, cos, tan, sqrt, pow } = Math;
 
 console.log(sqrt(25));
 console.log(pow(2, 5));
+console.log(sin(Math.PI / 2));

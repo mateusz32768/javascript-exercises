@@ -2102,7 +2102,7 @@ Przypisanie destrukturyzujące jest najczęściej wykorzystywane do inicjowania 
 let [x, y] = [2, 4]; // <=> let x = 2, y = 4;
 
 [x, y] = [x + 1, y + 1]; // <=> x = x + 1 ; y = y + 1;
- // x => 3, y => 5
+// x => 3, y => 5
 [x, y] = [x++, y++]; // <=> x = x++; y = y++;
 // x => 3, y => 5
 [x, y] = [++x, ++y]; // <=> x = ++x; y = ++y;
@@ -2114,19 +2114,19 @@ Przypisania destrukturyzujące ułatwiają korzystanie z funkcji zwracających t
 ```javascript
 // Konwersja współrzędnych kartezjańskich [x, y] na biegunowe [r, theta].
 function toPolar(x, y) {
-  return [Math.sqrt(x*x+y*y), Math.atan2(y,x)];
+  return [Math.sqrt(x * x + y * y), Math.atan2(y, x)];
 }
 
 // Konwersja współrzędnych biegunowych na kartezjańskie.
 function toCartesian(r, theta) {
-  return [r*Math.cos(theta), r*Math.sin(theta)];
+  return [r * Math.cos(theta), r * Math.sin(theta)];
 }
 
-let [r,theta] = toPolar(1.0, 1.0);  // r == Math.sqrt(2); theta == Math.PI/4
-let [x,y] = toCartesian(r,theta);   // [x, y] == [1.0, 1.0]
+let [r, theta] = toPolar(1.0, 1.0); // r == Math.sqrt(2); theta == Math.PI/4
+let [x, y] = toCartesian(r, theta); // [x, y] == [1.0, 1.0]
 ```
 
-Zmienne złożone mozemy stosować w pętlach:
+Zmienne złożone możemy stosować w pętlach:
 
 ```javascript
 let o = { x: 1, y: 2 }; // Iterowany obiekt.
@@ -2190,7 +2190,7 @@ Przypisanie destrukturyzujące, gdy stosowane są zagnieżdżone obiekty lub tab
 ```javascript
 let points = [
   { x: 1, y: 2 },
-  { x: 3, y: 4 }
+  { x: 3, y: 4 },
 ]; // Tablica złożona z dwóch obiektów
 let [{ x: x1, y: y1 }, { x: x2, y: y2 }] = points; // destrukturyzowana w cztery zmienne.
 x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4; // => true
@@ -2202,7 +2202,7 @@ Zamiast tablicy obiektów można destrukturyzować obiekt zawierający tablice:
 let points = { p1: [1, 2], p2: [3, 4] }; // Obiekt, którego właściwościami są tablice
 let {
   p1: [x1, y1],
-  p2: [x2, y2]
+  p2: [x2, y2],
 } = points; // destrukturyzowany w cztery zmienne.
 x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4; // => true
 ```
@@ -2211,13 +2211,13 @@ x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4; // => true
 // Najpierw zapisz strukturę danych i złożone przypisanie destrukturyzujące.
 let points = [
   { x: 1, y: 2 },
-  { x: 3, y: 4 }
+  { x: 3, y: 4 },
 ];
 let [{ x: x1, y: y1 }, { x: x2, y: y2 }] = points;
 // Sprawdź poprawność zapisu, zamieniając strony miejscami.
 let points2 = [
   { x: x1, y: y1 },
-  { x: x2, y: y2 }
+  { x: x2, y: y2 },
 ]; // points2 == points
 ```
 
@@ -2225,6 +2225,8 @@ let points2 = [
 
 **Wyrażenie** to fraza, którą można wyliczyć i uzyskać wartość. Najprostszym wyrażeniem jest **stała**. Innym przykładem
 wyrażenia jest **zmienna**, którego wynikiem jest przypisana do zmiennej wartość.
+
+Złożone wyrażenia składają się prostszych wyrażeń.
 
 Wyrażenie wywołujące funkcję składa się z wyrażenia, którego wynikiem jest obiekt reprezentujący daną funkcję, oraz
 kilku ewentualnych dodatkowych wyrażeń będących jej argumentami.
@@ -2286,7 +2288,7 @@ Poszczególne wyrażenia inicjatora tablicy mogą być inicjatorami innych tabli
 let matrix = [
   [1, 2, 3],
   [4, 5, 6],
-  [7, 8, 9]
+  [7, 8, 9],
 ];
 ```
 
@@ -2669,10 +2671,43 @@ stopnia, że rezerwuje dla nich osobną zwracaną wartość.
 
 # 5. Instrukcje
 
-**Instrukcje** w analogi do językoznawstwa można nazwać zdaniami lub poleceniami. Podczas gdy wyrażenia są
-**wyliczane** aby uzyskać wynik, instrukcje są wykonywane, aby coś się stalo.
+Gdy wyrażenia stosowane w JS można w analogi do językoznawstwa nazwać frazami to **instrukcje** można nazwać zdaniami.
+Niekiedy nazywamy je poleceniami. Podczas gdy wyrażenia są **wyliczane** aby uzyskać wynik, instrukcje są wykonywane,
+aby coś się stalo. Ponadto na końcu każdej instrukcji umieszczamy średnik.
+
+Jednakowoż wyliczanie wyrażeń wywołujących efekty uboczne np. przypisanie wartości lub wywołania funkcji, może być
+samodzielną instrukcją. Wtedy takie wyrażenie nazywamy **instrukcją wyrażeniową**, w odróżnieniu od **instrukcji
+deklaracyjnej**, która deklaruje zmienną lub funkcję.
+
+Program napisany w JS jest sekwencją wykonywanych instrukcji. Domyślnie interpreter JS wykonuje je jedna po drugiej w
+tak jak zostały umieszczone w kodzie. Z góry do dołu. Ten domyślny porządek mogą zmienić instrukcje, które określamy
+mianem **strukur sterujące**:
+
+- _instrukcje warunkowe_ czyli instrukcje takie jak _if_ lub _switch_ powodujące, żę interpreter w zależności od
+  wyrażenia pomija lub wykonuje dane instrukcje.
+- _pętle_ czyli instrukcje takie jak _while_ lub _for_ powodujące wielokrotne wykonanie określonych instrukcji
+- _skoki_ instrukcje takie jak _break_, _return_ i _throw_ powodujące, że interpreter przechodzi do innej części
+  programu.
 
 ## 5.1. Instrukcje wyrażeniowe
+
+Przykłady instrukcji wyrażeniowej:
+
+```javascript
+greeting = 'Cześć, ' + name;
+i *= 3;
+counter++;
+delete o.x;
+console.log(debugMessage);
+displaySpinner(); // Hipotetyczna funkcja wyświetlająca spinner
+```
+
+Jeżeli funkcja nie wywołuje żadnych efektów ubocznych to należy ją użyć jako część większego wyrażenia lub instrukcji
+przypisania.
+
+```javascript
+cx = Math.cos(x);
+```
 
 ## 5.2. Instrukcje złożone i puste
 
@@ -2802,8 +2837,8 @@ let book = {
   author: {
     // Wartość tej właściwości jest obiektem.
     firstname: 'David',
-    surname: 'Flanagan'
-  }
+    surname: 'Flanagan',
+  },
 };
 ```
 
@@ -3069,7 +3104,7 @@ let square = {
   side: 10,
   area: function() {
     return this.side * this.side;
-  }
+  },
 };
 
 square.area(); // => 100
@@ -3082,7 +3117,7 @@ let square = {
   area() {
     return this.side * this.side;
   },
-  side: 10
+  side: 10,
 };
 
 square.area(); // => 100
@@ -3141,7 +3176,7 @@ Mogą zawierać literały obiektowe i inne literały tablicowe:
 ```javascript
 let b = [
   [1, { x: 1, y: 2 }],
-  [2, { x: 3, y: 4 }]
+  [2, { x: 3, y: 4 }],
 ];
 ```
 
@@ -3191,6 +3226,19 @@ przekształcenie jej w zbiór i z powrotem w tablicę za pomocą operatora rozci
 let letters = [...'Witaj, świecie!'];
 [...new Set(letters)]; // => [ "W", "i", "t", "a", "j", ",", " ", "ś", "w", "e", "c", "!" ]
 ```
+
+## 7.8. Metody tablicowe
+
+To metody klasy Array, które można pogrupować tak:
+
+- metody iteracyjne
+- metody obsługujące stosy i kolejki
+- metody obsługujące podtablice
+- metody wyszukujące i sortujące
+
+### 7.8.1 Metody iterujące
+
+**Metoda forEach()**
 
 # 8. Funkcje
 
@@ -3300,8 +3348,8 @@ console.log(cube);
 
 ### 8.1.3. Funkcje strzałkowe
 
-Składnia funkcji strzałkowej, która jest wyrażeniem składa się z umieszczonej w nawiasach listy parametrów odzielonej
-symbolem => i ciała umieszczonego w nawiasach klamrowych.
+Funkcja strzałkowa to zwięzły sposób definiowania funkcji. Wykorzystuje się matematyczną notację, w której symbol =>
+(strzałka) oddziela parametry funkcji od jej ciała. Funkcja strzałkowa jest wyrażeniem.
 
 ```javascript
 const sum = (x, y) => {
@@ -3590,6 +3638,13 @@ vectorAdd({ x: 1, y: 2 }, { x: 3, y: 4 }); // => {x: 4, y: 6}
 
 ### 8.3.6. Typy argumentów
 
+## 8.8. Programowanie funkcyjne
+
+Język JS nie jest językiem funkcyjnym, jak Lisp czy Haskel. Funkcje w Js są obiektami i dlatego można w JS stosować
+techniki programowania funkcyjnego.
+
+### 8.8.1. Przetwarzanie tablic za pomocą funkcji
+
 ## 8.10. Tematy związane z funkcjami.
 
 ### 8.10.1. Rest parameters
@@ -3632,6 +3687,7 @@ Ogólna postać deklaracji funkcji:
 ...
   ;
   statementN;
+
   return value;
 }
 ```
@@ -3639,7 +3695,7 @@ Ogólna postać deklaracji funkcji:
 **Wywołanie funkcji**:
 
 ```javascript
-  nameFunction(arg1, arg2, … ,
+  nameFunction(arg1, arg2, …,
 argN
 )
 ;
@@ -3655,8 +3711,9 @@ console.log(result); // 3
 
 ## 8.A.1. Parametry
 
-Funkcja nie musi przyjmować parametrów, ale jeśli ich oczekuje i zapomnisz podać je podczas wywoływania, JavaScript
-przypisze im wartość `undefined`.
+Podczas definiowania funkcji można określić parametry oczekiwane przez funkcję przy wywołaniu. Funkcja nie musi
+przyjmować parametrów, ale jeśli ich oczekuje i zapomnisz podać je podczas wywoływania, JavaScript przypisze im
+wartość `undefined`.
 
 ```javascript
 sum(1); // NaN = 1 + undefined
@@ -3760,8 +3817,7 @@ function sum(a = 5, b = 6) {
 }
 
 console.log(sum(49)); // 55
-console.log(sum(undefined, 49));
-54;
+console.log(sum(undefined, 49)); //54
 
 function sumOne(a = 5, b) {
   return a + b;
@@ -5129,7 +5185,7 @@ Gdy instrukcja return zwraca jakiś obiekt.
 function getUserPersonalData(user) {
   return {
     name: user.name,
-    age: user.age
+    age: user.age,
   };
 }
 
@@ -5137,7 +5193,7 @@ function getUserPersonalData(user) {
 const someUser = {
   name: 'Tomek',
   age: '35',
-  token: 'xyz'
+  token: 'xyz',
 };
 
 getUserPersonalData(someUser); // { name : " Tomek ", age : " 35 "}
@@ -5156,6 +5212,7 @@ age
 }
 
 showUserAge(someUser.age); // Wiek użytkownika : 35 lat .
+
 ```
 
 i wtedy nie jest ważne co ta funkcja zwraca.
@@ -5245,7 +5302,7 @@ Oznacza on, że zmienna zadeklarowana wewnątrz funkcji jest dostępna tylko w z
 ```javascript
 const user = {
   name: 'Tomek',
-  age: 40
+  age: 40,
 };
 
 function getName() {
@@ -5389,7 +5446,7 @@ const CustomModule = (function() {
     },
     publicSecondMethod: function() {
       console.log('druga metoda publiczna');
-    }
+    },
   };
 })();
 
@@ -5575,7 +5632,7 @@ let m = new Map(); // Utworzenie nowej, pustej mapy.
 let n = new Map([
   // Nowa mapa zainicjowana za pomocą ciągów znaków powiązanych z liczbami.
   ['jeden', 1],
-  ['dwa', 2]
+  ['dwa', 2],
 ]);
 
 let copy = new Map(n); // Nowa mapa, zawierająca takie same klucze i wartości jak mapa n.
@@ -5621,7 +5678,7 @@ użycie przypisania destrukturyzującego, a następnie przypisania klucza i wart
 ```javascript
 let m = new Map([
   ['x', 1],
-  ['y', 2]
+  ['y', 2],
 ]);
 [...m]; // => [["x", 1], ["y", 2]]
 for (let [key, value] of m) {
@@ -6226,11 +6283,11 @@ zwykłego tekstu i JSON. Jednak początkowe spełnienie promesy nie oznacza, że
 każda z powyższych metod również zwraca promesę.
 
 ```javascript
-fetch("/api/user/profile")
-  .then(response => {
+fetch('/api/user/profile')
+  .then((response) => {
     return response.json();
   })
-  .then(profile => {
+  .then((profile) => {
     displayUserProfile(profile);
   });
 ```
@@ -6241,9 +6298,9 @@ wykonana funkcja umieszczona w argumencie metody `then()`.
 Wróćmy do uproszczonej formy oryginalnego łańcucha.
 
 ```javascript
-fetch(theURL)          // Zadanie nr 1, zwrócenie promesy nr 1.
-  .then(callback1)     // Zadanie nr 2, zwrócenie promesy nr 2.
-  .then(callback2);    // Zadanie nr 3, zwrócenie promesy nr 3.
+fetch(theURL) // Zadanie nr 1, zwrócenie promesy nr 1.
+  .then(callback1) // Zadanie nr 2, zwrócenie promesy nr 2.
+  .then(callback2); // Zadanie nr 3, zwrócenie promesy nr 3.
 ```
 
 1. Wywoływana jest metoda `fetch()` z adresem URL w argumencie. Wysyła ona zapytanie `HTTP GET` pod zadany adres i
@@ -6280,7 +6337,9 @@ fetch(theURL)          // Zadanie nr 1, zwrócenie promesy nr 1.
 ### 13.2.4. Więcej o promesach i błędach
 
 <!-- TODO -->
+
 **Metody catch() i finally()**
+
 <!-- TODO -->
 
 ### 13.2.5. Promesy równoległe
@@ -6337,38 +6396,39 @@ właściwość length i obsługuje indeksy. Można więc go przetwarzać za pomo
 więc można go używać z pętlą for/of. Aby przekształcić go w zwykłą tablicę, wystarczy umieścić go w argumencie
 funkcji `Array.from()`.
 
-Metody `querySelector()` i `querySelectorAll()` są zaimplementowane w klasach `Element` i `Document`. Wywołane jako metody
-obiektu reprezentującego element zwracają wyłącznie jego potomne elementy.
+Metody `querySelector()` i `querySelectorAll()` są zaimplementowane w klasach `Element` i `Document`. Wywołane jako
+metody obiektu reprezentującego element zwracają wyłącznie jego potomne elementy.
 
 **Inne metody wybierające elementy**
 
- W interfejsie modelu DOM jest dostępnych kilka starszych metod wybierających elementy, dzisiaj rzadziej stosowanych. 
+W interfejsie modelu DOM jest dostępnych kilka starszych metod wybierających elementy, dzisiaj rzadziej stosowanych.
 
- ```javascript
+```javascript
 // Wyszukanie elementu po identyfikatorze.
 //  Metoda analogiczna do document.querySelector("#sect1").
-let sect1 = document.getElementById("sect1");
-// Wyszukanie wszystkich znaczników posiadających atrybut name="color". 
+let sect1 = document.getElementById('sect1');
+// Wyszukanie wszystkich znaczników posiadających atrybut name="color".
 // Metoda analogiczna do document.querySelectorAll('*[name="color"]');
-let colors = document.getElementsByName("color");
+let colors = document.getElementsByName('color');
 // Wyszukanie wszystkich znaczników <h1> w dokumencie.
 // Metoda analogiczna do document.querySelectorAll("h1").
-let headings = document.getElementsByTagName("h1");
+let headings = document.getElementsByTagName('h1');
 // Obiekt elementu zawiera również metodę getElementsByTagName().
 // Wyszukanie wszystkich znaczników <h2> zawartych w elemencie sect1.
-let subheads = sect1.getElementsByTagName("h2");
+let subheads = sect1.getElementsByTagName('h2');
 // Wyszukanie wszystkich znaczników w klasie "tooltip".
 // Metoda analogiczna do document.querySelectorAll(".tooltip").
-let tooltips = document.getElementsByClassName("tooltip");
+let tooltips = document.getElementsByClassName('tooltip');
 // Wyszukanie wszystkich znaczników w klasie "sidebar", podrzędnych dla sect1.
 // Metoda analogiczna do sect1.querySelectorAll(".sidebar").
-let sidebars = sect1.getElementsByClassName("sidebar");
+let sidebars = sect1.getElementsByClassName('sidebar');
 ```
-
 
 ### 15.3.2. Struktura dokumentu i jej przeglądanie
 
-Interfejs API, który traktuje dokument jako drzewiastą strukturę elementów, ale pomija wchodzące w jego skład węzły tekstowe, nie oferuje żadnych metod. Jest po prostu zbiórem właściwości obiektu Element, za pomocą których można odwoływać się do elementów rodzicielskich, potomnych i bliźniaczych dla danego elementu. Są to następujące: właściwości.
+Interfejs API, który traktuje dokument jako drzewiastą strukturę elementów, ale pomija wchodzące w jego skład węzły
+tekstowe, nie oferuje żadnych metod. Jest po prostu zbiórem właściwości obiektu Element, za pomocą których można
+odwoływać się do elementów rodzicielskich, potomnych i bliźniaczych dla danego elementu. Są to następujące: właściwości.
 
 parentNode
 
@@ -6376,7 +6436,8 @@ Właściwość zawierająca obiekt Element lub Document, reprezentujący element
 
 children
 
-Właściwość zawierająca obiekt NodeList zawierający listę obiektów Element reprezentujących elementy potomne z wyjątkiem węzłów typu Text i Comment.
+Właściwość zawierająca obiekt NodeList zawierający listę obiektów Element reprezentujących elementy potomne z wyjątkiem
+węzłów typu Text i Comment.
 
 childElementCount
 
@@ -6384,37 +6445,46 @@ Właściwość zawierająca liczbę elementów potomnych. Tę samą wartość ma
 
 firstElementChild, lastElementChild
 
-Właściwości odwołujące się, odpowiednio, do pierwszego i ostatniego elementu potomnego dla bieżącego elementu. Jeżeli tych elementów nie ma, właściwość ma wartość null.
+Właściwości odwołujące się, odpowiednio, do pierwszego i ostatniego elementu potomnego dla bieżącego elementu. Jeżeli
+tych elementów nie ma, właściwość ma wartość null.
 
 nextElementSibling, previousElementSibling
 
-Właściwości odwołujące się do elementu bliźniaczego znajdującego się, odpowiednio, przed bieżącym elementem lub za nim. Jeżeli takiego elementu nie ma, właściwość ma wartość null.
+Właściwości odwołujące się do elementu bliźniaczego znajdującego się, odpowiednio, przed bieżącym elementem lub za nim.
+Jeżeli takiego elementu nie ma, właściwość ma wartość null.
 
 **Dokument jako drzewiasta struktura węzłów**
 
-Aby przejrzeć dokument lub jego fragment bez pomijania węzłów typu Text, należy użyć właściwości obiektów Node. W ten sposób można uzyskać dostęp do obiektów Element, Text, a nawet Comment, reprezentujących komentarze umieszczone w dokumencie HTML.
+Aby przejrzeć dokument lub jego fragment bez pomijania węzłów typu Text, należy użyć właściwości obiektów Node. W ten
+sposób można uzyskać dostęp do obiektów Element, Text, a nawet Comment, reprezentujących komentarze umieszczone w
+dokumencie HTML.
 
 Obiekt Node posiada następujące właściwości:
 
 parentNode
 
-Właściwość zawierająca węzeł rodzicielski dla bieżącego węzła. Jeżeli węzeł nie ma rodzica (na przykład jest to obiekt Document), właściwość ma wartość null.
+Właściwość zawierająca węzeł rodzicielski dla bieżącego węzła. Jeżeli węzeł nie ma rodzica (na przykład jest to obiekt
+Document), właściwość ma wartość null.
 
 childNodes
 
-Właściwość przeznaczona tylko do odczytu, zawierająca obiekt NodeList ze wszystkimi elementami potomnymi (nie tylko typu Element).
+Właściwość przeznaczona tylko do odczytu, zawierająca obiekt NodeList ze wszystkimi elementami potomnymi (nie tylko typu
+Element).
 
 firstChild, lastChild
 
-Właściwości zawierające, odpowiednio, pierwszy i ostatni węzeł potomny dla danego węzła. Jeżeli go nie ma, właściwość ma wartość null.
+Właściwości zawierające, odpowiednio, pierwszy i ostatni węzeł potomny dla danego węzła. Jeżeli go nie ma, właściwość ma
+wartość null.
 
 nextSibling, previousSibling
 
-Właściwości zawierające, odpowiednio, poprzedni i następny węzeł bliźniaczy dla danego węzła. Jeżeli go nie ma, właściwość ma wartość null.
+Właściwości zawierające, odpowiednio, poprzedni i następny węzeł bliźniaczy dla danego węzła. Jeżeli go nie ma,
+właściwość ma wartość null.
 
 nodeType
 
-Właściwość zawierająca liczbę opisującą rodzaj węzła. Dla obiektu Document jest to liczba 9, dla obiektu Element liczba 1, dla obiektu Text liczba 3, a dla obiektu Comment liczba 8.
+Właściwość zawierająca liczbę opisującą rodzaj węzła. Dla obiektu Document jest to liczba 9, dla obiektu Element liczba
+1, dla obiektu Text liczba 3, a dla obiektu Comment liczba 8.
 
 nodeValue
 
@@ -6426,43 +6496,50 @@ Nazwa znacznika HTML złożona z wielkich liter.
 
 ### 15.3.3. Atrybuty
 
-Klasa `Element` definiuje ogólne metody `getAttribute()`, `setAttribute()`, `hasAttribute()` i `removeAttribute()` służące do odczytywania atrybutów, przypisywania im wartości, testowania ich i usuwania z elementu. Natomiast wartości wszystkich standardowych atrybutów każdego standardowego elementu `HTML` są dostępne w postaci właściwości obiektu `HTMLElement` reprezentującego dany element.
+Klasa `Element` definiuje ogólne metody `getAttribute()`, `setAttribute()`, `hasAttribute()` i `removeAttribute()`
+służące do odczytywania atrybutów, przypisywania im wartości, testowania ich i usuwania z elementu. Natomiast wartości
+wszystkich standardowych atrybutów każdego standardowego elementu `HTML` są dostępne w postaci właściwości
+obiektu `HTMLElement` reprezentującego dany element.
 
 **Atrybuty HTML jako właściwości elementu**
 
-Obiekt Element reprezentujący znacznik HTML zazwyczaj definiuje właściwości odpowiadające jego atrybutom. Wśród nich są uniwersalne właściwości, takie jak id, title, lang, dir, oraz właściwości wykorzystywane do obsługi zdarzeń, na przykład onclick.
+Obiekt Element reprezentujący znacznik HTML zazwyczaj definiuje właściwości odpowiadające jego atrybutom. Wśród nich są
+uniwersalne właściwości, takie jak id, title, lang, dir, oraz właściwości wykorzystywane do obsługi zdarzeń, na przykład
+onclick.
 
 ```javascript
-let image = document.querySelector("#main_image");
-let url = image.src;       // Atrybut src zawiera adres URL obrazu.
+let image = document.querySelector('#main_image');
+let url = image.src; // Atrybut src zawiera adres URL obrazu.
 
-let f = document.querySelector("form");  
+let f = document.querySelector('form');
 // Ustawienie adresu URL, na który ma być wysłany formularz.
-f.action = "https://www.example.com/submit"; 
-f.method = "POST";                      
-
+f.action = 'https://www.example.com/submit';
+f.method = 'POST';
 ```
 
 <!--TODO -->
 
 **Atrybut class**
-Wartośćią atrybutu `class` jest lista oddzielonych spacjami klas `CSS` określających styl znacznika i jest ona powiązana z właściwością `className` obiektu `Element`. Wartością tej właściwości jest ciąg znaków, który można zmieniać. W kodzie klienckim często trzeba dodawać lub usuwać nazwy klas z tej listy. Dlatego obiekt Element zawiera jeszcze właściwość `classList`, dzięki której atrybut `class` można traktować jak listę. Jej wartością jest iterowalny obiekt podobny do tablicy i posiadający metody `add(), remove(), contains() i toggle()` 
+Wartośćią atrybutu `class` jest lista oddzielonych spacjami klas `CSS` określających styl znacznika i jest ona powiązana
+z właściwością `className` obiektu `Element`. Wartością tej właściwości jest ciąg znaków, który można zmieniać. W kodzie
+klienckim często trzeba dodawać lub usuwać nazwy klas z tej listy. Dlatego obiekt Element zawiera jeszcze
+właściwość `classList`, dzięki której atrybut `class` można traktować jak listę. Jej wartością jest iterowalny obiekt
+podobny do tablicy i posiadający metody `add(), remove(), contains() i toggle()`
 
 **Atrybuty zbioru danych**
 
 Można stosować atrybuty o nazwach składających się z małych liter i rozpoczynających się prefiksem `data-`.
 
-Obiekt `Element` posiada właściwość `dataset` odwołującą się do obiektu posiadającego właściwości odpowiadające poszczególnym atrybutom danych.
+Obiekt `Element` posiada właściwość `dataset` odwołującą się do obiektu posiadającego właściwości odpowiadające
+poszczególnym atrybutom danych.
 
 ```html
 <h2 id="title" data-section-number="16.1">Atrybuty</h2>
 ```
 
 ```javascript
-let number = document.querySelector("#title").dataset.sectionNumber;
+let number = document.querySelector('#title').dataset.sectionNumber;
 ```
-
-
 
 # 18. Ajax
 
