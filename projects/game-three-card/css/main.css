@@ -215,6 +215,10 @@
   width: 100%;
 }
 
+.header__item {
+  color: #000;
+}
+
 .header__img {
   position: absolute;
   top: 0;
@@ -228,13 +232,13 @@ body {
 }
 
 .cards {
+  margin-top: 4%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 50px;
 }
 
 .cards__item--light {
@@ -248,9 +252,7 @@ body {
 }
 
 .cards__img {
-  width: 33vw;
-  border: 2px solid brown;
-  border-radius: 5px;
+  width: 25vw;
 }
 
 .buttons {

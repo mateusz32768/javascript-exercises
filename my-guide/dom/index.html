@@ -6,11 +6,33 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>Create Element</title>
+<<<<<<< HEAD
+  <style>
+=======
   <script src='select.js'></script>
   <!--  <script src="heading.js" async></script>-->
 
 <body>
+>>>>>>> 70373a3ffdbe8add4eaaec4b430c2d6b4fdb550a
 
+  </style>
+  <!-- <script src="heading.js" async></script> -->
+    <script >
+      const onInputChange = (e) => {
+        let message = e.target.value;
+        return message;
+      }
+      const paragraph = document.querySelector('.paragraph');
+      const input = document.querySelector('.input');
+      paragraph.innerHTML = onInputChange();
+      
+    </script>
+  
+  <body>
+    
+    <input class="input" type="text" oninput="onInputChange"/>
+    <p class="paragraph"></p>
+    
 </body>
 
 </html>

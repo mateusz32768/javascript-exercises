@@ -6540,6 +6540,102 @@ poszczególnym atrybutom danych.
 ```javascript
 let number = document.querySelector('#title').dataset.sectionNumber;
 ```
+# 17. Narzędzia i rozszerzenia
+<!-- TODO -->
+# 17.7. Rozszerzenie JSX: znaczniki w kodzie JavaScript
+
+JSX jest rozszerzeniem języka JavaScript umożliwiającym definiowania drzewa elementów za pomocą znaczników podobnych do stosowanych w kodzie HTML. Rozszerzenie to jest wykorzystawane na platformie React do tworzenia przzeglądarkowych interfejsów aplikacji. Platforma React przekształca drzewo elemetów zdefiniowanych za pomocą JSX w kod HTML strony internetowej.
+
+Literały JSX ujmuje się w znaki < i >.
+
+```jsx
+const line = <hr/>;
+```
+
+JSX wymaga transpilacji do zwykłago kodu JavaScript za pomocą narzędzia Babel (lub podobnego). Powyższe wyrażenie zostanie przekształcone do wywołania nastepującej funkcji:
+
+```javascript
+const line = React.createElement('hr', null); 
+```
+
+Element reactowy (jsx-owy) może mieć atrybuty tak jak element HTML:
+
+```jsx
+const image = <img src="logo" alt="Logo JSX" hidden />;
+```
+
+Atrybuty elemntu reactowego są przekształcane we właściwości obiektu, który jest umieszczany w drugim argumencie funkcji  createElement:
+
+```javascript
+const image = React.createElement('img', {src: 'logo', alt="Logo JSX", hidden=true});
+```
+
+Elementy JSX, tak jak elementy HTML mogą zawierać elementy potomne:
+
+```jsx
+const sidebar = (
+  <div className="sidebar">
+    <h1>Title</h1>
+    <hr/>
+    <p>To jest pasek boczny <p>
+  </div>
+)
+```
+
+Powyższy kod zostanie skompilowany do takiego:
+
+```javascript
+"use strict";
+
+const sidebar = React.createElement(
+  "div", 
+  {className: "sidebar"}, 
+  React.createElement("h1", null, "Title"), 
+  React.createElement("p", null, "To jest pasek boczny")
+);
+```
+
+Elementy potomne (zazwyczaj ciągi znaków, lub inne elementy JSX) sa umieszczane w trzecim i kolejnych argumentach funkcji jak pokazano wyżej.
+
+Wynikiem zwracanym przez funkcję jest zwykły obiekt wykorzystywany przez platformę React do wyświetlania treści w oknie przeglądarki.
+
+Narzędzie Babel można tak skonfigurować, aby przekształcało elementy JSX w wywołania innych funkcji.
+
+W składni JSX można osadzać wyrażenia JavaScript. Tekst umieszczany w nawiasach klamrowych jest traktowany jak zwykły kod JavaScript. Tego rodzaju osadzone wyrażenia mogą być wartościami atrybutów lub elementów potomnych:
+
+```jsx
+const sidebar = (className, title, content, drawLine=true) =>  {
+  return(
+    <div className={className}>
+      <h1>{title}</h1>
+      {drawLine && <hr />}
+      <p>{content}</p>
+    </div>
+  )
+}
+```
+
+Zostanie to skompilowane do następującego kodu:
+
+```javascript
+"use strict";
+
+const sidebar = (className, title, content, drawLine = true) => {
+  return React.createElement(
+    "div", 
+    { className: className }, 
+    React.createElement("h1", null, title), 
+    drawLine && React.createElement("hr", null), 
+    React.createElement("p", null, content)
+  );
+};
+```
+
+W elementach JSX mogą być osadzone dowolne wyrażenia JavaScript, czyli np. obiekty, tablice i funkcje.
+
+```jsx
+// TODO 
+```
 
 # 17. Narzędzia i rozszerzenia
 
