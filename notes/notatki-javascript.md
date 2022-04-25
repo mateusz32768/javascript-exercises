@@ -6541,6 +6541,162 @@ poszczególnym atrybutom danych.
 let number = document.querySelector('#title').dataset.sectionNumber;
 ```
 
+# 17. Narzędzia i rozszerzenia
+
+Opisano poniżej następujące narzędzia i rozszerzenia JavaScript:
+
+* narzędzie ESLint do wyszukiwania błędów i niewłaściwego stylu kodu,
+* narzędzie Prettier do formatowania kodu,
+* narzędzie Jest do pisania testów jednostkowych,
+* narzędzie npm do instalowania bibliotek,
+* narzędzia webpack, Rollup i Parcel do scalania osobnych modułów w jeden duży moduł, gotowy do użycia w przeglądarce,
+* narzędzie Babel do tłumaczenia kodu wykorzystującego najnowsze funkcjonalności języka (lub jego rozszerzenia) na kod,
+  który można uruchamiać w przeglądarce
+* rozszerzenie JSX (stosowane w platformie React) umożliwiające kodowanie interfejsu użytkownika za pomocą wyrażeń
+  JavaScriptu podobnych do znaczników HTML,
+* rozszerzenie Flow (podobne do TypeScriptu) umożliwiające opatrywanie kodu adnotacjami i sprawdzanie poprawności typów
+  danych.
+* [markdownlint](https://github.com/DavidAnson/markdownlint)
+* [commonmark](https://commonmark.org/)
+* [markdown](https://commonmark.org/help/)
+
+## 17.1. Inspekcja kodu za pomocą narzędzia ESLint
+
+Słowo lint (kłaczek) oznacza fragment kodu, który z technicznego punktu widzenia jest poprawny, ale nieestetyczny,
+nieoptymalny i zawiera potencjalne błędy. **Linter** jest narzędziem wykrywającym tego rodzaju mankamenty, a
+**lintowanie**oznacza czynność polegającą na wielokrotnym uruchamianiu lintera i poprawianiu błędów do momentu, aż
+przestaną się pojawiać komunikaty ostrzegawcze.
+
+Obecnie najpopularniejszym linterem dla języka JavaScript jest [ESLint](https://eslint.org).
+
+## Pierwsze kroki z ESLint
+
+`ESLint` to narzędzie do identyfikowania i raportowania wzorców znalezionych w kodzie `ECMAScript/JavaScript`, w celu
+uczynienia kodu bardziej spójnym i uniknięcia błędów. Pod wieloma względami jest podobny do `JSLint` i `JSHint` z
+kilkoma wyjątkami:
+
+* `ESLint` używa `Espree` do parsowania `JavaScript`.
+* `ESLint` używa `AST` do oceny wzorców w kodzie.
+* `ESLint` jest w pełni podłączalny, każda reguła jest wtyczką i możesz dodać więcej w czasie wykonywania.
+
+### Instalacja i użytkowanie
+
+Możesz zainstalować `ESLint` za pomocą `npm` lub `yarn`:
+
+```
+npm install eslint --save-dev
+
+# or
+
+yarn add eslint --dev
+```
+
+Następnie powinieneś skonfigurować plik konfiguracyjny, a najłatwiej to zrobić:
+
+```
+npm init @eslint/config
+
+# or
+
+yarn create @eslint/config
+```
+
+Następnie możesz uruchomić ESLint na dowolnym pliku lub katalogu w następujący sposób:
+
+```
+npx eslint yourfile.js
+
+# or
+
+yarn run eslint yourfile.js
+```
+
+Możliwe jest również zainstalowanie `ESLint` globalnie, a nie lokalnie (za pomocą `npm install eslint --global`). Nie
+jest to jednak zalecane, a wszelkie używane wtyczki lub konfiguracje, które można udostępniać, muszą być zainstalowane
+lokalnie w obu przypadkach.
+
+### Konfiguracja
+
+Po uruchomieniu `npm init @eslint/config` będziesz miał w swoim katalogu plik `.eslintrc.{js,yml,json}`. W nim zobaczysz
+kilka reguł skonfigurowanych w ten sposób:
+
+```json
+{
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ]
+  }
+}
+```
+
+Nazwy `"semi"` i `"quote"` to nazwy reguł w `ESLint`. Pierwsza wartość to poziom błędu reguły i może być jedną z
+następujących wartości:
+
+* `"off"` lub `0` - wyłącz regułę
+* `"warn"` lub `1` - włącz regułę jako ostrzeżenie (nie wpływa na kod wyjścia)
+* `"error"` lub `2` - włącz regułę jako błąd (kod wyjścia będzie wynosił 1)
+
+Trzy poziomy błędów umożliwiają precyzyjną kontrolę nad tym, jak `ESLint` stosuje reguły (więcej opcji konfiguracji i
+szczegółów można znaleźć w [dokumentacji konfiguracyjnej](https://eslint.org/docs/user-guide/configuring/)).
+
+Twój plik konfiguracyjny `.eslintrc.{js,yml,json}` będzie również zawierał linię:
+
+```
+{
+    "extends": "eslint:recommended"
+}
+```
+
+Z powodu tego wiersza wszystkie reguły oznaczone „✓” na stronie reguł zostaną włączone. Alternatywnie możesz użyć
+konfiguracji utworzonych przez innych, wyszukując „eslint-config” w `npmjs.com`. ESLint nie będzie lintować twojego
+kodu, chyba że rozszerzysz go ze współdzielonej konfiguracji lub jawnie włączysz reguły w twojej konfiguracji.
+
+## Następne kroki
+
+* Dowiedz się o [zaawansowanej konfiguracji](https://eslint.org/docs/user-guide/configuring/) ESLint.
+* Zapoznaj się z [opcjami wiersza poleceń](https://eslint.org/docs/user-guide/command-line-interface).
+* Poznaj [integracje ESLint](https://eslint.org/docs/user-guide/integrations) z innymi narzędziami, takimi jak edytory,
+  systemy kompilacji i nie tylko.
+* Nie możesz znaleźć właściwej reguły? Stwórz własną niestandardową regułę.
+* Uczyń ESLint jeszcze lepszym, przyczyniając się do tego.
+
+### [Rozszerzenie VS Code ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+Integruje ESLint z VS Code. Jeśli jesteś nowy w ESLint, sprawdź [dokumentację](https://eslint.org/).
+
+Rozszerzenie korzysta z biblioteki `ESLint` zainstalowanej w otwartym folderze obszaru roboczego(*ang. opened workspace
+folder*). Jeśli folder go nie zawiera, rozszerzenie szuka globalnej wersji instalacyjnej. Jeśli nie zainstalowałeś
+ESLint ani lokalnie, ani globalnie, zrób to, uruchamiając `npm install eslint` w folderze obszaru roboczego w przypadku
+instalacji lokalnej lub `npm install -g eslint` w przypadku instalacji globalnej.
+
+## 17.n. [Gulp](https://gulpjs.com/)
+
+**Gulp** to zestaw narzędzi do automatyzacji i usprawnienia przepływu pracy. Wykorzystuje elastyczność `JavaScript`, aby
+zautomatyzować powolne, powtarzalne przepływy pracy i skomponować je w wydajne potoki kompilacji.
+
+Więcej informacji [tu](https://gulpjs.com/docs/en/getting-started/quick-start)
+
+### 17.n.3. Tworzenie zadań
+
+Gulp udostępnia dwie potężne metody składania, series() i parallel(), umożliwiające składanie poszczególnych zadań w
+większe operacje. Obie metody akceptują dowolną liczbę funkcji zadań lub złożonych operacji. series() i parallel() mogą
+być zagnieżdżone w sobie lub w sobie na dowolnej głębokości.
+
+Aby Twoje zadania zostały wykonane w odpowiedniej kolejności, użyj metody series().
+
+[//]: # (TODO Examples)
+
+Aby zadania działały z maksymalną współbieżnością, połącz je z metodą Parallel().
+
+[//]: # (TODO Example)
+## 17.n. [Markdown](https://commonmark.org/help/tutorial/)
+
 # 18. Ajax
 
 ## 18.1. Wprowadzenie do Ajaksa. Część I

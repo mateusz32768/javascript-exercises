@@ -342,4 +342,3 @@ console.log(result) //log 20
 
 ```
 
-.
