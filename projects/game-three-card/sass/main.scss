@@ -1,7 +1,6 @@
-@forward 'utils/variables';
-@forward 'base/reset';
-@forward 'layout/navigations';
-@forward 'layout/header';
-@forward 'layout/footer';
-@forward 'components/buttons';
-@forward 'pages/home';
+@import 'variables';
+@import 'reset';
+@import 'navigations';
+@import 'header';
+@import 'home';
+@import 'footer';

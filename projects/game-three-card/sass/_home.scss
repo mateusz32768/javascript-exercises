@@ -5,9 +5,9 @@ body {
 }
 
 .cards {
+  margin-top: 4%;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
 
   &__item {
    
@@ -21,9 +21,9 @@ body {
 }
 
 .cards__img {
-  width: 33vw;
-  border: 2px solid brown;
-  border-radius: 5px;
+  width: 25vw;
+  // border: 2px solid brown;
+  // border-radius: 5px;
 }
 
 .buttons {
