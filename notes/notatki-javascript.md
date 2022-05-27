@@ -3127,6 +3127,44 @@ Obie formy kodu są równorzędne.
 
 ## 6.11. Podsumowanie
 
+# 6.A Obiekty 
+**Notatki z "Programowanie zorientowane obiektowo w języku JavaScript". Ved Antani, Stoyan Stefanov**
+
+JavaScript ma ekscentryczne podejście do klasycznego programowania obiektowego. Obiektowość jest jednym z najpopularniejszych paradygmatów programowania i jest podstawą większości języków programowania, takich jak Java i C++. Klasyczne programowanie obiektowe proponuje dobrze przemyślane koncepcje, które są przyjmowane przez większość języków z tej grupy. Jednak JavaScript ma inne podejście.
+
+## Programowanie obiektowe
+
+Gdy chcemy rozmawiać o programowaniu obiektowym to musimy operować takimi pojęciami jak:
+* obiekt, metoda i właściwość;
+* klasa;
+* hermetyzacja
+* agregacja
+* ponowne wykorzystanie kodu/dziedziczenie
+* polimorfizm
+
+## Obiekty
+
+Obiekt w sposób programistyczny reprezentuje byt (osobę lub rzecz). Może reprezentować dowolny byt fizyczny lub abstrakcyjny.
+Obiekt charakteryzuje się cechami (np. kolor, imię, masa ciała itp) oraz wykonywać czynności (np. chodzić, biegać, spać, wysyłać coś itp.). 
+
+Z programistycznego p-ktu widzenia obiekt posiada:
+ * właściwości reprezentujące cechy rzeczywistego obiektu
+ * metody - czynności 
+
+Przyjeło się:
+* obiekty nazywać za pomocą rzeczowników (np. książka, osoba, wektor itp.)
+* metody przy użyciu czasowników (np. pisz, wyświetl, czytaj itp.)
+* wartości z kolei to przymiotniki
+
+
+
+
+
+
+
+
+
+
 # 7. Tablice
 
 Tablica jest uporządkowaną kolekcją wartości, czyli elementów. Każdy element ma swoje miejsce w tablicy oznaczone
@@ -3682,23 +3720,19 @@ Ogólna postać deklaracji funkcji:
 
 ```javascript
   function nameFunction(param1, param2, ..., paramN) {
-  statement1;
-  statement2;
-...
-  ;
-  statementN;
+    statement1;
+    statement2;
+    ...
+    statementN;
 
-  return value;
-}
+    return value;
+  }
 ```
 
 **Wywołanie funkcji**:
 
 ```javascript
-  nameFunction(arg1, arg2, …,
-argN
-)
-;
+  nameFunction(arg1, arg2, …, argN);
 ```
 
 Jeśli wywołamy funkcję a ona zwraca jakąś wartość to możemy ją przypisać do jakieś zmiennej aby ją póżniej móc
@@ -3739,7 +3773,7 @@ function args() {
 }
 
 args(); // []
-args(1, 2, 3, true, ‘marco’)
+args(1, 2, 3, true, 'marco')
 ; // [1, 2, 3, 4, true, "marco"]
 ```
 
