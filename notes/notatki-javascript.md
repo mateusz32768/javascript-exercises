@@ -6541,7 +6541,6 @@ poszczególnym atrybutom danych.
 let number = document.querySelector('#title').dataset.sectionNumber;
 ```
 
-
 # 17. Narzędzia i rozszerzenia
 
 Opisano poniżej następujące narzędzia i rozszerzenia JavaScript:
@@ -6678,15 +6677,19 @@ instalacji lokalnej lub `npm install -g eslint` w przypadku instalacji globalnej
 
 ## 17.7. Rozszerzenie JSX: znaczniki w kodzie JavaScript
 
-JSX jest rozszerzeniem języka JavaScript umożliwiającym definiowania drzewa elementów za pomocą znaczników podobnych do stosowanych w kodzie HTML. Rozszerzenie to jest wykorzystawane na platformie React do tworzenia przzeglądarkowych interfejsów aplikacji. Platforma React przekształca drzewo elemetów zdefiniowanych za pomocą JSX w kod HTML strony internetowej.
+JSX jest rozszerzeniem języka JavaScript umożliwiającym definiowania drzewa elementów za pomocą znaczników podobnych do
+stosowanych w kodzie HTML. Rozszerzenie to jest wykorzystawane na platformie React do tworzenia przzeglądarkowych
+interfejsów aplikacji. Platforma React przekształca drzewo elemetów zdefiniowanych za pomocą JSX w kod HTML strony
+internetowej.
 
 Literały JSX ujmuje się w znaki < i >.
 
 ```jsx
-const line = <hr/>;
+const line = <hr />;
 ```
 
-JSX wymaga transpilacji do zwykłago kodu JavaScript za pomocą narzędzia Babel (lub podobnego). Powyższe wyrażenie zostanie przekształcone do wywołania nastepującej funkcji:
+JSX wymaga transpilacji do zwykłago kodu JavaScript za pomocą narzędzia Babel (lub podobnego). Powyższe wyrażenie
+zostanie przekształcone do wywołania nastepującej funkcji:
 
 ```javascript
 const line = React.createElement('hr', null); 
@@ -6698,10 +6701,11 @@ Element reactowy (jsx-owy) może mieć atrybuty tak jak element HTML:
 const image = <img src="logo" alt="Logo JSX" hidden />;
 ```
 
-Atrybuty elemntu reactowego są przekształcane we właściwości obiektu, który jest umieszczany w drugim argumencie funkcji  createElement:
+Atrybuty elemntu reactowego są przekształcane we właściwości obiektu, który jest umieszczany w drugim argumencie funkcji
+createElement:
 
 ```javascript
-const image = React.createElement('img', {src: 'logo', alt="Logo JSX", hidden=true});
+const image = React.createElement('img', { src: 'logo', alt = "Logo JSX", hidden = true });
 ```
 
 Elementy JSX, tak jak elementy HTML mogą zawierać elementy potomne:
@@ -6710,7 +6714,7 @@ Elementy JSX, tak jak elementy HTML mogą zawierać elementy potomne:
 const sidebar = (
   <div className="sidebar">
     <h1>Title</h1>
-    <hr/>
+    <hr />
     <p>To jest pasek boczny <p>
   </div>
 )
@@ -6722,24 +6726,27 @@ Powyższy kod zostanie skompilowany do takiego:
 "use strict";
 
 const sidebar = React.createElement(
-  "div", 
-  {className: "sidebar"}, 
-  React.createElement("h1", null, "Title"), 
+  "div",
+  { className: "sidebar" },
+  React.createElement("h1", null, "Title"),
   React.createElement("p", null, "To jest pasek boczny")
 );
 ```
 
-Elementy potomne (zazwyczaj ciągi znaków, lub inne elementy JSX) sa umieszczane w trzecim i kolejnych argumentach funkcji jak pokazano wyżej.
+Elementy potomne (zazwyczaj ciągi znaków, lub inne elementy JSX) sa umieszczane w trzecim i kolejnych argumentach
+funkcji jak pokazano wyżej.
 
-Wynikiem zwracanym przez funkcję jest zwykły obiekt wykorzystywany przez platformę React do wyświetlania treści w oknie przeglądarki.
+Wynikiem zwracanym przez funkcję jest zwykły obiekt wykorzystywany przez platformę React do wyświetlania treści w oknie
+przeglądarki.
 
 Narzędzie Babel można tak skonfigurować, aby przekształcało elementy JSX w wywołania innych funkcji.
 
-W składni JSX można osadzać wyrażenia JavaScript. Tekst umieszczany w nawiasach klamrowych jest traktowany jak zwykły kod JavaScript. Tego rodzaju osadzone wyrażenia mogą być wartościami atrybutów lub elementów potomnych:
+W składni JSX można osadzać wyrażenia JavaScript. Tekst umieszczany w nawiasach klamrowych jest traktowany jak zwykły
+kod JavaScript. Tego rodzaju osadzone wyrażenia mogą być wartościami atrybutów lub elementów potomnych:
 
 ```jsx
-const sidebar = (className, title, content, drawLine=true) =>  {
-  return(
+const sidebar = (className, title, content, drawLine = true) => {
+  return (
     <div className={className}>
       <h1>{title}</h1>
       {drawLine && <hr />}
@@ -6756,10 +6763,10 @@ Zostanie to skompilowane do następującego kodu:
 
 const sidebar = (className, title, content, drawLine = true) => {
   return React.createElement(
-    "div", 
-    { className: className }, 
-    React.createElement("h1", null, title), 
-    drawLine && React.createElement("hr", null), 
+    "div",
+    { className: className },
+    React.createElement("h1", null, title),
+    drawLine && React.createElement("hr", null),
     React.createElement("p", null, content)
   );
 };
@@ -6768,8 +6775,82 @@ const sidebar = (className, title, content, drawLine = true) => {
 W elementach JSX mogą być osadzone dowolne wyrażenia JavaScript, czyli np. obiekty, tablice i funkcje.
 
 ```jsx
-// TODO 
+// Argumentami poniższej funkcji jest ciąg znaków i funkcja zwrotna. Na ich podstawie funkcja tworzy
+// i zwraca element JSX reprezentujący element HTML <ul> zawierający listę elementów potomnych <li>.
+
+const list = (items, cb) => {
+  return (
+    <ul style={{ padding: 10, border: "solid red 4px" }}>
+      {
+        items.map((item, index) => <li onClick={() => cb(index)} key={index}>{item}</li>)
+      }
+    </ul>
+  )
+}
+
 ```
+
+```javascript
+"use strict";
+
+const list = (items, cb) => {
+  return React.createElement(
+    "ul",
+    { style: { padding: 10, border: "solid red 4px" } },
+    items.map((item, index) =>
+      React.createElement("li",
+        { onClick: () => cb(index), key: index },
+        item
+      )
+    )
+  );
+};
+```
+
+Element `JSX` definiuje się za pomocą identyfikatora umieszczanego zaraz za znakiem `<`. Jeżeli pierwsza litera
+identyfikatora jest mała, to taki identyfikator jest umieszczany w argumencie funkcji `createElement()` jako ciąg
+znaków. Jeżeli natomiast litera jest wielka, identyfikator jest traktowany w zwykły sposób, tj. w argumencie
+funkcji `createElement()` jest umieszczana jego wartość. Oznacza to, że wyrażenie `JSX` `<Math/>` jest przekształcane w
+kod `JavaScript`, w którym w argumencie funkcji `React.createElement()` jest umieszczany globalny obiekt `Math`.
+
+Możliwość umieszczenia w pierwszym argumencie funkcji `createElement()` wartości innych niż ciągi znaków, pozwala
+tworzyć komponenty za pomocą platformy `React`. Komponent, którego nazwa rozpoczyna się wielką literą, jest prostym
+wyrażeniem `JSX`, reprezentującym bardziej złożone wyrażenie wykorzystujące znaczniki `HTML` zapisane małymi literami.
+
+W platformie `React` nowy komponent najprościej definiuje się, tworząc funkcję, której argumentem jest „obiekt
+właściwości”, a zwracanym wynikiem wyrażenie `JSX`. Obiekt właściwości jest zwykłym obiektem reprezentującym wartości
+atrybutów, podobnie jak obiekt umieszczany w drugim argumencie funkcji `createElement()`.
+
+```jsx
+const Sidebar = props => (
+  <div>
+    <h1>{props.title}</h1>
+    {props.drawLine && <hr />}
+    <p>{props.content}</p>
+  </div>
+);
+```
+
+Funkcja w takiej postaci reprezentuje komponent React i w wyrażeniu JSX można jej użyć w miejscu nazwy znacznika `HTML`:
+
+```jsx
+const sidebar = <Sidebar title="Tytuł paska" content="Zawartość paska" />
+```
+
+Element `<Sidebar/>` zostanie przekształcony w następujący kod:
+
+```javascript
+const sidebar = React.createElement(
+  Sidebar,
+  {
+    title: 'Tytuł paska',
+    constent: 'Zawartość paska'
+  });
+```
+
+Platforma `React`, przekształcając to proste wyrażenie JSX, umieści drugi argument, czyli obiekt
+właściwości, w argumencie funkcji Sidebar(), umieszczonej w pierwszym argumencie funkcji
+createElement(), a zwrócony przez nią wynik użyje w miejscu wyrażenia <Sidebar>.
 
 ## 17.n. [Gulp](https://gulpjs.com/)
 
@@ -6791,6 +6872,7 @@ Aby Twoje zadania zostały wykonane w odpowiedniej kolejności, użyj metody ser
 Aby zadania działały z maksymalną współbieżnością, połącz je z metodą Parallel().
 
 [//]: # (TODO Example)
+
 ## 17.n. [Markdown](https://commonmark.org/help/tutorial/)
 
 # 18. Ajax
