@@ -3156,6 +3156,23 @@ Przyjeło się:
 * metody przy użyciu czasowników (np. pisz, wyświetl, czytaj itp.)
 * wartości z kolei to przymiotniki
 
+## Klasy
+
+W świecie rzeczywistym obiekty możemy kategoryzować. Kot i pies to zwierzęta. Natomiast w programowaniu obiektowym, 
+obiekt jest instancją klasy, która jest przepisem lub szablonem, według którego on może być utworzony. Kot i pies to 
+instancje klasy zwierząt.
+
+W klasycznych językach obiektowych w takich jak C++, Java czy C# tworzenie i organizacja kodu jest oparta na klasach,
+w powyższym rozumieniu. Jednakże w JavaScript, mimo iż jest językiem obiektowym, jest inaczej. Tu kod jest tworzony i 
+organizowany na podstawie prototypów, które także są obiektami. 
+
+W prototypowym języku obiektowym nowy obiekt jest tworzony na bazie już istniejącego obiektu, który będzie jego 
+prototypem. Natomiast w klasycznych językach obiekt jest tworzony na podstawie wzoru zawartego w klasie. 
+
+Rożnica między prototypem a klasą jest taka, jak między żywym organizmem a czystą abstrakcją
+
+## Hermetyzacja
+
 
 
 
