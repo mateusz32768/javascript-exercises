@@ -1037,7 +1037,8 @@ if (now.getDay() === 4) {
 > znaków, głównie z powodu dodania bardzo dużych zbiorów ideogramów używanych w językach
 > chińskim, japońskim i koreańskim. Obecnie 16-bitowy typ char nie wystarcza do opisu
 > wszystkich znaków Unicode.
-> Współrzędna kodowa znaku (ang. code point) to wartość związana ze znakiem w systemie kodowania. W standardzie Unicode współrzędne
+> Współrzędna kodowa znaku (ang. code point) to wartość związana ze znakiem w systemie kodowania. W standardzie Unicode
+> współrzędne
 > kodowe znaków są zapisywane w notacji szesnastkowej i są poprzedzane łańcuchem U+, np.
 > współrzędna kodowa litery A to U+0041. Współrzędne kodowe znaków systemu Unicode są
 > pogrupowane w 17 przestrzeniach numeracyjnych (ang. code planes). Pierwsza z nich, nazywana
@@ -2081,9 +2082,11 @@ console.log(`Saldo konta wynosi ${balance}`);
 > **Stosowanie niezadeklarowanych zmiennych**
 > Jeżeli w trybie ścisłym nastąpi próba użycia niezadeklarowanej zmiennej, zostanie zgłoszony błąd referencji.
 > Natomiast poza trybem ścisłym przypisanie wartości do nazwy, która nie została zadeklarowana za pomocą słów
-> `let`, `cons`t lub `var`, spowoduje utworzenie nowej zmiennej globalnej, niezależnie od głębokości zagnieżdżenia się funkcji
+> `let`, `cons`t lub `var`, spowoduje utworzenie nowej zmiennej globalnej, niezależnie od głębokości zagnieżdżenia się
+> funkcji
 > lub bloku kodu. Niemal zawsze jest to niepożądany efekt, który może być przyczyną błędów. Jest to jeden z głównym
-> powodów, dla którego należy stosować tryb ścisły. Utworzona w taki przypadkowy sposób zmienna globalna funkcjonuje tak,
+> powodów, dla którego należy stosować tryb ścisły. Utworzona w taki przypadkowy sposób zmienna globalna funkcjonuje
+> tak,
 > jakby została zadeklarowana za pomocą słowa kluczowego `var`, tj. jest to właściwość globalnego obiektu. Jednak w
 > odróżnieniu od zmiennej zadeklarowanej jawnie przy użyciu `var` można ją usunąć za pomocą operatora `delete`.
 
@@ -3127,14 +3130,19 @@ Obie formy kodu są równorzędne.
 
 ## 6.11. Podsumowanie
 
-# 6.A Obiekty 
+# 6.A Obiekty
+
 **Notatki z "Programowanie zorientowane obiektowo w języku JavaScript". Ved Antani, Stoyan Stefanov**
 
-JavaScript ma ekscentryczne podejście do klasycznego programowania obiektowego. Obiektowość jest jednym z najpopularniejszych paradygmatów programowania i jest podstawą większości języków programowania, takich jak Java i C++. Klasyczne programowanie obiektowe proponuje dobrze przemyślane koncepcje, które są przyjmowane przez większość języków z tej grupy. Jednak JavaScript ma inne podejście.
+JavaScript ma ekscentryczne podejście do klasycznego programowania obiektowego. Obiektowość jest jednym z
+najpopularniejszych paradygmatów programowania i jest podstawą większości języków programowania, takich jak Java i C++.
+Klasyczne programowanie obiektowe proponuje dobrze przemyślane koncepcje, które są przyjmowane przez większość języków z
+tej grupy. Jednak JavaScript ma inne podejście.
 
 ## Programowanie obiektowe
 
 Gdy chcemy rozmawiać o programowaniu obiektowym to musimy operować takimi pojęciami jak:
+
 * obiekt, metoda i właściwość;
 * klasa;
 * hermetyzacja
@@ -3144,43 +3152,51 @@ Gdy chcemy rozmawiać o programowaniu obiektowym to musimy operować takimi poj�
 
 ## Obiekty
 
-Obiekt w sposób programistyczny reprezentuje byt (osobę lub rzecz). Może reprezentować dowolny byt fizyczny lub abstrakcyjny.
-Obiekt charakteryzuje się cechami (np. kolor, imię, masa ciała itp) oraz wykonywać czynności (np. chodzić, biegać, spać, wysyłać coś itp.). 
+Obiekt w sposób programistyczny reprezentuje byt (osobę lub rzecz). Może reprezentować dowolny byt fizyczny lub
+abstrakcyjny.
+Obiekt charakteryzuje się cechami (np. kolor, imię, masa ciała itp) oraz wykonywać czynności (np. chodzić, biegać, spać,
+wysyłać coś itp.).
 
 Z programistycznego p-ktu widzenia obiekt posiada:
- * właściwości reprezentujące cechy rzeczywistego obiektu
- * metody - czynności 
+
+* właściwości reprezentujące cechy rzeczywistego obiektu
+* metody - czynności
 
 Przyjeło się:
+
 * obiekty nazywać za pomocą rzeczowników (np. książka, osoba, wektor itp.)
 * metody przy użyciu czasowników (np. pisz, wyświetl, czytaj itp.)
 * wartości z kolei to przymiotniki
 
 ## Klasy
 
-W świecie rzeczywistym obiekty możemy kategoryzować. Kot i pies to zwierzęta. Natomiast w programowaniu obiektowym, 
-obiekt jest instancją klasy, która jest przepisem lub szablonem, według którego on może być utworzony. Kot i pies to 
+W świecie rzeczywistym obiekty możemy kategoryzować. Kot i pies to zwierzęta. Natomiast w programowaniu obiektowym,
+obiekt jest instancją klasy, która jest przepisem lub szablonem, według którego on może być utworzony. Kot i pies to
 instancje klasy zwierząt.
 
 W klasycznych językach obiektowych w takich jak C++, Java czy C# tworzenie i organizacja kodu jest oparta na klasach,
-w powyższym rozumieniu. Jednakże w JavaScript, mimo iż jest językiem obiektowym, jest inaczej. Tu kod jest tworzony i 
-organizowany na podstawie prototypów, które także są obiektami. 
+w powyższym rozumieniu. Jednakże w JavaScript, mimo iż jest językiem obiektowym, jest inaczej. Tu kod jest tworzony i
+organizowany na podstawie prototypów, które także są obiektami.
 
-W prototypowym języku obiektowym nowy obiekt jest tworzony na bazie już istniejącego obiektu, który będzie jego 
-prototypem. Natomiast w klasycznych językach obiekt jest tworzony na podstawie wzoru zawartego w klasie. 
+W prototypowym języku obiektowym nowy obiekt jest tworzony na bazie już istniejącego obiektu, który będzie jego
+prototypem. Natomiast w klasycznych językach obiekt jest tworzony na podstawie wzoru zawartego w klasie.
 
 Rożnica między prototypem a klasą jest taka, jak między żywym organizmem a czystą abstrakcją
 
 ## Hermetyzacja
 
+Obiekt zawiera w sobie (hermetyzuje):
 
+* dane (przechowywane przez właściwości)
+* metody (sposoby działania na danych)
 
+Z pojęciem hermetyzacji wiąże się termin ukrywanie informacji.
 
+Obiekt jest wykorzystywany poprzez wywoływanie jego metod i nie ma znaczenia, czy programista sam napisał kod, czy
+pochodzi on z zewnętrznej biblioteki. Programista nie musi wiedzieć, jak dokładnie działa metoda, pracuje z
+interfejsem obiektu, bez zawracania sobie głowy implementacją.
 
-
-
-
-
+## Agregacja
 
 # 7. Tablice
 
@@ -3737,19 +3753,22 @@ Ogólna postać deklaracji funkcji:
 
 ```javascript
   function nameFunction(param1, param2, ..., paramN) {
-    statement1;
-    statement2;
-    ...
-    statementN;
+  statement1;
+  statement2;
+...
+  statementN;
 
-    return value;
-  }
+  return value;
+}
 ```
 
 **Wywołanie funkcji**:
 
 ```javascript
-  nameFunction(arg1, arg2, …, argN);
+  nameFunction(arg1, arg2, …,
+argN
+)
+;
 ```
 
 Jeśli wywołamy funkcję a ona zwraca jakąś wartość to możemy ją przypisać do jakieś zmiennej aby ją póżniej móc
@@ -5877,7 +5896,8 @@ znak ten był traktowany literalnie, należy użyć klasy zawierającej tylko je
 
 > Klasy znaków Unicod
 > Począwszy od wersji języka ES2018 wyrażenie regularne, zawierające flagę `u` obsługuje klasę `\p{...}`
-> reprezentującą znaki Unicode i klasę `\P{...}` wykluczającą te znaki. Od początku 2020 r. klasy te są obsługiwane przez
+> reprezentującą znaki Unicode i klasę `\P{...}` wykluczającą te znaki. Od początku 2020 r. klasy te są obsługiwane
+> przez
 > środowisko Node oraz przeglądarki Chrome, Edge i Safari, ale nie Firefox. Klasy te są oparte na standardzie Unicode i
 > reprezentowane przez nie znaki mogą się zmieniać wraz z tym standardem.
 >
@@ -6279,19 +6299,24 @@ JSON, jest analizowana, a wynikowa wartość umieszczana w argumencie funkcji um
 
 > **Terminologia promes**
 >
-> Promesa może być spełniona lub odrzucona. Załóżmy, że została wywołana metoda `then()` z dwiema funkcjami w argumentach.
+> Promesa może być spełniona lub odrzucona. Załóżmy, że została wywołana metoda `then()` z dwiema funkcjami w
+> argumentach.
 > Promesa jest spełniona, jeżeli została wywołana pierwsza funkcja. Analogicznie promesa jest odrzucona, jeżeli została
 > wywołana druga funkcja. Jeżeli promesa nie jest ani spełniona, ani odrzucona, to oznacza, że jest zawieszona. Promesa
 > spełniona lub odrzucona jest rozstrzygnięta. Zwróć uwagę, że promesa nie może być jednocześnie spełniona i odrzucona.
 > Po rozstrzygnięciu nie można jej ponownie spełnić ani odrzucić.
 >
 > Promesa jest obiektem reprezentującym wynik asynchronicznej operacji. Za pomocą promesy możemy rejestrować funkcje
-> zwrotnewywoływane po zakończeniu wykonywania asynchronicznego kodu. Promesa reprezentuje jego wynik. Jeżeli kod pomyślnie
-> zakończy działanie (promesa zostanie spełniona), to uzyskany wynik staje się zwracaną przez niego wartością. W przeciwnym
-> razie (promesa zostanie odrzucona) wynikiem jest obiekt Error lub inna wartość, która w kodzie synchronicznym mogłaby być
+> zwrotnewywoływane po zakończeniu wykonywania asynchronicznego kodu. Promesa reprezentuje jego wynik. Jeżeli kod
+> pomyślnie
+> zakończy działanie (promesa zostanie spełniona), to uzyskany wynik staje się zwracaną przez niego wartością. W
+> przeciwnym
+> razie (promesa zostanie odrzucona) wynikiem jest obiekt Error lub inna wartość, która w kodzie synchronicznym mogłaby
+> być
 > zgłoszona jako wyjątek. Z każdą rozstrzygniętą promesą jest skojarzona wartość, która się nie zmienia. Jeżeli promesa
 > jest spełniona, tą wartością jest wynik umieszczany w argumencie funkcji zwrotnej umieszczonej w pierwszym argumencie
-> metody `then()`. Jeżeli promesa jest odrzucona, tą wartością jest obiekt błędu umieszczony w argumencie funkcji zwrotnej
+> metody `then()`. Jeżeli promesa jest odrzucona, tą wartością jest obiekt błędu umieszczony w argumencie funkcji
+> zwrotnej
 > umieszczonej w argumencie metody `catch()` lub drugim argumencie metody `then()`.
 
 ### 13.2.2. Lańcuch promes
