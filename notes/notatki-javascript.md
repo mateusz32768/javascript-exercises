@@ -1137,7 +1137,7 @@ trzeba umieścić inny apostrof.
 _Tabela. Sekwencje ucieczki w JavaScript_
 
 | Sekwencja | Reprezentowany znak                                                                                                                     |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | \0        | Znak null (\u0000)                                                                                                                      |
 | \b        | Usunięcie znaku (\u0008)                                                                                                                |
 | \t        | Tabulator poziomy (\u0009)                                                                                                              |
@@ -1677,7 +1677,7 @@ operatorów dwuznakowych.
 3. Jeżeli oczekiwana jest liczba, wartość zostanie przekształcona w liczbę lub — jeżeli nie będzie to możliwe — w NaN.
 
 | Wartość                                     | Konwersja na ciąg          | Konwersja na liczbę | Konwersja na <br>wartość logiczną |
-| ------------------------------------------- | -------------------------- | ------------------- | --------------------------------- |
+|---------------------------------------------|----------------------------|---------------------|-----------------------------------|
 | undefined                                   | "undefined"                | NaN                 | false                             |
 | null                                        | "null"                     | 0                   | false                             |
 | true                                        | "true"                     | 1                   |                                   |
@@ -2450,42 +2450,42 @@ Operatory są stosowane w wyrażeniach arytmetycznych, porównujących, logiczny
 
 **Tabela** zawiera podsumowanie operatorów.
 
-| Operator                                                  | Operacja                                            | W   | L   | Typy                                                  |
-| --------------------------------------------------------- | --------------------------------------------------- | --- | --- | ----------------------------------------------------- |
-| ++                                                        | Pre- i postinkrementacja                            | P   | 1   | l-wartość → liczba                                    |
-| --                                                        | Pre- i postdekrementacja                            | P   | 1   | l-wartość → liczba                                    |
-| -                                                         | Zmiana znaku liczby                                 | P   | 1   | liczba → liczba                                       |
-| +                                                         | Konwersja na liczbę                                 | P   | 1   | dowolny → liczba                                      |
-| ~                                                         | Odwrócenie bitów                                    | P   | 1   | liczba całkowita → liczba całkowita                   |
-| !                                                         | Negacja wartości logicznej                          | P   | 1   | wart. logiczna → wart. logiczna                       |
-| delete                                                    | Usunięcie właściwości                               | P   | 1   | l-wartość → wart. logiczna                            |
-| typeof                                                    | Określenie typu operandu                            | P   | 1   | dowolny → ciąg znaków                                 |
-| void                                                      | Zwrócenie pustej wartości                           | P   | 1   | dowolny → undefined                                   |
-| \*\*                                                      | Potęgowanie                                         | P   | 2   | liczba, liczba → liczba                               |
-| \*, /, %                                                  | Mnożenie, dzielenie, reszta                         | L   | 2   | liczba, liczba → liczba                               |
-| +, -                                                      | Dodawanie, odejmowanie                              | L   | 2   | liczba, liczba → liczba                               |
-| +                                                         | Łączenie ciągów znaków                              | L   | 2   | ciąg znaków, ciąg znaków → ciąg znaków                |
-| <<                                                        | Przesunięcie bitów w lewo                           | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| > >                                                       | Przesunięcie bitów w prawo z zachowaniem znaku      | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| > > >                                                     | Przesunięcie bitów w prawo z uzupełnieniem zerami   | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| <, <=, >, >=                                              | Porównanie liczbowe                                 | L   | 2   | liczba, liczba → wart. logiczna                       |
-| <, <=, >, >=                                              | Porównanie alfabetyczne                             | L   | 2   | ciąg znaków, ciąg znaków → wart. logiczna             |
-| instanceof                                                | Określenie klasy obiektu                            | L   | 2   | obiekt, funkcja → wart. logiczna                      |
-| in                                                        | Sprawdzenie istnienia właściwości                   | L   | 2   | dowolny, obiekt → wart. logiczna                      |
-| ==                                                        | Nieścisła równość                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| !=                                                        | Nieścisła nierówność                                | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| ===                                                       | Ścisła równość                                      | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| !==                                                       | Ścisła nierówność                                   | L   | 2   | dowolny, dowolny → wart. logiczna                     |
-| &                                                         | Bitowa operacja ORAZ                                | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| ^                                                         | Bitowa różnica symetryczna                          | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| \|                                                        | Bitowa operacja LUB                                 | L   | 2   | liczba całkowita, liczba całkowita → liczba całkowita |
-| &&                                                        | Logiczna operacja ORAZ                              | L   | 2   | dowolny, dowolny → dowolny                            |
-| \|\|                                                      | Logiczna operacja LUB                               | L   | 2   | dowolny, dowolny → dowolny                            |
-| ??                                                        | Wybranie pierwszego zdefiniowanego operandu         | L   | 2   | dowolny, dowolny → dowolny                            |
-| ?:                                                        | Wybranie drugiego lub trzeciego operandu            | P   | 3   | wart. logiczna, dowolny, dowolny → dowolny            |
-| =                                                         | Przypisanie wartości zmiennej lub właściwości       | P   | 2   | l-wartość, dowolny → dowolny                          |
-| \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \|=, <<=, >>=, >>>= | Wykonanie operacji z przypisaniem wartości          | P   | 2   | l-wartość, dowolny → dowolny                          |
-| ,                                                         | Pominięcie pierwszego operandu i zwrócenie drugiego | L   | 2   | dowolny, dowolny → dowolny                            |
+| Operator                                | Operacja                                            | W                                          | L                     | Typy                                                  |
+|-----------------------------------------|-----------------------------------------------------|--------------------------------------------|-----------------------|-------------------------------------------------------|
+| ++                                      | Pre- i postinkrementacja                            | P                                          | 1                     | l-wartość → liczba                                    |
+| --                                      | Pre- i postdekrementacja                            | P                                          | 1                     | l-wartość → liczba                                    |
+| -                                       | Zmiana znaku liczby                                 | P                                          | 1                     | liczba → liczba                                       |
+| +                                       | Konwersja na liczbę                                 | P                                          | 1                     | dowolny → liczba                                      |
+| ~                                       | Odwrócenie bitów                                    | P                                          | 1                     | liczba całkowita → liczba całkowita                   |
+| !                                       | Negacja wartości logicznej                          | P                                          | 1                     | wart. logiczna → wart. logiczna                       |
+| delete                                  | Usunięcie właściwości                               | P                                          | 1                     | l-wartość → wart. logiczna                            |
+| typeof                                  | Określenie typu operandu                            | P                                          | 1                     | dowolny → ciąg znaków                                 |
+| void                                    | Zwrócenie pustej wartości                           | P                                          | 1                     | dowolny → undefined                                   |
+| \*\*                                    | Potęgowanie                                         | P                                          | 2                     | liczba, liczba → liczba                               |
+| \*, /, %                                | Mnożenie, dzielenie, reszta                         | L                                          | 2                     | liczba, liczba → liczba                               |
+| +, -                                    | Dodawanie, odejmowanie                              | L                                          | 2                     | liczba, liczba → liczba                               |
+| +                                       | Łączenie ciągów znaków                              | L                                          | 2                     | ciąg znaków, ciąg znaków → ciąg znaków                |
+| <<                                      | Przesunięcie bitów w lewo                           | L                                          | 2                     | liczba całkowita, liczba całkowita → liczba całkowita |
+| > >                                     | Przesunięcie bitów w prawo z zachowaniem znaku      | L                                          | 2                     | liczba całkowita, liczba całkowita → liczba całkowita |
+| > > >                                   | Przesunięcie bitów w prawo z uzupełnieniem zerami   | L                                          | 2                     | liczba całkowita, liczba całkowita → liczba całkowita |
+| <, <=, >, >=                            | Porównanie liczbowe                                 | L                                          | 2                     | liczba, liczba → wart. logiczna                       |
+| <, <=, >, >=                            | Porównanie alfabetyczne                             | L                                          | 2                     | ciąg znaków, ciąg znaków → wart. logiczna             |
+| instanceof                              | Określenie klasy obiektu                            | L                                          | 2                     | obiekt, funkcja → wart. logiczna                      |
+| in                                      | Sprawdzenie istnienia właściwości                   | L                                          | 2                     | dowolny, obiekt → wart. logiczna                      |
+| ==                                      | Nieścisła równość                                   | L                                          | 2                     | dowolny, dowolny → wart. logiczna                     |
+| !=                                      | Nieścisła nierówność                                | L                                          | 2                     | dowolny, dowolny → wart. logiczna                     |
+| ===                                     | Ścisła równość                                      | L                                          | 2                     | dowolny, dowolny → wart. logiczna                     |
+| !==                                     | Ścisła nierówność                                   | L                                          | 2                     | dowolny, dowolny → wart. logiczna                     |
+| &                                       | Bitowa operacja ORAZ                                | L                                          | 2                     | liczba całkowita, liczba całkowita → liczba całkowita |
+| ^                                       | Bitowa różnica symetryczna                          | L                                          | 2                     | liczba całkowita, liczba całkowita → liczba całkowita |
+| \                                       |                                                     | Bitowa operacja LUB                        | L                     | 2                                                     | liczba całkowita, liczba całkowita → liczba całkowita |
+| &&                                      | Logiczna operacja ORAZ                              | L                                          | 2                     | dowolny, dowolny → dowolny                            |
+| \                                       | \                                                   |                                            | Logiczna operacja LUB | L                                                     | 2   | dowolny, dowolny → dowolny                            |
+| ??                                      | Wybranie pierwszego zdefiniowanego operandu         | L                                          | 2                     | dowolny, dowolny → dowolny                            |
+| ?:                                      | Wybranie drugiego lub trzeciego operandu            | P                                          | 3                     | wart. logiczna, dowolny, dowolny → dowolny            |
+| =                                       | Przypisanie wartości zmiennej lub właściwości       | P                                          | 2                     | l-wartość, dowolny → dowolny                          |
+| \*_=, _=, /=, %=, +=, -=, &=,<br> ^=, \ | =, <<=, >>=, >>>=                                   | Wykonanie operacji z przypisaniem wartości | P                     | 2                                                     | l-wartość, dowolny → dowolny                          |
+| ,                                       | Pominięcie pierwszego operandu i zwrócenie drugiego | L                                          | 2                     | dowolny, dowolny → dowolny                            |
 
 Większość operatorów zapisuje się zapomocą znaków specjalnych, np. + lub =. Niektóre są słowami kluczowymi jak `delete`
 lub `instanceof`
@@ -2658,7 +2658,7 @@ wynikiem jest ciąg znaków opisujący typ operandu.
 Poniższa tabela przedstawia wyniki operatora `typeof` użytego ze wszystkimi wartościami dostępnymi w języku JavaScript.
 
 | x                               | typeof x    |
-| ------------------------------- | ----------- |
+|---------------------------------|-------------|
 | `undefined`                     | "undefined" |
 | `null`                          | "object"    |
 | `true` lub `false`              | "boolean"   |
@@ -3190,13 +3190,50 @@ Obiekt zawiera w sobie (hermetyzuje):
 * dane (przechowywane przez właściwości)
 * metody (sposoby działania na danych)
 
-Z pojęciem hermetyzacji wiąże się termin ukrywanie informacji.
+Z pojęciem hermetyzacji wiąże się termin **ukrywanie informacji**. Obiekt jest wykorzystywany poprzez wywoływanie jego
+metod i nie ma znaczenia, czy programista sam napisał kod, czy pochodzi on z zewnętrznej biblioteki. Programista nie
+musi wiedzieć, jak dokładnie działa metoda, pracuje z interfejsem obiektu, bez zawracania sobie głowy implementacją,
+która, z reguły, jest ukryta przed użytkownikiem.
 
-Obiekt jest wykorzystywany poprzez wywoływanie jego metod i nie ma znaczenia, czy programista sam napisał kod, czy
-pochodzi on z zewnętrznej biblioteki. Programista nie musi wiedzieć, jak dokładnie działa metoda, pracuje z
-interfejsem obiektu, bez zawracania sobie głowy implementacją.
+Kolejnym zagadnieniem jest widoczność metod i właściwości, które w innych językach opisane są jako publliczne,
+prywatne, czy chronione (ang. *public, private, protected*). W JavaScript wszystkie metody i właściwości są
+publiczne, jednakże istnieją sposoby aby chronić wewnętrznych danych obiektu w celu zapewnienia prywatności.
 
 ## Agregacja
+
+Łączenie kilku obiektów w jeden nazywa się **agregacją** lub **kompozycją**. Agregacja pozwala na podział problemu na
+mniejsze części, którymi łatwiej jest zarządzać („dziel i zwyciężaj”).
+
+## Dziedziczenie
+
+Dziedziczenie to bardzo elegancki sposób korzystania z już istniejącego kodu. W klasie bazowej implementujemy
+podstawowe funkcjonalności, które mogą być dziedziczone przez wyspecjalizowane klasy implementujące
+charakterystyczne dla danej klasy właściwości i metody.
+
+Ponieważ JavaScript nie posiada klas (klasy wprowadzone w ES6 to lukier składniowy), obiekty dziedziczą po innych
+obiektach. Obiekt dziedziczący może zmienić definicję niektórych dziedziczonych metod. Zmianę działania odziedziczonej
+metody określa się mianem przesłonięcia, lub nadpisania. (Nie mylić z „przeładowaniem” lub „przeciążeniem”).
+
+## Polimorfizm
+
+Możliwość wywołania tej samej metody na różnych obiektach, przy czym obiekty mogą odpowiadać w różny sposób w zależności
+od typu, nazywamy polimorfizmem.
+
+## Programowanie obiektowe - podsumowanie
+
+| Opis                                                                                                                                                                                                                                                                                           | Koncepcja                                          |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| Robert jest człowiekiem (obiektem).                                                                                                                                                                                                                                                            | obiekty                                            |
+| Robert posiada dane osobowe — data_urodzenia: 1 czerwca 1980, płeć: męska, włosy: czarne.                                                                                                                                                                                                      | właściwości                                        |
+| Robert potrafi wykonać następujące polecenia: jedz, śpij, pij, śnij, mów i oblicz swój wiek.                                                                                                                                                                                                   | metody                                             |
+| Robert jest instancją klasy Programista.                                                                                                                                                                                                                                                       | klasa (w klasycznym programowaniu obiektowym)      |
+| Robert jest wzorowany na innym obiekcie, o nazwie Programista.                                                                                                                                                                                                                                 | prototyp (w prototypowym programowaniu obiektowym) |
+| Robert posiada dane (takie jak data_urodzenia) i metody, które działają na tych danych (takie jak obliczWiek()).                                                                                                                                                                               | hermetyzacja                                       |
+| Nie musimy wiedzieć, jak dokładnie działa metoda obliczająca wiek. Obiekt może posiadać pewne prywatne dane, takie jak liczba dni w lutym w roku przestępnym — nie wiemy tego, i wcale nie chcemy wiedzieć.                                                                                    | ukrywanie informacji                               |
+| Robert jest częścią obiektu o nazwie Zespół, razem z Julią, która jest obiektem typu Projektant, oraz Jackiem, obiektem typu  KierownikProjektu.                                                                                                                                               | agregacja, kompozycja                              |
+| Projektant, Kierownik Projektu oraz Programista to obiekty  dziedziczące z obiektu Osoba.                                                                                                                                                                                                      | dziedziczenie                                      |
+| Można wywołać metody Robert.mów(), Jula.mów() oraz Jacek.mów(), z których każda zadziała w inny sposób (Robert pewnie opowie o  wydajności, Julia o urodzie, a Jacek o terminach). Każdy z  obiektów odziedziczył metodę mów po obiekcie Osoba, a następnie dostosował ją do własnych potrzeb. | polimorfizm, przesłanie metod                      |
+
 
 # 7. Tablice
 
@@ -4113,9 +4150,9 @@ specjalne znaczenie. Jeśli chcemy mieć pewność, że nie będą one interpret
 tylko część adresu URL (np. parametry żądania), i koduje odpowiednie znaki.
 
 ```javascript
-var url = 'http://www.packtpub.com/scr ipt.php?q=this and that';
+var url = 'https://www.packtpub.com/scr ipt.php?q=this and that';
 encodeURI(url);
-//"http://www.packtpub.com/scr%20 ipt.php?q=this%20and%20that"
+//"https://www.packtpub.com/scr%20 ipt.php?q=this%20and%20that"
 encodeURIComponent(url);
 //"http%3A%2F%2Fwww.packtpub.com%2Fscr%20ipt.php%3Fq%3Dthis% 20and%20that"
 let url = 'https://raubuc.net';
@@ -5821,7 +5858,7 @@ ciągu.
 Tabela. Znaki literalne stosowane w wyrażeniach regularnych
 
 | Znak           | Opis                                                                                                                                                                                                                                               |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | alfanumeryczny | Porównywany literalnie                                                                                                                                                                                                                             |
 | \0             | Znak NULL (\u0000)                                                                                                                                                                                                                                 |
 | \t             | Tabulator (\u0009)                                                                                                                                                                                                                                 |
@@ -5866,7 +5903,7 @@ W definicji klasy można stosować myślniki oznaczające zakresy znaków.
 Tabela. Klasy znaków w wyrażeniach regularnych
 
 | Sekwencja | Opis                                                                                                                                                                             |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [...]     | Dowolny znak umieszczony wewnątrz nawiasów.                                                                                                                                      |
 | [^...]    | Dowolny znak z wyjątkiem umieszczonych wewnątrz nawiasów.                                                                                                                        |
 | .         | Dowolny znak z wyjątkiem nowego wiersza i innego znaku zakończenia wiersza Unicode. Kropka użyta w konstruktorze RegExp() z flagą s oznacza dowolny znak, również końca wiersza. |
@@ -5940,7 +5977,7 @@ Znaki określające powtórzenia umieszcza się po sekwencji, której mają doty
 Tabela. Znaki powtórzeń w wyrażeniach regularnych
 
 | Sekwencja | Opis                                                                                                                                      |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | {n,m}     | Powtórzenie poprzedniego wzorca przynajmniej n razy, ale nie więcej niż m razy.                                                           |
 | {n,}      | Powtórzenie poprzedniego wzorca przynajmniej n razy.                                                                                      |
 | {n}       | Powtórzenie poprzedniego wzorca dokładnie n razy.                                                                                         |
@@ -6133,7 +6170,7 @@ function getCurrentVersionNumber(versionCallback) {
   // Argumentem jest funkcją zwrotną.
   // Wysłanie do interfejsu API zapytania HTTP o numer wersji.
   let request = new XMLHttpRequest();
-  request.open('GET', 'http://www.example.com/api/version');
+  request.open('GET', 'https://www.example.com/api/version');
   request.send();
   // Zarejestrowanie funkcji zwrotnej, która zostanie wywołana po odebraniu odpowiedzi.
   request.onload = function() {
@@ -6965,3 +7002,13 @@ Do definiowania i wydawania żądń służy obiekt JavaScript `XMLHttpRequest`. 
 
 2. Obsługa dodatkowych zdarzeń, funkcji ułatwiających pracę z elementami `form` oraz obsługę pokrewnych specyfikacji,
    m.in. `CORS`
+
+
+# Bibliografia
+<hr>
+
+1. David Flanagan, JavaScript. Przewodnik. Poznaj język mistrzów programowania, Gliwice: Helion SA, 2021. ISBN 
+   978-83-283-7309-9
+2. Ved Antani, Stoyan Stefanov. Programowanie zorientowane obiektowo w języku JavaScript, Gliwice: Helion SA, 2018. 
+   ISBN 978-83-283-3783-1
+3. Larry Ullman, Nowoczesny język JavaScript, Gliwice: Helion SA, 2013
