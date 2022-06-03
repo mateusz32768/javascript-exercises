@@ -3234,7 +3234,6 @@ od typu, nazywamy polimorfizmem.
 | Projektant, Kierownik Projektu oraz Programista to obiekty  dziedziczące z obiektu Osoba.                                                                                                                                                                                                      | dziedziczenie                                      |
 | Można wywołać metody Robert.mów(), Jula.mów() oraz Jacek.mów(), z których każda zadziała w inny sposób (Robert pewnie opowie o  wydajności, Julia o urodzie, a Jacek o terminach). Każdy z  obiektów odziedziczył metodę mów po obiekcie Osoba, a następnie dostosował ją do własnych potrzeb. | polimorfizm, przesłanie metod                      |
 
-
 # 7. Tablice
 
 Tablica jest uporządkowaną kolekcją wartości, czyli elementów. Każdy element ma swoje miejsce w tablicy oznaczone
@@ -6986,7 +6985,103 @@ Aby zadania działały z maksymalną współbieżnością, połącz je z metodą
 
 [//]: # (TODO Example)
 
-## 17.n. [Markdown](https://commonmark.org/help/tutorial/)
+## 17.n. Markdown
+
+Języka Markdown to prosty i łatwy w użyciu języka znaczników, którego można użyć do sformatowania praktycznie
+dowolnego dokumentu.
+Markdown sprawia, że pisanie w sieci jest szybkie i łatwe.
+
+### 17.n.1 Co to jest Markdown?
+
+Markdown to lekki język znaczników, którego można używać do dodawania elementów formatowania do dokumentów tekstowych w
+postaci zwykłego tekstu. Stworzony przez Johna Grubera w 2004 roku, Markdown jest obecnie jednym z najpopularniejszych
+języków znaczników na świecie.
+
+Kiedy tworzysz plik w formacie Markdown, dodajesz składnię Markdown do tekstu, aby wskazać, które słowa i frazy powinny
+wyglądać inaczej.
+
+Na przykład, aby oznaczyć nagłówek h1, dodajesz przed nim znak # (np. `#Nagłówek jeden`). Aby pogrubić frazę, dodaj
+dwie gwiazdki przed i po niej (np. `**ten tekst jest pogrubiony**`)
+
+Możesz dodać elementy formatowania Markdown do zwykłego pliku tekstowego za pomocą aplikacji do edycji tekstu.
+
+Według Grubera składnia Markdown została zaprojektowana tak, aby była czytelna i dyskretna, dzięki czemu tekst w plikach
+Markdown można odczytać, nawet jeśli nie jest renderowany.
+
+> Naczelną ideą składni Markdown jest aby dokument mógł być publikowany jako zwykły tekst, bez
+> wyglądania, jakby był oznaczony tagami lub instrukcjami formatowania.
+
+## Dlaczego warto korzystać z Markdown?
+
+* Markdown można wykorzystać do wszystkiego. Ludzie używają go do
+  tworzenia [stron internetowych](https://www.markdownguide.org/getting-started/#websites),
+* [dokumentów](https://www.markdownguide.org/getting-started/#documents),
+  [notatek](https://www.markdownguide.org/getting-started/#notes),
+  [książek](https://www.markdownguide.org/getting-started/#books),
+  [prezentacji](https://www.markdownguide.org/getting-started/#presentations),
+  [wiadomości e-mail](https://www.markdownguide.org/getting-started/#books) i
+  [dokumentacji technicznej](https://www.markdownguide.org/getting-started/#documentation).
+* Markdown jest przenośny. Pliki zawierające tekst w formacie Markdown można otwierać za pomocą praktycznie dowolnej
+  aplikacji.
+* Markdown jest niezależny od platformy. Tekst w formacie Markdown można tworzyć na dowolnym urządzeniu z dowolnym
+  systemem operacyjnym.
+* Markdown jest dowodem na przyszłość. Nawet jeśli aplikacja, której używasz, przestanie działać w pewnym momencie w
+  przyszłości, nadal będziesz mógł czytać tekst sformatowany w Markdown za pomocą aplikacji do edycji tekstu. Jest to
+  ważna kwestia, jeśli chodzi o książki, prace dyplomowe i inne ważne dokumenty, które należy przechowywać w
+  nieskończoność.
+* Markdown jest wszędzie. Witryny takie jak [Reddit](https://www.markdownguide.org/tools/reddit/) i GitHub obsługują
+  Markdown, a wiele aplikacji komputerowych i
+  internetowych obsługuje go.
+
+### Kicking the Tires
+
+[Dillinger](https://dillinger.io/) jest jednym z najlepszych edytorów online Markdown. Po prostu otwórz witrynę i
+zacznij pisać w lewym okienku. W prawym okienku pojawi się podgląd renderowanego dokumentu.
+
+Po zapoznaniu się z Markdown możesz użyć aplikacji Markdown, którą można zainstalować na komputerze stacjonarnym lub
+urządzeniu mobilnym.
+
+### Jak to działa?
+
+Kiedy piszesz w Markdown, tekst jest przechowywany w zwykłym pliku tekstowym, który ma rozszerzenie .md lub .markdown.
+
+Potrzebujesz aplikacji Markdown zdolnej do przetwarzania pliku Markdown. Dostępnych jest wiele aplikacji — od prostych
+skryptów po aplikacje komputerowe, które wyglądają jak Microsoft Word. Podobnie jak Dillinger, konwertują one
+tekst w formacie Markdown na HTML, aby można go było wyświetlać w przeglądarkach internetowych.
+
+Aplikacje Markdown używają procesora Markdown (często nazywanym „parserem” lub „implementacją”),
+aby pobrać tekst sformatowany w Markdown i wyprowadzić go do formatu HTML. W tym momencie dokument można wyświetlić w
+przeglądarce internetowej lub połączyć z arkuszem stylów i wydrukować.
+
+Podsumowując, jest to proces czteroczęściowy:
+
+1. Tworzenie pliku Markdown za pomocą edytora tekstu lub dedykowanej aplikacji Markdown z rozszerzeniem .md lub
+   .markdown.
+2. Otwieranie pliku Markdown w aplikacji Markdown.
+3. Użyj aplikacji Markdown, aby przekonwertować plik Markdown na dokument HTML.
+4. Wyświetl plik HTML w przeglądarce internetowej lub użyj aplikacji Markdown, aby przekonwertować go na inny format
+   pliku, taki jak PDF.
+
+## Do czego służy Markdown?
+
+Markdown to szybki i łatwy sposób na robienie notatek, tworzenie treści dla witryny internetowej i tworzenie dokumentów
+gotowych do druku.
+
+Większość ludzi używa Markdown do tworzenia treści w Internecie, ale Markdown jest dobry do formatowania wszystkiego, od
+wiadomości e-mail po listy zakupów.
+
+Oto kilka przykładów tego, co możesz zrobić z Markdown.
+
+## Strony internetowe
+
+
+### Bibliografia do działu Markdown
+
+<hr> 
+
+* Markdown Guide, https://www.markdownguide.org/
+* Tutorial Markdown, https://commonmark.org/help/tutorial/index.html
+* Tables Generator, https://www.tablesgenerator.com/markdown_tables
 
 # 18. Ajax
 
@@ -7003,12 +7098,12 @@ Do definiowania i wydawania żądń służy obiekt JavaScript `XMLHttpRequest`. 
 2. Obsługa dodatkowych zdarzeń, funkcji ułatwiających pracę z elementami `form` oraz obsługę pokrewnych specyfikacji,
    m.in. `CORS`
 
-
 # Bibliografia
+
 <hr>
 
-1. David Flanagan, JavaScript. Przewodnik. Poznaj język mistrzów programowania, Gliwice: Helion SA, 2021. ISBN 
+1. David Flanagan, JavaScript. Przewodnik. Poznaj język mistrzów programowania, Gliwice: Helion SA, 2021. ISBN
    978-83-283-7309-9
-2. Ved Antani, Stoyan Stefanov. Programowanie zorientowane obiektowo w języku JavaScript, Gliwice: Helion SA, 2018. 
+2. Ved Antani, Stoyan Stefanov. Programowanie zorientowane obiektowo w języku JavaScript, Gliwice: Helion SA, 2018.
    ISBN 978-83-283-3783-1
 3. Larry Ullman, Nowoczesny język JavaScript, Gliwice: Helion SA, 2013
