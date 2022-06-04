@@ -7011,7 +7011,7 @@ Markdown można odczytać, nawet jeśli nie jest renderowany.
 > Naczelną ideą składni Markdown jest aby dokument mógł być publikowany jako zwykły tekst, bez
 > wyglądania, jakby był oznaczony tagami lub instrukcjami formatowania.
 
-## Dlaczego warto korzystać z Markdown?
+### 17.n.2. Dlaczego warto korzystać z Markdown?
 
 * Markdown można wykorzystać do wszystkiego. Ludzie używają go do
   tworzenia [stron internetowych](https://www.markdownguide.org/getting-started/#websites),
@@ -7033,7 +7033,7 @@ Markdown można odczytać, nawet jeśli nie jest renderowany.
   Markdown, a wiele aplikacji komputerowych i
   internetowych obsługuje go.
 
-### Kicking the Tires
+### 17.n.3. Kicking the Tires
 
 [Dillinger](https://dillinger.io/) jest jednym z najlepszych edytorów online Markdown. Po prostu otwórz witrynę i
 zacznij pisać w lewym okienku. W prawym okienku pojawi się podgląd renderowanego dokumentu.
@@ -7041,7 +7041,7 @@ zacznij pisać w lewym okienku. W prawym okienku pojawi się podgląd renderowan
 Po zapoznaniu się z Markdown możesz użyć aplikacji Markdown, którą można zainstalować na komputerze stacjonarnym lub
 urządzeniu mobilnym.
 
-### Jak to działa?
+### 17.n.4. Jak to działa?
 
 Kiedy piszesz w Markdown, tekst jest przechowywany w zwykłym pliku tekstowym, który ma rozszerzenie .md lub .markdown.
 
@@ -7062,7 +7062,7 @@ Podsumowując, jest to proces czteroczęściowy:
 4. Wyświetl plik HTML w przeglądarce internetowej lub użyj aplikacji Markdown, aby przekonwertować go na inny format
    pliku, taki jak PDF.
 
-## Do czego służy Markdown?
+### 17.n.5. Do czego służy Markdown?
 
 Markdown to szybki i łatwy sposób na robienie notatek, tworzenie treści dla witryny internetowej i tworzenie dokumentów
 gotowych do druku.
@@ -7072,7 +7072,18 @@ wiadomości e-mail po listy zakupów.
 
 Oto kilka przykładów tego, co możesz zrobić z Markdown.
 
-## Strony internetowe
+#### Strony internetowe
+
+Najprostszy możliwy sposob na stworzenie strony internetowej z plikami Markdown to [blot.im](https://blot.im/). Po zarejestrowaniu się Blot utworzy na Twoim komputerze folder Dropbox. Należy przekopiować pliki Markdown do tego folderu.
+
+[Jekyll](https://www.markdownguide.org/tools/jekyll/), popularny statyczny generator witryn, który pobiera pliki Markdown i tworzy witrynę HTML. [GitHub Pages](https://www.markdownguide.org/tools/github-pages/) zapewnia bezpłatny hosting dla witryn generowanych przez Jekyll. Oprócz Jekyll'a istnieje wiele innych [generatorów stron statycznych](https://jamstack.org/generators/). Najciekawsze z nich i bardzo popularne to [Next.js](https://jamstack.org/generators/next/) i [Gatsby](https://jamstack.org/generators/gatsby/) gdyż są oparte o React'a i hostowane przez Netlify
+
+
+>Jekyll został użyty do stworzenia przewodnika po [Markdown](https://www.markdownguide.org/). Kod źródłowy na [GitHub](https://github.com/mattcone/markdown-guide).
+
+Jeśli chcesz wykorzystać system zarządzania treścią (CMS) do zasilania swojej witryny, spójrz na Ghost. Jest to bezpłatna platforma blogowa typu open source z ładnym edytorem Markdown. Jeśli jesteś użytkownikiem WordPress, z przyjemnością dowiesz się, że istnieje obsługa Markdown dla witryn hostowanych na WordPress.com. Witryny WordPress z własnym hostingiem mogą korzystać z wtyczki Jetpack.
+
+
 
 
 ### Bibliografia do działu Markdown
