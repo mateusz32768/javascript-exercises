@@ -7101,9 +7101,15 @@ Natomiast witryny z własnym hostingiem mogą korzystać z wtyczki [Jetpack](htt
 
 #### Dokumenty
 
-[//]: # TODO()
+Markdown jest wystarczająco dobry do tworzenia podstawowych dokumentów, takich jak zadania i listy. Za pomocą aplikacji do tworzenia dokumentów Markdown można tworzyć i eksportować dokumenty w formacie Markdown do formatu PDF lub HTML. Część PDF jest kluczowa, ponieważ gdy już masz dokument PDF, możesz z nim zrobić wszystko — wydrukować go, wysłać pocztą e-mail lub przesłać na stronę internetową.
 
-#### 
+Godne polecenia aplikacje dla sytemu operacyjnego Windows to:
+* [ghostwriter](https://wereturtle.github.io/ghostwriter/)
+* [Markdown Monster](https://markdownmonster.west-wind.com/)
+
+#### Notatki
+Markdown jest idealną składnią do robienia notatek. Niestety, Evernote i OneNote, dwie najpopularniejsze aplikacje do obsługi notatek, nie obsługują obecnie języka Markdown. Kilka innych aplikacji do obsługi notatek obsługuje Markdown:
+
 
 ### Bibliografia do działu Markdown
 
